@@ -6,10 +6,10 @@ class Content extends Component {
   constructor(props) {
     super(props)
     this.state = {catalogs: []}
-    this.getData()
+    this.getCatalogs()
   }
 
-  getData() {
+  getCatalogs() {
     return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs`)
       .then((response) => response.json())
       .then((catalogs) => {
