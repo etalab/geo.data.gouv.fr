@@ -9,9 +9,8 @@ import './index.css'
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App} />
-    <Route path="Home" component={App} />
-    <Route path="Catalog" component={App} />
-    <Route path="/:id" component={CatalogDetail} />
+    <Route path="/dashboard" component={App} />
+    <Route path="dashboard/:id" component={CatalogDetail} />
     <Route path="*" component={NotFind}/>
   </Router>
 ), document.getElementById('root'))

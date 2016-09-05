@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       <div id="header">
-        <Link to={``}>
+        <Link to={`/dashboard`}>
           <h1 className="ui huge center aligned inverted header">Dashboard Inspire</h1>
         </Link>
       </div>
