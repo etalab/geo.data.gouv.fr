@@ -1,6 +1,9 @@
 
 # Created by https://www.gitignore.io/api/macos,node
 
+### Reactjs ###
+build/
+
 ### macOS ###
 *.DS_Store
 .AppleDouble
