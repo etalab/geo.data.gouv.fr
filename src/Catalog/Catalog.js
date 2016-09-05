@@ -10,7 +10,7 @@ const Catalog = ({catalog}) => {
 
         <div className="ui segment">
           <LastHarvesting harvest={catalog.lastHarvesting}/>
-          <Link to={`/${catalog.name}`}><span className="ui large header">{catalog.name}</span></Link>
+          <Link to={`/${catalog.id}`}><span className="ui large header">{catalog.name}</span></Link>
           <Metrics metrics={catalog.catalogMetrics} />
         </div>
 

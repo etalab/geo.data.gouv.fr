@@ -2,14 +2,22 @@ import React, { Component } from 'react'
 import Catalog from '../Catalog/Catalog'
 import './Content.css'
 
-const data = require("json!../../resources/data.json");
-
 class Content extends Component {
   constructor(props) {
     super(props)
-    this.state = {catalogs: Object.keys(data).map((key) => {
-          return data[key]
-        })}
+    this.state = {catalogs: []}
+    this.getData()
+  }
+
+  getData() {
+    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs`)
+      .then((response) => response.json())
+      .then((catalogs) => {
+        this.setState({catalogs})
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   render() {

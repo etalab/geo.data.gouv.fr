@@ -1,12 +1,13 @@
 import React from 'react'
 
 const LastHarvesting = ({metrics}) => {
+
   return (
     <div className="ui right floated mini statistic">
       <div className="value">
-        {metrics.totalCount}
+        {metrics ? metrics.totalCount : 0}
       </div>
-      <div className="label">Entrées</div>
+      <div className="label">Entries</div>
     </div>
   )
 }
