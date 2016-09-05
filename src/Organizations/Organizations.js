@@ -9,7 +9,7 @@ const Organizations = ({label, organizations}) => {
       {Object.keys(organizations).map( key =>
         <div key={key} className="ui clearing segment">
           <div className="header">{key}</div>
-          <span className="ui right floated blue circular label">{organizations[key]}</span>
+          <span className="ui blue circular label">{organizations[key]}</span>
         </div>
       )}
       </div>
