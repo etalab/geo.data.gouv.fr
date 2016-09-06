@@ -9,7 +9,10 @@ class Partitions extends Component {
 
   getData() {
     const data = this.props.data
-    return Object.keys(data).map( val => { return {'label': val, 'value': data[val]} })
+    return Object.keys(data).map( val => { return {
+      'label': val,
+      'value': data[val],
+    } })
   }
 
   render() {
@@ -20,7 +23,6 @@ class Partitions extends Component {
           <Pie data={data.sort((a, b) => {
             return a.value < b.value
           })} />
-          <h4 className="header">Record Type</h4>
         </div>
       )
   }
