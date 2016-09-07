@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header'
-import Partitions from '../Partitions/Partitions'
+import PieChart from '../Charts/PieChart/PieChart'
+import BarChart from '../Charts/BarChart/BarChart'
 import Percent from '../Percent/Percent'
 import Organizations from '../Organizations/Organizations'
 
@@ -58,7 +59,7 @@ class CatalogDetail extends Component {
           <div className="six wide column">
           <div className="ui header">Record Type</div>
           <div className="ui divider"></div>
-            <Partitions data={this.state.metrics.partitions.recordType} />
+            <PieChart data={this.state.metrics.partitions.recordType} />
           </div>
 
           <div className="sixteen wide column"></div>
@@ -68,9 +69,13 @@ class CatalogDetail extends Component {
             <div className="ui divider"></div>
           </div>
 
-          <div className="two column row">
+          <div className="center aligned three column row">
             <div className="column">
               <Percent metrics={this.state.metrics} label="openness" icon="users" />
+            </div>
+
+            <div className="column">
+              <BarChart data={this.state.metrics.partitions.dataType} />
             </div>
 
             <div className="column">
