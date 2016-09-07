@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Pie } from 'react-chartjs'
+import { colors } from '../../tools.js'
 
-class Partitions extends Component {
+class PieChart extends Component {
   constructor(props) {
     super(props)
     this.getData = this.getData.bind(this)
@@ -25,16 +26,6 @@ class Partitions extends Component {
   }
 
   setColor(idx) {
-    const colors = [
-      {name: 'blue', value: '#2185D0'},
-      {name: 'teal', value: '#00B5AD'},
-      {name: 'green', value: '#21BA45'},
-      {name: 'yellow', value: '#FBBD08'},
-      {name: 'purple', value: '#A333C8'},
-      {name: 'orange', value: '#F2711C'},
-      {name: 'red', value: '#DB2828'}
-    ]
-
     return colors[idx] ? colors[idx] : {name: 'grey', value: '#767676'}
   }
 
@@ -65,4 +56,4 @@ class Partitions extends Component {
   }
 }
 
-export default Partitions
+export default PieChart
