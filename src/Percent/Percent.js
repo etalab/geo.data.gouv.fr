@@ -4,9 +4,9 @@ const Percent = ({metrics, label, icon}) => {
   const value = metrics.partitions[label].yes
   const percent = value ? Math.floor((value / metrics.totalCount) * 100) : 0
   const color = () => {
-    if (percent < 25) {
+    if (percent < 20) {
       return 'red'
-    } else if (percent > 75) {
+    } else if (percent > 55) {
       return 'green'
     } else {
       return 'yellow'
