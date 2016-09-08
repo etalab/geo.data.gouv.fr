@@ -2,7 +2,7 @@ import React from 'react'
 import Statistics from '../Statistics'
 
 const Percent = ({metrics, label, icon, size}) => {
-  const value = metrics.partitions[label].yes
+  const value = metrics.partitions[label] ? metrics.partitions[label].yes : 0
   const percent = value ? Math.floor((value / metrics.totalCount) * 100) : 0
   const color = () => {
     if (percent < 20) {
