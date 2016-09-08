@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
 import Metrics from '../Metrics/Metrics'
-import Tags from '../Tags/Tags'
 
 const Catalog = ({catalog}) => {
   return (
@@ -12,10 +11,6 @@ const Catalog = ({catalog}) => {
           <LastHarvesting harvest={catalog.lastHarvesting}/>
           <Link to={`catalog/${catalog.id}`}><span className="ui large header">{catalog.name}</span></Link>
           <Metrics metrics={catalog.catalogMetrics} />
-        </div>
-
-        <div className="ui secondary segment">
-          <Tags tags={catalog.tags} />
         </div>
 
       </div>
