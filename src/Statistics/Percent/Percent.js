@@ -1,6 +1,7 @@
 import React from 'react'
+import Statistics from '../Statistics/Statistics'
 
-const Percent = ({metrics, label, icon}) => {
+const Percent = ({metrics, label, icon, size}) => {
   const value = metrics.partitions[label].yes
   const percent = value ? Math.floor((value / metrics.totalCount) * 100) : 0
   const color = () => {
@@ -14,10 +15,13 @@ const Percent = ({metrics, label, icon}) => {
   }
 
   return (
-    <div className={`ui ${color()} statistic`}>
-        <div className="value"><i className={`${icon} icon`}></i> {percent}% </div>
-        <div className="label">{label} </div>
-      </div>
+    <Statistics
+      value={percent}
+      label={label}
+      unit="%"
+      icon={icon}
+      color={color()}
+      size={size} />
   )
 }
 

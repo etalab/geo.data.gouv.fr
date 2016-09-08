@@ -23,7 +23,7 @@ class Catalogs extends Component {
   render() {
     return (
       <div className="catalogs">
-        <div className="ui main container">
+        <div className="ui semgents container">
           {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
         </div>
       </div>
