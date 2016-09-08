@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Header from '../Header/Header'
 import PieChart from '../Charts/PieChart/PieChart'
 import BarChart from '../Charts/BarChart/BarChart'
 import Percent from '../Percent/Percent'

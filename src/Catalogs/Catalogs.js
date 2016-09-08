@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Catalog from '../Catalog/Catalog'
-import './Content.css'
+import './Catalogs.css'
 
-class Content extends Component {
+class Catalogs extends Component {
   constructor(props) {
     super(props)
     this.state = {catalogs: []}
@@ -22,11 +22,13 @@ class Content extends Component {
 
   render() {
     return (
-      <div className="ui main container">
-        {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
+      <div className="catalogs">
+        <div className="ui main container">
+          {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
+        </div>
       </div>
     )
   }
 }
 
-export default Content
+export default Catalogs
