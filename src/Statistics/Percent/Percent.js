@@ -1,5 +1,5 @@
 import React from 'react'
-import Statistics from '../Statistics/Statistics'
+import Statistics from '../Statistics'
 
 const Percent = ({metrics, label, icon, size}) => {
   const value = metrics.partitions[label].yes

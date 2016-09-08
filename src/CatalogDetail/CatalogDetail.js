@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PieChart from '../Charts/PieChart/PieChart'
 import BarChart from '../Charts/BarChart/BarChart'
-import Percent from '../Percent/Percent'
+import Percent from '../Statistics/Percent/Percent'
 import Organizations from '../Organizations/Organizations'
 
 class CatalogDetail extends Component {

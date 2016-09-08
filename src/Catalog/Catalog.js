@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
-import Metrics from '../Metrics/Metrics'
-import Percent from '../Percent/Percent'
+import Statistics from '../Statistics/Statistics'
+import Percent from '../Statistics/Percent/Percent'
 import './Catalog.css'
 
 const Catalog = ({catalog}) => {
@@ -18,7 +18,7 @@ const Catalog = ({catalog}) => {
             <div className="column"></div>
             <div className="column"><Percent metrics={metricsFake} label="openness" icon="users" size="small" /></div>
             <div className="column"><Percent metrics={metricsFake} label="download" icon="download" size="small" /></div>
-            <div className="column"><Metrics value={catalog.lastHarvesting.recordsFound} size="small" label="Entries" /></div>
+            <div className="column"><Statistics value={catalog.lastHarvesting.recordsFound} size="small" label="Entries" /></div>
           </div>
         </div>
       </Link>
