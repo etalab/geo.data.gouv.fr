@@ -28,7 +28,7 @@ class Catalog extends Component {
   render() {
       const loader = <div className="ui active big loader"></div>
       const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="users" size="small" /> : loader
-      const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="users" size="small" /> : loader
+      const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="download" size="small" /> : loader
 
       return (
           <Link to={`catalog/${this.props.catalog.id}`}>
