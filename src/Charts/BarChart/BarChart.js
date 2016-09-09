@@ -27,11 +27,8 @@ class BarChart extends Component {
 
     return (
       <div className="ui grid container">
-
-        <div className="two column row">
-          <div className="column">
-            <Bar data={data} />
-          </div>
+        <div className="column">
+          <Bar data={data} />
         </div>
       </div>
       )

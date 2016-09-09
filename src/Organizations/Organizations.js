@@ -5,7 +5,7 @@ const Organizations = ({label, organizations}) => {
   return (
     <div className="ui segments">
       <div className="ui secondary segment">
-        <div className="header">{label}</div>
+        <h4 className="header">{label}</h4>
       </div>
       <div className="ui grid container">
         {Object.keys(organizations).map( key =>

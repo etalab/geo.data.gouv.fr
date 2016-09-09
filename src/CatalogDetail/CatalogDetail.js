@@ -8,6 +8,8 @@ class CatalogDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {catalog: undefined, metrics: undefined}
+    this.getCatalog()
+    this.getMetrics()
   }
 
   getCatalog() {
@@ -39,15 +41,12 @@ class CatalogDetail extends Component {
   render() {
     if (this.state.catalog && this.state.metrics) {
       return (
-        <div>
-        <Header />
-
-        <div className="ui grid container">
+        <div className="ui stackable grid container">
 
           <div className="sixteen wide column"></div>
 
           <div className="ten wide column">
-            <div className="ui header">Organization</div>
+            <div className="ui header">Catalog</div>
             <div className="ui divider"></div>
             <div className="ui header">{this.state.catalog.name}</div>
             <div className="ui sub">
@@ -68,9 +67,9 @@ class CatalogDetail extends Component {
             <div className="ui divider"></div>
           </div>
 
-          <div className="center aligned three column row">
+          <div className="ui equal width center aligned stackable grid">
             <div className="column">
-              <Percent metrics={this.state.metrics} label="openness" icon="users" />
+              <Percent metrics={this.state.metrics} label="openness" icon="users"/>
             </div>
 
             <div className="column">
@@ -97,12 +96,8 @@ class CatalogDetail extends Component {
             </div>
           </div>
         </div>
-
-        </div>
       )
     } else {
-      this.getCatalog()
-      this.getMetrics()
       return (<div></div>)
     }
   }

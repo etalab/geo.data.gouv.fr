@@ -13,14 +13,16 @@ class Catalog extends Component {
   }
 
   getMetrics() {
-    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.catalog.id}/metrics`)
-      .then((response) => response.json())
-      .then((metrics) => {
-        this.setState({metrics})
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+    if (!this.state.metrics) {
+      return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.catalog.id}/metrics`)
+        .then((response) => response.json())
+        .then((metrics) => {
+          this.setState({metrics})
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+      }
   }
 
   render() {
@@ -44,8 +46,6 @@ class Catalog extends Component {
             </div>
           </Link>
       )
-
-
   }
 }
 

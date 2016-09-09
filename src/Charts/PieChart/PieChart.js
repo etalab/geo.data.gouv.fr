@@ -33,23 +33,21 @@ class PieChart extends Component {
     const data = this.getData()
 
     return (
-      <div className="ui grid container">
+      <div className="ui stackable two column grid container">
 
-        <div className="two column row">
           <div className="column">
-            <Pie data={data} />
+            <Pie data={data} width="200" />
           </div>
 
           <div className="column">
             <div className="ui list">
               {data.map((item, idx) =>
                 <div key={idx} className="item">
-                  <div className="right floated content">
+                  <div className="content">
                     <div className={`ui small ${item.colorName} label`}>{item.label}</div>
                   </div>
                 </div>)}
             </div>
-          </div>
         </div>
       </div>
       )
