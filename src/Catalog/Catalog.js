@@ -24,7 +24,10 @@ class Catalog extends Component {
   }
 
   render() {
-    if (this.state.metrics) {
+      const loader = <div className="ui active big loader"></div>
+      const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="users" size="small" /> : loader
+      const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="users" size="small" /> : loader
+
       return (
           <Link to={`catalog/${this.props.catalog.id}`}>
             <div className="ui segment">
@@ -34,16 +37,14 @@ class Catalog extends Component {
                   <span className="ui large header">{this.props.catalog.name}</span>
                 </div>
                 <div className="column"></div>
-                <div className="column"><Percent metrics={this.state.metrics} label="openness" icon="users" size="small" /></div>
-                <div className="column"><Percent metrics={this.state.metrics} label="download" icon="download" size="small" /></div>
+                <div className="column">{openness}</div>
+                <div className="column">{download}</div>
                 <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Entries" /></div>
               </div>
             </div>
           </Link>
       )
-    } else {
-      return (<div></div>)
-    }
+
 
   }
 }
