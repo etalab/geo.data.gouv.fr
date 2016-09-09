@@ -4,7 +4,7 @@ footer {
   text-align: center;
 
   color: white;
-  background-image: radial-gradient(circle at 50% top, rgba(84, 182, 164, 0.6) 0%, rgba(84,90,182,0) 75%),radial-gradient(circle at right top, #4a71a2 0%, rgba(121,74,162,0) 57%);
+  background-image: radial-gradient(circle at 50% top, rgba(84, 182, 164, 0.6) 0%, rgba(84,90,182,0) 75%),radial-gradient(circle at right top, #2f4363 0%, #2f4363, 57%);
   background-repeat: no-repeat;
   background-size: 100% 1000px;
   background-color: #2f4363;
