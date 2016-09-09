@@ -3,6 +3,7 @@ import PieChart from '../Charts/PieChart/PieChart'
 import BarChart from '../Charts/BarChart/BarChart'
 import Percent from '../Statistics/Percent/Percent'
 import Organizations from '../Organizations/Organizations'
+import File from '../File/File'
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -49,9 +50,11 @@ class CatalogDetail extends Component {
             <div className="ui header">Catalog</div>
             <div className="ui divider"></div>
             <div className="ui header">{this.state.catalog.name}</div>
-            <div className="ui sub">
-              <a href={this.state.catalog.serviceUrl}>{this.state.catalog.serviceUrl}</a>
+
+            <div className="ui divided items">
+              {[this.state.catalog.serviceUrl].map( (url, idx) => <File key={idx} url={url} description="Description du fichier téléchargeable." />)}
             </div>
+
           </div>
 
           <div className="six wide column">
