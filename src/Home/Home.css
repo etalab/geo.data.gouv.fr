@@ -1,3 +1,7 @@
+#header {
+  display: none;
+}
+
 .hidden.menu {
   display: none;
 }
@@ -23,12 +27,16 @@
   font-size: 1em;
 }
 
+.ui.button {
+  margin-top: 2em;
+}
+
 .quote.stripe.segment {
   padding: 0em;
 }
 .quote.stripe.segment .grid .column {
-  padding-top: 5em;
-  padding-bottom: 5em;
+  padding-top: 2em;
+  padding-bottom: 3em;
 }
 
 @media only screen and (max-width: 700px) {
