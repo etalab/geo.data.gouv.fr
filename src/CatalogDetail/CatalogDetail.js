@@ -74,7 +74,7 @@ class CatalogDetail extends Component {
 
             <div className="ui equal width center aligned stackable grid">
               <div className="column">
-                <Percent metrics={this.state.metrics} label="openness" icon="users"/>
+                <Percent metrics={this.state.metrics} label="openness" icon="users" description="Percentage of open source data." />
               </div>
 
               <div className="column">
@@ -82,7 +82,7 @@ class CatalogDetail extends Component {
               </div>
 
               <div className="column">
-                <Percent metrics={this.state.metrics} label="download" icon="download" />
+                <Percent metrics={this.state.metrics} label="download" icon="download" description="Percentage of successfully downloaded data." />
               </div>
             </div>
 
