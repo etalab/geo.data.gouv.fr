@@ -1,7 +1,7 @@
 {
   "name": "dashboard-inspire",
   "version": "0.0.1",
-  "homepage": "https://sgmap-inspire.github.io/inspire.data.gouv.fr",
+  "homepage": "http://beta.inspire.sh",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.2.3"
