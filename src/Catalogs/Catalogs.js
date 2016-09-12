@@ -5,6 +5,7 @@ import './Catalogs.css'
 class Catalogs extends Component {
   constructor(props) {
     super(props)
+    document.getElementById('header').style.display = "block"
     this.state = {catalogs: []}
     this.getCatalogs()
   }
