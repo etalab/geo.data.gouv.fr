@@ -8,6 +8,10 @@ class Home extends Component {
     document.getElementById('header').style.display = "none"
   }
 
+  componentWillUnmount() {
+    document.getElementById('header').style.display = "block"
+  }
+
   render() {
     return (
       <div className="ui vertical masthead center aligned segment">
