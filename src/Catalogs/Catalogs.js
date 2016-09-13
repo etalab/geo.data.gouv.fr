@@ -9,10 +9,6 @@ class Catalogs extends Component {
     this.getCatalogs()
   }
 
-  componentDidMount() {
-    document.getElementById('header').style.display = "block"
-  }
-
   getCatalogs() {
     return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs`)
       .then((response) => response.json())

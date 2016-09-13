@@ -4,10 +4,6 @@ import Statistics from '../Statistics/Statistics'
 import './Home.css'
 
 class Home extends Component {
-  componentDidMount() {
-    document.getElementById('header').style.display = "none"
-  }
-
   render() {
     return (
       <div className="ui vertical masthead center aligned segment">

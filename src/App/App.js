@@ -6,8 +6,9 @@ import './App.css'
 class App extends Component {
   render() {
     return (
+
       <div className="App">
-        <Header />
+        {this.props.children.props.location.pathname !== '/' ? <Header /> : null}
         {this.props.children}
         <Footer />
       </div>
