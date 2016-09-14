@@ -34,14 +34,17 @@ class Catalog extends Component {
           <Link to={`catalog/${this.props.catalog.id}`}>
             <div className="ui segment">
               <LastHarvesting harvest={this.props.catalog.lastHarvesting}/>
-              <div className="ui equal width grid container">
-                <div className="column">
+              <div className="ui grid container">
+                <div className="six wide column">
                   <span className="ui large header">{this.props.catalog.name}</span>
                 </div>
-                <div className="column"></div>
-                <div className="column">{openness}</div>
-                <div className="column">{download}</div>
-                <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Entries" /></div>
+                <div className="ten wide column">
+                  <div className="ui equal width grid">
+                    <div className="column">{openness}</div>
+                    <div className="column">{download}</div>
+                    <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Entries" /></div>
+                  </div>
+                </div>
               </div>
             </div>
           </Link>
