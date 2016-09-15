@@ -59,30 +59,28 @@ class CatalogDetail extends Component {
 
             </div>
 
-            <div className="six wide column">
-            <div className="ui header">Record Type</div>
-            <div className="ui divider"></div>
-              <PieChart data={this.state.metrics.partitions.recordType} />
-            </div>
-
             <div className="sixteen wide column"></div>
 
             <div className="sixteen wide column">
-              <div className="ui header">Data Type</div>
+              <div className="ui header">Statistics</div>
               <div className="ui divider"></div>
             </div>
 
             <div className="ui equal width center aligned stackable grid">
-              <div className="column">
+              <div className="eight wide column">
                 <Percent metrics={this.state.metrics} label="openness" icon="users" description="Percentage of open source data." />
               </div>
 
-              <div className="column">
-                <BarChart data={this.state.metrics.partitions.dataType} />
+              <div className="eight wide column">
+                <Percent metrics={this.state.metrics} label="download" icon="download" description="Percentage of successfully downloaded data." />
               </div>
 
-              <div className="column">
-                <Percent metrics={this.state.metrics} label="download" icon="download" description="Percentage of successfully downloaded data." />
+              <div className="eight wide column">
+                <PieChart data={this.state.metrics.partitions.recordType} />
+              </div>
+
+              <div className="eight wide column">
+                <BarChart data={this.state.metrics.partitions.dataType} />
               </div>
             </div>
 

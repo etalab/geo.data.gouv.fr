@@ -33,13 +33,13 @@ class PieChart extends Component {
     const data = this.getData()
 
     return (
-      <div className="ui stackable two column grid container">
+      <div className="ui two column stackable grid container">
 
-          <div className="column">
+          <div className="center aligned column">
             <Pie data={data} width="200" />
           </div>
 
-          <div className="column">
+          <div className="computer only tablet only left aligned column">
             <div className="ui list">
               {data.map((item, idx) =>
                 <div key={idx} className="item">
@@ -48,7 +48,19 @@ class PieChart extends Component {
                   </div>
                 </div>)}
             </div>
-        </div>
+          </div>
+
+          <div className="mobile only column">
+            <div className="ui list">
+              {data.map((item, idx) =>
+                <div key={idx} className="item">
+                  <div className="content">
+                    <div className={`ui small ${item.colorName} label`}>{item.label}</div>
+                  </div>
+                </div>)}
+            </div>
+          </div>
+
       </div>
       )
   }
