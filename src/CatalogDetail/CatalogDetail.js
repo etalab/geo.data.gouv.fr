@@ -4,6 +4,7 @@ import BarChart from '../Charts/BarChart/BarChart'
 import Percent from '../Statistics/Percent/Percent'
 import Organizations from '../Organizations/Organizations'
 import File from '../File/File'
+import Harvests from '../Harvests/Harvests'
 import './CatalogDetail.css'
 
 class CatalogDetail extends Component {
@@ -98,6 +99,16 @@ class CatalogDetail extends Component {
                 <Organizations label="Keywords" organizations={this.state.metrics.counts.keywords} />
               </div>
             </div>
+
+            <div className="sixteen wide column">
+              <div className="ui header">Harvests</div>
+              <div className="ui divider"></div>
+            </div>
+
+            <div className="eight wide column">
+              <Harvests catalog={this.state.catalog}/>
+            </div>
+
           </div>
         </div>
       )
