@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import PieChart from '../Charts/PieChart/PieChart'
-import BarChart from '../Charts/BarChart/BarChart'
-import Percent from '../Statistics/Percent/Percent'
-import Organizations from '../Organizations/Organizations'
-import File from '../File/File'
-import Harvests from '../Harvests/Harvests'
+import Section from '../Section/Section'
+import CatalogSection from '../Section/CatalogSection/CatalogSection'
+import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
+import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
+import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
 import './CatalogDetail.css'
 
 class CatalogDetail extends Component {
@@ -46,69 +45,10 @@ class CatalogDetail extends Component {
       return (
         <div id="catalog-detail">
           <div className="ui stackable grid container">
-
-            <div className="sixteen wide column"></div>
-
-            <div className="ten wide column">
-              <div className="ui header">Catalog</div>
-              <div className="ui divider"></div>
-              <div className="ui header">{this.state.catalog.name}</div>
-
-              <div className="ui divided items">
-                {[this.state.catalog.serviceUrl].map( (url, idx) => <File key={idx} url={url} description="Description du fichier téléchargeable." />)}
-              </div>
-
-            </div>
-
-            <div className="sixteen wide column"></div>
-
-            <div className="sixteen wide column">
-              <div className="ui header">Statistics</div>
-              <div className="ui divider"></div>
-            </div>
-
-            <div className="ui equal width center aligned stackable grid">
-              <div className="eight wide column">
-                <Percent metrics={this.state.metrics} label="openness" icon="users" description="Percentage of open source data." />
-              </div>
-
-              <div className="eight wide column">
-                <Percent metrics={this.state.metrics} label="download" icon="download" description="Percentage of successfully downloaded data." />
-              </div>
-
-              <div className="eight wide column">
-                <PieChart data={this.state.metrics.partitions.recordType} />
-              </div>
-
-              <div className="eight wide column">
-                <BarChart data={this.state.metrics.partitions.dataType} />
-              </div>
-            </div>
-
-            <div className="sixteen wide column">
-              <div className="ui header">Counts</div>
-              <div className="ui divider"></div>
-            </div>
-
-            <div className="two column row">
-              <div className="column">
-                <Organizations label="Organizations" organizations={this.state.metrics.counts.organizations} />
-              </div>
-
-              <div className="column">
-                <Organizations label="Keywords" organizations={this.state.metrics.counts.keywords} />
-              </div>
-            </div>
-
-            <div className="sixteen wide column">
-              <div className="ui header">Harvests</div>
-              <div className="ui divider"></div>
-            </div>
-
-            <div className="eight wide column">
-              <Harvests catalog={this.state.catalog}/>
-            </div>
-
+            <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
+            <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
+            <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
+            <Section title="Harvests" component={<HarvestsSection catalog={this.state.catalog} />} />
           </div>
         </div>
       )

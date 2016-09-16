@@ -1,7 +1,7 @@
 import React from 'react'
 import Harvest from './Harvest/Harvest'
 
-const Harvests = ({catalog}) => {
+const HarvestsSection = ({catalog}) => {
   let harvests = []
 
   harvests.push(catalog.lastHarvesting)
@@ -45,4 +45,4 @@ const Harvests = ({catalog}) => {
   )
 }
 
-export default Harvests
+export default HarvestsSection
