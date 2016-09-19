@@ -3,8 +3,8 @@ import moment from 'moment'
 
 const Harvest = ({harvest}) => {
   const color = harvest.status === "successful" ? "green" : "red"
-  const startDate = new Date(harvest.finishedAt).getTime() // finishedAt must be replace by startAt, still does not exist
-  const endDate = new Date(harvest.finishedAt).getTime()
+  const startDate = new Date(harvest.finished).getTime() // finished must be replace by startAt, still does not exist
+  const endDate = new Date(harvest.finished).getTime()
   const hoursDifference = moment(endDate).fromNow()
   const duration = moment(endDate).from(startDate)
 
@@ -14,7 +14,7 @@ const Harvest = ({harvest}) => {
         <div className={`ui ${color} circular label`}>{harvest.status}</div>
       </div>
       <div className="column">
-        <p>{harvest.recordsFound} Records</p>
+        <p>{harvest.itemsFound} Records</p>
       </div>
       <div className="column">
         <p>{hoursDifference || 'N/A' }</p>
