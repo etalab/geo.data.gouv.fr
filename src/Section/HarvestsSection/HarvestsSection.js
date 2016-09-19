@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Harvest from './Harvest/Harvest'
 import HarvestDetail from './HarvestDetail/HarvestDetail'
 import Accordion from '../../Accordion/Accordion'
 
-class HarvestsSection extends Component {
-  render() {
+const HarvestsSection = () => {
     let harvests = []
 
     harvests.push(this.props.catalog.lastHarvesting)
@@ -22,7 +21,6 @@ class HarvestsSection extends Component {
         )}
       </div>
     )
-  }
 }
 
 export default HarvestsSection
