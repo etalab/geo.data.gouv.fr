@@ -1,12 +1,12 @@
 import React from 'react'
-import File from '../../File/File'
+import Csw from '../../Csw/Csw'
 
 const CatalogSection = ({catalog}) => {
   return (
     <div>
       <div className="ui header">{catalog.name}</div>
         <div className="ui divided items">
-        {[catalog.serviceUrl].map( (url, idx) => <File key={idx} url={url} description="Description du fichier téléchargeable." />)}
+        {[catalog.serviceUrl].map( (url, idx) => <Csw key={idx} url={url}/>)}
       </div>
     </div>
       )
