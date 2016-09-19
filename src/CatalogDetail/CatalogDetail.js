@@ -45,10 +45,12 @@ class CatalogDetail extends Component {
       return (
         <div id="catalog-detail">
           <div className="ui stackable grid container">
-            <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
-            <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
-            <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
-            <Section title="Harvests" component={<HarvestsSection catalog={this.state.catalog} />} />
+            <div className="ui accordion">
+              <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
+              <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
+              <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
+              <Section title="Harvests" component={<HarvestsSection catalog={this.state.catalog} />} />
+            </div>
           </div>
         </div>
       )
