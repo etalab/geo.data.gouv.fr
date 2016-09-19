@@ -1,48 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Harvest from './Harvest/Harvest'
+import HarvestDetail from './HarvestDetail/HarvestDetail'
+import Accordion from '../../Accordion/Accordion'
 
-const HarvestsSection = ({catalog}) => {
-  let harvests = []
+class HarvestsSection extends Component {
+  render() {
+    let harvests = []
 
-  harvests.push(catalog.lastHarvesting)
-  return (
-    <table className="ui celled striped selectable table">
-      <thead>
-        <tr>
-        <th>Status</th>
-        <th>Records found</th>
-        <th>Finish</th>
-        <th>Duration</th>
-      </tr></thead>
-      <tbody>
-      {harvests.map((harvest, idx) => (
-          <Harvest key={idx} harvest={harvest}/>
-      ))}
+    harvests.push(this.props.catalog.lastHarvesting)
+    harvests.push(this.props.catalog.lastHarvesting)
+    harvests.push(this.props.catalog.lastHarvesting)
+    harvests.push(this.props.catalog.lastHarvesting)
 
-        <tr>
-          <td className="collapsing"><div className="ui green circular label">successful</div></td>
-          <td>5143</td>
-          <td className="right aligned collapsing">15 hours ago</td>
-          <td className="right aligned collapsing">1 hour 42 min</td>
-        </tr>
-
-        <tr>
-          <td className="collapsing"><div className="ui red circular label">failed</div></td>
-          <td>5143</td>
-          <td className="right aligned collapsing">24 hours ago</td>
-          <td className="right aligned collapsing">57 min</td>
-        </tr>
-
-        <tr>
-          <td className="collapsing"><div className="ui green circular label">successful</div></td>
-          <td>5143</td>
-          <td className="right aligned collapsing">48 hours ago</td>
-          <td className="right aligned collapsing">1 hour</td>
-        </tr>
-
-      </tbody>
-    </table>
-  )
+    return (
+      <div className="ui styled accordion">
+        {harvests.map((harvest , idx) =>
+            <Accordion
+              key={idx}
+              title={<Harvest harvest={harvest} />}
+              content={<HarvestDetail harvest={harvest} />} />
+        )}
+      </div>
+    )
+  }
 }
 
 export default HarvestsSection
