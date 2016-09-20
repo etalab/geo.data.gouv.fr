@@ -26,12 +26,11 @@ class HarvestsSection extends Component {
 
   getGraphData() {
     return this.state.harvests
-      .map(harvest => harvest.status === "successful" ? harvest : undefined)
+      .reverse()
+      .filter(harvest => harvest.status === "successful")
       .reduce((data, harvest) => {
-        if (harvest) {
-          const date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
-          data[date] = harvest.itemsFound
-        }
+        let date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
+        data[date] = harvest.itemsFound
         return data
       }, [])
   }
