@@ -16,6 +16,7 @@ class Accordion extends Component {
       <div>
         <div className={`${this.state.active ? 'active' : '' } title`} onClick={this.handleClick} >
           {this.props.title}
+          {!this.state.active && this.props.header ? <div className="ui divider"></div> : undefined}
         </div>
         <div className={`${this.state.active ? 'active' : '' } content`}>
           <div className="ui divider"></div>

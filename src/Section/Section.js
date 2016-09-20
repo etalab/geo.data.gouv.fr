@@ -5,6 +5,7 @@ const Section = ({title, component}) => {
   return (
     <div className="section sixteen wide column">
       <Accordion
+        header={true}
         active={true}
         title={<div className="ui header">{title}</div>}
         content={component} />
