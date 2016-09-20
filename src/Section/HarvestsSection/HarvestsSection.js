@@ -25,14 +25,15 @@ class HarvestsSection extends Component {
   }
 
   getGraphData() {
-    return this.state.harvests
-      .reverse()
-      .filter(harvest => harvest.status === "successful")
-      .reduce((data, harvest) => {
-        let date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
+    let data = {}
+    for (var i = this.state.harvests.length - 1; i >= 0; i--) {
+      const harvest = this.state.harvests[i]
+      if (harvest.status === "successful") {
+        const date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
         data[date] = harvest.itemsFound
-        return data
-      }, [])
+      }
+    }
+    return data
   }
 
   render() {
