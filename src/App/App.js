@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import './App.css'
+import CustomTheme from '../CustomTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import Content from '../Content/Content'
 
 class App extends Component {
+  getChildContext() {
+    return {muiTheme: getMuiTheme(CustomTheme)}
+  }
+
   render() {
     return (
-
-      <div className="App">
-        {this.props.children.props.location.pathname !== '/' ? <Header /> : null}
-        {this.props.children}
-        <Footer />
-      </div>
+      <MuiThemeProvider muiTheme={getMuiTheme(CustomTheme)}>
+        <Content children={this.props.children} location={this.props.location} />
+      </MuiThemeProvider>
     )
   }
+}
+
+App.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
 }
 
 export default App
