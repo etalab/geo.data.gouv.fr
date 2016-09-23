@@ -1,16 +1,27 @@
 import React, { Component } from 'react'
-import './Footer.css'
+import Paper from 'material-ui/Paper'
 
-class Header extends Component {
+class Footer extends Component {
   render() {
+    const style = {
+      padding: 40,
+      textAlign: 'center',
+
+      color: 'white',
+      backgroundColor: this.context.muiTheme.palette.primary2Color,
+    }
     return (
       <footer>
-        <p className="">
-          Fait avec ♥ par l'Incubateur de services numériques
-        </p>
+        <Paper style={style} zDepth={0}>
+          <p>Fait avec ♥ par l'Incubateur de services numériques</p>
+        </Paper>
       </footer>
     )
   }
 }
 
-export default Header
+Footer.contextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
+}
+
+export default Footer
