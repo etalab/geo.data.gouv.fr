@@ -24,7 +24,7 @@ class Menu extends Component {
     return (
       <div className="Menu">
         <AppBar
-          title={<Link to={'/'} style={styles.title}>Inspire</Link>}
+          title={<Link to={'/'} style={styles.title}>inspire.data.gouv.fr</Link>}
           onLeftIconButtonTouchTap={this.handleToggle}
           />
 
@@ -33,7 +33,7 @@ class Menu extends Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
           >
-          <AppBar title="Inspire" />
+          <AppBar title="inspire" />
           <Link to="/"><MenuItem onTouchTap={this.handleClose}>Home</MenuItem></Link>
           <Link to="/catalogs"><MenuItem onTouchTap={this.handleClose}>Catalogs</MenuItem></Link>
         </Drawer>
