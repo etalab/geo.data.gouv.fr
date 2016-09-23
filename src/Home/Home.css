@@ -1,7 +1,3 @@
-.hidden.menu {
-  display: none;
-}
-
 .masthead h1.ui.header {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -21,10 +17,6 @@
 }
 .ui.vertical.stripe p {
   font-size: 1em;
-}
-
-.ui.button {
-  margin-top: 2em;
 }
 
 .quote.stripe.segment {
