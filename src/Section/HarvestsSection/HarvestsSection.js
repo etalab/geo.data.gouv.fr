@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
 import Harvest from './Harvest/Harvest'
-import HarvestDetail from './HarvestDetail/HarvestDetail'
-import Accordion from '../../Accordion/Accordion'
 import LineChart from '../../Charts/LineChart/LineChart'
 
 class HarvestsSection extends Component {
@@ -40,24 +39,36 @@ class HarvestsSection extends Component {
     if (this.state.harvests) {
       const dataGraph = this.getGraphData()
       return (
-      <div className="ui stackable grid">
+        <div className="ui stackable grid">
 
-        <div className="eight wide column">
-          <div className="ui styled accordion">
-            {this.state.harvests.map((harvest , idx) =>
-                <Accordion
-                  key={idx}
-                  title={<Harvest harvest={harvest} />}
-                  content={<HarvestDetail logs={harvest.log} />} />
-            )}
+          <div className="eight wide column">
+            <Table>
+
+              <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                <TableRow>
+                  <TableHeaderColumn>Status</TableHeaderColumn>
+                  <TableHeaderColumn>Records</TableHeaderColumn>
+                  <TableHeaderColumn>Finished</TableHeaderColumn>
+                  <TableHeaderColumn></TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+
+              <TableBody
+                  displayRowCheckbox={true}
+                  deselectOnClickaway={true}
+                  showRowHover={true}
+                  stripedRows={true}
+                >
+                {this.state.harvests.map((harvest, idx) => <Harvest key={idx} harvest={harvest} catalog={this.props.catalog} />)}
+              </TableBody>
+
+            </Table>
+          </div>
+
+          <div className="eight wide column">
+            <LineChart data={dataGraph} />
           </div>
         </div>
-
-        <div className="eight wide column">
-          <LineChart data={dataGraph} />
-        </div>
-
-      </div>
     )} else {
       return <div></div>
     }
