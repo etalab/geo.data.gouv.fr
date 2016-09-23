@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
+import CircularProgress from 'material-ui/CircularProgress'
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
 import { Link } from 'react-router'
 import Statistics from '../Statistics/Statistics'
 import './Home.css'
@@ -24,56 +28,50 @@ class Home extends Component {
   }
 
   render() {
-    const loader =  <div className="ui active inverted dimmer">
-                      <div className="ui large text loader"></div>
-                    </div>
-    const notMatchingAnymore = this.state.data ? <Statistics value={this.state.data.notMatchingAnymore} label="Waring" color="red" icon="warning sign" /> : loader
+    const loader =  <CircularProgress size={1.5} />
+    const notMatchingAnymore = this.state.data ? <Statistics value={this.state.data.notMatchingAnymore} label="Warning" color="red" icon="warning sign" /> : loader
     const published = this.state.data ? <Statistics value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
     const notPublishedYet = this.state.data ? <Statistics value={this.state.data.notPublishedYet} label="Work In Progress" color="yellow" icon="hourglass half"/> : loader
+
+    const style = {
+      width: 250,
+      height: 250,
+      padding: 20,
+      margin: 20,
+      textAlign: 'center',
+      display: 'inline-block',
+    };
 
     return (
       <div className="ui vertical masthead center aligned segment">
 
-        <div className="ui text container">
-          <h1 className="ui inverted header">
+        <div className="ui container">
+          <h1 className="ui header">
             Inspire
           </h1>
-          <h2 className="ui inverted header">
+          <h2 className="ui header">
             Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </h2>
           <Link to="catalogs">
-            <div className="ui huge twitter button">Catalogs List <i className="right arrow icon"></i></div>
+            <RaisedButton label="Catalogs" primary={true}  icon={<FontIcon className="muidocs-icon-custom-github" />} />
           </Link>
         </div>
 
-        <div className="ui vertical stripe quote segment container">
-          <div className="ui equal width stackable grid">
-            <div className="center aligned row">
+        <Paper style={style} rounded={true} zDepth={1}>
+          <h3>Need Attention</h3>
+          {notMatchingAnymore}
+        </Paper>
 
-              <div className="column">
-                <div className="ui segment">
-                  <h3>Need Attention</h3>
-                  {notMatchingAnymore}
-                </div>
-              </div>
+        <Paper style={style} rounded={true} zDepth={1}>
+          <h3>Dataset</h3>
+          {published}
+        </Paper>
 
-              <div className="column">
-                <div className="ui segment">
-                  <h3>Dataset</h3>
-                  {published}
-                </div>
-              </div>
+        <Paper style={style} rounded={true} zDepth={1}>
+          <h3>Awaiting Publication</h3>
+          {notPublishedYet}
+        </Paper>
 
-              <div className="column">
-                <div className="ui segment">
-                  <h3>Awaiting Publication</h3>
-                  {notPublishedYet}
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
 
       </div>
     )
