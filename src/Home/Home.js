@@ -57,17 +57,17 @@ class Home extends Component {
           </Link>
         </div>
 
-        <Paper style={style} rounded={true} zDepth={1}>
+        <Paper style={style} rounded={true} zDepth={2}>
           <h3>Need Attention</h3>
           {notMatchingAnymore}
         </Paper>
 
-        <Paper style={style} rounded={true} zDepth={1}>
+        <Paper style={style} rounded={true} zDepth={2}>
           <h3>Dataset</h3>
           {published}
         </Paper>
 
-        <Paper style={style} rounded={true} zDepth={1}>
+        <Paper style={style} rounded={true} zDepth={2}>
           <h3>Awaiting Publication</h3>
           {notPublishedYet}
         </Paper>
