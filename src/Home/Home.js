@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import RaisedButton from 'material-ui/RaisedButton';
-import FontIcon from 'material-ui/FontIcon';
 import { Link } from 'react-router'
 import Statistics from '../Statistics/Statistics'
 import './Home.css'
@@ -53,7 +52,7 @@ class Home extends Component {
             Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </h2>
           <Link to="catalogs">
-            <RaisedButton label="Catalogs" primary={true}  icon={<FontIcon className="muidocs-icon-custom-github" />} />
+            <RaisedButton label="Catalogs" primary={true} />
           </Link>
         </div>
 
@@ -71,7 +70,6 @@ class Home extends Component {
           <h3>Awaiting Publication</h3>
           {notPublishedYet}
         </Paper>
-
 
       </div>
     )
