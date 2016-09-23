@@ -32,8 +32,11 @@ class Catalog extends Component {
       const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="unlock alternate icon" size="small" /> : loader
       const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="download" size="small" /> : loader
 
+      const styles = {
+        link: {cursor: 'pointer'}
+      }
       return (
-          <Link to={`catalog/${this.props.catalog.id}`}>
+          <Link to={`catalog/${this.props.catalog.id}`} style={styles.link}>
             <Paper rounded={true} zDepth={2} className="ui segment">
               <LastHarvesting harvest={this.props.catalog.lastHarvesting}/>
               <div className="ui grid container">
