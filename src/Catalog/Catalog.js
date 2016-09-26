@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
+import CircularProgress from 'material-ui/CircularProgress'
 import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
 import Statistics from '../Statistics/Statistics'
@@ -26,13 +28,16 @@ class Catalog extends Component {
   }
 
   render() {
-      const loader = <div className="ui active big loader"></div>
-      const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="users" size="small" /> : loader
+      const loader =  <CircularProgress size={1} />
+      const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="unlock alternate icon" size="small" /> : loader
       const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="download" size="small" /> : loader
 
+      const styles = {
+        link: {cursor: 'pointer'}
+      }
       return (
-          <Link to={`catalog/${this.props.catalog.id}`}>
-            <div className="ui segment">
+          <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
+            <Paper rounded={true} zDepth={2} className="ui segment">
               <LastHarvesting harvest={this.props.catalog.lastHarvesting}/>
               <div className="ui grid container">
                 <div className="six wide column">
@@ -46,7 +51,7 @@ class Catalog extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </Paper>
           </Link>
       )
   }

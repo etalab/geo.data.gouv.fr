@@ -16,7 +16,7 @@ class CatalogDetail extends Component {
 
   getCatalog() {
     if (!this.state.catalog) {
-    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.id}`)
+    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}`)
       .then((response) => response.json())
       .then((catalog) => {
         this.setState({catalog})
@@ -29,7 +29,7 @@ class CatalogDetail extends Component {
 
   getMetrics() {
     if (!this.state.metrics) {
-      return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.id}/metrics`)
+      return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}/metrics`)
         .then((response) => response.json())
         .then((metrics) => {
           this.setState({metrics})
