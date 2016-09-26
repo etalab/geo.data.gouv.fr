@@ -23,18 +23,19 @@ class Section extends Component {
         paddingBottom: 10,
       },
       toolBar: {
-        marginBottom: this.state.open ? 20 : 0,
         WebkitBorderRadius: 4,
         MozBorderRadius: 4,
         borderRadius: 4,
+        marginBottom: this.state.open ? 20: 5,
       },
       component: {
+        padding: 20,
         display: this.state.open ? 'block' : 'none',
       }
     }
 
     return (
-      <div style={styles.section} className="section sixteen wide column">
+      <div>
         <Toolbar style={styles.toolBar}>
           <ToolbarGroup>
             <ToolbarTitle text={this.props.title} />

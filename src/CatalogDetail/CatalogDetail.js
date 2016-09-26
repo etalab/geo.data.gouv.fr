@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
 import Section from '../Section/Section'
 import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
@@ -41,17 +42,20 @@ class CatalogDetail extends Component {
 
   render() {
     if (this.state.catalog && this.state.metrics) {
+      const styles = {
+        catalogDetail : {
+          padding: 40,
+          display: 'block',
+        },
+      };
+
       return (
-        <div id="catalog-detail">
-          <div className="ui stackable grid container">
-            <div className="ui container">
-              <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
-              <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
-              <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
-              <Section title="Harvests" component={<HarvestsSection catalog={this.state.catalog} />} />
-            </div>
-          </div>
-        </div>
+        <Paper style={styles.catalogDetail} id="catalog-detail">
+          <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
+          <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
+          <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
+          <Section title="Harvests" component={<HarvestsSection catalog={this.state.catalog} />} />
+        </Paper>
       )
     } else {
       return (<div></div>)
