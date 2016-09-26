@@ -27,7 +27,7 @@ class HarvestDetail extends Component {
           <div className="ui padded vertical segment">
             <div className="ui header">Logs</div>
             <div className="ui divider"></div>
-            {this.state.harvest.log.map((log, idx) => <p key={idx}>{log}</p>)}
+            {this.state.harvest.log.map((log, idx) => <pre key={idx}><code>{log}</code></pre>)}
           </div>
         </div>
     )} else {
