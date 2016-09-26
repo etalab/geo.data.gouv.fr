@@ -13,7 +13,6 @@ import Home from './Home/Home'
 import Catalogs from './Catalogs/Catalogs'
 import CatalogDetail from './CatalogDetail/CatalogDetail'
 import NotFind from './NotFind/NotFind'
-import './index.css'
 
 ReactDOM.render((
   <Router history={browserHistory}>
