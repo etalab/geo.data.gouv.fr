@@ -4,7 +4,6 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import './CatalogDetail.css'
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -45,7 +44,7 @@ class CatalogDetail extends Component {
       return (
         <div id="catalog-detail">
           <div className="ui stackable grid container">
-            <div className="ui accordion">
+            <div className="ui container">
               <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
               <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
               <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
