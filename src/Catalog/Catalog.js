@@ -33,7 +33,10 @@ class Catalog extends Component {
       const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="download" size="small" /> : loader
 
       const styles = {
-        link: {cursor: 'pointer'}
+        link: {
+          cursor: 'pointer',
+          margin: 100,
+        },
       }
       return (
           <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
