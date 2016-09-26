@@ -5,7 +5,6 @@ import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
 import Statistics from '../Statistics/Statistics'
 import Percent from '../Statistics/Percent/Percent'
-import './Catalog.css'
 
 class Catalog extends Component {
   constructor(props) {
