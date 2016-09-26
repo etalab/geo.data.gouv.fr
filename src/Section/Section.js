@@ -28,7 +28,7 @@ class Section extends Component {
         MozBorderRadius: 4,
         borderRadius: 4,
       },
-      test: {
+      component: {
         display: this.state.open ? 'block' : 'none',
       }
     }
@@ -45,7 +45,7 @@ class Section extends Component {
             </IconButton>
           </ToolbarGroup>
         </Toolbar>
-        <div style={styles.test}>
+        <div style={styles.component}>
           {this.props.component}
         </div>
       </div>
