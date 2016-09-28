@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
 import { Pie } from 'react-chartjs'
 import { colors } from '../../tools.js'
+import MediaQuery from 'react-responsive'
 
 class PieChart extends Component {
-  constructor(props) {
-    super(props)
-    this.getData = this.getData.bind(this)
-  }
-
   getData() {
     const data = this.props.data
 
@@ -31,37 +28,42 @@ class PieChart extends Component {
 
   render() {
     const data = this.getData()
+    const styles = {
+      paper: {
+        display: '-webkit-inline-box',
+      },
+      list: {
+        mobile: {
+          display: 'inherit'
+        },
+        computer: {
+          display: 'block',
+        }
+      },
+      label: {
+        display: 'table',
+        margin: 2,
+      },
+    }
+    const list = data.map((item, idx) =>
+        <div key={idx} style={styles.label} className={`ui small ${item.colorName} label`}>
+          {item.label}
+        </div>)
 
     return (
-      <div className="ui two column stackable grid container">
+      <Paper zDepth={0}>
 
-          <div className="center aligned column">
-            <Pie data={data} width="200" />
-          </div>
+        <MediaQuery style={styles.paper} maxWidth={550} >
+          <Pie data={data} width="160" />
+          <div style={styles.list.mobile}>{list}</div>
+        </MediaQuery>
 
-          <div className="computer only tablet only left aligned column">
-            <div className="ui list">
-              {data.map((item, idx) =>
-                <div key={idx} className="item">
-                  <div className="content">
-                    <div className={`ui small ${item.colorName} label`}>{item.label}</div>
-                  </div>
-                </div>)}
-            </div>
-          </div>
+        <MediaQuery style={styles.paper} minWidth={551}>
+          <Pie data={data} width="200" />
+          <div style={styles.list.computer}>{list}</div>
+        </MediaQuery>
 
-          <div className="mobile only column">
-            <div className="ui list">
-              {data.map((item, idx) =>
-                <div key={idx} className="item">
-                  <div className="content">
-                    <div className={`ui small ${item.colorName} label`}>{item.label}</div>
-                  </div>
-                </div>)}
-            </div>
-          </div>
-
-      </div>
+      </Paper>
       )
   }
 }
