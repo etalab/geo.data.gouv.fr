@@ -1,6 +1,6 @@
 import React from 'react'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
-import Harvest from '../Section/HarvestsSection/Harvest/Harvest'
+import HarvestRow from '../HarvestRow/HarvestRow'
 
 const HarvestsTable = ({harvests, catalog}) => {
 
@@ -22,7 +22,7 @@ const HarvestsTable = ({harvests, catalog}) => {
             showRowHover={true}
             stripedRows={true}
           >
-          {harvests.map((harvest, idx) => <Harvest key={idx} harvest={harvest} catalog={catalog} />)}
+          {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} catalog={catalog} />)}
         </TableBody>
 
       </Table>
