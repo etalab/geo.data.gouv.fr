@@ -39,9 +39,9 @@ class HarvestsSection extends Component {
     if (this.state.harvests) {
       const dataGraph = this.getGraphData()
       return (
-        <div className="ui stackable grid">
+        <div className="ui center aligned stackable grid">
 
-          <div className="eight wide column">
+          <div className="sixteen wide column">
             <Table>
 
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -65,7 +65,7 @@ class HarvestsSection extends Component {
             </Table>
           </div>
 
-          <div className="eight wide column">
+          <div className="sixteen wide column">
             <LineChart data={dataGraph} />
           </div>
         </div>

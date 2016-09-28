@@ -1,4 +1,6 @@
 import React from 'react'
+import Paper from 'material-ui/Paper'
+import MediaQuery from 'react-responsive'
 import { Line } from 'react-chartjs'
 import { colors } from '../../tools.js'
 
@@ -15,11 +17,20 @@ const LineChart = ({data}) => {
   }
 
   return (
-    <div className="ui grid container">
-      <div className="column">
-        <Line data={result} width="400" height="200" />
-      </div>
-    </div>
+    <Paper zDepth={0}>
+      <MediaQuery minWidth={701} >
+        <Line data={result} width="600" height="200" />
+      </MediaQuery>
+
+      <MediaQuery minWidth={501} maxWidth={700} >
+        <Line data={result} width="400" height="220" />
+      </MediaQuery>
+
+      <MediaQuery maxWidth={500} >
+        <Line data={result} width="260" height="180" />
+      </MediaQuery>
+
+    </Paper>
     )
 }
 
