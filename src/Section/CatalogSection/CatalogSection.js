@@ -1,7 +1,6 @@
 import React from 'react'
 import Csw from '../../Csw/Csw'
 import Statistics from '../../Statistics/Statistics'
-import LastHarvesting from '../../LastHarvesting/LastHarvesting'
 
 const CatalogSection = ({catalog}) => {
   return (
@@ -14,9 +13,6 @@ const CatalogSection = ({catalog}) => {
       </div>
       <div className="column">
         <Statistics value={catalog.lastHarvesting.recordsFound} size="small" label="Records" />
-      </div>
-      <div className="column">
-        <LastHarvesting harvest={catalog.lastHarvesting} side='right'/>
       </div>
     </div>
       )
