@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
-import Harvest from './Harvest/Harvest'
 import LineChart from '../../Charts/LineChart/LineChart'
+import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -42,27 +41,7 @@ class HarvestsSection extends Component {
         <div className="ui center aligned stackable grid">
 
           <div className="sixteen wide column">
-            <Table>
-
-              <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                <TableRow>
-                  <TableHeaderColumn>Status</TableHeaderColumn>
-                  <TableHeaderColumn>Records</TableHeaderColumn>
-                  <TableHeaderColumn>Finished</TableHeaderColumn>
-                  <TableHeaderColumn></TableHeaderColumn>
-                </TableRow>
-              </TableHeader>
-
-              <TableBody
-                  displayRowCheckbox={true}
-                  deselectOnClickaway={true}
-                  showRowHover={true}
-                  stripedRows={true}
-                >
-                {this.state.harvests.map((harvest, idx) => <Harvest key={idx} harvest={harvest} catalog={this.props.catalog} />)}
-              </TableBody>
-
-            </Table>
+            <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
           </div>
 
           <div className="sixteen wide column">
