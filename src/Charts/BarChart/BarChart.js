@@ -23,7 +23,7 @@ class BarChart extends Component {
     const data = this.getData()
     const styles = {
       chart: {
-        display: '-wekit-inline-box',
+        display: '-webkit-inline-box',
         marginLeft: '-3em',
       },
     }
