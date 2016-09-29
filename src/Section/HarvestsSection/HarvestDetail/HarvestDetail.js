@@ -5,6 +5,20 @@ class HarvestDetail extends Component {
     super(props)
     this.state = {harvest: undefined}
     this.getLogs()
+    this.getCatalog()
+  }
+
+  getCatalog() {
+    if (!this.state.catalog) {
+    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}`)
+      .then((response) => response.json())
+      .then((catalog) => {
+        this.setState({catalog})
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+    }
   }
 
   getLogs() {
@@ -24,7 +38,16 @@ class HarvestDetail extends Component {
     if (this.state.harvest) {
       return (
         <div className="harvest-detail">
-          <div className="ui padded vertical segment">
+
+          <h1 className="ui header">Catalog</h1>
+          <div className="ui divider"></div>
+          <h2>{this.state.catalog.name}</h2>
+
+          <h1 className="ui header">Status</h1>
+          <div className="ui divider"></div>
+          <h2>{this.state.harvest.status}</h2>
+
+        <div className="ui padded vertical segment">
             <div className="ui header">Logs</div>
             <div className="ui divider"></div>
             {this.state.harvest.log.map((log, idx) => <pre key={idx}><code>{log}</code></pre>)}
