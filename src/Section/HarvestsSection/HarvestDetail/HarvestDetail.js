@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import Chip from 'material-ui/Chip'
 import Subheader from 'material-ui/Subheader'
 import moment from 'moment'
@@ -93,7 +94,9 @@ class HarvestDetail extends Component {
 
           <div style={styles.header} >
             <div>
-              <h1 style={styles.h1} className="ui header">{this.state.catalog.name}</h1>
+              <Link to={`/catalogs/${this.props.params.catalogId}`}>
+                <h1 style={styles.h1} className="ui header">{this.state.catalog.name}</h1>
+              </Link>
               <Subheader>Harvest ID: {this.state.harvest._id}</Subheader>
             </div>
 
