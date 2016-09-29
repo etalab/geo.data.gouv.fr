@@ -18,16 +18,24 @@ class Content extends Component {
   }
 
   render() {
-    const style = {
-      position: 'relative',
-      paddingBottom: '100px',
-      minHeight: '100%',
+    const styles = {
+      content: {
+        flexDirection: 'column',
+        display: 'flex',
+        position: 'relative',
+        minHeight: '100vh',
+      },
+      body: {
+        flex: 1,
+      }
     }
 
     return (
-      <div className="Content" style={style}>
+      <div className="Content" style={styles.content}>
         <Header location={this.props.location}/>
-        {this.props.children}
+        <div style={styles.body}>
+          {this.props.children}          
+        </div>
         <Footer />
       </div>
     )
