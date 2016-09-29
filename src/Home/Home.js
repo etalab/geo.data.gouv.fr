@@ -33,11 +33,6 @@ class Home extends Component {
     const notPublishedYet = this.state.data ? <Statistics value={this.state.data.notPublishedYet} label="Work In Progress" color="yellow" icon="hourglass half"/> : loader
 
     const styles = {
-      masthead: {
-        tablet: {
-          minHeight: '350px',
-        },
-      },
       header1: {
         tablet: {
           marginTop: '1.5em',
