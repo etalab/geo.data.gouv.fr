@@ -1,24 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
 import './Organizations.css'
 
-const Organizations = ({label, organizations}) => {
+class Organizations extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  render() {
+
+  const styles = {
+    tab: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    item: {
+      display: 'inline-flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '0.5em',
+     },
+     label: {
+       marginLeft: '1em',
+       fontSize: '1em',
+     },
+  }
+
   return (
-    <div className="ui segments">
-      <div className="ui secondary segment">
-        <h4 className="header">{label}</h4>
-      </div>
-      <div className="ui grid container">
-        {Object.keys(organizations).map( key =>
-          <div key={key} className="two column row">
-            <div className="column header">{key}</div>
-            <div className="float right aligned column">
-              <div className="ui blue circular label">{organizations[key]}</div>
-            </div>
-          </div>
+      <Paper style={styles.tab}>
+        {Object.keys(this.props.organizations).map( (key, idx) =>
+          <div style={styles.item} key={idx}>
+            <div>{key}</div>
+            <div style={styles.label} className="ui blue circular label"> {this.props.organizations[key]} </div>
+        </div>
       )}
-      </div>
-    </div>
-  )
+    </Paper>
+    )
+  }
 }
 
 export default Organizations
