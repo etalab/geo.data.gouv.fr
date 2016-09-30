@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Paper from 'material-ui/Paper'
 import { Pie } from 'react-chartjs'
 import { colors } from '../../tools.js'
 import MediaQuery from 'react-responsive'
