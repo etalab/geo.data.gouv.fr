@@ -29,20 +29,23 @@ class PieChart extends Component {
   render() {
     const data = this.getData()
     const styles = {
-      paper: {
-        display: '-webkit-inline-box',
+      chart: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
       },
       list: {
-        mobile: {
-          display: 'inherit'
+        row: {
+          display: 'flex',
         },
-        computer: {
-          display: 'block',
+        column: {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
         }
       },
       label: {
-        display: 'table',
-        margin: 2,
+        margin: '0.2em',
       },
     }
     const list = data.map((item, idx) =>
@@ -51,19 +54,20 @@ class PieChart extends Component {
         </div>)
 
     return (
-      <Paper zDepth={0}>
+      <div style={styles.chart}>
 
-        <MediaQuery style={styles.paper} maxWidth={550} >
-          <Pie data={data} width="160" />
-          <div style={styles.list.mobile}>{list}</div>
-        </MediaQuery>
-
-        <MediaQuery style={styles.paper} minWidth={551}>
+        <MediaQuery minWidth={551}>
           <Pie data={data} width="200" />
-          <div style={styles.list.computer}>{list}</div>
+        </MediaQuery>
+        <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
+
+        <MediaQuery maxWidth={550} >
+          <Pie data={data} width="160" />
         </MediaQuery>
 
-      </Paper>
+        <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
+
+      </div>
       )
   }
 }
