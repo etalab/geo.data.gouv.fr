@@ -17,7 +17,7 @@ const Percent = ({metrics, label, icon, size, description=""}) => {
   return (
     <Statistics
       value={percent}
-      label={label}
+      label={label === 'openness' ? 'open data' : label}
       description={description}
       unit="%"
       icon={icon}
