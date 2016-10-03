@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import MediaQuery from 'react-responsive'
 import LineChart from '../../Charts/LineChart/LineChart'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 
@@ -37,15 +38,32 @@ class HarvestsSection extends Component {
   render() {
     if (this.state.harvests) {
       const dataGraph = this.getGraphData()
+      const styles = {
+        harvest: {
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        chart: {
+          margin: '2em',
+        },
+      }
       return (
-        <div className="ui center aligned stackable grid">
+        <div style={styles.harvest}>
+          <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
+          <div style={styles.chart}>
+            <MediaQuery minWidth={701} >
+              <LineChart data={dataGraph} width="500" height="200" />
+            </MediaQuery>
 
-          <div className="sixteen wide column">
-            <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
-          </div>
+            <MediaQuery minWidth={501} maxWidth={700} >
+              <LineChart data={dataGraph} width="400" height="220" />
+            </MediaQuery>
 
-          <div className="sixteen wide column">
-            <LineChart data={dataGraph} />
+            <MediaQuery maxWidth={500} >
+              <LineChart data={dataGraph} width="260" height="180" />
+            </MediaQuery>
           </div>
         </div>
     )} else {

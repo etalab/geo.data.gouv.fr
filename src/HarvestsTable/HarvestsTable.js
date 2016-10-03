@@ -3,9 +3,13 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'materi
 import HarvestRow from '../HarvestRow/HarvestRow'
 
 const HarvestsTable = ({harvests, catalog}) => {
-
+    const styles = {
+      table: {
+        maxWidth: '40em',
+      },
+    }
     return (
-      <Table>
+      <Table style={styles.table}>
 
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow>

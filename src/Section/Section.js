@@ -28,7 +28,7 @@ class Section extends Component {
       },
       component: {
         padding: 20,
-        display: this.state.open ? 'block' : 'none',
+        display: this.state.open ? '' : 'none',
       }
     }
 
