@@ -8,7 +8,8 @@ const StatisticsSection = ({metrics}) => {
     section: {
       display: 'flex',
       justifyContent: 'center',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      alignItems: 'center',
     },
     column:{
       display: 'flex',
@@ -29,9 +30,12 @@ const StatisticsSection = ({metrics}) => {
         </div>
 
         <div style={styles.chart}>
-          <PieChart data={metrics.partitions.recordType} />
+          <PieChart data={metrics.partitions.recordType} title={'Record Type'} description={'Distribution of record types'} />
         </div>
 
+        <div style={styles.chart}>
+          <PieChart data={metrics.partitions.metadataType} title={'Metadata Type'} description={'Distribution of metadata types'} />
+        </div>
 
         <div style={styles.column}>
           <div style={styles.chart}>

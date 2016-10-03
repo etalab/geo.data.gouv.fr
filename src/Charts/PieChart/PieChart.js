@@ -28,6 +28,12 @@ class PieChart extends Component {
   render() {
     const data = this.getData()
     const styles = {
+      container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
       chart: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -53,18 +59,24 @@ class PieChart extends Component {
         </div>)
 
     return (
-      <div style={styles.chart}>
+      <div style={styles.container}>
 
-        <MediaQuery minWidth={551}>
-          <Pie data={data} width="200" />
-        </MediaQuery>
-        <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
+        <h2>{this.props.title}</h2>
 
-        <MediaQuery maxWidth={550} >
-          <Pie data={data} width="160" />
-        </MediaQuery>
+        <div style={styles.chart}>
+          <MediaQuery minWidth={551}>
+            <Pie data={data} width="200" />
+          </MediaQuery>
+          <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
 
-        <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
+          <MediaQuery maxWidth={550} >
+            <Pie data={data} width="160" />
+          </MediaQuery>
+
+          <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
+        </div>
+
+        <h4>{this.props.description}</h4>
 
       </div>
       )
