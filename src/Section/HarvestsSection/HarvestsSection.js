@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
-import Harvest from './Harvest/Harvest'
+import MediaQuery from 'react-responsive'
 import LineChart from '../../Charts/LineChart/LineChart'
+import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -38,35 +38,32 @@ class HarvestsSection extends Component {
   render() {
     if (this.state.harvests) {
       const dataGraph = this.getGraphData()
+      const styles = {
+        harvest: {
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        chart: {
+          margin: '2em',
+        },
+      }
       return (
-        <div className="ui stackable grid">
+        <div style={styles.harvest}>
+          <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
+          <div style={styles.chart}>
+            <MediaQuery minWidth={701} >
+              <LineChart data={dataGraph} width="500" height="200" />
+            </MediaQuery>
 
-          <div className="eight wide column">
-            <Table>
+            <MediaQuery minWidth={501} maxWidth={700} >
+              <LineChart data={dataGraph} width="400" height="220" />
+            </MediaQuery>
 
-              <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                <TableRow>
-                  <TableHeaderColumn>Status</TableHeaderColumn>
-                  <TableHeaderColumn>Records</TableHeaderColumn>
-                  <TableHeaderColumn>Finished</TableHeaderColumn>
-                  <TableHeaderColumn></TableHeaderColumn>
-                </TableRow>
-              </TableHeader>
-
-              <TableBody
-                  displayRowCheckbox={true}
-                  deselectOnClickaway={true}
-                  showRowHover={true}
-                  stripedRows={true}
-                >
-                {this.state.harvests.map((harvest, idx) => <Harvest key={idx} harvest={harvest} catalog={this.props.catalog} />)}
-              </TableBody>
-
-            </Table>
-          </div>
-
-          <div className="eight wide column">
-            <LineChart data={dataGraph} />
+            <MediaQuery maxWidth={500} >
+              <LineChart data={dataGraph} width="260" height="180" />
+            </MediaQuery>
           </div>
         </div>
     )} else {

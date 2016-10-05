@@ -49,7 +49,7 @@ class Catalog extends Component {
                   <div className="ui equal width grid">
                     <div className="column">{openness}</div>
                     <div className="column">{download}</div>
-                    <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Entries" /></div>
+                    <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Records" /></div>
                   </div>
                 </div>
               </div>

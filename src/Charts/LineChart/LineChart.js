@@ -1,8 +1,9 @@
 import React from 'react'
+import Paper from 'material-ui/Paper'
 import { Line } from 'react-chartjs'
 import { colors } from '../../tools.js'
 
-const LineChart = ({data}) => {
+const LineChart = ({data, width, height}) => {
 
   const result = {
     'labels': Object.keys(data).map( item => item),
@@ -15,11 +16,9 @@ const LineChart = ({data}) => {
   }
 
   return (
-    <div className="ui grid container">
-      <div className="column">
-        <Line data={result} width="400" height="200" />
-      </div>
-    </div>
+    <Paper zDepth={0}>
+      <Line data={result} width={width} height={height} />
+    </Paper>
     )
 }
 
