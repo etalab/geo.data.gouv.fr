@@ -1,7 +1,7 @@
 {
   "name": "dashboard-inspire",
   "version": "0.0.1",
-  "homepage": "http://inspire.beta.gouv.fr",
+  "homepage": "https://inspire.beta.gouv.fr",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.2.3"
