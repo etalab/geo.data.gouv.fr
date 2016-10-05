@@ -1,5 +1,5 @@
 import React from 'react'
-import Statistics from '../Statistics'
+import Counter from '../Counter/Counter'
 
 const Percent = ({value, total, label, icon, size, description=""}) => {
   const percent = value ? Math.floor((value / total) * 100) : 0
@@ -14,7 +14,7 @@ const Percent = ({value, total, label, icon, size, description=""}) => {
   }
 
   return (
-    <Statistics
+    <Counter
       value={percent}
       label={label === 'openness' ? 'open data' : label}
       description={description}

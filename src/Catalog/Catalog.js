@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
-import Statistics from '../Statistics/Statistics'
+import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
 
 class Catalog extends Component {
@@ -50,7 +50,7 @@ class Catalog extends Component {
                   <div className="ui equal width grid">
                     <div className="column">{openness}</div>
                     <div className="column">{download}</div>
-                    <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Records" /></div>
+                    <div className="column"><Counter value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Records" /></div>
                   </div>
                 </div>
               </div>

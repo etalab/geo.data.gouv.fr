@@ -1,5 +1,5 @@
 import React from 'react'
-import Statistics from '../../Statistics/Statistics'
+import Counter from '../../Statistics/Counter/Counter'
 
 const CatalogSection = ({catalog}) => {
   return (
@@ -9,7 +9,7 @@ const CatalogSection = ({catalog}) => {
         <a href={catalog.serviceUrl}>Get the CSW stream</a>
       </div>
       <div className="column">
-        <Statistics value={catalog.lastHarvesting.recordsFound} size="small" label="Records" />
+        <Counter value={catalog.lastHarvesting.recordsFound} size="small" label="Records" />
       </div>
     </div>
       )
