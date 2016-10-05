@@ -29,12 +29,6 @@ class DoughnutChart extends Component {
   render() {
     const data = this.getData()
     const styles = {
-      container: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
       chart: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -65,9 +59,7 @@ class DoughnutChart extends Component {
       return <h1>No data</h1>
     } else {
       return (
-        <div style={styles.container}>
-
-          <h2>{this.props.title}</h2>
+        <div>
 
           <div style={styles.chart}>
             <MediaQuery minWidth={551}>
@@ -78,11 +70,8 @@ class DoughnutChart extends Component {
             <MediaQuery maxWidth={550} >
               <Doughnut data={data} width="160" />
             </MediaQuery>
-
             <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
           </div>
-
-          <h4>{this.props.description}</h4>
 
         </div>
         )
