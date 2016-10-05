@@ -28,79 +28,84 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress size={1.5} />
-    const notMatchingAnymore = this.state.data ? <Counter value={this.state.data.notMatchingAnymore} label="Warning" color="red" icon="warning sign" /> : loader
-    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
-    const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="Work In Progress" color="yellow" icon="hourglass half"/> : loader
+    const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
+    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="" color="green" icon="database"/> : loader
+    const catalogs = this.state.data ? <Counter value={106} label="" color="blue" icon="book"/> : loader
 
     const styles = {
-      header1: {
-        tablet: {
-          marginTop: '1.5em',
-          marginBottom: '0.5em',
-          fontSize: '2em',
-          fontWeight: 'normal',
-        },
-        marginTop: '0.5em',
-        marginBottom: '0.5em',
-        fontSize: '4em',
-        fontWeight: 'normal',
+      masthead: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingTop: '1em',
+        paddingBottom: '1em',
       },
-      header2: {
+      header: {
         tablet: {
-          fontSize: '1.2em',
+          fontSize: '1em',
           fontWeight: 'normal',
           marginTop: '0.5em',
+          textAlign: 'center',
+          padding: '1em',
         },
-        fontSize: '1.7em',
+        fontSize: '1.2em',
         fontWeight: 'normal',
+        textAlign: 'center',
+        padding: '1em',
+      },
+      stats: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'space-around',
       },
       paper: {
-        width: 250,
-        height: 250,
-        padding: 20,
-        margin: 20,
-        textAlign: 'center',
-        display: 'inline-block',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '2em',
+        margin: '2em',
+        marginTop: '0.5em',
       },
     }
 
     return (
-      <div style={styles.masthead} className="ui vertical masthead center aligned segment">
+      <div style={styles.masthead}>
 
-        <div className="ui container">
-          <MediaQuery style={styles.header1} minWidth={701} className="ui header" component="h1">
-            Inspire
-          </MediaQuery>
-          <MediaQuery style={styles.header1.tablet} maxWidth={700} className="ui header" component="h1">
-            Inspire
-          </MediaQuery>
+        <div style={styles.header}>
 
-          <MediaQuery style={styles.header2} minWidth={701} className="ui header" component="h2">
+          <MediaQuery style={styles.header} minWidth={701} component="h2">
               Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </MediaQuery>
-          <MediaQuery style={styles.header2.tablet} maxWidth={700} className="ui header" component="h2">
+          <MediaQuery style={styles.header.tablet} maxWidth={700} component="h2">
               Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </MediaQuery>
 
-          <Link to="catalogs">
-            <RaisedButton label="Catalogs" primary={true} />
-          </Link>
         </div>
 
-        <Paper style={styles.paper} rounded={true} zDepth={2}>
-          <h3>Need Attention</h3>
-          {notMatchingAnymore}
-        </Paper>
+        <div style={styles.stats}>
 
-        <Paper style={styles.paper} rounded={true} zDepth={2}>
-          <h3>Dataset</h3>
-          {published}
-        </Paper>
+          <Paper style={styles.paper} zDepth={2}>
+            <h3>Published Datasets</h3>
+            {published}
+          </Paper>
 
-        <Paper style={styles.paper} rounded={true} zDepth={2}>
-          <h3>Awaiting Publication</h3>
-          {notPublishedYet}
-        </Paper>
+          <Paper style={styles.paper} zDepth={2}>
+            <h3>Catalogs</h3>
+            {catalogs}
+            <Link to="catalogs">
+              <RaisedButton label="Consult catalogs" primary={true} />
+            </Link>
+          </Paper>
+
+          <Paper style={styles.paper} zDepth={2}>
+            <h3>Not Yet Published</h3>
+            {notPublishedYet}
+          </Paper>
+
+        </div>
 
       </div>
     )
