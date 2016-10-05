@@ -16,7 +16,7 @@ const Percent = ({value, total, label, icon, size, description=""}) => {
   return (
     <Counter
       value={percent}
-      label={label === 'openness' ? 'open data' : label}
+      label={label}
       description={description}
       unit="%"
       icon={icon}
