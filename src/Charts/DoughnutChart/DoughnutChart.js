@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Doughnut } from 'react-chartjs'
 import { colors } from '../../tools.js'
+import Percent from '../../Statistics/Percent/Percent'
 import MediaQuery from 'react-responsive'
 
 class DoughnutChart extends Component {
@@ -58,28 +59,34 @@ class DoughnutChart extends Component {
           {item.label}
         </div>)
 
-    return (
-      <div style={styles.container}>
+    if (data.length === 1) {
+      return <Percent value={100} total={100} label={data[0].label} icon="database icon" size="small" description={this.props.description} />
+    } else if (data.length === 0) {
+      return <h1>No data</h1>
+    } else {
+      return (
+        <div style={styles.container}>
 
-        <h2>{this.props.title}</h2>
+          <h2>{this.props.title}</h2>
 
-        <div style={styles.chart}>
-          <MediaQuery minWidth={551}>
-            <Doughnut data={data} width="200" />
-          </MediaQuery>
-          <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
+          <div style={styles.chart}>
+            <MediaQuery minWidth={551}>
+              <Doughnut data={data} width="200" />
+            </MediaQuery>
+            <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
 
-          <MediaQuery maxWidth={550} >
-            <Doughnut data={data} width="160" />
-          </MediaQuery>
+            <MediaQuery maxWidth={550} >
+              <Doughnut data={data} width="160" />
+            </MediaQuery>
 
-          <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
+            <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
+          </div>
+
+          <h4>{this.props.description}</h4>
+
         </div>
-
-        <h4>{this.props.description}</h4>
-
-      </div>
-      )
+        )
+    }
   }
 }
 
