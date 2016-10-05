@@ -1,4 +1,5 @@
 import React from 'react'
+import MediaQuery from 'react-responsive'
 import PieChart from '../../Charts/PieChart/PieChart'
 import BarChart from '../../Charts/BarChart/BarChart'
 import Percent from '../../Statistics/Percent/Percent'
@@ -37,11 +38,14 @@ const StatisticsSection = ({metrics}) => {
           <PieChart data={metrics.partitions.metadataType} title={'Metadata Type'} description={'Distribution of metadata types'} />
         </div>
 
-        <div style={styles.column}>
-          <div style={styles.chart}>
-            <BarChart data={metrics.partitions.dataType} />
-          </div>
-        </div>
+        <MediaQuery style={styles.chart} maxWidth={550} >
+          <BarChart data={metrics.partitions.dataType} width={260} height={180} />
+        </MediaQuery>
+
+        <MediaQuery style={styles.chart} minWidth={551}>
+          <BarChart data={metrics.partitions.dataType} width={420} height={260} />
+        </MediaQuery>
+
       </div>
     )
 }
