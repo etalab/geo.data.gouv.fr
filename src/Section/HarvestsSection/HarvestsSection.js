@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MediaQuery from 'react-responsive'
 import LineChart from '../../Charts/LineChart/LineChart'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
+import Chart from '../../Charts/Chart'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -54,15 +55,24 @@ class HarvestsSection extends Component {
           <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
           <div style={styles.chart}>
             <MediaQuery minWidth={701} >
-              <LineChart data={dataGraph} width="500" height="200" />
+              <Chart
+                title={'Records Evolution'}
+                description={'Evolution of the number of records per harvest'}
+                chart={<LineChart data={dataGraph} width="500" height="200" />} />
             </MediaQuery>
 
             <MediaQuery minWidth={501} maxWidth={700} >
-              <LineChart data={dataGraph} width="400" height="220" />
+              <Chart
+                title={'Records Evolution'}
+                description={'Evolution of the number of records per harvest'}
+                chart={<LineChart data={dataGraph} width="400" height="220" />} />
             </MediaQuery>
 
             <MediaQuery maxWidth={500} >
-              <LineChart data={dataGraph} width="260" height="180" />
+              <Chart
+                title={'Records Evolution'}
+                description={'Evolution of the number of records per harvest'}
+                chart={<LineChart data={dataGraph} width="260" height="180" />} />
             </MediaQuery>
           </div>
         </div>

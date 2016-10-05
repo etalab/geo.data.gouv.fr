@@ -1,5 +1,4 @@
 import React from 'react'
-import Paper from 'material-ui/Paper'
 import { Line } from 'react-chartjs'
 import { colors } from '../../tools.js'
 
@@ -15,11 +14,7 @@ const LineChart = ({data, width, height}) => {
     ],
   }
 
-  return (
-    <Paper zDepth={0}>
-      <Line data={result} width={width} height={height} />
-    </Paper>
-    )
+  return <Line data={result} width={width} height={height} />
 }
 
 export default LineChart

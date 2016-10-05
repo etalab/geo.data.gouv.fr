@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
-import Statistics from '../Statistics/Statistics'
+import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
 
 class Catalog extends Component {
@@ -27,9 +27,10 @@ class Catalog extends Component {
   }
 
   render() {
+      const metrics = this.state.metrics
       const loader =  <CircularProgress size={1} />
-      const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="unlock alternate icon" size="small" /> : loader
-      const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="download" size="small" /> : loader
+      const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="openness" icon="unlock alternate icon" size="small" /> : loader
+      const download = metrics ? <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="download" icon="download" size="small" /> : loader
 
       const styles = {
         link: {
@@ -49,7 +50,7 @@ class Catalog extends Component {
                   <div className="ui equal width grid">
                     <div className="column">{openness}</div>
                     <div className="column">{download}</div>
-                    <div className="column"><Statistics value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Records" /></div>
+                    <div className="column"><Counter value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Records" /></div>
                   </div>
                 </div>
               </div>

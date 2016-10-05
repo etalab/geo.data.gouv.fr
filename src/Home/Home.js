@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router'
-import Statistics from '../Statistics/Statistics'
+import Counter from '../Statistics/Counter/Counter'
 
 class Home extends Component {
   constructor(props) {
@@ -28,9 +28,9 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress size={1.5} />
-    const notMatchingAnymore = this.state.data ? <Statistics value={this.state.data.notMatchingAnymore} label="Warning" color="red" icon="warning sign" /> : loader
-    const published = this.state.data ? <Statistics value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
-    const notPublishedYet = this.state.data ? <Statistics value={this.state.data.notPublishedYet} label="Work In Progress" color="yellow" icon="hourglass half"/> : loader
+    const notMatchingAnymore = this.state.data ? <Counter value={this.state.data.notMatchingAnymore} label="Warning" color="red" icon="warning sign" /> : loader
+    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
+    const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="Work In Progress" color="yellow" icon="hourglass half"/> : loader
 
     const styles = {
       header1: {

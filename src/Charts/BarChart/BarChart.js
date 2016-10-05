@@ -19,21 +19,7 @@ class BarChart extends Component {
 
   render() {
     const data = this.getData()
-    const styles = {
-      container: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    }
-    return (
-      <div style={styles.container}>
-        <h2>{this.props.title}</h2>
-        <Bar data={data} width={this.props.width} height={this.props.height} />
-        <h4>{this.props.description}</h4>
-      </div>
-    )
+    return <Bar data={data} width={this.props.width} height={this.props.height} />
   }
 }
 

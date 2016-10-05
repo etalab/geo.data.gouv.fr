@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Statistics = ({value, label, unit="", color="black", icon="", size="", description=""}) => {
+const Counter = ({value, label, unit="", color="black", icon="", size="", description=""}) => {
 
   const styles = {
     label: {
@@ -18,4 +18,4 @@ const Statistics = ({value, label, unit="", color="black", icon="", size="", des
   )
 }
 
-export default Statistics
+export default Counter
