@@ -27,9 +27,10 @@ class Catalog extends Component {
   }
 
   render() {
+      const metrics = this.state.metrics
       const loader =  <CircularProgress size={1} />
-      const openness = this.state.metrics ? <Percent metrics={this.state.metrics} label="openness" icon="unlock alternate icon" size="small" /> : loader
-      const download = this.state.metrics ? <Percent metrics={this.state.metrics} label="download" icon="download" size="small" /> : loader
+      const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="openness" icon="unlock alternate icon" size="small" /> : loader
+      const download = metrics ? <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="download" icon="download" size="small" /> : loader
 
       const styles = {
         link: {
