@@ -31,33 +31,45 @@ class Home extends Component {
     const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
 
     const styles = {
-      header2: {
+      masthead: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingTop: '1em',
+        paddingBottom: '1em',
+      },
+      header: {
         tablet: {
-          fontSize: '1.2em',
+          fontSize: '1em',
           fontWeight: 'normal',
           marginTop: '0.5em',
+          textAlign: 'center',
+          padding: '1em',
         },
-        fontSize: '1.7em',
+        fontSize: '1.2em',
         fontWeight: 'normal',
+        textAlign: 'center',
+        padding: '1em',
       },
       paper: {
         display: 'inline-flex',
         flexDirection: 'column',
         alignItems: 'center',
         padding: '2em',
-        margin: '2em',
+        marginTop: '0.5em',
       },
     }
 
     return (
-      <div style={styles.masthead} className="ui vertical masthead center aligned segment">
+      <div style={styles.masthead}>
 
-        <div className="ui container">
+        <div style={styles.header}>
 
-          <MediaQuery style={styles.header2} minWidth={701} className="ui header" component="h2">
+          <MediaQuery style={styles.header} minWidth={701} component="h2">
               Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </MediaQuery>
-          <MediaQuery style={styles.header2.tablet} maxWidth={700} className="ui header" component="h2">
+          <MediaQuery style={styles.header.tablet} maxWidth={700} component="h2">
               Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </MediaQuery>
 
