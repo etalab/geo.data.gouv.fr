@@ -28,6 +28,7 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress size={1.5} />
+    const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
     const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
 
     const styles = {
@@ -52,11 +53,19 @@ class Home extends Component {
         textAlign: 'center',
         padding: '1em',
       },
+      stats: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+      },
       paper: {
-        display: 'inline-flex',
+        display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
         padding: '2em',
+        margin: '2em',
         marginTop: '0.5em',
       },
     }
@@ -75,13 +84,21 @@ class Home extends Component {
 
         </div>
 
-        <Paper style={styles.paper} rounded={true} zDepth={2}>
-          <h3>Catalogs</h3>
-          {published}
-          <Link to="catalogs">
-            <RaisedButton label="Consult catalogs" primary={true} />
-          </Link>
-        </Paper>
+        <div style={styles.stats}>
+
+          <Paper style={styles.paper} zDepth={2}>
+            <h3>Catalogs</h3>
+            {published}
+            <Link to="catalogs">
+              <RaisedButton label="Consult catalogs" primary={true} />
+            </Link>
+          </Paper>
+
+          <Paper style={styles.paper} zDepth={2}>
+            <h3>Not Yet Published</h3>
+            {notPublishedYet}
+          </Paper>
+        </div>
 
       </div>
     )
