@@ -29,7 +29,8 @@ class Home extends Component {
   render() {
     const loader =  <CircularProgress size={1.5} />
     const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
-    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="Catalogs" color="green" icon="database"/> : loader
+    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="" color="green" icon="database"/> : loader
+    const catalogs = this.state.data ? <Counter value={106} label="" color="blue" icon="book"/> : loader
 
     const styles = {
       masthead: {
@@ -87,8 +88,13 @@ class Home extends Component {
         <div style={styles.stats}>
 
           <Paper style={styles.paper} zDepth={2}>
-            <h3>Catalogs</h3>
+            <h3>Published Datasets</h3>
             {published}
+          </Paper>
+
+          <Paper style={styles.paper} zDepth={2}>
+            <h3>Catalogs</h3>
+            {catalogs}
             <Link to="catalogs">
               <RaisedButton label="Consult catalogs" primary={true} />
             </Link>
@@ -98,6 +104,7 @@ class Home extends Component {
             <h3>Not Yet Published</h3>
             {notPublishedYet}
           </Paper>
+
         </div>
 
       </div>
