@@ -41,12 +41,11 @@ class Home extends Component {
         fontWeight: 'normal',
       },
       paper: {
-        width: 250,
-        height: 250,
-        padding: 20,
-        margin: 20,
-        textAlign: 'center',
-        display: 'inline-block',
+        display: 'inline-flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '2em',
+        margin: '2em',
       },
     }
 
@@ -62,14 +61,14 @@ class Home extends Component {
               Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
           </MediaQuery>
 
-          <Link to="catalogs">
-            <RaisedButton label="Catalogs" primary={true} />
-          </Link>
         </div>
 
         <Paper style={styles.paper} rounded={true} zDepth={2}>
-          <h3>Dataset</h3>
+          <h3>Catalogs</h3>
           {published}
+          <Link to="catalogs">
+            <RaisedButton label="Consult catalogs" primary={true} />
+          </Link>
         </Paper>
 
       </div>
