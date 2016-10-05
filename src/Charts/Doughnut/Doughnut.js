@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Pie } from 'react-chartjs'
+import { Doughnut } from 'react-chartjs'
 import { colors } from '../../tools.js'
 import MediaQuery from 'react-responsive'
 
-class PieChart extends Component {
+class DoughnutChart extends Component {
   getData() {
     const data = this.props.data
 
@@ -65,12 +65,12 @@ class PieChart extends Component {
 
         <div style={styles.chart}>
           <MediaQuery minWidth={551}>
-            <Pie data={data} width="200" />
+            <Doughnut data={data} width="200" />
           </MediaQuery>
           <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
 
           <MediaQuery maxWidth={550} >
-            <Pie data={data} width="160" />
+            <Doughnut data={data} width="160" />
           </MediaQuery>
 
           <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
@@ -83,4 +83,4 @@ class PieChart extends Component {
   }
 }
 
-export default PieChart
+export default DoughnutChart
