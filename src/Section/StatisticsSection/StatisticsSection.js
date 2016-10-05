@@ -1,6 +1,6 @@
 import React from 'react'
 import MediaQuery from 'react-responsive'
-import PieChart from '../../Charts/PieChart/PieChart'
+import DoughnutChart from '../../Charts/DoughnutChart/DoughnutChart'
 import BarChart from '../../Charts/BarChart/BarChart'
 import Percent from '../../Statistics/Percent/Percent'
 
@@ -31,11 +31,11 @@ const StatisticsSection = ({metrics}) => {
         </div>
 
         <div style={styles.chart}>
-          <PieChart data={metrics.partitions.recordType} title={'Record Type'} description={'Distribution of record types'} />
+          <DoughnutChart data={metrics.partitions.recordType} title={'Record Type'} description={'Distribution of record types'} />
         </div>
 
         <div style={styles.chart}>
-          <PieChart data={metrics.partitions.metadataType} title={'Metadata Type'} description={'Distribution of metadata types'} />
+          <DoughnutChart data={metrics.partitions.metadataType} title={'Metadata Type'} description={'Distribution of metadata types'} />
         </div>
 
         <MediaQuery style={styles.chart} maxWidth={550} >
