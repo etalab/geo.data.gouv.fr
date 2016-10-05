@@ -39,11 +39,11 @@ const StatisticsSection = ({metrics}) => {
         </div>
 
         <MediaQuery style={styles.chart} maxWidth={550} >
-          <BarChart data={metrics.partitions.dataType} width={260} height={180} />
+          <BarChart data={metrics.partitions.dataType} title={'Data Type'} description={'Distribution of data types'} width={260} height={180} />
         </MediaQuery>
 
         <MediaQuery style={styles.chart} minWidth={551}>
-          <BarChart data={metrics.partitions.dataType} width={420} height={260} />
+          <BarChart data={metrics.partitions.dataType} title={'Data Type'} description={'Distribution of data types'} width={420} height={260} />
         </MediaQuery>
 
       </div>
