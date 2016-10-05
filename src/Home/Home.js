@@ -68,12 +68,6 @@ class Home extends Component {
       <div style={styles.masthead} className="ui vertical masthead center aligned segment">
 
         <div className="ui container">
-          <MediaQuery style={styles.header1} minWidth={701} className="ui header" component="h1">
-            Inspire
-          </MediaQuery>
-          <MediaQuery style={styles.header1.tablet} maxWidth={700} className="ui header" component="h1">
-            Inspire
-          </MediaQuery>
 
           <MediaQuery style={styles.header2} minWidth={701} className="ui header" component="h2">
               Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
