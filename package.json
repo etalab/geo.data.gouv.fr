@@ -4,7 +4,7 @@
   "homepage": "https://inspire.beta.gouv.fr",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.2.3"
+    "react-scripts": "^0.3.0"
   },
   "dependencies": {
     "chart.js": "^1.1.1",
