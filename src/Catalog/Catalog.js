@@ -5,28 +5,16 @@ import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
 import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
+import fetchMetrics from '../fetch/fetchMetrics'
 
 class Catalog extends Component {
   constructor(props) {
     super(props)
     this.state = {metrics: undefined}
-    this.getMetrics()
-  }
-
-  getMetrics() {
-    if (!this.state.metrics) {
-      return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.catalog.id}/metrics`)
-        .then((response) => response.json())
-        .then((metrics) => {
-          this.setState({metrics})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
   }
 
   render() {
+      fetchMetrics(this, this.props.catalog.id)
       const metrics = this.state.metrics
       const loader =  <CircularProgress size={1} />
       const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" /> : loader
