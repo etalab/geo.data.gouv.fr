@@ -76,10 +76,19 @@ const data = {
   }
 }
 
-function fetchMetrics(component, catalogId) {
-  if (!component.state.metrics) {
-    return catalogId === '1' ? component.setState({metrics: data}) : undefined
+function fetchMetrics(catalogId) {
+  if (!catalogId) {
+    throw new Error('catalogId is required')
+  } else {
+    return new Promise( (resolve, reject) => {
+      if (catalogId === '1') {
+        resolve(data)
+      } else {
+        reject(new Error('Metrics not found'));
+      };
+    })
   }
 }
+
 
 module.exports = fetchMetrics;
