@@ -13,8 +13,15 @@ class Catalog extends Component {
     this.state = {metrics: undefined}
   }
 
+  componentWillMount() {
+    return fetchMetrics(this.props.catalog.id)
+      .then(metrics => {
+        this.setState({ metrics })
+      })
+      .catch(err => console.error(err));
+  }
+
   render() {
-      fetchMetrics(this, this.props.catalog.id)
       const metrics = this.state.metrics
       const loader =  <CircularProgress size={1} />
       const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" /> : loader
