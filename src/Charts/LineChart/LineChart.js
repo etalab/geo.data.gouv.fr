@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Line } from 'react-chartjs'
 import { colors } from '../../tools.js'
 
-const LineChart = ({data, width, height}) => {
-
-  const result = {
-    'labels': Object.keys(data).map( item => item),
-    'datasets': [
-      {
-        fillColor: colors[0].value,
-        data: Object.keys(data).map( item => data[item])
-      }
-    ],
+class LineChart extends Component {
+  formatData(data) {
+    return {
+      'labels': Object.keys(data).map( item => item),
+      'datasets': [
+        {
+          fillColor: colors[0].value,
+          data: Object.keys(data).map( item => data[item])
+        }
+      ],
+    }
   }
 
-  return <Line data={result} width={width} height={height} />
+  render() {
+    return <Line data={this.formatData(this.props.data)} width={this.props.width} height={this.props.height} />
+  }
 }
 
 export default LineChart
