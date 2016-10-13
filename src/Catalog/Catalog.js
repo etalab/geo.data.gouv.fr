@@ -30,7 +30,7 @@ class Catalog extends Component {
       const styles = {
         link: {
           cursor: 'pointer',
-          margin: 100,
+          margin: '1em 3em 1em 3em',
         },
       }
       return (

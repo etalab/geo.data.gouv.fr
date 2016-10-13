@@ -1,13 +1,18 @@
 import React from 'react'
-import './Organizations.css'
 
 const Organizations = ({label, organizations}) => {
+  const styles = {
+    list: {
+      paddingTop: "2em",
+      paddingBottom: "2em",
+    },
+  }
   return (
     <div className="ui segments">
       <div className="ui secondary segment">
         <h4 className="header">{label}</h4>
       </div>
-      <div className="ui grid container">
+      <div style={styles.list} className="ui grid container">
         {Object.keys(organizations).map( key =>
           <div key={key} className="two column row">
             <div className="column header">{key}</div>

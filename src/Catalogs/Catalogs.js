@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Catalog from '../Catalog/Catalog'
-import './Catalogs.css'
 
 class Catalogs extends Component {
   constructor(props) {
@@ -21,9 +20,17 @@ class Catalogs extends Component {
   }
 
   render() {
+    const styles = {
+      container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        paddingTop: '2em',
+      },
+    }
     return (
       <div className="catalogs">
-        <div className="ui container">
+        <div style={styles.container}>
           {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
         </div>
       </div>

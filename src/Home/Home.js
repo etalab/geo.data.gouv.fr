@@ -38,8 +38,7 @@ class Home extends Component {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
-        paddingTop: '1em',
-        paddingBottom: '1em',
+        padding: '8%',
       },
       header: {
         tablet: {
