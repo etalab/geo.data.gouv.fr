@@ -1,7 +1,0 @@
-div.ui.grid.container > div:nth-child(1) {
-  padding-top: 2em;
-}
-
-div.ui.grid.container > div:last-child {
-  padding-bottom: 2em;
-}
