@@ -6,18 +6,20 @@ import Percent from '../../Statistics/Percent/Percent'
 import MediaQuery from 'react-responsive'
 
 class DoughnutChart extends Component {
-  setData(data) {
-    return Object.keys(data).map( (val, idx) => {
-      const color = this.setColor(idx)
-
-      return {
-        'label': val,
-        'value': data[val],
-        'color':  color.value,
-        'colorName': color.name
-      } })
+  formatData(data) {
+    return Object.keys(data)
       .sort((a, b) => {
-        return a.value < b.value
+        return data[a] < data[b]
+      })
+      .map( (val, idx) => {
+        const color = this.setColor(idx)
+
+        return {
+          'label': val,
+          'value': data[val],
+          'color':  color.value,
+          'colorName': color.name
+        }
       })
   }
 
