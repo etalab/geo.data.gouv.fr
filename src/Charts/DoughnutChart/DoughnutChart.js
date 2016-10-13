@@ -28,7 +28,7 @@ class DoughnutChart extends Component {
   }
 
   render() {
-    const data = this.setData(this.props.data)
+    const data = this.formatData(this.props.data)
     const styles = {
       chart: {
         display: 'flex',
