@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Doughnut } from 'react-chartjs'
 import { colors } from '../../tools.js'
+import DoughnutChartList from './DoughnutChartList/DoughnutChartList'
 import Percent from '../../Statistics/Percent/Percent'
 import MediaQuery from 'react-responsive'
 
 class DoughnutChart extends Component {
-  getData() {
-    const data = this.props.data
-
+  setData(data) {
     return Object.keys(data).map( (val, idx) => {
       const color = this.setColor(idx)
 
@@ -27,31 +26,14 @@ class DoughnutChart extends Component {
   }
 
   render() {
-    const data = this.getData()
+    const data = this.setData(this.props.data)
     const styles = {
       chart: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
       },
-      list: {
-        row: {
-          display: 'flex',
-        },
-        column: {
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-        }
-      },
-      label: {
-        margin: '0.2em',
-      },
     }
-    const list = data.map((item, idx) =>
-        <div key={idx} style={styles.label} className={`ui small ${item.colorName} label`}>
-          {item.label}
-        </div>)
 
     if (data.length === 1) {
       return <Percent value={100} total={100} label={data[0].label} icon="database icon" size="small" description={this.props.description} />
@@ -65,12 +47,12 @@ class DoughnutChart extends Component {
             <MediaQuery minWidth={551}>
               <Doughnut data={data} width="200" />
             </MediaQuery>
-            <MediaQuery style={styles.list.column} minWidth={551}>{list}</MediaQuery>
 
             <MediaQuery maxWidth={550} >
               <Doughnut data={data} width="160" />
             </MediaQuery>
-            <MediaQuery style={styles.list.row} maxWidth={550}>{list}</MediaQuery>
+
+            <DoughnutChartList data={data}/>
           </div>
 
         </div>
