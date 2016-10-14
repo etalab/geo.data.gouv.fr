@@ -3,7 +3,6 @@ import { Doughnut } from 'react-chartjs'
 import { colors } from '../../tools.js'
 import DoughnutChartList from './DoughnutChartList/DoughnutChartList'
 import Percent from '../../Statistics/Percent/Percent'
-import MediaQuery from 'react-responsive'
 
 class DoughnutChart extends Component {
   formatData(data) {
@@ -46,14 +45,7 @@ class DoughnutChart extends Component {
         <div>
 
           <div style={styles.chart}>
-            <MediaQuery minWidth={551}>
-              <Doughnut data={data} width="200" />
-            </MediaQuery>
-
-            <MediaQuery maxWidth={550} >
-              <Doughnut data={data} width="160" />
-            </MediaQuery>
-
+            <Doughnut className="doughnut computer" data={data} width="200" />
             <DoughnutChartList data={data}/>
           </div>
 
