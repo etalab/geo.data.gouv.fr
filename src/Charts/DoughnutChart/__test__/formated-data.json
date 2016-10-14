@@ -1,0 +1,20 @@
+[
+  {
+    "label": "dataset",
+    "value": 427,
+    "color": "#2185D0",
+    "colorName": "blue"
+  },
+  {
+    "label": "nonGeographicDataset",
+    "value": 405,
+    "color": "#00B5AD",
+    "colorName": "teal"
+  },
+  {
+    "label": "service",
+    "value": 1,
+    "color": "#21BA45",
+    "colorName": "green"
+  }
+]
