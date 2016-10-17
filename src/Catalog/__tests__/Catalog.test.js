@@ -48,7 +48,7 @@ describe('<Catalog />', () => {
   describe('fetch metrics', () => {
     it('should set metrics', () => {
       const wrapper = mountWithContext(<Catalog catalog={catalog} />)
-      wrapper
+      return wrapper
         .instance()
         .componentWillMount()
         .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
