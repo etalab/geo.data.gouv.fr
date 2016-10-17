@@ -8,7 +8,7 @@ import { mountWithContext } from '../../../test/jsdom-setup'
 
 import catalog from '../../fetch/__test__/catalog.json'
 import metrics from '../../fetch/__test__/metrics.json'
-jest.mock('../../fetch/fetchMetrics');
+jest.mock('../../fetch/fetch');
 
 describe('<Catalog />', () => {
 

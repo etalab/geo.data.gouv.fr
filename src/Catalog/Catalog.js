@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
 import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
-import fetchMetrics from '../fetch/fetchMetrics'
+import { fetchMetrics } from '../fetch/fetch'
 
 class Catalog extends Component {
   constructor(props) {

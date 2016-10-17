@@ -5,8 +5,7 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import fetchCatalog from '../fetch/fetchCatalog'
-import fetchMetrics from '../fetch/fetchMetrics'
+import { fetchCatalog, fetchMetrics } from '../fetch/fetch'
 
 class CatalogDetail extends Component {
   constructor(props) {
