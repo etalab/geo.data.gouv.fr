@@ -9,11 +9,6 @@ import fetchCatalog from '../fetch/fetchCatalog'
 import fetchMetrics from '../fetch/fetchMetrics'
 
 class CatalogDetail extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {catalog: undefined, metrics: undefined}
-  }
-
   componentWillMount() {
     return fetchCatalog(this.props.params.catalogId)
       .then(catalog => {
@@ -23,17 +18,17 @@ class CatalogDetail extends Component {
         .then(metrics => {
           this.setState({ metrics })
         }))
-      .catch(err => console.error(err));
+      .catch(err => console.error(err))
   }
 
   render() {
-    if (this.state.catalog && this.state.metrics) {
+    if (this.state && this.state.catalog && this.state.metrics) {
       const styles = {
         catalogDetail : {
           padding: 40,
           display: 'block',
         },
-      };
+      }
 
       return (
         <Paper style={styles.catalogDetail} id="catalog-detail">
