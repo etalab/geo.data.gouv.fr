@@ -9,16 +9,40 @@ import fetchCatalog from '../fetch/fetchCatalog'
 import fetchMetrics from '../fetch/fetchMetrics'
 
 class CatalogDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {errors: []}
+  }
+
   componentWillMount() {
+    return Promise.all([
+      this.updateCatalog(),
+      this.updateMetrics(),
+    ])
+  }
+
+  updateMetrics() {
+    return fetchMetrics(this.props.params.catalogId)
+      .then(metrics => {
+        this.setState({ metrics })
+      })
+      .catch(err => {
+        const errors = [...this.state.errors]
+        errors.push(err)
+        this.setState({ errors })
+      })
+  }
+
+  updateCatalog() {
     return fetchCatalog(this.props.params.catalogId)
       .then(catalog => {
         this.setState({ catalog })
       })
-      .then(fetchMetrics(this.props.params.catalogId)
-        .then(metrics => {
-          this.setState({ metrics })
-        }))
-      .catch(err => console.error(err))
+      .catch(err => {
+        const errors = [...this.state.errors]
+        errors.push(err)
+        this.setState({ errors })
+      })
   }
 
   render() {

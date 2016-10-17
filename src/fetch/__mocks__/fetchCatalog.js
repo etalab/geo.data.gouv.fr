@@ -8,7 +8,7 @@ function fetchCatalog(catalogId) {
       if (catalogId === '1') {
         resolve(catalog)
       } else {
-        reject(new Error('catalog not found'));
+        reject(new Error('Catalog not found'));
       };
     })
   }
