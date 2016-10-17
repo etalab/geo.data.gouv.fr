@@ -6,7 +6,7 @@ const CatalogSection = ({catalog}) => {
     <div className="ui equal width stackable grid">
       <div className="column">
         <h1 className="ui header">{catalog.name}</h1>
-        <a href={catalog.serviceUrl}>Direct access to CSW feed</a>
+        <a href={catalog.serviceUrl}>Direct access to the catalog service</a>
       </div>
       <div className="column">
         <Counter value={catalog.lastHarvesting.recordsFound} size="small" label="Records" />
