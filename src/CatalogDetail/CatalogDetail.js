@@ -5,39 +5,34 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
+import fetchCatalog from '../fetch/fetchCatalog'
+import fetchMetrics from '../fetch/fetchMetrics'
 
 class CatalogDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {catalog: undefined, metrics: undefined}
+  }
+
+  componentWillMount() {
     this.getCatalog()
     this.getMetrics()
   }
 
   getCatalog() {
-    if (!this.state.catalog) {
-    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}`)
-      .then((response) => response.json())
-      .then((catalog) => {
-        this.setState({catalog})
+    return fetchCatalog(this.props.catalog.id)
+      .then(catalog => {
+        this.setState({ catalog })
       })
-      .catch((err) => {
-        console.error(err)
-      })
-    }
+      .catch(err => console.error(err));
   }
 
   getMetrics() {
-    if (!this.state.metrics) {
-      return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}/metrics`)
-        .then((response) => response.json())
-        .then((metrics) => {
-          this.setState({metrics})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
+    return fetchMetrics(this.props.catalog.id)
+      .then(metrics => {
+        this.setState({ metrics })
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
