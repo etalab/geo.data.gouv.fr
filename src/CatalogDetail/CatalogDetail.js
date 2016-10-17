@@ -27,9 +27,10 @@ class CatalogDetail extends Component {
         this.setState({ metrics })
       })
       .catch(err => {
-        const errors = [...this.state.errors]
-        errors.push(err)
-        this.setState({ errors })
+        if (this.state.errors.indexOf(err.message) < 0) {
+          const errors = [...this.state.errors, err.message]
+          this.setState({ errors })
+        }
       })
   }
 
@@ -39,9 +40,10 @@ class CatalogDetail extends Component {
         this.setState({ catalog })
       })
       .catch(err => {
-        const errors = [...this.state.errors]
-        errors.push(err)
-        this.setState({ errors })
+        if (this.state.errors.indexOf(err.message) < 0) {
+          const errors = [...this.state.errors, err.message]
+          this.setState({ errors })
+        }
       })
   }
 
