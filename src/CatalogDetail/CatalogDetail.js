@@ -15,23 +15,14 @@ class CatalogDetail extends Component {
   }
 
   componentWillMount() {
-    this.getCatalog()
-    this.getMetrics()
-  }
-
-  getCatalog() {
     return fetchCatalog(this.props.params.catalogId)
       .then(catalog => {
         this.setState({ catalog })
       })
-      .catch(err => console.error(err));
-  }
-
-  getMetrics() {
-    return fetchMetrics(this.props.params.catalogId)
-      .then(metrics => {
-        this.setState({ metrics })
-      })
+      .then(fetchMetrics(this.props.params.catalogId)
+        .then(metrics => {
+          this.setState({ metrics })
+        }))
       .catch(err => console.error(err));
   }
 
