@@ -20,7 +20,7 @@ class CatalogDetail extends Component {
   }
 
   getCatalog() {
-    return fetchCatalog(this.props.catalog.id)
+    return fetchCatalog(this.props.params.catalogId)
       .then(catalog => {
         this.setState({ catalog })
       })
@@ -28,7 +28,7 @@ class CatalogDetail extends Component {
   }
 
   getMetrics() {
-    return fetchMetrics(this.props.catalog.id)
+    return fetchMetrics(this.props.params.catalogId)
       .then(metrics => {
         this.setState({ metrics })
       })
