@@ -6,12 +6,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 function doneSince(endTime) {
   const endDate = new Date(endTime).getTime()
-  return moment(endDate).fromNow()
+  return moment(endDate).fromNow() || 'N/A'
 }
 
 const HarvestRow = ({harvest, catalog}) => {
   const color = harvest.status === "successful" ? "green" : "red"
-  
+
   return (
     <TableRow hoverable={true}>
       <TableRowColumn>
@@ -20,7 +20,7 @@ const HarvestRow = ({harvest, catalog}) => {
         </div>
       </TableRowColumn>
       <TableRowColumn>{harvest.itemsFound}</TableRowColumn>
-      <TableRowColumn>{doneSince(harvest.finished) || 'N/A' }</TableRowColumn>
+      <TableRowColumn>{doneSince(harvest.finished)}</TableRowColumn>
       <TableRowColumn>
         <Link to={`/catalogs/${catalog.id}/harvest/${harvest._id}`}>
           <RaisedButton label="More" primary={true} />
