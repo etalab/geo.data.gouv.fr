@@ -6,8 +6,8 @@ import Counter from '../../Statistics/Counter/Counter'
 import Catalog from '../Catalog'
 import { mountWithContext } from '../../../test/jsdom-setup'
 
-import catalog from './catalog.json'
-import metrics from './metrics.json'
+import catalog from '../../fetch/__test__/catalog.json'
+import metrics from '../../fetch/__test__/metrics.json'
 jest.mock('../../fetch/fetchMetrics');
 
 describe('<Catalog />', () => {
