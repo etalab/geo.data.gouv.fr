@@ -4,9 +4,13 @@ import {TableRow, TableRowColumn} from 'material-ui/Table'
 import moment from 'moment'
 import RaisedButton from 'material-ui/RaisedButton';
 
-function doneSince(endTime) {
+export function doneSince(endTime) {
   const endDate = new Date(endTime).getTime()
-  return moment(endDate).fromNow() || 'N/A'
+  if (!isNaN(endDate)) {
+    const since = moment(endDate).fromNow()
+    if (since !== 'Invalid Date') return since
+  }
+  return 'N/A'
 }
 
 const HarvestRow = ({harvest, catalog}) => {
