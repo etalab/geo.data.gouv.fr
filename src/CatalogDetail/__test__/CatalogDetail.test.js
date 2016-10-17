@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import CatalogDetail from '../CatalogDetail'
-import { mountWithContext } from '../../../test/jsdom-setup'
 
 import catalog from '../../fetch/__test__/catalog.json'
 import metrics from '../../fetch/__test__/metrics.json'
@@ -13,16 +12,12 @@ describe('<CatalogDetail />', () => {
   describe('When all goes well', () => {
 
     it('should render CatalogDetail', () => {
-      const wrapper = mountWithContext(<CatalogDetail params={{catalogId: '1'}} />)
+      const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
 
-      return wrapper
-        .instance()
-        .componentWillMount()
-        .then(() => {
-          expect(wrapper.find('#catalog-detail').length).toEqual(1)
-        })
-      })
+      wrapper.setState({catalog, metrics})
+      expect(wrapper.find('#catalog-detail').length).toEqual(1)
     })
+  })
 
   describe('fetch', () => {
 
@@ -62,7 +57,10 @@ describe('<CatalogDetail />', () => {
       it('Should return an error, catalogId is required', () => {
         const wrapper = shallow(<CatalogDetail params={{}}/>)
 
-        expect(wrapper.state('errors')).toEqual(["Error: catalogId is required"])
+        return wrapper
+          .instance()
+          .updateMetrics()
+          .then(() => expect(wrapper.state('errors')).toContain("catalogId is required"))
       })
 
       it('Should return an error, metrics not found', () => {
@@ -71,7 +69,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toEqual(["Error: metrics not found"]))
+          .then(() => expect(wrapper.state('errors')).toContain("Metrics not found"))
       })
     })
 
@@ -82,7 +80,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toEqual(["Error: catalogId is required"]))
+          .then(() => expect(wrapper.state('errors')).toContain("catalogId is required"))
       })
 
       it('Should return an error, catalog not found', () => {
@@ -91,7 +89,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toEqual(["Error: metrics not found"]))
+          .then(() => expect(wrapper.state('errors')).toContain("Catalog not found"))
       })
     })
 
