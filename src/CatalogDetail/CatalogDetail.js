@@ -47,7 +47,7 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    if (this.state && this.state.catalog && this.state.metrics) {
+    if (this.state.catalog && this.state.metrics) {
       const styles = {
         catalogDetail : {
           padding: 40,
