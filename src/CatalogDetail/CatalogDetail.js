@@ -5,49 +5,56 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
+import fetchCatalog from '../fetch/fetchCatalog'
+import fetchMetrics from '../fetch/fetchMetrics'
 
 class CatalogDetail extends Component {
   constructor(props) {
     super(props)
-    this.state = {catalog: undefined, metrics: undefined}
-    this.getCatalog()
-    this.getMetrics()
+    this.state = {errors: []}
   }
 
-  getCatalog() {
-    if (!this.state.catalog) {
-    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}`)
-      .then((response) => response.json())
-      .then((catalog) => {
-        this.setState({catalog})
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-    }
+  componentWillMount() {
+    return Promise.all([
+      this.updateCatalog(),
+      this.updateMetrics(),
+    ])
   }
 
-  getMetrics() {
-    if (!this.state.metrics) {
-      return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}/metrics`)
-        .then((response) => response.json())
-        .then((metrics) => {
-          this.setState({metrics})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
+  updateMetrics() {
+    return fetchMetrics(this.props.params.catalogId)
+      .then(metrics => {
+        this.setState({ metrics })
+      })
+      .catch(err => {
+        if (this.state.errors.indexOf(err.message) < 0) {
+          const errors = [...this.state.errors, err.message]
+          this.setState({ errors })
+        }
+      })
+  }
+
+  updateCatalog() {
+    return fetchCatalog(this.props.params.catalogId)
+      .then(catalog => {
+        this.setState({ catalog })
+      })
+      .catch(err => {
+        if (this.state.errors.indexOf(err.message) < 0) {
+          const errors = [...this.state.errors, err.message]
+          this.setState({ errors })
+        }
+      })
   }
 
   render() {
-    if (this.state.catalog && this.state.metrics) {
+    if (this.state && this.state.catalog && this.state.metrics) {
       const styles = {
         catalogDetail : {
           padding: 40,
           display: 'block',
         },
-      };
+      }
 
       return (
         <Paper style={styles.catalogDetail} id="catalog-detail">
