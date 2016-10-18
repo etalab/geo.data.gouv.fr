@@ -12,11 +12,11 @@ describe('<Histogram />', () => {
   it('Should format data', () => {
     const wrapper = shallow(<Histogram chartType={Bar} data={data} height={height} width={width}/>)
     const formatedData = {
-      labels: ["0", "1", "2", "3"],
+      labels: ['0', '1', '2', '3'],
       datasets: [
         {
-          fillColor: "#2185D0",
-          data: [{"05/10/2016": 665}, {"06/10/2016": 665}, {"07/10/2016": 831}, {"08/10/2016": 832}]
+          fillColor: '#2185D0',
+          data: [{'05/10/2016': 665}, {'06/10/2016': 665}, {'07/10/2016': 831}, {'08/10/2016': 832}]
         }
       ]
     }

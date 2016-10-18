@@ -9,7 +9,7 @@ class Catalogs extends Component {
   }
 
   getCatalogs() {
-    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs`)
+    return fetch('https://inspire.data.gouv.fr/api/geogw/catalogs')
       .then((response) => response.json())
       .then((catalogs) => {
         this.setState({catalogs})

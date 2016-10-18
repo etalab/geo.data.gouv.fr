@@ -1,7 +1,7 @@
 import React from 'react'
 import Counter from '../Counter/Counter'
 
-const Percent = ({value, total, label, icon, size, description=""}) => {
+const Percent = ({value, total, label, icon, size, description=''}) => {
   const percent = value ? Math.floor((value / total) * 100) : 0
   const color = () => {
     if (percent < 20) {

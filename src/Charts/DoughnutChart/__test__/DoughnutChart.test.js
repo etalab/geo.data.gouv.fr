@@ -39,7 +39,7 @@ describe('<DoughnutChart />', () => {
   describe('Specific data behavior', () => {
 
     it('Should render Percent component when only 2 data', () => {
-      const twoDataWrapper = shallow(<DoughnutChart data={{"dataset": 427, "service": 1}} />)
+      const twoDataWrapper = shallow(<DoughnutChart data={{'dataset': 427, 'service': 1}} />)
       const percent = <Percent value={100} total={100} label={formatedData[0].label} icon="database icon" size="small" />
 
       expect(twoDataWrapper.contains(percent)).toEqual(true);

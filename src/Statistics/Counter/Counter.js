@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Counter = ({value, label, unit="", color="black", icon="", size="", description=""}) => {
+const Counter = ({value, label, unit='', color='black', icon='', size='', description=''}) => {
 
   const styles = {
     label: {

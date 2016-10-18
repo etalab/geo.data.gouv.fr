@@ -28,6 +28,9 @@
     "test": "react-scripts test"
   },
   "eslintConfig": {
-    "extends": "react-app"
-  }
+    "extends": "react-app",
+    "rules": {
+        "quotes": ["error", "single"]
+      }
+    }
 }
