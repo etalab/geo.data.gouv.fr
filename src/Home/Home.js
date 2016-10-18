@@ -4,33 +4,33 @@ import CircularProgress from 'material-ui/CircularProgress'
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router'
 import Counter from '../Statistics/Counter/Counter'
+import { fetchDatasets } from '../fetch/fetch'
 import './Home.css'
 
 class Home extends Component {
   constructor(props) {
     super(props)
-    this.state = {data: undefined}
-    this.getData()
+    this.state = {errors: []}
   }
 
-  getData() {
-    if (!this.state.data) {
-      return fetch(`https://inspire.data.gouv.fr/api/datasets/metrics`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({data})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
+  componentWillMount() {
+    return fetchDatasets()
+      .then(datasets => {
+        this.setState({ datasets })
+      })
+      .catch(err => {
+        if (this.state.errors.indexOf(err.message) < 0) {
+          const errors = [...this.state.errors, err.message]
+          this.setState({ errors })
+        }
+      })
   }
 
   render() {
     const loader =  <CircularProgress size={1.5} />
-    const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
-    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="" color="green" icon="database"/> : loader
-    const catalogs = this.state.data ? <Counter value={106} label="" color="blue" icon="book"/> : loader
+    const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
+    const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} label="" color="green" icon="database"/> : loader
+    const catalogs = this.state.datasets ? <Counter value={106} label="" color="blue" icon="book"/> : loader
 
     const styles = {
       masthead: {
