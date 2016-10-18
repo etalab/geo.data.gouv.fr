@@ -36,7 +36,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toContain("catalogId is required"))
+          .then(() => expect(wrapper.state('errors')).toContain('catalogId is required'))
       })
 
       it('Should add an error to this.state, metrics not found', () => {
@@ -45,7 +45,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toContain("Metrics not found"))
+          .then(() => expect(wrapper.state('errors')).toContain('Metrics not found'))
       })
     })
 
@@ -64,7 +64,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateCatalog()
-          .then(() => expect(wrapper.state('errors')).toContain("catalogId is required"))
+          .then(() => expect(wrapper.state('errors')).toContain('catalogId is required'))
       })
 
       it('Should add an error to this.state, catalog not found', () => {
@@ -73,7 +73,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateCatalog()
-          .then(() => expect(wrapper.state('errors')).toContain("Catalog not found"))
+          .then(() => expect(wrapper.state('errors')).toContain('Catalog not found'))
       })
     })
 
@@ -93,7 +93,7 @@ describe('<CatalogDetail />', () => {
 
     it('should render an empty div when no catalog is fetch', () => {
       const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
-      expect(wrapper.html()).toEqual("<div></div>")
+      expect(wrapper.html()).toEqual('<div></div>')
     })
   })
 
