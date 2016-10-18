@@ -29,7 +29,7 @@ class HarvestsSection extends Component {
     const reorderedHarvests = [...this.state.harvests].reverse()
     const data = []
     for (let harvest of reorderedHarvests) {
-      if (harvest.status === "successful") {
+      if (harvest.status === 'successful') {
         const date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
         data[date] = harvest.itemsFound
       }
