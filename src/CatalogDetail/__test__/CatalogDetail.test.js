@@ -4,8 +4,7 @@ import CatalogDetail from '../CatalogDetail'
 
 import catalog from '../../fetch/__test__/catalog.json'
 import metrics from '../../fetch/__test__/metrics.json'
-jest.mock('../../fetch/fetchMetrics')
-jest.mock('../../fetch/fetchCatalog')
+jest.mock('../../fetch/fetch')
 
 describe('<CatalogDetail />', () => {
 
@@ -21,40 +20,17 @@ describe('<CatalogDetail />', () => {
 
   describe('fetch', () => {
 
-    it('should set metrics', () => {
-      const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
+    describe('updateMetrics()', () => {
+      it('Should assign metrics to this.state ', () => {
+        const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
 
-      return wrapper
-        .instance()
-        .updateMetrics()
-        .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
-    })
+        return wrapper
+          .instance()
+          .updateMetrics()
+          .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
+      })
 
-    it('should set catalog', () => {
-      const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
-      return wrapper
-        .instance()
-        .updateCatalog()
-        .then(() => expect(wrapper.state('catalog')).toEqual(catalog))
-    })
-
-    it('should set catalog and metrics', () => {
-      const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
-      return wrapper
-        .instance()
-        .componentWillMount()
-        .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
-    })
-
-    it('should render an empty div', () => {
-      const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
-      expect(wrapper.html()).toEqual("<div></div>")
-    })
-  })
-
-  describe('Error', () => {
-    describe('Metrics error', () => {
-      it('Should return an error, catalogId is required', () => {
+      it('Should add an error to this.state, catalogId is required', () => {
         const wrapper = shallow(<CatalogDetail params={{}}/>)
 
         return wrapper
@@ -63,7 +39,7 @@ describe('<CatalogDetail />', () => {
           .then(() => expect(wrapper.state('errors')).toContain("catalogId is required"))
       })
 
-      it('Should return an error, metrics not found', () => {
+      it('Should add an error to this.state, metrics not found', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
 
         return wrapper
@@ -73,26 +49,52 @@ describe('<CatalogDetail />', () => {
       })
     })
 
-    describe('Catalog error', () => {
-      it('Should return an error, catalogId is required', () => {
+    describe('updateCatalog()', () => {
+      it('Should assign catalog to this.state', () => {
+        const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
+        return wrapper
+          .instance()
+          .updateCatalog()
+          .then(() => expect(wrapper.state('catalog')).toEqual(catalog))
+      })
+
+      it('Should add an error to this.state, catalogId is required', () => {
         const wrapper = shallow(<CatalogDetail params={{}}/>)
 
         return wrapper
           .instance()
-          .updateMetrics()
+          .updateCatalog()
           .then(() => expect(wrapper.state('errors')).toContain("catalogId is required"))
       })
 
-      it('Should return an error, catalog not found', () => {
+      it('Should add an error to this.state, catalog not found', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
 
         return wrapper
           .instance()
-          .updateMetrics()
+          .updateCatalog()
           .then(() => expect(wrapper.state('errors')).toContain("Catalog not found"))
       })
     })
 
+    describe('componentWillMount()', () => {
+      it('Should assign catalog and metrics to this.state when data is retrieved', () => {
+        const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
+        return wrapper
+          .instance()
+          .componentWillMount()
+          .then(() => {
+            expect(wrapper.state('metrics')).toEqual(metrics)
+            expect(wrapper.state('catalog')).toEqual(catalog)
+            expect(wrapper.state('errors')).toEqual([])
+          })
+      })
+    })
+
+    it('should render an empty div when no catalog is fetch', () => {
+      const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
+      expect(wrapper.html()).toEqual("<div></div>")
+    })
   })
 
 })

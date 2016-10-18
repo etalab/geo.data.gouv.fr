@@ -5,8 +5,7 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import fetchCatalog from '../fetch/fetchCatalog'
-import fetchMetrics from '../fetch/fetchMetrics'
+import { fetchCatalog, fetchMetrics } from '../fetch/fetch'
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class CatalogDetail extends Component {
         this.setState({ metrics })
       })
       .catch(err => {
-        if (this.state.errors.indexOf(err.message) < 0) {
+        if (!this.state.errors.includes(err.message)) {
           const errors = [...this.state.errors, err.message]
           this.setState({ errors })
         }
@@ -40,7 +39,7 @@ class CatalogDetail extends Component {
         this.setState({ catalog })
       })
       .catch(err => {
-        if (this.state.errors.indexOf(err.message) < 0) {
+        if (!this.state.errors.includes(err.message)) {
           const errors = [...this.state.errors, err.message]
           this.setState({ errors })
         }
@@ -48,7 +47,7 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    if (this.state && this.state.catalog && this.state.metrics) {
+    if (this.state.catalog && this.state.metrics) {
       const styles = {
         catalogDetail : {
           padding: 40,
