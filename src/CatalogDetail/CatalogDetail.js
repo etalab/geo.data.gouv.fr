@@ -26,7 +26,7 @@ class CatalogDetail extends Component {
         this.setState({ metrics })
       })
       .catch(err => {
-        if (this.state.errors.indexOf(err.message) < 0) {
+        if (!this.state.errors.includes(err.message)) {
           const errors = [...this.state.errors, err.message]
           this.setState({ errors })
         }
@@ -39,7 +39,7 @@ class CatalogDetail extends Component {
         this.setState({ catalog })
       })
       .catch(err => {
-        if (this.state.errors.indexOf(err.message) < 0) {
+        if (!this.state.errors.includes(err.message)) {
           const errors = [...this.state.errors, err.message]
           this.setState({ errors })
         }
