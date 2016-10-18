@@ -16,3 +16,7 @@ export function fetchCatalog(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   return _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
 }
+
+export function fetchDatasets() {
+  return _f(`https://inspire.data.gouv.fr/api/datasets/metrics`)
+}

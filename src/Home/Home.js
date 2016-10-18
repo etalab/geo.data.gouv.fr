@@ -1,36 +1,36 @@
 import React, { Component } from 'react'
-import MediaQuery from 'react-responsive'
 import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router'
 import Counter from '../Statistics/Counter/Counter'
+import { fetchDatasets } from '../fetch/fetch'
+import './Home.css'
 
 class Home extends Component {
   constructor(props) {
     super(props)
-    this.state = {data: undefined}
-    this.getData()
+    this.state = {errors: []}
   }
 
-  getData() {
-    if (!this.state.data) {
-      return fetch(`https://inspire.data.gouv.fr/api/datasets/metrics`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({data})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
+  componentWillMount() {
+    return fetchDatasets()
+      .then(datasets => {
+        this.setState({ datasets })
+      })
+      .catch(err => {
+        if (this.state.errors.indexOf(err.message) < 0) {
+          const errors = [...this.state.errors, err.message]
+          this.setState({ errors })
+        }
+      })
   }
 
   render() {
     const loader =  <CircularProgress size={1.5} />
-    const notPublishedYet = this.state.data ? <Counter value={this.state.data.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
-    const published = this.state.data ? <Counter value={this.state.data.published.public + this.state.data.published.private} label="" color="green" icon="database"/> : loader
-    const catalogs = this.state.data ? <Counter value={106} label="" color="blue" icon="book"/> : loader
+    const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
+    const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} label="" color="green" icon="database"/> : loader
+    const catalogs = this.state.datasets ? <Counter value={106} label="" color="blue" icon="book"/> : loader
 
     const styles = {
       masthead: {
@@ -39,19 +39,6 @@ class Home extends Component {
         alignItems: 'center',
         justifyContent: 'space-around',
         padding: '8%',
-      },
-      header: {
-        tablet: {
-          fontSize: '1em',
-          fontWeight: 'normal',
-          marginTop: '0.5em',
-          textAlign: 'center',
-          padding: '1em',
-        },
-        fontSize: '1.2em',
-        fontWeight: 'normal',
-        textAlign: 'center',
-        padding: '1em',
       },
       stats: {
         display: 'flex',
@@ -73,16 +60,9 @@ class Home extends Component {
     return (
       <div style={styles.masthead}>
 
-        <div style={styles.header}>
-
-          <MediaQuery style={styles.header} minWidth={701} component="h2">
-              Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
-          </MediaQuery>
-          <MediaQuery style={styles.header.tablet} maxWidth={700} component="h2">
-              Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
-          </MediaQuery>
-
-        </div>
+        <h2 className="intro">
+            Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
+        </h2>
 
         <div style={styles.stats}>
 
