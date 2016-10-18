@@ -1,0 +1,16 @@
+.intro {
+  font-size: 1.2em;
+  font-weight: normal;
+  text-align: center;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  .intro {
+    font-size: 1em;
+    font-weight: normal;
+    margin-top: 0.5em;
+    text-align: center;
+    padding: 1em;
+  }
+}

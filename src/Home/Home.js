@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import MediaQuery from 'react-responsive'
 import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router'
 import Counter from '../Statistics/Counter/Counter'
+import './Home.css'
 
 class Home extends Component {
   constructor(props) {
@@ -40,19 +40,6 @@ class Home extends Component {
         justifyContent: 'space-around',
         padding: '8%',
       },
-      header: {
-        tablet: {
-          fontSize: '1em',
-          fontWeight: 'normal',
-          marginTop: '0.5em',
-          textAlign: 'center',
-          padding: '1em',
-        },
-        fontSize: '1.2em',
-        fontWeight: 'normal',
-        textAlign: 'center',
-        padding: '1em',
-      },
       stats: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -73,16 +60,9 @@ class Home extends Component {
     return (
       <div style={styles.masthead}>
 
-        <div style={styles.header}>
-
-          <MediaQuery style={styles.header} minWidth={701} component="h2">
-              Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
-          </MediaQuery>
-          <MediaQuery style={styles.header.tablet} maxWidth={700} component="h2">
-              Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
-          </MediaQuery>
-
-        </div>
+        <h2 className="intro">
+            Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
+        </h2>
 
         <div style={styles.stats}>
 
