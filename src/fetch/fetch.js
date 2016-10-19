@@ -69,6 +69,19 @@ export function fetchCatalogs(component) {
   return waitDataAndSetState(fetchPromise, component, 'catalogs')
 }
 
+export function fetchHarvest(component, catalogId, harvestId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  if (!harvestId) return Promise.reject(new Error('harvestId is required'))
+  const fetchPromise = _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations/${harvestId}`)
+  return waitDataAndSetState(fetchPromise, component, 'harvest')
+}
+
+export function fetchHarvests(component, catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  const fetchPromise = _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations`)
+  return waitDataAndSetState(fetchPromise, component, 'harvests')
+}
+
 export function fetchDatasets(component) {
   const fetchPromise = _f('https://inspire.data.gouv.fr/api/datasets/metrics')
   return waitDataAndSetState(fetchPromise, component, 'datasets')
