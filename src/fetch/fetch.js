@@ -1,63 +1,32 @@
-import { makeCancelable, cancelAll } from '../helpers/promises';
-import { fetch as _f } from '../helpers/superfetch';
+import superfetch from '../helpers/superfetch';
 
-export function cancelAllPromise(component) {
-  if (!component.cancelablePromises) return;
-  return cancelAll(component.cancelablePromises);
+const _f = superfetch;
+
+export function fetchMetrics(catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
+  return _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}/metrics`);
 }
 
-function waitDataAndSetState(dataPromise, component, stateName) {
-  const cancelablePromise = makeCancelable(dataPromise
-    .then(data => {
-      const update = {};
-      update[stateName] = data;
-      if (!component._calledComponentWillUnmount) component.setState(update);
-    })
-    .catch(err => {
-      if (!component.state.errors.includes(err.message)) {
-        const errors = [...component.state.errors, err.message]
-        if (!component._calledComponentWillUnmount) component.setState({ errors })
-      }
-      throw err
-    })
-  )
-  if (!component.cancelablePromises) component.cancelablePromises = []
-
-  component.cancelablePromises.push(cancelablePromise)
-  return cancelablePromise
+export function fetchCatalog(catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
+  return  _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`);
 }
 
-export function fetchMetrics(component, catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  const fetchPromise = _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}/metrics`)
-  return waitDataAndSetState(fetchPromise, component, 'metrics')
+export function fetchCatalogs() {
+  return _f('https://inspire.data.gouv.fr/api/geogw/catalogs');
 }
 
-export function fetchCatalog(component, catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  const fetchPromise = _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
-  return waitDataAndSetState(fetchPromise, component, 'catalog')
-}
-
-export function fetchCatalogs(component) {
-  const fetchPromise = _f('https://inspire.data.gouv.fr/api/geogw/catalogs')
-  return waitDataAndSetState(fetchPromise, component, 'catalogs')
-}
-
-export function fetchHarvest(component, catalogId, harvestId) {
+export function fetchHarvest(catalogId, harvestId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (!harvestId) return Promise.reject(new Error('harvestId is required'))
-  const fetchPromise = _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations/${harvestId}`)
-  return waitDataAndSetState(fetchPromise, component, 'harvest')
+  return _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations/${harvestId}`)
 }
 
-export function fetchHarvests(component, catalogId) {
+export function fetchHarvests(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  const fetchPromise = _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations`)
-  return waitDataAndSetState(fetchPromise, component, 'harvests')
+  return _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations`)
 }
 
-export function fetchDatasets(component) {
-  const fetchPromise = _f('https://inspire.data.gouv.fr/api/datasets/metrics')
-  return waitDataAndSetState(fetchPromise, component, 'datasets')
+export function fetchDatasets() {
+  return _f('https://inspire.data.gouv.fr/api/datasets/metrics');
 }

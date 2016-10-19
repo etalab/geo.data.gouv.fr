@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Catalog from '../Catalog/Catalog'
-import { fetchCatalogs, cancelAllPromise } from '../fetch/fetch'
+import { fetchCatalogs } from '../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
 
 class Catalogs extends Component {
   constructor(props) {
@@ -9,11 +10,11 @@ class Catalogs extends Component {
   }
 
   componentWillMount() {
-    return fetchCatalogs(this)
+    return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs');
   }
 
   componentWillUnmount() {
-    return cancelAllPromise(this)
+    return cancelAllPromises(this)
   }
 
   render() {

@@ -1,4 +1,4 @@
-export function fetch(url) {
+export default function superfetch(url) {
   return fetch(url)
     .then(response => response.json())
     .catch((err) => {

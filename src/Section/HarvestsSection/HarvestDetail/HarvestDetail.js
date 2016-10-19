@@ -3,7 +3,8 @@ import { Link } from 'react-router'
 import Chip from 'material-ui/Chip'
 import Subheader from 'material-ui/Subheader'
 import moment from 'moment'
-import { fetchCatalog, fetchHarvest, cancelAllPromise } from '../../../fetch/fetch'
+import { fetchCatalog, fetchHarvest } from '../../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components';
 
 class HarvestDetail extends Component {
   constructor(props) {
@@ -19,15 +20,23 @@ class HarvestDetail extends Component {
   }
 
   updateHarvest() {
-    return fetchHarvest(this, this.props.params.catalogId, this.props.params.harvestId)
+    return waitForDataAndSetState(
+      fetchHarvest(this.props.params.catalogId, this.props.params.harvestId),
+      this,
+      'harvest'
+    );
   }
 
   updateCatalog() {
-    return fetchCatalog(this, this.props.params.catalogId)
+    return waitForDataAndSetState(
+      fetchCatalog(this.props.params.catalogId),
+      this,
+      'catalog'
+    );
   }
 
   componentWillUnmount() {
-    return cancelAllPromise(this)
+    return cancelAllPromises(this)
   }
 
   render() {

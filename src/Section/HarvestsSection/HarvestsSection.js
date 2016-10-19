@@ -4,7 +4,8 @@ import { Line } from 'react-chartjs'
 import Histogram from '../../Charts/Histogram/Histogram'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
-import { fetchHarvests, cancelAllPromise } from '../../fetch/fetch'
+import { fetchHarvests } from '../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -13,11 +14,11 @@ class HarvestsSection extends Component {
   }
 
   componentWillMount() {
-    return fetchHarvests(this, this.props.catalog.id)
+    return waitForDataAndSetState(fetchHarvests(this.props.catalog.id), this, 'harvests');
   }
 
   componentWillUnmount() {
-    return cancelAllPromise(this)
+    return cancelAllPromises(this)
   }
 
   getGraphData() {

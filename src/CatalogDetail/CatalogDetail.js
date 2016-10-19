@@ -5,7 +5,8 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import { fetchCatalog, fetchMetrics } from '../fetch/fetch'
+import { fetchCatalog, fetchMetrics } from '../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -20,12 +21,16 @@ class CatalogDetail extends Component {
     ])
   }
 
+  componentWillUnmount() {
+    return cancelAllPromises(this)
+  }
+
   updateMetrics() {
-    return fetchMetrics(this, this.props.params.catalogId)
+    return waitForDataAndSetState(fetchMetrics(this.props.params.catalogId), this, 'metrics');
   }
 
   updateCatalog() {
-    return fetchCatalog(this, this.props.params.catalogId)
+    return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog');
   }
 
   render() {
