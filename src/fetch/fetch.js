@@ -1,5 +1,8 @@
 export function cancelAllPromise(component) {
-  return component.cancelablePromises.map( promise => promise.cancel())
+  component.cancelablePromises.map( (promise) => {
+    promise.cancel()
+    return promise.promise.catch((err) => err)
+  })
 }
 
 export const makeCancelable = (promise) => {
