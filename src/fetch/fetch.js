@@ -39,12 +39,12 @@ function waitDataAndSetState(dataPromise, component, stateName) {
     .then(data => {
       const update = {};
       update[stateName] = data;
-      component.setState(update);
+      if (!component._calledComponentWillUnmount) component.setState(update);
     })
     .catch(err => {
       if (!component.state.errors.includes(err.message)) {
         const errors = [...component.state.errors, err.message]
-        component.setState({ errors })
+        if (!component._calledComponentWillUnmount) component.setState({ errors })
       }
       throw err
     })
