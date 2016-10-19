@@ -1,37 +1,9 @@
+import { makeCancelable, cancelAll } from '../helpers/promises';
+import { fetch as _f } from '../helpers/superfetch';
+
 export function cancelAllPromise(component) {
-  component.cancelablePromises.map( (promise) => {
-    promise.cancel()
-    return promise.promise.catch((err) => err)
-  })
-}
-
-export const makeCancelable = (promise) => {
-  let hasCanceled_ = false;
-
-  const wrappedPromise = new Promise((resolve, reject) => {
-    promise.then((val) =>
-      hasCanceled_ ? reject({isCanceled: true}) : resolve(val)
-    );
-    promise.catch((error) =>
-      hasCanceled_ ? reject({isCanceled: true}) : reject(error)
-    );
-  });
-
-  return {
-    promise: wrappedPromise,
-    cancel() {
-      hasCanceled_ = true;
-    },
-  };
-};
-
-function _f(url) {
-  return fetch(url)
-    .then(response => response.json())
-    .catch((err) => {
-      console.error(err)
-      throw err
-    })
+  if (!component.cancelablePromises) return;
+  return cancelAll(component.cancelablePromises);
 }
 
 function waitDataAndSetState(dataPromise, component, stateName) {
