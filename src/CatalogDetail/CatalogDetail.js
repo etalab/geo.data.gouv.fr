@@ -21,29 +21,11 @@ class CatalogDetail extends Component {
   }
 
   updateMetrics() {
-    return fetchMetrics(this.props.params.catalogId)
-      .then(metrics => {
-        this.setState({ metrics })
-      })
-      .catch(err => {
-        if (!this.state.errors.includes(err.message)) {
-          const errors = [...this.state.errors, err.message]
-          this.setState({ errors })
-        }
-      })
+    return fetchMetrics(this, this.props.params.catalogId)
   }
 
   updateCatalog() {
-    return fetchCatalog(this.props.params.catalogId)
-      .then(catalog => {
-        this.setState({ catalog })
-      })
-      .catch(err => {
-        if (!this.state.errors.includes(err.message)) {
-          const errors = [...this.state.errors, err.message]
-          this.setState({ errors })
-        }
-      })
+    return fetchCatalog(this, this.props.params.catalogId)
   }
 
   render() {

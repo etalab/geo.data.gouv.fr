@@ -4,25 +4,20 @@ import { Line } from 'react-chartjs'
 import Histogram from '../../Charts/Histogram/Histogram'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
+import { fetchHarvests, cancelAllPromise } from '../../fetch/fetch'
 
 class HarvestsSection extends Component {
   constructor(props) {
     super(props)
-    this.state = {harvests: undefined}
-    this.getHarvests()
+    this.state = {errors: []}
   }
 
-  getHarvests() {
-    if (!this.state.harvests) {
-      return fetch(`https://inspire.data.gouv.fr/api/geogw/services/${this.props.catalog.id}/synchronizations`)
-        .then((response) => response.json())
-        .then((harvests) => {
-          this.setState({harvests})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
+  componentWillMount() {
+    return fetchHarvests(this, this.props.catalog.id)
+  }
+
+  componentWillUnmount() {
+    return cancelAllPromise(this)
   }
 
   getGraphData() {
