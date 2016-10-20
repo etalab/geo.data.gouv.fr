@@ -1,0 +1,35 @@
+[
+  {
+    "id": "5387761fb01aa2342e124c96",
+    "name": "GrandLyon Smart Data",
+    "tags": [ ],
+    "serviceUrl": "https://download.data.grandlyon.com/catalogue/srv/fr/csw",
+    "lastHarvesting": {
+      "status": "successful",
+      "recordsFound": 832,
+      "finishedAt": "2016-10-20T00:03:32.811Z"
+    }
+  },
+  {
+    "id": "538781513081a0b92eccc31a",
+    "name": "Géocatalogue national",
+    "tags": [ ],
+    "serviceUrl": "http://www.geocatalogue.fr/api-public/servicesRest",
+    "lastHarvesting": {
+      "status": "failed",
+      "recordsFound": 0,
+      "finishedAt": "2016-09-01T14:03:24.339Z"
+    }
+  },
+  {
+    "id": "5387a33e785588482f5acb44",
+    "name": "SIGLOIRE",
+    "tags": [ ],
+    "serviceUrl": "http://catalogue.sigloire.fr/geonetwork/srv/fre/csw",
+    "lastHarvesting": {
+      "status": "successful",
+      "recordsFound": 1422,
+      "finishedAt": "2016-10-20T00:05:10.169Z"
+    }
+  }
+]
