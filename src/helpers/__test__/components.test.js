@@ -1,7 +1,7 @@
 import Promise from 'bluebird'
 import React, { Component } from 'react'
 import { shallow } from 'enzyme'
-import { cancelAllPromises, waitDataAndSetState  } from '../components'
+import { cancelAllPromises, waitForDataAndSetState  } from '../components'
 import { makeCancelable } from '../promises'
 
 class TestComponent extends Component {
@@ -50,12 +50,12 @@ describe('components', () => {
     })
   })
 
-  describe('waitDataAndSetState', () => {
+  describe('waitForDataAndSetState', () => {
     it('should create a cancelablePromises array to component when no exist', () => {
       const component = shallow(<TestComponent />).instance()
 
       expect(component.cancelablePromises).toBeUndefined()
-      waitDataAndSetState(fakePromise(), component, 'stateName')
+      waitForDataAndSetState(fakePromise(), component, 'stateName')
       expect(component.cancelablePromises).not.toBeUndefined()
     })
 
@@ -63,7 +63,7 @@ describe('components', () => {
       const component = shallow(<TestComponent />).instance()
       component.cancelablePromises = []
 
-      waitDataAndSetState(fakePromise(), component, 'stateName')
+      waitForDataAndSetState(fakePromise(), component, 'stateName')
       expect(component.cancelablePromises.length).toEqual(1)
     })
 
@@ -71,7 +71,7 @@ describe('components', () => {
       it('should assing data to state when promise resolve', () => {
         const component = shallow(<TestComponent />).instance()
 
-        return waitDataAndSetState(Promise.resolve('fakeResolve'), component, 'stateName')
+        return waitForDataAndSetState(Promise.resolve('fakeResolve'), component, 'stateName')
           .then(() => expect(component.state.stateName).not.toBeUndefined())
       })
     })
@@ -80,17 +80,17 @@ describe('components', () => {
       it('should assing error to state when promise reject', () => {
         const component = shallow(<TestComponent />).instance()
 
-        return waitDataAndSetState(rejectedPromise(), component, 'stateName')
+        return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
           .then(() => expect(component.state.errors.length).toEqual(1))
       })
 
       it('should not assing twice error to state', () => {
         const component = shallow(<TestComponent />).instance()
 
-        return waitDataAndSetState(rejectedPromise(), component, 'stateName')
+        return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
           .then(() => {
             expect(component.state.errors.length).toEqual(1)
-            return waitDataAndSetState(rejectedPromise(), component, 'stateName')
+            return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
               .then(() => expect(component.state.errors.length).toEqual(1))
         })
       })
