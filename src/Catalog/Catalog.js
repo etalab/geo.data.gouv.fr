@@ -27,6 +27,7 @@ class Catalog extends Component {
       const loader =  <CircularProgress size={1} />
       const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" /> : loader
       const download = metrics ? <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="downloadable" icon="download" size="small" /> : loader
+      const counter = metrics ? <Counter value={metrics.totalCount} size="small" label="Records" /> : loader
 
       const styles = {
         link: {
@@ -46,7 +47,7 @@ class Catalog extends Component {
                   <div className="ui equal width grid">
                     <div className="column">{openness}</div>
                     <div className="column">{download}</div>
-                    <div className="column"><Counter value={this.props.catalog.lastHarvesting.recordsFound} size="small" label="Records" /></div>
+                    <div className="column">{counter}</div>
                   </div>
                 </div>
               </div>
