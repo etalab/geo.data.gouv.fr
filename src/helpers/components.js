@@ -5,7 +5,7 @@ export function cancelAllPromises(component) {
   return cancelAll(component.cancelablePromises);
 }
 
-export function waitForDataAndSetState(dataPromise, component, stateName) {
+export function waitDataAndSetState(dataPromise, component, stateName) {
   const cancelablePromise = makeCancelable(dataPromise);
 
   if (!component.cancelablePromises) component.cancelablePromises = []
