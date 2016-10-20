@@ -10,6 +10,7 @@
     "react-scripts": "^0.6.1"
   },
   "dependencies": {
+    "bluebird": "^3.4.6",
     "chart.js": "^1.1.1",
     "json-loader": "^0.5.4",
     "material-ui": "^0.15.4",
