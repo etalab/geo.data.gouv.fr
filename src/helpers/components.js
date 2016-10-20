@@ -6,22 +6,22 @@ export function cancelAllPromises(component) {
 }
 
 export function waitForDataAndSetState(dataPromise, component, stateName) {
-  const cancelablePromise = makeCancelable(dataPromise
+  const cancelablePromise = makeCancelable(dataPromise);
+
+  if (!component.cancelablePromises) component.cancelablePromises = []
+  component.cancelablePromises.push(cancelablePromise)
+
+  return cancelablePromise.promise
     .then(data => {
       const update = {};
       update[stateName] = data;
-      if (!component._calledComponentWillUnmount) component.setState(update);
+      component.setState(update);
     })
     .catch(err => {
+      if (err.isCanceled) return;
       if (!component.state.errors.includes(err.message)) {
         const errors = [...component.state.errors, err.message]
-        if (!component._calledComponentWillUnmount) component.setState({ errors })
+        component.setState({ errors })
       }
-      throw err
-    })
-  )
-  if (!component.cancelablePromises) component.cancelablePromises = []
-
-  component.cancelablePromises.push(cancelablePromise)
-  return cancelablePromise
+    });
 }
