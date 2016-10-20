@@ -5,20 +5,21 @@ import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
 import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
-import { fetchMetrics } from '../fetch/fetch'
+import { fetchMetrics } from '../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
 
 class Catalog extends Component {
   constructor(props) {
     super(props)
-    this.state = {metrics: undefined}
+    this.state = {errors: []}
   }
 
   componentWillMount() {
-    return fetchMetrics(this.props.catalog.id)
-      .then(metrics => {
-        this.setState({ metrics })
-      })
-      .catch(err => console.error(err));
+    return waitForDataAndSetState(fetchMetrics(this.props.catalog.id), this, 'metrics');
+  }
+
+  componentWillUnmount() {
+    return cancelAllPromises(this)
   }
 
   render() {

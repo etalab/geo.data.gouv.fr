@@ -36,7 +36,7 @@ class DoughnutChart extends Component {
       },
     }
 
-    if (data.length === 2) {
+    if (data.length === 1) {
       return <Percent value={100} total={100} label={data[0].label} icon="database icon" size="small" />
     } else if (data.length === 0) {
       return <h1>No data</h1>

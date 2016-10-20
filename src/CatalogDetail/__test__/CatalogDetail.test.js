@@ -45,7 +45,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toContain('Metrics not found'))
+          .then(() => expect(wrapper.state('errors')).toContain('metrics not found'))
       })
     })
 
@@ -73,7 +73,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateCatalog()
-          .then(() => expect(wrapper.state('errors')).toContain('Catalog not found'))
+          .then(() => expect(wrapper.state('errors')).toContain('catalog not found'))
       })
     })
 

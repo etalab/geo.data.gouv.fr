@@ -3,39 +3,40 @@ import { Link } from 'react-router'
 import Chip from 'material-ui/Chip'
 import Subheader from 'material-ui/Subheader'
 import moment from 'moment'
+import { fetchCatalog, fetchHarvest } from '../../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components';
 
 class HarvestDetail extends Component {
   constructor(props) {
     super(props)
-    this.state = {harvest: undefined}
-    this.getLogs()
-    this.getCatalog()
+    this.state = {errors: []}
   }
 
-  getCatalog() {
-    if (!this.state.catalog) {
-    return fetch(`https://inspire.data.gouv.fr/api/geogw/catalogs/${this.props.params.catalogId}`)
-      .then((response) => response.json())
-      .then((catalog) => {
-        this.setState({catalog})
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-    }
+  componentWillMount() {
+    return Promise.all([
+      this.updateCatalog(),
+      this.updateHarvest(),
+    ])
   }
 
-  getLogs() {
-    if (!this.state.harvest) {
-      return fetch(`https://inspire.data.gouv.fr/api/geogw/services/${this.props.params.catalogId}/synchronizations/${this.props.params.harvestId}`)
-        .then((response) => response.json())
-        .then((harvest) => {
-          this.setState({harvest})
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-      }
+  updateHarvest() {
+    return waitForDataAndSetState(
+      fetchHarvest(this.props.params.catalogId, this.props.params.harvestId),
+      this,
+      'harvest'
+    );
+  }
+
+  updateCatalog() {
+    return waitForDataAndSetState(
+      fetchCatalog(this.props.params.catalogId),
+      this,
+      'catalog'
+    );
+  }
+
+  componentWillUnmount() {
+    return cancelAllPromises(this)
   }
 
   render() {

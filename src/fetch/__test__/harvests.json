@@ -1,0 +1,142 @@
+[
+   {
+      "_id":"57eefc94ecc6fb09750d669f",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-20T00:03:32.810Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57edab14ecc6fb09750d6637",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-19T00:02:49.372Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57ec5992ecc6fb09750d65cf",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-18T00:03:04.929Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57eb081cecc6fb09750d6567",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-17T00:02:30.525Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57e9b692ecc6fb09750d64ff",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-16T00:02:35.980Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57e86512ecc6fb09750d6496",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-15T00:02:50.814Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57e71391be9bc9f37424917d",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-14T00:02:58.782Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57e5c210ecc6fb09750d642e",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-13T00:03:30.565Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57e5200aa0485da94d401e86",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-12T00:02:48.426Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   },
+   {
+      "_id":"57e4709419f047884dd1a112",
+      "service":"5387761fb01aa2342e124c96",
+      "status":"successful",
+      "__v":1,
+      "finished":"2016-10-11T00:02:33.856Z",
+      "itemsFound":832,
+      "log":[
+         "Records matched: 832",
+         "Unique records returned: 832",
+         "Ignore statistics:",
+         " * Record already seen: 427"
+      ]
+   }
+]

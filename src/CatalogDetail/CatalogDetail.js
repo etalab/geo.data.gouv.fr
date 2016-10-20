@@ -5,7 +5,8 @@ import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import { fetchCatalog, fetchMetrics } from '../fetch/fetch'
+import { fetchCatalog, fetchMetrics } from '../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -20,30 +21,16 @@ class CatalogDetail extends Component {
     ])
   }
 
+  componentWillUnmount() {
+    return cancelAllPromises(this)
+  }
+
   updateMetrics() {
-    return fetchMetrics(this.props.params.catalogId)
-      .then(metrics => {
-        this.setState({ metrics })
-      })
-      .catch(err => {
-        if (!this.state.errors.includes(err.message)) {
-          const errors = [...this.state.errors, err.message]
-          this.setState({ errors })
-        }
-      })
+    return waitForDataAndSetState(fetchMetrics(this.props.params.catalogId), this, 'metrics');
   }
 
   updateCatalog() {
-    return fetchCatalog(this.props.params.catalogId)
-      .then(catalog => {
-        this.setState({ catalog })
-      })
-      .catch(err => {
-        if (!this.state.errors.includes(err.message)) {
-          const errors = [...this.state.errors, err.message]
-          this.setState({ errors })
-        }
-      })
+    return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog');
   }
 
   render() {

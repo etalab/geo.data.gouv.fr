@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import Catalog from '../Catalog/Catalog'
+import { fetchCatalogs } from '../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
 
 class Catalogs extends Component {
   constructor(props) {
     super(props)
-    this.state = {catalogs: []}
-    this.getCatalogs()
+    this.state = {errors: []}
   }
 
-  getCatalogs() {
-    return fetch('https://inspire.data.gouv.fr/api/geogw/catalogs')
-      .then((response) => response.json())
-      .then((catalogs) => {
-        this.setState({catalogs})
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+  componentWillMount() {
+    return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs');
+  }
+
+  componentWillUnmount() {
+    return cancelAllPromises(this)
   }
 
   render() {
@@ -28,13 +26,18 @@ class Catalogs extends Component {
         paddingTop: '2em',
       },
     }
-    return (
-      <div className="catalogs">
-        <div style={styles.container}>
-          {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
+
+    if (this.state.catalogs) {
+      return (
+        <div className="catalogs">
+          <div style={styles.container}>
+            {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return <div></div>
+    }
   }
 }
 

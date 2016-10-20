@@ -4,6 +4,7 @@
   "homepage": "https://inspire.beta.gouv.fr",
   "private": true,
   "devDependencies": {
+    "bluebird": "^3.4.6",
     "enzyme": "^2.4.1",
     "jsdom": "^9.6.0",
     "react-addons-test-utils": "^15.3.2",
