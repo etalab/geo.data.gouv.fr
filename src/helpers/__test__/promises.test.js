@@ -1,4 +1,9 @@
 import { makeCancelable } from '../promises'
+import Promise from 'bluebird'
+
+function reflect(promise) {
+  return Promise.resolve(promise).reflect();
+}
 
 describe('promises', () => {
   describe('makeCancelable', () => {
@@ -11,7 +16,7 @@ describe('promises', () => {
 
       it('should resolve value when hasCanceled_ is false', () => {
         resolveFn('foo')
-        return p.promise.reflect().then(inspection => {
+        return reflect(p.promise).then(inspection => {
           expect(inspection.isFulfilled()).toBe(true)
           expect(inspection.value()).toBe('foo')
         })
@@ -20,7 +25,7 @@ describe('promises', () => {
       it('should reject isCanceled when hasCanceled_ is true', () => {
         p.cancel()
         resolveFn('foo')
-        return p.promise.reflect().then(inspection => {
+        return reflect(p.promise).then(inspection => {
           expect(inspection.isRejected()).toBe(true)
           expect(inspection.reason().isCanceled).toBe(true)
         })
@@ -36,7 +41,7 @@ describe('promises', () => {
 
       it('should reject error when hasCanceled_ is false', () => {
         rejectFn('foo')
-        return p.promise.reflect().then(inspection => {
+        return reflect(p.promise).then(inspection => {
           expect(inspection.isRejected()).toBe(true)
           expect(inspection.reason()).toBe('foo')
           expect(inspection.reason().isCanceled).toBeUndefined()
@@ -46,7 +51,7 @@ describe('promises', () => {
       it('should reject isCanceled when hasCanceled_ is true', () => {
         p.cancel()
         rejectFn('foo')
-        return p.promise.reflect().then(inspection => {
+        return reflect(p.promise).then(inspection => {
           expect(inspection.isRejected()).toBe(true)
           expect(inspection.reason().isCanceled).toBe(true)
         })

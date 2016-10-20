@@ -4,6 +4,10 @@ import { shallow } from 'enzyme'
 import { cancelAllPromises, waitForDataAndSetState  } from '../components'
 import { makeCancelable } from '../promises'
 
+function reflect(promise) {
+  return Promise.resolve(promise).reflect();
+}
+
 class TestComponent extends Component {
   constructor(props) {
     super(props)
@@ -41,7 +45,7 @@ describe('components', () => {
       const component = shallow(<TestComponent />);
       component.cancelablePromises = [makeCancelable(fakePromise()), makeCancelable(fakePromise())]
       cancelAllPromises(component)
-      const canceledPromises = component.cancelablePromises.map(c => c.promise.reflect())
+      const canceledPromises = component.cancelablePromises.map(c => reflect(c.promise))
 
       return Promise.all(canceledPromises, canceledPromise => {
         expect(canceledPromise.isRejected()).toBe(true)

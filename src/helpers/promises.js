@@ -1,5 +1,3 @@
-import Promise from 'bluebird'
-
 export function makeCancelable(promise) {
   let hasCanceled_ = false;
 
