@@ -1,0 +1,102 @@
+{
+   "recordId":"9e91c0888c868dbb5cb651b8a74795efc49f0937",
+   "consolidating":false,
+   "createdAt":"2016-03-15T10:03:57.541Z",
+   "metadata":{
+      "metadataType":"ISO 19139",
+      "id":"d6fc93e1-ed06-4a19-86a3-305ce7259030",
+      "title":"Etablissement de police ou de gendarmerie de la Métropole de Lyon",
+      "alternateTitle":null,
+      "description":"Localisation de l'emprise des établissements de police ou de gendarmerie (municipal, national ou international).",
+      "type":"dataset",
+      "spatialRepresentationType":"vector",
+      "lineage":"Les lieux (surfaces ou points) sont décomposés par thèmes et sous-thèmes à partir des lieux surfaciques et ponctuels de la base \"Lieux et édifices\"\r\nDes mises à jour sont assurées par des campagnes régulière de vérification.\r\nLa précision de localisation ne peut excéder celle du cadastre numérisé sur lequel sont saisies ces données. Les contours des lieux peuvent ne pas correspondre exactement à l'emprise des entités réelles sur le terrain.",
+      "keywords":[
+         "location",
+         "Services d'utilité publique et services publics",
+         "Bâtiments",
+         "données ouvertes"
+      ],
+      "contributors":[
+         "Métropole de Lyon / Direction Innovation Numérique et Systèmes d'Information (DINSI)"
+      ],
+      "links":[
+         {
+            "name":"3b_-_Lieux_et_edifices.pdf",
+            "href":"https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=d6fc93e1-ed06-4a19-86a3-305ce7259030&fname=3b_-_Lieux_et_edifices.pdf&access=public",
+            "protocol":"WWW:DOWNLOAD-1.0-http--download"
+         },
+         {
+            "name":"adr_voie_lieu.adrsecurite",
+            "href":"https://download.data.grandlyon.com/wms/grandlyon",
+            "protocol":"OGC:WMS"
+         },
+         {
+            "name":"adr_voie_lieu.adrsecurite",
+            "href":"https://download.data.grandlyon.com/wfs/grandlyon",
+            "protocol":"OGC:WFS"
+         },
+         {
+            "name":"adr_voie_lieu.adrsecurite/all.json",
+            "href":"https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adrsecurite/all.json",
+            "protocol":"WWW:LINK-1.0-http--link"
+         },
+         {
+            "name":"Licence Ouverte",
+            "href":"https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf",
+            "protocol":"WWW:LINK-1.0-http--link"
+         }
+      ],
+      "license":"fr-lo"
+   },
+   "recordHash":"f1864328a202545e77f91b29b67f8cb164e4b798",
+   "revisionDate":"2016-06-07T00:08:43.000Z",
+   "alternateResources":[
+      {
+         "available":null,
+         "location":"https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=d6fc93e1-ed06-4a19-86a3-305ce7259030&fname=3b_-_Lieux_et_edifices.pdf&access=public",
+         "name":"3b_-_Lieux_et_edifices.pdf"
+      },
+      {
+         "available":null,
+         "location":"https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adrsecurite/all.json",
+         "name":"adr_voie_lieu.adrsecurite/all.json"
+      },
+      {
+         "available":null,
+         "location":"https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf",
+         "name":"Licence Ouverte"
+      }
+   ],
+   "organizations":[
+      "Métropole de Lyon / Direction Innovation Numérique et Systèmes d'Information (DINSI)"
+   ],
+   "dataset":{
+      "updatedAt":"2016-10-17T00:01:15.662Z",
+      "distributions":[
+         {
+            "type":"wfs-featureType",
+            "service":"556c63dd330f1fcd48345108",
+            "typeName":"ms:adr_voie_lieu.adrsecurite",
+            "available":true,
+            "_id":"580414ceeb92d7035a3c4ba3"
+         }
+      ]
+   },
+   "publications":[
+      {
+         "owner":"534fff7aa3a7292c64a77e0c",
+         "status":"public",
+         "id":"56ec0852c751df1d76cc7141",
+         "website":"data.gouv.fr"
+      }
+   ],
+   "catalogs":[
+      "5387761fb01aa2342e124c96"
+   ],
+   "@id":"https://inspire.data.gouv.fr/api/geogw/records/9e91c0888c86",
+   "@relatedResources":"https://inspire.data.gouv.fr/api/geogw/records/9e91c0888c86/related-resources",
+   "@catalogs":[
+      "https://inspire.data.gouv.fr/api/geogw/services/5387761fb01aa2342e124c96"
+   ]
+}

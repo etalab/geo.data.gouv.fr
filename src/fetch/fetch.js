@@ -30,3 +30,8 @@ export function fetchHarvests(catalogId) {
 export function fetchGlobalMetrics() {
   return _f('https://inspire.data.gouv.fr/api/datasets/metrics');
 }
+
+export function fetchDataset(datasetId) {
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  return _f(`https://inspire.data.gouv.fr/api/geogw/records/${datasetId}`)
+}
