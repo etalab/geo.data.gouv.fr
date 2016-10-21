@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import CustomTheme from '../CustomTheme'
+import customTheme from '../../customTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import Content from '../Content/Content'
 
 class App extends Component {
   getChildContext() {
-    return {muiTheme: getMuiTheme(CustomTheme)}
+    return {muiTheme: getMuiTheme(customTheme)}
   }
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(CustomTheme)}>
+      <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
         <Content children={this.props.children} location={this.props.location} />
       </MuiThemeProvider>
     )

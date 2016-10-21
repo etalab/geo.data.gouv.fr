@@ -4,8 +4,8 @@ import Paper from 'material-ui/Paper'
 import { Link } from 'react-router'
 import CatalogPreview from './CatalogPreview/CatalogPreview'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
-import { fetchMetrics } from '../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
+import { fetchMetrics } from '../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 
 class Catalog extends Component {
   constructor(props) {
