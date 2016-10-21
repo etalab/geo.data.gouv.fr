@@ -13,7 +13,12 @@ jest.mock('../../fetch/fetch');
 describe('<Catalog />', () => {
 
   describe('When all goes well', () => {
-    const wrapper = shallow(<Catalog catalog={catalog} />);
+    let wrapper
+
+    beforeEach(() => {
+      wrapper = shallow(<Catalog catalog={catalog} />)
+    })
+
     it('renders without crashing', () => {
       shallow(<Catalog catalog={catalog} />);
     });
@@ -24,8 +29,13 @@ describe('<Catalog />', () => {
     });
 
     it('should display the number of records', () => {
-      const records = <Counter value={0} size="small" label="Records" />
-      expect(wrapper.contains(records)).toEqual(true);
+      const wrapper = mountWithContext(<Catalog catalog={catalog} />)
+      const records = <Counter value={metrics.totalCount} size="small" label="Records" />
+
+      return wrapper
+        .instance()
+        .componentWillMount()
+        .then(() => expect(wrapper.contains(records)).toEqual(true))
     });
 
     it('should display the openness percent', () => {
