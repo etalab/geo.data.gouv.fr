@@ -34,6 +34,6 @@ export function fetchHarvests(catalogId) {
   return Promise.reject(new Error('harvests not found'))
 }
 
-export function fetchDatasets() {
+export function fetchGlobalMetrics() {
   return Promise.resolve(datasets) // Finding a solution to Promise.reject()
 }

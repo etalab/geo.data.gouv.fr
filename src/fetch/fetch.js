@@ -27,6 +27,6 @@ export function fetchHarvests(catalogId) {
   return _f(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations`)
 }
 
-export function fetchDatasets() {
+export function fetchGlobalMetrics() {
   return _f('https://inspire.data.gouv.fr/api/datasets/metrics');
 }
