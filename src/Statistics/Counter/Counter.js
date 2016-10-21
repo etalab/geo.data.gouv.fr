@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Counter = ({value, label, unit='', color='black', icon='', size='', description=''}) => {
+const Counter = ({value, label, style, unit='', color='black', icon='', size='', description=''}) => {
 
   const styles = {
     label: {
@@ -9,7 +9,7 @@ const Counter = ({value, label, unit='', color='black', icon='', size='', descri
     }
   }
   return (
-    <div className={`ui ${size} ${color} statistic`}>
+    <div style={style} className={`ui ${size} ${color} statistic`}>
       <div className="value">
         <i className={`${icon} icon`}></i> {value} {unit}</div>
       <div style={styles.label} className="label">{label}</div>
