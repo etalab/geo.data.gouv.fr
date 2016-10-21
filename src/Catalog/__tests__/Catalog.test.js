@@ -1,5 +1,5 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 import Loader from '../../Loader/Loader'
 import Catalog from '../Catalog'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
@@ -7,7 +7,7 @@ import { mountWithContext } from '../../../test/jsdom-setup'
 
 import catalog from '../../fetch/__test__/catalog.json'
 import metrics from '../../fetch/__test__/metrics.json'
-jest.mock('../../fetch/fetch');
+jest.mock('../../fetch/fetch')
 
 describe('<Catalog />', () => {
 
@@ -19,8 +19,8 @@ describe('<Catalog />', () => {
     })
 
     it('should display the name of the catalog', () => {
-      expect(wrapper.contains(catalog.name)).toBe(true);
-    });
+      expect(wrapper.contains(catalog.name)).toBe(true)
+    })
 
     it('should display <CatalogPreview />', () => {
       const wrapper = mountWithContext(<Catalog catalog={catalog} />)
@@ -32,7 +32,7 @@ describe('<Catalog />', () => {
         .then(() => {
           expect(wrapper.contains(catalogPreview)).toBe(true)
         })
-    });
+    })
 
   })
 
@@ -44,14 +44,14 @@ describe('<Catalog />', () => {
         .instance()
         .componentWillMount()
         .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
-    });
+    })
 
     it('should display a loading', () => {
       const loader = mountWithContext(<Loader component={<div></div>} value={undefined} />)
       const wrapper = mountWithContext(<Catalog catalog={catalog} />)
 
       expect(wrapper.html()).toContain(loader.html())
-    });
+    })
   })
 
 })
