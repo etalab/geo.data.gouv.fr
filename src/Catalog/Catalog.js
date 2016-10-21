@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
+import Loader from '../Loader/Loader'
 import Paper from 'material-ui/Paper'
 import { Link } from 'react-router'
+import CatalogPreview from './CatalogPreview/CatalogPreview'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
-import Loader from '../Loader/Loader'
-import Counter from '../Statistics/Counter/Counter'
-import Percent from '../Statistics/Percent/Percent'
 import { fetchMetrics } from '../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
 
@@ -23,11 +22,7 @@ class Catalog extends Component {
   }
 
   render() {
-      const metrics = this.state.metrics
-      const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" /> : <div></div>
-      const download = metrics ? <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="downloadable" icon="download" size="small" /> : <div></div>
-      const counter = metrics ? <Counter value={metrics.totalCount} size="small" label="Records" /> : <div></div>
-
+      const catalogPreview = <CatalogPreview metrics={this.state.metrics} />
       const styles = {
         link: {
           cursor: 'pointer',
@@ -36,25 +31,11 @@ class Catalog extends Component {
       }
       return (
           <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
-            <Paper rounded={true} zDepth={2} className="ui segment">
-              <LastHarvesting harvest={this.props.catalog.lastHarvesting}/>
-              <div className="ui grid container">
-                <div className="six wide column">
-                  <span className="ui large header">{this.props.catalog.name}</span>
-                </div>
-                <div className="ten wide column">
-                  <div className="ui equal width grid">
-                    <div className="column">
-                      <Loader value={metrics} component={openness} />
-                    </div>
-                    <div className="column">
-                      <Loader value={metrics} component={download} />
-                    </div>
-                    <div className="column">
-                      <Loader value={metrics} component={counter} />
-                    </div>
-                  </div>
-                </div>
+            <Paper rounded={true} zDepth={2}>
+              <LastHarvesting style={styles.ribbon} harvest={this.props.catalog.lastHarvesting}/>
+              <div style={styles.stats}>
+                <span style={styles.title} className="ui large header">{this.props.catalog.name}</span>
+                <Loader value={this.state.metrics} component={catalogPreview}/>
               </div>
             </Paper>
           </Link>
