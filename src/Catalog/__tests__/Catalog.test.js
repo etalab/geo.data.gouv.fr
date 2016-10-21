@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Percent from '../../Statistics/Percent/Percent'
-import CircularProgress from 'material-ui/CircularProgress'
+import Loader from '../../Loader/Loader'
 import Counter from '../../Statistics/Counter/Counter'
 import Catalog from '../Catalog'
 import { mountWithContext } from '../../../test/jsdom-setup'
@@ -39,19 +39,23 @@ describe('<Catalog />', () => {
     });
 
     it('should display the openness percent', () => {
-      const open = <Percent value={808} total={833} label="open data" icon="unlock alternate icon" size="small" />
+      const open = <Percent value={ metrics.partitions['openness'].yes} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" />
+      const wrapper = mountWithContext(<Catalog catalog={catalog} />)
 
-      wrapper.setState({metrics: metrics});
-
-      expect(wrapper.contains(open)).toEqual(true);
+        return wrapper
+          .instance()
+          .componentWillMount()
+          .then(() => expect(wrapper.contains(open)).toEqual(true))
     });
 
     it('should display the downloadable percent', () => {
-      const download = <Percent value={728} total={833} label="downloadable" icon="download" size="small" />
+      const download = <Percent value={ metrics.partitions['download'].yes} total={metrics.totalCount} label="downloadable" icon="download" size="small" />
+      const wrapper = mountWithContext(<Catalog catalog={catalog} />)
 
-      wrapper.setState({metrics: metrics});
-
-      expect(wrapper.contains(download)).toEqual(true);
+        return wrapper
+          .instance()
+          .componentWillMount()
+          .then(() => expect(wrapper.contains(download)).toEqual(true))
     });
   })
 
@@ -65,7 +69,7 @@ describe('<Catalog />', () => {
     });
 
     it('should display a loading.', () => {
-      const loader = <CircularProgress size={1} />
+      const loader = <Loader component={<div></div>} value={undefined} />
       const wrapper = shallow(<Catalog catalog={catalog} />);
       expect(wrapper.contains(loader)).toEqual(true);
     });

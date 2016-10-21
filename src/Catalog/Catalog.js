@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
-import CircularProgress from 'material-ui/CircularProgress'
 import { Link } from 'react-router'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
+import Loader from '../Loader/Loader'
 import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
 import { fetchMetrics } from '../fetch/fetch';
@@ -24,10 +24,9 @@ class Catalog extends Component {
 
   render() {
       const metrics = this.state.metrics
-      const loader =  <CircularProgress size={1} />
-      const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" /> : loader
-      const download = metrics ? <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="downloadable" icon="download" size="small" /> : loader
-      const counter = metrics ? <Counter value={metrics.totalCount} size="small" label="Records" /> : loader
+      const openness = metrics ? <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" /> : <div></div>
+      const download = metrics ? <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="downloadable" icon="download" size="small" /> : <div></div>
+      const counter = metrics ? <Counter value={metrics.totalCount} size="small" label="Records" /> : <div></div>
 
       const styles = {
         link: {
@@ -45,9 +44,15 @@ class Catalog extends Component {
                 </div>
                 <div className="ten wide column">
                   <div className="ui equal width grid">
-                    <div className="column">{openness}</div>
-                    <div className="column">{download}</div>
-                    <div className="column">{counter}</div>
+                    <div className="column">
+                      <Loader value={metrics} component={openness} />
+                    </div>
+                    <div className="column">
+                      <Loader value={metrics} component={download} />
+                    </div>
+                    <div className="column">
+                      <Loader value={metrics} component={counter} />
+                    </div>
                   </div>
                 </div>
               </div>
