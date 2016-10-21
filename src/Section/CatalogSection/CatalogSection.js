@@ -1,7 +1,7 @@
 import React from 'react'
 import Counter from '../../Statistics/Counter/Counter'
 
-const CatalogSection = ({catalog}) => {
+const CatalogSection = ({catalog, metrics}) => {
   return (
     <div className="ui equal width stackable grid">
       <div className="column">
@@ -9,7 +9,7 @@ const CatalogSection = ({catalog}) => {
         <a href={catalog.serviceUrl}>Direct access to the catalog service</a>
       </div>
       <div className="column">
-        <Counter value={catalog.lastHarvesting.recordsFound} size="small" label="Records" />
+        <Counter value={metrics.totalCount} size="small" label="Records" />
       </div>
     </div>
       )

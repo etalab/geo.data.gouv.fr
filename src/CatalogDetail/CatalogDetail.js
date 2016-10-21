@@ -35,6 +35,8 @@ class CatalogDetail extends Component {
 
   render() {
     if (this.state.catalog && this.state.metrics) {
+      const catalog = this.state.catalog
+      const metrics = this.state.metrics
       const styles = {
         catalogDetail : {
           padding: 40,
@@ -44,10 +46,10 @@ class CatalogDetail extends Component {
 
       return (
         <Paper style={styles.catalogDetail} id="catalog-detail">
-          <Section title="Catalog" component={<CatalogSection catalog={this.state.catalog} />} />
-          <Section title="Statistics" component={<StatisticsSection metrics={this.state.metrics} />} />
-          <Section title="Counts" component={<OrganizationsSection metrics={this.state.metrics} />} />
-          <Section title="Harvests" component={<HarvestsSection catalog={this.state.catalog} />} />
+          <Section title="Catalog" component={<CatalogSection catalog={catalog} metrics={metrics} />} />
+          <Section title="Statistics" component={<StatisticsSection metrics={metrics} />} />
+          <Section title="Counts" component={<OrganizationsSection metrics={metrics} />} />
+          <Section title="Harvests" component={<HarvestsSection catalog={catalog} />} />
         </Paper>
       )
     } else {
