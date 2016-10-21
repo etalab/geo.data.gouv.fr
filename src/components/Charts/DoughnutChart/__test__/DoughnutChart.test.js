@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { colors } from '../../../tools.js'
+import { colors } from '../../../../tools.js'
 import Percent from '../../../Statistics/Percent/Percent'
 import DoughnutChart from '../DoughnutChart'
 import data from './data.json'

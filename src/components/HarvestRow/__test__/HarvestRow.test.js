@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 import RaisedButton from 'material-ui/RaisedButton';
 import HarvestRow, { doneSince } from '../HarvestRow'
 
-import catalog from '../../fetch/__test__/catalog.json'
-import harvest from '../../fetch/__test__/harvest.json'
+import catalog from '../../../fetch/__test__/catalog.json'
+import harvest from '../../../fetch/__test__/harvest.json'
 
 describe('<HarvestRow />', () => {
   const harvestSuccessed = harvest[0]

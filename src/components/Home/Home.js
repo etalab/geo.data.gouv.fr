@@ -4,8 +4,8 @@ import CircularProgress from 'material-ui/CircularProgress'
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router'
 import Counter from '../Statistics/Counter/Counter'
-import { fetchDatasets  } from '../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
+import { fetchDatasets  } from '../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 import './Home.css'
 
 class Home extends Component {

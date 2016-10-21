@@ -4,7 +4,7 @@ import CatalogPreview from '../CatalogPreview'
 import Percent from '../../../Statistics/Percent/Percent'
 import Counter from '../../../Statistics/Counter/Counter'
 
-import metrics from '../../../fetch/__test__/metrics.json'
+import metrics from '../../../../fetch/__test__/metrics.json'
 
 describe('<CatalogPreviewPreview />', () => {
   const styles = {

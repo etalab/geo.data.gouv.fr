@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Doughnut } from 'react-chartjs'
-import { colors } from '../../tools.js'
+import { colors } from '../../../tools.js'
 import DoughnutChartList from './DoughnutChartList/DoughnutChartList'
 import Percent from '../../Statistics/Percent/Percent'
 

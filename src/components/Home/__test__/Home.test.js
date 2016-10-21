@@ -1,11 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CircularProgress from 'material-ui/CircularProgress'
 import Home from '../Home'
-import { mountWithContext } from '../../../test/jsdom-setup'
 
-import datasets from '../../fetch/__test__/datasets.json'
-jest.mock('../../fetch/fetch');
+import datasets from '../../../fetch/__test__/datasets.json'
+jest.mock('../../../fetch/fetch');
 
 describe('<Home />', () => {
 

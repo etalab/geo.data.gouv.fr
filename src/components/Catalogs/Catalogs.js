@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Catalog from '../Catalog/Catalog'
-import { fetchCatalogs } from '../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../helpers/components';
+import { fetchCatalogs } from '../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 
 class Catalogs extends Component {
   constructor(props) {

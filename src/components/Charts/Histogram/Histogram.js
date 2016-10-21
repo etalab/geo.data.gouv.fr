@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { colors } from '../../tools.js'
+import { colors } from '../../../tools.js'
 
 class Histogram extends Component {
   formatData(data) {

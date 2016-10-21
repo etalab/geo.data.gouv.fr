@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 import Chip from 'material-ui/Chip'
 import Subheader from 'material-ui/Subheader'
 import moment from 'moment'
-import { fetchCatalog, fetchHarvest } from '../../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components';
+import { fetchCatalog, fetchHarvest } from '../../../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
 
 class HarvestDetail extends Component {
   constructor(props) {

@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import CatalogDetail from '../CatalogDetail'
 
-import catalog from '../../fetch/__test__/catalog.json'
-import metrics from '../../fetch/__test__/metrics.json'
-jest.mock('../../fetch/fetch')
+import catalog from '../../../fetch/__test__/catalog.json'
+import metrics from '../../../fetch/__test__/metrics.json'
+jest.mock('../../../fetch/fetch')
 
 describe('<CatalogDetail />', () => {
 
