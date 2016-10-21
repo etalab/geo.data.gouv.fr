@@ -27,6 +27,24 @@ class Catalog extends Component {
         link: {
           cursor: 'pointer',
           margin: '1em 3em 1em 3em',
+          position: 'relative',
+        },
+        ribbon: {
+          position: 'absolute',
+          top: '1em',
+          left: '-14px',
+        },
+        stats: {
+          display: 'flex',
+          felxWrap: 'wrap',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        },
+        title: {
+          position: 'relative',
+          justifyContent: 'center',
+          width: '30%',
+          top: '20px',
         },
       }
       return (
