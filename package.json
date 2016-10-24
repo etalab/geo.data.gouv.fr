@@ -71,7 +71,10 @@
     "test": "mocha -r scripts/test.js -r ignore-styles src/**/*.test.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "quotes": ["error", "single"]
+    }
   },
   "babel": {
     "presets": [
