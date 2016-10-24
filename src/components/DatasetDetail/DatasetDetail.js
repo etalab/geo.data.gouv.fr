@@ -27,9 +27,30 @@ export default class DatasetDetail extends Component {
 
   render() {
     const dataset = this.state.dataset
-    if (!dataset) return <CircularProgress size={2} />
-    return (<div>
-      <h1>{dataset.metadata.title}</h1>
+    const styles = {
+      loader: {
+        position: 'absolute',
+        top: '42%',
+        left: '42%',
+      },
+      container: {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '5em',
+      },
+      content: {
+        display: 'flex',
+        justifyContent: 'space-between',
+      },
+    }
+    if (!dataset) return <CircularProgress style={styles.loader}  size={2} />
+    return (
+      <div style={styles.container}>
+        <DatasetSection dataset={dataset} />
+        <div style={styles.content}>
+          <DownloadsSection links={dataset.metadata.links} />
+          <KeywordsSection keywords={dataset.metadata.keywords} />
+        </div>
     </div>)
   }
 }

@@ -24,7 +24,7 @@ const DatasetSection = ({dataset}) => {
         <div>Dernière mise à jour de la fiche : <span>{revisionDate}</span></div>
       </div>
       <div>Identifiant technique de la fiche : <span>{dataset.metadata.id}</span></div>
-      <h4>{dataset.metadata.description}</h4>
+      <h5>{dataset.metadata.description}</h5>
     </div>
       )
 }
