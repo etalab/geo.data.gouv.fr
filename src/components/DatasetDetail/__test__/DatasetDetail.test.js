@@ -1,10 +1,11 @@
 import React from 'react'
 import { mountWithContext } from '../../../config/jsdom-setup'
-import DatasetDetail from '../DatasetDetail'
 import CircularProgress from 'material-ui/CircularProgress'
 import datasetMock from '../../../fetch/__test__/dataset.json'
 
-jest.mock('../../../fetch/fetch')
+const DatasetDetail = require('proxyquire')('../DatasetDetail', {
+  '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
+}).default
 
 describe('<DatasetDetail />', () => {
 
