@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router'
 import { shallow } from 'enzyme';
 import RaisedButton from 'material-ui/RaisedButton';
-import HarvestRow, { doneSince } from '../HarvestRow'
+import HarvestRow from '../HarvestRow'
+import { doneSince } from '../../../helpers/doneSince'
 
 import catalog from '../../../fetch/__test__/catalog.json'
 import harvest from '../../../fetch/__test__/harvest.json'
