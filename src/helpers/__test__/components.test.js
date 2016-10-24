@@ -38,7 +38,7 @@ describe('components', () => {
     it('should return when component has no promises', () => {
       const component = shallow(<TestComponent />)
 
-      expect(cancelAllPromises(component)).toBeUndefined()
+      expect(cancelAllPromises(component)).toNotExist()
     })
 
     it('should return cancelAll function', () => {
@@ -58,9 +58,9 @@ describe('components', () => {
     it('should create a cancelablePromises array to component when no exist', () => {
       const component = shallow(<TestComponent />).instance()
 
-      expect(component.cancelablePromises).toBeUndefined()
+      expect(component.cancelablePromises).toNotExist()
       waitForDataAndSetState(fakePromise(), component, 'stateName')
-      expect(component.cancelablePromises).not.toBeUndefined()
+      expect(component.cancelablePromises).toExist()
     })
 
     it('should add to cancelablePromises component array new cancelablePromise', () => {
@@ -76,7 +76,7 @@ describe('components', () => {
         const component = shallow(<TestComponent />).instance()
 
         return waitForDataAndSetState(Promise.resolve('fakeResolve'), component, 'stateName')
-          .then(() => expect(component.state.stateName).not.toBeUndefined())
+          .then(() => expect(component.state.stateName).toExist())
       })
     })
 

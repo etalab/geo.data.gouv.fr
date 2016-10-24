@@ -1,10 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import CatalogDetail from '../CatalogDetail'
 
 import catalog from '../../../fetch/__test__/catalog.json'
 import metrics from '../../../fetch/__test__/metrics.json'
-jest.mock('../../../fetch/fetch')
+
+const CatalogDetail = require('proxyquire')('../CatalogDetail', {
+  '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
+}).default
 
 describe('<CatalogDetail />', () => {
 

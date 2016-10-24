@@ -44,7 +44,7 @@ describe('promises', () => {
         return reflect(p.promise).then(inspection => {
           expect(inspection.isRejected()).toBe(true)
           expect(inspection.reason()).toBe('foo')
-          expect(inspection.reason().isCanceled).toBeUndefined()
+          expect(inspection.reason().isCanceled).toNotExist()
         })
       })
 

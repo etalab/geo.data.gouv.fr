@@ -1,9 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Home from '../Home'
 
 import datasets from '../../../fetch/__test__/datasets.json'
-jest.mock('../../../fetch/fetch');
+
+const Home = require('proxyquire')('../Home', {
+  '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
+}).default
 
 describe('<Home />', () => {
 
