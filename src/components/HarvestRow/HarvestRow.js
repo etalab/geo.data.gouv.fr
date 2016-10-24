@@ -14,7 +14,7 @@ export function doneSince(endTime) {
 }
 
 const HarvestRow = ({harvest, catalog}) => {
-  const color = harvest.status === "successful" ? "green" : "red"
+  const color = harvest.status === 'successful' ? 'green' : 'red'
 
   return (
     <TableRow hoverable={true}>
