@@ -1,13 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Loader from '../../Loader/Loader'
-import Catalog from '../Catalog'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
 import { mountWithContext } from '../../../config/jsdom-setup'
 
 import catalog from '../../../fetch/__test__/catalog.json'
 import metrics from '../../../fetch/__test__/metrics.json'
-jest.mock('../../../fetch/fetch')
+
+const Catalog = require('proxyquire')('../Catalog', {
+  '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
+}).default
 
 describe('<Catalog />', () => {
 
