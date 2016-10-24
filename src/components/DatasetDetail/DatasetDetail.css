@@ -1,0 +1,22 @@
+.infos > div {
+  margin-bottom: 0.5em;
+  margin-right: 4em;
+}
+
+.dataset-section span {
+  margin-left: 0.3em;
+  font-weight: bold;
+  color: #00BCD4;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 25px);
+  left: 50%;
+}
+
+@media (min-width: 700px) {
+  .dataset-title {
+    padding-right: 40%;
+  }
+}
