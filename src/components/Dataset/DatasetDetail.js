@@ -30,7 +30,7 @@ export default class DatasetDetail extends Component {
   }
 
   updateCatalogs() {
-    return waitForDataAndSetState(fetchCatalogs(this.props.params.datasetId), this, 'catalogs')
+    return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs')
   }
 
   render() {
@@ -61,9 +61,7 @@ export default class DatasetDetail extends Component {
           <LinksSection links={dataset.metadata.links} />
           <KeywordsSection keywords={dataset.metadata.keywords} />
           <OrganizationsSection organizations={dataset.organizations} />
-          <CatalogsSection catalogs={catalogs.filter(catalog => {
-              return dataset.catalogs.includes(catalog.id)
-              })} />
+          <CatalogsSection catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
         </div>
     </div>)
   }
