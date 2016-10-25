@@ -13,7 +13,7 @@ class Footer extends Component {
     return (
       <footer>
         <Paper style={style} zDepth={0}>
-          <p>Made with ♥ by the <a style={{ color: 'white' }}href="https://beta.gouv.fr">French Digital Services</a></p>
+          <p>Made with ♥ by the <a style={{ color: 'white' }}href="https://beta.gouv.fr">Digital Services Incubator</a></p>
         </Paper>
       </footer>
     )
