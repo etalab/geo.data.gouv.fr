@@ -28,6 +28,9 @@ rm -rf build/**/* || exit 0
 # Run our compile script
 doCompile
 
+# Copy CircleCI configuration
+cp circle.yml build/
+
 # Now let's go have some fun with the cloned repo
 cd build
 
