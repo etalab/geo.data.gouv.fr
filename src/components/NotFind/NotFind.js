@@ -9,8 +9,9 @@ class NotFind extends Component {
         alignItems: 'center',
         color: '#ffffff',
         fontSize: '2em',
-        position: 'relative',
-        top: '80px',
+        position: 'absolute',
+        top: '25%',
+        right: 'calc(50% + -100px)',
       },
       header: {
         fontSize: '4em',
