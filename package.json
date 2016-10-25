@@ -36,6 +36,7 @@
     "http-proxy-middleware": "0.17.1",
     "ignore-styles": "^5.0.1",
     "jsdom": "^9.6.0",
+    "lodash": "^4.16.4",
     "mocha": "^3.1.2",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
@@ -73,7 +74,10 @@
   "eslintConfig": {
     "extends": "react-app",
     "rules": {
-      "quotes": ["error", "single"]
+      "quotes": [
+        "error",
+        "single"
+      ]
     }
   },
   "babel": {

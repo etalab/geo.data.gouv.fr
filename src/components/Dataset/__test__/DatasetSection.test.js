@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import DatasetSection from '../DatasetSection'
 import datasetMock from '../../../fetch/__test__/dataset.json'
 import { doneSince } from '../../../helpers/doneSince'
+import { cloneDeep } from 'lodash'
 
 describe('<DatasetSection />', () => {
 
@@ -38,11 +39,12 @@ describe('<DatasetSection />', () => {
   })
 
   describe('When metadata are undefined', () => {
-    let wrapper
+    let wrapper, modifiedDatasetMock
     beforeEach(() => {
-      datasetMock.metadata.license = undefined
-      datasetMock.metadata.type = undefined
-      wrapper = shallow(<DatasetSection dataset={datasetMock} />)
+      modifiedDatasetMock = cloneDeep(datasetMock)
+      modifiedDatasetMock.metadata.license = undefined
+      modifiedDatasetMock.metadata.type = undefined
+      wrapper = shallow(<DatasetSection dataset={modifiedDatasetMock} />)
     })
 
     it('should display dataset type', () => {
