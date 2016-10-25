@@ -21,10 +21,10 @@ const DatasetSection = ({dataset}) => {
       <div style={styles.infos} className="infos">
         <div>Type : <span>{type}</span></div>
         <div>Licence : <span>{license}</span></div>
-        <div>Dernière mise à jour de la fiche : <span>{revisionDate}</span></div>
+        <div>Last update : <span>{revisionDate}</span></div>
       </div>
-      <div>Identifiant technique de la fiche : <span>{dataset.metadata.id}</span></div>
-      <h5>{dataset.metadata.description}</h5>
+      <div>Dataset ID : <span>{dataset.metadata.id}</span></div>
+      <p>{dataset.metadata.description}</p>
     </div>
       )
 }
