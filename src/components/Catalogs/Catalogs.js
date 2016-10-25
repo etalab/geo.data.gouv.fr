@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ContentLoader from '../Loader/ContentLoader'
 import Catalog from '../Catalog/Catalog'
 import { fetchCatalogs } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
@@ -27,17 +28,14 @@ class Catalogs extends Component {
       },
     }
 
-    if (this.state.catalogs) {
-      return (
-        <div className="catalogs">
-          <div style={styles.container}>
-            {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
-          </div>
+    if (!this.state.catalogs) return <ContentLoader />
+    return (
+      <div className="catalogs">
+        <div style={styles.container}>
+          {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
         </div>
-      )
-    } else {
-      return <div></div>
-    }
+      </div>
+    )
   }
 }
 
