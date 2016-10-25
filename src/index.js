@@ -13,7 +13,7 @@ import App from './components/App/App'
 import Home from './components/Home/Home'
 import Catalogs from './components/Catalogs/Catalogs'
 import CatalogDetail from './components/CatalogDetail/CatalogDetail'
-import DatasetDetail from './components/DatasetDetail/DatasetDetail'
+import DatasetDetail from './components/Dataset/DatasetDetail'
 import NotFind from './components/NotFind/NotFind'
 
 ReactDOM.render((
