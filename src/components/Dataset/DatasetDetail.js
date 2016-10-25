@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { fetchDataset } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import CircularProgress from 'material-ui/CircularProgress'
-import DownloadsSection from './DownloadsSection'
+import LinksSection from './LinksSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
 import CatalogsSection from './CatalogsSection'
@@ -50,7 +50,7 @@ export default class DatasetDetail extends Component {
       <div style={styles.container}>
         <DatasetSection dataset={dataset} />
         <div style={styles.sections}>
-          <DownloadsSection links={dataset.metadata.links} />
+          <LinksSection links={dataset.metadata.links} />
           <KeywordsSection keywords={dataset.metadata.keywords} />
           <CatalogsSection catalogs={dataset.catalogs} />
         </div>

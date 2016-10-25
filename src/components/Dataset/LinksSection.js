@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DownloadsSection = ({links}) => {
+const LinksSection = ({links}) => {
   const styles = {
     downloads: {
       display: 'flex',
@@ -21,4 +21,4 @@ const DownloadsSection = ({links}) => {
       )
 }
 
-export default DownloadsSection
+export default LinksSection
