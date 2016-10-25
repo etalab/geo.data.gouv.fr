@@ -6,6 +6,7 @@ import LinksSection from './LinksSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
 import CatalogsSection from './CatalogsSection'
+import OrganizationsSection from './OrganizationsSection'
 
 export default class DatasetDetail extends Component {
 
@@ -52,6 +53,7 @@ export default class DatasetDetail extends Component {
         <div style={styles.sections}>
           <LinksSection links={dataset.metadata.links} />
           <KeywordsSection keywords={dataset.metadata.keywords} />
+          <OrganizationsSection organizations={dataset.organizations} />
           <CatalogsSection catalogs={dataset.catalogs} />
         </div>
     </div>)
