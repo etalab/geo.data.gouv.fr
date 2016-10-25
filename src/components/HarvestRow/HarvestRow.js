@@ -1,17 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
-import moment from 'moment'
 import RaisedButton from 'material-ui/RaisedButton';
-
-export function doneSince(endTime) {
-  const endDate = new Date(endTime).getTime()
-  if (!isNaN(endDate)) {
-    const since = moment(endDate).fromNow()
-    if (since !== 'Invalid Date') return since
-  }
-  return 'N/A'
-}
+import { doneSince } from '../../helpers/doneSince'
 
 const HarvestRow = ({harvest, catalog}) => {
   const color = harvest.status === 'successful' ? 'green' : 'red'

@@ -9,7 +9,7 @@ const Content = ({location, children}) => {
       display: 'flex',
       position: 'relative',
       minHeight: '100vh',
-      backgroundColor: '#08a7bb',
+      backgroundColor: '#e2f4ff',
     },
     body: {
       flex: 1,
