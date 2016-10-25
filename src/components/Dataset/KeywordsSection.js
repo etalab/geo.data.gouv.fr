@@ -8,7 +8,7 @@ const KeywordsSection = ({keywords}) => {
     },
     list: {
       display: 'flex',
-      flexWrap: 'wrap',
+      flexDirection: 'column',
     },
   }
   return (

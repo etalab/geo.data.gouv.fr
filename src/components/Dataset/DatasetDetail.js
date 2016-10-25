@@ -5,6 +5,7 @@ import CircularProgress from 'material-ui/CircularProgress'
 import DownloadsSection from './DownloadsSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
+import CatalogsSection from './CatalogsSection'
 
 export default class DatasetDetail extends Component {
 
@@ -38,18 +39,20 @@ export default class DatasetDetail extends Component {
         flexDirection: 'column',
         margin: '5em',
       },
-      content: {
+      sections: {
         display: 'flex',
         justifyContent: 'space-between',
+        marginTop: '1em',
       },
     }
     if (!dataset) return <CircularProgress style={styles.loader}  size={2} />
     return (
       <div style={styles.container}>
         <DatasetSection dataset={dataset} />
-        <div style={styles.content}>
+        <div style={styles.sections}>
           <DownloadsSection links={dataset.metadata.links} />
           <KeywordsSection keywords={dataset.metadata.keywords} />
+          <CatalogsSection catalogs={dataset.catalogs} />
         </div>
     </div>)
   }
