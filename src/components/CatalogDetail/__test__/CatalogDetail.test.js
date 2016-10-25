@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import ContentLoader from '../../Loader/ContentLoader'
 
 import catalog from '../../../fetch/__test__/catalog.json'
 import metrics from '../../../fetch/__test__/metrics.json'
@@ -93,9 +94,10 @@ describe('<CatalogDetail />', () => {
       })
     })
 
-    it('should render an empty div when no catalog is fetch', () => {
+    it('should render a loader when no catalog is fetch', () => {
+      const loader = <ContentLoader />
       const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
-      expect(wrapper.html()).toEqual('<div></div>')
+      expect(wrapper.matchesElement(loader)).toBe(true)
     })
   })
 

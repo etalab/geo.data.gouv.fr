@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ContentLoader from '../Loader/ContentLoader'
 import Paper from 'material-ui/Paper'
 import Section from '../Section/Section'
 import CatalogSection from '../Section/CatalogSection/CatalogSection'
@@ -34,27 +35,25 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    if (this.state.catalog && this.state.metrics) {
-      const catalog = this.state.catalog
-      const metrics = this.state.metrics
-      const styles = {
-        catalogDetail : {
-          padding: 40,
-          display: 'block',
-        },
-      }
+    const catalog = this.state.catalog
+    const metrics = this.state.metrics
 
-      return (
-        <Paper style={styles.catalogDetail} id="catalog-detail">
-          <Section title="Catalog" component={<CatalogSection catalog={catalog} metrics={metrics} />} />
-          <Section title="Statistics" component={<StatisticsSection metrics={metrics} />} />
-          <Section title="Counts" component={<OrganizationsSection metrics={metrics} />} />
-          <Section title="Harvests" component={<HarvestsSection catalog={catalog} />} />
-        </Paper>
-      )
-    } else {
-      return (<div></div>)
+    if (!catalog || !metrics) return <ContentLoader />
+    const styles = {
+      catalogDetail : {
+        padding: 40,
+        display: 'block',
+      },
     }
+
+    return (
+      <Paper style={styles.catalogDetail} id="catalog-detail">
+        <Section title="Catalog" component={<CatalogSection catalog={catalog} metrics={metrics} />} />
+        <Section title="Statistics" component={<StatisticsSection metrics={metrics} />} />
+        <Section title="Counts" component={<OrganizationsSection metrics={metrics} />} />
+        <Section title="Harvests" component={<HarvestsSection catalog={catalog} />} />
+      </Paper>
+    )
   }
 }
 

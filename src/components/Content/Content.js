@@ -4,6 +4,11 @@ import Footer from '../Footer/Footer'
 
 const Content = ({location, children}) => {
   const styles = {
+    loader: {
+      position: 'absolute',
+      top: '42%',
+      left: '42%',
+    },
     content: {
       flexDirection: 'column',
       display: 'flex',
