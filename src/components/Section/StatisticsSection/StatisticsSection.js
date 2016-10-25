@@ -1,9 +1,6 @@
 import React from 'react'
-import MediaQuery from 'react-responsive'
 import DoughnutChart from '../../Charts/DoughnutChart/DoughnutChart'
-import { Bar } from 'react-chartjs'
 import Chart from '../../Charts/Chart'
-import Histogram from '../../Charts/Histogram/Histogram'
 import Percent from '../../Statistics/Percent/Percent'
 
 const StatisticsSection = ({metrics}) => {
@@ -46,19 +43,12 @@ const StatisticsSection = ({metrics}) => {
             chart={<DoughnutChart data={metrics.partitions.metadataType} />} />
         </div>
 
-        <MediaQuery style={styles.chart} maxWidth={550} >
+        <div style={styles.chart}>
           <Chart
             title={'Data Type'}
             description={'Distribution of data types'}
-            chart={<Histogram chartType={Bar} data={metrics.partitions.dataType} width={260} height={180} />} />
-        </MediaQuery>
-
-        <MediaQuery style={styles.chart} minWidth={551}>
-          <Chart
-            title={'Data Type'}
-            description={'Distribution of data types'}
-            chart={<Histogram chartType={Bar} data={metrics.partitions.dataType} width={420} height={260} />} />
-        </MediaQuery>
+            chart={<DoughnutChart data={metrics.partitions.dataType} />} />
+        </div>
 
       </div>
     )
