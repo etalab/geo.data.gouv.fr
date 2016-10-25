@@ -23,6 +23,7 @@ const DatasetSection = ({dataset}) => {
         <div>Licence : <span>{license}</span></div>
         <div>Last update : <span>{revisionDate}</span></div>
       </div>
+      <div>Origin of data : <span>{dataset.metadata.lineage}</span></div>
       <div>Dataset ID : <span>{dataset.metadata.id}</span></div>
       <p>{dataset.metadata.description}</p>
     </div>
