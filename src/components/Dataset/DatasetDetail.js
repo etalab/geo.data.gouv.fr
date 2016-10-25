@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchDataset } from '../../fetch/fetch'
+import { fetchDataset, fetchCatalogs } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import CircularProgress from 'material-ui/CircularProgress'
 import LinksSection from './LinksSection'
@@ -16,9 +16,11 @@ export default class DatasetDetail extends Component {
   }
 
   componentWillMount() {
-    return this.updateDataset()
+    return Promise.all([
+      this.updateDataset(),
+      this.updateCatalogs(),
+    ])
   }
-
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
@@ -27,8 +29,13 @@ export default class DatasetDetail extends Component {
     return waitForDataAndSetState(fetchDataset(this.props.params.datasetId), this, 'dataset')
   }
 
+  updateCatalogs() {
+    return waitForDataAndSetState(fetchCatalogs(this.props.params.datasetId), this, 'catalogs')
+  }
+
   render() {
     const dataset = this.state.dataset
+    const catalogs = this.state.catalogs
     const styles = {
       loader: {
         position: 'absolute',
@@ -46,7 +53,7 @@ export default class DatasetDetail extends Component {
         marginTop: '1em',
       },
     }
-    if (!dataset) return <CircularProgress style={styles.loader}  size={2} />
+    if (!dataset || !catalogs) return <CircularProgress style={styles.loader}  size={2} />
     return (
       <div style={styles.container}>
         <DatasetSection dataset={dataset} />
@@ -54,7 +61,9 @@ export default class DatasetDetail extends Component {
           <LinksSection links={dataset.metadata.links} />
           <KeywordsSection keywords={dataset.metadata.keywords} />
           <OrganizationsSection organizations={dataset.organizations} />
-          <CatalogsSection catalogs={dataset.catalogs} />
+          <CatalogsSection catalogs={catalogs.filter(catalog => {
+              return dataset.catalogs.includes(catalog.id)
+              })} />
         </div>
     </div>)
   }
