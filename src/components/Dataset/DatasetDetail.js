@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { fetchDataset } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '../CircularProgress/CircularProgress'
 import DownloadsSection from './DownloadsSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
@@ -29,11 +29,6 @@ export default class DatasetDetail extends Component {
   render() {
     const dataset = this.state.dataset
     const styles = {
-      loader: {
-        position: 'absolute',
-        top: '42%',
-        left: '42%',
-      },
       container: {
         display: 'flex',
         flexDirection: 'column',
@@ -45,7 +40,7 @@ export default class DatasetDetail extends Component {
         marginTop: '1em',
       },
     }
-    if (!dataset) return <CircularProgress style={styles.loader}  size={2} />
+    if (!dataset) return <CircularProgress />
     return (
       <div style={styles.container}>
         <DatasetSection dataset={dataset} />

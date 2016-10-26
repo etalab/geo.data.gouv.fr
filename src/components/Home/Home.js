@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Paper from 'material-ui/Paper'
-import CircularProgress from 'material-ui/CircularProgress'
-import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from '../CircularProgress/CircularProgress'
 import { Link } from 'react-router'
 import Counter from '../Statistics/Counter/Counter'
 import { fetchGlobalMetrics  } from '../../fetch/fetch';
@@ -23,7 +21,7 @@ class Home extends Component {
   }
 
   render() {
-    const loader =  <CircularProgress size={1.5} />
+    const loader =  <CircularProgress />
     const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
     const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} label="" color="green" icon="database"/> : loader
     const catalogs = this.state.datasets ? <Counter value={106} label="" color="blue" icon="book"/> : loader
@@ -57,28 +55,26 @@ class Home extends Component {
       <div style={styles.masthead}>
 
         <h2 className="intro">
-            Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
+          Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
         </h2>
 
         <div style={styles.stats}>
 
-          <Paper style={styles.paper} zDepth={2}>
+          <div style={styles.paper}>
             <h3>Published Datasets</h3>
             {published}
-          </Paper>
+          </div>
 
-          <Paper style={styles.paper} zDepth={2}>
+          <div style={styles.paper}>
             <h3>Catalogs</h3>
             {catalogs}
-            <Link to="catalogs">
-              <RaisedButton label="Consult catalogs" primary={true} />
-            </Link>
-          </Paper>
+            <Link to="catalogs">Consult catalogs</Link>
+          </div>
 
-          <Paper style={styles.paper} zDepth={2}>
+          <div style={styles.paper}>
             <h3>Not Yet Published</h3>
             {notPublishedYet}
-          </Paper>
+          </div>
 
         </div>
 

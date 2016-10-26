@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ContentLoader from '../Loader/ContentLoader'
-import Paper from 'material-ui/Paper'
 import Section from '../Section/Section'
 import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
@@ -47,12 +46,12 @@ class CatalogDetail extends Component {
     }
 
     return (
-      <Paper style={styles.catalogDetail} id="catalog-detail">
+      <div style={styles.catalogDetail} id="catalog-detail">
         <Section title="Catalog" component={<CatalogSection catalog={catalog} metrics={metrics} />} />
         <Section title="Statistics" component={<StatisticsSection metrics={metrics} />} />
         <Section title="Counts" component={<OrganizationsSection metrics={metrics} />} />
         <Section title="Harvests" component={<HarvestsSection catalog={catalog} />} />
-      </Paper>
+      </div>
     )
   }
 }

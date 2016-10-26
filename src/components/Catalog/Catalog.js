@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Loader from '../Loader/Loader'
-import Paper from 'material-ui/Paper'
 import { Link } from 'react-router'
 import CatalogPreview from './CatalogPreview/CatalogPreview'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
@@ -49,13 +48,13 @@ class Catalog extends Component {
       }
       return (
           <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
-            <Paper rounded={true} zDepth={2}>
+            <div>
               <LastHarvesting style={styles.ribbon} harvest={this.props.catalog.lastHarvesting}/>
               <div style={styles.stats}>
                 <span style={styles.title} className="ui large header">{this.props.catalog.name}</span>
                 <Loader value={this.state.metrics} component={catalogPreview}/>
               </div>
-            </Paper>
+            </div>
           </Link>
       )
   }

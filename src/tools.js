@@ -7,3 +7,11 @@ export const colors = [
   {name: 'orange', value: '#F2711C'},
   {name: 'red', value: '#DB2828'}
 ]
+
+export const theme = {
+  darkblue: '#3E454C',
+  blue: '#2185C5',
+  lightblue: '#7ECEFD',
+  white: '#FAFAF1',
+  red: '#FF6358'
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mountWithContext } from '../../../config/jsdom-setup'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '../../CircularProgress/CircularProgress'
 import datasetMock from '../../../fetch/__test__/dataset.json'
 
 const DatasetDetail = require('proxyquire')('../DatasetDetail', {
@@ -12,7 +12,7 @@ describe('<DatasetDetail />', () => {
   describe('Loading dataset', () => {
     it('should display a <CircularProgress />', () => {
       const wrapper = mountWithContext(<DatasetDetail params={{ datasetId: '1' }} />)
-      const progress = <CircularProgress size={2} />
+      const progress = <CircularProgress />
       expect(wrapper.containsMatchingElement(progress)).toBe(true)
     })
   })
