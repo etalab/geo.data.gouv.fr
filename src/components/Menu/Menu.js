@@ -21,7 +21,6 @@ class Menu extends Component {
   render() {
     const styles = {
       title: {
-        cursor: 'pointer',
         color: this.context.muiTheme.palette.alternateTextColor,
       },
     }

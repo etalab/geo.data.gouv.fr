@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DownloadsSection = ({links}) => {
+const LinksSection = ({links}) => {
   const styles = {
     downloads: {
       display: 'flex',
@@ -9,11 +9,11 @@ const DownloadsSection = ({links}) => {
     links: {
       display: 'flex',
       flexDirection: 'column',
-    }
+    },
   }
   return (
     <div style={styles.links}>
-      <h3>Downloads</h3>
+      <h3>Links</h3>
       <div style={styles.links}>
         {links.map( (link, idx) => <a key={idx} href={link.href}>{link.name}</a>)}
       </div>
@@ -21,4 +21,4 @@ const DownloadsSection = ({links}) => {
       )
 }
 
-export default DownloadsSection
+export default LinksSection

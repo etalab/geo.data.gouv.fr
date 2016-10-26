@@ -17,8 +17,8 @@ const CatalogsSection = ({catalogs}) => {
       <h3>Catalogs</h3>
       <div style={styles.catalogs}>
         {catalogs.map( (catalog, idx) =>
-          <Link key={idx} to={`/catalogs/${catalog}`}>
-            {catalog}
+          <Link key={idx} to={`/catalogs/${catalog.id}`}>
+            {catalog.name}
           </Link>)}
       </div>
     </div>

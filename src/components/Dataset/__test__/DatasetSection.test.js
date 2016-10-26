@@ -33,6 +33,10 @@ describe('<DatasetSection />', () => {
       expect(wrapper.contains(doneSince(datasetMock.revisionDate))).toBe(true)
     })
 
+    it('should display lineage', () => {
+      expect(wrapper.contains(datasetMock.metadata.lineage)).toBe(true)
+    })
+
     it('should display dataset id', () => {
       expect(wrapper.contains(datasetMock.metadata.id)).toBe(true)
     })
