@@ -25,7 +25,6 @@ class Catalog extends Component {
       const catalogPreview = <CatalogPreview metrics={this.state.metrics} />
       const styles = {
         link: {
-          cursor: 'pointer',
           margin: '1em 3em 1em 3em',
           position: 'relative',
         },
