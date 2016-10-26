@@ -13,7 +13,7 @@ describe('<CatalogsSection />', () => {
 
   it('should display all catalogs name with a link', () => {
     catalogsMock.map( catalog => {
-      const link = <Link to={`/catalogs/${catalog.id}`} style={{cursor: 'pointer'}}>{catalog.name}</Link>
+      const link = <Link to={`/catalogs/${catalog.id}`}>{catalog.name}</Link>
       return expect(wrapper.containsMatchingElement(link)).toBe(true)
     })
   })
