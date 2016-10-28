@@ -33,7 +33,6 @@ const styles = {
     fontSize: '1.5em',
   },
   datagouv: {
-    borderTop: `1px solid ${theme.darkblue}`,
     backgroundColor: theme.blue,
     color: '#FFF',
     width: '100%',
