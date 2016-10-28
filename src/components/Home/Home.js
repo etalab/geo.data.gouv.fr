@@ -35,7 +35,6 @@ const styles = {
   datagouv: {
     backgroundColor: theme.blue,
     color: '#FFF',
-    width: '100%',
     padding: 40,
     marginTop: '4em',
   },

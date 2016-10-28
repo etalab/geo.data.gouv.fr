@@ -31,7 +31,7 @@ describe('<Catalog />', () => {
         .instance()
         .componentWillMount()
         .then(() => {
-          expect(wrapper.contains(catalogPreview)).toBe(true)
+          expect(wrapper.containsMatchingElement(catalogPreview)).toBe(true)
         })
     })
 

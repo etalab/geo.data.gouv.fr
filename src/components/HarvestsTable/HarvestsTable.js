@@ -1,5 +1,4 @@
 import React from 'react'
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
 import HarvestRow from '../HarvestRow/HarvestRow'
 
 const HarvestsTable = ({harvests, catalog}) => {
@@ -9,27 +8,22 @@ const HarvestsTable = ({harvests, catalog}) => {
       },
     }
     return (
-      <Table style={styles.table}>
+      <table style={styles.table}>
 
-        <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-          <TableRow>
-            <TableHeaderColumn>Status</TableHeaderColumn>
-            <TableHeaderColumn>Records</TableHeaderColumn>
-            <TableHeaderColumn>Finished</TableHeaderColumn>
-            <TableHeaderColumn></TableHeaderColumn>
-          </TableRow>
-        </TableHeader>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Records</th>
+            <th>Finished</th>
+            <th></th>
+          </tr>
+        </thead>
 
-        <TableBody
-            displayRowCheckbox={true}
-            deselectOnClickaway={true}
-            showRowHover={true}
-            stripedRows={true}
-          >
+        <tbody>
           {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} catalog={catalog} />)}
-        </TableBody>
+        </tbody>
 
-      </Table>
+      </table>
     )
 }
 
