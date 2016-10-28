@@ -20,7 +20,7 @@ const styles = {
   },
   paper: {
     backgroundColor: 'white',
-    padding: '20px',
+    padding: '2em 20px',
     boxShadow: theme.boxShadowZ1,
   },
   lastHarvesting: {
