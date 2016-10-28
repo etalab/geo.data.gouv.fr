@@ -7,8 +7,8 @@ class Footer extends Component {
       padding: 40,
       textAlign: 'center',
 
-      color: theme.lightblue,
-      backgroundColor: theme.blue,
+      color: theme.blue,
+      backgroundColor: theme.darkblue,
     }
     return (
       <footer style={style} >

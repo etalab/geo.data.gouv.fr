@@ -1,10 +1,58 @@
 import React, { Component } from 'react'
 import CircularProgress from '../CircularProgress/CircularProgress'
 import { Link } from 'react-router'
+import SearchInput from '../SearchInput/SearchInput'
 import Counter from '../Statistics/Counter/Counter'
+import { theme  } from '../../tools';
 import { fetchGlobalMetrics  } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
-import './Home.css'
+
+const styles = {
+  masthead: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: '8%',
+  },
+  stats: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  paper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1em',
+    color: theme.white,
+  },
+  catalogLinks: {
+    fontSize: '1.5em',
+  },
+  datagouv: {
+    borderTop: `1px solid ${theme.darkblue}`,
+    backgroundColor: theme.blue,
+    color: '#FFF',
+    width: '100%',
+    padding: 40,
+    marginTop: '4em',
+  },
+  datagouvIntro: {
+    fontSize: '1.2em',
+    fontWeight: 'lighter',
+    textAlign: 'center',
+    fontVariant: 'small-caps',
+  },
+  datagouvLink: {
+    color: '#FFF',
+    fontWeight: 'bolder',
+    fontSize: '1.3em',
+    fontVariant: 'normal',
+  },
+}
 
 class Home extends Component {
   constructor(props) {
@@ -24,60 +72,31 @@ class Home extends Component {
     const loader =  <CircularProgress />
     const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
     const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} label="" color="green" icon="database"/> : loader
-    const catalogs = this.state.datasets ? <Counter value={106} label="" color="blue" icon="book"/> : loader
-
-    const styles = {
-      masthead: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '8%',
-      },
-      stats: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-      },
-      paper: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '2em',
-        margin: '2em',
-        marginTop: '0.5em',
-      },
-    }
 
     return (
-      <div style={styles.masthead}>
-
-        <h2 className="intro">
-          Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>.
-        </h2>
-
-        <div style={styles.stats}>
-
-          <div style={styles.paper}>
-            <h3>Published Datasets</h3>
-            {published}
-          </div>
-
-          <div style={styles.paper}>
-            <h3>Catalogs</h3>
-            {catalogs}
-            <Link to="catalogs">Consult catalogs</Link>
-          </div>
-
-          <div style={styles.paper}>
-            <h3>Not Yet Published</h3>
-            {notPublishedYet}
-          </div>
-
+      <div>
+        <div style={styles.masthead}>
+          <SearchInput />
+          <span style={{lineHeight: '4em'}}>OR</span>
+          <Link style={styles.catalogLinks} to="catalogs">Explore the 106 catalogs</Link>
         </div>
 
+        <div style={styles.datagouv}>
+          <p style={styles.datagouvIntro}>
+            Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a style={styles.datagouvLink} href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>
+          </p>
+
+          <div style={styles.stats}>
+            <div style={styles.paper}>
+              <h3>Not Yet Published</h3>
+              {notPublishedYet}
+            </div>
+            <div style={styles.paper}>
+              <h3>Published Datasets</h3>
+              {published}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
