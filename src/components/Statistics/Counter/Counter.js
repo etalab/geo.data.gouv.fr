@@ -4,16 +4,17 @@ const Counter = ({value, label, style, unit='', color='black', icon='', size='',
 
   const styles = {
     label: {
-      paddingTop: 4,
-      paddingBottom: 4,
+      paddingTop: 2,
     }
   }
   return (
-    <div style={style} className={`ui ${size} ${color} statistic`}>
-      <div className="value">
-        <i className={`${icon} icon`}></i> {value} {unit}</div>
+    <div style={style}>
       <div style={styles.label} className="label">{label}</div>
-      <p>{description}</p>
+      <div className="value" style={{color}}>
+        <i className={`${icon} icon`}></i> {value} {unit}
+      </div>
+
+      { description ? <p>{description}</p> : null }
     </div>
   )
 }

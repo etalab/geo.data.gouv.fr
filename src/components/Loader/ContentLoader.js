@@ -1,14 +1,7 @@
 import React from 'react'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '../CircularProgress/CircularProgress'
 
-const styles = {
-  loader: {
-    position: 'absolute',
-    top: '42%',
-    left: '42%',
-  }
-}
-const ContentLoader = ({style=styles.loader, size=2}) => {
+const ContentLoader = ({style={}, size=2}) => {
   return <CircularProgress style={style} size={size} />
 }
 

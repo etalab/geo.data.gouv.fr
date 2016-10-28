@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
-import RaisedButton from 'material-ui/RaisedButton';
 import { doneSince } from '../../helpers/doneSince'
 
 const HarvestRow = ({harvest, catalog}) => {
@@ -18,7 +17,7 @@ const HarvestRow = ({harvest, catalog}) => {
       <TableRowColumn>{doneSince(harvest.finished)}</TableRowColumn>
       <TableRowColumn>
         <Link to={`/catalogs/${catalog.id}/harvest/${harvest._id}`}>
-          <RaisedButton label="More" primary={true} />
+          More
         </Link>
       </TableRowColumn>
     </TableRow>

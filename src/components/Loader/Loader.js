@@ -1,5 +1,5 @@
 import React from 'react'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '../CircularProgress/CircularProgress'
 
 const Loader = ({component, value}) => {
   const loader =  <CircularProgress size={1} />

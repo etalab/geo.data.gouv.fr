@@ -1,5 +1,5 @@
 import React from 'react'
-import { mountWithContext } from '../../../config/jsdom-setup'
+import { mount } from 'enzyme'
 import CircularProgress from '../../CircularProgress/CircularProgress'
 import datasetMock from '../../../fetch/__test__/dataset.json'
 
@@ -11,7 +11,7 @@ describe('<DatasetDetail />', () => {
 
   describe('Loading dataset', () => {
     it('should display a <CircularProgress />', () => {
-      const wrapper = mountWithContext(<DatasetDetail params={{ datasetId: '1' }} />)
+      const wrapper = mount(<DatasetDetail params={{ datasetId: '1' }} />)
       const progress = <CircularProgress />
       expect(wrapper.containsMatchingElement(progress)).toBe(true)
     })
@@ -19,7 +19,7 @@ describe('<DatasetDetail />', () => {
 
   describe('Loaded dataset', () => {
     it('should display dataset title', () => {
-      const wrapper = mountWithContext(<DatasetDetail params={{ datasetId: '1' }} />)
+      const wrapper = mount(<DatasetDetail params={{ datasetId: '1' }} />)
 
       return wrapper.instance()
         .componentWillMount()

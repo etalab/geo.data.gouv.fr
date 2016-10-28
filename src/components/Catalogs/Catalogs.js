@@ -21,9 +21,7 @@ class Catalogs extends Component {
   render() {
     const styles = {
       container: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
+        textAlign: 'center',
         paddingTop: '2em',
       },
     }
