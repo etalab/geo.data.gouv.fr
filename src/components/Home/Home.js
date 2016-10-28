@@ -51,6 +51,11 @@ const styles = {
     fontSize: '1.3em',
     fontVariant: 'normal',
   },
+  datagouvCounter: {
+    value: {
+      fontSize: '3em',
+    },
+  },
 }
 
 class Home extends Component {
@@ -69,8 +74,8 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress />
-    const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet} label="" color="yellow" icon="hourglass half"/> : loader
-    const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} label="" color="green" icon="database"/> : loader
+    const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet}  style={styles.datagouvCounter} color={theme.yellow} icon="hourglass half"/> : loader
+    const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} style={styles.datagouvCounter}  color={theme.green} icon="database"/> : loader
 
     return (
       <div>

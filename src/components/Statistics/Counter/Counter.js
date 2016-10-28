@@ -1,16 +1,18 @@
 import React from 'react'
 
-const Counter = ({value, label, style, unit='', color='black', icon='', size='', description=''}) => {
-
-  const styles = {
-    label: {
-      paddingTop: 2,
-    }
+const defaultStyle = {
+  label: {
+    paddingTop: 2,
   }
+}
+
+const Counter = ({value, label, style, unit='', color='black', icon='', size='', description=''}) => {
+  const styles = {...style, ...defaultStyle}
+
   return (
     <div style={style}>
       <div style={styles.label} className="label">{label}</div>
-      <div className="value" style={{color}}>
+      <div style={{...styles.value, color}}>
         <i className={`${icon} icon`}></i> {value} {unit}
       </div>
 

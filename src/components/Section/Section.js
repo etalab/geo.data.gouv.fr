@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
-import NavigationExpandLessIcon from 'material-ui/svg-icons/navigation/expand-less'
-import Divider from 'material-ui/Divider'
-import IconButton from 'material-ui/IconButton'
 
 class Section extends Component {
   constructor(props) {
@@ -16,7 +12,7 @@ class Section extends Component {
   }
 
   render() {
-    const expandIcon = this.state.open ? <NavigationExpandLessIcon /> : <NavigationExpandMoreIcon />
+    const expandIcon = this.state.open ?  <span>v</span> : <span>></span>
     const styles = {
       section: {
         paddingTop: '2em',
@@ -36,11 +32,11 @@ class Section extends Component {
       <div style={styles.section}>
         <div style={styles.header}>
           <h3>{this.props.title}</h3>
-          <IconButton onClick={this.handleClick}>
+          <button onClick={this.handleClick}>
             {expandIcon}
-          </IconButton>
+          </button>
         </div>
-        <Divider />
+        <hr />
         <div style={styles.component}>
           {this.props.component}
         </div>
