@@ -5,17 +5,21 @@ const HarvestsTable = ({harvests, catalog}) => {
     const styles = {
       table: {
         maxWidth: '40em',
+        width: '100%'
       },
+      th: {
+        textAlign: 'left',
+      }
     }
     return (
       <table style={styles.table}>
 
         <thead>
           <tr>
-            <th>Status</th>
-            <th>Records</th>
-            <th>Finished</th>
-            <th></th>
+            <th style={styles.th}>Status</th>
+            <th style={styles.th}>Records</th>
+            <th style={styles.th}>Finished</th>
+            <th style={styles.th}></th>
           </tr>
         </thead>
 
