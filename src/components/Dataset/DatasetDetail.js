@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { fetchDataset } from '../../fetch/fetch'
+import { fetchDataset, fetchCatalogs } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import CircularProgress from '../CircularProgress/CircularProgress'
-import DownloadsSection from './DownloadsSection'
+import LinksSection from './LinksSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
 import CatalogsSection from './CatalogsSection'
+import OrganizationsSection from './OrganizationsSection'
 
 export default class DatasetDetail extends Component {
 
@@ -15,9 +16,11 @@ export default class DatasetDetail extends Component {
   }
 
   componentWillMount() {
-    return this.updateDataset()
+    return Promise.all([
+      this.updateDataset(),
+      this.updateCatalogs(),
+    ])
   }
-
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
@@ -26,8 +29,13 @@ export default class DatasetDetail extends Component {
     return waitForDataAndSetState(fetchDataset(this.props.params.datasetId), this, 'dataset')
   }
 
+  updateCatalogs() {
+    return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs')
+  }
+
   render() {
     const dataset = this.state.dataset
+    const catalogs = this.state.catalogs
     const styles = {
       container: {
         display: 'flex',
@@ -40,14 +48,17 @@ export default class DatasetDetail extends Component {
         marginTop: '1em',
       },
     }
-    if (!dataset) return <CircularProgress />
+
+    if (!dataset || !catalogs) return <CircularProgress style={styles.loader}  size={2} />
+
     return (
       <div style={styles.container}>
         <DatasetSection dataset={dataset} />
         <div style={styles.sections}>
-          <DownloadsSection links={dataset.metadata.links} />
+          <LinksSection links={dataset.metadata.links} />
           <KeywordsSection keywords={dataset.metadata.keywords} />
-          <CatalogsSection catalogs={dataset.catalogs} />
+          <OrganizationsSection organizations={dataset.organizations} />
+          <CatalogsSection catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
         </div>
     </div>)
   }
