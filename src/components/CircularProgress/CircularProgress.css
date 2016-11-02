@@ -2,8 +2,8 @@
 .circularProgress,
 .circularProgress:after {
   border-radius: 50%;
-  width: 10em;
-  height: 10em;
+  width: 5em;
+  height: 5em;
 }
 .circularProgress {
   margin: 10px auto;

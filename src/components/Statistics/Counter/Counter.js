@@ -1,22 +1,33 @@
 import React from 'react'
 
 const defaultStyle = {
-  label: {
-    paddingTop: 2,
+  large: {
+    fontSize: '4rem',
+    lineHeight: '4rem',
   }
 }
 
-const Counter = ({value, label, style, unit='', color='black', icon='', size='', description=''}) => {
-  const styles = {...style, ...defaultStyle}
+const Counter = ({value, label, style, unit='', size='', color='black', icon='', description=''}) => {
+  let styles = {...style, ...defaultStyle}
+  let iconDiv = null
+
+  if (size === 'large') {
+
+  }
+
+  if (icon) {
+    iconDiv = <i className={`${icon} icon`}></i>
+  }
 
   return (
     <div style={style}>
-      <div style={styles.label} className="label">{label}</div>
-      <div style={{...styles.value, color}}>
-        <i className={`${icon} icon`}></i> {value} {unit}
+      { label ? <div style={styles.label} className="label">{label}</div> : null }
+      { description ? <h3>{description}</h3> : null }
+
+      <div style={{...styles[size], color}}>
+        {iconDiv} {value} {unit}
       </div>
 
-      { description ? <p>{description}</p> : null }
     </div>
   )
 }

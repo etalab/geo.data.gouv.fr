@@ -12,11 +12,8 @@ const Chart = ({chart, title, description}) => {
 
   return (
     <div style={styles.container}>
-
-      <h2>{title}</h2>
+      <h3>{description}</h3>
       {chart}
-      <h4>{description}</h4>
-
     </div>
     )
 }

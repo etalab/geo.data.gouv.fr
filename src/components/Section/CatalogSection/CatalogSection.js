@@ -9,7 +9,7 @@ const CatalogSection = ({catalog, metrics}) => {
         <a href={catalog.serviceUrl}>Direct access to the catalog service</a>
       </div>
       <div className="column">
-        <Counter value={metrics.totalCount} size="small" label="Records" />
+        <Counter value={metrics.totalCount} size="large" label="Records" />
       </div>
     </div>
       )
