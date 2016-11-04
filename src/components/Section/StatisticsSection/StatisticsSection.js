@@ -22,11 +22,11 @@ const StatisticsSection = ({metrics}) => {
     return (
       <div style={styles.section}>
         <div style={styles.chart}>
-          <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} size="large" icon="unlock alternate icon" description="Percentage of open datasets" />
+          <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} size="large" icon="unlock alternate icon" title="Percentage of open datasets" />
         </div>
 
         <div style={styles.chart}>
-          <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} size="large" icon="download" description="Percentage of downloadable datasets" />
+          <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} size="large" icon="download" title="Percentage of downloadable datasets" />
         </div>
 
         <div style={styles.chart}>

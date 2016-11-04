@@ -4,16 +4,18 @@ const defaultStyle = {
   large: {
     fontSize: '4rem',
     lineHeight: '4rem',
-  }
+  },
+  label: {
+    large: {
+      fontSize: '1.4em',
+      fontWeight: '300',
+    },
+  },
 }
 
-const Counter = ({value, label, style, unit='', size='', color='black', icon='', description=''}) => {
+const Counter = ({value, label, style, unit='', size='', color='black', icon='', title=''}) => {
   let styles = {...style, ...defaultStyle}
   let iconDiv = null
-
-  if (size === 'large') {
-
-  }
 
   if (icon) {
     iconDiv = <i className={`${icon} icon`}></i>
@@ -21,12 +23,13 @@ const Counter = ({value, label, style, unit='', size='', color='black', icon='',
 
   return (
     <div style={style}>
-      { label ? <div style={styles.label} className="label">{label}</div> : null }
-      { description ? <h3>{description}</h3> : null }
+      { title ? <h3>{title}</h3> : null }
 
       <div style={{...styles[size], color}}>
         {iconDiv} {value} {unit}
       </div>
+
+      { label ? <div style={styles.label[size]} className="label">{label}</div> : null }
 
     </div>
   )
