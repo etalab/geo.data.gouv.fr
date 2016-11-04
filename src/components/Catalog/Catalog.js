@@ -1,11 +1,35 @@
 import React, { Component } from 'react'
 import Loader from '../Loader/Loader'
-import Paper from 'material-ui/Paper'
 import { Link } from 'react-router'
 import CatalogPreview from './CatalogPreview/CatalogPreview'
 import LastHarvesting from '../LastHarvesting/LastHarvesting'
-import { fetchMetrics } from '../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
+import { fetchMetrics } from '../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+import { theme } from '../../tools'
+
+const styles = {
+  link: {
+    cursor: 'pointer',
+    margin: '1em 3em',
+    display: 'inline-block',
+    width: '300px',
+    position: 'relative',
+  },
+  title: {
+    fontSize: '1.4em',
+  },
+  paper: {
+    backgroundColor: 'white',
+    padding: '2em 20px',
+    boxShadow: theme.boxShadowZ1,
+  },
+  lastHarvesting: {
+    fontSize: '0.8em',
+  },
+  catalogPreview: {
+    marginTop: '1em',
+  },
+}
 
 class Catalog extends Component {
   constructor(props) {
@@ -14,7 +38,7 @@ class Catalog extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchMetrics(this.props.catalog.id), this, 'metrics');
+    return waitForDataAndSetState(fetchMetrics(this.props.catalog.id), this, 'metrics')
   }
 
   componentWillUnmount() {
@@ -22,39 +46,15 @@ class Catalog extends Component {
   }
 
   render() {
-      const catalogPreview = <CatalogPreview metrics={this.state.metrics} />
-      const styles = {
-        link: {
-          margin: '1em 3em 1em 3em',
-          position: 'relative',
-        },
-        ribbon: {
-          position: 'absolute',
-          top: '1em',
-          left: '-14px',
-        },
-        stats: {
-          display: 'flex',
-          felxWrap: 'wrap',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-        },
-        title: {
-          position: 'relative',
-          justifyContent: 'center',
-          width: '30%',
-          top: '20px',
-        },
-      }
+      const catalogPreview = <CatalogPreview style={styles.catalogPreview} metrics={this.state.metrics} />
+
       return (
           <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
-            <Paper rounded={true} zDepth={2}>
-              <LastHarvesting style={styles.ribbon} harvest={this.props.catalog.lastHarvesting}/>
-              <div style={styles.stats}>
-                <span style={styles.title} className="ui large header">{this.props.catalog.name}</span>
-                <Loader value={this.state.metrics} component={catalogPreview}/>
-              </div>
-            </Paper>
+            <div style={styles.paper}>
+              <div style={styles.title}>{this.props.catalog.name}</div>
+              <LastHarvesting style={styles.lastHarvesting} harvest={this.props.catalog.lastHarvesting}/>
+              <Loader value={this.state.metrics} component={catalogPreview}/>
+            </div>
           </Link>
       )
   }

@@ -1,28 +1,26 @@
 import React from 'react'
 import Counter from '../Counter/Counter'
+import { theme } from '../../../tools'
 
-const Percent = ({value, total, label, icon, size, style, description=''}) => {
+const Percent = (props) => {
+  const { value, total } = props
   const percent = value ? Math.floor((value / total) * 100) : 0
   const color = () => {
     if (percent < 20) {
-      return 'red'
+      return theme.red
     } else if (percent > 55) {
-      return 'green'
+      return theme.green
     } else {
-      return 'yellow'
+      return theme.yellow
     }
   }
 
   return (
     <Counter
-      style={style}
+      {...props}
       value={percent}
-      label={label}
-      description={description}
       unit="%"
-      icon={icon}
-      color={color()}
-      size={size} />
+      color={color()}/>
   )
 }
 

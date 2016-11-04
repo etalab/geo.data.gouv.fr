@@ -1,0 +1,17 @@
+input.search-input:focus,
+input.search-input:active {
+  border-color: #85B7D9;
+}
+
+input.search-input {
+  margin: 0;
+  width: 100%;
+  flex: 1 0 auto;
+  outline: 0;
+  line-height: 2em;
+  font-size: 1.5em;
+  padding: .59em 1em;
+  background: #FFF;
+  border: 1px solid rgba(34,36,38,.15);
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+}

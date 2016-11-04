@@ -6,13 +6,7 @@ import Counter from '../../../Statistics/Counter/Counter'
 
 import metrics from '../../../../fetch/__test__/metrics.json'
 
-describe('<CatalogPreviewPreview />', () => {
-  const styles = {
-    stat: {
-      margin: '2em',
-    }
-  }
-
+describe('<CatalogPreview />', () => {
   describe('metrics is defined', () => {
     let wrapper
     beforeEach(() =>  {
@@ -20,19 +14,18 @@ describe('<CatalogPreviewPreview />', () => {
     })
 
     it('should display the number of records', () => {
-      const records = <Counter style={styles.stat} value={metrics.totalCount} size="small" label="Records" />
-
+      const records = <Counter value={metrics.totalCount} label="Records" />
       expect(wrapper.contains(records)).toBe(true)
     })
 
     it('should display the openness percent', () => {
-      const open = <Percent style={styles.stat} value={ metrics.partitions['openness'].yes} total={metrics.totalCount} label="open data" icon="unlock alternate icon" size="small" />
-
+      const open = <Percent value={ metrics.partitions['openness'].yes} label="Open data" total={metrics.totalCount} icon="unlock alternate icon" />
+      console.log(wrapper.debug());
       expect(wrapper.contains(open)).toBe(true)
     })
 
     it('should display the downloadable percent', () => {
-      const download = <Percent style={styles.stat} value={ metrics.partitions['download'].yes} total={metrics.totalCount} label="downloadable" icon="download" size="small" />
+      const download = <Percent value={ metrics.partitions['download'].yes} label="Downloadable" total={metrics.totalCount} icon="download" />
 
       expect(wrapper.contains(download)).toBe(true)
     })

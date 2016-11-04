@@ -1,8 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import Loader from '../../Loader/Loader'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
-import { mountWithContext } from '../../../config/jsdom-setup'
 
 import catalog from '../../../fetch/__test__/catalog.json'
 import metrics from '../../../fetch/__test__/metrics.json'
@@ -25,14 +24,14 @@ describe('<Catalog />', () => {
     })
 
     it('should display <CatalogPreview />', () => {
-      const wrapper = mountWithContext(<Catalog catalog={catalog} />)
+      const wrapper = mount(<Catalog catalog={catalog} />)
       const catalogPreview = <CatalogPreview metrics={metrics} />
 
       return wrapper
         .instance()
         .componentWillMount()
         .then(() => {
-          expect(wrapper.contains(catalogPreview)).toBe(true)
+          expect(wrapper.containsMatchingElement(catalogPreview)).toBe(true)
         })
     })
 
@@ -40,7 +39,7 @@ describe('<Catalog />', () => {
 
   describe('fetch metrics', () => {
     it('should set metrics', () => {
-      const wrapper = mountWithContext(<Catalog catalog={catalog} />)
+      const wrapper = mount(<Catalog catalog={catalog} />)
 
       return wrapper
         .instance()
@@ -49,8 +48,8 @@ describe('<Catalog />', () => {
     })
 
     it('should display a loading', () => {
-      const loader = mountWithContext(<Loader component={<div></div>} value={undefined} />)
-      const wrapper = mountWithContext(<Catalog catalog={catalog} />)
+      const loader = mount(<Loader component={<div></div>} value={undefined} />)
+      const wrapper = mount(<Catalog catalog={catalog} />)
 
       expect(wrapper.html()).toContain(loader.html())
     })

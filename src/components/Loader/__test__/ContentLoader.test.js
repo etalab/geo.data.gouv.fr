@@ -1,21 +1,21 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ContentLoader from '../ContentLoader'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '../../CircularProgress/CircularProgress'
 
 describe('<ContentLoader />', () => {
   it('should display a defaut <ContentLoader />', () => {
-    const loader = <CircularProgress style={{position: 'absolute', top: '42%', left: '42%'}} size={2} />
+    const loader = <CircularProgress size={2} />
     const wrapper = shallow(<ContentLoader />)
 
-    expect(wrapper.contains(loader)).toBe(true)
+    expect(wrapper.containsMatchingElement(loader)).toBe(true)
   })
 
   it('should display a CircularProgress with a size of 3', () => {
-    const loader = <CircularProgress size={3} style={{position: 'absolute', top: '42%', left: '42%'}} />
+    const loader = <CircularProgress size={3} />
     const wrapper = shallow(<ContentLoader size={3} />)
 
-    expect(wrapper.contains(loader)).toBe(true)
+    expect(wrapper.containsMatchingElement(loader)).toBe(true)
   })
 
   it('should display a CircularProgress with specific style', () => {

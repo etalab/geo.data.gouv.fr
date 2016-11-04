@@ -1,11 +1,25 @@
 import React from 'react'
-import Menu from '../Menu/Menu'
+import { theme } from '../../tools'
+
+const styles = {
+  nav: {
+    backgroundColor: theme.blue,
+    padding: '20px 2em',
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  home: {
+    color: theme.white,
+    fontSize: '2em',
+  }
+}
 
 const Header = () => {
   return (
-    <div className="header">
-      <Menu />
-    </div>
+    <nav style={styles.nav} role="navigation">
+      <a style={styles.home} href='/'>Inspire</a>
+    </nav>
   )
 }
 

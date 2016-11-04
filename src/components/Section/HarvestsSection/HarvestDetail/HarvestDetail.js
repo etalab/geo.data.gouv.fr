@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import Chip from 'material-ui/Chip'
-import Subheader from 'material-ui/Subheader'
 import moment from 'moment'
 import { fetchCatalog, fetchHarvest } from '../../../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
+import { theme } from '../../../../tools';
 
 class HarvestDetail extends Component {
   constructor(props) {
@@ -68,7 +67,7 @@ class HarvestDetail extends Component {
         },
         log: {
           padding: '1em',
-          backgroundColor: this.context.muiTheme.palette.accent2Color,
+          backgroundColor: theme.darkblue,
         },
         results: {
           marginLeft: '0.5em',
@@ -90,6 +89,8 @@ class HarvestDetail extends Component {
                 </div>
       }
 
+      styles.chip.color = success ? theme.green : theme.red
+
       return (
         <div style={styles.paper} className="harvest-detail">
 
@@ -98,16 +99,12 @@ class HarvestDetail extends Component {
               <Link to={`/catalogs/${this.props.params.catalogId}`}>
                 <h1 style={styles.h1} className="ui header">{this.state.catalog.name}</h1>
               </Link>
-              <Subheader>Harvest ID: {this.state.harvest._id}</Subheader>
+              <h2>Harvest ID: {this.state.harvest._id}</h2>
             </div>
 
-            <Chip
-              style={styles.chip}
-              labelColor={this.context.muiTheme.palette.alternateTextColor}
-              backgroundColor={success ? this.context.muiTheme.palette.successColor : this.context.muiTheme.palette.failColor}
-              >
+            <span style={styles.chip}>
               {this.state.harvest.status} {hoursDifference}
-            </Chip>
+            </span>
           </div>
 
           <div style={styles.content}>
@@ -123,7 +120,4 @@ class HarvestDetail extends Component {
   }
 }
 
-HarvestDetail.contextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
-}
 export default HarvestDetail

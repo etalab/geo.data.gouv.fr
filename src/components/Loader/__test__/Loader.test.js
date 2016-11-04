@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { shallow } from 'enzyme'
 import Loader from '../Loader'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '../../CircularProgress/CircularProgress'
 
 describe('Loader', () => {
   it('should display a loader when value is undefined', () => {
     const loader =  <CircularProgress size={1} />
     const wrapper = shallow(<Loader value={undefined} component={<Component />} />)
+
     expect(wrapper.contains(loader)).toBe(true)
   })
 

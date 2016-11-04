@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
 import { shallow } from 'enzyme';
-import RaisedButton from 'material-ui/RaisedButton';
 import HarvestRow from '../HarvestRow'
 import { doneSince } from '../../../helpers/doneSince'
 
@@ -42,7 +41,7 @@ describe('<HarvestRow />', () => {
 
   describe('Harvest status', () => {
     it('Should render a link to harvest details', () => {
-      const link = <Link to={`/catalogs/${catalog.id}/harvest/${harvestSuccessed._id}`}><RaisedButton label="More" primary={true} /></Link>
+      const link = <Link to={`/catalogs/${catalog.id}/harvest/${harvestSuccessed._id}`}>More</Link>
       const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} catalog={catalog} />)
       expect(wrapper.contains(link)).toEqual(true)
     });

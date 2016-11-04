@@ -40,9 +40,9 @@ describe('<DoughnutChart />', () => {
 
     it('Should render Percent component when only 1 data', () => {
       const twoDataWrapper = shallow(<DoughnutChart data={{'dataset': 427}} />)
-      const percent = <Percent value={100} total={100} label={formatedData[0].label} icon="database icon" size="small" />
+      const percent = <Percent value={100} total={100} label={formatedData[0].label} icon="database icon" />
 
-      expect(twoDataWrapper.contains(percent)).toEqual(true);
+      expect(twoDataWrapper.containsMatchingElement(percent)).toEqual(true);
     });
 
     it('Should render Percent component when no data', () => {
