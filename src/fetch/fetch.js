@@ -28,7 +28,7 @@ export function fetchHarvests(catalogId) {
 }
 
 export function fetchGlobalMetrics() {
-  return _f('https://inspire.data.gouv.fr/api/datasets/metrics');
+  return _f('https://inspire.data.gouv.fr/dgv/api/datasets/metrics');
 }
 
 export function fetchDataset(datasetId) {
