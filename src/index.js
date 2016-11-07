@@ -14,7 +14,7 @@ import Home from './components/Home/Home'
 import Catalogs from './components/Catalogs/Catalogs'
 import CatalogDetail from './components/CatalogDetail/CatalogDetail'
 import DatasetDetail from './components/Dataset/DatasetDetail'
-import NotFind from './components/NotFind/NotFind'
+import NotFound from './components/NotFound/NotFound'
 
 ReactDOM.render((
   <Router history={browserHistory}>
@@ -24,7 +24,7 @@ ReactDOM.render((
       <Route path="/catalogs/:catalogId" component={CatalogDetail} />
       <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />
       <Route path="/datasets/:datasetId" component={DatasetDetail} />
-      <Route path="*" component={NotFind} />
+      <Route path="*" component={NotFound} />
     </Route>
   </Router>
 ), document.getElementById('root'))
