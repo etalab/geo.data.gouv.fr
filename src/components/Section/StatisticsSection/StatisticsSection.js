@@ -25,7 +25,7 @@ const styles = {
 const StatisticsSection = ({metrics}) => {
 return (
   <div>
-    <h2 style={styles.h2}>Indicateurs conçernants la totalité du catalogue</h2>
+    <h2 style={styles.h2}>Indicateurs concernant la totalité du catalogue</h2>
     <div style={styles.section}>
       <div style={styles.chart}>
         <Chart
@@ -42,7 +42,7 @@ return (
       </div>
     </div>
 
-    <h2 style={styles.h2}>Indicateurs conçernants les jeux de données</h2>
+    <h2 style={styles.h2}>Indicateurs concernant les jeux de données</h2>
       <div style={styles.section}>
         <div style={styles.chart}>
           <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="unlock alternate icon" title="Percentage of open datasets" />
