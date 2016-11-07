@@ -14,9 +14,9 @@ const CatalogPreview = ({metrics, style}) => {
   if (metrics) {
     return (
       <div style={styles.container}>
-        <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} label="Open data" icon="unlock alternate icon" />
-        <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} label="Downloadable" icon="download" />
-        <Counter value={metrics.totalCount} label="Records" />
+        <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} label="Open data" icon="unlock alternate icon" />
+        <Percent value={metrics.datasets.partitions['download'] ? metrics.datasets.partitions['download'].yes : 0} total={metrics.datasets.totalCount} label="Downloadable" icon="download" />
+        <Counter value={metrics.records.totalCount} label="Records" />
       </div>
     )
   }
