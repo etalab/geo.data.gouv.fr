@@ -5,3 +5,8 @@ general:
 machine:
   node:
     version: 6
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./deploy.sh
