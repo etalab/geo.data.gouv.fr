@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { theme } from '../../tools'
 
 class NotFind extends Component {
   render() {
@@ -7,11 +8,8 @@ class NotFind extends Component {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        color: '#ffffff',
+        color: theme.blue,
         fontSize: '2em',
-        position: 'absolute',
-        top: '25%',
-        right: 'calc(50% + -100px)',
       },
       header: {
         fontSize: '4em',
