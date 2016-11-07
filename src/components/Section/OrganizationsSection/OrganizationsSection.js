@@ -5,14 +5,14 @@ const OrganizationsSection = ({metrics}) => {
   return (
     <div className="ui equal width stackable grid">
       <div className="column">
-        <Organizations label="Organizations" organizations={metrics.counts.organizations} />
+        <Organizations label="Organizations" organizations={metrics.records.counts.organizations} />
       </div>
 
       <div className="column">
-        <Organizations label="Keywords" organizations={metrics.counts.keywords} />
+        <Organizations label="Keywords" organizations={metrics.records.counts.keywords} />
       </div>
     </div>
-      )
+  )
 }
 
 export default OrganizationsSection

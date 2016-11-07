@@ -31,32 +31,32 @@ return (
         <Chart
           title={'Record Type'}
           description={'Distribution of record types'}
-          chart={<DoughnutChart data={metrics.partitions.recordType} />} />
+          chart={<DoughnutChart data={metrics.records.partitions.recordType} />} />
       </div>
 
       <div style={styles.chart}>
         <Chart
           title={'Metadata Type'}
           description={'Distribution of metadata types'}
-          chart={<DoughnutChart data={metrics.partitions.metadataType} />} />
+          chart={<DoughnutChart data={metrics.records.partitions.metadataType} />} />
       </div>
     </div>
 
     <h2 style={styles.h2}>Indicateurs conçernants les jeux de données</h2>
       <div style={styles.section}>
         <div style={styles.chart}>
-          <Percent value={metrics.partitions['openness'] ? metrics.partitions['openness'].yes : 0} total={metrics.totalCount} size="large" icon="unlock alternate icon" title="Percentage of open datasets" />
+          <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="unlock alternate icon" title="Percentage of open datasets" />
         </div>
 
         <div style={styles.chart}>
-          <Percent value={metrics.partitions['download'] ? metrics.partitions['download'].yes : 0} total={metrics.totalCount} size="large" icon="download" title="Percentage of downloadable datasets" />
+          <Percent value={metrics.datasets.partitions['download'] ? metrics.datasets.partitions['download'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="download" title="Percentage of downloadable datasets" />
         </div>
 
         <div style={styles.chart}>
           <Chart
             title={'Data Type'}
             description={'Distribution of data types'}
-            chart={<DoughnutChart data={metrics.partitions.dataType} />} />
+            chart={<DoughnutChart data={metrics.datasets.partitions.dataType} />} />
         </div>
       </div>
     </div>

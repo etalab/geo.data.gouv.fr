@@ -14,18 +14,17 @@ describe('<CatalogPreview />', () => {
     })
 
     it('should display the number of records', () => {
-      const records = <Counter value={metrics.totalCount} label="Records" />
+      const records = <Counter value={metrics.records.totalCount} label="Records" />
       expect(wrapper.contains(records)).toBe(true)
     })
 
     it('should display the openness percent', () => {
-      const open = <Percent value={ metrics.partitions['openness'].yes} label="Open data" total={metrics.totalCount} icon="unlock alternate icon" />
-      console.log(wrapper.debug());
+      const open = <Percent value={ metrics.datasets.partitions['openness'].yes} label="Open data" total={metrics.datasets.totalCount} icon="unlock alternate icon" />
       expect(wrapper.contains(open)).toBe(true)
     })
 
     it('should display the downloadable percent', () => {
-      const download = <Percent value={ metrics.partitions['download'].yes} label="Downloadable" total={metrics.totalCount} icon="download" />
+      const download = <Percent value={ metrics.datasets.partitions['download'].yes} label="Downloadable" total={metrics.datasets.totalCount} icon="download" />
 
       expect(wrapper.contains(download)).toBe(true)
     })
