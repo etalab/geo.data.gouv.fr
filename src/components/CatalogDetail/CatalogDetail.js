@@ -1,12 +1,36 @@
 import React, { Component } from 'react'
 import ContentLoader from '../Loader/ContentLoader'
-import Section from '../Section/Section'
 import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
 import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import { fetchCatalog, fetchMetrics } from '../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
+import { fetchCatalog, fetchMetrics } from '../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+import { theme } from '../../tools'
+
+const styles = {
+  section: {
+    paddingTop: '2em',
+    paddingBottom: '2em',
+    backgroundColor: 'white',
+    padding: '2em',
+    marginBottom: '2em',
+    boxShadow: theme.boxShadowZ1,
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  h1: {
+    fontSize: '1.4rem',
+    color: theme.darkblue,
+    marginBottom: '1em',
+  },
+  catalogDetail: {
+    padding: 40,
+    display: 'block',
+  },
+}
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -38,19 +62,13 @@ class CatalogDetail extends Component {
     const metrics = this.state.metrics
 
     if (!catalog || !metrics) return <ContentLoader />
-    const styles = {
-      catalogDetail : {
-        padding: 40,
-        display: 'block',
-      },
-    }
 
     return (
       <div style={styles.catalogDetail} id="catalog-detail">
-        <Section title="Catalog" component={<CatalogSection catalog={catalog} metrics={metrics} />} />
-        <Section title="Statistics" component={<StatisticsSection metrics={metrics} />} />
-        <Section title="Counts" component={<OrganizationsSection metrics={metrics} />} />
-        <Section title="Harvests" component={<HarvestsSection catalog={catalog} />} />
+        <div style={styles.section}><CatalogSection catalog={catalog} metrics={metrics} /></div>
+        <div style={styles.section}><StatisticsSection metrics={metrics} /></div>
+        <div style={styles.section}><OrganizationsSection metrics={metrics} /></div>
+        <div style={styles.section}><HarvestsSection catalog={catalog} /></div>
       </div>
     )
   }
