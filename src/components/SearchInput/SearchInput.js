@@ -4,11 +4,7 @@ import './SearchInput.css'
 class SearchInput extends Component {
   constructor(props) {
     super(props)
-    this.state = { textInput: this.props.textInput }
-    this.handleChange = this.handleChange.bind(this)
-    this.search = this.search.bind(this)
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.removeFilter = this.removeFilter.bind(this)
+    this.state = { textInput: this.props.textInput || '' }
   }
 
   handleChange(event) {
@@ -36,10 +32,11 @@ class SearchInput extends Component {
           type='text'
           value={this.state.textInput}
           className='search-input'
-          onChange={this.handleChange}
-          onKeyPress={this.handleKeyPress}
-          placeholder='Search...' />
-        <button className='ui large button' onClick={this.search}>Search</button>
+          onChange={(e) => this.handleChange(e)}
+          onKeyPress={(e) => this.handleKeyPress(e)}
+          placeholder="Search..." />
+          <button className='ui large button' onClick={() => this.search()}>Search</button>
+        <button >Search</button>
       </div>
     )
   }

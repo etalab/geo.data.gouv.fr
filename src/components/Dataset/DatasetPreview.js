@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { prune } from 'underscore.string'
 
 const styles = {
   preview: {
@@ -13,33 +14,32 @@ const styles = {
 
 class DatasetPreview extends Component {
 
-  sumDesc() {
-    return this.props.dataset.metadata.description.substring(0,1000).concat('...')
-  }
-
   onClick(value) {
     this.props.onClick(value)
   }
 
   render() {
+    const { metadata, organizations, recordId } = this.props.dataset
+    const { addFilter } = this.props
+
     return (
       <div style={styles.preview}>
         <h4>
-          <Link to={`/datasets/${this.props.dataset.recordId}`}>{this.props.dataset.metadata.title}</Link>
+          <Link to={`/datasets/${recordId}`}>{metadata.title}</Link>
         </h4>
-        <p>{this.sumDesc()}</p>
+        <p>{prune(metadata.description, 1000)}</p>
         <div>
           <b>Keywords: </b>
-          {this.props.dataset.metadata.keywords.map((keyword, idx) =>
+          {metadata.keywords.map((keyword, idx) =>
             <span style={styles.link} key={idx}>
-              <Link onClick={this.onClick.bind(this, {name: 'keyword', value: keyword})}>{keyword}</Link>
+              <Link onClick={() => addFilter({name: 'keyword', value: keyword})}>{keyword}</Link>
             </span>)}
         </div>
         <div>
           <b>Organizations: </b>
-          {this.props.dataset.organizations.map((organization, idx) =>
+          {organizations.map((organization, idx) =>
             <span style={styles.link} key={idx}>
-              <Link onClick={this.onClick.bind(this, {name: 'organization', value: organization})}>{organization}</Link>
+              <Link onClick={() => addFilter({name: 'organization', value: organization})}>{organization}</Link>
             </span>)}
         </div>
       </div>

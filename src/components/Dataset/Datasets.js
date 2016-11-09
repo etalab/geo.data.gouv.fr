@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { search } from '../../fetch/fetch'
+import { search, buildSearchQuery } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
@@ -19,29 +19,32 @@ class Datasets extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      baseUrl: 'https://inspire.data.gouv.fr/api/geogw/records',
       errors: [],
       ...props.query
     }
   }
 
   componentWillMount() {
-    return this.search({...this.state, filters: addFilter(this.state.filters, {name: 'availability', value: 'yes'})})
+    return this.search()
   }
 
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
 
-  search(newState) {
-    const { baseUrl, textInput, filters, page} = newState
+  search(changes = {}) {
+    const params = Object.assign({}, this.state, changes);
+    const { textInput, filters, page } = params
 
-    this.setState(newState)
+    const query = buildSearchQuery(textInput, filters, page)
+    const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${query}`
+    history.pushState({path: newUrl}, '', newUrl)
 
-    return waitForDataAndSetState(search(baseUrl, textInput, filters, page), this, 'datasets')
+    const allFilters = [...filters, {name: 'availability', value: 'yes'}]
+    return waitForDataAndSetState(search(textInput, allFilters, page), this, 'datasets')
   }
 
-  displayResult() {
+  renderResult() {
     if (this.state.errors.length) {
       return <div>An error has occurred.
                 {this.state.errors.map((error, idx) => <p key={idx}>{error}</p>)}
@@ -53,7 +56,7 @@ class Datasets extends Component {
         return <div>No datasets found.</div>
       } else {
         return <div>
-                {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} onClick={this.addFilter.bind(this)}/>)}
+                {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => this.addFilter(filter)}/>)}
               </div>
       }
     } else {
@@ -62,31 +65,35 @@ class Datasets extends Component {
   }
 
   addFilter(filter){
-    this.search({...this.state, filters: addFilter(this.state.filters, filter) })
+    const filters = addFilter(this.state.filters, filter)
+    this.setState({filters})
+    this.search({filters})
   }
 
   removeFilter(filter) {
-    this.search({...this.state, filters: removeFilter(this.state.filters, filter) })
+    const filters = removeFilter(this.state.filters, filter)
+    this.setState({filters})
+    this.search({filters})
   }
 
-  handleTextChange(textInput) {
-    this.search({...this.state, textInput})
+  userSearch(textInput) {
+    const changes = { textInput, filters: [] }
+    this.setState(changes)
+    this.search(changes)
   }
 
   render() {
-    console.log(this.state);
     return (
         <div>
           <div style={styles.searchInputWrapper}>
             <SearchInput
-              style={styles.searchInput}
               textInput={this.state.textInput}
               filters={this.state.filters}
-              removeFilter={this.removeFilter.bind(this)}
-              handleTextChange={this.handleTextChange.bind(this)} />
+              removeFilter={(filter) => this.removeFilter(filter)}
+              handleTextChange={(textInput) => this.userSearch(textInput)} />
           </div>
           <div style={styles.results}>
-            {this.displayResult()}
+            {this.renderResult()}
           </div>
         </div>
     )

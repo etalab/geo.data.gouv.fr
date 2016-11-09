@@ -37,30 +37,15 @@ export function fetchDataset(datasetId) {
   return _f(`https://inspire.data.gouv.fr/api/geogw/records/${datasetId}`)
 }
 
-export function _concatUrlQuery(url, query) {
-  if (query) return url + '?' + query
-  return url
-}
-
-export function _updateUrlQuery(query) {
-  let currentUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-  const newUrl = _concatUrlQuery(currentUrl, query)
-
-  history.replaceState({path: newUrl}, '', newUrl)
-}
-
-export function _builQuery(q, filters, page) {
+export function buildSearchQuery(q, filters, page) {
   const qsFilters = convertFilters(filters)
   const query = qs.stringify({q, page, ...qsFilters}, { indices: false })
 
   return query
 }
 
-export function search(url, textInput, filters, page) {
-  if (!url) return Promise.reject(new Error('url is required'))
-  const builQuery = _builQuery(textInput, filters, page)
-  const concatUrl = _concatUrlQuery(url, builQuery)
-  _updateUrlQuery(builQuery)
+export function search(textInput, filters, page) {
+  const buildQuery = buildSearchQuery(textInput, filters, page)
 
-  return _f(concatUrl)
+  return _f('https://inspire.data.gouv.fr/api/geogw/records?' + buildQuery)
 }

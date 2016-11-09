@@ -1,4 +1,4 @@
-import { parseQuery, _extractFilters } from '../urlParser'
+import { parseQuery, _extractFilters } from '../WrappedDatasets'
 
 describe('_extractFilters', () => {
   it('should return filters array', () => {

@@ -1,6 +1,6 @@
-import { _builQuery } from '../fetch'
+import { _buildQuery } from '../fetch'
 
-describe('_builQuery()', () => {
+describe('_buildQuery()', () => {
   it('should return a query', () => {
     const componentState = {
       textInput: '42',
@@ -13,7 +13,7 @@ describe('_builQuery()', () => {
     }
     const expectedUrl = 'q=42&page=2&keywords=keyword1&keywords=keyword2&organizations=foo'
 
-    const builQuery = _builQuery(
+    const builQuery = _buildQuery(
       componentState.textInput,
       componentState.filters,
       componentState.page,
