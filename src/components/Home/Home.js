@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CircularProgress from '../CircularProgress/CircularProgress'
-import { Link } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import SearchInput from '../SearchInput/SearchInput'
 import Counter from '../Statistics/Counter/Counter'
 import { theme  } from '../../tools';
@@ -71,6 +71,10 @@ class Home extends Component {
     return cancelAllPromises(this)
   }
 
+  userSearch(textInput) {
+    browserHistory.push(`datasets?q=${textInput}`)
+  }
+
   render() {
     const loader =  <CircularProgress />
     const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet}  style={styles.datagouvCounter} color={theme.yellow} size="large" icon="hourglass half"/> : loader
@@ -79,7 +83,7 @@ class Home extends Component {
     return (
       <div>
         <div style={styles.masthead}>
-          <SearchInput />
+          <SearchInput handleTextChange={(textInput) => this.userSearch(textInput)} />
           <span style={{lineHeight: '4em'}}>OR</span>
           <Link style={styles.catalogLinks} to="catalogs">Explore the 106 catalogs</Link>
         </div>

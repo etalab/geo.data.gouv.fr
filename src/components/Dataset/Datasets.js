@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import { search, buildSearchQuery } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import SearchInput from '../SearchInput/SearchInput'
@@ -37,8 +38,7 @@ class Datasets extends Component {
     const { textInput, filters, page } = params
 
     const query = buildSearchQuery(textInput, filters, page)
-    const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${query}`
-    history.pushState({path: newUrl}, '', newUrl)
+    browserHistory.push(`datasets?${query}`)
 
     const allFilters = [...filters, {name: 'availability', value: 'yes'}]
     return waitForDataAndSetState(search(textInput, allFilters, page), this, 'datasets')
