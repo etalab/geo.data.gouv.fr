@@ -2,10 +2,10 @@ import { parseQuery, _extractFilters } from '../urlParser'
 
 describe('_extractFilters', () => {
   it('should return filters array', () => {
-    const qs = { keywords: 'bar', organizations: 'foo' }
+    const qs = { keyword: 'bar', organization: 'foo' }
     const filters = [
-      {name: 'keywords', value: 'bar'},
-      {name: 'organizations', value: 'foo'},
+      {name: 'keyword', value: 'bar'},
+      {name: 'organization', value: 'foo'},
     ]
     const extractedFilters = _extractFilters(qs)
 
@@ -13,9 +13,9 @@ describe('_extractFilters', () => {
   })
 
   it('should return only allowed filters', () => {
-    const qs = { keywords: 'bar', notAllowed: 'foo' }
+    const qs = { keyword: 'bar', notAllowed: 'foo' }
     const filters = [
-      {name: 'keywords', value: 'bar'},
+      {name: 'keyword', value: 'bar'},
     ]
     const extractedFilters = _extractFilters(qs)
 
@@ -23,10 +23,10 @@ describe('_extractFilters', () => {
   })
 
   it('should create one items for each value', () => {
-    const qs = { keywords: ['foo', 'bar'] }
+    const qs = { keyword: ['foo', 'bar'] }
     const filters = [
-      {name: 'keywords', value: 'foo'},
-      {name: 'keywords', value: 'bar'},
+      {name: 'keyword', value: 'foo'},
+      {name: 'keyword', value: 'bar'},
     ]
     const extractedFilters = _extractFilters(qs)
 
@@ -35,8 +35,8 @@ describe('_extractFilters', () => {
 })
 
 describe('parseQuery', () => {
-  it('should regroupe chaque clef dans un même array', () => {
-    const query = 'q=42&page=2&keywords=keyword1&keywords=keyword2&organizations=foo'
+  it('should create an array of filters', () => {
+    const query = 'q=42&page=2&keyword=keyword1&keyword=keyword2&organization=foo'
     const result = parseQuery(query)
 
     expect(result).toEqual(
@@ -44,9 +44,9 @@ describe('parseQuery', () => {
         textInput: '42',
         page: '2',
         filters: [
-          {name: 'keywords', value: 'keyword1'},
-          {name: 'keywords', value: 'keyword2'},
-          {name: 'organizations', value: 'foo'},
+          {name: 'keyword', value: 'keyword1'},
+          {name: 'keyword', value: 'keyword2'},
+          {name: 'organization', value: 'foo'},
         ],
       }
     )
