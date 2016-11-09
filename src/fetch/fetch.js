@@ -1,5 +1,6 @@
-import superfetch from '../helpers/superfetch';
-
+import superfetch from '../helpers/superfetch'
+import { convertFilters } from '../helpers/manageFilters'
+import qs from 'qs'
 const _f = superfetch;
 
 export function fetchMetrics(catalogId) {
@@ -34,4 +35,17 @@ export function fetchGlobalMetrics() {
 export function fetchDataset(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
   return _f(`https://inspire.data.gouv.fr/api/geogw/records/${datasetId}`)
+}
+
+export function buildSearchQuery(q, filters, page) {
+  const qsFilters = convertFilters(filters)
+  const query = qs.stringify({q, page, ...qsFilters}, { indices: false })
+
+  return query
+}
+
+export function search(textInput, filters, page) {
+  const buildQuery = buildSearchQuery(textInput, filters, page)
+
+  return _f('https://inspire.data.gouv.fr/api/geogw/records?' + buildQuery)
 }

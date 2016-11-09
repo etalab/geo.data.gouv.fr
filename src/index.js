@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import HarvestDetail from './components/Section/HarvestsSection/HarvestDetail/HarvestDetail'
+import WrappedDatasets from './components/Dataset/WrappedDatasets'
 import './index.css'
 
 // Needed for onTouchTap
@@ -23,6 +24,7 @@ ReactDOM.render((
       <Route path="/catalogs" component={Catalogs} />
       <Route path="/catalogs/:catalogId" component={CatalogDetail} />
       <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />
+      <Route path="/datasets" component={WrappedDatasets} />
       <Route path="/datasets/:datasetId" component={DatasetDetail} />
       <Route path="*" component={NotFound} />
     </Route>
