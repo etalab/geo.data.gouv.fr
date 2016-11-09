@@ -9,6 +9,9 @@ import { addFilter, removeFilter } from '../../helpers/manageFilters'
 const styles = {
   results: {
     margin: '4em',
+  },
+  searchInputWrapper: {
+    margin: '4em',
   }
 }
 
@@ -74,11 +77,14 @@ class Datasets extends Component {
     console.log(this.state);
     return (
         <div>
-          <SearchInput
-            textInput={this.state.textInput}
-            filters={this.state.filters}
-            removeFilter={this.removeFilter.bind(this)}
-            handleTextChange={this.handleTextChange.bind(this)} />
+          <div style={styles.searchInputWrapper}>
+            <SearchInput
+              style={styles.searchInput}
+              textInput={this.state.textInput}
+              filters={this.state.filters}
+              removeFilter={this.removeFilter.bind(this)}
+              handleTextChange={this.handleTextChange.bind(this)} />
+          </div>
           <div style={styles.results}>
             {this.displayResult()}
           </div>

@@ -5,7 +5,6 @@ input.search-input:active {
 
 input.search-input {
   margin: 0;
-  width: 100%;
   flex: 1 0 auto;
   outline: 0;
   line-height: 2em;
@@ -14,4 +13,22 @@ input.search-input {
   background: #FFF;
   border: 1px solid rgba(34,36,38,.15);
   -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+.search-input-wrapper button.ui.button {
+  border-radius: 0;
+  background-color: #2185C5;
+  color: #FFF;
+}
+
+.search-input-wrapper button.ui.button:hover {
+  border-radius: 0;
+  background-color: #35a2e8;
+  color: #FFF;
+}
+
+.search-input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }

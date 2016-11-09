@@ -31,15 +31,15 @@ class SearchInput extends Component {
 
   render() {
     return (
-      <div>
+      <div className='search-input-wrapper'>
         <input
-          type="text"
+          type='text'
           value={this.state.textInput}
           className='search-input'
           onChange={this.handleChange}
           onKeyPress={this.handleKeyPress}
-          placeholder="Search..." />
-        <button onClick={this.search}>Search</button>
+          placeholder='Search...' />
+        <button className='ui large button' onClick={this.search}>Search</button>
       </div>
     )
   }
