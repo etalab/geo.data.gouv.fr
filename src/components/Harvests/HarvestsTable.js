@@ -1,5 +1,5 @@
 import React from 'react'
-import HarvestRow from '../HarvestRow/HarvestRow'
+import HarvestRow from './HarvestRow'
 
 const HarvestsTable = ({harvests, catalog}) => {
     const styles = {
@@ -18,13 +18,14 @@ const HarvestsTable = ({harvests, catalog}) => {
           <tr>
             <th style={styles.th}>Status</th>
             <th style={styles.th}>Records</th>
+            <th style={styles.th}>Delta</th>
             <th style={styles.th}>Finished</th>
             <th style={styles.th}></th>
           </tr>
         </thead>
 
         <tbody>
-          {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} catalog={catalog} />)}
+          {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} nextHarvest={harvests[idx + 1] || 0} catalog={catalog} />)}
         </tbody>
 
       </table>
