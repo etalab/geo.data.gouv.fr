@@ -1,4 +1,4 @@
-import { addFilter, removeFilter, convertFilters} from '../manageFilters'
+import { addFilter, removeFilter, convertFilters, isActive } from '../manageFilters'
 
 describe('manageFilters', () => {
 
@@ -40,7 +40,7 @@ describe('manageFilters', () => {
     })
   })
 
-  describe('convertFilters', () => {
+  describe('convertFilters()', () => {
     it('should return a query', () => {
       const filters = [
         {name: 'keywords', value: 'keyword1'},
@@ -54,6 +54,24 @@ describe('manageFilters', () => {
       const result = convertFilters(filters)
 
       expect(result).toEqual(convertedFilters)
+    })
+  })
+
+  describe.only('isActive()', () => {
+    it('should return true', () => {
+      const filter = {name: 'keywords', value: 'keyword1'}
+      const filters = [{name: 'keywords', value: 'keyword1'}]
+
+      const result = isActive(filters, filter)
+      expect(result).toBe(true)
+    })
+
+    it('should return false', () => {
+      const filter = {name: 'foo', value: 'bar'}
+      const filters = [{name: 'keywords', value: 'keyword1'}]
+
+      const result = isActive(filters, filter)
+      expect(result).toBe(false)
     })
   })
 })
