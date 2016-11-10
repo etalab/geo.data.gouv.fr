@@ -5,10 +5,12 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/compone
 import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
 import DatasetPreview from './DatasetPreview'
-import { addFilter, removeFilter } from '../../helpers/manageFilters'
+import Facets from '../Facets/Facets'
+import { addFilter, removeFilter, isActive } from '../../helpers/manageFilters'
 
 const styles = {
   results: {
+    display: 'flex',
     margin: '4em',
   },
   searchInputWrapper: {
@@ -55,8 +57,17 @@ class Datasets extends Component {
       if (!this.state.datasets.results.length) {
         return <div>No datasets found.</div>
       } else {
-        return <div>
-                {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => this.addFilter(filter)}/>)}
+        return <div style={styles.results}>
+                <div>
+                  {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => this.addFilter(filter)}/>)}
+                </div>
+                <div>
+                  <Facets
+                    facets={this.state.datasets.facets}
+                    checkFilter={(filter) => this.checkFilter(filter)}
+                    addFilter={(filter) => this.addFilter(filter)}
+                    removeFilter={(filter) => this.removeFilter(filter)} />
+                </div>
               </div>
       }
     } else {
@@ -82,8 +93,13 @@ class Datasets extends Component {
     this.search(changes)
   }
 
+  checkFilter(filter) {
+    return isActive(this.state.filters, filter)
+  }
+
   render() {
     return (
+      <div style={styles.container}>
         <div>
           <div style={styles.searchInputWrapper}>
             <SearchInput
@@ -92,10 +108,9 @@ class Datasets extends Component {
               removeFilter={(filter) => this.removeFilter(filter)}
               handleTextChange={(textInput) => this.userSearch(textInput)} />
           </div>
-          <div style={styles.results}>
-            {this.renderResult()}
-          </div>
+          {this.renderResult()}
         </div>
+      </div>
     )
   }
 }
