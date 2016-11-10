@@ -1,4 +1,4 @@
-import { remove, unionWith, isEqual, find } from 'lodash'
+import { remove, unionWith, isEqual, some } from 'lodash'
 
 export function addFilter(oldFilters, newFilter) {
   return unionWith(oldFilters, [newFilter], isEqual)
@@ -11,7 +11,7 @@ export function removeFilter(oldFilters, newFilter) {
 }
 
 export function isActive(filters, filter) {
-  return find(filters, filter) ? true : false
+  return some(filters, filter)
 }
 
 export function convertFilters(filters) {

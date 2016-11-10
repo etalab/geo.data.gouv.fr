@@ -57,7 +57,7 @@ describe('manageFilters', () => {
     })
   })
 
-  describe.only('isActive()', () => {
+  describe('isActive()', () => {
     it('should return true', () => {
       const filter = {name: 'keywords', value: 'keyword1'}
       const filters = [{name: 'keywords', value: 'keyword1'}]
