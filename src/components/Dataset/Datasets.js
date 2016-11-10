@@ -6,7 +6,7 @@ import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
 import DatasetPreview from './DatasetPreview'
 import Facets from '../Facets/Facets'
-import { addFilter, removeFilter, isActive } from '../../helpers/manageFilters'
+import { addFilter, removeFilter } from '../../helpers/manageFilters'
 
 const styles = {
   results: {
@@ -64,7 +64,7 @@ class Datasets extends Component {
                 <div>
                   <Facets
                     facets={this.state.datasets.facets}
-                    checkFilter={(filter) => this.checkFilter(filter)}
+                    filters={this.state.filters}
                     addFilter={(filter) => this.addFilter(filter)}
                     removeFilter={(filter) => this.removeFilter(filter)} />
                 </div>
@@ -91,10 +91,6 @@ class Datasets extends Component {
     const changes = { textInput, filters: [] }
     this.setState(changes)
     this.search(changes)
-  }
-
-  checkFilter(filter) {
-    return isActive(this.state.filters, filter)
   }
 
   render() {

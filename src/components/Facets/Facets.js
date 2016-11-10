@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { forEach } from 'lodash'
-import FacetsType from './FacetsType'
+import FacetsGroup from './FacetsGroup'
 
 const styles = {
   facets: {
@@ -10,16 +10,16 @@ const styles = {
 
 class Facets extends Component {
   render() {
-    const { facets, checkFilter, addFilter, removeFilter } = this.props
+    const { facets, filters, addFilter, removeFilter } = this.props
     if (!facets) return <div></div>
 
     let facetsArray = []
     forEach(facets, function(value, key) {
-      facetsArray.push(<FacetsType
+      facetsArray.push(<FacetsGroup
         key={key}
         type={key}
         facets={value}
-        checkFilter={checkFilter}
+        filters={filters}
         addFilter={addFilter}
         removeFilter={removeFilter} />)
     })

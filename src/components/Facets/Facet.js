@@ -5,13 +5,9 @@ class Facet extends Component {
 
   filter() {
     const { type, value, isActive, addFilter, removeFilter } = this.props
-
     const filter = {name: type, value}
-    if (isActive) {
-      removeFilter(filter)
-    } else {
-      addFilter(filter)
-    }
+
+    return isActive ? removeFilter(filter) : addFilter(filter)
   }
 
   render() {

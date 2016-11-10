@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Facet from './Facet'
+import { isActive } from '../../helpers/manageFilters'
 
 const styles = {
   type: {
@@ -7,9 +8,9 @@ const styles = {
   },
 }
 
-class FacetsType extends Component {
+class FacetsGroup extends Component {
   render() {
-    const { type, facets, checkFilter, addFilter, removeFilter } = this.props
+    const { type, facets, filters, addFilter, removeFilter } = this.props
 
     return (
       <div>
@@ -19,7 +20,7 @@ class FacetsType extends Component {
           type={type}
           value={facet.value}
           count={facet.count}
-          isActive={checkFilter({name: type, value: facet.value})}
+          isActive={isActive(filters, {name: type, value: facet.value})}
           addFilter={addFilter}
           removeFilter={removeFilter} />)}
       </div>
@@ -27,4 +28,4 @@ class FacetsType extends Component {
   }
 }
 
-export default FacetsType
+export default FacetsGroup
