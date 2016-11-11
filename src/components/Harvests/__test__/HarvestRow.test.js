@@ -28,13 +28,13 @@ describe('<HarvestRow />', () => {
   describe('Harvest status', () => {
     it('Should display green successful label', () => {
       const label = <div className="ui green circular label" >successful</div>
-      const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} nextHarvest={harvestSuccessed} catalog={catalog} />)
+      const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} previousHarvest={harvestSuccessed} catalog={catalog} />)
       expect(wrapper.contains(label)).toEqual(true)
     });
 
     it('Should display red failed label', () => {
       const label = <div className="ui red circular label" >failed</div>
-      const wrapper = shallow(<HarvestRow harvest={harvestFailed} nextHarvest={harvestFailed} catalog={catalog} />)
+      const wrapper = shallow(<HarvestRow harvest={harvestFailed} previousHarvest={harvestFailed} catalog={catalog} />)
       expect(wrapper.contains(label)).toEqual(true)
     });
   })
@@ -42,7 +42,7 @@ describe('<HarvestRow />', () => {
   describe('Harvest status', () => {
     it('Should render a link to harvest details', () => {
       const link = <Link to={`/catalogs/${catalog.id}/harvest/${harvestSuccessed._id}`}>More</Link>
-      const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} nextHarvest={harvestSuccessed} catalog={catalog} />)
+      const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} previousHarvest={harvestSuccessed} catalog={catalog} />)
       expect(wrapper.contains(link)).toEqual(true)
     });
   })

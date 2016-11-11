@@ -25,7 +25,7 @@ const HarvestsTable = ({harvests, catalog}) => {
         </thead>
 
         <tbody>
-          {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} nextHarvest={harvests[idx + 1] || 0} catalog={catalog} />)}
+          {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} previousHarvest={harvests[idx + 1] || 0} catalog={catalog} />)}
         </tbody>
 
       </table>
