@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import MediaQuery from 'react-responsive'
 import { Line } from 'react-chartjs'
 import Histogram from '../../Charts/Histogram/Histogram'
-import HarvestsTable from '../../HarvestsTable/HarvestsTable'
+import HarvestsTable from '../../Harvests/HarvestsTable'
 import Chart from '../../Charts/Chart'
 import { fetchHarvests } from '../../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components';
