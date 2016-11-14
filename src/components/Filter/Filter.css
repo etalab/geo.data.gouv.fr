@@ -1,0 +1,21 @@
+.filter-button {
+  color: #FFF;
+  margin: 0.1em 0.3em;
+  padding: 2px 5px;
+  border: none;
+  borderRadius: 1px;
+  cursor: pointer;
+  /* TODO: move text-transform to API ? */
+  textTransform: capitalize;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0.5;
+}
+
+.filter-button-active {
+  opacity: 1;
+}
+
+.filter-button:hover,
+.filter-button:focus {
+  opacity: 1;
+}
