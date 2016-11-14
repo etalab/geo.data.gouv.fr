@@ -45,7 +45,7 @@ class DoughnutChart extends Component {
         <div>
 
           <div style={styles.chart}>
-            <Doughnut className="doughnut computer" data={data} width="200" />
+            <Doughnut className="doughnut computer" data={data} width="260" />
             <DoughnutChartList data={data}/>
           </div>
 
