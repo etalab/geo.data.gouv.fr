@@ -3,10 +3,10 @@
   margin: 0.1em 0.3em;
   padding: 2px 5px;
   border: none;
-  borderRadius: 1px;
+  border-radius: 2px;
   cursor: pointer;
   /* TODO: move text-transform to API ? */
-  textTransform: capitalize;
+  text-transform: capitalize;
   transition: opacity 0.2s ease-in-out;
   opacity: 0.5;
 }
