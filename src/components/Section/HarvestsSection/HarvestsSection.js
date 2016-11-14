@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import MediaQuery from 'react-responsive'
 import { Line } from 'react-chartjs'
 import Histogram from '../../Charts/Histogram/Histogram'
-import HarvestsTable from '../../Harvests/HarvestsTable'
+import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
-import { fetchHarvests } from '../../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components';
+import { fetchHarvests } from '../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class HarvestsSection extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchHarvests(this.props.catalog.id), this, 'harvests');
+    return waitForDataAndSetState(fetchHarvests(this.props.catalog.id), this, 'harvests')
   }
 
   componentWillUnmount() {

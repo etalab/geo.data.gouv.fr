@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import HarvestDetail from './components/Section/HarvestsSection/HarvestDetail/HarvestDetail'
+import HarvestDetail from './components/Harvest/HarvestDetail'
 import WrappedDatasets from './components/Dataset/WrappedDatasets'
 import './index.css'
 
