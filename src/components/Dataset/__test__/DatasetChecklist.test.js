@@ -22,20 +22,20 @@ describe('<DatasetChecklist />', () => {
       expect(valid).toEqual(<CheckItem name={'Licence'} valid={true} />)
     })
 
-    it('should be false for any other licenses', () => {
+    it('should be false for any other licenses and specify the error', () => {
       const wrapper = shallow(<DatasetChecklist license={'unk-license'} />)
 
       const valid = wrapper.instance().checkLicense()
 
-      expect(valid).toEqual(<CheckItem name={'Licence'} valid={false} />)
+      expect(valid).toEqual(<CheckItem name={'Licence'} valid={false} msg={'La licence unk-license n\'est pas reconnue.'} />)
     })
 
-    it('should be false when license is undefined', () => {
+    it('should be false when license is undefined and specify the error', () => {
       const wrapper = shallow(<DatasetChecklist license={undefined} />)
 
       const valid = wrapper.instance().checkLicense()
 
-      expect(valid).toEqual(<CheckItem name={'Licence'} valid={false} />)
+      expect(valid).toEqual(<CheckItem name={'Licence'} valid={false} msg={'Aucune licence n\'a pu être trouvée.'} />)
     })
   })
 

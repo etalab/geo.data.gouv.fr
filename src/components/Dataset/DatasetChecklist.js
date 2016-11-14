@@ -21,12 +21,18 @@ class DatasetChecklist extends Component {
   }
 
   checkLicense() {
-    let valid = false
+    const license = this.props.license
+    let item
 
-    if (ACCEPTED_LICENSES.includes(this.props.license)) {
-      valid = true
+    if (!license) {
+      item = <CheckItem name={'Licence'} valid={false} msg={'Aucune licence n\'a pu être trouvée.'} />
+    } else if (ACCEPTED_LICENSES.includes(license)) {
+      item = <CheckItem name={'Licence'} valid={true} />
+    } else {
+      item = <CheckItem name={'Licence'} valid={false} msg={`La licence ${license} n'est pas reconnue.`} />
     }
-    return <CheckItem name={'Licence'} valid={valid} />
+
+    return item
   }
 
   checkDataAvailability() {
