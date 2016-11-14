@@ -8,6 +8,19 @@ import KeywordsSection from './KeywordsSection'
 import CatalogsSection from './CatalogsSection'
 import OrganizationsSection from './OrganizationsSection'
 
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '5em',
+  },
+  sections: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '1em',
+  },
+}
+
 export default class DatasetDetail extends Component {
 
   constructor(props) {
@@ -34,20 +47,7 @@ export default class DatasetDetail extends Component {
   }
 
   render() {
-    const dataset = this.state.dataset
-    const catalogs = this.state.catalogs
-    const styles = {
-      container: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '5em',
-      },
-      sections: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: '1em',
-      },
-    }
+    const { dataset, catalogs } = this.state
 
     if (!dataset || !catalogs) return <CircularProgress style={styles.loader}  size={2} />
 
