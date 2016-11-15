@@ -6,6 +6,7 @@ import LinksSection from './LinksSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
 import CatalogsSection from './CatalogsSection'
+import DatasetChecklist from './DatasetChecklist'
 import OrganizationsSection from './OrganizationsSection'
 
 const styles = {
@@ -60,6 +61,7 @@ export default class DatasetDetail extends Component {
           <OrganizationsSection organizations={dataset.organizations} />
           <CatalogsSection catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
         </div>
+        <DatasetChecklist dataset={dataset} />
     </div>)
   }
 }
