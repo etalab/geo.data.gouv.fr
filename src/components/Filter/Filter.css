@@ -1,21 +1,23 @@
-.filter-button {
-  color: #FFF;
-  margin: 0.1em 0.3em;
-  padding: 2px 5px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  /* TODO: move text-transform to API ? */
+.filter-link {
   text-transform: capitalize;
   transition: opacity 0.2s ease-in-out;
-  opacity: 0.5;
+  opacity: 0.9;
+  position: relative;
+  display: inline-block;
+  padding: .4em .5em;
+  margin: 2px 2px 2px 0;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
 }
 
-.filter-button-active {
+.filter-link-active {
   opacity: 1;
 }
 
-.filter-button:hover,
-.filter-button:focus {
+.filter-link:hover {
   opacity: 1;
+  color: white;
 }

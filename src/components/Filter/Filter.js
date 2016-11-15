@@ -1,30 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { theme } from '../../tools'
 import './Filter.css'
 
-const style = {
-  backgroundColor: theme.blue,
+const defaultStyle = {
+  color: theme.blue,
+  backgroundColor: theme.lightestblue,
+  textOverflow: 'ellipsis',
+  fontSize: '12px',
+  maxWidth: '200px',
+  overflow: 'hidden',
+  border: 'none',
 }
 
-function getIcon(type) {
-  switch (type) {
-    case 'keyword':
-      return <i className='fa fa-tag fa-fw'></i>
-    case 'organization':
-      return <i className='fa fa-building fa-fw'></i>
-    default:
-     return <i className='fa fa-tag fa-fw'></i>
-  }
-}
+const Filter = (props) => {
+  const { type, value, style, onClick } = props
 
-class Filter extends Component {
-  render() {
-    return (
-      <button className="filter-button" style={style} onClick={() => this.props.onClick({name: this.props.type, value: this.props.value})}>
-        {getIcon(this.props.type)} {this.props.value}
-      </button>
-    )
-  }
+  return (
+    <button className="filter-link" title={value} style={{...defaultStyle, ...style}} onClick={() => onClick({name: type, value})}>
+      {value}
+    </button>
+  )
 }
 
 export default Filter

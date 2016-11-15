@@ -8,7 +8,8 @@ const styles = {
     marginBottom: '3em',
   },
   filterList: {
-    paddingBottom: '0.5cem',
+    paddingBottom: '0.5em',
+    lineHeight: '18px',
   }
 }
 
@@ -28,12 +29,12 @@ class DatasetPreview extends Component {
           <Link to={`/datasets/${recordId}`}>{metadata.title}</Link>
         </h4>
         <p>{prune(metadata.description, 1000)}</p>
+
         <div style={styles.filterList}>
-          <b>Keywords: </b>
           {metadata.keywords.map((keyword, idx) => <Filter onClick={addFilter} key={idx} value={keyword} type='keyword' />)}
         </div>
+
         <div style={styles.filterList}>
-          <b>Organizations: </b>
           {organizations.map((organization, idx) => <Filter onClick={addFilter} key={idx} value={organization} type='organization' />)}
         </div>
       </div>
