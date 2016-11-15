@@ -1,0 +1,23 @@
+.filter-link {
+  text-transform: capitalize;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0.9;
+  position: relative;
+  display: inline-block;
+  padding: .4em .5em;
+  margin: 2px 2px 2px 0;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+}
+
+.filter-link-active {
+  opacity: 1;
+}
+
+.filter-link:hover {
+  opacity: 1;
+  color: white;
+}

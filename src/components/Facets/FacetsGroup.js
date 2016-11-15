@@ -4,8 +4,14 @@ import { isActive } from '../../helpers/manageFilters'
 
 const styles = {
   type: {
-    fontSize: '1.5em',
+    textTransform: 'capitalize',
+    fontSize: '1em',
+    fontWeight: 400,
+    marginBottom: '1em',
   },
+  group: {
+    marginBottom: '1em',
+  }
 }
 
 class FacetsGroup extends Component {
@@ -13,11 +19,11 @@ class FacetsGroup extends Component {
     const { type, facets, filters, addFilter, removeFilter } = this.props
 
     return (
-      <div>
-        <div style={styles.type}>{type}</div>
+      <div style={styles.group}>
+        <h4 style={styles.type}>{type}</h4>
         {facets.map((facet, idx) => <Facet
           key={idx}
-          type={type}
+          name={type}
           value={facet.value}
           count={facet.count}
           isActive={isActive(filters, {name: type, value: facet.value})}

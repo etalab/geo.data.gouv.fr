@@ -21,10 +21,6 @@ class SearchInput extends Component {
     this.props.handleTextChange(this.state.textInput)
   }
 
-  removeFilter(name, value) {
-    this.props.removeFilter({name, value})
-  }
-
   render() {
     return (
       <div className='search-input-wrapper'>

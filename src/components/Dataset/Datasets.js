@@ -6,6 +6,7 @@ import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
 import DatasetPreview from './DatasetPreview'
 import Facets from '../Facets/Facets'
+import Filter from '../Filter/Filter'
 import { addFilter, removeFilter } from '../../helpers/manageFilters'
 
 const styles = {
@@ -55,19 +56,17 @@ class Datasets extends Component {
 
     if (this.state.datasets) {
       if (!this.state.datasets.results.length) {
-        return <div>No datasets found.</div>
+        return <div style={styles.results}>No datasets found.</div>
       } else {
         return <div style={styles.results}>
                 <div>
                   {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => this.addFilter(filter)}/>)}
                 </div>
-                <div>
-                  <Facets
-                    facets={this.state.datasets.facets}
-                    filters={this.state.filters}
-                    addFilter={(filter) => this.addFilter(filter)}
-                    removeFilter={(filter) => this.removeFilter(filter)} />
-                </div>
+                <Facets
+                  facets={this.state.datasets.facets}
+                  filters={this.state.filters}
+                  addFilter={(filter) => this.addFilter(filter)}
+                  removeFilter={(filter) => this.removeFilter(filter)} />
               </div>
       }
     } else {
@@ -96,16 +95,16 @@ class Datasets extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <div>
-          <div style={styles.searchInputWrapper}>
-            <SearchInput
-              textInput={this.state.textInput}
-              filters={this.state.filters}
-              removeFilter={(filter) => this.removeFilter(filter)}
-              handleTextChange={(textInput) => this.userSearch(textInput)} />
-          </div>
-          {this.renderResult()}
+        <div style={styles.searchInputWrapper}>
+          <SearchInput
+            textInput={this.state.textInput}
+            filters={this.state.filters}
+            handleTextChange={(textInput) => this.userSearch(textInput)} />
+
+          {this.state.filters.map((filter, idx) => <Filter key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
         </div>
+
+        {this.renderResult()}
       </div>
     )
   }

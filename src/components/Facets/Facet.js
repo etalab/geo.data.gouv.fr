@@ -1,32 +1,35 @@
 import React, { Component } from 'react'
-import { theme } from '../../tools'
+import Filter from '../Filter/Filter'
+
+const styles = {
+  count: {
+    color: '#777',
+    fontSize: '12px',
+  },
+  facet: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+}
 
 class Facet extends Component {
 
   filter() {
-    const { type, value, isActive, addFilter, removeFilter } = this.props
-    const filter = {name: type, value}
+    const { name, value, isActive, addFilter, removeFilter } = this.props
+    const filter = {name, value}
 
     return isActive ? removeFilter(filter) : addFilter(filter)
   }
 
   render() {
-    const { value, count, isActive } = this.props
-    const styles = {
-      facet: {
-        display: 'flex',
-        backgroundColor: isActive ? theme.green : undefined,
-      },
-      count: {
-        margin: '0.2em',
-        backgroundColor: theme.blue,
-      },
-    }
+    const { value, count } = this.props
 
     return (
-      <div style={styles.facet} onClick={() => this.filter()}>
-        {value}
-        <div style={styles.count}>{count}</div>
+      <div style={styles.facet}>
+        <span style={styles.facet}>
+          <Filter filter={{value}} onClick={() => this.filter()}/>
+        </span>
+        <span style={styles.count}>x&nbsp;{count}</span>
       </div>
     )
   }

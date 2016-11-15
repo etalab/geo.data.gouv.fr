@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { forEach } from 'lodash'
+import { forEach, sortBy } from 'lodash'
 import FacetsGroup from './FacetsGroup'
 
 const styles = {
   facets: {
-    margin: '2em',
+    marginLeft: '2em',
   },
 }
 
@@ -13,21 +13,24 @@ class Facets extends Component {
     const { facets, filters, addFilter, removeFilter } = this.props
     if (!facets) return <div></div>
 
-    let facetsArray = []
-    forEach(facets, function(value, key) {
-      facetsArray.push(<FacetsGroup
-        key={key}
-        type={key}
-        facets={value}
-        filters={filters}
-        addFilter={addFilter}
-        removeFilter={removeFilter} />)
+    const facetsArray = []
+    forEach(facets, (value, key) => {
+      const facet = {type: key, value}
+      facetsArray.push(facet)
     })
 
+    // TODO Sort by most useful facets
+    const sorted = sortBy(facetsArray, 'type')
+
     return (
-      <div>
-        <h1>Facets</h1>
-        {facetsArray.map((facet, idx) => <div style={styles.facets} key={idx}>{facet}</div>)}
+      <div style={styles.facets}>
+        { sorted.map(facet => <FacetsGroup
+          key={facet.type}
+          type={facet.type}
+          facets={facet.value}
+          filters={filters}
+          addFilter={addFilter}
+          removeFilter={removeFilter} />) }
       </div>
     )
   }

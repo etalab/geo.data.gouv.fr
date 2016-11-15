@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { prune } from 'underscore.string'
+import Filter from '../Filter/Filter'
 
 const styles = {
   preview: {
     marginBottom: '3em',
   },
-  link: {
-    marginRight: '0.3em',
-    marginLeft: '0.3em',
+  filterList: {
+    paddingBottom: '0.5em',
+    lineHeight: '18px',
+  },
+  type: {
+    textTransform: 'capitalize',
+    fontSize: '0.9em',
+    fontWeight: 400,
+    margin: 0,
   },
 }
 
@@ -28,19 +35,15 @@ class DatasetPreview extends Component {
           <Link to={`/datasets/${recordId}`}>{metadata.title}</Link>
         </h4>
         <p>{prune(metadata.description, 1000)}</p>
-        <div>
-          <b>Keywords: </b>
-          {metadata.keywords.map((keyword, idx) =>
-            <span style={styles.link} key={idx}>
-              <Link onClick={() => addFilter({name: 'keyword', value: keyword})}>{keyword}</Link>
-            </span>)}
+
+        <h4 style={styles.type}>Keyword</h4>
+        <div style={styles.filterList}>
+          {metadata.keywords.map((keyword, idx) => <Filter onClick={addFilter} key={idx} filter={{value: keyword, name:'keyword'}} />)}
         </div>
-        <div>
-          <b>Organizations: </b>
-          {organizations.map((organization, idx) =>
-            <span style={styles.link} key={idx}>
-              <Link onClick={() => addFilter({name: 'organization', value: organization})}>{organization}</Link>
-            </span>)}
+
+        <h4 style={styles.type}>Organization</h4>
+        <div style={styles.filterList}>
+          {organizations.map((organization, idx) => <Filter onClick={addFilter} key={idx} filter={{value: organization, name:'organization'}} />)}
         </div>
       </div>
     )
