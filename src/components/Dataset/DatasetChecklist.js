@@ -17,15 +17,15 @@ const ACCEPTED_LICENSES = [
 class DatasetChecklist extends Component {
 
   checkLicense() {
-    const license = this.props.dataset.license
+    const metadata = this.props.dataset.metadata
     let item
 
-    if (!license) {
+    if (!metadata || !metadata.license) {
       item = <CheckItem name={'Licence'} valid={false} msg={'Aucune licence n\'a pu être trouvée.'} />
-    } else if (ACCEPTED_LICENSES.includes(license)) {
+    } else if (ACCEPTED_LICENSES.includes(metadata.license)) {
       item = <CheckItem name={'Licence'} valid={true} />
     } else {
-      item = <CheckItem name={'Licence'} valid={false} msg={`La licence ${license} n'est pas reconnue.`} />
+      item = <CheckItem name={'Licence'} valid={false} msg={`La licence ${metadata.license} n'est pas reconnue.`} />
     }
 
     return item

@@ -7,7 +7,7 @@ describe('<DatasetChecklist />', () => {
 
   describe('checkLicense()', () => {
     it('should be true for odbl license', () => {
-      const dataset = {license: 'odbl'}
+      const dataset = {metadata: {license: 'odbl'}}
       const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
       const valid = wrapper.instance().checkLicense()
@@ -16,7 +16,7 @@ describe('<DatasetChecklist />', () => {
     })
 
     it('should be true for fr-lo license', () => {
-      const dataset = {license: 'fr-lo'}
+      const dataset = {metadata: {license: 'fr-lo'}}
       const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
       const valid = wrapper.instance().checkLicense()
@@ -25,7 +25,7 @@ describe('<DatasetChecklist />', () => {
     })
 
     it('should be false for any other licenses and specify the error', () => {
-      const dataset = {license: 'unk-license'}
+      const dataset = {metadata: {license: 'unk-license'}}
       const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
       const valid = wrapper.instance().checkLicense()
@@ -34,7 +34,7 @@ describe('<DatasetChecklist />', () => {
     })
 
     it('should be false when license is undefined and specify the error', () => {
-      const dataset = {license: undefined}
+      const dataset = {metadata: {license: undefined}}
       const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
       const valid = wrapper.instance().checkLicense()
