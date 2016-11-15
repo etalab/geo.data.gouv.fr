@@ -42,21 +42,74 @@ describe('<DatasetChecklist />', () => {
       expect(valid).toEqual(<CheckItem name={'Licence'} valid={false} msg={'Aucune licence n\'a pu être trouvée.'} />)
     })
   })
-})
 
-describe('_checkArray()', () => {
-  it('should return true when the array contains at least one element', () => {
-    const bool = _checkArray(['item'])
-    expect(bool).toBe(true)
+  describe('checkProducers()', () => {
+    it('should return true when the array contains at least one element', () => {
+      const dataset = {organizations: ['producteur']}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
+
+      const result = wrapper.instance().checkProducers()
+
+      expect(result).toEqual(<CheckItem name={'Producteur'} valid={true} />)
+    })
+
+    it('should return false when the array contains no elements', () => {
+      const dataset = {organizations: []}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
+
+      const result = wrapper.instance().checkProducers()
+
+      expect(result).toEqual(<CheckItem name={'Producteur'} valid={false} />)
+    })
+
+    it('should return false when the array is undefined', () => {
+      const dataset = {organizations: undefined}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
+
+      const result = wrapper.instance().checkProducers()
+
+      expect(result).toEqual(<CheckItem name={'Producteur'} valid={false} />)
+    })
   })
 
-  it('should return false when the array contains no elements', () => {
-    const bool = _checkArray([])
-    expect(bool).toBe(false)
-  })
+  describe('checkDataAvailability()', () => {
+    it('should return true when the array contains at least one element whith available at true', () => {
+      const distributions = [{available: true}, {available: false}]
+      const dataset = {distributions}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
-  it('should return false when the array is undefined', () => {
-    const bool = _checkArray()
-    expect(bool).toBe(false)
+      const result = wrapper.instance().checkDataAvailability()
+
+      expect(result).toEqual(<CheckItem name={'Disponibilité de la donnée'} valid={true} />)
+    })
+
+    it('should return false when the array contains no elements whith available at true', () => {
+      const distributions = [{available: false}, {available: false}]
+      const dataset = {distributions}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
+
+      const result = wrapper.instance().checkDataAvailability()
+
+      expect(result).toEqual(<CheckItem name={'Disponibilité de la donnée'} valid={false} />)
+    })
+
+    it('should return false when the array is empty', () => {
+      const distributions = []
+      const dataset = {distributions}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
+
+      const result = wrapper.instance().checkDataAvailability()
+
+      expect(result).toEqual(<CheckItem name={'Disponibilité de la donnée'} valid={false} />)
+    })
+
+    it('should return false when the array is undefined', () => {
+      const dataset = {distributions: undefined}
+      const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
+
+      const result = wrapper.instance().checkDataAvailability()
+
+      expect(result).toEqual(<CheckItem name={'Disponibilité de la donnée'} valid={false} />)
+    })
   })
 })
