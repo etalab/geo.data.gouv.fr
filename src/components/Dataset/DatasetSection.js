@@ -21,7 +21,7 @@ const DatasetSection = ({dataset}) => {
   return (
     <div style={styles.resume} className="dataset-section">
       <h1 className="dataset-title">{dataset.metadata.title}</h1>
-      <DatasetChecklist license={dataset.metadata.license} distributions={dataset.distributions} organizations={dataset.organizations}/>
+      <DatasetChecklist dataset={dataset} />
       <div style={styles.infos} className="infos">
         <div>Type : <span>{type}</span></div>
         <div>Licence : <span>{license}</span></div>

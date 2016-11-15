@@ -14,14 +14,15 @@ const ACCEPTED_LICENSES = [
   'odbl',
 ]
 
+export function _checkArray(array) {
+  if (array && array.length) return true
+  return false
+}
+
 class DatasetChecklist extends Component {
-  _checkArray(array) {
-    if (array && array.length) return true
-    return false
-  }
 
   checkLicense() {
-    const license = this.props.license
+    const license = this.props.dataset.license
     let item
 
     if (!license) {
@@ -36,12 +37,12 @@ class DatasetChecklist extends Component {
   }
 
   checkDataAvailability() {
-    let valid = this._checkArray(this.props.distributions)
+    let valid = _checkArray(this.props.dataset.distributions)
     return <CheckItem name={'Disponibilité de la donnée'} valid={valid} />
   }
 
   checkProducers() {
-    let valid = this._checkArray(this.props.organizations)
+    let valid = _checkArray(this.props.dataset.organizations)
     return <CheckItem name={'Producteur'} valid={valid} />
   }
 
