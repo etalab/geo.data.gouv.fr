@@ -23,7 +23,7 @@ class FacetsGroup extends Component {
         <h4 style={styles.type}>{type}</h4>
         {facets.map((facet, idx) => <Facet
           key={idx}
-          type={type}
+          name={type}
           value={facet.value}
           count={facet.count}
           isActive={isActive(filters, {name: type, value: facet.value})}

@@ -13,11 +13,11 @@ const defaultStyle = {
 }
 
 const Filter = (props) => {
-  const { type, value, style, onClick } = props
+  const { filter, style, onClick } = props
 
   return (
-    <button className="filter-link" title={value} style={{...defaultStyle, ...style}} onClick={() => onClick({name: type, value})}>
-      {value}
+    <button className="filter-link" title={`${filter.name}: ${filter.value}`} style={{...defaultStyle, ...style}} onClick={() => onClick(filter)}>
+      {filter.value}
     </button>
   )
 }

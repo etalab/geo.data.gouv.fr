@@ -15,8 +15,8 @@ const styles = {
 class Facet extends Component {
 
   filter() {
-    const { type, value, isActive, addFilter, removeFilter } = this.props
-    const filter = {name: type, value}
+    const { name, value, isActive, addFilter, removeFilter } = this.props
+    const filter = {name, value}
 
     return isActive ? removeFilter(filter) : addFilter(filter)
   }
@@ -27,7 +27,7 @@ class Facet extends Component {
     return (
       <div style={styles.facet}>
         <span style={styles.facet}>
-          <Filter value={value} onClick={() => this.filter()}/>
+          <Filter filter={{value}} onClick={() => this.filter()}/>
         </span>
         <span style={styles.count}>x&nbsp;{count}</span>
       </div>
