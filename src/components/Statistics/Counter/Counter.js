@@ -11,6 +11,9 @@ const defaultStyle = {
       fontWeight: '300',
     },
   },
+  title: {
+    textAlign: 'center',
+  },
 }
 
 const Counter = ({value, label, style, unit='', size='', color='black', icon='', title=''}) => {
@@ -23,7 +26,7 @@ const Counter = ({value, label, style, unit='', size='', color='black', icon='',
 
   return (
     <div style={style}>
-      { title ? <h3>{title}</h3> : null }
+      { title ? <h3 style={styles.title}>{title}</h3> : null }
 
       <div style={{...styles[size], color}}>
         {iconDiv} {value} {unit}

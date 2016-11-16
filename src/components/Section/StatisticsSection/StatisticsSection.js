@@ -1,9 +1,13 @@
 import React from 'react'
 import DoughnutChart from '../../Charts/DoughnutChart/DoughnutChart'
 import Chart from '../../Charts/Chart'
+import Counter from '../../Statistics/Counter/Counter'
 import Percent from '../../Statistics/Percent/Percent'
 
 const styles = {
+  wrapper: {
+    padding: '2em',
+  },
   section: {
     display: 'flex',
     justifyContent: 'space-around',
@@ -26,9 +30,14 @@ const styles = {
 
 const StatisticsSection = ({metrics}) => {
 return (
-  <div>
+  <div style={styles.wrapper}>
     <h2 style={styles.h2}>Indicateurs concernant la totalité du catalogue</h2>
     <div style={styles.section}>
+
+      <div style={styles.chart}>
+        <Counter size="large" value={metrics.records.totalCount} title="Records"/>
+      </div>
+
       <div style={styles.chart}>
         <Chart
           title={'Record Type'}
