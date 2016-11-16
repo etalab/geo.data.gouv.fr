@@ -1,6 +1,7 @@
 import React from 'react'
 import DoughnutChart from '../../Charts/DoughnutChart/DoughnutChart'
 import Chart from '../../Charts/Chart'
+import Counter from '../../Statistics/Counter/Counter'
 import Percent from '../../Statistics/Percent/Percent'
 
 const styles = {
@@ -27,6 +28,11 @@ return (
   <div>
     <h2 style={styles.h2}>Indicateurs concernant la totalité du catalogue</h2>
     <div style={styles.section}>
+
+      <div style={styles.chart}>
+        <Counter size="large" value={metrics.records.totalCount} title="Records"/>
+      </div>
+
       <div style={styles.chart}>
         <Chart
           title={'Record Type'}
