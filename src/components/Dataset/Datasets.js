@@ -65,8 +65,7 @@ class Datasets extends Component {
                 <Facets
                   facets={this.state.datasets.facets}
                   filters={this.state.filters}
-                  addFilter={(filter) => this.addFilter(filter)}
-                  removeFilter={(filter) => this.removeFilter(filter)} />
+                  addFilter={(filter) => this.addFilter(filter)} />
               </div>
       }
     } else {
