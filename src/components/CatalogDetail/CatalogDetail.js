@@ -65,7 +65,7 @@ class CatalogDetail extends Component {
 
     return (
       <div style={styles.catalogDetail} id="catalog-detail">
-        <div style={styles.section}>
+        <div style={{...styles.section, padding: '0'}}>
           <CatalogSection catalog={catalog} />
           <StatisticsSection metrics={metrics} />
         </div>

@@ -5,6 +5,9 @@ import Counter from '../../Statistics/Counter/Counter'
 import Percent from '../../Statistics/Percent/Percent'
 
 const styles = {
+  wrapper: {
+    padding: '2em',
+  },
   section: {
     display: 'flex',
     justifyContent: 'center',
@@ -25,7 +28,7 @@ const styles = {
 
 const StatisticsSection = ({metrics}) => {
 return (
-  <div>
+  <div style={styles.wrapper}>
     <h2 style={styles.h2}>Indicateurs concernant la totalité du catalogue</h2>
     <div style={styles.section}>
 
