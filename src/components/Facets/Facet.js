@@ -14,16 +14,22 @@ const styles = {
 
 class Facet extends Component {
   render() {
-    const { name, value, count, addFilter, isActive } = this.props
+    const { style, name, value, count, addFilter, isActive } = this.props
 
     if (isActive) {
       return null
     }
 
+    let onClick = null
+
+    if (addFilter) {
+      onClick = () => addFilter({name, value})
+    }
+
     return (
-      <div style={styles.facet}>
+      <div style={{...style, ...styles.facet}}>
         <span style={styles.facet}>
-          <Filter filter={{value}} onClick={() => addFilter({name, value})}/>
+          <Filter filter={{value}} onClick={onClick}/>
         </span>
         <span style={styles.count}>x&nbsp;{count}</span>
       </div>

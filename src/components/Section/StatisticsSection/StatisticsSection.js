@@ -6,7 +6,7 @@ import Percent from '../../Statistics/Percent/Percent'
 const styles = {
   section: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     flexWrap: 'wrap',
     alignItems: 'center',
   },
@@ -18,7 +18,9 @@ const styles = {
     margin: '3em',
   },
   h2: {
-    fontSize: '1.4rem',
+    fontSize: '1.2em',
+    fontWeight: 400,
+    marginBottom: '1em',
   },
 }
 

@@ -16,7 +16,7 @@ const Filter = (props) => {
   const { filter, style, onClick } = props
 
   return (
-    <button className="filter-link" title={`${filter.name}: ${filter.value}`} style={{...defaultStyle, ...style}} onClick={() => onClick(filter)}>
+    <button className="filter-link" title={`${filter.name}: ${filter.value}`} style={{...defaultStyle, ...style}} onClick={() => onClick && onClick(filter)}>
       {filter.value}
     </button>
   )
