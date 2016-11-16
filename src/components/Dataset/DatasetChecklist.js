@@ -1,60 +1,26 @@
 import React, { Component } from 'react'
-import CheckItem from '../CheckItem/CheckItem'
+import CheckLicense from '../Checks/CheckLicense'
+import CheckProducers from '../Checks/CheckProducers'
+import CheckDataAvailability from '../Checks/CheckDataAvailability'
 
 const styles = {
   checklist: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    margin: '3em',
+    margin: '1.5em',
   },
 }
 
-const ACCEPTED_LICENSES = [
-  'fr-lo',
-  'odbl',
-]
-
 class DatasetChecklist extends Component {
-
-  checkLicense() {
-    const metadata = this.props.dataset.metadata
-    let item
-
-    if (!metadata || !metadata.license) {
-      item = <CheckItem name={'Licence'} valid={false} msg={'Aucune licence n\'a pu être trouvée.'} />
-    } else if (ACCEPTED_LICENSES.includes(metadata.license)) {
-      item = <CheckItem name={'Licence'} valid={true} />
-    } else {
-      item = <CheckItem name={'Licence'} valid={false} msg={`La licence ${metadata.license} n'est pas reconnue.`} />
-    }
-
-    return item
-  }
-
-  checkDataAvailability() {
-    const distributions = this.props.dataset.distributions
-    const valid = !!distributions && distributions.some((distribution) => distribution.available)
-
-    return <CheckItem name={'Disponibilité de la donnée'} valid={valid} />
-  }
-
-  checkProducers() {
-    const organizations = this.props.dataset.organizations
-    let valid = !!organizations && organizations.length > 0
-
-    return <CheckItem name={'Producteur'} valid={valid} />
-  }
-
   render() {
-    const checklist = [
-      () => this.checkLicense(),
-      () => this.checkDataAvailability(),
-      () => this.checkProducers(),
-     ]
+    const { metadata, organizations, dataset } = this.props.dataset
 
     return (
-      <div style={styles.checklist}>
-        {checklist.map((check, idx) => <div key={idx}>{check()}</div>)}
+      <div>
+        <h3>Publication sur data.gouv.fr</h3>
+        <div style={styles.checklist}>
+          <CheckLicense license={metadata.license} />
+          <CheckProducers organizations={organizations} />
+          <CheckDataAvailability distributions={dataset.distributions} />
+        </div>
       </div>
     )
   }
