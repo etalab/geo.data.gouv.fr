@@ -10,7 +10,7 @@ const styles = {
 
 class Facets extends Component {
   render() {
-    const { facets, filters, addFilter, removeFilter } = this.props
+    const { facets, filters, addFilter } = this.props
     if (!facets) return <div></div>
 
     const facetsArray = []
@@ -29,8 +29,7 @@ class Facets extends Component {
           type={facet.type}
           facets={facet.value}
           filters={filters}
-          addFilter={addFilter}
-          removeFilter={removeFilter} />) }
+          addFilter={addFilter} />) }
       </div>
     )
   }

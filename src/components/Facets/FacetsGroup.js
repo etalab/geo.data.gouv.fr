@@ -16,7 +16,7 @@ const styles = {
 
 class FacetsGroup extends Component {
   render() {
-    const { type, facets, filters, addFilter, removeFilter } = this.props
+    const { type, facets, filters, addFilter } = this.props
 
     return (
       <div style={styles.group}>
@@ -27,8 +27,7 @@ class FacetsGroup extends Component {
           value={facet.value}
           count={facet.count}
           isActive={isActive(filters, {name: type, value: facet.value})}
-          addFilter={addFilter}
-          removeFilter={removeFilter} />)}
+          addFilter={addFilter} />)}
       </div>
     )
   }
