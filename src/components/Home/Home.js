@@ -27,16 +27,16 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     padding: '1em',
-    color: theme.white,
   },
   catalogLinks: {
     fontSize: '1.5em',
   },
   datagouv: {
-    backgroundColor: theme.blue,
-    color: '#FFF',
+    backgroundColor: '#FFF',
+    border: `1px solid ${theme.blue}`,
+    color: theme.blue,
     padding: 40,
-    marginTop: '4em',
+    margin: '0 8% 4em',
   },
   datagouvIntro: {
     fontSize: '1.2em',
@@ -45,7 +45,6 @@ const styles = {
     fontVariant: 'small-caps',
   },
   datagouvLink: {
-    color: '#FFF',
     fontWeight: 'bolder',
     fontSize: '1.3em',
     fontVariant: 'normal',
