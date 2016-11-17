@@ -103,11 +103,12 @@ class Datasets extends Component {
   }
 
   handlePageClick = (data) => {
+    const limit = this.state.datasets.query.limit
     let selected = data.selected
-    const offset = Math.ceil(selected * this.state.datasets.query.limit)
+    const offset = Math.ceil(selected * limit)
 
     this.setState({offset}, () => {
-      this.replaceFilter({name: 'page', value: offset / this.state.datasets.query.limit})
+      this.replaceFilter({name: 'page', value: offset / limit})
       this.replaceFilter({name: 'offset', value: offset})
     })
   }
@@ -116,7 +117,6 @@ class Datasets extends Component {
     let max = 0
     if (this.state.datasets) {
       max = Math.ceil(this.state.datasets.count / this.state.datasets.query.limit)
-      debugger
     }
 
     return (
