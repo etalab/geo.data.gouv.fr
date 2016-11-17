@@ -17,11 +17,11 @@ const styles = {
   },
 }
 
-const OrganizationsSection = ({metrics, history}) => {
+const OrganizationsSection = ({metrics, history, catalog}) => {
   const organizations = metrics.records.counts.organizations
   const keywords = metrics.records.counts.keywords
 
-  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/datasets', query: filter })
+  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/datasets', query: {...filter, catalog: catalog.name} })
   const sections = [{title: 'Organizations', filters: organizations}, {title: 'Keywords', filters: keywords}]
 
   return (
