@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import Facet from '../../Facets/Facet'
 
 const styles = {
@@ -16,29 +17,29 @@ const styles = {
   },
 }
 
-const OrganizationsSection = ({metrics}) => {
+const OrganizationsSection = ({metrics, catalog}) => {
   const organizations = metrics.records.counts.organizations
   const keywords = metrics.records.counts.keywords
 
+  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/datasets', query: {...filter, catalog: catalog.name} })
+  const sections = [{title: 'Organizations', filters: organizations}, {title: 'Keywords', filters: keywords}]
+
   return (
     <div>
-      <h2 style={styles.type}>Organization</h2>
-      <div style={styles.facets}>
-        {
-          Object.keys(organizations).map((organization, idx) =>
-            <Facet style={{margin: '2px 5px'}} key={idx} value={organization} count={organizations[organization]}/>
-          )
+      {
+        sections.map(section => (
+          <div key={section.title} style={styles.group}>
+            <h2 style={styles.type}>{section.title}</h2>
+            <div style={styles.facets}>
+              {
+                Object.keys(section.filters).map((filter, idx) =>
+                  <Facet style={{margin: '2px 5px'}} key={idx} value={filter} addFilter={goToSearch({filter})} count={section.filters[filter]}/>
+                )
+            }
+            </div>
+          </div>
+        ))
       }
-      </div>
-
-      <h2 style={styles.type}>Keywords</h2>
-      <div style={styles.facets}>
-        {
-          Object.keys(keywords).map((keyword, idx) =>
-            <Facet style={{margin: '2px 5px'}} key={idx} value={keyword} count={keywords[keyword]}/>
-          )
-        }
-      </div>
     </div>
   )
 }

@@ -70,7 +70,7 @@ class CatalogDetail extends Component {
           <StatisticsSection metrics={metrics} />
         </div>
 
-        <div style={styles.section}><OrganizationsSection metrics={metrics} /></div>
+        <div style={styles.section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
         <div style={styles.section}><HarvestsSection catalog={catalog} /></div>
       </div>
     )
