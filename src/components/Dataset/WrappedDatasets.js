@@ -3,7 +3,7 @@ import { isArray, forEach } from 'lodash'
 import qs from 'qs'
 import Datasets from './Datasets'
 
-const DISABLED_FILTERS = [ 'q', 'offset', 'limit' ]
+const DISABLED_FILTERS = [ 'q', 'page', 'offset', 'limit' ]
 
 export function _extractFilters(query) {
   let filters = []
