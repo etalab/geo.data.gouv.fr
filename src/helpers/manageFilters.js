@@ -1,4 +1,4 @@
-import { remove, unionWith, isEqual, some } from 'lodash'
+import { remove, unionWith, find, isEqual, some } from 'lodash'
 
 export function addFilter(oldFilters, newFilter) {
   return unionWith(oldFilters, [newFilter], isEqual)
@@ -7,6 +7,15 @@ export function addFilter(oldFilters, newFilter) {
 export function removeFilter(oldFilters, newFilter) {
   remove(oldFilters, newFilter)
 
+  return oldFilters
+}
+
+export function replaceFilter(oldFilters, newFilter) {
+  let filter = find(oldFilters, (filter) => filter.name === newFilter.name)
+
+  if (!filter) return addFilter(oldFilters, newFilter)
+  filter.value = newFilter.value
+  
   return oldFilters
 }
 

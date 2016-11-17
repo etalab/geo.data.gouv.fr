@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactPaginate from 'react-paginate'
 import { browserHistory } from 'react-router'
 import { search, buildSearchQuery } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
@@ -7,7 +8,7 @@ import ContentLoader from '../Loader/ContentLoader'
 import DatasetPreview from './DatasetPreview'
 import Facets from '../Facets/Facets'
 import Filter from '../Filter/Filter'
-import { addFilter, removeFilter } from '../../helpers/manageFilters'
+import { addFilter, removeFilter, replaceFilter } from '../../helpers/manageFilters'
 
 const styles = {
   results: {
@@ -47,7 +48,7 @@ class Datasets extends Component {
     const query = buildSearchQuery(textInput, filters, page)
     browserHistory.push(`datasets?${query}`)
 
-    const allFilters = [...filters, {name: 'availability', value: 'yes'}]
+    const allFilters = [...filters, {name: 'availability', value: 'yes'}, {name: 'page', value: 0}]
     return waitForDataAndSetState(search(textInput, allFilters, page), this, 'datasets')
   }
 
@@ -77,7 +78,7 @@ class Datasets extends Component {
     }
   }
 
-  addFilter(filter){
+  addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
     this.setState({filters})
     this.search({filters})
@@ -89,13 +90,35 @@ class Datasets extends Component {
     this.search({filters})
   }
 
+  replaceFilter(filter) {
+    const filters = replaceFilter(this.state.filters, filter)
+    this.setState({filters})
+    this.search({filters})
+  }
+
   userSearch(textInput) {
     const changes = { textInput, filters: [] }
     this.setState(changes)
     this.search(changes)
   }
 
+  handlePageClick = (data) => {
+    let selected = data.selected
+    const offset = Math.ceil(selected * this.state.datasets.query.limit)
+
+    this.setState({offset}, () => {
+      this.replaceFilter({name: 'page', value: offset / this.state.datasets.query.limit})
+      this.replaceFilter({name: 'offset', value: offset})
+    })
+  }
+
   render() {
+    let max = 0
+    if (this.state.datasets) {
+      max = Math.ceil(this.state.datasets.count / this.state.datasets.query.limit)
+      debugger
+    }
+
     return (
       <div style={styles.container}>
         <div style={styles.searchInputWrapper}>
@@ -108,6 +131,18 @@ class Datasets extends Component {
         </div>
 
         {this.renderResult()}
+
+        <ReactPaginate previousLabel={'Précédent'}
+                       nextLabel={'Suivant'}
+                       breakLabel={<a href=''>...</a>}
+                       breakClassName={'break-me'}
+                       pageNum={max}
+                       marginPagesDisplayed={2}
+                       pageRangeDisplayed={5}
+                       clickCallback={this.handlePageClick}
+                       containerClassName={'pagination'}
+                       subContainerClassName={'pages pagination'}
+                       activeClassName={'active'} />
       </div>
     )
   }
