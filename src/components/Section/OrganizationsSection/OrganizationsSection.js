@@ -17,7 +17,7 @@ const styles = {
   },
 }
 
-const OrganizationsSection = ({metrics, history, catalog}) => {
+const OrganizationsSection = ({metrics, catalog}) => {
   const organizations = metrics.records.counts.organizations
   const keywords = metrics.records.counts.keywords
 
