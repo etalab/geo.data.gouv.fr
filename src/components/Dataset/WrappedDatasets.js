@@ -3,19 +3,15 @@ import { isArray, forEach } from 'lodash'
 import qs from 'qs'
 import Datasets from './Datasets'
 
-const ALLOWED_FILTERS = ['organization', 'keyword', 'availability']
-
 export function _extractFilters(query) {
   let filters = []
   forEach(query, function(value, key) {
-    if (ALLOWED_FILTERS.includes(key)) {
-      if (isArray(value)) {
-        forEach(value, function(current) {
-          filters.push({name: key, value: current})
-        })
-      } else {
-        filters.push({name: key, value})
-      }
+    if (isArray(value)) {
+      forEach(value, function(current) {
+        filters.push({name: key, value: current})
+      })
+    } else {
+      filters.push({name: key, value})
     }
   })
 
