@@ -13,7 +13,7 @@ describe('_extractFilters', () => {
   })
 
   it('should return only allowed filters', () => {
-    const qs = { keyword: 'bar', notAllowed: 'foo' }
+    const qs = { keyword: 'bar', q: 'foo' }
     const filters = [
       {name: 'keyword', value: 'bar'},
     ]
