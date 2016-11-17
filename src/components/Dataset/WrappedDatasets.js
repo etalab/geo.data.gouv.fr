@@ -3,9 +3,15 @@ import { isArray, forEach } from 'lodash'
 import qs from 'qs'
 import Datasets from './Datasets'
 
+const DISABLED_FILTERS = ['q', 'page', ]
+
 export function _extractFilters(query) {
   let filters = []
   forEach(query, function(value, key) {
+    if (DISABLED_FILTERS.includes(key)) {
+      return
+    }
+
     if (isArray(value)) {
       forEach(value, function(current) {
         filters.push({name: key, value: current})
