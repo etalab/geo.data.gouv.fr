@@ -105,8 +105,7 @@ class Datasets extends Component {
     const offset = Math.ceil(selected * limit)
     const page = (offset / limit) + 1
 
-    this.setState({page})
-    this.setState({offset}, () => {
+    this.setState({page, offset}, () => {
       this.search({offset})
     })
   }
