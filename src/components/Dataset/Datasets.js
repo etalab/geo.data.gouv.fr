@@ -141,6 +141,7 @@ class Datasets extends Component {
                          breakLabel={<a href=''>...</a>}
                          breakClassName={'pagination-element-break'}
                          pageNum={max}
+                         initialSelected={Number(this.state.page - 1) || 0}
                          marginPagesDisplayed={2}
                          pageRangeDisplayed={5}
                          clickCallback={this.handlePageClick}
