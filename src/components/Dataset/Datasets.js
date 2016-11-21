@@ -24,6 +24,8 @@ const styles = {
     marginTop: '5em',
   },
   paginationWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
     margin: '0 4em 2em',
   },
 }
