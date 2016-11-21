@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactPaginate from 'react-paginate'
 import { browserHistory } from 'react-router'
 import { search, buildSearchQuery } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
@@ -8,6 +9,7 @@ import DatasetPreview from './DatasetPreview'
 import Facets from '../Facets/Facets'
 import Filter from '../Filter/Filter'
 import { addFilter, removeFilter } from '../../helpers/manageFilters'
+import './Pagination.css'
 
 const styles = {
   results: {
@@ -20,6 +22,11 @@ const styles = {
   loader: {
     textAlign: 'center',
     marginTop: '5em',
+  },
+  paginationWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '0 4em 2em',
   },
 }
 
@@ -42,13 +49,16 @@ class Datasets extends Component {
 
   search(changes = {}) {
     const params = Object.assign({}, this.state, changes);
-    const { textInput, filters, page } = params
+    let { textInput, filters, offset, page } = params
+
+    if (!offset && page) {
+      offset = (page - 1) * 20 // Comment remplacer 20 par limit
+    }
 
     const query = buildSearchQuery(textInput, filters, page)
     browserHistory.push(`datasets?${query}`)
-
     const allFilters = [...filters, {name: 'availability', value: 'yes'}]
-    return waitForDataAndSetState(search(textInput, allFilters, page), this, 'datasets')
+    return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
   }
 
   renderResult() {
@@ -77,7 +87,7 @@ class Datasets extends Component {
     }
   }
 
-  addFilter(filter){
+  addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
     this.setState({filters})
     this.search({filters})
@@ -90,12 +100,28 @@ class Datasets extends Component {
   }
 
   userSearch(textInput) {
-    const changes = { textInput, filters: [] }
+    const changes = { textInput, filters: [], offset: undefined, page: undefined }
     this.setState(changes)
     this.search(changes)
   }
 
+  handlePageClick = (data) => {
+    const limit = this.state.datasets.query.limit
+    const selected = data.selected
+    const offset = Math.ceil(selected * limit)
+    const page = (offset / limit) + 1
+
+    this.setState({page, offset}, () => {
+      this.search({offset})
+    })
+  }
+
   render() {
+    let max = 0
+    if (this.state.datasets) {
+      max = Math.ceil(this.state.datasets.count / this.state.datasets.query.limit)
+    }
+
     return (
       <div style={styles.container}>
         <div style={styles.searchInputWrapper}>
@@ -108,6 +134,26 @@ class Datasets extends Component {
         </div>
 
         {this.renderResult()}
+
+        <div style={styles.paginationWrapper}>
+          <ReactPaginate previousLabel={'Précédent'}
+                         nextLabel={'Suivant'}
+                         breakLabel={<a href=''>...</a>}
+                         breakClassName={'pagination-element-break'}
+                         pageNum={max}
+                         initialSelected={Number(this.state.page - 1) || 0}
+                         marginPagesDisplayed={2}
+                         pageRangeDisplayed={5}
+                         clickCallback={this.handlePageClick}
+                         containerClassName={'pagination'}
+                         pageClassName={'pagination-element'}
+                         pageLinkClassName={'pagination-element-link'}
+                         previousClassName={'pagination-element'}
+                         previousLinkClassName={'pagination-element-link'}
+                         nextClassName={'pagination-element'}
+                         nextLinkClassName={'pagination-element-link'}
+                         activeClassName={'pagination-element-active'} />
+        </div>
       </div>
     )
   }

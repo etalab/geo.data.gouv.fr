@@ -1,4 +1,4 @@
-import { addFilter, removeFilter, convertFilters, isActive } from '../manageFilters'
+import { addFilter, removeFilter, replaceFilter, convertFilters, isActive } from '../manageFilters'
 
 describe('manageFilters', () => {
 
@@ -37,6 +37,22 @@ describe('manageFilters', () => {
       const filter = [{name: 'test', value: 42}]
       const filters = removeFilter(filter, {name: 'test', value: 21})
       expect(filters).toEqual(filter)
+    })
+  })
+
+  describe('replaceFilter()', () => {
+    it('should replace filter', () => {
+      let filters = [{name: 'foo', value: 'bar'}, {name: 'test', value: 0}]
+
+      filters = replaceFilter(filters, {name: 'test', value: 42})
+      expect(filters).toEqual([{name: 'foo', value: 'bar'}, {name: 'test', value: 42}])
+    })
+
+    it('should create when filter do not exist', () => {
+      let filters = [{name: 'foo', value: 'bar'}]
+
+      filters = replaceFilter(filters, {name: 'test', value: 42})
+      expect(filters).toEqual([{name: 'foo', value: 'bar'}, {name: 'test', value: 42}])
     })
   })
 
