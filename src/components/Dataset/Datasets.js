@@ -8,7 +8,7 @@ import ContentLoader from '../Loader/ContentLoader'
 import DatasetPreview from './DatasetPreview'
 import Facets from '../Facets/Facets'
 import Filter from '../Filter/Filter'
-import { addFilter, removeFilter, replaceFilter } from '../../helpers/manageFilters'
+import { addFilter, removeFilter } from '../../helpers/manageFilters'
 import './Pagination.css'
 
 const styles = {
