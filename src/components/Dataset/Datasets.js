@@ -43,13 +43,16 @@ class Datasets extends Component {
 
   search(changes = {}) {
     const params = Object.assign({}, this.state, changes);
-    const { textInput, filters, page } = params
+    let { textInput, filters, offset, page } = params
+
+    if (!offset && page) {
+      offset = (page - 1) * 20 // Comment remplacer 20 par limit
+    }
 
     const query = buildSearchQuery(textInput, filters, page)
     browserHistory.push(`datasets?${query}`)
-
-    const allFilters = [...filters, {name: 'availability', value: 'yes'}, {name: 'page', value: 0}]
-    return waitForDataAndSetState(search(textInput, allFilters, page), this, 'datasets')
+    const allFilters = [...filters, {name: 'availability', value: 'yes'}]
+    return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
   }
 
   renderResult() {
@@ -97,19 +100,20 @@ class Datasets extends Component {
   }
 
   userSearch(textInput) {
-    const changes = { textInput, filters: [] }
+    const changes = { textInput, filters: [], offset: undefined, page: undefined }
     this.setState(changes)
     this.search(changes)
   }
 
   handlePageClick = (data) => {
     const limit = this.state.datasets.query.limit
-    let selected = data.selected
+    const selected = data.selected
     const offset = Math.ceil(selected * limit)
+    const page = (offset / limit) + 1
 
+    this.setState({page})
     this.setState({offset}, () => {
-      this.replaceFilter({name: 'page', value: offset / limit})
-      this.replaceFilter({name: 'offset', value: offset})
+      this.search({offset})
     })
   }
 
