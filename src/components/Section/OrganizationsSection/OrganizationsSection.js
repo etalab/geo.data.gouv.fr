@@ -22,7 +22,7 @@ const OrganizationsSection = ({metrics, catalog}) => {
   const keywords = metrics.records.counts.keywords
 
   const goToSearch = (filter) => () => browserHistory.push({ pathname: '/datasets', query: {...filter, catalog: catalog.name} })
-  const sections = [{title: 'Organizations', filters: organizations}, {title: 'Keywords', filters: keywords}]
+  const sections = [{name: 'organization', title: 'Organizations', filters: organizations}, {name: 'keyword', title: 'Keywords', filters: keywords}]
 
   return (
     <div>
@@ -33,7 +33,7 @@ const OrganizationsSection = ({metrics, catalog}) => {
             <div style={styles.facets}>
               {
                 Object.keys(section.filters).map((filter, idx) =>
-                  <Facet style={{margin: '2px 5px'}} key={idx} value={filter} addFilter={goToSearch({filter})} count={section.filters[filter]}/>
+                  <Facet style={{margin: '2px 5px'}} key={idx} value={filter} addFilter={goToSearch({[section.name]: filter})} count={section.filters[filter]}/>
                 )
             }
             </div>
