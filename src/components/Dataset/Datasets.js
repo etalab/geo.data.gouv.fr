@@ -16,7 +16,11 @@ const styles = {
   },
   searchInputWrapper: {
     margin: '4em',
-  }
+  },
+  loader: {
+    textAlign: 'center',
+    marginTop: '5em',
+  },
 }
 
 class Datasets extends Component {
@@ -69,7 +73,7 @@ class Datasets extends Component {
               </div>
       }
     } else {
-      return <ContentLoader />
+      return <div style={styles.loader}><ContentLoader /></div>
     }
   }
 

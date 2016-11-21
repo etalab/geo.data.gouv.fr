@@ -4,6 +4,16 @@ import Catalog from '../Catalog/Catalog'
 import { fetchCatalogs } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 
+const styles = {
+  container: {
+    textAlign: 'center',
+    paddingTop: '2em',
+  },
+  loader: {
+    textAlign: 'center',
+    marginTop: '5em',
+  },
+}
 class Catalogs extends Component {
   constructor(props) {
     super(props)
@@ -19,14 +29,9 @@ class Catalogs extends Component {
   }
 
   render() {
-    const styles = {
-      container: {
-        textAlign: 'center',
-        paddingTop: '2em',
-      },
-    }
 
-    if (!this.state.catalogs) return <ContentLoader />
+    if (!this.state.catalogs) return <div style={styles.loader}><ContentLoader /></div>
+
     return (
       <div className="catalogs">
         <div style={styles.container}>
