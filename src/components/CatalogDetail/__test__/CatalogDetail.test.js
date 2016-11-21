@@ -97,7 +97,7 @@ describe('<CatalogDetail />', () => {
     it('should render a loader when no catalog is fetch', () => {
       const loader = <ContentLoader />
       const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
-      expect(wrapper.matchesElement(loader)).toBe(true)
+      expect(wrapper.containsMatchingElement(loader)).toBe(true)
     })
   })
 
