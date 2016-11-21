@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { prune } from 'underscore.string'
+import MarkdownViewer from '../Markdown/MarkdownViewer'
 import Filter from '../Filter/Filter'
 
 const styles = {
@@ -34,7 +35,8 @@ class DatasetPreview extends Component {
         <h4>
           <Link to={`/datasets/${recordId}`}>{metadata.title}</Link>
         </h4>
-        <p>{prune(metadata.description, 1000)}</p>
+
+        <MarkdownViewer markdown={prune(metadata.description, 1000)} />
 
         <h4 style={styles.type}>Keyword</h4>
         <div style={styles.filterList}>
