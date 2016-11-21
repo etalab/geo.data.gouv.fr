@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { fetchDataset, fetchCatalogs } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import CircularProgress from '../CircularProgress/CircularProgress'
+import ContentLoader from '../Loader/ContentLoader'
 import LinksSection from './LinksSection'
 import DatasetSection from './DatasetSection'
 import KeywordsSection from './KeywordsSection'
@@ -19,6 +19,10 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '1em',
+  },
+  loader: {
+    textAlign: 'center',
+    marginTop: '5em',
   },
 }
 
@@ -50,7 +54,7 @@ export default class DatasetDetail extends Component {
   render() {
     const { dataset, catalogs } = this.state
 
-    if (!dataset || !catalogs) return <CircularProgress style={styles.loader}  size={2} />
+    if (!dataset || !catalogs) return <div style={styles.loader}><ContentLoader /></div>
 
     return (
       <div style={styles.container}>

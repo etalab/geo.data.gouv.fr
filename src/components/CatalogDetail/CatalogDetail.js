@@ -30,6 +30,10 @@ const styles = {
     padding: 40,
     display: 'block',
   },
+  loader: {
+    textAlign: 'center',
+    marginTop: '5em',
+  },
 }
 
 class CatalogDetail extends Component {
@@ -61,7 +65,7 @@ class CatalogDetail extends Component {
     const catalog = this.state.catalog
     const metrics = this.state.metrics
 
-    if (!catalog || !metrics) return <ContentLoader />
+    if (!catalog || !metrics) return <div style={styles.loader}><ContentLoader /></div>
 
     return (
       <div style={styles.catalogDetail} id="catalog-detail">
