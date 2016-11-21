@@ -17,6 +17,15 @@
   cursor: pointer;
 }
 
+.pagination-element.disabled {
+  color: #999;
+  cursor: default;
+}
+
+.pagination-element.disabled a:hover {
+  color: #999;
+}
+
 .pagination-element:first-child {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
