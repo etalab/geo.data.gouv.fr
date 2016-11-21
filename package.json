@@ -66,6 +66,7 @@
     "react-responsive": "^1.1.5",
     "react-router": "^2.7.0",
     "react-tap-event-plugin": "^1.0.0",
+    "remarkable": "^1.7.1",
     "underscore.string": "^3.3.4"
   },
   "scripts": {
