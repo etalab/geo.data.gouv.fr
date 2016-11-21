@@ -93,12 +93,6 @@ class Datasets extends Component {
     this.search({filters})
   }
 
-  replaceFilter(filter) {
-    const filters = replaceFilter(this.state.filters, filter)
-    this.setState({filters})
-    this.search({filters})
-  }
-
   userSearch(textInput) {
     const changes = { textInput, filters: [], offset: undefined, page: undefined }
     this.setState(changes)

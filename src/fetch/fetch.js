@@ -44,9 +44,9 @@ export function buildSearchQuery(q, filters, page) {
   return query
 }
 
-export function search(textInput, filters, offset) {
+export function search(q, filters, offset) {
   const qsFilters = convertFilters(filters)
-  const query = qs.stringify({textInput, offset, ...qsFilters}, { indices: false })
+  const query = qs.stringify({q, offset, ...qsFilters}, { indices: false })
 
   return _f('https://inspire.data.gouv.fr/api/geogw/records?' + query)
 }
