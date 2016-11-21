@@ -9,6 +9,7 @@ import DatasetPreview from './DatasetPreview'
 import Facets from '../Facets/Facets'
 import Filter from '../Filter/Filter'
 import { addFilter, removeFilter, replaceFilter } from '../../helpers/manageFilters'
+import './Pagination.css'
 
 const styles = {
   results: {
@@ -21,6 +22,9 @@ const styles = {
   loader: {
     textAlign: 'center',
     marginTop: '5em',
+  },
+  paginationWrapper: {
+    margin: '0 4em 2em',
   },
 }
 
@@ -129,17 +133,24 @@ class Datasets extends Component {
 
         {this.renderResult()}
 
-        <ReactPaginate previousLabel={'Précédent'}
-                       nextLabel={'Suivant'}
-                       breakLabel={<a href=''>...</a>}
-                       breakClassName={'break-me'}
-                       pageNum={max}
-                       marginPagesDisplayed={2}
-                       pageRangeDisplayed={5}
-                       clickCallback={this.handlePageClick}
-                       containerClassName={'pagination'}
-                       subContainerClassName={'pages pagination'}
-                       activeClassName={'active'} />
+        <div style={styles.paginationWrapper}>
+          <ReactPaginate previousLabel={'Précédent'}
+                         nextLabel={'Suivant'}
+                         breakLabel={<a href=''>...</a>}
+                         breakClassName={'pagination-element-break'}
+                         pageNum={max}
+                         marginPagesDisplayed={2}
+                         pageRangeDisplayed={5}
+                         clickCallback={this.handlePageClick}
+                         containerClassName={'pagination'}
+                         pageClassName={'pagination-element'}
+                         pageLinkClassName={'pagination-element-link'}
+                         previousClassName={'pagination-element'}
+                         previousLinkClassName={'pagination-element-link'}
+                         nextClassName={'pagination-element'}
+                         nextLinkClassName={'pagination-element-link'}
+                         activeClassName={'pagination-element-active'} />
+        </div>
       </div>
     )
   }
