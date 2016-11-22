@@ -47,7 +47,7 @@ describe('<DoughnutChart />', () => {
 
     it('Should render Percent component when no data', () => {
       const noDataWrapper = shallow(<DoughnutChart data={{}} />)
-      const noData = <h1>No data</h1>
+      const noData = <h1>Aucune donnée</h1>
 
       expect(noDataWrapper.contains(noData)).toEqual(true);
     });

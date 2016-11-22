@@ -35,20 +35,20 @@ return (
     <div style={styles.section}>
 
       <div style={styles.chart}>
-        <Counter size="large" value={metrics.records.totalCount} title="Records"/>
+        <Counter size="large" value={metrics.records.totalCount} title="Enregistrements"/>
       </div>
 
       <div style={styles.chart}>
         <Chart
-          title={'Record Type'}
-          description={'Distribution of record types'}
+          title={'Type d\'Enregistrements'}
+          description={'Répartition des types d\'enregistrements'}
           chart={<DoughnutChart data={metrics.records.partitions.recordType} />} />
       </div>
 
       <div style={styles.chart}>
         <Chart
           title={'Metadata Type'}
-          description={'Distribution of metadata types'}
+          description={'Répartition des types de meta donnée'}
           chart={<DoughnutChart data={metrics.records.partitions.metadataType} />} />
       </div>
     </div>
@@ -56,17 +56,17 @@ return (
     <h2 style={styles.h2}>Indicateurs concernant les jeux de données</h2>
       <div style={styles.section}>
         <div style={styles.chart}>
-          <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="unlock alternate icon" title="Percentage of open datasets" />
+          <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="unlock alternate icon" title="Pourcentage de données ouvertes" />
         </div>
 
         <div style={styles.chart}>
-          <Percent value={metrics.datasets.partitions['download'] ? metrics.datasets.partitions['download'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="download" title="Percentage of downloadable datasets" />
+          <Percent value={metrics.datasets.partitions['download'] ? metrics.datasets.partitions['download'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="download" title="Pourcentage de jeu de données téléchargeable" />
         </div>
 
         <div style={styles.chart}>
           <Chart
-            title={'Data Type'}
-            description={'Distribution of data types'}
+            title={'Type de donnée'}
+            description={'Répartition des types de donnée'}
             chart={<DoughnutChart data={metrics.datasets.partitions.dataType} />} />
         </div>
       </div>

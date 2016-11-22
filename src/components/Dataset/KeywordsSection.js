@@ -13,7 +13,7 @@ const KeywordsSection = ({keywords}) => {
   }
   return (
     <div style={styles.keywords}>
-      <h3>Keywords</h3>
+      <h3>Mots-clés</h3>
       <div style={styles.list}>
         {keywords.map( (keyword, idx) => <div key={idx}>{keyword}</div>)}
       </div>

@@ -83,8 +83,8 @@ class Home extends Component {
       <div>
         <div style={styles.masthead}>
           <SearchInput handleTextChange={(textInput) => this.userSearch(textInput)} />
-          <span style={{lineHeight: '4em'}}>OR</span>
-          <Link style={styles.catalogLinks} to="catalogs">Explore the 106 catalogs</Link>
+          <span style={{lineHeight: '4em'}}>OU</span>
+          <Link style={styles.catalogLinks} to="catalogs">Explorer les 106 catalogues</Link>
         </div>
 
         <div style={styles.datagouv}>
@@ -94,11 +94,11 @@ class Home extends Component {
 
           <div style={styles.stats}>
             <div style={styles.paper}>
-              <h3>Not Yet Published</h3>
+              <h3>En attente de publication</h3>
               {notPublishedYet}
             </div>
             <div style={styles.paper}>
-              <h3>Published Datasets</h3>
+              <h3>Jeux de données publiés</h3>
               {published}
             </div>
           </div>

@@ -14,7 +14,7 @@ const CatalogsSection = ({catalogs}) => {
   }
   return (
     <div style={styles.downloads}>
-      <h3>Catalogs</h3>
+      <h3>Catalogues</h3>
       <div style={styles.catalogs}>
         {catalogs.map( (catalog, idx) =>
           <Link key={idx} to={`/catalogs/${catalog.id}`}>

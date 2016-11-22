@@ -15,7 +15,7 @@ const CatalogSection = ({catalog}) => {
   return (
     <div style={style}>
       <h1 className="ui header" style={colorWhite}>{catalog.name}</h1>
-      <a style={colorWhite} href={catalog.serviceUrl}>Direct access to the catalog service</a>
+      <a style={colorWhite} href={catalog.serviceUrl}>Accès direct au service du catalogue</a>
     </div>
   )
 }
