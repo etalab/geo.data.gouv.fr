@@ -3,10 +3,14 @@ import { Link } from 'react-router'
 import { prune } from 'underscore.string'
 import MarkdownViewer from '../Markdown/MarkdownViewer'
 import Filter from '../Filter/Filter'
+import { theme } from '../../tools'
 
 const styles = {
   preview: {
     marginBottom: '3em',
+    padding: '1em',
+    backgroundColor: '#FFF',
+    boxShadow: theme.boxShadowZ1,
   },
   filterList: {
     paddingBottom: '0.5em',
