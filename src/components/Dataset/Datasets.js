@@ -62,29 +62,55 @@ class Datasets extends Component {
   }
 
   renderResult() {
+    const max = this.state.datasets ? Math.ceil(this.state.datasets.count / this.state.datasets.query.limit) : 0
+
     if (this.state.errors.length) {
       return <div>An error has occurred.
                 {this.state.errors.map((error, idx) => <p key={idx}>{error}</p>)}
               </div>
     }
 
-    if (this.state.datasets) {
-      if (!this.state.datasets.results.length) {
-        return <div style={styles.results}>No datasets found.</div>
-      } else {
-        return <div style={styles.results}>
-                <div>
-                  {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => this.addFilter(filter)}/>)}
-                </div>
-                <Facets
-                  facets={this.state.datasets.facets}
-                  filters={this.state.filters}
-                  addFilter={(filter) => this.addFilter(filter)} />
-              </div>
-      }
-    } else {
+    if (!this.state.datasets) {
       return <div style={styles.loader}><ContentLoader /></div>
     }
+
+    if (!this.state.datasets.results.length) {
+      return <div style={styles.results}>No datasets found.</div>
+    }
+
+    return (
+      <div>
+        <div style={styles.results}>
+          <div>
+            {this.state.datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => this.addFilter(filter)}/>)}
+          </div>
+          <Facets
+            facets={this.state.datasets.facets}
+            filters={this.state.filters}
+            addFilter={(filter) => this.addFilter(filter)} />
+        </div>
+
+        <div style={styles.paginationWrapper}>
+          <ReactPaginate previousLabel={'Précédent'}
+                         nextLabel={'Suivant'}
+                         breakLabel={<a href=''>...</a>}
+                         breakClassName={'pagination-element-break'}
+                         pageNum={max}
+                         initialSelected={Number(this.state.page - 1) || 0}
+                         marginPagesDisplayed={2}
+                         pageRangeDisplayed={5}
+                         clickCallback={this.handlePageClick}
+                         containerClassName={'pagination'}
+                         pageClassName={'pagination-element'}
+                         pageLinkClassName={'pagination-element-link'}
+                         previousClassName={'pagination-element'}
+                         previousLinkClassName={'pagination-element-link'}
+                         nextClassName={'pagination-element'}
+                         nextLinkClassName={'pagination-element-link'}
+                         activeClassName={'pagination-element-active'} />
+        </div>
+      </div>
+    )
   }
 
   addFilter(filter) {
@@ -117,11 +143,6 @@ class Datasets extends Component {
   }
 
   render() {
-    let max = 0
-    if (this.state.datasets) {
-      max = Math.ceil(this.state.datasets.count / this.state.datasets.query.limit)
-    }
-
     return (
       <div style={styles.container}>
         <div style={styles.searchInputWrapper}>
@@ -135,25 +156,6 @@ class Datasets extends Component {
 
         {this.renderResult()}
 
-        <div style={styles.paginationWrapper}>
-          <ReactPaginate previousLabel={'Précédent'}
-                         nextLabel={'Suivant'}
-                         breakLabel={<a href=''>...</a>}
-                         breakClassName={'pagination-element-break'}
-                         pageNum={max}
-                         initialSelected={Number(this.state.page - 1) || 0}
-                         marginPagesDisplayed={2}
-                         pageRangeDisplayed={5}
-                         clickCallback={this.handlePageClick}
-                         containerClassName={'pagination'}
-                         pageClassName={'pagination-element'}
-                         pageLinkClassName={'pagination-element-link'}
-                         previousClassName={'pagination-element'}
-                         previousLinkClassName={'pagination-element-link'}
-                         nextClassName={'pagination-element'}
-                         nextLinkClassName={'pagination-element-link'}
-                         activeClassName={'pagination-element-active'} />
-        </div>
       </div>
     )
   }
