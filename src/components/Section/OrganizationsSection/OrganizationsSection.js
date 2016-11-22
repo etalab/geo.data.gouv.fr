@@ -22,7 +22,7 @@ const OrganizationsSection = ({metrics, catalog}) => {
   const keywords = metrics.records.counts.keywords
 
   const goToSearch = (filter) => () => browserHistory.push({ pathname: '/datasets', query: {...filter, catalog: catalog.name} })
-  const sections = [{name: 'organization', title: 'Organizations', filters: organizations}, {name: 'keyword', title: 'Keywords', filters: keywords}]
+  const sections = [{name: 'organization', title: 'Organisations', filters: organizations}, {name: 'keyword', title: 'Mots-clés', filters: keywords}]
 
   return (
     <div>

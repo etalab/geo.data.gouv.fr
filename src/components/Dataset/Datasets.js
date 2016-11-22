@@ -65,7 +65,7 @@ class Datasets extends Component {
     const max = this.state.datasets ? Math.ceil(this.state.datasets.count / this.state.datasets.query.limit) : 0
 
     if (this.state.errors.length) {
-      return <div>An error has occurred.
+      return <div>Une erreur est survenue.
                 {this.state.errors.map((error, idx) => <p key={idx}>{error}</p>)}
               </div>
     }
@@ -75,7 +75,7 @@ class Datasets extends Component {
     }
 
     if (!this.state.datasets.results.length) {
-      return <div style={styles.results}>No datasets found.</div>
+      return <div style={styles.results}>Aucun jeu de données trouvé.</div>
     }
 
     return (

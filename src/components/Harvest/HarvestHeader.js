@@ -1,7 +1,6 @@
 import React from 'react'
-import moment from 'moment'
 import { Link } from 'react-router'
-import { theme } from '../../tools'
+import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
 
 const styles = {
   header: {
@@ -13,16 +12,10 @@ const styles = {
   h1: {
     padding: '0.1em',
   },
-  chip: {
-    margin: '2em',
-  },
 }
 
 const HarvestHeader = ({ catalogId, catalogName, harvest, successful }) => {
-  const date = new Date(harvest.finished).getTime()
-  const hoursDifference = moment(date).fromNow()
 
-  styles.chip.color = successful ? theme.green : theme.red
 
   return (
     <div style={styles.header} >
@@ -30,11 +23,11 @@ const HarvestHeader = ({ catalogId, catalogName, harvest, successful }) => {
         <Link to={`/catalogs/${catalogId}`}>
           <h1 style={styles.h1} className="ui header">{catalogName}</h1>
         </Link>
-        <h2>Harvest ID: {harvest._id}</h2>
+        <h2>Identifiant du moissonnage: {harvest._id}</h2>
       </div>
 
-      <span style={styles.chip}>
-        {harvest.status} {hoursDifference}
+      <span >
+        <LastHarvestStatus harvest={harvest} />
       </span>
     </div>
   )

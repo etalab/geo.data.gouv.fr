@@ -13,7 +13,7 @@ const LinksSection = ({links}) => {
   }
   return (
     <div style={styles.links}>
-      <h3>Links</h3>
+      <h3>Liens</h3>
       <div style={styles.links}>
         {links.map( (link, idx) => <a key={idx} href={link.href}>{link.name}</a>)}
       </div>

@@ -13,7 +13,7 @@ const OrganizationsSection = ({organizations}) => {
   }
   return (
     <div style={styles.organizations}>
-      <h3>Organizations</h3>
+      <h3>Organisations</h3>
       <div style={styles.list}>
         {organizations.map( (organization, idx) => <div key={idx}>{organization}</div>)}
       </div>
