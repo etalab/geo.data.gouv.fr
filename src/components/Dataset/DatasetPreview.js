@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { prune } from 'underscore.string'
-import MarkdownViewer from '../Markdown/MarkdownViewer'
+import DatasetDescription from './DatasetDescription'
 import Filter from '../Filter/Filter'
 
 const styles = {
@@ -21,9 +20,17 @@ const styles = {
 }
 
 class DatasetPreview extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {shortDescription: true}
+  }
 
   onClick(value) {
     this.props.onClick(value)
+  }
+
+  wrapDescription() {
+    this.setState({shortDescription: !this.state.shortDescription})
   }
 
   render() {
@@ -36,7 +43,7 @@ class DatasetPreview extends Component {
           <Link to={`/datasets/${recordId}`}>{metadata.title}</Link>
         </h4>
 
-        <MarkdownViewer markdown={prune(metadata.description, 1000)} />
+        <DatasetDescription description={metadata.description} shortDescription={this.state.shortDescription} showMore={() => this.wrapDescription()} />
 
         <h4 style={styles.type}>Keyword</h4>
         <div style={styles.filterList}>
