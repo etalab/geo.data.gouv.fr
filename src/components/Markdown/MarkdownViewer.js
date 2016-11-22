@@ -1,8 +1,8 @@
 import React from 'react'
-import Remarkable from 'remarkable'
+import marked from 'marked'
 
 const MarkdownViewer = ({markdown}) => {
-  const md = new Remarkable().render(markdown)
+  const md = marked(markdown)
   return <p dangerouslySetInnerHTML={{__html : md}} />
 }
 
