@@ -52,7 +52,7 @@ describe('<DatasetSection />', () => {
     })
 
     it('should display dataset type', () => {
-      expect(wrapper.contains('unknown')).toBe(true)
+      expect(wrapper.contains('inconnu')).toBe(true)
     })
 
     it('should display dataset license', () => {
