@@ -21,15 +21,16 @@ class Facet extends Component {
     }
 
     let onClick = null
+    let filter = {name, value}
 
     if (addFilter) {
-      onClick = () => addFilter({name, value})
+      onClick = () => addFilter(filter)
     }
 
     return (
       <div style={{...style, ...styles.facet}}>
         <span style={styles.facet}>
-          <Filter filter={{value}} onClick={onClick}/>
+          <Filter filter={filter} onClick={onClick}/>
         </span>
         <span style={styles.count}>x&nbsp;{count}</span>
       </div>
