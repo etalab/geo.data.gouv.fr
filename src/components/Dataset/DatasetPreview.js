@@ -38,12 +38,12 @@ class DatasetPreview extends Component {
 
         <MarkdownViewer markdown={prune(metadata.description, 1000)} />
 
-        <h4 style={styles.type}>Keyword</h4>
+        <h4 style={styles.type}>Mot-clé</h4>
         <div style={styles.filterList}>
           {metadata.keywords.map((keyword, idx) => <Filter onClick={addFilter} key={idx} filter={{value: keyword, name:'keyword'}} />)}
         </div>
 
-        <h4 style={styles.type}>Organization</h4>
+        <h4 style={styles.type}>Organisation</h4>
         <div style={styles.filterList}>
           {organizations.map((organization, idx) => <Filter onClick={addFilter} key={idx} filter={{value: organization, name:'organization'}} />)}
         </div>

@@ -30,8 +30,8 @@ class SearchInput extends Component {
           className='search-input'
           onChange={(e) => this.handleChange(e)}
           onKeyPress={(e) => this.handleKeyPress(e)}
-          placeholder="Search..." />
-        <button className='ui large button' onClick={() => this.search()}>Search</button>
+          placeholder="Rechercher..." />
+        <button className='ui large button' onClick={() => this.search()}>Rechercher</button>
       </div>
     )
   }

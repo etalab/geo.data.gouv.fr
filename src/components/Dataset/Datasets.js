@@ -63,14 +63,14 @@ class Datasets extends Component {
 
   renderResult() {
     if (this.state.errors.length) {
-      return <div>An error has occurred.
+      return <div>Une erreur est survenue.
                 {this.state.errors.map((error, idx) => <p key={idx}>{error}</p>)}
               </div>
     }
 
     if (this.state.datasets) {
       if (!this.state.datasets.results.length) {
-        return <div style={styles.results}>No datasets found.</div>
+        return <div style={styles.results}>Aucun jeu de données trouvé.</div>
       } else {
         return <div style={styles.results}>
                 <div>

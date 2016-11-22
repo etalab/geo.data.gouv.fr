@@ -4,7 +4,7 @@ import { theme } from '../../tools'
 const styles = {
   log: {
     padding: '1em',
-    backgroundColor: theme.darkblue,
+    backgroundColor: theme.white,
   }
 }
 

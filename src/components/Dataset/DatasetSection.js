@@ -13,8 +13,8 @@ const styles = {
 }
 
 const DatasetSection = ({dataset}) => {
-  const type = dataset.metadata.type || 'unknown'
-  const license = dataset.metadata.license || 'not determined'
+  const type = dataset.metadata.type || 'inconnu'
+  const license = dataset.metadata.license || 'non déterminé'
   const revisionDate = doneSince(dataset.revisionDate)
 
   return (
@@ -22,12 +22,12 @@ const DatasetSection = ({dataset}) => {
       <h1 className="dataset-title">{dataset.metadata.title}</h1>
       <div style={styles.infos} className="infos">
         <div>Type : <span>{type}</span></div>
-        <div>Licence : <span>{license}</span></div>
-        <div>Last update : <span>{revisionDate}</span></div>
+        <div>license : <span>{license}</span></div>
+        <div>Dernière mise à jour : <span>{revisionDate}</span></div>
       </div>
-      <div>Dataset ID : <span>{dataset.metadata.id}</span></div>
+      <div>Identifiant du jeu de données : <span>{dataset.metadata.id}</span></div>
       <p>{dataset.metadata.description}</p>
-      <p>Origin of data : {dataset.metadata.lineage}</p>
+      <p>Origine de la donnée : {dataset.metadata.lineage}</p>
     </div>
       )
 }

@@ -56,7 +56,7 @@ describe('<DatasetSection />', () => {
     })
 
     it('should display dataset license', () => {
-      expect(wrapper.contains('not determined')).toBe(true)
+      expect(wrapper.contains('non déterminé')).toBe(true)
     })
   })
 

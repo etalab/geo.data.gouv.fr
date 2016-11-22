@@ -1,16 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router'
 import HarvestDelta from './HarvestDelta'
+import { theme } from '../../tools'
 import { doneSince } from '../../helpers/doneSince'
 
-const HarvestRow = ({harvest, catalog, previousHarvest}) => {
-  const color = harvest.status === 'successful' ? 'green' : 'red'
+const styles = {
+  successful: {
+    color: theme.green
+  },
+  failed: {
+    color: theme.red
+  }
+}
 
+const HarvestRow = ({harvest, catalog, previousHarvest}) => {
   return (
     <tr>
       <td>
-        <div className={`ui ${color} circular label`} >
-          {harvest.status}
+        <div style={styles[harvest.status]} >
+          {harvest.status === 'successful' ? 'Réussi' : 'En échec'}
         </div>
       </td>
       <td>{harvest.itemsFound}</td>
@@ -18,7 +26,7 @@ const HarvestRow = ({harvest, catalog, previousHarvest}) => {
       <td>{doneSince(harvest.finished)}</td>
       <td>
         <Link to={`/catalogs/${catalog.id}/harvest/${harvest._id}`}>
-          More
+          Détails
         </Link>
       </td>
     </tr>

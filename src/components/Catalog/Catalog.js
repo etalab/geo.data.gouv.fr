@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Loader from '../Loader/Loader'
 import { Link } from 'react-router'
 import CatalogPreview from './CatalogPreview/CatalogPreview'
-import LastHarvesting from '../LastHarvesting/LastHarvesting'
+import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
 import { fetchMetrics } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import { theme } from '../../tools'
@@ -52,7 +52,7 @@ class Catalog extends Component {
           <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
             <div style={styles.paper}>
               <div style={styles.title}>{this.props.catalog.name}</div>
-              <LastHarvesting style={styles.lastHarvesting} harvest={this.props.catalog.lastHarvesting}/>
+              <LastHarvestStatus harvest={this.props.catalog.lastHarvesting}/>
               <Loader value={this.state.metrics} component={catalogPreview}/>
             </div>
           </Link>

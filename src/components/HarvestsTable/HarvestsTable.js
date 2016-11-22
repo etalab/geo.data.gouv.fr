@@ -16,10 +16,10 @@ const HarvestsTable = ({harvests, catalog}) => {
 
         <thead>
           <tr>
-            <th style={styles.th}>Status</th>
-            <th style={styles.th}>Records</th>
+            <th style={styles.th}>Statut</th>
+            <th style={styles.th}>Enregistrements</th>
             <th style={styles.th}>Delta</th>
-            <th style={styles.th}>Finished</th>
+            <th style={styles.th}>Terminer</th>
             <th style={styles.th}></th>
           </tr>
         </thead>

@@ -53,22 +53,22 @@ class HarvestsSection extends Component {
           <div style={styles.chart}>
             <MediaQuery minWidth={701} >
               <Chart
-                title={'Records Evolution'}
-                description={'Evolution of the number of records per harvest'}
+                title={'Évolution des Enregistrements'}
+                description={'Évolution du nombre d\'enregistrements par moissonnage'}
                 chart={<Histogram chartType={Line} data={dataGraph} width="500" height="200" />} />
             </MediaQuery>
 
             <MediaQuery minWidth={501} maxWidth={700} >
               <Chart
-                title={'Records Evolution'}
-                description={'Evolution of the number of records per harvest'}
+                title={'Évolution des Enregistrements'}
+                description={'Évolution du nombre d\'enregistrements par moissonnage'}
                 chart={<Histogram chartType={Line} data={dataGraph} width="400" height="220" />} />
             </MediaQuery>
 
             <MediaQuery maxWidth={500} >
               <Chart
-                title={'Records Evolution'}
-                description={'Evolution of the number of records per harvest'}
+                title={'Évolution des Enregistrements'}
+                description={'Évolution du nombre d\'enregistrements par moissonnage'}
                 chart={<Histogram chartType={Line} data={dataGraph} width="260" height="180" />} />
             </MediaQuery>
           </div>
