@@ -22,7 +22,7 @@ const DatasetSection = ({dataset}) => {
       <h1 className="dataset-title">{dataset.metadata.title}</h1>
       <div style={styles.infos} className="infos">
         <div>Type : <span>{type}</span></div>
-        <div>License : <span>{license}</span></div>
+        <div>Licence : <span>{license}</span></div>
         <div>Dernière mise à jour : <span>{revisionDate}</span></div>
       </div>
       <div>Identifiant du jeu de données : <span>{dataset.metadata.id}</span></div>
