@@ -31,7 +31,7 @@ class SearchInput extends Component {
           onChange={(e) => this.handleChange(e)}
           onKeyPress={(e) => this.handleKeyPress(e)}
           placeholder="Rechercher..." />
-        <button className='ui large button' onClick={() => this.search()}>Rechercher</button>
+        {this.props.searchButton ? <button className='ui large button' onClick={() => this.search()}>Rechercher</button> : undefined}
       </div>
     )
   }

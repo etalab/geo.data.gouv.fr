@@ -154,6 +154,7 @@ class Datasets extends Component {
           <SearchInput
             textInput={this.state.textInput}
             filters={this.state.filters}
+            searchButton={true}
             handleTextChange={(textInput) => this.userSearch(textInput)} />
 
           {this.state.filters.map((filter, idx) => <Filter key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
