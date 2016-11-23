@@ -21,7 +21,14 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  button: {
+  recordsButton: {
+    margin: '40px 20px 10px 20px',
+    padding: '15px 20px',
+    backgroundColor: '#fff',
+    border: '1px solid',
+    borderColor: theme.blue,
+  },
+  datasetsButton: {
     margin: '40px 20px 10px 20px',
     padding: '15px 20px',
     backgroundColor: theme.blue,
@@ -91,8 +98,8 @@ class Home extends Component {
         <div style={styles.masthead}>
           <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} />
           <div>
-            <button style={styles.button} onClick={() => this.userSearch('datasets', this.refs.searchInput.state.textInput)}>Rechercher un jeu de donnée</button>
-            <button style={styles.button} onClick={() => this.userSearch('records', this.refs.searchInput.state.textInput)}>Rechercher un enregistrements</button>
+            <button style={styles.datasetsButton} onClick={() => this.userSearch('datasets', this.refs.searchInput.state.textInput)}>Rechercher un jeu de données</button>
+            <button style={styles.recordsButton} onClick={() => this.userSearch('records', this.refs.searchInput.state.textInput)}>Rechercher un enregistrement</button>
           </div>
           <span style={{lineHeight: '4em'}}>OU</span>
           <Link style={styles.catalogLinks} to="catalogs">Explorer les 106 catalogues</Link>
