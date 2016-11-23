@@ -66,8 +66,9 @@
     "react-paginate": "^2.2.3",
     "react-responsive": "^1.1.5",
     "react-router": "^2.7.0",
-    "react-tap-event-plugin": "^1.0.0",
-    "underscore.string": "^3.3.4"
+    "react-tap-event-plugin": "^2.0.1",
+    "underscore.string": "^3.3.4",
+    "whatwg-fetch": "^2.0.1"
   },
   "scripts": {
     "start": "node scripts/start.js",
