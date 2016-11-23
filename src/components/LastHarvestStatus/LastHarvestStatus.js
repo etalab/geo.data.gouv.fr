@@ -12,6 +12,7 @@ const LastHarvestStatus = ({harvest}) => {
   let status
 
   if (harvest.status === 'successful') {
+    styles.chip.color =  theme.highlightblue
     status = 'Réussi'
   } else {
     styles.chip.color =  theme.red
