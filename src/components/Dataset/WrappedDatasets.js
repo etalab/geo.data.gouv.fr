@@ -41,7 +41,7 @@ class WrappedDatasets extends Component {
   }
 
   render() {
-    return <Datasets query={this.state.query}/>
+    return <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
   }
 }
 

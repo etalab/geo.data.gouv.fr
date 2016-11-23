@@ -50,14 +50,19 @@ class Datasets extends Component {
   search(changes = {}) {
     const params = Object.assign({}, this.state, changes);
     let { textInput, filters, offset, page } = params
+    const query = buildSearchQuery(textInput, filters, page)
+    let allFilters = filters
 
     if (!offset && page) {
       offset = (page - 1) * 20 // Comment remplacer 20 par limit
     }
 
-    const query = buildSearchQuery(textInput, filters, page)
-    browserHistory.push(`datasets?${query}`)
-    const allFilters = [...filters, {name: 'availability', value: 'yes'}]
+    if (this.props.pathname  === 'datasets') {
+      allFilters = [...filters, {name: 'availability', value: 'yes'}]
+    }
+
+    browserHistory.push(`${this.props.pathname}?${query}`)
+
     return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
   }
 
