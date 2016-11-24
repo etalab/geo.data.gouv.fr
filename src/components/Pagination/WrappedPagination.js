@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactPaginate from 'react-paginate'
+import './Pagination.css'
 
 const WrappedPagination = ({max, page, handlePageClick}) => {
   const selected = Number(page - 1) || 0

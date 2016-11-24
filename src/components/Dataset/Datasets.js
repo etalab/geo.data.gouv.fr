@@ -9,7 +9,6 @@ import WrappedPagination from '../Pagination/WrappedPagination'
 import Facets from '../Facets/Facets'
 import Filter from '../Filter/Filter'
 import { addFilter, removeFilter } from '../../helpers/manageFilters'
-import './Pagination.css'
 
 const styles = {
   results: {
