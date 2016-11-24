@@ -88,6 +88,8 @@ class Datasets extends Component {
             filters={this.state.filters}
             searchButton={true}
             handleTextChange={(textInput) => this.userSearch(textInput)} />
+
+          {this.state.filters.map((filter, idx) => <Filter key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
         </div>
 
         <DatasetsResults
@@ -97,8 +99,6 @@ class Datasets extends Component {
           addFilter={(filter) => this.addFilter(filter)}
           handleChangePage={(data) => this.handleChangePage(data)}
           errors={this.state.errors}/>
-
-          {this.state.filters.map((filter, idx) => <Filter key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
 
       </div>
     )
