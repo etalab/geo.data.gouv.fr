@@ -3,9 +3,9 @@ import CircularProgress from '../CircularProgress/CircularProgress'
 import { browserHistory, Link } from 'react-router'
 import SearchInput from '../SearchInput/SearchInput'
 import Counter from '../Statistics/Counter/Counter'
-import { theme  } from '../../tools';
-import { fetchGlobalMetrics  } from '../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
+import { theme  } from '../../tools'
+import { fetchGlobalMetrics  } from '../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
 const styles = {
   masthead: {
@@ -20,6 +20,20 @@ const styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  recordsButton: {
+    margin: '40px 20px 10px 20px',
+    padding: '15px 20px',
+    backgroundColor: '#fff',
+    border: '1px solid',
+    borderColor: theme.blue,
+  },
+  datasetsButton: {
+    margin: '40px 20px 10px 20px',
+    padding: '15px 20px',
+    backgroundColor: theme.blue,
+    color: '#fff',
+    border: 'none',
   },
   paper: {
     display: 'flex',
@@ -63,15 +77,15 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchGlobalMetrics(), this, 'datasets');
+    return waitForDataAndSetState(fetchGlobalMetrics(), this, 'datasets')
   }
 
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
 
-  userSearch(textInput) {
-    browserHistory.push(`datasets?q=${textInput}`)
+  userSearch(path, textInput) {
+    browserHistory.push(`${path}?q=${textInput}`)
   }
 
   render() {
@@ -82,7 +96,11 @@ class Home extends Component {
     return (
       <div>
         <div style={styles.masthead}>
-          <SearchInput handleTextChange={(textInput) => this.userSearch(textInput)} />
+          <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} />
+          <div>
+            <button style={styles.datasetsButton} onClick={() => this.userSearch('datasets', this.refs.searchInput.state.textInput)}>Rechercher un jeu de données</button>
+            <button style={styles.recordsButton} onClick={() => this.userSearch('records', this.refs.searchInput.state.textInput)}>Rechercher un enregistrement</button>
+          </div>
           <span style={{lineHeight: '4em'}}>OU</span>
           <Link style={styles.catalogLinks} to="catalogs">Explorer les 106 catalogues</Link>
         </div>

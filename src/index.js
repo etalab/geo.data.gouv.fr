@@ -29,6 +29,8 @@ ReactDOM.render((
       <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />
       <Route path="/datasets" component={WrappedDatasets} />
       <Route path="/datasets/:datasetId" component={DatasetDetail} />
+      <Route path="/records" component={WrappedDatasets} />
+      <Route path="/records/:recordId" component={DatasetDetail} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
