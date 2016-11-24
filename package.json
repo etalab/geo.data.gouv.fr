@@ -51,8 +51,7 @@
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
-    "webpack-dev-server": "1.16.1",
-    "whatwg-fetch": "1.0.0"
+    "webpack-dev-server": "1.16.1"
   },
   "dependencies": {
     "chart.js": "^1.1.1",
@@ -66,8 +65,9 @@
     "react-paginate": "^2.2.3",
     "react-responsive": "^1.1.5",
     "react-router": "^2.7.0",
-    "react-tap-event-plugin": "^1.0.0",
-    "underscore.string": "^3.3.4"
+    "react-tap-event-plugin": "^2.0.1",
+    "underscore.string": "^3.3.4",
+    "whatwg-fetch": "^2.0.1"
   },
   "scripts": {
     "start": "node scripts/start.js",
