@@ -20,7 +20,7 @@ const styles = {
   },
 }
 
-const DatasetsResults = ({datasets, filters, page, addFilter, handlePageClick, errors}) => {
+const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, errors}) => {
   if (!!errors.length) {
     return <div>Une erreur est survenue.
               {errors.map((error, idx) => <p key={idx}>{error}</p>)}
@@ -48,7 +48,7 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handlePageClick, e
           </div>
 
           <div style={styles.paginationWrapper}>
-            <WrappedPagination max={max} initialSelected={page} handlePageClick={handlePageClick} />
+            <WrappedPagination max={max} initialSelected={page} handleChangePage={handleChangePage} />
           </div>
         </div>
 }

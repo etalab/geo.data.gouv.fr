@@ -2,7 +2,7 @@ import React from 'react'
 import ReactPaginate from 'react-paginate'
 import './Pagination.css'
 
-const WrappedPagination = ({max, page, handlePageClick}) => {
+const WrappedPagination = ({max, page, handleChangePage}) => {
   const selected = Number(page - 1) || 0
   return <ReactPaginate previousLabel={'Précédent'}
                  nextLabel={'Suivant'}
@@ -12,7 +12,7 @@ const WrappedPagination = ({max, page, handlePageClick}) => {
                  initialSelected={selected}
                  marginPagesDisplayed={2}
                  pageRangeDisplayed={5}
-                 clickCallback={handlePageClick}
+                 clickCallback={handleChangePage}
                  containerClassName={'pagination'}
                  pageClassName={'pagination-element'}
                  pageLinkClassName={'pagination-element-link'}

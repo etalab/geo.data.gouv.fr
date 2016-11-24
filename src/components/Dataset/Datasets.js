@@ -67,7 +67,7 @@ class Datasets extends Component {
     this.search(changes)
   }
 
-  handlePageClick(data) {
+  handleChangePage(data) {
     const limit = this.state.datasets.query.limit
     const selected = data.selected
     const offset = Math.ceil(selected * limit)
@@ -95,7 +95,7 @@ class Datasets extends Component {
           filters={this.state.filters}
           page={this.state.page}
           addFilter={(filter) => this.addFilter(filter)}
-          handlePageClick={(data) => this.handlePageClick(data)}
+          handleChangePage={(data) => this.handleChangePage(data)}
           errors={this.state.errors}/>
 
           {this.state.filters.map((filter, idx) => <Filter key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
