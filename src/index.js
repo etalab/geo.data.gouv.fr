@@ -2,14 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import moment from 'moment'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import HarvestDetail from './components/Harvest/HarvestDetail'
 import WrappedDatasets from './components/Dataset/WrappedDatasets'
 import './index.css'
-
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin()
 
 moment.locale('fr')
 
