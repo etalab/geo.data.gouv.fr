@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ReactPaginate from 'react-paginate'
 import { browserHistory } from 'react-router'
 import { search, buildSearchQuery } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
 import DatasetPreview from './DatasetPreview'
+import WrappedPagination from '../Pagination/WrappedPagination'
 import Facets from '../Facets/Facets'
 import Filter from '../Filter/Filter'
 import { addFilter, removeFilter } from '../../helpers/manageFilters'
@@ -96,23 +96,7 @@ class Datasets extends Component {
         </div>
 
         <div style={styles.paginationWrapper}>
-          <ReactPaginate previousLabel={'Précédent'}
-                         nextLabel={'Suivant'}
-                         breakLabel={<a href=''>...</a>}
-                         breakClassName={'pagination-element-break'}
-                         pageNum={max}
-                         initialSelected={Number(this.state.page - 1) || 0}
-                         marginPagesDisplayed={2}
-                         pageRangeDisplayed={5}
-                         clickCallback={this.handlePageClick}
-                         containerClassName={'pagination'}
-                         pageClassName={'pagination-element'}
-                         pageLinkClassName={'pagination-element-link'}
-                         previousClassName={'pagination-element'}
-                         previousLinkClassName={'pagination-element-link'}
-                         nextClassName={'pagination-element'}
-                         nextLinkClassName={'pagination-element-link'}
-                         activeClassName={'pagination-element-active'} />
+          <WrappedPagination max={max} initialSelected={this.state.page} handlePageClick={this.handlePageClick} />
         </div>
       </div>
     )
