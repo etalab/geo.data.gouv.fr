@@ -41,7 +41,10 @@ class WrappedDatasets extends Component {
   }
 
   render() {
-    return <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
+    const pathname = this.props.pathname ? this.props.pathname : this.props.location.pathname
+    const preFilters = this.props.preFilters ? this.props.preFilters : () => pathname === 'datasets' ? [{name: 'availability', value: 'yes'}] : []
+
+    return <Datasets pathname={pathname} query={this.state.query} preFilters={preFilters}/>
   }
 }
 

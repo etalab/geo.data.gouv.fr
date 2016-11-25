@@ -1,6 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 import Facet from '../../Facets/Facet'
+import Datasets from '../../Dataset/Datasets'
 
 const styles = {
   type: {
@@ -26,6 +27,7 @@ const OrganizationsSection = ({metrics, catalog}) => {
 
   return (
     <div>
+      <Datasets pathname={`/catalogs/${catalog.id}`} query={{filters: []}} preFilters={[{name: 'catalog', value: catalog.name}]} />
       {
         sections.map(section => (
           <div key={section.title} style={styles.group}>
