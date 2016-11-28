@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import Datasets from '../Dataset/Datasets'
 import ContentLoader from '../Loader/ContentLoader'
 import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
-import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
 import { fetchCatalog, fetchMetrics } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
@@ -74,7 +74,7 @@ class CatalogDetail extends Component {
           <StatisticsSection metrics={metrics} />
         </div>
 
-        <div style={styles.section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
+        <Datasets pathname={`/catalogs/${catalog.id}`} query={{filters: []}} preFilters={[{name: 'catalog', value: catalog.name}]} />
         <div style={styles.section}><HarvestsSection catalog={catalog} /></div>
       </div>
     )

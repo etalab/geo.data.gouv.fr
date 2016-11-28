@@ -34,14 +34,10 @@ class Datasets extends Component {
     const params = Object.assign({}, this.state, changes);
     let { textInput, filters, offset, page } = params
     const query = buildSearchQuery(textInput, filters, page)
-    let allFilters = filters
+    const allFilters = this.props.preFilters ? [...this.props.preFilters, ...filters] : [...filters]
 
     if (!offset && page) {
       offset = (page - 1) * 20 // Comment remplacer 20 par limit
-    }
-
-    if (this.props.pathname  === 'datasets') {
-      allFilters = [...filters, {name: 'availability', value: 'yes'}]
     }
 
     browserHistory.push(`${this.props.pathname}?${query}`)
