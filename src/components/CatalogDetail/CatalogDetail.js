@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
+import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
 import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
@@ -24,6 +26,11 @@ const styles = {
   h1: {
     fontSize: '1.4rem',
     color: theme.darkblue,
+    marginBottom: '1em',
+  },
+  h2: {
+    fontSize: '1.2em',
+    fontWeight: 400,
     marginBottom: '1em',
   },
   catalogDetail: {
@@ -61,6 +68,10 @@ class CatalogDetail extends Component {
     return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog');
   }
 
+  userSearch(path, textInput) {
+    browserHistory.push({ pathname: '/datasets', query: {q: textInput, catalog: this.state.catalog.name} })
+  }
+
   render() {
     const catalog = this.state.catalog
     const metrics = this.state.metrics
@@ -76,6 +87,11 @@ class CatalogDetail extends Component {
 
         <div style={styles.section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
         <div style={styles.section}><HarvestsSection catalog={catalog} /></div>
+
+        <div style={styles.section}>
+          <h2 style={styles.h2}>Rechercher dans les jeux de données du catalogue</h2>
+          <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
+        </div>
       </div>
     )
   }
