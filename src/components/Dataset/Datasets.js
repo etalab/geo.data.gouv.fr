@@ -51,18 +51,22 @@ class Datasets extends Component {
 
   addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
-    this.setState({filters})
-    this.search({filters})
+    const changes = {filters, offset: 0, page: 1}
+
+    this.setState(changes)
+    this.search(changes)
   }
 
   removeFilter(filter) {
     const filters = removeFilter(this.state.filters, filter)
-    this.setState({filters})
-    this.search({filters})
+    const changes = {filters, offset: 0, page: 1}
+
+    this.setState(changes)
+    this.search(changes)
   }
 
   userSearch(textInput) {
-    const changes = { textInput, filters: [], datasets: undefined, offset: undefined, page: undefined }
+    const changes = { textInput, filters: [], datasets: undefined, offset: 0, page: 1 }
     this.setState(changes)
     this.search(changes)
   }

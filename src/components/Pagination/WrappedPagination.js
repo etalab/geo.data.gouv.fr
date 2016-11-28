@@ -9,6 +9,7 @@ const WrappedPagination = ({max, page, handleChangePage}) => {
                  breakLabel={'...'}
                  breakClassName={'pagination-element-break'}
                  pageNum={max}
+                 forceSelected={selected}
                  initialSelected={selected}
                  marginPagesDisplayed={2}
                  pageRangeDisplayed={5}
