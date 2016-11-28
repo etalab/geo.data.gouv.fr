@@ -11,6 +11,12 @@ const styles = {
   searchInputWrapper: {
     margin: '4em',
   },
+  filters: {
+    display: 'inline-block',
+    padding: '.4em .5em',
+    margin: '2px 2px 2px 0',
+    fontSize: '12px',
+  },
 }
 
 class Datasets extends Component {
@@ -93,7 +99,8 @@ class Datasets extends Component {
             searchButton={true}
             handleTextChange={(textInput) => this.userSearch(textInput)} />
 
-          {this.state.filters.map((filter, idx) => <Filter remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
+          <div style={styles.filters}>{this.state.filters.length ? 'Filtres actifs' : 'Aucun filtre actif'}</div>
+          {this.state.filters.map((filter, idx) => <Filter detail={true} remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
         </div>
 
         <DatasetsResults
