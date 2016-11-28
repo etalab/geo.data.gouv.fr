@@ -4,6 +4,7 @@ import metrics from '../__test__/metrics.json'
 import harvest from '../__test__/harvest.json'
 import harvests from '../__test__/harvests.json'
 import datasets from '../__test__/datasets.json'
+import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 
 export function fetchMetrics(catalogId) {
@@ -43,4 +44,8 @@ export function fetchDataset(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
   if (datasetId === '1') return Promise.resolve(dataset)
   return Promise.reject(new Error('dataset not found'))
+}
+
+export function search(q, filters, offset) {
+  return Promise.resolve(datasetsSearch)
 }
