@@ -13,11 +13,11 @@ const defaultStyle = {
 }
 
 const Filter = (props) => {
-  const { remove, filter, style, onClick } = props
+  const { detail, remove, filter, style, onClick } = props
 
   return (
     <button className="filter-link" title={`${filter.name}: ${filter.value}`} style={{...defaultStyle, ...style}} onClick={() => onClick && onClick(filter)}>
-      {filter.value}
+      { detail && `${filter.name}: ` }{filter.value}
       { remove && <span>&nbsp;<i className="fa fa-close" /></span>}
     </button>
   )
