@@ -93,7 +93,7 @@ class Datasets extends Component {
             searchButton={true}
             handleTextChange={(textInput) => this.userSearch(textInput)} />
 
-          {this.state.filters.map((filter, idx) => <Filter key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
+          {this.state.filters.map((filter, idx) => <Filter remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
         </div>
 
         <DatasetsResults
