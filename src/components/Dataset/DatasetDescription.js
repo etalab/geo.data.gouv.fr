@@ -21,7 +21,7 @@ const styles = {
 
 const DatasetDescription = ({description, shortDescription, showMore}) => {
   let action
-  if (description.length > 1000) {
+  if (description && description.length > 1000) {
     action = <button style={styles.action} onClick={() => showMore()}>{shortDescription ? 'Afficher la suite' : 'Réduire'}</button>
   }
   return (
