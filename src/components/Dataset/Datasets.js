@@ -40,7 +40,7 @@ class Datasets extends Component {
       offset = (page - 1) * 20 // Comment remplacer 20 par limit
     }
 
-    if (this.props.pathname  === 'datasets') {
+    if (this.props.pathname === 'datasets') {
       allFilters = [...filters, {name: 'availability', value: 'yes'}]
     }
 
