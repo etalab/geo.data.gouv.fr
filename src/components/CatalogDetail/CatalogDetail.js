@@ -89,7 +89,7 @@ class CatalogDetail extends Component {
         <div style={styles.section}><HarvestsSection catalog={catalog} /></div>
 
         <div style={styles.section}>
-          <h2 style={styles.h2}>Rechercher dans les datasets du catalogue</h2>
+          <h2 style={styles.h2}>Rechercher dans les jeux de données du catalogue</h2>
           <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
         </div>
       </div>
