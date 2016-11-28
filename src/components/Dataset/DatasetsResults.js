@@ -48,7 +48,7 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, 
           </div>
 
           <div style={styles.paginationWrapper}>
-            <WrappedPagination max={max} initialSelected={page} handleChangePage={handleChangePage} />
+            <WrappedPagination max={max} page={page} handleChangePage={handleChangePage} />
           </div>
         </div>
 }
