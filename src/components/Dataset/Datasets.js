@@ -51,7 +51,7 @@ class Datasets extends Component {
 
   addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
-    const changes = {filters, offset: 0, page: 1}
+    const changes = { filters, offset: 0, page: 1, datasets: null }
 
     this.setState(changes)
     this.search(changes)
@@ -59,14 +59,14 @@ class Datasets extends Component {
 
   removeFilter(filter) {
     const filters = removeFilter(this.state.filters, filter)
-    const changes = {filters, offset: 0, page: 1}
+    const changes = { filters, offset: 0, page: 1, datasets: null }
 
     this.setState(changes)
     this.search(changes)
   }
 
   userSearch(textInput) {
-    const changes = { textInput, filters: [], datasets: undefined, offset: 0, page: 1 }
+    const changes = { textInput, filters: [], datasets: null, offset: 0, page: 1 }
     this.setState(changes)
     this.search(changes)
   }
