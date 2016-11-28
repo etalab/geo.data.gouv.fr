@@ -18,6 +18,12 @@ class FacetsGroup extends Component {
   render() {
     const { type, facets, filters, addFilter } = this.props
 
+    const activeMap = facets.map(facet => isActive(filters, {name: type, value: facet.value}))
+
+    if (activeMap.indexOf(false) === -1) {
+      return null;
+    }
+
     return (
       <div style={styles.group}>
         <h4 style={styles.type}>{type}</h4>
@@ -26,7 +32,7 @@ class FacetsGroup extends Component {
           name={type}
           value={facet.value}
           count={facet.count}
-          isActive={isActive(filters, {name: type, value: facet.value})}
+          isActive={activeMap[idx]}
           addFilter={addFilter} />)}
       </div>
     )
