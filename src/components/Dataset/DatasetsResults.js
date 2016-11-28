@@ -9,6 +9,9 @@ const styles = {
     display: 'flex',
     margin: '4em',
   },
+  result: {
+    flexGrow: 1,
+  },
   loader: {
     textAlign: 'center',
     marginTop: '5em',
@@ -38,7 +41,7 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, 
   const max = datasets ? Math.ceil(datasets.count / datasets.query.limit) : 0
   return <div>
           <div style={styles.results}>
-            <div>
+            <div style={styles.result}>
               {datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => addFilter(filter)}/>)}
             </div>
             <Facets
