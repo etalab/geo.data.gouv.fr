@@ -8,7 +8,7 @@ const Datasets = require('proxyquire')('../Datasets', {
   }
 }).default
 
-describe.only('<Datasets />', () => {
+describe('<Datasets />', () => {
   const query = {
     textInput: 'text',
     page: 2,
