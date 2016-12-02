@@ -3,7 +3,7 @@ import catalogs from '../__test__/catalogs.json'
 import metrics from '../__test__/metrics.json'
 import harvest from '../__test__/harvest.json'
 import harvests from '../__test__/harvests.json'
-import datasets from '../__test__/datasets.json'
+import globalMetrics from '../__test__/globalMetrics.json'
 import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 
@@ -37,7 +37,7 @@ export function fetchHarvests(catalogId) {
 }
 
 export function fetchGlobalMetrics() {
-  return Promise.resolve(datasets) // Finding a solution to Promise.reject()
+  return Promise.resolve(globalMetrics) // Finding a solution to Promise.reject()
 }
 
 export function fetchDataset(datasetId) {
