@@ -77,7 +77,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchGlobalMetrics(), this, 'datasets')
+    return waitForDataAndSetState(fetchGlobalMetrics(), this, 'metrics')
   }
 
   componentWillUnmount() {
@@ -90,7 +90,7 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress />
-    const published = this.state.datasets ? <Counter value={this.state.datasets.published + this.state.datasets.published.private} style={styles.datagouvCounter} size="large" color={theme.green} icon="database"/> : loader
+    const published = this.state.metrics ? <Counter value={this.state.metrics.published} style={styles.datagouvCounter} size="large" color={theme.green} icon="database"/> : loader
 
     return (
       <div>
