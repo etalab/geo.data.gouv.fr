@@ -90,8 +90,7 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress />
-    const notPublishedYet = this.state.datasets ? <Counter value={this.state.datasets.notPublishedYet}  style={styles.datagouvCounter} color={theme.yellow} size="large" icon="hourglass half"/> : loader
-    const published = this.state.datasets ? <Counter value={this.state.datasets.published.public + this.state.datasets.published.private} style={styles.datagouvCounter} size="large" color={theme.green} icon="database"/> : loader
+    const published = this.state.datasets ? <Counter value={this.state.datasets.published + this.state.datasets.published.private} style={styles.datagouvCounter} size="large" color={theme.green} icon="database"/> : loader
 
     return (
       <div>
@@ -111,10 +110,6 @@ class Home extends Component {
           </p>
 
           <div style={styles.stats}>
-            <div style={styles.paper}>
-              <h3>En attente de publication</h3>
-              {notPublishedYet}
-            </div>
             <div style={styles.paper}>
               <h3>Jeux de données publiés</h3>
               {published}
