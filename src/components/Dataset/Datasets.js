@@ -72,7 +72,7 @@ class Datasets extends Component {
   }
 
   userSearch(textInput) {
-    const changes = { textInput, filters: [], datasets: null, offset: 0, page: 1 }
+    const changes = { textInput, datasets: null, offset: 0, page: 1 }
     this.setState(changes)
     this.search(changes)
   }
