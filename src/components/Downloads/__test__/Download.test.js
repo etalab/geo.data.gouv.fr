@@ -34,7 +34,7 @@ describe.only('<Download />', () => {
 
   describe('file-package', () => {
     it('should create a link to a file-package dataset type', () => {
-      const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download'>{'Téléchargement simple du jeu et des documents associés'}</a>
+      const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download'>{'N_AC1_GENERATEUR_SUP_S_032.TAB'}</a>
       const wrapper = shallow(<Download distribution={filePackage} dlFormat={format}/>)
       expect(wrapper.containsMatchingElement(link)).toBe(true)
     })

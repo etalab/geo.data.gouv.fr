@@ -26,9 +26,10 @@ const styles = {
 const Download = ({distribution, dlFormat}) => {
   const { name, projection } = dlFormat
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
+  let layerName
 
   if (distribution.type === 'file-package') {
-    const layerName = strRightBack(distribution.layer, '/')
+    layerName = strRightBack(distribution.layer, '/')
     link += `file-packages/${distribution.hashedLocation}/${layerName}/download`
   }
 
@@ -44,7 +45,7 @@ const Download = ({distribution, dlFormat}) => {
   return (
     <div style={styles.container}>
       <div>{distribution.type}</div>
-      <a href={link}>{distribution.name || distribution.typeName}</a>
+      <a href={link}>{layerName || distribution.typeName}</a>
       {dl}
     </div>
   )
