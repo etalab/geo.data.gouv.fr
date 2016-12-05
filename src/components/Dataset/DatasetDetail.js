@@ -4,11 +4,10 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/compone
 import ContentLoader from '../Loader/ContentLoader'
 import LinksSection from './LinksSection'
 import DatasetSection from './DatasetSection'
-import KeywordsSection from './KeywordsSection'
-import CatalogsSection from './CatalogsSection'
 import DatasetChecklist from './DatasetChecklist'
-import OrganizationsSection from './OrganizationsSection'
 import DownloadDatasets from '../Downloads/DownloadDatasets'
+import FiltersSection from '../Filter/FiltersSection'
+import { theme } from '../../tools'
 
 const styles = {
   container: {
@@ -60,14 +59,10 @@ export default class DatasetDetail extends Component {
     return (
       <div style={styles.container}>
         <DatasetSection dataset={dataset} />
-        <div style={styles.sections}>
-          <LinksSection links={dataset.metadata.links} />
-          <KeywordsSection keywords={dataset.metadata.keywords} />
-          <OrganizationsSection organizations={dataset.organizations} />
-          <CatalogsSection catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
-        </div>
-        <DatasetChecklist dataset={dataset} />
-        <DownloadDatasets distributions={dataset.dataset.distributions} />
+        <FiltersSection style={styles} keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
+        <DatasetChecklist style={styles} dataset={dataset} />
+        <DownloadDatasets style={styles} distributions={dataset.dataset.distributions} />
+        <LinksSection style={styles} links={dataset.metadata.links} />
     </div>)
   }
 }
