@@ -23,7 +23,7 @@ const styles = {
   }
 }
 
-const Download = ({distribution, dlFormat}) => {
+const Download = ({distribution, dlFormat, style}) => {
   const { format, projection } = dlFormat
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
   let layerName

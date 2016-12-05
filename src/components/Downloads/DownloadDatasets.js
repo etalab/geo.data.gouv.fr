@@ -27,7 +27,7 @@ class DownloadDatasets extends Component {
   }
 
   render() {
-    const { distributions } = this.props
+    const { distributions, style } = this.props
     let downloads
 
     if (!distributions.length) {
@@ -38,14 +38,14 @@ class DownloadDatasets extends Component {
             <div>Sélectionner un format de téléchargement :</div>
             <Formats style={styles.formats} active={this.state.format} changeFormat={(format) => this.selectFormat(format)} formats={FORMATS}/>
             {this.props.distributions.map((distribution, idx) =>
-                <Download key={idx} distribution={distribution} dlFormat={this.state.format} />
+              <Download style={styles.download} key={idx} distribution={distribution} dlFormat={this.state.format} />
               )}
           </div>
     }
 
     return (
-      <div>
-        <h1>Téléchargements</h1>
+      <div style={style.section}>
+        <h3 style={style.title}>Téléchargements</h3>
         {downloads}
       </div>
     )

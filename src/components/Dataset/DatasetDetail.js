@@ -15,10 +15,18 @@ const styles = {
     flexDirection: 'column',
     margin: '5em',
   },
-  sections: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginTop: '1em',
+  section: {
+    paddingTop: '2em',
+    paddingBottom: '2em',
+    backgroundColor: 'white',
+    padding: '2em',
+    marginBottom: '2em',
+    boxShadow: theme.boxShadowZ1,
+  },
+  title: {
+    fontSize: '1.2em',
+    fontWeight: 400,
+    marginBottom: '1em',
   },
   loader: {
     textAlign: 'center',
