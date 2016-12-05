@@ -66,7 +66,7 @@ export default class DatasetDetail extends Component {
 
     return (
       <div style={styles.container}>
-        <DatasetSection dataset={dataset} />
+        <DatasetSection style={styles} dataset={dataset} />
         <FiltersSection style={styles} keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
         <DatasetChecklist style={styles} dataset={dataset} />
         <DownloadDatasets style={styles} distributions={dataset.dataset.distributions} />

@@ -1,14 +1,9 @@
 import React from 'react'
 import { strRightBack } from 'underscore.string'
 import { theme  } from '../../tools'
+import './Download.css'
 
 const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'baseline',
-    marginRight: '60%',
-    justifyContent: 'space-between',
-  },
   button: {
     padding: '5px 11px',
     backgroundColor: theme.blue,
@@ -43,7 +38,7 @@ const Download = ({distribution, dlFormat, style}) => {
   }
 
   return (
-    <div style={styles.container}>
+    <div style={style} className="download">
       <a href={link}>{layerName || distribution.typeName}</a>
       {dl}
     </div>

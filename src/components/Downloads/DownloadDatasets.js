@@ -13,7 +13,16 @@ const FORMATS = [
 const styles = {
   formats: {
     margin: '0.5em 0em 1em',
-  }
+  },
+  download: {
+    margin: '5px',
+    paddingLeft: '10px',
+    display: 'flex',
+    alignItems: 'baseline',
+    marginRight: '60%',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
 }
 
 class DownloadDatasets extends Component {
