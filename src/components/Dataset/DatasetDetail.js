@@ -8,6 +8,7 @@ import KeywordsSection from './KeywordsSection'
 import CatalogsSection from './CatalogsSection'
 import DatasetChecklist from './DatasetChecklist'
 import OrganizationsSection from './OrganizationsSection'
+import DownloadDatasets from '../Downloads/DownloadDatasets'
 
 const styles = {
   container: {
@@ -66,6 +67,7 @@ export default class DatasetDetail extends Component {
           <CatalogsSection catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog.id))} />
         </div>
         <DatasetChecklist dataset={dataset} />
+        <DownloadDatasets distributions={dataset.dataset.distributions} />
     </div>)
   }
 }
