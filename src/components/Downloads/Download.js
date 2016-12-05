@@ -10,7 +10,7 @@ const styles = {
     justifyContent: 'space-between',
   },
   button: {
-    padding: '5px 10px',
+    padding: '5px 11px',
     backgroundColor: theme.blue,
     color: '#fff',
     border: 'none',
@@ -18,7 +18,7 @@ const styles = {
   disabled: {
     padding: '5px 10px',
     backgroundColor: '#ddd',
-    color: '#fff',
+    color: '#000',
     border: 'none',
   }
 }
@@ -37,7 +37,7 @@ const Download = ({distribution, dlFormat}) => {
     link += `services/${distribution.service}/feature-types/${distribution.typeName}/download`
   }
 
-  let dl = <div style={styles.disabled}>Télécharger</div>
+  let dl = <div style={styles.disabled}>Indisponible</div>
   if (distribution.available) {
     dl = <a href={link + `?format=${format}&projection=${projection}`} style={styles.button}>Télécharger</a>
   }

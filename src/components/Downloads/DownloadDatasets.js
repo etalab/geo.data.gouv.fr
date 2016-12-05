@@ -35,7 +35,7 @@ class DownloadDatasets extends Component {
     } else {
       downloads =
           <div>
-            <div>Séléctionner un format de téléchargement</div>
+            <div>Sélectionner un format de téléchargement :</div>
             <Formats style={styles.formats} active={this.state.format} changeFormat={(format) => this.selectFormat(format)} formats={FORMATS}/>
             {this.props.distributions.map((distribution, idx) =>
                 <Download key={idx} distribution={distribution} dlFormat={this.state.format} />
