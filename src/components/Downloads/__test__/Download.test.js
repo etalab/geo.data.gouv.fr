@@ -50,7 +50,7 @@ describe.only('<Download />', () => {
 
   describe('Unavailable dataset', () => {
     it('should display a disabled download button', () => {
-      const div = <div>Télécharger</div>
+      const div = <div>Indisponible</div>
       const wrapper = shallow(<Download distribution={featureType} dlFormat={format}/>)
       expect(wrapper.containsMatchingElement(div)).toBe(true)
     })
