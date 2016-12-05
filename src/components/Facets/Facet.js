@@ -32,7 +32,7 @@ class Facet extends Component {
         <span style={styles.facet}>
           <Filter filter={filter} onClick={onClick}/>
         </span>
-        <span style={styles.count}>x&nbsp;{count}</span>
+        { count ? <span style={styles.count}>x&nbsp;{count}</span> : null }
       </div>
     )
   }
