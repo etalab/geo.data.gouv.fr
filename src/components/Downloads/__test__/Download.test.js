@@ -20,7 +20,7 @@ const filePackage = {
   '_id': '582bb403b631a32a2b33c376'
 }
 
-const format = {name: 'GeoJSON', projection: 'WGS42'}
+const format = {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS42'}
 
 describe.only('<Download />', () => {
 

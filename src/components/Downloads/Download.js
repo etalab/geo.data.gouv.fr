@@ -6,7 +6,7 @@ const styles = {
   container: {
     display: 'flex',
     alignItems: 'baseline',
-    marginRight: '30%',
+    marginRight: '60%',
     justifyContent: 'space-between',
   },
   button: {
@@ -24,7 +24,7 @@ const styles = {
 }
 
 const Download = ({distribution, dlFormat}) => {
-  const { name, projection } = dlFormat
+  const { format, projection } = dlFormat
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
   let layerName
 
@@ -39,12 +39,11 @@ const Download = ({distribution, dlFormat}) => {
 
   let dl = <div style={styles.disabled}>Télécharger</div>
   if (distribution.available) {
-    dl = <a href={link + `?format=${name}&projection=${projection}`} style={styles.button}>Télécharger</a>
+    dl = <a href={link + `?format=${format}&projection=${projection}`} style={styles.button}>Télécharger</a>
   }
 
   return (
     <div style={styles.container}>
-      <div>{distribution.type}</div>
       <a href={link}>{layerName || distribution.typeName}</a>
       {dl}
     </div>

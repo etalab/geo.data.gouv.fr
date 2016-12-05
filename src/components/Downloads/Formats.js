@@ -26,10 +26,9 @@ class Formats extends Component {
 
     return (
       <div style={style}>
-        {Object.keys(formats).map((key, idx) => {
-          const format = formats[key]
+        {formats.map((format, idx) => {
           let style = (format === active) ? styles.selected : styles.button
-          return <button key={idx} style={style} onClick={() => changeFormat && changeFormat(format)}>{format.name}</button>
+          return <button key={idx} style={style} onClick={() => changeFormat && changeFormat(format)}>{format.label}</button>
         })}
       </div>
     )

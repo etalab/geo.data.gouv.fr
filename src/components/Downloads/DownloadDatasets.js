@@ -2,23 +2,24 @@ import React, { Component } from 'react'
 import Download from './Download'
 import Formats from './Formats'
 
-const FORMATS = {
-  GeoJSON: {name: 'GeoJSON', projection: 'WGS84'},
-  SHP: {name: 'SHP', projection: 'Lambert93'},
-  KML: {name: 'KML', projection: 'WGS84'},
-  CSV: {name: 'CSV', projection: 'WGS84'},
-}
+const FORMATS = [
+  {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'},
+  {label: 'SHP/L93', format: 'SHP', projection: 'Lambert93'},
+  {label: 'SHP/W84', format: 'SHP', projection: 'WGS84'},
+  {label: 'KML', format: 'KML', projection: 'WGS84'},
+  {label: 'CSV', format: 'CSV', projection: 'WGS84'},
+]
 
 const styles = {
   formats: {
-    marginTop: '2em',
+    margin: '0.5em 0em 1em',
   }
 }
 
 class DownloadDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = { format: FORMATS.GeoJSON}
+    this.state = { format: FORMATS[0]} // GeoJSON
   }
 
   selectFormat(format) {
@@ -34,10 +35,11 @@ class DownloadDatasets extends Component {
     } else {
       downloads =
           <div>
+            <div>Séléctionner un format de téléchargement</div>
+            <Formats style={styles.formats} active={this.state.format} changeFormat={(format) => this.selectFormat(format)} formats={FORMATS}/>
             {this.props.distributions.map((distribution, idx) =>
                 <Download key={idx} distribution={distribution} dlFormat={this.state.format} />
               )}
-            <Formats style={styles.formats} active={this.state.format} changeFormat={(format) => this.selectFormat(format)} formats={FORMATS}/>
           </div>
     }
 
