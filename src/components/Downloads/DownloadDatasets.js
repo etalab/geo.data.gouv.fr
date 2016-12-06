@@ -73,7 +73,7 @@ class DownloadDatasets extends Component {
                       key={idx}
                       distribution={distribution}
                       dlFormat={format}
-                      isPreview={preview && preview.id === distribution._id}
+                      isPreview={preview && preview.distribution._id === distribution._id}
                       preview={(preview) => this.selectPreview(preview)} />
                   )}
             </div>
