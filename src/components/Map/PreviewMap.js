@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Map, TileLayer, Marker } from 'react-leaflet'
+import { Map, TileLayer, GeoJSON } from 'react-leaflet'
+import ContentLoader from '../Loader/ContentLoader'
+import { theme  } from '../../tools'
 
 const MAP = {
   latitude: 47,
@@ -10,30 +12,71 @@ const MAP = {
 }
 
 const styles = {
-  map: {
+  container: {
     width: '55%',
+    position: 'relative'
+  },
+  map: {
     height: '560px',
+  },
+  load: {
+    position: 'absolute',
+    zIndex: 401,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'grey',
+    opacity: 0.3,
+  },
+  loader: {
+    zIndex: 402,
+    width: '6em',
+    height: '6em',
+    top: '46%',
+    left: '51%',
+    borderWidth: '10px',
+  },
+  errors: {
+    position: 'absolute',
+    top: 0,
+    zIndex: 402,
+    textAlign: 'center',
+    width: '100%',
+    backgroundColor: theme.red,
   },
 }
 
 class PreviewMap extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
     this.state = {
       lat: MAP.latitude,
       lng: MAP.longitude,
       zoom: MAP.zoom,
-    };
+    }
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng];
+    const { geojson, loading, errors, distribution } = this.props
+    const position = [this.state.lat, this.state.lng]
+    const err = <div style={styles.errors}>
+                  <strong>Une erreur est survenue lors du chargement de {distribution && (distribution.typeName || distribution.layer)}</strong>
+                  <br/>{errors.map(error => error)}
+                </div>
+    const loader = <div style={styles.load}>
+                      <ContentLoader style={styles.loader} />
+                    </div>
+
     return (
-      <Map style={styles.map} center={position} zoom={this.state.zoom}>
-        <TileLayer attribution={MAP.attribution} url={MAP.osmUrl} />
-        <Marker position={position} />
-      </Map>
-    );
+      <div style={styles.container}>
+        {errors.length ? err : null}
+        {loading && !errors.length ? loader : null}
+        <Map style={styles.map} center={position} zoom={this.state.zoom}>
+          <TileLayer attribution={MAP.attribution} url={MAP.osmUrl} />
+          {geojson && !errors.length ? <GeoJSON data={geojson} /> : null}
+        </Map>
+      </div>
+    )
   }
 }
+
 export default PreviewMap
