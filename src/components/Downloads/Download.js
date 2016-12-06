@@ -5,22 +5,18 @@ import './Download.css'
 
 const styles = {
   active: {
-    marginRight: '5px',
     padding: '5px 10px',
     backgroundColor: theme.blue,
     color: '#fff',
     border: 'none',
   },
-  disabled: {
+  inactive: {
     marginRight: '5px',
     padding: '5px 10px',
     backgroundColor: '#ddd',
     color: '#000',
     border: 'none',
   },
-  buttons: {
-    display: 'flex',
-  }
 }
 
 const Download = ({distribution, dlFormat, isPreview, preview, style}) => {
@@ -37,23 +33,18 @@ const Download = ({distribution, dlFormat, isPreview, preview, style}) => {
     link += `services/${distribution.service}/feature-types/${distribution.typeName}/download`
   }
 
-  let downloadButton = <div style={styles.disabled}>Indisponible</div>
-  let previewButton = null
+  const name = layerName || distribution.typeName
 
   if (distribution.available) {
-    downloadButton = <a href={link + `?format=${format}&projection=${projection}`} style={styles.active}>Télécharger</a>
-    previewButton = <button style={isPreview ? styles.active : styles.disabled} onClick={() => preview && preview({distribution: distribution, link})}>Visualiser</button>
-  }
-
-  return (
-    <div style={style} className="download">
-      <a href={link}>{layerName || distribution.typeName}</a>
-      <div style={styles.buttons}>
-        {downloadButton}
-        {previewButton}
+    return (
+      <div style={style}>
+        <a href={link  + `?format=${format}&projection=${projection}`}>{name}</a>
+        <button style={isPreview ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link})}>Visualiser</button>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return <div style={style}>{name}</div>
+  }
 }
 
 export default Download
