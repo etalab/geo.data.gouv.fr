@@ -1,8 +1,8 @@
-import React from 'react';
-import './CircularProgress.css';
+import React from 'react'
+import './CircularProgress.css'
 
-const CircularProgress = () => {
-  return <div className='circularProgress'>Chargement...</div>;
+const CircularProgress = ({style}) => {
+  return <div style={style} className='circularProgress'>Chargement...</div>
 }
 
-export default CircularProgress;
+export default CircularProgress
