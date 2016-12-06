@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Download from './Download'
 import Formats from './Formats'
+import PreviewMap from '../Map/PreviewMap'
 
 const FORMATS = [
   {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'},

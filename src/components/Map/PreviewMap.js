@@ -1,38 +1,39 @@
 import React, { Component } from 'react'
-import { L } from 'leaflet'
+import { Map, TileLayer, Marker } from 'react-leaflet'
 
 const MAP = {
-  latitude: 46.921982,
-  longitude: 2.978952,
-  zoom: 5,
-  maxZoom: 18,
-  zoomIn: 12,
-  osmUrl: 'https://tilecache.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-  osmAttribution: 'Map data &copy; 2012 OpenStreetMap contributors',
-  height: '548px',
+  latitude: 47,
+  longitude: 1,
+  zoom: 5.5,
+  osmUrl: 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+  osmAttribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+}
+
+const styles = {
+  map: {
+    width: '55%',
+    height: '560px',
+  },
 }
 
 class PreviewMap extends Component {
-  componentWillMount() {
-    const options = {
-        center: new L.LatLng(MAP.latitude, MAP.longitude),
-        zoom: MAP.zoom,
-      };
-
-      const osm = new L.TileLayer(MAP.osmUrl, {
-            maxZoom: MAP.maxZoom,
-            attribution: MAP.osmAttribution
-        });
-
-    const mapLayer = new L.TileLayer(MAP.osmUrl);
-    this.state({map: new L.Map('map', options).addLayer(mapLayer)})
+  constructor() {
+    super();
+    this.state = {
+      lat: MAP.latitude,
+      lng: MAP.longitude,
+      zoom: MAP.zoom,
+    };
   }
 
   render() {
+    const position = [this.state.lat, this.state.lng];
     return (
-      <div></div>
-    )
+      <Map style={styles.map} center={position} zoom={this.state.zoom}>
+        <TileLayer attribution={MAP.attribution} url={MAP.osmUrl} />
+        <Marker position={position} />
+      </Map>
+    );
   }
 }
-
 export default PreviewMap
