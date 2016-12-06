@@ -22,7 +22,7 @@ const filePackage = {
 
 const format = {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS42'}
 
-describe.only('<Download />', () => {
+describe('<Download />', () => {
 
   describe('featureType', () => {
     it('should create a link to a wfs-featureType dataset type', () => {

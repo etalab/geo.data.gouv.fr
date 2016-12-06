@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LinksSection = ({links}) => {
+const LinksSection = ({links, style}) => {
   const styles = {
     downloads: {
       display: 'flex',
@@ -12,8 +12,8 @@ const LinksSection = ({links}) => {
     },
   }
   return (
-    <div style={styles.links}>
-      <h3>Liens</h3>
+    <div style={style.section}>
+      <h3 style={style.title}>Liens</h3>
       <div style={styles.links}>
         {links.map( (link, idx) => <a key={idx} href={link.href}>{link.name}</a>)}
       </div>

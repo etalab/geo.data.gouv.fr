@@ -10,8 +10,9 @@ const styles = {
     outline: 'none',
   },
   button: {
+    margin: '1px',
     padding: '5px 10px',
-    backgroundColor: '#fff',
+    backgroundColor: '#ddd',
     border: 'none',
   },
 }

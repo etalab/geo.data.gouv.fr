@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import DatasetSection from '../DatasetSection'
+import MarkdownViewer from '../../Markdown/MarkdownViewer'
 import datasetMock from '../../../fetch/__test__/dataset.json'
 import { doneSince } from '../../../helpers/doneSince'
 import { cloneDeep } from 'lodash'
@@ -10,7 +11,7 @@ describe('<DatasetSection />', () => {
   describe('When all metadata are defined', () => {
     let wrapper
     beforeEach(() => {
-      wrapper = shallow(<DatasetSection dataset={datasetMock} />)
+      wrapper = shallow(<DatasetSection dataset={datasetMock} style={{}} />)
     })
 
     it('should display dataset title', () => {
@@ -18,7 +19,7 @@ describe('<DatasetSection />', () => {
     })
 
     it('should display dataset description', () => {
-      expect(wrapper.contains(datasetMock.metadata.description)).toBe(true)
+      expect(wrapper.contains(<MarkdownViewer markdown={datasetMock.metadata.description} />)).toBe(true)
     })
 
     it('should display dataset type', () => {
@@ -48,7 +49,7 @@ describe('<DatasetSection />', () => {
       modifiedDatasetMock = cloneDeep(datasetMock)
       modifiedDatasetMock.metadata.license = undefined
       modifiedDatasetMock.metadata.type = undefined
-      wrapper = shallow(<DatasetSection dataset={modifiedDatasetMock} />)
+      wrapper = shallow(<DatasetSection dataset={modifiedDatasetMock} style={{}} />)
     })
 
     it('should display dataset type', () => {
