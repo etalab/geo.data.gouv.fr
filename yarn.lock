@@ -4055,6 +4055,13 @@ react-dom@^15.4:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-leaflet:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.0.1.tgz#aac306d71b8d9aa24b63487801a2c2f8598885dc"
+  dependencies:
+    lodash "^4.0.0"
+    warning "^3.0.0"
+
 react-paginate@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-2.2.3.tgz#5e3362cace59c65dca2559a8caeaa6a3ea64e76f"
