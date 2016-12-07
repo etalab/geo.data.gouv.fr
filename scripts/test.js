@@ -26,4 +26,8 @@ global.navigator = window.navigator = {
   platform: 'node.js',
 };
 
-global.expect = require('expect');
+var chai = require('chai')
+var chaiEnzyme = require('chai-enzyme')
+
+global.expect = chai.expect
+chai.use(chaiEnzyme())
