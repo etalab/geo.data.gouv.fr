@@ -9,12 +9,12 @@ describe('<HarvestContent />', () => {
 
   it('should render HarvestResults component', () => {
     const wrapper = shallow(<HarvestContent successful={true} logs={harvests[0].log} />)
-    expect(wrapper.containsMatchingElement(<HarvestResults />)).toBe(true)
+    expect(wrapper.containsMatchingElement(<HarvestResults />)).to.be.true
   })
 
   it('should render HarvestLogs component', () => {
     const wrapper = shallow(<HarvestContent successful={false} logs={harvests[1].log} />)
-    expect(wrapper.containsMatchingElement(<HarvestLogs />)).toBe(true)
+    expect(wrapper.containsMatchingElement(<HarvestLogs />)).to.be.true
   })
 
 })

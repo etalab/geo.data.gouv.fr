@@ -16,13 +16,13 @@ describe('<Catalogs />', () => {
       return wrapper
         .instance()
         .componentWillMount()
-        .then(() => expect(wrapper.state('catalogs')).toEqual(catalogs))
+        .then(() => expect(wrapper.state('catalogs')).to.equal(catalogs))
     })
   })
 
   it('should render a loader when no catalog is fetch', () => {
     const loader = <ContentLoader />
     const wrapper = shallow(<Catalogs />)
-    expect(wrapper.containsMatchingElement(loader)).toBe(true)
+    expect(wrapper.containsMatchingElement(loader)).to.be.true
   })
 })

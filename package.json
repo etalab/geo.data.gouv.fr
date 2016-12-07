@@ -54,7 +54,10 @@
     "webpack-dev-server": "1.16.1"
   },
   "dependencies": {
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.1",
     "chart.js": "^1.1.1",
+    "cheerio": "^0.22.0",
     "json-loader": "^0.5.4",
     "leaflet": "^1.0.2",
     "marked": "^0.3.6",

@@ -10,9 +10,9 @@ describe('<DatasetDataAvailability />', () => {
 
       const result = wrapper.instance().check()
 
-      expect(result.msg).toEqual('Au moins une des distribution est disponible.')
-      expect(result.content).toExist()
-      expect(result.valid).toEqual(true)
+      expect(result.msg).to.equal('Au moins une des distribution est disponible.')
+      expect(result.content).to.exist
+      expect(result.valid).to.be.true
     })
 
     it('should return false when the array contains no elements whith available at true', () => {
@@ -21,9 +21,9 @@ describe('<DatasetDataAvailability />', () => {
 
       const result = wrapper.instance().check()
 
-      expect(result.msg).toEqual('Aucune distribution n\'a été trouvée.')
-      expect(result.content).toBe(undefined)
-      expect(result.valid).toEqual(false)
+      expect(result.msg).to.equal('Aucune distribution n\'a été trouvée.')
+      expect(result.content).to.equal(undefined)
+      expect(result.valid).to.equal(false)
     })
 
     it('should return false when the array is empty', () => {
@@ -32,9 +32,9 @@ describe('<DatasetDataAvailability />', () => {
 
       const result = wrapper.instance().check()
 
-      expect(result.msg).toEqual('Aucune distribution n\'a été trouvée.')
-      expect(result.content).toBe(undefined)
-      expect(result.valid).toEqual(false)
+      expect(result.msg).to.equal('Aucune distribution n\'a été trouvée.')
+      expect(result.content).to.equal(undefined)
+      expect(result.valid).to.equal(false)
     })
 
     it('should return false when the array is undefined', () => {
@@ -42,9 +42,9 @@ describe('<DatasetDataAvailability />', () => {
 
       const result = wrapper.instance().check()
 
-      expect(result.msg).toEqual('Aucune distribution n\'a été trouvée.')
-      expect(result.content).toBe(undefined)
-      expect(result.valid).toEqual(false)
+      expect(result.msg).to.equal('Aucune distribution n\'a été trouvée.')
+      expect(result.content).to.equal(undefined)
+      expect(result.valid).to.equal(false)
     })
   })
 })

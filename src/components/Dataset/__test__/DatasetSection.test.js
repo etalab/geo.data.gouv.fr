@@ -15,31 +15,31 @@ describe('<DatasetSection />', () => {
     })
 
     it('should display dataset title', () => {
-      expect(wrapper.contains(datasetMock.metadata.title)).toBe(true)
+      expect(wrapper.contains(datasetMock.metadata.title)).to.be.true
     })
 
     it('should display dataset description', () => {
-      expect(wrapper.contains(<MarkdownViewer markdown={datasetMock.metadata.description} />)).toBe(true)
+      expect(wrapper.contains(<MarkdownViewer markdown={datasetMock.metadata.description} />)).to.be.true
     })
 
     it('should display dataset type', () => {
-      expect(wrapper.contains(datasetMock.metadata.type)).toBe(true)
+      expect(wrapper.contains(datasetMock.metadata.type)).to.be.true
     })
 
     it('should display dataset license', () => {
-      expect(wrapper.contains(datasetMock.metadata.license)).toBe(true)
+      expect(wrapper.contains(datasetMock.metadata.license)).to.be.true
     })
 
     it('should display dataset revision date', () => {
-      expect(wrapper.contains(doneSince(datasetMock.revisionDate))).toBe(true)
+      expect(wrapper.contains(doneSince(datasetMock.revisionDate))).to.be.true
     })
 
     it('should display lineage', () => {
-      expect(wrapper.contains(datasetMock.metadata.lineage)).toBe(true)
+      expect(wrapper.contains(datasetMock.metadata.lineage)).to.be.true
     })
 
     it('should display dataset id', () => {
-      expect(wrapper.contains(datasetMock.metadata.id)).toBe(true)
+      expect(wrapper.contains(datasetMock.metadata.id)).to.be.true
     })
   })
 
@@ -53,11 +53,11 @@ describe('<DatasetSection />', () => {
     })
 
     it('should display dataset type', () => {
-      expect(wrapper.contains('inconnu')).toBe(true)
+      expect(wrapper.contains('inconnu')).to.be.true
     })
 
     it('should display dataset license', () => {
-      expect(wrapper.contains('non déterminé')).toBe(true)
+      expect(wrapper.contains('non déterminé')).to.be.true
     })
   })
 

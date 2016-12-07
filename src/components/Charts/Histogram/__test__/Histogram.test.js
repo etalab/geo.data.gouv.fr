@@ -21,7 +21,7 @@ describe('<Histogram />', () => {
       ]
     }
 
-    expect(wrapper.instance().formatData(data)).toEqual(formatedData)
+    expect(wrapper.instance().formatData(data)).to.deep.equal(formatedData)
   })
 
   it('Should throw an error', (done) => {
@@ -29,7 +29,7 @@ describe('<Histogram />', () => {
       shallow(<Histogram data={data} height={height} width={width}/>)
     }
     catch(err) {
-      expect(err).toEqual(new Error('chartType props must be Bar or Line'));
+      expect(err).to.deep.equal(new Error('chartType props must be Bar or Line'));
     }
     done();
   })
@@ -38,13 +38,13 @@ describe('<Histogram />', () => {
     const wrapper = shallow(<Histogram chartType={Line} data={data} height={height} width={width}/>)
     const chart = <Line data={wrapper.instance().formatData(data)} height={height} width={width}/>
 
-    expect(wrapper.contains(chart)).toEqual(true)
+    expect(wrapper.contains(chart)).to.deep.equal(true)
   })
 
   it('Should render a Bar component', () => {
     const wrapper = shallow(<Histogram chartType={Bar} data={data} height={height} width={width}/>)
     const chart = <Bar data={wrapper.instance().formatData(data)} height={height} width={width}/>
 
-    expect(wrapper.contains(chart)).toEqual(true)
+    expect(wrapper.contains(chart)).to.deep.equal(true)
   })
 })

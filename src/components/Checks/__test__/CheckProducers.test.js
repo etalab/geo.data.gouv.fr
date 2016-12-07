@@ -10,7 +10,7 @@ describe('<DatasetProducers />', () => {
 
       const result = wrapper.instance().check()
 
-      expect(result).toEqual({
+      expect(result).to.deep.equal({
         msg: 'Au moins un producteur est identifié.',
         valid: true})
     })
@@ -21,7 +21,7 @@ describe('<DatasetProducers />', () => {
 
       const result = wrapper.instance().check()
 
-      expect(result).toEqual({
+      expect(result).to.deep.equal({
         msg: 'Le producteur n\'a pas été identifié.',
         valid: false})
     })
@@ -31,7 +31,7 @@ describe('<DatasetProducers />', () => {
 
       const result = wrapper.instance().check({msg: '', content: {}, valid: false})
 
-      expect(result).toEqual({
+      expect(result).to.deep.equal({
         msg: 'Le producteur n\'a pas été identifié.',
         valid: false})
     })

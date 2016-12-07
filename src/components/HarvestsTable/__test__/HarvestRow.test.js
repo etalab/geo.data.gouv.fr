@@ -14,15 +14,15 @@ describe('<HarvestRow />', () => {
 
   describe('doneSince', () => {
     it('Should return the time elapsed since the date sent', () => {
-      expect(doneSince(new Date())).toEqual('a few seconds ago')
+      expect(doneSince(new Date())).to.equal('a few seconds ago')
     })
 
     it('Should return N/A when no endTime ', () => {
-      expect(doneSince()).toEqual('N/A')
+      expect(doneSince()).to.equal('N/A')
     })
 
     it('Should return N/A when invalid date ', () => {
-      expect(doneSince('thisIsNotADate')).toEqual('N/A')
+      expect(doneSince('thisIsNotADate')).to.equal('N/A')
     })
   })
 
@@ -30,13 +30,13 @@ describe('<HarvestRow />', () => {
     it('Should display successful text', () => {
       const text = <div>Réussi</div>
       const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} previousHarvest={harvestSuccessed} catalog={catalog} />)
-      expect(wrapper.containsMatchingElement(text)).toEqual(true)
+      expect(wrapper.containsMatchingElement(text)).to.be.true
     })
 
     it('Should display failed text', () => {
       const text = <div>En échec</div>
       const wrapper = shallow(<HarvestRow harvest={harvestFailed} previousHarvest={harvestFailed} catalog={catalog} />)
-      expect(wrapper.containsMatchingElement(text)).toEqual(true)
+      expect(wrapper.containsMatchingElement(text)).to.be.true
     })
   })
 
@@ -44,7 +44,7 @@ describe('<HarvestRow />', () => {
     it('Should render a link to harvest details', () => {
       const link = <Link to={`/catalogs/${catalog.id}/harvest/${harvestSuccessed._id}`}>Détails</Link>
       const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} previousHarvest={harvestSuccessed} catalog={catalog} />)
-      expect(wrapper.contains(link)).toEqual(true)
+      expect(wrapper.contains(link)).to.be.true
     })
   })
 })

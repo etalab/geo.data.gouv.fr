@@ -9,9 +9,9 @@ describe('<CheckLicense />', () => {
         const wrapper = shallow(<CheckLicense license={license} />)
         const check = wrapper.instance().check()
 
-        expect(check.msg).toEqual(`La licence ${license} est valide.`)
-        expect(check.valid).toBe(true)
-        expect(check.content).toBe(undefined)
+        expect(check.msg).to.equal(`La licence ${license} est valide.`)
+        expect(check.valid).to.be.true
+        expect(check.content).to.equal(undefined)
         return true
       })
     })
@@ -22,9 +22,9 @@ describe('<CheckLicense />', () => {
 
       const check = wrapper.instance().check()
 
-      expect(check.msg).toEqual('La licence unk-license n\'est pas reconnue.')
-      expect(check.valid).toBe(false)
-      expect(check.content).toExist()
+      expect(check.msg).to.equal('La licence unk-license n\'est pas reconnue.')
+      expect(check.valid).to.equal(false)
+      expect(check.content).to.exist
     })
 
     it('should be false when license is undefined and specify the error', () => {
@@ -32,9 +32,9 @@ describe('<CheckLicense />', () => {
 
       const check = wrapper.instance().check()
 
-      expect(check.msg).toEqual('Aucune licence n\'a pu être trouvée.')
-      expect(check.valid).toBe(false)
-      expect(check.content).toExist()
+      expect(check.msg).to.equal('Aucune licence n\'a pu être trouvée.')
+      expect(check.valid).to.equal(false)
+      expect(check.content).to.exist
     })
   })
 })

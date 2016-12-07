@@ -6,7 +6,7 @@ const featureType = {
   'type': 'wfs-featureType',
   'service': '556c6066330f1fcd48338831',
   'typeName': 'drac:bretagne_immeuble_mh',
-  'available': false,
+  'available': true,
   '_id': '582e1ac513e286e23b67849a'
 }
 
@@ -24,35 +24,33 @@ const format = {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS42'}
 
 describe('<Download />', () => {
 
-  describe('featureType', () => {
-    it('should create a link to a wfs-featureType dataset type', () => {
-      const link = <a href='https://inspire.data.gouv.fr/api/geogw/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download'>{'drac:bretagne_immeuble_mh'}</a>
-      const wrapper = shallow(<Download distribution={featureType} dlFormat={format}/>)
-      expect(wrapper.containsMatchingElement(link)).toBe(true)
-    })
-  })
-
-  describe('file-package', () => {
-    it('should create a link to a file-package dataset type', () => {
-      const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download'>{'N_AC1_GENERATEUR_SUP_S_032.TAB'}</a>
-      const wrapper = shallow(<Download distribution={filePackage} dlFormat={format}/>)
-      expect(wrapper.containsMatchingElement(link)).toBe(true)
-    })
-  })
-
   describe('Available dataset', () => {
-    it('should create a link to download the dataset', () => {
-      const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download?format=GeoJSON&projection=WGS42'>Télécharger</a>
-      const wrapper = shallow(<Download distribution={filePackage} dlFormat={format}/>)
-      expect(wrapper.containsMatchingElement(link)).toBe(true)
+
+  describe('featureType', () => {
+    it('should create a link to download wfs-featureType dataset type', () => {
+      const link = <a href='https://inspire.data.gouv.fr/api/geogw/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&amp;projection=WGS42'>drac:bretagne_immeuble_mh</a>
+      const wrapper = shallow(<Download distribution={featureType} dlFormat={format}/>)
+      expect(wrapper).to.contain(link)
     })
   })
+
+    describe('file-package', () => {
+      it('should create a link to download file-package dataset type', () => {
+        const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download?format=GeoJSON&amp;projection=WGS42'>N_AC1_GENERATEUR_SUP_S_032.TAB</a>
+        const wrapper = shallow(<Download distribution={filePackage} dlFormat={format}/>)
+        expect(wrapper).to.contain(link)
+      })
+    })
+  })
+
 
   describe('Unavailable dataset', () => {
-    it('should display a disabled download button', () => {
-      const div = <div>Indisponible</div>
-      const wrapper = shallow(<Download distribution={featureType} dlFormat={format}/>)
-      expect(wrapper.containsMatchingElement(div)).toBe(true)
+    it('should display only dataset name', () => {
+      let dataset = featureType
+      dataset.available = false
+      const div = <div style={{}}>drac:bretagne_immeuble_mh</div>
+      const wrapper = shallow(<Download distribution={featureType} dlFormat={format} style={{}}/>)
+      expect(wrapper).to.contain(div)
     })
   })
 
