@@ -55,6 +55,15 @@ class PreviewMap extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { vectors, map } = this.refs
+
+    if (vectors && map) {
+      const bounds = vectors.leafletElement.getBounds()
+      map.leafletElement.fitBounds(bounds)
+    }
+  }
+
   render() {
     const { geojson, loading, errors, distribution } = this.props
     const position = [this.state.lat, this.state.lng]
@@ -70,9 +79,9 @@ class PreviewMap extends Component {
       <div style={styles.container}>
         {errors.length ? err : null}
         {loading && !errors.length ? loader : null}
-        <Map style={styles.map} center={position} zoom={this.state.zoom}>
+        <Map ref="map" style={styles.map} center={position} zoom={this.state.zoom} >
           <TileLayer attribution={MAP.attribution} url={MAP.osmUrl} />
-          {geojson && !errors.length ? <GeoJSON data={geojson} /> : null}
+          {geojson && !errors.length ? <GeoJSON ref="vectors" data={geojson} /> : null}
         </Map>
       </div>
     )
