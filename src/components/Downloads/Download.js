@@ -11,7 +11,6 @@ const styles = {
     border: 'none',
   },
   inactive: {
-    marginRight: '5px',
     padding: '5px 10px',
     backgroundColor: '#ddd',
     color: '#000',
