@@ -15,8 +15,8 @@ describe('<Home />', () => {
       return wrapper
         .instance()
         .componentWillMount()
-        .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
-        .then(() => expect(wrapper.state('errors')).toEqual([]))
+        .then(() => expect(wrapper.state('metrics')).to.deep.equal(metrics))
+        .then(() => expect(wrapper.state('errors')).to.deep.equal([]))
     });
   })
 

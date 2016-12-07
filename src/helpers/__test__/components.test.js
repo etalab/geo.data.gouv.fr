@@ -38,7 +38,7 @@ describe('components', () => {
     it('should return when component has no promises', () => {
       const component = shallow(<TestComponent />)
 
-      expect(cancelAllPromises(component)).toNotExist()
+      expect(cancelAllPromises(component)).to.not.exist
     })
 
     it('should return cancelAll function', () => {
@@ -48,8 +48,8 @@ describe('components', () => {
       const canceledPromises = component.cancelablePromises.map(c => reflect(c.promise))
 
       return Promise.all(canceledPromises, canceledPromise => {
-        expect(canceledPromise.isRejected()).toBe(true)
-        expect(canceledPromise.reason.isCanceled).toBe(true)
+        expect(canceledPromise.isRejected()).to.be.true
+        expect(canceledPromise.reason.isCanceled).to.be.true
       })
     })
   })
@@ -58,9 +58,9 @@ describe('components', () => {
     it('should create a cancelablePromises array to component when no exist', () => {
       const component = shallow(<TestComponent />).instance()
 
-      expect(component.cancelablePromises).toNotExist()
+      expect(component.cancelablePromises).to.not.exist
       waitForDataAndSetState(fakePromise(), component, 'stateName')
-      expect(component.cancelablePromises).toExist()
+      expect(component.cancelablePromises).to.exist
     })
 
     it('should add to cancelablePromises component array new cancelablePromise', () => {
@@ -68,7 +68,7 @@ describe('components', () => {
       component.cancelablePromises = []
 
       waitForDataAndSetState(fakePromise(), component, 'stateName')
-      expect(component.cancelablePromises.length).toEqual(1)
+      expect(component.cancelablePromises.length).to.equal(1)
     })
 
     describe('resolve', () => {
@@ -76,7 +76,7 @@ describe('components', () => {
         const component = shallow(<TestComponent />).instance()
 
         return waitForDataAndSetState(Promise.resolve('fakeResolve'), component, 'stateName')
-          .then(() => expect(component.state.stateName).toExist())
+          .then(() => expect(component.state.stateName).to.exist)
       })
     })
 
@@ -85,7 +85,7 @@ describe('components', () => {
         const component = shallow(<TestComponent />).instance()
 
         return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
-          .then(() => expect(component.state.errors.length).toEqual(1))
+          .then(() => expect(component.state.errors.length).to.equal(1))
       })
 
       it('should not assing twice error to state', () => {
@@ -93,9 +93,9 @@ describe('components', () => {
 
         return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
           .then(() => {
-            expect(component.state.errors.length).toEqual(1)
+            expect(component.state.errors.length).to.equal(1)
             return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
-              .then(() => expect(component.state.errors.length).toEqual(1))
+              .then(() => expect(component.state.errors.length).to.equal(1))
         })
       })
     })

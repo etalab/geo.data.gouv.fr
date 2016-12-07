@@ -9,7 +9,7 @@ describe('_extractFilters', () => {
     ]
     const extractedFilters = _extractFilters(qs)
 
-    expect(extractedFilters).toEqual(filters)
+    expect(extractedFilters).to.deep.equal(filters)
   })
 
   it('should return only allowed filters', () => {
@@ -19,7 +19,7 @@ describe('_extractFilters', () => {
     ]
     const extractedFilters = _extractFilters(qs)
 
-    expect(extractedFilters).toEqual(filters)
+    expect(extractedFilters).to.deep.equal(filters)
   })
 
   it('should create one items for each value', () => {
@@ -30,7 +30,7 @@ describe('_extractFilters', () => {
     ]
     const extractedFilters = _extractFilters(qs)
 
-    expect(extractedFilters).toEqual(filters)
+    expect(extractedFilters).to.deep.equal(filters)
   })
 })
 
@@ -39,7 +39,7 @@ describe('parseQuery', () => {
     const query = 'q=42&page=2&keyword=keyword1&keyword=keyword2&organization=foo'
     const result = parseQuery(query)
 
-    expect(result).toEqual(
+    expect(result).to.deep.equal(
       {
         textInput: '42',
         page: '2',

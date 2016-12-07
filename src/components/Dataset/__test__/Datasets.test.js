@@ -24,9 +24,9 @@ describe('<Datasets />', () => {
     it('should add filter and reset page and offset', () => {
       wrapper.instance().addFilter({name: 'filter2', value: 'value2'})
 
-      expect(wrapper.state('page')).toEqual(1)
-      expect(wrapper.state('offset')).toEqual(0)
-      expect(wrapper.state('filters')).toEqual([{name: 'filter1', value: 'value1'}, {name: 'filter2', value: 'value2'}])
+      expect(wrapper.state('page')).to.equal(1)
+      expect(wrapper.state('offset')).to.equal(0)
+      expect(wrapper.state('filters')).to.deep.equal([{name: 'filter1', value: 'value1'}, {name: 'filter2', value: 'value2'}])
     })
   })
 
@@ -34,9 +34,9 @@ describe('<Datasets />', () => {
     it('should remove filter and reset page and offset', () => {
       wrapper.instance().removeFilter({name: 'filter1', value: 'value1'})
 
-      expect(wrapper.state('page')).toEqual(1)
-      expect(wrapper.state('offset')).toEqual(0)
-      expect(wrapper.state('filters')).toEqual([])
+      expect(wrapper.state('page')).to.equal(1)
+      expect(wrapper.state('offset')).to.equal(0)
+      expect(wrapper.state('filters')).to.deep.equal([])
     })
   })
 
@@ -45,10 +45,10 @@ describe('<Datasets />', () => {
       const textInput = 'new seach'
       wrapper.instance().userSearch(textInput)
 
-      expect(wrapper.state('textInput')).toEqual(textInput)
-      expect(wrapper.state('filters')).toEqual([{name: 'filter1', value: 'value1'}])
-      expect(wrapper.state('offset')).toEqual(0)
-      expect(wrapper.state('page')).toEqual(1)
+      expect(wrapper.state('textInput')).to.deep.equal(textInput)
+      expect(wrapper.state('filters')).to.deep.equal([{name: 'filter1', value: 'value1'}])
+      expect(wrapper.state('offset')).to.equal(0)
+      expect(wrapper.state('page')).to.equal(1)
     })
   })
 
@@ -65,8 +65,8 @@ describe('<Datasets />', () => {
         .componentWillMount()
         .then(() => {
           wrapper.instance().handleChangePage({selected: 0})
-          expect(wrapper.state('offset')).toEqual(0)
-          expect(wrapper.state('page')).toEqual(1)
+          expect(wrapper.state('offset')).to.equal(0)
+          expect(wrapper.state('page')).to.equal(1)
         })
     })
   })

@@ -18,6 +18,6 @@ describe('buildSearchQuery()', () => {
       componentState.filters,
       componentState.page,
     )
-    expect(builQuery).toEqual(expectedUrl)
+    expect(builQuery).to.equal(expectedUrl)
   })
 })

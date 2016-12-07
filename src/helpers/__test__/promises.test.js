@@ -17,8 +17,8 @@ describe('promises', () => {
       it('should resolve value when hasCanceled_ is false', () => {
         resolveFn('foo')
         return reflect(p.promise).then(inspection => {
-          expect(inspection.isFulfilled()).toBe(true)
-          expect(inspection.value()).toBe('foo')
+          expect(inspection.isFulfilled()).to.be.true
+          expect(inspection.value()).to.equal('foo')
         })
       })
 
@@ -26,8 +26,8 @@ describe('promises', () => {
         p.cancel()
         resolveFn('foo')
         return reflect(p.promise).then(inspection => {
-          expect(inspection.isRejected()).toBe(true)
-          expect(inspection.reason().isCanceled).toBe(true)
+          expect(inspection.isRejected()).to.be.true
+          expect(inspection.reason().isCanceled).to.be.true
         })
       })
     })
@@ -42,9 +42,9 @@ describe('promises', () => {
       it('should reject error when hasCanceled_ is false', () => {
         rejectFn('foo')
         return reflect(p.promise).then(inspection => {
-          expect(inspection.isRejected()).toBe(true)
-          expect(inspection.reason()).toBe('foo')
-          expect(inspection.reason().isCanceled).toNotExist()
+          expect(inspection.isRejected()).to.be.true
+          expect(inspection.reason()).to.equal('foo')
+          expect(inspection.reason().isCanceled).to.not.exist
         })
       })
 
@@ -52,8 +52,8 @@ describe('promises', () => {
         p.cancel()
         rejectFn('foo')
         return reflect(p.promise).then(inspection => {
-          expect(inspection.isRejected()).toBe(true)
-          expect(inspection.reason().isCanceled).toBe(true)
+          expect(inspection.isRejected()).to.be.true
+          expect(inspection.reason().isCanceled).to.be.true
         })
       })
     })
