@@ -20,7 +20,7 @@ describe('<Catalog />', () => {
     })
 
     it('should display the name of the catalog', () => {
-      expect(wrapper.contains(catalog.name)).toBe(true)
+      expect(wrapper.contains(catalog.name)).to.be.true
     })
 
     it('should display <CatalogPreview />', () => {
@@ -31,7 +31,7 @@ describe('<Catalog />', () => {
         .instance()
         .componentWillMount()
         .then(() => {
-          expect(wrapper.containsMatchingElement(catalogPreview)).toBe(true)
+          expect(wrapper.containsMatchingElement(catalogPreview)).to.be.true
         })
     })
 
@@ -44,14 +44,14 @@ describe('<Catalog />', () => {
       return wrapper
         .instance()
         .componentWillMount()
-        .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
+        .then(() => expect(wrapper.state('metrics')).to.equal(metrics))
     })
 
     it('should display a loading', () => {
       const loader = mount(<Loader component={<div></div>} value={undefined} />)
       const wrapper = mount(<Catalog catalog={catalog} />)
 
-      expect(wrapper.html()).toContain(loader.html())
+      expect(wrapper.html()).to.contain(loader.html())
     })
   })
 

@@ -15,18 +15,18 @@ describe('<CatalogPreview />', () => {
 
     it('should display the number of records', () => {
       const records = <Counter value={metrics.records.totalCount} label="Enregistrements" />
-      expect(wrapper.contains(records)).toBe(true)
+      expect(wrapper.contains(records)).to.be.true
     })
 
     it('should display the openness percent', () => {
       const open = <Percent value={ metrics.datasets.partitions['openness'].yes} label="Données ouvertes" total={metrics.datasets.totalCount} icon="unlock alternate icon" />
-      expect(wrapper.contains(open)).toBe(true)
+      expect(wrapper.contains(open)).to.be.true
     })
 
     it('should display the downloadable percent', () => {
       const download = <Percent value={ metrics.datasets.partitions['download'].yes} label="Téléchargeable" total={metrics.datasets.totalCount} icon="download" />
 
-      expect(wrapper.contains(download)).toBe(true)
+      expect(wrapper.contains(download)).to.be.true
     })
   })
 
@@ -37,7 +37,7 @@ describe('<CatalogPreview />', () => {
     })
 
     it('should render an empty div', () => {
-      expect(wrapper.html()).toEqual('<div></div>')
+      expect(wrapper.html()).to.equal('<div></div>')
     })
   })
 

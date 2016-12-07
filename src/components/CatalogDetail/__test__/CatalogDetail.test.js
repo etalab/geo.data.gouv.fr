@@ -17,7 +17,7 @@ describe('<CatalogDetail />', () => {
       const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
 
       wrapper.setState({catalog, metrics})
-      expect(wrapper.find('#catalog-detail').length).toEqual(1)
+      expect(wrapper.find('#catalog-detail').length).to.equal(1)
     })
   })
 
@@ -30,7 +30,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('metrics')).toEqual(metrics))
+          .then(() => expect(wrapper.state('metrics')).to.equal(metrics))
       })
 
       it('Should add an error to this.state, catalogId is required', () => {
@@ -39,7 +39,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toContain('catalogId is required'))
+          .then(() => expect(wrapper.state('errors')).to.contain('catalogId is required'))
       })
 
       it('Should add an error to this.state, metrics not found', () => {
@@ -48,7 +48,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateMetrics()
-          .then(() => expect(wrapper.state('errors')).toContain('metrics not found'))
+          .then(() => expect(wrapper.state('errors')).to.contain('metrics not found'))
       })
     })
 
@@ -58,7 +58,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateCatalog()
-          .then(() => expect(wrapper.state('catalog')).toEqual(catalog))
+          .then(() => expect(wrapper.state('catalog')).to.equal(catalog))
       })
 
       it('Should add an error to this.state, catalogId is required', () => {
@@ -67,7 +67,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateCatalog()
-          .then(() => expect(wrapper.state('errors')).toContain('catalogId is required'))
+          .then(() => expect(wrapper.state('errors')).to.contain('catalogId is required'))
       })
 
       it('Should add an error to this.state, catalog not found', () => {
@@ -76,7 +76,7 @@ describe('<CatalogDetail />', () => {
         return wrapper
           .instance()
           .updateCatalog()
-          .then(() => expect(wrapper.state('errors')).toContain('catalog not found'))
+          .then(() => expect(wrapper.state('errors')).to.contain('catalog not found'))
       })
     })
 
@@ -87,9 +87,9 @@ describe('<CatalogDetail />', () => {
           .instance()
           .componentWillMount()
           .then(() => {
-            expect(wrapper.state('metrics')).toEqual(metrics)
-            expect(wrapper.state('catalog')).toEqual(catalog)
-            expect(wrapper.state('errors')).toEqual([])
+            expect(wrapper.state('metrics')).to.deep.equal(metrics)
+            expect(wrapper.state('catalog')).to.deep.equal(catalog)
+            expect(wrapper.state('errors')).to.deep.equal([])
           })
       })
     })
@@ -97,7 +97,7 @@ describe('<CatalogDetail />', () => {
     it('should render a loader when no catalog is fetch', () => {
       const loader = <ContentLoader />
       const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
-      expect(wrapper.containsMatchingElement(loader)).toBe(true)
+      expect(wrapper.containsMatchingElement(loader)).to.be.true
     })
   })
 

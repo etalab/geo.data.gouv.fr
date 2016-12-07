@@ -12,17 +12,17 @@ describe('<DoughnutChart />', () => {
   describe('setColor', () => {
     it('Should return a color by index', () => {
       Object.keys(colors).map( color =>
-        expect(wrapper.instance().setColor(color)).toEqual(colors[color]))
+        expect(wrapper.instance().setColor(color)).to.deep.equal(colors[color]))
     });
 
     it('Should grey color when out range', () => {
-      expect(wrapper.instance().setColor(colors.length + 1)).toEqual({name: 'grey', value: '#767676'})
+      expect(wrapper.instance().setColor(colors.length + 1)).to.deep.equal({name: 'grey', value: '#767676'})
     });
   })
 
   describe('formatData', () => {
     it('Should return formated data', () => {
-      expect(wrapper.instance().formatData(data)).toEqual(formatedData)
+      expect(wrapper.instance().formatData(data)).to.deep.equal(formatedData)
     })
 
     it('Should sort the data in ascending order', () => {
@@ -32,7 +32,7 @@ describe('<DoughnutChart />', () => {
         dataset: 427
       }
 
-      expect(wrapper.instance().formatData(descendingData)).toEqual(formatedData)
+      expect(wrapper.instance().formatData(descendingData)).to.deep.equal(formatedData)
     })
   })
 
@@ -42,14 +42,14 @@ describe('<DoughnutChart />', () => {
       const twoDataWrapper = shallow(<DoughnutChart data={{'dataset': 427}} />)
       const percent = <Percent value={100} total={100} label={formatedData[0].label} icon="database icon" />
 
-      expect(twoDataWrapper.containsMatchingElement(percent)).toEqual(true);
+      expect(twoDataWrapper.containsMatchingElement(percent)).to.deep.equal(true);
     });
 
     it('Should render Percent component when no data', () => {
       const noDataWrapper = shallow(<DoughnutChart data={{}} />)
       const noData = <h1>Aucune donnée</h1>
 
-      expect(noDataWrapper.contains(noData)).toEqual(true);
+      expect(noDataWrapper.contains(noData)).to.deep.equal(true);
     });
   })
 })

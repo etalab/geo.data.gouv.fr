@@ -4,21 +4,21 @@ import { theme  } from '../../tools'
 import './Download.css'
 
 const styles = {
-  button: {
-    padding: '5px 11px',
+  active: {
+    padding: '5px 10px',
     backgroundColor: theme.blue,
     color: '#fff',
     border: 'none',
   },
-  disabled: {
+  inactive: {
     padding: '5px 10px',
     backgroundColor: '#ddd',
     color: '#000',
     border: 'none',
-  }
+  },
 }
 
-const Download = ({distribution, dlFormat, style}) => {
+const Download = ({distribution, dlFormat, isPreview, preview, style}) => {
   const { format, projection } = dlFormat
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
   let layerName
@@ -32,17 +32,18 @@ const Download = ({distribution, dlFormat, style}) => {
     link += `services/${distribution.service}/feature-types/${distribution.typeName}/download`
   }
 
-  let dl = <div style={styles.disabled}>Indisponible</div>
-  if (distribution.available) {
-    dl = <a href={link + `?format=${format}&projection=${projection}`} style={styles.button}>Télécharger</a>
-  }
+  const name = layerName || distribution.typeName
 
-  return (
-    <div style={style} className="download">
-      <a href={link}>{layerName || distribution.typeName}</a>
-      {dl}
-    </div>
-  )
+  if (distribution.available) {
+    return (
+      <div style={style}>
+        <a href={link  + `?format=${format}&projection=${projection}`}>{name}</a>
+        <button style={isPreview ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link})}>Visualiser</button>
+      </div>
+    )
+  } else {
+    return <div style={style}>{name}</div>
+  }
 }
 
 export default Download

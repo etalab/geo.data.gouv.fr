@@ -8,14 +8,14 @@ describe('<ContentLoader />', () => {
     const loader = <CircularProgress size={2} />
     const wrapper = shallow(<ContentLoader />)
 
-    expect(wrapper.containsMatchingElement(loader)).toBe(true)
+    expect(wrapper.containsMatchingElement(loader)).to.be.true
   })
 
   it('should display a CircularProgress with a size of 3', () => {
     const loader = <CircularProgress size={3} />
     const wrapper = shallow(<ContentLoader size={3} />)
 
-    expect(wrapper.containsMatchingElement(loader)).toBe(true)
+    expect(wrapper.containsMatchingElement(loader)).to.be.true
   })
 
   it('should display a CircularProgress with specific style', () => {
@@ -25,6 +25,6 @@ describe('<ContentLoader />', () => {
     const loader = <CircularProgress style={style} size={2} />
     const wrapper = shallow(<ContentLoader style={style} />)
 
-    expect(wrapper.contains(loader)).toBe(true)
+    expect(wrapper.contains(loader)).to.be.true
   })
 })

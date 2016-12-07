@@ -13,7 +13,7 @@ describe('<DatasetDetail />', () => {
     it('should display a <CircularProgress />', () => {
       const wrapper = mount(<DatasetDetail params={{ datasetId: '1' }} />)
       const progress = <CircularProgress />
-      expect(wrapper.containsMatchingElement(progress)).toBe(true)
+      expect(wrapper.containsMatchingElement(progress)).to.be.true
     })
   })
 
@@ -25,7 +25,7 @@ describe('<DatasetDetail />', () => {
         .componentWillMount()
         .then(() => {
           const titleBlock = <h1>{datasetMock.metadata.title}</h1>
-          expect(wrapper.containsMatchingElement(titleBlock)).toBe(true)
+          expect(wrapper.containsMatchingElement(titleBlock)).to.be.true
         })
     })
   })
