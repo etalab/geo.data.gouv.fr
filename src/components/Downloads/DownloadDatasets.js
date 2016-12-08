@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { filter } from 'lodash'
 import PreviewMap from '../Map/PreviewMap'
 import VectorDownload from '../Downloads/VectorDownload'
 import OtherDownload from '../Downloads/OtherDownload'
@@ -39,8 +38,8 @@ class DownloadDatasets extends Component {
   render() {
     const { distributions, style } = this.props
     const { format, preview, geojson, errors } = this.state
-    const vectorDistributions = filter(distributions, (distribution) => !distribution.originalDistribution)
-    const otherDistributions = filter(distributions, (distribution) => distribution.originalDistribution === true)
+    const vectorDistributions = distributions.filter(distribution => !distribution.originalDistribution)
+    const otherDistributions = distributions.filter(distribution => distribution.originalDistribution === true)
 
     let map = <div style={{marginLeft: '40%'}}></div>
     if (preview) {
@@ -50,7 +49,7 @@ class DownloadDatasets extends Component {
         loading={preview && !geojson}
         errors={errors}/>
     }
-    
+
     return (
       <div style={style.section}>
         <h3 style={style.title}>Téléchargements</h3>
