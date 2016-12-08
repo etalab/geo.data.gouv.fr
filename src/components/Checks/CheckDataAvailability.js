@@ -10,7 +10,10 @@ class DatasetDataAvailability extends Component {
       return {
         valid: true,
         msg: 'Au moins une des distribution est disponible.',
-        content: distributions.map((distribution, idx) => <CheckItem key={idx} name={distribution.typeName || distribution.layer} valid={distribution.available} />),
+        content: distributions.map((distribution, idx) => {
+          const name = distribution.typeName || distribution.layer || distribution.name
+          return <CheckItem key={idx} name={name} valid={distribution.available} />
+        }),
       }
     }
 
