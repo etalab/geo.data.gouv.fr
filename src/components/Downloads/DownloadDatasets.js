@@ -42,6 +42,15 @@ class DownloadDatasets extends Component {
     const vectorDistributions = filter(distributions, (distribution) => !distribution.originalDistribution)
     const otherDistributions = filter(distributions, (distribution) => distribution.originalDistribution === true)
 
+    let map = <div style={{marginLeft: '40%'}}></div>
+    if (preview) {
+    map = <PreviewMap
+        distribution={preview ? preview.distribution : null}
+        geojson={geojson}
+        loading={preview && !geojson}
+        errors={errors}/>
+    }
+    
     return (
       <div style={style.section}>
         <h3 style={style.title}>Téléchargements</h3>
@@ -55,11 +64,7 @@ class DownloadDatasets extends Component {
               preview={preview} />
             {otherDistributions.length ? <OtherDownload distributions={otherDistributions} /> : null}
           </div>
-          <PreviewMap
-            distribution={preview ? preview.distribution : null}
-            geojson={geojson}
-            loading={preview && !geojson}
-            errors={errors}/>
+          {map}
         </div>
       </div>
     )
