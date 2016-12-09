@@ -4,10 +4,12 @@ import VectorDownload from '../Downloads/VectorDownload'
 import OtherDownload from '../Downloads/OtherDownload'
 import { fetchGeoJSON } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+import DatasetTable from '../Table/DatasetTable'
 
 const styles = {
   content: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
   vector: {
@@ -41,20 +43,27 @@ class DownloadDatasets extends Component {
     const vectorDistributions = distributions.filter(distribution => !distribution.originalDistribution)
     const otherDistributions = distributions.filter(distribution => distribution.originalDistribution === true)
 
-    let map = <div style={{marginLeft: '40%'}}></div>
-    if (preview) {
-    map = <PreviewMap
-        distribution={preview ? preview.distribution : null}
+    let map
+    let table
+
+    if (preview && preview.display === 'map') {
+      map = <PreviewMap
+        distribution={preview.distribution}
         geojson={geojson}
         loading={preview && !geojson}
         errors={errors}/>
+
+    }
+
+    if (preview && preview.display === 'table') {
+      table = <DatasetTable features={geojson ? geojson.features : []} />
     }
 
     return (
       <div style={style.section}>
         <h3 style={style.title}>Téléchargements</h3>
         <div style={styles.content}>
-          <div style={{flexGrow: 1}}>
+          <div style={{flexGrow: 1, maxWidth: '60%'}}>
             <VectorDownload
               style={styles.vector}
               distributions={vectorDistributions}
@@ -64,6 +73,8 @@ class DownloadDatasets extends Component {
             {otherDistributions.length ? <OtherDownload distributions={otherDistributions} /> : null}
           </div>
           {map}
+          {table}
+          {!map && !table ? <div style={{width: '40%'}}></div> : null}
         </div>
       </div>
     )
