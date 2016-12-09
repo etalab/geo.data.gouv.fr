@@ -25,7 +25,7 @@ const HarvestRow = ({harvest, catalog, previousHarvest}) => {
       <td><HarvestDelta delta={harvest.itemsFound - previousHarvest.itemsFound}/></td>
       <td>{doneSince(harvest.finished)}</td>
       <td>
-        <Link to={`/catalogs/${catalog.id}/harvest/${harvest._id}`}>
+        <Link to={`/catalogs/${catalog._id}/harvest/${harvest._id}`}>
           Détails
         </Link>
       </td>

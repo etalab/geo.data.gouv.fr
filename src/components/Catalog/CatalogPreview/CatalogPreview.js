@@ -11,7 +11,7 @@ const styles = {
   },
 }
 
-const CatalogPreview = ({metrics, style}) => {
+const CatalogPreview = ({metrics}) => {
   if (metrics) {
     return (
       <div style={styles.container}>

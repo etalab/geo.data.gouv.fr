@@ -38,7 +38,7 @@ class Catalog extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchMetrics(this.props.catalog.id), this, 'metrics')
+    return waitForDataAndSetState(fetchMetrics(this.props.catalog._id), this, 'metrics')
   }
 
   componentWillUnmount() {
@@ -49,10 +49,10 @@ class Catalog extends Component {
       const catalogPreview = <CatalogPreview style={styles.catalogPreview} metrics={this.state.metrics} />
 
       return (
-          <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
+          <Link to={`/catalogs/${this.props.catalog._id}`} style={styles.link}>
             <div style={styles.paper}>
               <div style={styles.title}>{this.props.catalog.name}</div>
-              <LastHarvestStatus harvest={this.props.catalog.lastHarvesting}/>
+              <LastHarvestStatus harvest={this.props.catalog.service.sync}/>
               <Loader value={this.state.metrics} component={catalogPreview}/>
             </div>
           </Link>

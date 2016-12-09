@@ -1,11 +1,13 @@
 {
-  "id": "1",
+  "_id": "1",
   "name": "Géocatalogue national",
   "tags": [ ],
-  "serviceUrl": "http://www.geocatalogue.fr/api-public/servicesRest",
-  "lastHarvesting": {
-    "status": "failed",
-    "recordsFound": 0,
-    "finishedAt": "2016-09-01T14:03:24.339Z"
+  "service": {
+    "location": "http://www.geocatalogue.fr/api-public/servicesRest",
+    "sync": {
+      "status": "failed",
+      "finishedAt": "2016-09-01T14:03:24.339Z",
+      "itemsFound": 0
+    }
   }
 }
