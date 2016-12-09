@@ -7,7 +7,7 @@ let styles = {
 }
 
 const LastHarvestStatus = ({harvest}) => {
-  const date = new Date(harvest.finished || harvest.finishedAt).getTime()
+  const date = new Date(harvest.finishedAt).getTime()
   const hoursDifference = moment(date).fromNow()
   let status
 

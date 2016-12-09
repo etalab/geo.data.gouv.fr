@@ -24,35 +24,12 @@ describe('<Catalog />', () => {
     })
 
     it('should display <CatalogPreview />', () => {
-      const wrapper = mount(<Catalog catalog={catalog} />)
+      const wrapper = shallow(<Catalog catalog={catalog} />)
       const catalogPreview = <CatalogPreview metrics={metrics} />
 
-      return wrapper
-        .instance()
-        .componentWillMount()
-        .then(() => {
-          expect(wrapper.containsMatchingElement(catalogPreview)).to.be.true
-        })
+      expect(wrapper.containsMatchingElement(catalogPreview)).to.be.true
     })
 
-  })
-
-  describe('fetch metrics', () => {
-    it('should set metrics', () => {
-      const wrapper = mount(<Catalog catalog={catalog} />)
-
-      return wrapper
-        .instance()
-        .componentWillMount()
-        .then(() => expect(wrapper.state('metrics')).to.equal(metrics))
-    })
-
-    it('should display a loading', () => {
-      const loader = mount(<Loader component={<div></div>} value={undefined} />)
-      const wrapper = mount(<Catalog catalog={catalog} />)
-
-      expect(wrapper.html()).to.contain(loader.html())
-    })
   })
 
 })

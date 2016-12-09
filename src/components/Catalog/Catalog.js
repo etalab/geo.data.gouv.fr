@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
-import Loader from '../Loader/Loader'
+import React from 'react'
 import { Link } from 'react-router'
 import CatalogPreview from './CatalogPreview/CatalogPreview'
 import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
-import { fetchMetrics } from '../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import { theme } from '../../tools'
 
 const styles = {
@@ -31,33 +28,16 @@ const styles = {
   },
 }
 
-class Catalog extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {errors: []}
-  }
-
-  componentWillMount() {
-    return waitForDataAndSetState(fetchMetrics(this.props.catalog.id), this, 'metrics')
-  }
-
-  componentWillUnmount() {
-    return cancelAllPromises(this)
-  }
-
-  render() {
-      const catalogPreview = <CatalogPreview style={styles.catalogPreview} metrics={this.state.metrics} />
-
-      return (
-          <Link to={`/catalogs/${this.props.catalog.id}`} style={styles.link}>
-            <div style={styles.paper}>
-              <div style={styles.title}>{this.props.catalog.name}</div>
-              <LastHarvestStatus harvest={this.props.catalog.lastHarvesting}/>
-              <Loader value={this.state.metrics} component={catalogPreview}/>
-            </div>
-          </Link>
-      )
-  }
+const Catalog = ({ catalog }) => {
+  return (
+      <Link to={`/catalogs/${catalog._id}`} style={styles.link}>
+        <div style={styles.paper}>
+          <div style={styles.title}>{catalog.name}</div>
+          <LastHarvestStatus harvest={catalog.service.sync}/>
+          <CatalogPreview metrics={catalog.metrics} />
+        </div>
+      </Link>
+  )
 }
 
 export default Catalog

@@ -14,7 +14,7 @@ class HarvestsSection extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchHarvests(this.props.catalog.id), this, 'harvests')
+    return waitForDataAndSetState(fetchHarvests(this.props.catalog._id), this, 'harvests')
   }
 
   componentWillUnmount() {

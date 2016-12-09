@@ -1,6 +1,7 @@
 import React from 'react'
 import Counter from '../../Statistics/Counter/Counter'
 import Percent from '../../Statistics/Percent/Percent'
+import { get } from 'lodash'
 
 const styles = {
   container: {
@@ -11,17 +12,17 @@ const styles = {
   },
 }
 
-const CatalogPreview = ({metrics, style}) => {
-  if (metrics) {
-    return (
-      <div style={styles.container}>
-        <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} label="Données ouvertes" icon="unlock alternate icon" />
-        <Percent value={metrics.datasets.partitions['download'] ? metrics.datasets.partitions['download'].yes : 0} total={metrics.datasets.totalCount} label="Téléchargeable" icon="download" />
-        <Counter value={metrics.records.totalCount} label="Enregistrements" />
-      </div>
-    )
-  }
-  return <div></div>
+const CatalogPreview = ({metrics}) => {
+  let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
+  let download = get(metrics, 'datasets.partitions.download.yes', 0)
+
+  return (
+    <div style={styles.container}>
+      <Percent value={openness} total={metrics.datasets.totalCount} label="Données ouvertes" icon="unlock alternate icon" />
+      <Percent value={download} total={metrics.datasets.totalCount} label="Téléchargeable" icon="download" />
+      <Counter value={metrics.records.totalCount} label="Enregistrements" />
+    </div>
+  )
 }
 
 export default CatalogPreview

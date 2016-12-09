@@ -42,7 +42,7 @@ describe('<HarvestRow />', () => {
 
   describe('Harvest status', () => {
     it('Should render a link to harvest details', () => {
-      const link = <Link to={`/catalogs/${catalog.id}/harvest/${harvestSuccessed._id}`}>Détails</Link>
+      const link = <Link to={`/catalogs/${catalog._id}/harvest/${harvestSuccessed._id}`}>Détails</Link>
       const wrapper = shallow(<HarvestRow harvest={harvestSuccessed} previousHarvest={harvestSuccessed} catalog={catalog} />)
       expect(wrapper.contains(link)).to.be.true
     })
