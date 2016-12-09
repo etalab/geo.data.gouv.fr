@@ -10,7 +10,8 @@
         "itemsFound": 832,
         "finishedAt": "2016-10-20T00:03:32.811Z"
       }
-    }
+    },
+    "metrics": {}
   },
   {
     "_id": "538781513081a0b92eccc31a",
@@ -23,7 +24,8 @@
         "itemsFound": 0,
         "finishedAt": "2016-09-01T14:03:24.339Z"
       }
-    }
+    },
+    "metrics": {}
   },
   {
     "_id": "5387a33e785588482f5acb44",
@@ -36,6 +38,7 @@
         "itemsFound": 1422,
         "finishedAt": "2016-10-20T00:05:10.169Z"
       }
-    }
+    },
+    "metrics": {}
   }
 ]
