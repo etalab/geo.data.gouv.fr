@@ -30,15 +30,4 @@ describe('<CatalogPreview />', () => {
     })
   })
 
-  describe('metrics is undefined', () => {
-    let wrapper
-    beforeEach(() =>  {
-      wrapper = shallow(<CatalogPreview metrics={undefined} />)
-    })
-
-    it('should render an empty div', () => {
-      expect(wrapper.html()).to.equal('<div></div>')
-    })
-  })
-
 })
