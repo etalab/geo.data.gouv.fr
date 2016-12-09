@@ -11,6 +11,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    overflowX: 'scroll',
   },
   vector: {
     display: 'flex',
