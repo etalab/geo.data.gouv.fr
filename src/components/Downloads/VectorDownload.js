@@ -56,6 +56,7 @@ class VectorDownload extends Component {
                       distribution={distribution}
                       dlFormat={format}
                       isPreview={preview && preview.distribution._id === distribution._id}
+                      display={preview ? preview.display : null}
                       preview={(preview) => choosePreview(preview)} />
                   )}
                 </div>
