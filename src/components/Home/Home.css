@@ -1,0 +1,65 @@
+@import "../../theme/colors";
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8%;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.recordsButton {
+  margin: 40px 20px 10px 20px;
+  padding: 15px 20px;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: var(--blue);
+}
+
+.datasetsButton {
+  margin: 40px 20px 10px 20px;
+  padding: 15px 20px;
+  background-color: var(--blue);
+  color: #fff;
+  border: none;
+}
+
+.paper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.catalogLinks {
+  font-size: 1.5em;
+}
+
+.datagouv {
+  background-color: #FFF;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  padding: 40;
+  margin: 0 8% 4em;
+}
+
+.datagouvIntro {
+  font-size: 1.2em;
+  font-weight: lighter;
+  text-align: center;
+  font-variant: small-caps;
+}
+
+.datagouvLink {
+  font-weight: bolder;
+  font-size: 1.3em;
+  font-variant: normal;
+}

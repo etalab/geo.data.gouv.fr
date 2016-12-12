@@ -1,0 +1,13 @@
+@import "../../theme/colors";
+
+.content {
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--white);
+}
+
+.body {
+  flex: 1;
+}
