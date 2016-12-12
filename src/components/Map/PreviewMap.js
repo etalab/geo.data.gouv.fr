@@ -7,7 +7,7 @@ const MAP = {
   latitude: 47,
   longitude: 1,
   zoom: 5.5,
-  osmUrl: 'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+  osmUrl: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
   osmAttribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 }
 
