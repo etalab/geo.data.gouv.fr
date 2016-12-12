@@ -7,7 +7,7 @@ const MAP = {
   latitude: 47,
   longitude: 1,
   zoom: 5.5,
-  osmUrl: 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+  osmUrl: 'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
   osmAttribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 }
 
@@ -80,7 +80,7 @@ class PreviewMap extends Component {
         {errors.length ? err : null}
         {loading && !errors.length ? loader : null}
         <Map ref="map" style={styles.map} center={position} zoom={this.state.zoom} >
-          <TileLayer attribution={MAP.attribution} url={MAP.osmUrl} />
+          <TileLayer attribution={MAP.osmAttribution} url={MAP.osmUrl} />
           {geojson && !errors.length ? <GeoJSON ref="vectors" data={geojson} /> : null}
         </Map>
       </div>
