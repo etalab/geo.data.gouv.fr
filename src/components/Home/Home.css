@@ -8,14 +8,11 @@
   padding: 8%;
 }
 
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+.masthead span {
+  line-height: 4em;
 }
 
-.recordsButton {
+.buttons button {
   margin: 40px 20px 10px 20px;
   padding: 15px 20px;
   background-color: #fff;
@@ -23,12 +20,9 @@
   border-color: var(--blue);
 }
 
-.datasetsButton {
-  margin: 40px 20px 10px 20px;
-  padding: 15px 20px;
+.buttons button.inverted {
   background-color: var(--blue);
   color: #fff;
-  border: none;
 }
 
 .paper {
@@ -47,18 +41,18 @@
   background-color: #FFF;
   border: 1px solid var(--blue);
   color: var(--blue);
-  padding: 40;
+  padding: 40px;
   margin: 0 8% 4em;
 }
 
-.datagouvIntro {
+.datagouv p {
   font-size: 1.2em;
   font-weight: lighter;
   text-align: center;
   font-variant: small-caps;
 }
 
-.datagouvLink {
+.datagouv p a {
   font-weight: bolder;
   font-size: 1.3em;
   font-variant: normal;
