@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Publishing from '../Publishing/Publishing'
 import User from '../User/User'
-import { isAuthenticated } from '../../fetch/fetch'
+import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import { theme } from '../../tools'
 
@@ -34,7 +34,7 @@ class Admin extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(isAuthenticated(), this, 'user')
+    return waitForDataAndSetState(getUser(), this, 'user')
       .then(() => {
         if (!this.state.user) {
           const redirect = encodeURI(`${process.env.PUBLIC_URL}/admin`)
