@@ -55,3 +55,7 @@ export function search(q, filters, offset) {
 
   return _f('https://inspire.data.gouv.fr/api/geogw/records?' + query)
 }
+
+export function getUser() {
+  return _f('https://inspire.data.gouv.fr/dgv/api/me', { credentials: 'include', mode: 'cors' })
+}
