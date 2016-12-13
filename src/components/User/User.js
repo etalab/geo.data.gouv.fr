@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const styles = {
   user: {
@@ -14,18 +14,15 @@ const styles = {
   },
 }
 
-class User extends Component {
-  render() {
-    const { user } = this.props
-    const avatar = user.avatar ? {url: user.avatar, alt: user.slug} : {url: 'assets/avatar.png', alt: 'no avatar'}
+const User = ({ user }) => {
+  const avatar = user.avatar ? {url: user.avatar, alt: user.slug} : {url: 'assets/avatar.png', alt: 'no avatar'}
 
-    return (
-      <div style={styles.user}>
-        <img style={styles.img} src={avatar.url} alt={avatar.alt} />
-        <a href={user.page}>{user.first_name} {user.last_name}</a>
-      </div>
-    )
-  }
+  return (
+    <div style={styles.user}>
+      <img style={styles.img} src={avatar.url} alt={avatar.alt} />
+      <a href={user.page}>{user.first_name} {user.last_name}</a>
+    </div>
+  )
 }
 
 export default User
