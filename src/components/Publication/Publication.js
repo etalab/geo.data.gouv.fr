@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
-import Publishing from '../Publishing/Publishing'
-import User from '../User/User'
+import Publishing from './Publishing'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import { theme } from '../../tools'
 
 const styles = {
   admin: {
-    padding: 40,
+    padding: '60px 40px',
     display: 'block',
-  },
-  section: {
-    paddingBottom: '2em',
-    backgroundColor: 'white',
-    marginBottom: '2em',
-    boxShadow: theme.boxShadowZ1,
   },
   title: {
     marginBottom: '2em',
@@ -54,7 +47,7 @@ class Admin extends Component {
 
     return (
       <div style={styles.admin}>
-        {user ? <User user={user}/> : null}
+        {user ? <Publishing user={user}/> : null}
       </div>
     )
 

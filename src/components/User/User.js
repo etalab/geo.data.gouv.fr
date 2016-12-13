@@ -1,27 +1,26 @@
 import React from 'react'
-import { theme } from '../../tools'
 
 const styles = {
   section: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: 'white',
-    boxShadow: theme.boxShadowZ1,
     maxWidth: '200px',
+    position: 'absolute',
+    top: '90px',
+    left: '44%',
   },
   img: {
-    padding: '10px',
     maxHeight: '120px',
     maxWidth: '200px',
+    borderRadius: '60px',
   },
   detail: {
     width: '100%',
     textAlign: 'center',
     padding: '1em',
-    color: '#fff',
-    fontSize: '1rem',
-    backgroundColor: theme.blue,
+    color: 'black',
+    fontSize: '1.2rem',
   },
 }
 
