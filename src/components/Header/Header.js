@@ -16,9 +16,10 @@ const styles = {
   },
   button: {
     padding: '5px 10px',
-    backgroundColor: '#fff',
-    color: theme.blue,
-    border: 'none',
+    backgroundColor: theme.deepblue,
+    color: '#fff',
+    borderRadius: '7px',
+    boxShadow: theme.boxShadowZ1,
   },
 }
 
