@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <nav style={styles.nav} role="navigation">
       <a style={styles.home} href='/'>Inspire</a>
-      <Login style={styles.button} href='/admin' />
+      <Login style={styles.button} href='/publication' />
     </nav>
   )
 }

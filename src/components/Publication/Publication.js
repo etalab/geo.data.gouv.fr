@@ -37,7 +37,7 @@ class Admin extends Component {
     return waitForDataAndSetState(getUser(), this, 'user')
       .then(() => {
         if (!this.state.user) {
-          const redirect = encodeURI(`${process.env.PUBLIC_URL}/admin`)
+          const redirect = encodeURI(`${process.env.PUBLIC_URL}/publication`)
           const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${redirect}`
 
           document.location.replace(logInUrl)
