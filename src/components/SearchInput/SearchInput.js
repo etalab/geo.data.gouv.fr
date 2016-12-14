@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './SearchInput.css'
+import { wrapper, input } from './SearchInput.css'
 
 class SearchInput extends Component {
   constructor(props) {
@@ -23,11 +23,11 @@ class SearchInput extends Component {
 
   render() {
     return (
-      <div className='search-input-wrapper'>
+      <div className={wrapper}>
         <input
           type='text'
           value={this.state.textInput}
-          className='search-input'
+          className={input}
           onChange={(e) => this.handleChange(e)}
           onKeyPress={(e) => this.handleKeyPress(e)}
           placeholder="Rechercher..." />
