@@ -28,11 +28,11 @@ class CatalogDetail extends Component {
   }
 
   updateMetrics() {
-    return waitForDataAndSetState(fetchMetrics(this.props.params.catalogId), this, 'metrics');
+    return waitForDataAndSetState(fetchMetrics(this.props.params.catalogId), this, 'metrics')
   }
 
   updateCatalog() {
-    return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog');
+    return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog')
   }
 
   userSearch(path, textInput) {
@@ -40,8 +40,7 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    const catalog = this.state.catalog
-    const metrics = this.state.metrics
+    const { catalog, metrics } = this.state
 
     if (!catalog || !metrics) return <div className={loader}><ContentLoader /></div>
 
