@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import CircularProgress from '../CircularProgress/CircularProgress'
 import { browserHistory, Link } from 'react-router'
 import SearchInput from '../SearchInput/SearchInput'
-import Counter from '../Statistics/Counter/Counter'
-import { theme  } from '../../tools'
+import HomepageCounter from '../Statistics/HomepageCounter/HomepageCounter'
 import { fetchGlobalMetrics  } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
@@ -29,7 +28,7 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress />
-    const published = this.state.metrics ? <Counter value={this.state.metrics.published} size="large" color={theme.green} icon="database"/> : loader
+    const published = this.state.metrics ? <HomepageCounter value={this.state.metrics.published} /> : loader
 
     return (
       <div>

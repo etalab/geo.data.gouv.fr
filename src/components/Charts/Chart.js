@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Chart = ({chart, title, description}) => {
+const Chart = ({chart, description}) => {
   const styles = {
     container: {
       display: 'flex',

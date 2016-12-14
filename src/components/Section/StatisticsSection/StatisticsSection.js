@@ -40,14 +40,12 @@ return (
 
       <div style={styles.chart}>
         <Chart
-          title={'Type d\'Enregistrements'}
           description={'Répartition des types d\'enregistrements'}
           chart={<DoughnutChart data={metrics.records.partitions.recordType} />} />
       </div>
 
       <div style={styles.chart}>
         <Chart
-          title={'Metadata Type'}
           description={'Répartition des types de meta donnée'}
           chart={<DoughnutChart data={metrics.records.partitions.metadataType} />} />
       </div>
@@ -65,7 +63,6 @@ return (
 
         <div style={styles.chart}>
           <Chart
-            title={'Type de donnée'}
             description={'Répartition des types de donnée'}
             chart={<DoughnutChart data={metrics.datasets.partitions.dataType} />} />
         </div>
