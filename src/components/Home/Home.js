@@ -9,12 +9,6 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/compone
 
 import { masthead, buttons, inverted, catalogLinks, datagouv, paper } from './Home.css'
 
-const datagouvCounter = {
-  value: {
-    fontSize: '3em',
-  },
-}
-
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -35,7 +29,7 @@ class Home extends Component {
 
   render() {
     const loader =  <CircularProgress />
-    const published = this.state.metrics ? <Counter value={this.state.metrics.published} style={datagouvCounter} size="large" color={theme.green} icon="database"/> : loader
+    const published = this.state.metrics ? <Counter value={this.state.metrics.published} size="large" color={theme.green} icon="database"/> : loader
 
     return (
       <div>

@@ -1,0 +1,13 @@
+.largeLabel {
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+.smallLabel {
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.counterTitle {
+  text-align: center;
+}
