@@ -1,17 +1,9 @@
 import React from 'react'
+import { container } from './Chart.css'
 
 const Chart = ({chart, description}) => {
-  const styles = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  }
-
   return (
-    <div style={styles.container}>
+    <div className={container}>
       <h3>{description}</h3>
       {chart}
     </div>
