@@ -7,7 +7,7 @@ const Chart = ({chart, description}) => {
       <h3>{description}</h3>
       {chart}
     </div>
-    )
+  )
 }
 
 export default Chart

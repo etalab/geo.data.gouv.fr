@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  margin: 0.2em;
+}
+
+@media (min-width: 551px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
