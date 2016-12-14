@@ -1,0 +1,19 @@
+@import "../../theme/shadows";
+
+.link {
+  cursor: pointer;
+  margin: 1em 3em;
+  display: inline-block;
+  width: 300px;
+  position: relative;
+}
+
+.title {
+  font-size: 1.4em;
+}
+
+.paper {
+  background-color: white;
+  padding: 2em 20px;
+  box-shadow: var(--shadow);
+}
