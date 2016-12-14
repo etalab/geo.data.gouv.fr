@@ -1,0 +1,12 @@
+@import "../../../theme/colors";
+
+.container {
+  margin-bottom: 2em;
+  padding: 2em;
+  background-color: var(--blue);
+  color: white;
+}
+
+.container a {
+  color: white;
+}
