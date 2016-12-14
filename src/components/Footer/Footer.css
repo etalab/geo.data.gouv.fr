@@ -1,0 +1,8 @@
+@import "../../theme/colors";
+
+.footer {
+  padding: 40px;
+  text-align: center;
+  color: var(--blue);
+  background-color: var(--darkblue);
+}
