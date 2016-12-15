@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 import Publishing from './Publishing'
+import PublishingSection from './PublishingSection'
+import Organizations from '../Organization/Organizations'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import { theme } from '../../tools'
-
-const styles = {
-  admin: {
-    padding: '60px 40px',
-    display: 'block',
-  },
-  title: {
-    marginBottom: '2em',
-    padding: '2em',
-    color: '#fff',
-    backgroundColor: theme.blue,
-  }
-}
 
 class Admin extends Component {
   constructor(props) {
@@ -44,13 +32,10 @@ class Admin extends Component {
 
   render() {
     const { user } = this.state
+    const component = user ? <Organizations organizations={user.organizations} /> : null
+    const section = <PublishingSection title={'Vos organisations'} component={component} toWait={user} />
 
-    return (
-      <div style={styles.admin}>
-        {user ? <Publishing user={user}/> : null}
-      </div>
-    )
-
+    return <Publishing user={user} section={section} />
   }
 }
 

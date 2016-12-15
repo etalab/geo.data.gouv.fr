@@ -1,19 +1,39 @@
-import React, { Component } from 'react'
-import Organizations from '../Organization/Organizations'
-import Section from '../Section/Section'
+import React from 'react'
 import User from '../User/User'
 
-class Publishing extends Component {
-  render() {
-    const { user } = this.props
+const styles = {
+  publishing: {
+    padding: '60px 40px',
+    display: 'block',
+  },
+  section: {
+    maxWidth: '200px',
+    position: 'absolute',
+    top: '90px',
+    left: '44%',
+  },
+  header: {
+    marginBottom: '1em',
+    padding: '1em',
+    fontSize: '1.5rem',
+    color: 'black',
+  },
+  organization: {
 
-    return (
-      <div>
-        <User style={{marginBottom: '1em'}} user={user}/>
-        <Section title={'Vos organisations'} component={<Organizations organizations={user.organizations} />} />
-      </div>
-    )
   }
+}
+
+const Publishing = ({ user, section, organization = null}) => {
+  if (!user) return null
+  return (
+    <div style={styles.publishing}>
+      <User style={{marginBottom: '1em'}} user={user}/>
+      {organization ? <User style={styles.organization} user={user}/> : null}
+      <div style={{marginBottom: '3em'}}>
+        {section}
+      </div>
+    </div>
+  )
 }
 
 export default Publishing
