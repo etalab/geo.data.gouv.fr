@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { wrapper, input } from './SearchInput.css'
+import { wrapper, input, button } from './SearchInput.css'
 
 class SearchInput extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class SearchInput extends Component {
           onChange={(e) => this.handleChange(e)}
           onKeyPress={(e) => this.handleKeyPress(e)}
           placeholder="Rechercher..." />
-        {this.props.searchButton ? <button className='ui large button' onClick={() => this.search()}>Rechercher</button> : undefined}
+        {this.props.searchButton ? <button className={button} onClick={() => this.search()}>Rechercher</button> : undefined}
       </div>
     )
   }
