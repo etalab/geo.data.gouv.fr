@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ContentLoader from '../Loader/ContentLoader'
-import Catalog from '../Catalog/Catalog'
-import { fetchCatalogs } from '../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
+import CatalogPreview from '../Catalog/CatalogPreview'
+import { fetchCatalogs } from '../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
 const styles = {
   container: {
@@ -35,7 +35,7 @@ class Catalogs extends Component {
     return (
       <div className="catalogs">
         <div style={styles.container}>
-          {this.state.catalogs.map((catalog, idx) => <Catalog key={idx} catalog={catalog} />)}
+          {this.state.catalogs.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)}
         </div>
       </div>
     )

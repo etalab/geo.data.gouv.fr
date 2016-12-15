@@ -11,6 +11,7 @@ export const colors = [
 export const theme = {
   darkblue: '#3E454C',
   blue: '#2185C5',
+  deepblue: '#006eb5',
   highlightBlue: '#35a2e8',
   lightblue: '#7ECEFD',
   lightestblue: '#d0ebf5',

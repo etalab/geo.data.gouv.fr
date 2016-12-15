@@ -59,3 +59,13 @@ export function search(q, filters, offset) {
 export function getUser() {
   return _f('https://inspire.data.gouv.fr/dgv/api/me', { credentials: 'include', mode: 'cors' })
 }
+
+export function getOrganization(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}`)
+}
+
+export function fetchOrganizationMetrics(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/datasets/metrics`)
+}
