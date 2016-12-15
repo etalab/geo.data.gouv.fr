@@ -7,7 +7,7 @@
   display: inline-block;
 }
 
-.pagination-element {
+.paginationElement {
   float: left;
   position: relative;
   background: #fff;
@@ -17,26 +17,26 @@
   cursor: pointer;
 }
 
-.pagination-element.disabled {
+.paginationElement.disabled {
   color: #999;
   cursor: default;
 }
 
-.pagination-element.disabled a:hover {
+.paginationElement.disabled a:hover {
   color: #999;
 }
 
-.pagination-element:first-child {
+.paginationElement:first-child {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
 
-.pagination-element:last-child {
+.paginationElement:last-child {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
 
-.pagination-element-link {
+.paginationElementLink {
   position: relative;
   display: block;
   padding: .5em 1em;
@@ -45,7 +45,7 @@
   color: inherit;
 }
 
-.pagination-element-break {
+.paginationElementBreak {
   float: left;
   position: relative;
   background: #fff;
@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.pagination-element-active {
+.paginationElementActive {
   background: #35a2e8;
   border-color: #2185C5;
   color: #fff;
