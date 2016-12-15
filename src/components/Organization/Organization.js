@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Loader from '../Loader/Loader'
 import OrganizationCard from './OrganizationCard'
 import { fetchOrganizationMetrics, getOrganization, fetchCatalog } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
@@ -37,11 +36,12 @@ class Organization extends Component {
 
   render() {
     const { organization } = this.props
-    const { organizationDetail, metrics, catalog } = this.state
+    const { organizationDetail, metrics, catalog, errors } = this.state
 
-    return <Loader
-        value={organization && catalog && metrics ? true : false}
-        component={<OrganizationCard organization={organization} metrics={metrics} {...organizationDetail} />} />
+    if (organization && catalog && metrics) {
+      return <OrganizationCard organization={organization} metrics={metrics} {...organizationDetail} errors={errors} />
+    }
+    return null
   }
 }
 

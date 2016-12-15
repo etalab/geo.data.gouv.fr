@@ -1,6 +1,7 @@
 import React from 'react'
 import OrganizationMetrics from './OrganizationMetrics'
 import Catalog from '../Catalog/Catalog'
+import OrganizationErrors from './OrganizationErrors'
 import OrganizationProducers from './OrganizationProducers'
 import { theme } from '../../tools'
 
@@ -38,8 +39,20 @@ const styles = {
   },
 }
 
-const OrganizationCard = ({ organization, metrics, sourceCatalog, producers }) => {
+const OrganizationCard = ({ organization, metrics, sourceCatalog, producers, errors }) => {
   const logo = organization.logo || 'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png'
+  let section
+
+  if (errors.length) {
+    section = <OrganizationErrors errors={errors} />
+    styles.organization.backgroundColor = theme.red
+  } else {
+    section = <div style={styles.section}>
+                <OrganizationMetrics metrics={metrics} />
+                <OrganizationProducers organizationId={organization.id} producers={producers} />
+                <Catalog catalogId={sourceCatalog} />
+              </div>
+  }
 
   return (
     <div style={styles.card}>
@@ -47,12 +60,7 @@ const OrganizationCard = ({ organization, metrics, sourceCatalog, producers }) =
         <img style={styles.img} src={logo} alt={organization.slug} />
         <div style={styles.detail}>{organization.name}</div>
       </a>
-
-      <div style={styles.section}>
-        <OrganizationMetrics metrics={metrics} />
-        <OrganizationProducers organizationId={organization.id} producers={producers} />
-        <Catalog catalogId={sourceCatalog} />
-      </div>
+      {section}
     </div>
   )
 }
