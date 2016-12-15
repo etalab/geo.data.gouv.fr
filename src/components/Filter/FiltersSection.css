@@ -1,0 +1,8 @@
+.facets {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.group {
+  margin-bottom: 1em;
+}

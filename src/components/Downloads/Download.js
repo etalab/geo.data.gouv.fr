@@ -1,26 +1,20 @@
 import React from 'react'
 import { strRightBack } from 'underscore.string'
 import { theme  } from '../../tools'
-import './Download.css'
+import { container, button } from './Download.css'
 
 const styles = {
   active: {
-    marginLeft: '2px',
-    padding: '5px 10px',
     backgroundColor: theme.blue,
     color: '#fff',
-    border: 'none',
   },
   inactive: {
-    marginLeft: '2px',
-    padding: '5px 10px',
     backgroundColor: '#ddd',
     color: '#000',
-    border: 'none',
   },
 }
 
-const Download = ({distribution, dlFormat, isPreview, preview, display, style}) => {
+const Download = ({distribution, dlFormat, isPreview, preview, display}) => {
   const { format, projection } = dlFormat
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
   let layerName
@@ -38,16 +32,16 @@ const Download = ({distribution, dlFormat, isPreview, preview, display, style}) 
 
   if (distribution.available) {
     return (
-      <div style={style}>
+      <div className={container}>
         <a href={link  + `?format=${format}&projection=${projection}`}>{name}</a>
-        <div style={styles.buttons}>
-          <button style={(isPreview && display === 'map') ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'map'})}>Carte</button>
-          <button style={(isPreview && display === 'table') ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'table'})}>Tableau</button>
+        <div>
+          <button className={button} style={(isPreview && display === 'map') ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'map'})}>Carte</button>
+          <button className={button} style={(isPreview && display === 'table') ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'table'})}>Tableau</button>
         </div>
       </div>
     )
   } else {
-    return <div style={style}>{name}</div>
+    return <div className={container}>{name}</div>
   }
 }
 

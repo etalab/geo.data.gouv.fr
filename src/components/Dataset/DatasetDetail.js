@@ -7,32 +7,7 @@ import DatasetSection from './DatasetSection'
 import DatasetChecklist from './DatasetChecklist'
 import DownloadDatasets from '../Downloads/DownloadDatasets'
 import FiltersSection from '../Filter/FiltersSection'
-import { theme } from '../../tools'
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '5em',
-  },
-  section: {
-    paddingTop: '2em',
-    paddingBottom: '2em',
-    backgroundColor: 'white',
-    padding: '2em',
-    marginBottom: '2em',
-    boxShadow: theme.boxShadowZ1,
-  },
-  title: {
-    fontSize: '1.2em',
-    fontWeight: 400,
-    marginBottom: '1em',
-  },
-  loader: {
-    textAlign: 'center',
-    marginTop: '5em',
-  },
-}
+import { loader, container, section } from './DatasetDetail.css'
 
 export default class DatasetDetail extends Component {
 
@@ -62,15 +37,28 @@ export default class DatasetDetail extends Component {
   render() {
     const { dataset, catalogs } = this.state
 
-    if (!dataset || !catalogs) return <div style={styles.loader}><ContentLoader /></div>
+    if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
 
     return (
-      <div style={styles.container}>
-        <DatasetSection style={styles} dataset={dataset} />
-        <FiltersSection style={styles} keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
-        <DatasetChecklist style={styles} dataset={dataset} />
-        <DownloadDatasets style={styles} distributions={dataset.dataset.distributions} />
-        <LinksSection style={styles} links={dataset.metadata.links} />
-    </div>)
+      <div className={container}>
+        <DatasetSection dataset={dataset} />
+
+        <div className={section}>
+          <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
+        </div>
+
+        <div className={section}>
+          <DatasetChecklist dataset={dataset} />
+        </div>
+
+        <div className={section}>
+          <DownloadDatasets distributions={dataset.dataset.distributions} />
+        </div>
+
+        <div className={section}>
+          <LinksSection links={dataset.metadata.links} />
+        </div>
+      </div>
+    )
   }
 }

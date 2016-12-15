@@ -1,22 +1,21 @@
-.infos > div {
-  margin-bottom: 0.5em;
-  margin-right: 4em;
-}
+@import "../../theme/shadows";
 
-.dataset-section span {
-  margin-left: 0.3em;
-  font-weight: bold;
-  color: #7ECEFD;
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 5em;
 }
 
 .loader {
-  position: absolute;
-  top: calc(50% - 25px);
-  left: 50%;
+  text-align: center;
+  margin-top: 5em;
 }
 
-@media (min-width: 700px) {
-  .dataset-title {
-    padding-right: 40%;
-  }
+.section {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: white;
+  padding: 2em;
+  margin-bottom: 2em;
+  box-shadow: var(--shadow);
 }

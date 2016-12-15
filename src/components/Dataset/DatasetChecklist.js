@@ -9,8 +9,8 @@ class DatasetChecklist extends Component {
     const { metadata, organizations, dataset } = this.props.dataset
 
     return (
-      <div style={this.props.style.section}>
-        <h3 style={this.props.style.title}>Publication sur data.gouv.fr</h3>
+      <div>
+        <h3>Publication sur data.gouv.fr</h3>
         <div>
           <CheckLicense license={metadata.license} />
           <CheckProducers organizations={organizations} />

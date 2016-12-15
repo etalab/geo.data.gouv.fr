@@ -1,18 +1,9 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 import Facet from '../Facets/Facet'
+import { group, facets } from './FiltersSection.css'
 
-const styles = {
-  group: {
-    marginBottom: '1em',
-  },
-  facets: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-}
-
-const FiltersSection = ({keywords, organizations, catalogs, style}) => {
+const FiltersSection = ({keywords, organizations, catalogs}) => {
   const goToSearch = (filter) => () => browserHistory.push({ pathname: '/records', query: {...filter} })
   const sections = [
     {name: 'organization', title: 'Organisations', filters: organizations},
@@ -21,15 +12,15 @@ const FiltersSection = ({keywords, organizations, catalogs, style}) => {
   ]
 
   return (
-    <div style={style.section}>
+    <div>
       {
         sections.map(section => (
-          <div key={section.title} style={styles.group}>
-            <h3 style={style.title}>{section.title}</h3>
-            <div style={styles.facets}>
+          <div key={section.title} className={group}>
+            <h3>{section.title}</h3>
+            <div className={facets}>
               {
                 section.filters.map((filter, idx) =>
-                  <Facet style={{margin: '2px 5px'}} key={idx} value={filter} addFilter={goToSearch({[section.name]: filter})}/>
+                  <Facet key={idx} value={filter} addFilter={goToSearch({[section.name]: filter})}/>
                 )
             }
             </div>
