@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
-
-const styles = {
-  content: {
-    margin: '1em',
-  },
-  msg: {
-    fontSize: '0.8em'
-  }
-}
+import style from './Accordion.css'
 
 class Accordion extends Component {
   constructor(props) {
@@ -23,8 +15,8 @@ class Accordion extends Component {
     const { title, content, msg } = this.props
     const details =
         <div>
-          { msg ? <div style={styles.msg}>{msg}</div> : null }
-          <div style={styles.content}>{content}</div>
+          { msg ? <div className={style.message}>{msg}</div> : null }
+          <div className={style.content}>{content}</div>
         </div>
 
     return (
