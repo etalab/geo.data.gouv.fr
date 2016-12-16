@@ -4,8 +4,9 @@ import { theme } from '../../tools'
 
 const style = { color: theme.yellow }
 
-const ObsoleteWarning = ({ catalog, refDate }) => {
-  if (!isObsolete(catalog, refDate)) return <span />
+// When testing you may need to define the current date to avoid test cases obsolescence
+const ObsoleteWarning = ({ catalog, currentDate }) => {
+  if (!isObsolete(catalog, currentDate)) return <span />
 
   return (
     <div style={style}>

@@ -1,27 +1,27 @@
 import { computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
 
 describe('catalogs', function () {
-  const refDate = new Date('2016-07-15')
+  const currentDate = new Date('2016-07-15')
 
   describe('computeFreshnessScore(moment)', function () {
     describe('moment is not defined', function () {
       it('should return 0', function () {
-        expect(computeFreshnessScore(null, refDate)).to.equal(1)
+        expect(computeFreshnessScore(null, currentDate)).to.equal(1)
       })
     })
     describe('moment is more recent than 1 month', function () {
       it('should return 100', function () {
-        expect(computeFreshnessScore(new Date('2016-07-01'), refDate)).to.equal(100)
+        expect(computeFreshnessScore(new Date('2016-07-01'), currentDate)).to.equal(100)
       })
     })
     describe('moment is more recent than 6 months', function () {
       it('should return 10', function () {
-        expect(computeFreshnessScore(new Date('2016-05-01'), refDate)).to.equal(10)
+        expect(computeFreshnessScore(new Date('2016-05-01'), currentDate)).to.equal(10)
       })
     })
     describe('moment is older than 6 months', function () {
       it('should return 0', function () {
-        expect(computeFreshnessScore(new Date('2011-07-01'), refDate)).to.equal(1)
+        expect(computeFreshnessScore(new Date('2011-07-01'), currentDate)).to.equal(1)
       })
     })
   })
@@ -30,19 +30,19 @@ describe('catalogs', function () {
     describe('catalog has no mostRecentRevisionDate metric', () => {
       const catalog = {}
       it('should return undefined', function () {
-        return expect(isObsolete(catalog, refDate)).to.be.undefined
+        return expect(isObsolete(catalog, currentDate)).to.be.undefined
       })
     })
     describe('mostRecentRevisionDate is more recent than 6 months', () => {
       const catalog = { metrics: { mostRecentRevisionDate: new Date('2016-06-01') } }
       it('should return false', function () {
-        return expect(isObsolete(catalog, refDate)).to.be.false
+        return expect(isObsolete(catalog, currentDate)).to.be.false
       })
     })
     describe('mostRecentRevisionDate is older than 6 months', () => {
       const catalog = { metrics: { mostRecentRevisionDate: new Date('2011-06-01') } }
       it('should return true', function () {
-        return expect(isObsolete(catalog, refDate)).to.be.true
+        return expect(isObsolete(catalog, currentDate)).to.be.true
       })
     })
   })
@@ -93,7 +93,7 @@ describe('catalogs', function () {
     describe('catalog with no metrics', () => {
       const catalog = {}
       it('should return 0', () => {
-        expect(computeCatalogScore(catalog, refDate)).to.equal(0)
+        expect(computeCatalogScore(catalog, currentDate)).to.equal(0)
       })
     })
 
@@ -104,7 +104,7 @@ describe('catalogs', function () {
         }
       }
       it('should return 0', () => {
-        expect(computeCatalogScore(catalog, refDate)).to.equal(0)
+        expect(computeCatalogScore(catalog, currentDate)).to.equal(0)
       })
     })
 
@@ -122,7 +122,7 @@ describe('catalogs', function () {
         }
       }
       it('should return 0', () => {
-        expect(computeCatalogScore(catalog, refDate)).to.equal(100 * (100 * 100) * 1)
+        expect(computeCatalogScore(catalog, currentDate)).to.equal(100 * (100 * 100) * 1)
       })
     })
 
@@ -140,7 +140,7 @@ describe('catalogs', function () {
         }
       }
       it('should return 0', () => {
-        expect(computeCatalogScore(catalog, refDate)).to.equal(11 * (12 * 12) * 10)
+        expect(computeCatalogScore(catalog, currentDate)).to.equal(11 * (12 * 12) * 10)
       })
     })
   })

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import ObsoleteWarning from '../ObsoleteWarning'
 
 function shallowForCatalog(catalog) {
-  return shallow(<ObsoleteWarning catalog={catalog} refDate={new Date('2016-07-15')} />)
+  return shallow(<ObsoleteWarning catalog={catalog} currentDate={new Date('2016-07-15')} />)
 }
 
 describe('<ObsoleteWarning />', () => {
