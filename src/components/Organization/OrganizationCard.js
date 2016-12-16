@@ -1,7 +1,7 @@
 import React from 'react'
 import OrganizationMetrics from './OrganizationMetrics'
 import Catalog from '../Catalog/Catalog'
-import OrganizationErrors from './OrganizationErrors'
+import Errors from '../Errors/Errors'
 import OrganizationProducers from './OrganizationProducers'
 import styles from './OrganizationCard.css'
 
@@ -10,7 +10,7 @@ const OrganizationCard = ({ organization, metrics, sourceCatalog, producers, err
   let section
 
   if (errors.length) {
-    section = <OrganizationErrors errors={errors} />
+    section = <Errors errors={errors} />
   } else {
     section = (
       <div className={styles.content}>

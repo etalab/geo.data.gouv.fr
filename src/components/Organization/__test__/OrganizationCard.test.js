@@ -1,6 +1,6 @@
 import React from 'react'
 import OrganizationCard from '../OrganizationCard'
-import OrganizationErrors from '../OrganizationErrors'
+import Errors from '../../Errors/Errors'
 import OrganizationMetrics from '../OrganizationMetrics'
 import { shallow } from 'enzyme'
 
@@ -14,10 +14,10 @@ describe('<OrganizationCard />', () => {
   describe('At least one error exists', () => {
     it('should display all errors', () => {
       const errors = ['une erreur', 'une deuxième erreur']
-      const organizationErrors = <OrganizationErrors errors={errors} />
+      const err = <Errors errors={errors} />
       const wrapper = shallow(<OrganizationCard organization={user.organizations[0]} metrics={metrics} sourceCatalog={sourceCatalog} producers={producers} errors={errors} />)
 
-      expect(wrapper).to.contain(organizationErrors)
+      expect(wrapper).to.contain(err)
     })
   })
 
