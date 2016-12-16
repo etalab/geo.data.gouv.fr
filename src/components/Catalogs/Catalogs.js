@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { sortBy } from 'lodash'
+import { computeCatalogScore } from '../../helpers/catalogs'
 import ContentLoader from '../Loader/ContentLoader'
 import CatalogPreview from '../Catalog/CatalogPreview'
 import { fetchCatalogs } from '../../fetch/fetch'
@@ -14,6 +16,7 @@ const styles = {
     marginTop: '5em',
   },
 }
+
 class Catalogs extends Component {
   constructor(props) {
     super(props)
@@ -31,11 +34,12 @@ class Catalogs extends Component {
   render() {
 
     if (!this.state.catalogs) return <div style={styles.loader}><ContentLoader /></div>
+    const sortedCatalogs = sortBy(this.state.catalogs, catalog => -computeCatalogScore(catalog));
 
     return (
       <div className="catalogs">
         <div style={styles.container}>
-          {this.state.catalogs.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)}
+          {sortedCatalogs.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)}
         </div>
       </div>
     )
