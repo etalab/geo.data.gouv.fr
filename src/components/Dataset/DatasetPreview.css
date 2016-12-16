@@ -1,0 +1,13 @@
+@import "../../theme/shadows";
+
+.container {
+  margin-bottom: 3em;
+  padding: 1em;
+  background-color: #FFF;
+  box-shadow: var(--shadow);
+  margin-right: 2em;
+}
+
+.list {
+  line-height: 18px;
+}

@@ -1,26 +1,18 @@
 import React from 'react'
 import HarvestRow from './HarvestRow'
+import style from './HarvestsTable.css'
 
 const HarvestsTable = ({harvests, catalog}) => {
-    const styles = {
-      table: {
-        maxWidth: '40em',
-        width: '100%'
-      },
-      th: {
-        textAlign: 'left',
-      }
-    }
     return (
-      <table style={styles.table}>
+      <table className={style.table}>
 
         <thead>
           <tr>
-            <th style={styles.th}>Statut</th>
-            <th style={styles.th}>Enregistrements</th>
-            <th style={styles.th}>Delta</th>
-            <th style={styles.th}>Date</th>
-            <th style={styles.th}></th>
+            <th>Statut</th>
+            <th>Enregistrements</th>
+            <th>Delta</th>
+            <th>Date</th>
+            <th></th>
           </tr>
         </thead>
 
