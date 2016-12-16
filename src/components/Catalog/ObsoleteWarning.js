@@ -9,7 +9,7 @@ const ObsoleteWarning = ({ catalog, refDate }) => {
 
   return (
     <div style={style}>
-      <i className="icon warning"></i> Ce catalogue n'est plus mis à jour
+      <i className="icon warning"></i> Ce catalogue n'a pas été mis à jour depuis plus de 6 mois
     </div>
   )
 }

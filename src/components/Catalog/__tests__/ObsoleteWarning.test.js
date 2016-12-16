@@ -18,7 +18,7 @@ describe('<ObsoleteWarning />', () => {
   describe('mostRecentRevisionDate is older than 6 months', () => {
     it('should display the warning', () => {
       const wrapper = shallowForCatalog({ metrics: { mostRecentRevisionDate: new Date('2011-06-01') } })
-      expect(wrapper.text()).to.contain('plus mis à jour')
+      expect(wrapper.text()).to.contain('pas été mis à jour depuis plus de 6 mois')
     })
   })
 
