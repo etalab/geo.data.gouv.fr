@@ -6,6 +6,7 @@ import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
 import { fetchHarvests } from '../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components'
+import { harvest, chart } from './HarvestsSection.css'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -36,21 +37,11 @@ class HarvestsSection extends Component {
   render() {
     if (this.state.harvests) {
       const dataGraph = this.getGraphData()
-      const styles = {
-        harvest: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        chart: {
-          margin: '2em',
-        },
-      }
+
       return (
-        <div style={styles.harvest}>
+        <div className={harvest}>
           <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
-          <div style={styles.chart}>
+          <div className={chart}>
             <MediaQuery minWidth={701} >
               <Chart
                 title={'Évolution des Enregistrements'}

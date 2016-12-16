@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { shallow } from 'enzyme'
-import { theme } from '../../../tools'
 import HarvestRow from '../HarvestRow'
 import { doneSince } from '../../../helpers/doneSince'
 

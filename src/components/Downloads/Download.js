@@ -1,11 +1,10 @@
 import React from 'react'
 import { strRightBack } from 'underscore.string'
-import { theme  } from '../../tools'
 import { container, button } from './Download.css'
 
-const styles = {
+const displayStyle = {
   active: {
-    backgroundColor: theme.blue,
+    backgroundColor: '#2185C5',
     color: '#fff',
   },
   inactive: {
@@ -35,8 +34,8 @@ const Download = ({distribution, dlFormat, isPreview, preview, display}) => {
       <div className={container}>
         <a href={link  + `?format=${format}&projection=${projection}`}>{name}</a>
         <div>
-          <button className={button} style={(isPreview && display === 'map') ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'map'})}>Carte</button>
-          <button className={button} style={(isPreview && display === 'table') ? styles.active : styles.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'table'})}>Tableau</button>
+          <button className={button} style={(isPreview && display === 'map') ? displayStyle.active : displayStyle.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'map'})}>Carte</button>
+          <button className={button} style={(isPreview && display === 'table') ? displayStyle.active : displayStyle.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'table'})}>Tableau</button>
         </div>
       </div>
     )

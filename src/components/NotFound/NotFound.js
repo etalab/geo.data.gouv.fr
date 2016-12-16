@@ -1,23 +1,9 @@
 import React from 'react'
-import { theme } from '../../tools'
-
-const styles = {
-  notFound: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    color: theme.blue,
-    fontSize: '2em',
-    marginTop: '2em',
-  },
-  header: {
-    fontSize: '4em',
-  }
-}
+import { notFound } from './NotFound.css'
 
 const NotFound = () => (
-  <div style={styles.notFound}>
-    <h1 style={styles.header}>404</h1>
+  <div className={notFound}>
+    <h1>404</h1>
     <p>Page non trouvée</p>
   </div>
 )

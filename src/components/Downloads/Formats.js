@@ -13,11 +13,11 @@ class Formats extends Component {
     return (
       <div>
         {formats.map((format, idx) => {
-          const style = cx(button, {
+          const className = cx(button, {
             [selected]: format === active,
           })
 
-          return <button key={idx} className={style} onClick={() => changeFormat && changeFormat(format)}>{format.label}</button>
+          return <button key={idx} className={className} onClick={() => changeFormat && changeFormat(format)}>{format.label}</button>
         })}
       </div>
     )
