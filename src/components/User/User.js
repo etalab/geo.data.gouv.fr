@@ -6,9 +6,6 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     maxWidth: '200px',
-    position: 'absolute',
-    top: '90px',
-    left: '44%',
   },
   img: {
     maxHeight: '120px',
