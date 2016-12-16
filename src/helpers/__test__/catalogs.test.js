@@ -90,52 +90,57 @@ describe('catalogs', function () {
   })
 
   describe('computeCatalogScore(catalog)', () => {
-    [
-      { catalog: {}, expectedValue: 0 },
+    describe('catalog with no metrics', () => {
+      const catalog = {}
+      it('should return 0', () => {
+        expect(computeCatalogScore(catalog, refDate)).to.equal(0)
+      })
+    })
 
-      {
-        catalog: {
-          metrics: {
-            datasets: { totalCount: 0 }
-          }
-        },
-        expectedValue: 0
-      },
+    describe('catalog with totalCount = 0', () => {
+      const catalog = {
+        metrics: {
+          datasets: { totalCount: 0 }
+        }
+      }
+      it('should return 0', () => {
+        expect(computeCatalogScore(catalog, refDate)).to.equal(0)
+      })
+    })
 
-      {
-        catalog: {
-          metrics: {
-            datasets: {
-              totalCount: 1,
-              partitions: {
-                openness: { yes: 1 },
-                download: { yes: 1 },
-              }
-            },
-            mostRecentRevisionDate: new Date('2000-01-01')
-          }
-        },
-        expectedValue: 100 * (100 * 100) * 1
-      },
+    describe('perfect but old catalog', () => {
+      const catalog = {
+        metrics: {
+          datasets: {
+            totalCount: 1,
+            partitions: {
+              openness: { yes: 1 },
+              download: { yes: 1 },
+            }
+          },
+          mostRecentRevisionDate: new Date('2000-01-01')
+        }
+      }
+      it('should return 0', () => {
+        expect(computeCatalogScore(catalog, refDate)).to.equal(100 * (100 * 100) * 1)
+      })
+    })
 
-      {
-        catalog: {
-          metrics: {
-            datasets: {
-              totalCount: 100,
-              partitions: {
-                openness: { yes: 11 },
-                download: { yes: 12 },
-              }
-            },
-            mostRecentRevisionDate: new Date('2016-05-01')
-          }
-        },
-        expectedValue: 11 * (12 * 12) * 10
-      },
-    ].forEach((testCase, idx) => {
-      it(`test case ${idx} should return the expected value: ${testCase.expectedValue}`, () => {
-        expect(computeCatalogScore(testCase.catalog, refDate)).to.equal(testCase.expectedValue)
+    describe('recent but poor catalog', () => {
+      const catalog = {
+        metrics: {
+          datasets: {
+            totalCount: 100,
+            partitions: {
+              openness: { yes: 11 },
+              download: { yes: 12 },
+            }
+          },
+          mostRecentRevisionDate: new Date('2016-05-01')
+        }
+      }
+      it('should return 0', () => {
+        expect(computeCatalogScore(catalog, refDate)).to.equal(11 * (12 * 12) * 10)
       })
     })
   })
