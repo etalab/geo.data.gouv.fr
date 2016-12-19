@@ -15,7 +15,7 @@ class Accordion extends Component {
     const { title, content, msg } = this.props
     const details =
         <div>
-          { msg ? <div className={style.message}>{msg}</div> : null }
+          { msg ? <div className={style.msg}>{msg}</div> : null }
           <div className={style.content}>{content}</div>
         </div>
 
