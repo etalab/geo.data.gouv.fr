@@ -7,34 +7,6 @@
   box-shadow: var(--shadow);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 2em;
-}
-
-.content h4 {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
-
-.section > div {
-  background-color: white;
-  padding: 1em;
-}
-
-.section > div p {
-  margin-bottom: 4px;
-}
-
-.counter {
-  display: flex;
-  margin-top: 14px;
-  font-size: 1.6rem;
-  align-items: baseline;
-}
-
 .organization {
   background-color: var(--blue);
   padding: 2em;
