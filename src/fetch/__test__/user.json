@@ -1,0 +1,29 @@
+{
+   "about":null,
+   "apikey":null,
+   "avatar":"https://www.data.gouv.fr/s/avatars/6c/132fb56db84a3cb02569935d001d80-100.png",
+   "email":"theophile.merliere@gmail.com",
+   "first_name":"Théophile",
+   "id":"584e681ac751df5e9dc0bb7e",
+   "last_name":"Merlière",
+   "organizations":[
+      {
+         "acronym":null,
+         "class":"Organization",
+         "id":"54637e78c751df506189ec20",
+         "logo":"https://www.data.gouv.fr/s/avatars/2015-02-22/2905e7e4347143a590190ba991f81705/inspire-logo-100.png",
+         "name":"Passerelle Inspire",
+         "page":"https://www.data.gouv.fr/fr/organizations/passerelle-inspire/",
+         "slug":"passerelle-inspire",
+         "uri":"https://www.data.gouv.fr/api/1/organizations/passerelle-inspire/"
+      }
+   ],
+   "page":"https://www.data.gouv.fr/fr/users/theophile-merliere/",
+   "roles":[
+
+   ],
+   "since":"2016-12-12T10:04:26.395000",
+   "slug":"theophile-merliere",
+   "uri":"https://www.data.gouv.fr/api/1/users/theophile-merliere/",
+   "website":null
+}

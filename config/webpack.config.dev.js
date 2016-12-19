@@ -14,7 +14,7 @@ var publicPath = '/';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing shlash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
-var publicUrl = '';
+var publicUrl = 'http://localhost:3000';
 // Get enrivonment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
 

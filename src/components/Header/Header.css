@@ -5,9 +5,27 @@
   padding: 20px 2em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .nav a {
   color: var(--white);
+}
+
+.nav a:focus,
+.nav a:hover {
+  color: #fff;
+}
+
+.home {
   font-size: 2em;
+}
+
+.login {
+  font-size: 1em;
+}
+
+.login:focus,
+.login:hover {
+  text-decoration: underline;
 }

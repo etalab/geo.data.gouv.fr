@@ -1,19 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router'
-import CatalogPreview from './CatalogPreview/CatalogPreview'
-import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
-import { link, paper, title } from './Catalog.css'
+import React, { Component } from 'react'
+import CatalogPreview from './CatalogPreview'
+import { fetchCatalog } from '../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-const Catalog = ({ catalog }) => {
-  return (
-      <Link to={`/catalogs/${catalog._id}`} className={link}>
-        <div className={paper}>
-          <div className={title}>{catalog.name}</div>
-          <LastHarvestStatus harvest={catalog.service.sync}/>
-          <CatalogPreview metrics={catalog.metrics} />
-        </div>
-      </Link>
-  )
+class Catalog extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { catalog: null, errors: []}
+  }
+
+  componentWillMount() {
+    return waitForDataAndSetState(fetchCatalog(this.props.catalogId), this, 'catalog')
+  }
+
+  componentWillUnmount() {
+    return cancelAllPromises(this)
+  }
+
+  render() {
+    const { catalog } = this.state
+
+    if (catalog) return <CatalogPreview catalog={catalog} />
+    return null
+  }
 }
 
 export default Catalog
