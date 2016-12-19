@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
 import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
+import ObsoleteWarning from './ObsoleteWarning'
 import { get } from 'lodash'
 import { container, link, paper, title } from './CatalogPreview.css'
 
@@ -16,6 +17,7 @@ const CatalogPreview = ({ catalog }) => {
       <div className={paper}>
         <div className={title}>{catalog.name}</div>
         <LastHarvestStatus harvest={catalog.service.sync}/>
+        <ObsoleteWarning catalog={catalog} />
         <div className={container}>
           <Percent value={openness} total={metrics.datasets.totalCount} label="Données ouvertes" icon="unlock alternate icon" />
           <Percent value={download} total={metrics.datasets.totalCount} label="Téléchargeable" icon="download" />
