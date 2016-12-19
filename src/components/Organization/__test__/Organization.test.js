@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import OrganizationPreview from '../OrganizationPreview'
 
 import organizationDetail from '../../../fetch/__test__/organization.json'
 import metrics from '../../../fetch/__test__/organizationMetrics.json'
