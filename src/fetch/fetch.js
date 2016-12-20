@@ -69,3 +69,18 @@ export function fetchOrganizationMetrics(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/datasets/metrics`)
 }
+
+export function fetchOrganizationPublished(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/datasets/published`)
+}
+
+export function fetchOrganizationNotPublishedYet(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/datasets/not-published-yet`)
+}
+
+export function fetchOrganizationPublishedByOthers(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/datasets/published-by-others`)
+}

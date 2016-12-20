@@ -7,7 +7,7 @@ const Publishing = ({ user, section, organization = null}) => {
 
   return (
     <div className={styles.publishing}>
-      <User style={{marginBottom: '1em'}} user={user}/>
+      <User user={user}/>
 
       {organization ? <User user={user}/> : null}
 

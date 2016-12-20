@@ -1,0 +1,23 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+  position: absolute;
+  top: 90px;
+  left: 44%;
+}
+
+.img {
+  max-height: 120px;
+  max-width: 200px;
+  border-radius: 60px;
+}
+
+.detail {
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  color: black;
+  font-size: 1.2rem;
+}
