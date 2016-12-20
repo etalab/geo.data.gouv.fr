@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import MediaQuery from 'react-responsive'
-import { Line } from 'react-chartjs'
 import Histogram from '../../Charts/Histogram/Histogram'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
 import { fetchHarvests } from '../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components'
+import { harvest, chart } from './HarvestsSection.css'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -36,40 +36,30 @@ class HarvestsSection extends Component {
   render() {
     if (this.state.harvests) {
       const dataGraph = this.getGraphData()
-      const styles = {
-        harvest: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        chart: {
-          margin: '2em',
-        },
-      }
+
       return (
-        <div style={styles.harvest}>
+        <div className={harvest}>
           <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
-          <div style={styles.chart}>
+          <div className={chart}>
             <MediaQuery minWidth={701} >
               <Chart
                 title={'Évolution des Enregistrements'}
                 description={'Évolution du nombre d\'enregistrements par moissonnage'}
-                chart={<Histogram chartType={Line} data={dataGraph} width="500" height="200" />} />
+                chart={<Histogram data={dataGraph} width="500" height="200" />} />
             </MediaQuery>
 
             <MediaQuery minWidth={501} maxWidth={700} >
               <Chart
                 title={'Évolution des Enregistrements'}
                 description={'Évolution du nombre d\'enregistrements par moissonnage'}
-                chart={<Histogram chartType={Line} data={dataGraph} width="400" height="220" />} />
+                chart={<Histogram data={dataGraph} width="400" height="220" />} />
             </MediaQuery>
 
             <MediaQuery maxWidth={500} >
               <Chart
                 title={'Évolution des Enregistrements'}
                 description={'Évolution du nombre d\'enregistrements par moissonnage'}
-                chart={<Histogram chartType={Line} data={dataGraph} width="260" height="180" />} />
+                chart={<Histogram data={dataGraph} width="260" height="180" />} />
             </MediaQuery>
           </div>
         </div>

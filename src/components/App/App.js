@@ -1,31 +1,13 @@
 import React from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import { theme } from '../../tools'
-
-const styles = {
-  loader: {
-    position: 'absolute',
-    top: '42%',
-    left: '42%',
-  },
-  content: {
-    flexDirection: 'column',
-    display: 'flex',
-    position: 'relative',
-    minHeight: '100vh',
-    backgroundColor: theme.white,
-  },
-  body: {
-    flex: 1,
-  }
-}
+import { content, body } from './App.css'
 
 const App = ({children}) => {
   return (
-    <div className="Content" style={styles.content}>
+    <div className={content}>
       <Header />
-      <div style={styles.body}>
+      <div className={body}>
         {children}
       </div>
       <Footer />

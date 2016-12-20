@@ -8,40 +8,7 @@ import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsS
 import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
 import { fetchCatalog, fetchMetrics } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import { theme } from '../../tools'
-
-const styles = {
-  section: {
-    paddingTop: '2em',
-    paddingBottom: '2em',
-    backgroundColor: 'white',
-    padding: '2em',
-    marginBottom: '2em',
-    boxShadow: theme.boxShadowZ1,
-  },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  h1: {
-    fontSize: '1.4rem',
-    color: theme.darkblue,
-    marginBottom: '1em',
-  },
-  h2: {
-    fontSize: '1.2em',
-    fontWeight: 400,
-    marginBottom: '1em',
-  },
-  catalogDetail: {
-    padding: 40,
-    display: 'block',
-  },
-  loader: {
-    textAlign: 'center',
-    marginTop: '5em',
-  },
-}
+import { section, sectionNoPadding, container, loader} from './CatalogDetail.css'
 
 class CatalogDetail extends Component {
   constructor(props) {
@@ -61,11 +28,11 @@ class CatalogDetail extends Component {
   }
 
   updateMetrics() {
-    return waitForDataAndSetState(fetchMetrics(this.props.params.catalogId), this, 'metrics');
+    return waitForDataAndSetState(fetchMetrics(this.props.params.catalogId), this, 'metrics')
   }
 
   updateCatalog() {
-    return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog');
+    return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog')
   }
 
   userSearch(path, textInput) {
@@ -73,23 +40,22 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    const catalog = this.state.catalog
-    const metrics = this.state.metrics
+    const { catalog, metrics } = this.state
 
-    if (!catalog || !metrics) return <div style={styles.loader}><ContentLoader /></div>
+    if (!catalog || !metrics) return <div className={loader}><ContentLoader /></div>
 
     return (
-      <div style={styles.catalogDetail} id="catalog-detail">
-        <div style={{...styles.section, padding: '0'}}>
+      <div className={container}>
+        <div className={sectionNoPadding}>
           <CatalogSection catalog={catalog} />
           <StatisticsSection metrics={metrics} />
         </div>
 
-        <div style={styles.section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
-        <div style={styles.section}><HarvestsSection catalog={catalog} /></div>
+        <div className={section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
+        <div className={section}><HarvestsSection catalog={catalog} /></div>
 
-        <div style={styles.section}>
-          <h2 style={styles.h2}>Rechercher dans les jeux de données du catalogue</h2>
+        <div className={section}>
+          <h2>Rechercher dans les jeux de données du catalogue</h2>
           <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
         </div>
       </div>

@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import { forEach, sortBy } from 'lodash'
 import FacetsGroup from './FacetsGroup'
 
-const styles = {
-  facets: {
-    marginLeft: '2em',
-  },
-}
-
 class Facets extends Component {
   render() {
     const { facets, filters, addFilter } = this.props
@@ -23,7 +17,7 @@ class Facets extends Component {
     const sorted = sortBy(facetsArray, 'type')
 
     return (
-      <div style={styles.facets}>
+      <div>
         { sorted.map(facet => <FacetsGroup
           key={facet.type}
           type={facet.type}

@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
 import Filter from '../Filter/Filter'
-
-const styles = {
-  count: {
-    color: '#777',
-    fontSize: '12px',
-  },
-  facet: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-}
+import styles from './Facet.css'
 
 class Facet extends Component {
   render() {
@@ -28,11 +18,9 @@ class Facet extends Component {
     }
 
     return (
-      <div style={{...style, ...styles.facet}}>
-        <span style={styles.facet}>
-          <Filter filter={filter} onClick={onClick}/>
-        </span>
-        { count ? <span style={styles.count}>x&nbsp;{count}</span> : null }
+      <div style={style} className={styles.container}>
+        <Filter filter={filter} onClick={onClick}/>
+        { count ? <span className={styles.count}>x&nbsp;{count}</span> : null }
       </div>
     )
   }

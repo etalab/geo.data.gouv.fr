@@ -1,33 +1,14 @@
 import React from 'react'
-import Login from '../Authentification/Login'
-import { theme } from '../../tools'
-
-const styles = {
-  nav: {
-    backgroundColor: theme.blue,
-    padding: '20px 2em',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  home: {
-    color: theme.white,
-    fontSize: '2em',
-  },
-  button: {
-    padding: '5px 10px',
-    backgroundColor: theme.deepblue,
-    color: '#fff',
-    borderRadius: '7px',
-    boxShadow: theme.boxShadowZ1,
-  },
-}
+import { nav, home, login } from './Header.css'
 
 const Header = () => {
+  const redirect = encodeURI(`${process.env.PUBLIC_URL}/publication`)
+  const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${redirect}`
+
   return (
-    <nav style={styles.nav} role="navigation">
-      <a style={styles.home} href='/'>Inspire</a>
-      <Login style={styles.button} href='/publication' />
+    <nav className={nav} role="navigation">
+      <a className={home} href='/'>Inspire</a>
+      <a className={login} href={logInUrl}>Publier des données</a>
     </nav>
   )
 }

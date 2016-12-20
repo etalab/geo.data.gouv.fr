@@ -1,42 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Facet from './Facet'
 import { isActive } from '../../helpers/manageFilters'
+import { container } from './FacetsGroup.css'
 
-const styles = {
-  type: {
-    textTransform: 'capitalize',
-    fontSize: '1em',
-    fontWeight: 400,
-    marginBottom: '1em',
-  },
-  group: {
-    marginBottom: '1em',
+export default ({ type, facets, filters, addFilter }) => {
+  const activeMap = facets.map(facet => isActive(filters, {name: type, value: facet.value}))
+
+  if (activeMap.indexOf(false) === -1) {
+    return null;
   }
+
+  return (
+    <div className={container}>
+      <h4>{type}</h4>
+      {facets.map((facet, idx) => <Facet
+        key={idx}
+        name={type}
+        value={facet.value}
+        count={facet.count}
+        isActive={activeMap[idx]}
+        addFilter={addFilter} />)}
+    </div>
+  )
 }
-
-class FacetsGroup extends Component {
-  render() {
-    const { type, facets, filters, addFilter } = this.props
-
-    const activeMap = facets.map(facet => isActive(filters, {name: type, value: facet.value}))
-
-    if (activeMap.indexOf(false) === -1) {
-      return null;
-    }
-
-    return (
-      <div style={styles.group}>
-        <h4 style={styles.type}>{type}</h4>
-        {facets.map((facet, idx) => <Facet
-          key={idx}
-          name={type}
-          value={facet.value}
-          count={facet.count}
-          isActive={activeMap[idx]}
-          addFilter={addFilter} />)}
-      </div>
-    )
-  }
-}
-
-export default FacetsGroup

@@ -1,0 +1,14 @@
+@import "../../theme/colors";
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--blue);
+  font-size: 2em;
+  margin-top: 2em;
+}
+
+.notFound h1 {
+  font-size: 4em;
+}

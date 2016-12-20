@@ -1,0 +1,8 @@
+.table {
+  max-width: 40em;
+  width: 100%;
+}
+
+.table th {
+  text-align: center;
+}

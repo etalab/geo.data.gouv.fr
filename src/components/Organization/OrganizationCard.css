@@ -1,0 +1,53 @@
+@import "../../theme/colors";
+@import "../../theme/shadows";
+
+.container {
+  display: flex;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 2em;
+}
+
+.content h4 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.section > div {
+  background-color: white;
+  padding: 1em;
+}
+
+.section > div p {
+  margin-bottom: 4px;
+}
+
+.counter {
+  display: flex;
+  margin-top: 14px;
+  font-size: 1.6rem;
+  align-items: baseline;
+}
+
+.organization {
+  background-color: var(--blue);
+  padding: 2em;
+}
+
+.img {
+  max-height: 120px;
+  max-width: 200px;
+  margin-bottom: 10px;
+  border-radius: 60px;
+}
+
+.detail {
+  color: #fff;
+  font-size: 1rem;
+}

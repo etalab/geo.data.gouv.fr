@@ -1,3 +1,14 @@
-.download:hover {
-  background-color: #d0ebf5;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+  padding: 0 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.button {
+  margin-left: 2px;
+  padding: 5px 10px;
+  border: none;
 }

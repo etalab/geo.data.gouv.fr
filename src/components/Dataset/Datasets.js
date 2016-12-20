@@ -6,18 +6,7 @@ import SearchInput from '../SearchInput/SearchInput'
 import DatasetsResults from './DatasetsResults'
 import Filter from '../Filter/Filter'
 import { addFilter, removeFilter } from '../../helpers/manageFilters'
-
-const styles = {
-  searchInputWrapper: {
-    margin: '4em',
-  },
-  filters: {
-    display: 'inline-block',
-    padding: '.4em .5em',
-    margin: '2px 2px 2px 0',
-    fontSize: '12px',
-  },
-}
+import style from './Datasets.css'
 
 class Datasets extends Component {
   constructor(props) {
@@ -90,26 +79,27 @@ class Datasets extends Component {
   }
 
   render() {
+    const { textInput, filters, datasets, page, errors } = this.state
     return (
       <div>
-        <div style={styles.searchInputWrapper}>
+        <div className={style.searchWrapper}>
           <SearchInput
-            textInput={this.state.textInput}
-            filters={this.state.filters}
+            textInput={textInput}
+            filters={filters}
             searchButton={true}
             handleTextChange={(textInput) => this.userSearch(textInput)} />
 
-          <div style={styles.filters}>{this.state.filters.length ? 'Filtres actifs' : 'Aucun filtre actif'}</div>
-          {this.state.filters.map((filter, idx) => <Filter detail={true} remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
+          <div className={style.filters}>{filters.length ? 'Filtres actifs' : 'Aucun filtre actif'}</div>
+          {filters.map((filter, idx) => <Filter detail={true} remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
         </div>
 
         <DatasetsResults
-          datasets={this.state.datasets}
-          filters={this.state.filters}
-          page={this.state.page}
+          datasets={datasets}
+          filters={filters}
+          page={page}
           addFilter={(filter) => this.addFilter(filter)}
           handleChangePage={(data) => this.handleChangePage(data)}
-          errors={this.state.errors}/>
+          errors={errors}/>
 
       </div>
     )

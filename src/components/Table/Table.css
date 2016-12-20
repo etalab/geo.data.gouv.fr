@@ -1,37 +1,35 @@
-table {
+.table table {
   margin: 10px;
 }
 
-table, th, td {
+.table {
+  min-width: 40%;
+}
+
+.table table, .table th, .table td {
  border-bottom: 1px solid #d0ebf5;
 }
 
-thead {
+.table thead {
   padding: 10px;
 }
 
-th {
-  background-color: #f5f5f5;
+.table tr:hover {
+  background-color: #f5f5f5
 }
 
-tr:hover {background-color: #f5f5f5}
-
-th, td {
+.table th, .table td {
   text-align: center;
   padding: 5px;
 }
 
 /* PAGINATION */
-.reactable-pagination > tr > td {
+.table a {
   padding: 10px;
   background-color: #fff;
-}
-
-.reactable-pagination > tr > td > a {
   margin: 8px;
 }
 
-.reactable-current-page {
-  padding: 6px 10px;
+.table a.reactable-current-page {
   background-color: #d0ebf5;
 }

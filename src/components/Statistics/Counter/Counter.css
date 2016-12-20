@@ -1,0 +1,26 @@
+@import "../../../theme/colors";
+
+.largeLabel {
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+.defaultLabel {
+  font-weight: 300;
+}
+
+.container {
+  text-align: center;
+}
+
+.successLabel {
+  color: var(--green);
+}
+
+.warningLabel {
+  color: var(--yellow);
+}
+
+.errorLabel {
+  color: var(--red);
+}

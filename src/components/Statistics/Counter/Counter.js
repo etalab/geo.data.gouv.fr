@@ -1,39 +1,26 @@
 import React from 'react'
+import cx from 'classnames'
+import { container, defaultLabel, largeLabel, successLabel, warningLabel, errorLabel } from './Counter.css'
 
-const defaultStyle = {
-  large: {
-    fontSize: '4rem',
-    lineHeight: '4rem',
-  },
-  label: {
-    large: {
-      fontSize: '1.4em',
-      fontWeight: '300',
-    },
-  },
-  title: {
-    textAlign: 'center',
-  },
-}
 
-const Counter = ({value, label, style, unit='', size='', color='black', icon='', title=''}) => {
-  let styles = {...style, ...defaultStyle}
-  let iconDiv = null
+const Counter = ({value, label, unit='', size='', color='', icon='', title=''}) => {
+  const labelStyle = cx(defaultLabel, {
+    [largeLabel]: size === 'large',
+    [successLabel]: color === 'success',
+    [warningLabel]: color === 'warning',
+    [errorLabel]: color === 'error',
+  });
 
-  if (icon) {
-    iconDiv = <i className={`${icon} icon`}></i>
-  }
+  const labelDiv = label ? <div className={labelStyle}>{label}</div> : null
+  const titleDiv = title ? <h3>{title}</h3> : null
+  const iconDiv = icon ? <i className={`${icon} icon`}></i> : null
+  const valueDiv = <div className={labelStyle}>{iconDiv} {value ? value : '0'} {unit}</div>
 
   return (
-    <div style={style}>
-      { title ? <h3 style={styles.title}>{title}</h3> : null }
-
-      <div style={{...styles[size], color}}>
-        {iconDiv} {value} {unit}
-      </div>
-
-      { label ? <div style={styles.label[size]} className="label">{label}</div> : null }
-
+    <div className={container}>
+      { titleDiv }
+      { valueDiv }
+      { labelDiv }
     </div>
   )
 }

@@ -48,9 +48,9 @@ describe('<Download />', () => {
     it('should display only dataset name', () => {
       let dataset = featureType
       dataset.available = false
-      const div = <div style={{}}>drac:bretagne_immeuble_mh</div>
-      const wrapper = shallow(<Download distribution={featureType} dlFormat={format} style={{}}/>)
-      expect(wrapper).to.contain(div)
+      const wrapper = shallow(<Download distribution={featureType} dlFormat={format} />)
+
+      expect(wrapper).to.have.html('<div>drac:bretagne_immeuble_mh</div>')
     })
   })
 

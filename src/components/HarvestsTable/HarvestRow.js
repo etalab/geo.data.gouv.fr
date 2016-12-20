@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
 import HarvestDelta from './HarvestDelta'
-import { theme } from '../../tools'
 import { doneSince } from '../../helpers/doneSince'
 
-const styles = {
+const displayStyle = {
   successful: {
-    color: theme.green
+    color: 'green'
   },
   failed: {
-    color: theme.red
+    color: 'red'
   }
 }
 
@@ -17,7 +16,7 @@ const HarvestRow = ({harvest, catalog, previousHarvest}) => {
   return (
     <tr>
       <td>
-        <div style={styles[harvest.status]} >
+        <div style={displayStyle[harvest.status]} >
           {harvest.status === 'successful' ? 'Réussi' : 'En échec'}
         </div>
       </td>
@@ -30,7 +29,7 @@ const HarvestRow = ({harvest, catalog, previousHarvest}) => {
         </Link>
       </td>
     </tr>
-      )
+  )
 }
 
 export default HarvestRow

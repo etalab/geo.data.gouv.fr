@@ -19,11 +19,11 @@ describe('<ContentLoader />', () => {
   })
 
   it('should display a CircularProgress with specific style', () => {
-    const style = {
+    const bg = {
       backgroundColor: 'red'
     }
-    const loader = <CircularProgress style={style} size={2} />
-    const wrapper = shallow(<ContentLoader style={style} />)
+    const loader = <CircularProgress style={bg} size={2} />
+    const wrapper = shallow(<ContentLoader style={bg} />)
 
     expect(wrapper.contains(loader)).to.be.true
   })

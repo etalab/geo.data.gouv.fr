@@ -2,20 +2,10 @@ import React, { Component } from 'react'
 import { sortBy } from 'lodash'
 import { computeCatalogScore } from '../../helpers/catalogs'
 import ContentLoader from '../Loader/ContentLoader'
+import { fetchCatalogs } from '../../fetch/fetch';
+import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 import CatalogPreview from '../Catalog/CatalogPreview'
-import { fetchCatalogs } from '../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-
-const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: '2em',
-  },
-  loader: {
-    textAlign: 'center',
-    marginTop: '5em',
-  },
-}
+import { container, loader } from './Catalogs.css'
 
 class Catalogs extends Component {
   constructor(props) {
@@ -24,7 +14,7 @@ class Catalogs extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs');
+    return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs')
   }
 
   componentWillUnmount() {
@@ -32,15 +22,13 @@ class Catalogs extends Component {
   }
 
   render() {
+    if (!this.state.catalogs) return <div className={loader}><ContentLoader /></div>
 
-    if (!this.state.catalogs) return <div style={styles.loader}><ContentLoader /></div>
-    const sortedCatalogs = sortBy(this.state.catalogs, catalog => -computeCatalogScore(catalog));
+    const sortedCatalogs = sortBy(this.state.catalogs, catalog => -computeCatalogScore(catalog))
 
     return (
-      <div className="catalogs">
-        <div style={styles.container}>
-          {sortedCatalogs.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)}
-        </div>
+      <div className={container}>
+        {sortedCatalogs.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)}
       </div>
     )
   }

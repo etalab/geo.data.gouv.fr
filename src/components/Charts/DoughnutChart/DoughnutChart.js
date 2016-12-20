@@ -3,6 +3,7 @@ import { Doughnut } from 'react-chartjs'
 import { colors } from '../../../tools.js'
 import DoughnutChartList from './DoughnutChartList/DoughnutChartList'
 import Percent from '../../Statistics/Percent/Percent'
+import { container } from './DoughnutChart.css'
 
 class DoughnutChart extends Component {
   formatData(data) {
@@ -28,30 +29,21 @@ class DoughnutChart extends Component {
 
   render() {
     const data = this.formatData(this.props.data)
-    const styles = {
-      chart: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-      },
+
+    if (data.length === 0) {
+      return <h1>Aucune donnée</h1>
     }
 
     if (data.length === 1) {
-      return <Percent value={100} total={100} style={{textAlign: 'center'}} label={data[0].label} icon="database icon" size="large" />
-    } else if (data.length === 0) {
-      return <h1>Aucune donnée</h1>
-    } else {
-      return (
-        <div>
-
-          <div style={styles.chart}>
-            <Doughnut className="doughnut computer" data={data} width="260" />
-            <DoughnutChartList data={data}/>
-          </div>
-
-        </div>
-        )
+      return <Percent value={100} total={100} label={data[0].label} icon="database icon" size="large" />
     }
+
+    return (
+      <div className={container}>
+        <Doughnut className="doughnut computer" data={data} width="260" />
+        <DoughnutChartList data={data}/>
+      </div>
+    )
   }
 }
 

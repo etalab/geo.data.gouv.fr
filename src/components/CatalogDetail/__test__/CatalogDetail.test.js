@@ -17,7 +17,8 @@ describe('<CatalogDetail />', () => {
       const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
 
       wrapper.setState({catalog, metrics})
-      expect(wrapper.find('#catalog-detail').length).to.equal(1)
+
+      expect(wrapper).to.contain(<h2>Rechercher dans les jeux de données du catalogue</h2>)
     })
   })
 

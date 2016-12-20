@@ -3,25 +3,7 @@ import Facets from '../Facets/Facets'
 import DatasetPreview from './DatasetPreview'
 import ContentLoader from '../Loader/ContentLoader'
 import WrappedPagination from '../Pagination/WrappedPagination'
-
-const styles = {
-  results: {
-    display: 'flex',
-    margin: '4em',
-  },
-  result: {
-    flexGrow: 1,
-  },
-  loader: {
-    textAlign: 'center',
-    marginTop: '5em',
-  },
-  paginationWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '0 4em 2em',
-  },
-}
+import { loader, results, result, paginationWrapper } from './DatasetsResults.css'
 
 const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, errors}) => {
   if (!!errors.length) {
@@ -31,17 +13,17 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, 
   }
 
   if (!datasets) {
-    return <div style={styles.loader}><ContentLoader /></div>
+    return <div className={loader}><ContentLoader /></div>
   }
 
   if (!datasets.results.length) {
-    return <div style={styles.results}>Aucun jeu de données trouvé.</div>
+    return <div className={results}>Aucun jeu de données trouvé.</div>
   }
 
   const max = datasets ? Math.ceil(datasets.count / datasets.query.limit) : 0
   return <div>
-          <div style={styles.results}>
-            <div style={styles.result}>
+          <div className={results}>
+            <div className={result}>
               {datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => addFilter(filter)}/>)}
             </div>
             <Facets
@@ -50,7 +32,7 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, 
               addFilter={(filter) => addFilter(filter)} />
           </div>
 
-          <div style={styles.paginationWrapper}>
+          <div className={paginationWrapper}>
             <WrappedPagination max={max} page={page} handleChangePage={handleChangePage} />
           </div>
         </div>

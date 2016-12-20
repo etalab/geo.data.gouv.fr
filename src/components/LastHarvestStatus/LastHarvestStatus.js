@@ -1,26 +1,21 @@
 import React from 'react'
 import moment from 'moment'
-import { theme } from '../../tools'
-
-let styles = {
-  chip: {},
-}
 
 const LastHarvestStatus = ({harvest}) => {
-  const date = new Date(harvest.finishedAt).getTime()
+  // Retro-compatibilite, l'API renvoie l'un ou l'autre
+  const finishedAt = harvest.finishedAt || harvest.finished
+  const date = new Date(finishedAt).getTime()
   const hoursDifference = moment(date).fromNow()
   let status
 
   if (harvest.status === 'successful') {
-    styles.chip.color =  theme.highlightblue
     status = 'Réussi'
   } else {
-    styles.chip.color =  theme.red
     status = 'En échec'
   }
 
   return (
-    <div style={styles.chip}>
+    <div>
       {status} {hoursDifference}
     </div>
   )

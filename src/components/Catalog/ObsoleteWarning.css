@@ -1,0 +1,5 @@
+@import "../../theme/colors";
+
+.container {
+  color: var(--yellow);
+}

@@ -2,26 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import DatasetDescription from './DatasetDescription'
 import Filter from '../Filter/Filter'
-import { theme } from '../../tools'
-
-const styles = {
-  preview: {
-    marginBottom: '3em',
-    padding: '1em',
-    backgroundColor: '#FFF',
-    boxShadow: theme.boxShadowZ1,
-  },
-  filterList: {
-    paddingBottom: '0.5em',
-    lineHeight: '18px',
-  },
-  type: {
-    textTransform: 'capitalize',
-    fontSize: '0.9em',
-    fontWeight: 400,
-    margin: 0,
-  },
-}
+import { container, list } from './DatasetPreview.css'
 
 class DatasetPreview extends Component {
   constructor(props) {
@@ -42,20 +23,18 @@ class DatasetPreview extends Component {
     const { addFilter } = this.props
 
     return (
-      <div style={styles.preview}>
-        <h4>
-          <Link to={`/datasets/${recordId}`}>{metadata.title}</Link>
-        </h4>
+      <div className={container}>
+        <h4><Link to={`/datasets/${recordId}`}>{metadata.title}</Link></h4>
 
         <DatasetDescription description={metadata.description} shortDescription={this.state.shortDescription} showMore={() => this.wrapDescription()} />
 
-        <h4 style={styles.type}>Mot-clé</h4>
-        <div style={styles.filterList}>
+        <h5>Mot-clé</h5>
+        <div className={list}>
           {metadata.keywords.map((keyword, idx) => <Filter onClick={addFilter} key={idx} filter={{value: keyword, name:'keyword'}} />)}
         </div>
 
-        <h4 style={styles.type}>Organisation</h4>
-        <div style={styles.filterList}>
+        <h5>Organisation</h5>
+        <div className={list}>
           {organizations.map((organization, idx) => <Filter onClick={addFilter} key={idx} filter={{value: organization, name:'organization'}} />)}
         </div>
       </div>

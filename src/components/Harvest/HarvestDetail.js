@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { fetchCatalog, fetchHarvest } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import HarvestContent from './HarvestContent'
-import HarvestHeader from './HarvestHeader'
-
-const styles = {
-  paper: {
-    padding: '3em',
-  }
-}
+import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
+import HarvestLogs from './HarvestLogs'
+import HarvestResults from './HarvestResults'
+import { container, results } from './HarvestDetail.css'
 
 class HarvestDetail extends Component {
   constructor(props) {
@@ -44,20 +41,25 @@ class HarvestDetail extends Component {
   }
 
   render() {
-    if (this.state.harvest && this.state.catalog) {
-      const successful = this.state.harvest.status === 'successful'
+    const { harvest, catalog } = this.state
+    const { params } = this.props
+
+    if (harvest && catalog) {
+      const successful = harvest.status === 'successful'
 
       return (
-        <div style={styles.paper} className="harvest-detail">
+        <div className={container}>
+          <h1>
+            <Link to={`/catalogs/${params.catalogId}`}>{catalog.name}</Link>
+          </h1>
 
-          <HarvestHeader
-            catalogId={this.props.params.catalogId}
-            catalogName={this.state.catalog.name}
-            harvest={this.state.harvest}
-            successful={successful} />
+          <p>Identifiant du moissonnage: {harvest._id}</p>
+          <LastHarvestStatus harvest={harvest} />
 
-          <HarvestContent successful={successful} logs={this.state.harvest.log}/>
-
+          <div className={results}>
+            <h2>{successful ? 'Résultats' : 'Logs'}</h2>
+            {successful ? <HarvestResults logs={harvest.log}/> : <HarvestLogs logs={harvest.log}/>}
+          </div>
         </div>
     )} else {
       return <div></div>

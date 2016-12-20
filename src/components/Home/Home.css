@@ -1,0 +1,59 @@
+@import "../../theme/colors";
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8%;
+}
+
+.masthead span {
+  line-height: 4em;
+}
+
+.buttons button {
+  margin: 40px 20px 10px 20px;
+  padding: 15px 20px;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: var(--blue);
+}
+
+.buttons button.inverted {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.paper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.catalogLinks {
+  font-size: 1.5em;
+}
+
+.datagouv {
+  background-color: #FFF;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  padding: 40px;
+  margin: 0 8% 4em;
+}
+
+.datagouv p {
+  font-size: 1.2em;
+  font-weight: lighter;
+  text-align: center;
+  font-variant: small-caps;
+}
+
+.datagouv p a {
+  font-weight: bolder;
+  font-size: 1.3em;
+  font-variant: normal;
+}

@@ -1,0 +1,9 @@
+.count {
+  color: #777;
+  font-size: 12px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}

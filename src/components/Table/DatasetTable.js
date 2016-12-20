@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import { Table } from 'reactable'
-import './Table.css'
-
-const styles = {
-  loading: {
-    width: '40%',
-  },
-}
+import style from './Table.css'
 
 class DatasetTable extends Component {
     render() {
@@ -18,13 +12,15 @@ class DatasetTable extends Component {
         return feature.properties
       })
 
-      return <Table
-        style={!data.length ? styles.loading : {}}
-        data={data}
-        sortable={true}
-        itemsPerPage={20}
-        pageButtonLimit={20}
-        noDataText="Chargement..." />
+      return (
+        <Table
+          className={style.table}
+          data={data}
+          sortable={true}
+          itemsPerPage={20}
+          pageButtonLimit={20}
+          noDataText="Chargement..." />
+      )
     }
 }
 
