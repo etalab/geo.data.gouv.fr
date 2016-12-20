@@ -13,7 +13,7 @@ const OrganizationCardSection = ({ organization, metrics, sourceCatalog, produce
       <div className={styles.content}>
         <div className={styles.section}>
           <h4>Jeux de données</h4>
-          <OrganizationMetrics metrics={metrics} />
+          <OrganizationMetrics metrics={metrics} organizationId={organization.id} />
         </div>
 
         <div className={styles.section}>

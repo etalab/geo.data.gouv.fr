@@ -1,38 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { theme } from '../../tools'
-import '../Table/Table.css'
+import cx from 'classnames'
+import { container, header, dataStyle, success, warning, error } from './PublishedDatasets.css'
 
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '1em',
-    boxShadow: theme.boxShadowZ1,
-  },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '1em',
-  },
-  data: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '1em',
-  }
-}
+const PublishedDatasets = ({ datasets, title, status }) => {
+  const headerStyle = cx(header, {
+    [success]: status === 'success',
+    [warning]: status === 'warning',
+    [error]: status === 'error',
+  })
 
-const PublishedDatasets = ({ datasets, title, style }) => {
   return (
-      <div style={styles.container}>
-        <div style={{...style, ...styles.header}}>
+      <div className={container}>
+        <div className={headerStyle}>
           <div>{title}</div>
           <div>{datasets.length}</div>
         </div>
         <div>
           {datasets.map((data, idx) =>
-            <div key={idx} style={styles.data}>
-              <Link to={`/datasets/${data._id}`}>{data.title}</Link>
+            <div key={idx} className={dataStyle}>
+              <Link to={`datasets/${data._id}`}>{data.title}</Link>
               {data.remoteUrl ? <a href={data.remoteUrl} target="blank">Fiche data.gouv.fr</a> : null}
             </div>
           )}

@@ -8,7 +8,7 @@ import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 import user from '../__test__/user.json'
 import organization from '../__test__/organization.json'
-import organizationMetrics from '../__test__/organization.json'
+import organizationMetrics from '../__test__/organizationMetrics.json'
 import organizationDatasets from '../__test__/organizationDatasets.json'
 import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
 

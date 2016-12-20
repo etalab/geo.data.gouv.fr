@@ -1,10 +1,10 @@
 {
-   "_id":"54637e78c751df506189ec20",
+   "_id":"1",
    "status":"disabled",
    "name":"Passerelle Inspire",
    "_created":"2015-03-26T11:14:49.189Z",
    "_updated":"2016-11-25T09:39:01.195Z",
-   "sourceCatalog":"539ebc2f1a66c51a7c52f5a3",
+   "sourceCatalog":"1",
    "__v":0,
    "producers":[
       {
