@@ -37,7 +37,6 @@ class Organization extends Component {
   render() {
     const { organization } = this.props
     const { organizationDetail, metrics, catalog, errors } = this.state
-
     if (organization && catalog && metrics) {
       return <OrganizationCard organization={organization} metrics={metrics} {...organizationDetail} errors={errors} />
     }

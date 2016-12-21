@@ -8,7 +8,9 @@ import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 import user from '../__test__/user.json'
 import organization from '../__test__/organization.json'
-import organizationMetrics from '../__test__/organization.json'
+import organizationMetrics from '../__test__/organizationMetrics.json'
+import organizationDatasets from '../__test__/organizationDatasets.json'
+import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
 
 export function fetchMetrics(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'));
@@ -67,4 +69,22 @@ export function fetchOrganizationMetrics(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   if (organizationId === '1') return Promise.resolve(organizationMetrics)
   return Promise.reject(new Error('organization metrics not found'))
+}
+
+export function fetchOrganizationPublished(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationDatasets)
+  return Promise.reject(new Error('organization published datasets not found'))
+}
+
+export function fetchOrganizationNotPublishedYet(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationNotPublishedYetDatasets)
+  return Promise.reject(new Error('organization not published yet datasets not found'))
+}
+
+export function fetchOrganizationPublishedByOthers(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationDatasets)
+  return Promise.reject(new Error('organization published by others datasets not found'))
 }
