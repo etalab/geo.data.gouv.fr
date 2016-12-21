@@ -21,3 +21,14 @@
 .section > div p {
   margin-bottom: 4px;
 }
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0.5em;
+  }
+
+  .organization {
+    padding: 1em;
+    text-align: center;
+  }
+}

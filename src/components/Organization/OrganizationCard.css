@@ -23,3 +23,14 @@
   color: #fff;
   font-size: 1rem;
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .organization {
+    padding: 1em;
+    text-align: center;
+  }
+}
