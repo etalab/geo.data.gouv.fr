@@ -19,7 +19,7 @@ const PublishedDatasets = ({ datasets, title, status }) => {
         <div>
           {datasets.map((data, idx) =>
             <div key={idx} className={dataStyle}>
-              <Link to={`datasets/${data._id}`}>{data.title}</Link>
+              <Link to={`/datasets/${data._id}`}>{data.title}</Link>
               {data.remoteUrl ? <a href={data.remoteUrl} target="blank">Fiche data.gouv.fr</a> : null}
             </div>
           )}
