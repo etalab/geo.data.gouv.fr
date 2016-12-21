@@ -12,3 +12,9 @@
   flex-grow: 1;
   max-width: 60%;
 }
+
+@media (max-width: 768px) {
+  .vector {
+    max-width: 100%;
+  }
+}

@@ -19,3 +19,9 @@
   margin-bottom: 2em;
   box-shadow: var(--shadow);
 }
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0em;
+  }
+}

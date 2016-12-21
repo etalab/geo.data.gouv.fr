@@ -11,3 +11,10 @@
 .list {
   line-height: 18px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    margin-bottom: 1em;
+  }
+}

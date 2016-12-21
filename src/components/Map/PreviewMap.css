@@ -35,3 +35,9 @@
   width: 100%;
   background-color: var(--red);
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
