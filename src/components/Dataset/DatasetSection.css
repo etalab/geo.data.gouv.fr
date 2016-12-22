@@ -17,6 +17,7 @@
   margin-left: 0.3em;
   font-weight: bold;
   color: #7ECEFD;
+  word-wrap: break-word;
 }
 
 .resume {

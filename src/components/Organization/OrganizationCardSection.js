@@ -23,7 +23,7 @@ const OrganizationCardSection = ({ organization, metrics, sourceCatalog, produce
 
         <div className={styles.section}>
           <h4>Catalogue source</h4>
-          <Catalog catalogId={sourceCatalog} />
+          <Catalog catalogId={sourceCatalog} size={'small'} />
         </div>
       </div>
     )

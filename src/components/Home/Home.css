@@ -16,8 +16,7 @@
   margin: 40px 20px 10px 20px;
   padding: 15px 20px;
   background-color: #fff;
-  border: 1px solid;
-  border-color: var(--blue);
+  border: 1px solid var(--blue);
 }
 
 .buttons button.inverted {
@@ -56,4 +55,30 @@
   font-weight: bolder;
   font-size: 1.3em;
   font-variant: normal;
+}
+
+@media (max-width: 768px) {
+  .masthead {
+    padding: 0;
+    margin-bottom: 3em;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .buttons {
+    margin-top: 10px;
+  }
+
+  .buttons button {
+    margin: 0 0 10px 0;
+    padding: 1em;
+  }
+
+  .paper {
+    padding: 0;
+  }
 }

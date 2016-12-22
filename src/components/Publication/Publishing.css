@@ -2,3 +2,10 @@
   padding: 60px 40px;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .publishing {
+    padding: 0;
+    padding-top: 60px;
+  }
+}
