@@ -17,12 +17,6 @@
   font-size: 1.1em;
 }
 
-.dataStyle {
-  display: flex;
-  justify-content: space-between;
-  margin: 1em;
-}
-
 .success {
   border-color: var(--green);
 }
