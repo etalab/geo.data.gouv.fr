@@ -11,4 +11,4 @@ deployment:
     commands:
       - git config --global user.email "infra@beta.gouv.fr"
       - git config --global user.name "CircleCI"
-      - ./deploy.sh
+      - npm run build && npm run deploy
