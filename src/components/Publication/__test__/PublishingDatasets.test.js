@@ -28,7 +28,7 @@ describe('<PublishingDatasets />', () => {
     })
 
     it('should render a OrganizationDatasets component', () => {
-      const component = <OrganizationDatasets published={datasets} notPublishedYet={notPublishedYet} publishedByOthers={datasets} />
+      const component = <OrganizationDatasets organizationId={'1'} published={datasets} notPublishedYet={notPublishedYet} publishedByOthers={datasets} />
       const wrapper = mount(<PublishingDatasets params={{organizationId: '1'}} />)
 
       return wrapper.instance()
