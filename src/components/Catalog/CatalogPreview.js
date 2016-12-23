@@ -12,17 +12,20 @@ const CatalogPreview = ({ catalog }) => {
   let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
 
+  const metricsPreview = !metrics ? <div>Aucun donnée disponible</div> :
+          <div className={container}>
+            <Percent value={openness} total={metrics.datasets.totalCount} label="Données ouvertes" icon="unlock alternate icon" />
+            <Percent value={download} total={metrics.datasets.totalCount} label="Téléchargeable" icon="download" />
+            <Counter value={metrics.records.totalCount} label="Enregistrements" />
+          </div>
+
   return (
     <Link to={`/catalogs/${catalog._id}`} className={link}>
       <div className={paper}>
         <div className={title}>{catalog.name}</div>
         <LastHarvestStatus harvest={catalog.service.sync}/>
         <ObsoleteWarning catalog={catalog} />
-        <div className={container}>
-          <Percent value={openness} total={metrics.datasets.totalCount} label="Données ouvertes" icon="unlock alternate icon" />
-          <Percent value={download} total={metrics.datasets.totalCount} label="Téléchargeable" icon="download" />
-          <Counter value={metrics.records.totalCount} label="Enregistrements" />
-        </div>
+        {metricsPreview}
       </div>
     </Link>
   )
