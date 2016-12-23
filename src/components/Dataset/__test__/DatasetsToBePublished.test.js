@@ -10,6 +10,46 @@ const datasets = [
 
 describe('<DatasetsToBePublished />', () => {
 
+
+  describe('toPublish state', () => {
+    it('should be init with all datasets', () => {
+      const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+
+      expect(wrapper.state('toPublish')).to.eql(datasets)
+    })
+  })
+
+  describe('Publishing button', () => {
+    describe('When toPublish state contain all datasets', () => {
+      it('should display "Publier toutes les données" text', () => {
+        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+
+        expect(wrapper).to.have.html().match(/Publier toutes les données/)
+      })
+    })
+
+    describe('When toPublish state contain at least one datasets', () => {
+      it('should display "Publier les données séléctionnées" text', () => {
+        const dataset = datasets[0]
+        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+
+        wrapper.instance().removeDatasetToPublish(dataset)
+
+        expect(wrapper).to.have.html().match(/Publier les données séléctionnées/)
+      })
+    })
+
+    describe('When toPublish state contain at least one datasets', () => {
+      it('should be disable', () => {
+        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+
+        wrapper.instance().setState({toPublish: []})
+
+        expect(wrapper).to.have.html().match(/Publier les données séléctionnées/)
+      })
+    })
+  })
+
   describe('addDatasetToPublish()', () => {
     describe('when dataset is not in toPublish', () => {
       it('should be add to toPublish array', () => {
@@ -24,13 +64,12 @@ describe('<DatasetsToBePublished />', () => {
 
     describe('when dataset is already in toPublish', () => {
       it('should not be add to toPublish array', () => {
-        const dataset = {_id: 1, title: 'dataset1'}
+        const dataset = datasets[0]
         const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().addDatasetToPublish(dataset)
-        wrapper.instance().addDatasetToPublish(dataset)
 
-        expect(wrapper.state('toPublish').length).to.equal(1)
+        expect(wrapper.state('toPublish').length).to.equal(3)
       })
     })
   })

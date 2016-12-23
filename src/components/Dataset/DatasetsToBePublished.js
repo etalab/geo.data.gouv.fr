@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 import { remove, includes } from 'lodash'
-import { Link } from 'react-router'
-import { data, publishButton } from './DatasetsToBePublished.css'
+import DatasetToSelect from './DatasetToSelect'
+import { buttons, publishButton, disable, selection } from './DatasetsToBePublished.css'
 
 class DatasetsToBePublished extends Component {
   constructor(props) {
     super(props)
-    this.state = {toPublish: []}
+    this.state = {toPublish: [...props.datasets]}
   }
 
   publishDatasets() {
-    console.log(this.state.toPublish, 'est en cours de publication');
+    if (this.state.toPublish.length) {
+      console.log(this.state.toPublish, 'est en cours de publication');
+    }
   }
 
   addDatasetToPublish(dataset) {
     let toPublish = this.state.toPublish
+
     if (includes(toPublish, dataset)) return
     toPublish.push(dataset)
     this.setState({toPublish})
@@ -22,42 +25,44 @@ class DatasetsToBePublished extends Component {
 
   removeDatasetToPublish(dataset) {
     let toPublish = this.state.toPublish
-    remove(toPublish, (data) => data._id === dataset._id)
 
+    remove(toPublish, (data) => data._id === dataset._id)
     this.setState({toPublish})
+  }
+
+  selection() {
+    if (this.state.toPublish.length === this.props.datasets.length) {
+      this.setState({toPublish: []})
+    } else {
+      this.setState({toPublish: [...this.props.datasets]})
+    }
   }
 
   render() {
     const { datasets } = this.props
     const { toPublish } = this.state
+    const label = toPublish.length === datasets.length ? 'Tout décocher' : 'Tout cocher'
+    const textButton = toPublish.length === datasets.length ? 'Publier toutes les données' : 'Publier les données séléctionnées'
+    const publishButtonStyle = toPublish.length ? publishButton : disable
 
     return (
       <div>
-        {datasets.map((dataset, idx) =>
-          <DatasetTest
+        {datasets.map((dataset, idx) => {
+          const isSelected = includes(toPublish, dataset) === true
+          return <DatasetToSelect
             key={idx}
             dataset={dataset}
-            isSelected={includes(toPublish, dataset) === true}
-            add={(dataset) => this.addDatasetToPublish(dataset)}
-            remove={(dataset) => this.removeDatasetToPublish(dataset)} />
+            isSelected={isSelected}
+            change={isSelected ? (dataset) => this.removeDatasetToPublish(dataset) : (dataset) => this.addDatasetToPublish(dataset)} />}
         )}
-        <div className={publishButton} onClick={() => this.publishDatasets()}>Publier</div>
+        <div className={buttons}>
+          <div className={selection} onClick={() => this.selection()}>{label}</div>
+          <div className={publishButtonStyle} onClick={() => this.publishDatasets()}>{textButton}</div>
+        </div>
       </div>
 
     )
   }
-}
-
-const DatasetTest = ({ dataset, isSelected, add, remove }) => {
-  const select = isSelected ? <input type="checkbox" onClick={() => remove(dataset)} /> :
-  <input type="checkbox" onClick={() => add(dataset)} />
-
-  return (
-    <div className={data}>
-      <Link to={`/datasets/${dataset._id}`}>{dataset.title}</Link>
-      {select}
-    </div>
-  )
 }
 
 export default DatasetsToBePublished

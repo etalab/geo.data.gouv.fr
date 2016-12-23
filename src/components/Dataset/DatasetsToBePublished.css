@@ -1,14 +1,30 @@
 @import "../../theme/colors";
 
-.data {
+.buttons {
   display: flex;
   justify-content: space-between;
-  margin: 1em;
 }
 
 .publishButton {
   background-color: var(--blue);
   color: #fff;
   padding: 1em;
+  width: 49%;
+  text-align: center;
+}
+
+.disable {
+  background-color: whitesmoke;
+  color: grey;
+  padding: 1em;
+  width: 49%;
+  text-align: center;
+}
+
+.selection {
+  background-color: var(--blue);
+  color: #fff;
+  padding: 1em;
+  width: 49%;
   text-align: center;
 }
