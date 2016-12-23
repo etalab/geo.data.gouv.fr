@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import request from 'superagent'
 import { remove, includes } from 'lodash'
 import DatasetToSelect from './DatasetToSelect'
 import { buttons, publishButton, disable, selection } from './DatasetsToBePublished.css'
@@ -10,8 +11,16 @@ class DatasetsToBePublished extends Component {
   }
 
   publishDatasets() {
-    if (this.state.toPublish.length) {
-      console.log(this.state.toPublish, 'est en cours de publication');
+    const { toPublish } = this.state
+    const { organizationId } = this.props.organizationId
+
+    if (toPublish.length) {
+      toPublish.map( dataset =>
+        request.post(`/dgv/api/datasets/${dataset._id}/publication`)
+          .set('Content-Type', 'application/json')
+          .send(`{"organization": "${organizationId}"}`)
+          .end())
+      console.log(toPublish, 'est en cours de publication');
     }
   }
 

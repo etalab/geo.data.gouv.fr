@@ -45,7 +45,7 @@ class PublishingDatasets extends Component {
     const { params: { organizationId } } = this.props
     const { user, published, notPublishedYet, publishedByOthers, errors } = this.state
     const datasets = {published, notPublishedYet, publishedByOthers}
-    const component = <OrganizationDatasets {...datasets} />
+    const component = <OrganizationDatasets {...datasets} organizationId={organizationId} />
     const section = <PublishingSection title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
 
     if (errors.length) {
