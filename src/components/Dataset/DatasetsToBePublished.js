@@ -20,7 +20,6 @@ class DatasetsToBePublished extends Component {
           .set('Content-Type', 'application/json')
           .send(`{"organization": "${organizationId}"}`)
           .end())
-      console.log(toPublish, 'est en cours de publication');
     }
   }
 
