@@ -7,7 +7,6 @@ class DatasetTable extends Component {
       const { features } = this.props
       const data = features.map(feature => {
         delete feature.properties.gml_id
-        feature.properties.SURVAL = <a href={feature.properties.SURVAL}>lien</a>
 
         return feature.properties
       })
