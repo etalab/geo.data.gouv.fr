@@ -53,6 +53,7 @@ class DatasetsToBePublished extends Component {
     const textButton = toPublish.length === datasets.length ? 'Publier toutes les données' : 'Publier les données séléctionnées'
     const publishButtonStyle = toPublish.length ? publishButton : disable
 
+    if (!datasets.length) return <div>Aucun jeu de données.</div>
     return (
       <div>
         {datasets.map((dataset, idx) => {

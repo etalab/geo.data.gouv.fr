@@ -8,8 +8,15 @@ const datasets = [
   {_id: 3, title: 'dataset3'},
 ]
 
-describe('<DatasetsToBePublished />', () => {
+describe.only('<DatasetsToBePublished />', () => {
 
+  describe('When datasets is empty', () => {
+    it('should render a message', () => {
+      const wrapper = shallow(<DatasetsToBePublished datasets={[]} title={''} status={''} />)
+
+      expect(wrapper.text()).to.contain('Aucun jeu de données.')
+    })
+  })
 
   describe('toPublish state', () => {
     it('should be init with all datasets', () => {
@@ -24,8 +31,8 @@ describe('<DatasetsToBePublished />', () => {
       it('should display "Publier toutes les données" text', () => {
         const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
 
-        expect(wrapper.text()).to.contain('Publier toutes les données')
         expect(wrapper.text()).to.contain('Tout décocher')
+        expect(wrapper.text()).to.contain('Publier toutes les données')
       })
     })
 
@@ -36,19 +43,20 @@ describe('<DatasetsToBePublished />', () => {
 
         wrapper.instance().removeDatasetToPublish(dataset)
 
-        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
         expect(wrapper.text()).to.contain('Tout cocher')
+        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
       })
     })
 
-    describe('When toPublish state contain at least one datasets', () => {
+    describe('When toPublish state contain any dataset', () => {
       it('should be disable', () => {
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const dataset = {_id: 1, title: 'dataset1'}
+        const wrapper = shallow(<DatasetsToBePublished datasets={[dataset]} title={''} status={''} />)
 
-        wrapper.instance().setState({toPublish: []})
+        wrapper.instance().removeDatasetToPublish(dataset)
 
-        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
         expect(wrapper.text()).to.contain('Tout cocher')
+        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
       })
     })
   })
