@@ -24,7 +24,8 @@ describe('<DatasetsToBePublished />', () => {
       it('should display "Publier toutes les données" text', () => {
         const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
 
-        expect(wrapper).to.have.html().match(/Publier toutes les données/)
+        expect(wrapper.text()).to.contain('Publier toutes les données')
+        expect(wrapper.text()).to.contain('Tout décocher')
       })
     })
 
@@ -35,7 +36,8 @@ describe('<DatasetsToBePublished />', () => {
 
         wrapper.instance().removeDatasetToPublish(dataset)
 
-        expect(wrapper).to.have.html().match(/Publier les données séléctionnées/)
+        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
+        expect(wrapper.text()).to.contain('Tout cocher')
       })
     })
 
@@ -45,7 +47,8 @@ describe('<DatasetsToBePublished />', () => {
 
         wrapper.instance().setState({toPublish: []})
 
-        expect(wrapper).to.have.html().match(/Publier les données séléctionnées/)
+        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
+        expect(wrapper.text()).to.contain('Tout cocher')
       })
     })
   })
