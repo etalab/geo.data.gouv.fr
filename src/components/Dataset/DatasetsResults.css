@@ -12,6 +12,10 @@
   margin-top: 5em;
 }
 
+.counter {
+  margin-left: 4em;
+}
+
 .paginationWrapper {
   display: flex;
   justify-content: center;
