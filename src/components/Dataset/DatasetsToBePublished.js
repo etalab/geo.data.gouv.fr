@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import { remove, includes } from 'lodash'
 import DatasetToSelect from './DatasetToSelect'
-import { buttons, publishButton, disable, selection } from './DatasetsToBePublished.css'
+import { buttons, noData, publishButton, button, disable, selection } from './DatasetsToBePublished.css'
 
 class DatasetsToBePublished extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class DatasetsToBePublished extends Component {
     const textButton = toPublish.length === datasets.length ? 'Publier toutes les données' : 'Publier les données séléctionnées'
     const publishButtonStyle = toPublish.length ? publishButton : disable
 
-    if (!datasets.length) return <div>Aucun jeu de données.</div>
+    if (!datasets.length) return <div className={noData}>Aucun jeu de données.</div>
     return (
       <div>
         {datasets.map((dataset, idx) => {
@@ -65,8 +65,8 @@ class DatasetsToBePublished extends Component {
             change={isSelected ? (dataset) => this.removeDatasetToPublish(dataset) : (dataset) => this.addDatasetToPublish(dataset)} />}
         )}
         <div className={buttons}>
-          <div className={selection} onClick={() => this.selection()}>{label}</div>
-          <div className={publishButtonStyle} onClick={() => this.publishDatasets()}>{textButton}</div>
+          <div className={`${button} ${selection}`} onClick={() => this.selection()}>{label}</div>
+          <div className={`${button} ${publishButtonStyle}`} onClick={() => this.publishDatasets()}>{textButton}</div>
         </div>
       </div>
 

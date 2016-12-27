@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { data } from './PublishedDatasets.css'
 
 const PublishedDatasets = ({ datasets }) => {
-  if (!datasets.length) return <div>Aucun jeu de données.</div>
+  if (!datasets.length) return <div className={data}>Aucun jeu de données.</div>
   return (
     <div>
       {datasets.map((dataset, idx) =>
