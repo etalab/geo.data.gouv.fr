@@ -1,6 +1,8 @@
 @import "../../../theme/colors";
 
 .container {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 2em;
   padding: 2em;
   background-color: var(--blue);
