@@ -65,6 +65,8 @@
     "lodash": "^4.16.4",
     "marked": "^0.3.6",
     "moment": "^2.14.1",
+    "preact": "^7.1.0",
+    "preact-compat": "^3.9.4",
     "qs": "^6.3.0",
     "react": "^15.4",
     "react-addons-create-fragment": "^15.4.0",
