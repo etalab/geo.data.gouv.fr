@@ -1,7 +1,5 @@
 import React from 'react'
 import OrganizationCard from '../OrganizationCard'
-import Errors from '../../Errors/Errors'
-import OrganizationMetrics from '../OrganizationMetrics'
 import { shallow } from 'enzyme'
 
 import organizationDetail from '../../../fetch/__test__/organization.json'
