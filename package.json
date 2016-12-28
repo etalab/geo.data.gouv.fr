@@ -73,7 +73,7 @@
     "react-chartjs": "^0.8.0",
     "react-dom": "^15.4",
     "react-leaflet": "^1.0.1",
-    "react-paginate": "^2.2.3",
+    "react-paginate": "^4.1.0",
     "react-responsive": "^1.1.5",
     "react-router": "^2.7.0",
     "reactable": "^0.14.1",

@@ -231,7 +231,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.20.0, babel-code-frame@^6.8.0:
     esutils "^2.0.2"
     js-tokens "^2.0.0"
 
-babel-core@6.14.0, babel-core@^6.14.0:
+babel-core@6.14.0:
   version "6.14.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.14.0.tgz#c9e13ed4e2f97329215496fd9fb48f2b3bcb9b42"
   dependencies:
@@ -257,7 +257,7 @@ babel-core@6.14.0, babel-core@^6.14.0:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-core@^6.18.0:
+babel-core@^6.14.0, babel-core@^6.18.0:
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.21.0.tgz#75525480c21c803f826ef3867d22c19f080a3724"
   dependencies:
@@ -4551,9 +4551,9 @@ react-leaflet@^1.0.1:
     lodash "^4.0.0"
     warning "^3.0.0"
 
-react-paginate@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-2.2.3.tgz#5e3362cace59c65dca2559a8caeaa6a3ea64e76f"
+react-paginate@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-4.1.0.tgz#1a3379f1a029874fc9bf173438fd621f83648940"
   dependencies:
     classnames "^2.2.5"
 

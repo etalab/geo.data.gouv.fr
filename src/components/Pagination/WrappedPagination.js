@@ -7,12 +7,12 @@ const WrappedPagination = ({max, page, handleChangePage}) => {
   return <ReactPaginate previousLabel={'Précédent'}
                  nextLabel={'Suivant'}
                  breakLabel={'...'}
-                 pageNum={max}
-                 forceSelected={selected}
-                 initialSelected={selected}
+                 pageCount={max}
+                 forcePage={selected}
+                 initialPage={selected}
                  marginPagesDisplayed={2}
                  pageRangeDisplayed={5}
-                 clickCallback={handleChangePage}
+                 onPageChange={handleChangePage}
                  breakClassName={style.paginationElementBreak}
                  containerClassName={style.pagination}
                  pageClassName={style.paginationElement}
