@@ -138,6 +138,8 @@ module.exports = {
   },
 
   plugins: [
+    // Remove all moment locales except fr
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/),
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
