@@ -3,7 +3,7 @@ import Facets from '../Facets/Facets'
 import DatasetPreview from './DatasetPreview'
 import ContentLoader from '../Loader/ContentLoader'
 import WrappedPagination from '../Pagination/WrappedPagination'
-import { loader, results, result, paginationWrapper } from './DatasetsResults.css'
+import { loader, results, result, counter, paginationWrapper } from './DatasetsResults.css'
 
 const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, errors}) => {
   if (!!errors.length) {
@@ -16,12 +16,13 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, 
     return <div className={loader}><ContentLoader /></div>
   }
 
-  if (!datasets.results.length) {
+  if (!datasets.count) {
     return <div className={results}>Aucun jeu de données trouvé.</div>
   }
 
   const max = datasets ? Math.ceil(datasets.count / datasets.query.limit) : 0
   return <div>
+          <div className={counter}><strong>{datasets.count}</strong> {datasets.count > 1 ? 'jeux de données trouvés' : 'jeu de données trouvé'}</div>
           <div className={results}>
             <div className={result}>
               {datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => addFilter(filter)}/>)}
