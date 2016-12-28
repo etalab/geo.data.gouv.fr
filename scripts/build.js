@@ -12,7 +12,6 @@ var fs = require('fs-extra');
 var path = require('path');
 var filesize = require('filesize');
 var gzipSize = require('gzip-size').sync;
-var rimrafSync = require('rimraf').sync;
 var webpack = require('webpack');
 var config = require('../config/webpack.config.prod');
 var paths = require('../config/paths');
@@ -64,7 +63,7 @@ recursive(paths.appBuild, (err, fileNames) => {
 
   // Remove all content but keep the directory so that
   // if you're in it, you don't end up in Trash
-  rimrafSync(paths.appBuild + '/*');
+  fs.removeSync(paths.appBuild + '/*');
 
   // Start the webpack build
   build(previousSizeMap);
