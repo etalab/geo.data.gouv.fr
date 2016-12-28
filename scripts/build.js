@@ -24,6 +24,8 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
+var profiling = process.env.WEBPACK_PROFILING === '1';
+
 // Input: /User/dan/app/build/static/js/main.82be8.js
 // Output: /static/js/main.js
 function removeFileNameHash(fileName) {
@@ -109,11 +111,21 @@ function printFileSizes(stats, previousSizeMap) {
 // Create the production build and print the deployment instructions.
 function build(previousSizeMap) {
   console.log('Creating an optimized production build...');
+
+  if (profiling) {
+    console.log('Profiling enabled! Output will be written in profile.json...');
+    config.profile = true;
+  }
+
   webpack(config).run((err, stats) => {
     if (err) {
       console.error('Failed to create a production build. Reason:');
       console.error(err.message || err);
       process.exit(1);
+    }
+
+    if (profiling) {
+      fs.writeJsonSync(__dirname + '/../profile.json', stats.toJson());
     }
 
     console.log(chalk.green('Compiled successfully.'));
