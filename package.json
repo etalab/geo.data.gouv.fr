@@ -45,7 +45,7 @@
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.0.0",
     "postcss-loader": "^1.2.0",
-    "postcss-reporter": "^2.0.0",
+    "postcss-reporter": "^3.0.0",
     "postcss-url": "^5.1.2",
     "promise": "^7.1.1",
     "proxyquire": "^1.7.10",
