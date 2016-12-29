@@ -1,7 +1,55 @@
-import { computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
+import { isNotEnough, isAlmostNot, computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
 
-describe('catalogs', function () {
+describe.only('catalogs', function () {
   const currentDate = new Date('2016-07-15')
+
+  describe('isNotEnough(catalog, param)', function () {
+    describe('openness is not defined', function () {
+      it('should return undefined', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: null } } }
+        expect(isNotEnough(catalog)).to.be.undefined
+      })
+    })
+    describe('open at 10%', function () {
+      it('should return undefined', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: { download: { yes: 10 } } } } }
+        expect(isNotEnough(catalog, 'openness')).to.be.undefined
+      })
+    })
+    describe('open at 30%', function () {
+      it('should return true', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: { openness: { yes: 30 } } } } }
+        expect(isNotEnough(catalog, 'openness')).to.be.true
+      })
+    })
+    describe('open at 70%', function () {
+      it('should return undefined', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: { openness: { yes: 70 } } } } }
+        expect(isNotEnough(catalog, 'openness')).to.be.undefined
+      })
+    })
+  })
+
+  describe('isAlmostNot(catalog, param)', function () {
+    describe('download is not defined', function () {
+      it('should return true', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: { openness: { yes: 100 } } } } }
+        expect(isAlmostNot(catalog, 'download')).to.be.true
+      })
+    })
+    describe('downloadable at 10%', function () {
+      it('should return true', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: { download: { yes: 10 } } } } }
+        expect(isAlmostNot(catalog, 'download')).to.be.true
+      })
+    })
+    describe('downloadable at 30%', function () {
+      it('should return undefined', function () {
+        const catalog = { metrics: { datasets: { totalCount: 100, partitions: { download: { yes: 30 } } } } }
+        expect(isAlmostNot(catalog, 'download')).to.be.undefined
+      })
+    })
+  })
 
   describe('computeFreshnessScore(moment)', function () {
     describe('moment is not defined', function () {

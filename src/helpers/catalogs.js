@@ -1,6 +1,43 @@
 import moment from 'moment'
 import { get } from 'lodash'
 
+export function isNotSync(catalog) {
+  if (catalog.service.sync === 'failed') return true
+}
+
+export function isNotEnough(catalog, param) {
+  const total = get(catalog, 'metrics.datasets.totalCount')
+  const percent = get(catalog, `metrics.datasets.partitions.${param}.yes`, 0) / total * 100
+  if (percent && (percent > 20 && percent < 55)) return true
+}
+
+export function isAlmostNot(catalog, param) {
+  const total = get(catalog, 'metrics.datasets.totalCount')
+  const percent = get(catalog, `metrics.datasets.partitions.${param}.yes`, 0) / total * 100
+  if (percent < 20) return true
+}
+
+export function isNotEnoughDownloadable(catalog) {
+  return isNotEnough(catalog, 'download')
+}
+
+export function isAlmostNotDownloadable(catalog) {
+  return isAlmostNot(catalog, 'download')
+}
+
+export function isNotEnoughOpen(catalog) {
+  return isNotEnough(catalog, 'openness')
+}
+
+export function isAlmostNotOpen(catalog) {
+  return isAlmostNot(catalog, 'openness')
+}
+
+export function isNoneType(catalog) {
+  if (get(catalog, 'metric.datasets.partitions.dataType.none')) return true
+  if (get(catalog, 'metrics.records.partitions.recordType.none')) return true
+}
+
 export function isObsolete(catalog, currentDate = new Date()) {
   const mostRecentRevisionDate = get(catalog, 'metrics.mostRecentRevisionDate')
   if (!mostRecentRevisionDate) return
