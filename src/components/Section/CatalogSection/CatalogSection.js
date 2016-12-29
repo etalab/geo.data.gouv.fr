@@ -1,5 +1,5 @@
 import React from 'react'
-import CatalogHealthReport from '../../Catalog/CatalogHealthReport'
+import HealthPreview from '../../Health/HealthPreview'
 import { container } from './CatalogSection.css'
 
 const CatalogSection = ({catalog}) => {
@@ -9,7 +9,7 @@ const CatalogSection = ({catalog}) => {
         <h1>{catalog.name}</h1>
         <a href={catalog.service.location}>Accès direct au service du catalogue</a>
       </div>
-      <CatalogHealthReport catalog={catalog}/>
+      <HealthPreview catalog={catalog}/>
     </div>
   )
 }

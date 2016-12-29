@@ -1,0 +1,22 @@
+@import "../../theme/colors";
+
+a.card {
+  background-color: white;
+  padding: 1em;
+  font-size: large;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+}
+
+a.card.good {
+  color: var(--green);
+}
+
+a.card.warning {
+  color: var(--yellow);
+}
+
+a.card.bad {
+  color: var(--red);
+}
