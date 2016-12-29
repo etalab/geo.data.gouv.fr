@@ -1,13 +1,5 @@
 @import "../../theme/colors";
 
-.test {
+.harvest {
   display: flex;
-}
-
-.success {
-  color: var(--green)
-}
-
-.error {
-  color: var(--red)
 }

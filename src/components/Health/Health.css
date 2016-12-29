@@ -1,0 +1,13 @@
+@import "../../theme/colors";
+
+.success {
+  color: var(--green);
+}
+
+.warning {
+  color: var(--yellow);
+}
+
+.error {
+  color: var(--red);
+}

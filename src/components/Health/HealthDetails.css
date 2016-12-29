@@ -18,6 +18,12 @@
   margin-bottom: 1em;
 }
 
+.legend {
+  display: flex;
+  justify-content: space-around;
+  padding: 2em;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0;

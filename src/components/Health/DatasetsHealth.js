@@ -3,7 +3,8 @@ import { get } from 'lodash'
 import Percent from '../Statistics/Percent/Percent'
 import { isNotEnoughDownloadable, isNotEnoughOpen, isAlmostNotDownloadable, isAlmostNotOpen } from '../../helpers/catalogs'
 import { container } from './HealthDetails.css'
-import { section, chart, legend, success, warning, error } from './DatasetsHealth.css'
+import { section, chart } from './DatasetsHealth.css'
+import { success, warning, error } from './Health.css'
 
 const DatasetsHealth = ({ catalog }) => {
   let openness, download
@@ -39,12 +40,6 @@ const DatasetsHealth = ({ catalog }) => {
           <Percent value={get(catalog.metrics, 'datasets.partitions.download.yes', 0)} total={catalog.metrics.datasets.totalCount} size="large" icon="download" title="Pourcentage de jeu de données téléchargeable" />
           {download}
         </div>
-      </div>
-
-      <div className={legend}>
-        <div className={error}><i className="remove icon"></i>inférieur à 20%</div>
-        <div className={warning}><i className="icon warning"></i>entre 20% et 55%</div>
-        <div className={success}><i className="checkmark icon"></i>supérieur à 5%</div>
       </div>
 
     </div>

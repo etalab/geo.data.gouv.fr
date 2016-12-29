@@ -1,5 +1,4 @@
 @import "../../theme/shadows";
-@import "../../theme/colors";
 
 .sectionNoPadding {
   background-color: #FFF;
@@ -27,24 +26,6 @@
 
 .chart {
   margin: 3em;
-}
-
-.legend {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 4em; 
-}
-
-.success {
-  color: var(--green);
-}
-
-.warning {
-  color: var(--yellow);
-}
-
-.error {
-  color: var(--red);
 }
 
 @media (max-width: 768px) {
