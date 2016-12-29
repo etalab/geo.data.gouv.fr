@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import UpdateHealth from './UpdateHealth'
+import DatasetsHealth from './DatasetsHealth'
+import CatalogSection from '../Section/CatalogSection/CatalogSection'
 import { fetchCatalog } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+import { container, sectionNoPadding } from './HealthDetails.css'
 
 class HealthDetails extends Component {
   constructor(props) {
@@ -19,8 +23,19 @@ class HealthDetails extends Component {
   render() {
     const { catalog } = this.state
 
-    if (catalog) return <div>{catalog.name}</div>
-    return null
+    if (!catalog) return null
+
+    return (
+      <div className={container}>
+      <div className={sectionNoPadding}>
+
+        <CatalogSection catalog={catalog} />
+        <UpdateHealth catalog={catalog} />
+        <DatasetsHealth catalog={catalog} />
+
+      </div>
+    </div>
+  )
   }
 }
 

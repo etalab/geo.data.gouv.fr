@@ -9,7 +9,7 @@ a.card {
   align-items: center;
 }
 
-a.card.good {
+a.card.success {
   color: var(--green);
 }
 
@@ -17,6 +17,6 @@ a.card.warning {
   color: var(--yellow);
 }
 
-a.card.bad {
+a.card.error {
   color: var(--red);
 }

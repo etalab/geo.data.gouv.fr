@@ -1,4 +1,5 @@
 import React from 'react'
+import { get } from 'lodash'
 import DoughnutChart from '../../Charts/DoughnutChart/DoughnutChart'
 import Chart from '../../Charts/Chart'
 import Counter from '../../Statistics/Counter/Counter'
@@ -31,11 +32,11 @@ return (
     <h2>Indicateurs concernant les jeux de données</h2>
       <div className={section}>
         <div className={chart}>
-          <Percent value={metrics.datasets.partitions['openness'] ? metrics.datasets.partitions['openness'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="unlock alternate icon" title="Pourcentage de données ouvertes" />
+          <Percent value={get(metrics, 'datasets.partitions.openness.yes', 0)} total={metrics.datasets.totalCount} size="large" icon="unlock alternate icon" title="Pourcentage de données ouvertes" />
         </div>
 
         <div className={chart}>
-          <Percent value={metrics.datasets.partitions['download'] ? metrics.datasets.partitions['download'].yes : 0} total={metrics.datasets.totalCount} size="large" icon="download" title="Pourcentage de jeu de données téléchargeable" />
+          <Percent value={get(metrics, 'datasets.partitions.download.yes', 0)} total={metrics.datasets.totalCount} size="large" icon="download" title="Pourcentage de jeu de données téléchargeable" />
         </div>
 
         <div className={chart}>

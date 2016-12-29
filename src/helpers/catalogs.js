@@ -2,7 +2,7 @@ import moment from 'moment'
 import { get } from 'lodash'
 
 export function isNotSync(catalog) {
-  if (catalog.service.sync === 'failed') return true
+  if (catalog.service.sync.status === 'failed') return true
 }
 
 export function isNotEnough(catalog, param) {
