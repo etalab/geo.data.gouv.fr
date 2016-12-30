@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import request from 'superagent'
 import { remove, includes } from 'lodash'
+import { publishDataset } from '../../fetch/fetch'
 import DatasetToSelect from './DatasetToSelect'
 import { buttons, noData, publishButton, button, disable, selection } from './DatasetsToBePublished.css'
 
@@ -15,11 +15,7 @@ class DatasetsToBePublished extends Component {
     const { organizationId } = this.props.organizationId
 
     if (toPublish.length) {
-      toPublish.map( dataset =>
-        request.post(`/dgv/api/datasets/${dataset._id}/publication`)
-          .set('Content-Type', 'application/json')
-          .send(`{"organization": "${organizationId}"}`)
-          .end())
+      toPublish.map( dataset => publishDataset(dataset._id, organizationId) )
     }
   }
 
