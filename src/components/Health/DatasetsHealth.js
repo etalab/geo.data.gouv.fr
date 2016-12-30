@@ -1,7 +1,8 @@
 import React from 'react'
 import { get } from 'lodash'
 import Percent from '../Statistics/Percent/Percent'
-import { isNotEnoughDownloadable, isNotEnoughOpen, isAlmostNotDownloadable, isAlmostNotOpen } from '../../helpers/catalogs'
+import UndefinedDatasets from './UndefinedDatasets'
+import { isNotEnoughDownloadable, isNotEnoughOpen, isAlmostNotDownloadable, isAlmostNotOpen, isNoneType } from '../../helpers/catalogs'
 import { container } from './HealthDetails.css'
 import { section, chart } from './DatasetsHealth.css'
 import { success, warning, error } from './Health.css'
@@ -40,6 +41,9 @@ const DatasetsHealth = ({ catalog }) => {
           <Percent value={get(catalog.metrics, 'datasets.partitions.download.yes', 0)} total={catalog.metrics.datasets.totalCount} size="large" icon="download" title="Pourcentage de jeu de données téléchargeable" />
           {download}
         </div>
+
+        {isNoneType(catalog) ? <UndefinedDatasets catalog={catalog} /> : null}
+
       </div>
 
     </div>
