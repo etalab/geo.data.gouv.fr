@@ -1,6 +1,6 @@
 import { isNotEnough, isAlmostNot, computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
 
-describe.only('catalogs', function () {
+describe('catalogs', function () {
   const currentDate = new Date('2016-07-15')
 
   describe('isNotEnough(catalog, param)', function () {
