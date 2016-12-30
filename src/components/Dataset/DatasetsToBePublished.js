@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { remove, includes } from 'lodash'
 import { publishDataset } from '../../fetch/fetch'
 import DatasetToSelect from './DatasetToSelect'
 import { buttons, noData, publishButton, button, disable, selection } from './DatasetsToBePublished.css'
@@ -22,16 +21,15 @@ class DatasetsToBePublished extends Component {
   addDatasetToPublish(dataset) {
     let toPublish = this.state.toPublish
 
-    if (includes(toPublish, dataset)) return
+    if (toPublish.includes(dataset)) return
     toPublish.push(dataset)
     this.setState({toPublish})
   }
 
   removeDatasetToPublish(dataset) {
-    let toPublish = this.state.toPublish
-
-    remove(toPublish, (data) => data._id === dataset._id)
-    this.setState({toPublish})
+    this.setState({
+      toPublish: this.state.toPublish.filter(d => d._id !== dataset._id)
+    })
   }
 
   selection() {
@@ -53,7 +51,7 @@ class DatasetsToBePublished extends Component {
     return (
       <div>
         {datasets.map((dataset, idx) => {
-          const isSelected = includes(toPublish, dataset) === true
+          const isSelected = toPublish.includes(dataset) === true
           return <DatasetToSelect
             key={idx}
             dataset={dataset}
