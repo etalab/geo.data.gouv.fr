@@ -7,8 +7,8 @@ const OrganizationDatasets = ({ published, notPublishedYet, publishedByOthers, o
   return (
     <div>
       <DatasetsPublication datasets={notPublishedYet} organizationId={organizationId} title={'Données en attente de publication'} status={'error'} />
-      <DatasetsPublication datasets={published} title={'Données publiées'} status={'success'} />
-      <DatasetsPublication datasets={publishedByOthers} title={'Données publiées par une autre organisation'} status={'warning'} />
+      <DatasetsPublication datasets={published} organizationId={organizationId} title={'Données publiées'} status={'success'} />
+      <DatasetsPublication datasets={publishedByOthers} organizationId={organizationId} title={'Données publiées par une autre organisation'} status={'warning'} />
       <div className={previousPage}>
         <Link to={'/publication'}><i className="arrow left icon"></i> Retour aux organisations</Link>
       </div>

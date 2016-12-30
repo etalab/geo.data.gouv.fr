@@ -12,7 +12,7 @@ class DatasetsToBePublished extends Component {
 
   publishDatasets() {
     const { toPublish } = this.state
-    const { organizationId } = this.props.organizationId
+    const { organizationId } = this.props
 
     if (toPublish.length) {
       toPublish.map( dataset => publishDataset(dataset._id, organizationId) )
