@@ -8,7 +8,7 @@ const datasets = [
   {_id: 3, title: 'dataset3'},
 ]
 
-describe.only('<DatasetsToBePublished />', () => {
+describe('<DatasetsToBePublished />', () => {
 
   describe('When datasets is empty', () => {
     it('should render a message', () => {
