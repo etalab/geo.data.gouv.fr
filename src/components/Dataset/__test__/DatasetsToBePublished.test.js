@@ -109,7 +109,7 @@ describe('<DatasetsToBePublished />', () => {
         wrapper.instance().setState({toPublish: datasets})
         wrapper.instance().removeDatasetToPublish(dataset)
 
-        expect(wrapper.state('toPublish')).to.equal(datasets)
+        expect(wrapper.state('toPublish')).to.eql(datasets)
       })
     })
   })
