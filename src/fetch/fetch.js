@@ -84,3 +84,17 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/datasets/published-by-others`)
 }
+
+export function publishDataset(datasetId, organizationId) {
+  if (!datasetId || !organizationId) return Promise.reject(new Error('datasetId and organizationId are required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/datasets/${datasetId}/publication`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'PUT',
+    mode: 'cors',
+    credentials: 'include',
+    body: JSON.stringify({ organization: organizationId })
+  })
+}
