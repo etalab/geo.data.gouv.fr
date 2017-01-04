@@ -3,7 +3,6 @@ import { mount } from 'enzyme'
 
 import organizationDetail from '../../../fetch/__test__/organizationDetail.json'
 import metrics from '../../../fetch/__test__/organizationMetrics.json'
-import catalog from '../../../fetch/__test__/catalog.json'
 import user from '../../../fetch/__test__/user.json'
 
 const Organization = require('proxyquire')('../Organization', {
@@ -24,7 +23,6 @@ describe('<Organization />', () => {
           expect(wrapper.state('user')).to.equal(user)
           expect(wrapper.state('metrics')).to.equal(metrics)
           expect(wrapper.state('organizationDetail')).to.equal(organizationDetail)
-          expect(wrapper.state('catalog')).to.equal(catalog)
         })
     })
   })

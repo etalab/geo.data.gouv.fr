@@ -5,7 +5,7 @@ import OrganizationMetrics from './OrganizationMetrics'
 import OrganizationProducers from './OrganizationProducers'
 import styles from './OrganizationCardSection.css'
 
-const OrganizationCardSection = ({ organization, metrics, catalog }) => {
+const OrganizationCardSection = ({ organization, metrics }) => {
   return (
     <div className={styles.content}>
       <div className={styles.section}>
@@ -19,8 +19,8 @@ const OrganizationCardSection = ({ organization, metrics, catalog }) => {
       </div>
 
       <div className={styles.section}>
-        <h4>Catalogue source</h4>
-        <Catalog catalogId={catalog.id} size={'small'} />
+        <h4>Catalogues source</h4>
+        <Catalog catalogId={organization.catalogSource} size={'small'} />
       </div>
 
       <div className={styles.previousPage}>

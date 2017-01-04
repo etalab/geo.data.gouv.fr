@@ -3,7 +3,7 @@ import Errors from '../Errors/Errors'
 import Publishing from '../Publication/Publishing'
 import PublishingSection from '../Publication/PublishingSection'
 import OrganizationCardSection from './OrganizationCardSection'
-import { fetchOrganizationMetrics, getOrganizationDetail, getUser, getOrganization, fetchCatalog } from '../../fetch/fetch'
+import { fetchOrganizationMetrics, getOrganizationDetail, getUser, getOrganization } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
 class Organization extends Component {
@@ -42,7 +42,6 @@ class Organization extends Component {
 
   updateOrganization() {
     return waitForDataAndSetState(getOrganization(this.props.params.organizationId), this, 'organization')
-      .then(() => waitForDataAndSetState(fetchCatalog(this.state.organization.sourceCatalog), this, 'catalog'))
   }
 
   updateOrganizationDetail() {
@@ -50,9 +49,9 @@ class Organization extends Component {
   }
 
   render() {
-    const { user, organizationDetail, metrics, catalog, errors } = this.state
+    const { user, organization, metrics, organizationDetail, errors } = this.state
     const component = <OrganizationCardSection {...this.state} />
-    const section = <PublishingSection title={'État de la publication'} component={component} toWait={(organizationDetail && catalog && metrics)} />
+    const section = <PublishingSection title={'État de la publication'} component={component} toWait={(organizationDetail && organization && metrics)} />
 
     if (errors.length) {
       return <Errors errors={errors} />
