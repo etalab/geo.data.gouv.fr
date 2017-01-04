@@ -117,6 +117,9 @@ function build(previousSizeMap) {
     config.profile = true;
   }
 
+  // Write dummy circle.yml file
+  fs.writeFileSync(__dirname + '/../build/circle.yml', 'test:\n\toverride:\n\t\t- echo "No tests"');
+
   webpack(config).run((err, stats) => {
     if (err) {
       console.error('Failed to create a production build. Reason:');
