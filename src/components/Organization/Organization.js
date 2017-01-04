@@ -52,7 +52,7 @@ class Organization extends Component {
   render() {
     const { user, organizationDetail, metrics, catalog, errors } = this.state
     const component = <OrganizationCardSection {...this.state} />
-    const section = <PublishingSection title={'Organisation'} component={component} toWait={(organizationDetail && catalog && metrics)} />
+    const section = <PublishingSection title={'État de la publication'} component={component} toWait={(organizationDetail && catalog && metrics)} />
 
     if (errors.length) {
       return <Errors errors={errors} />
