@@ -1,73 +1,107 @@
 {
-  "_id": "1",
-  "name": "Géocatalogue national",
-  "tags": [ ],
-  "service": {
-    "location": "http://www.geocatalogue.fr/api-public/servicesRest",
-    "sync": {
-      "status": "failed",
-      "finishedAt": "2016-09-01T14:03:24.339Z",
-      "itemsFound": 0
+  "_id":"1",
+  "name":"Géocatalogue national",
+  "service":{
+    "_id":"1",
+    "location":"http://www.geocatalogue.fr/api-public/servicesRest",
+    "sync":{
+       "status":"failed",
+       "pending":true,
+       "processing":false,
+       "finishedAt":"2016-09-01T14:03:24.339Z",
+       "itemsFound":0
+    },
+    "id":"1"
+  },
+  "createdAt":"1970-01-01T00:00:02.016Z",
+  "updatedAt":"2016-12-28T01:55:48.939Z",
+  "__v":1,
+  "featured":false,
+  "tags":[
+
+  ],
+  "metrics":{
+    "mostRecentRevisionDate":"2016-12-23T10:24:20.000Z",
+    "datasets":{
+       "partitions":{
+          "download":{
+             "yes":16595,
+             "not-determined":50608
+          },
+          "openness":{
+             "yes":19589,
+             "not-determined":47614
+          },
+          "dataType":{
+             "other":606,
+             "grid":3604,
+             "vector":21220,
+             "none":41773
+          }
+       },
+       "totalCount":67203
+    },
+    "records":{
+       "partitions":{
+          "metadataType":{
+             "ISO 19139":74213
+          },
+          "recordType":{
+             "none":1,
+             "nonGeographicDataset":10,
+             "other":10,
+             "service":6989,
+             "dataset":67203
+          }
+       },
+       "counts":{
+          "keywords":{
+             "biota":2291,
+             "AOP":2361,
+             "infoMapAccessService":3299,
+             "ZONAGES_AGRICOLES":3317,
+             "Zones à risque naturel":3317,
+             "AGRICULTURE":3426,
+             "environment":3668,
+             "farming":4242,
+             "France":4312,
+             "Risque/Zonages Risque naturel":4506,
+             "Aménagement Urbanisme/Zonages Planification":4668,
+             "Zones de gestion, de restriction ou de réglementation et unités de déclaration":7899,
+             "geoscientificInformation":8867,
+             "planningCadastre":10152,
+             "Usage des sols":10768,
+             "données ouvertes":17589,
+             "Référentiels de coordonnées":23533,
+             "Bâtiments":24087,
+             "structure":24113,
+             "Parcelles cadastrales":24149
+          },
+          "organizations":{
+             "DREAL Pays de la Loire (Direction régionale de l'environnement, de l'aménagement et du logement Pays de la Loire)":521,
+             "National Renewable Energy Laboratory":527,
+             "DDT 10 (Direction Départementale des Territoires de l'Aube)":575,
+             "DDT 38 (Direction Départementale des Territoires de l'Isère)":593,
+             "CHARM Consortium":597,
+             "DEAL Guyane":598,
+             "DDT 74 (Direction Départementale des Territoires de la Haute-Savoie)":600,
+             "DDTM 64 (Direction Départementale des Territoires et de la Mer des Pyrénées-Atlantiques)":628,
+             "DDT du Gers":629,
+             "DDTM 30 (Direction Départementale des Territoires et de la Mer du Gard)":648,
+             "Masdar Institute of Science and Technology":742,
+             "DDT 09 (Direction Départementale des Territoires de l'Ariège)":844,
+             "DDT 18 (Direction Départementale des Territoires du Cher)":1047,
+             "DDTM 80 (Direction Départementale des Territoires et de la Mer de la Somme)":1157,
+             "Ifremer":1169,
+             "INAO DIJON":1672,
+             "BRGM":2029,
+             "INAO BDDC AVIGNON":3178,
+             "Pôle national de diffusion de l'application Cartélie":3363,
+             "DIRECTION GENERALE DES FINANCES PUBLIQUES (DGFiP) BUREAU GF-3A":23423
+          }
+       },
+       "totalCount":74213
     }
   },
-  "metrics": {
-    "records":{
-      "totalCount":49,
-      "counts":{
-        "organizations":{
-          "CD Moselle (57)":49,
-          "CD Moselle":40,
-          "CG Moselle":19,
-          "SITLOR":1
-        },
-        "keywords":{
-          "boundaries":17,
-          "Unités administratives":16,
-          "utilitiesCommunication":16,
-          "Services d'utilité publique et services publics":16,
-          "histoire":16,
-          "archive":16,
-          "moselle":10,
-          "aménagement":6,
-          "culture":6,
-          "environnement":6,
-          "route":5,
-          "données ouvertes":5,
-          "economie":3,
-          "transversale":3,
-          "Réseaux de transport":3,
-          "transportation":3,
-          "solidarité":2,
-          "social":2,
-          "éducation":2,
-          "Installations agricoles et aquacoles":2
-        }
-      },
-      "partitions":{
-        "recordType":{
-          "dataset":48,
-          "nonGeographicDataset":1
-        },
-        "metadataType":{
-          "ISO 19139":49
-        }
-      }
-    },
-    "datasets":{
-      "totalCount":48,
-      "partitions":{
-        "dataType":{
-          "vector":48
-        },
-        "openness":{
-          "not-determined":43,
-          "yes":5
-        },
-        "download":{
-          "not-determined":43,
-          "yes":5
-        }
-      }
-    }
-  }
+  "id":"1"
 }

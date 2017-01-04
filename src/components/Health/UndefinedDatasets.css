@@ -1,0 +1,7 @@
+.section {
+  display: flex;
+}
+
+.chart {
+  margin: 3em;
+}

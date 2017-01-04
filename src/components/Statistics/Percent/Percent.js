@@ -13,7 +13,7 @@ const color = (percent) => {
 
 const Percent = (props) => {
   const { value, total } = props
-  const percent = value ? Math.floor((value / total) * 100) : 0
+  const percent = value ? Math.ceil((value / total) * 100) : 0
 
   return (
     <Counter

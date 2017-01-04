@@ -1,0 +1,31 @@
+@import "../../theme/shadows";
+@import "../../theme/colors";
+
+.sectionNoPadding {
+  background-color: #FFF;
+  margin-bottom: 2em;
+  box-shadow: var(--shadow);
+}
+
+.container {
+  padding: 40px;
+  display: block;
+}
+
+.container h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-around;
+  padding: 2em;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+}
