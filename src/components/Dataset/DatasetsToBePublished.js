@@ -6,7 +6,7 @@ import { buttons, noData, publishButton, button, disable, selection } from './Da
 class DatasetsToBePublished extends Component {
   constructor(props) {
     super(props)
-    this.state = {toPublish: [...props.datasets]}
+    this.state = {toPublish: []}
   }
 
   publishDatasets() {
@@ -43,8 +43,8 @@ class DatasetsToBePublished extends Component {
   render() {
     const { datasets } = this.props
     const { toPublish } = this.state
-    const label = toPublish.length === datasets.length ? 'Tout décocher' : 'Tout cocher'
-    const textButton = toPublish.length === datasets.length ? 'Publier toutes les données' : 'Publier les données séléctionnées'
+    const label = toPublish.length === datasets.length ? 'Tout désélectionner' : 'Tout sélectionner'
+    const textButton = toPublish.length === datasets.length ? 'Publier toutes les données' : 'Publier les données sélectionnées'
     const publishButtonStyle = toPublish.length ? publishButton : disable
 
     if (!datasets.length) return <div className={noData}>Aucun jeu de données.</div>

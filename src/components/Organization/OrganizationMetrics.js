@@ -10,7 +10,7 @@ const OrganizationMetrics = ({ organizationId, metrics }) => {
       <p><strong>{published}</strong> jeux de données sont <strong>publiés et accessibles</strong> sur <a href="https://data.gouv.fr">data.gouv.fr</a></p>
       <p><strong>{notPublishedYet}</strong> jeux de données sont <strong>en attente de publication</strong></p>
       <p><strong>{publishedByOthers}</strong> jeux de données sont <strong>publiés par d'autres producteurs</strong></p>
-      <Link className={link} to={`publication/${organizationId}/datasets`}>Publier des données</Link>
+      <Link className={link} to={`/publication/${organizationId}/datasets`}>Publier des données</Link>
     </div>
   )
 }

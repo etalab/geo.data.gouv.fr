@@ -1,0 +1,46 @@
+{
+   "acronym":"DDT 88",
+   "badges":[
+
+   ],
+   "created_at":"2015-06-22T22:21:33.017000",
+   "deleted":null,
+   "description":"Direction D\u00e9partementale des Territoires des Vosges",
+   "id":"55886e4dc751df3f7aa453b9",
+   "last_modified":"2016-12-12T21:46:46.829000",
+   "logo":"https://www.data.gouv.fr/s/avatars/2015-06-22/4631ead370c7478cb4439530c45bf17c/logo_DDT-100.png",
+   "members":[
+      {
+         "role":"admin",
+         "user":{
+            "avatar":"https://www.data.gouv.fr/s/avatars/eb/83c84da50343078fb902f4e9ae584e-100.png",
+            "class":"User",
+            "first_name":"Passerelle",
+            "id":"56002c8c88ee38306accb97b",
+            "last_name":"Inspire",
+            "page":"https://www.data.gouv.fr/fr/users/passerelle-inspire/",
+            "slug":"passerelle-inspire",
+            "uri":"https://www.data.gouv.fr/api/1/users/passerelle-inspire/"
+         }
+      }
+   ],
+   "metrics":{
+      "dataset_views":335,
+      "datasets":67,
+      "followers":0,
+      "members":1,
+      "nb_hits":0,
+      "nb_uniq_visitors":0,
+      "nb_visits":0,
+      "permitted_reuses":0,
+      "resource_downloads":17,
+      "reuse_views":0,
+      "reuses":0,
+      "views":40
+   },
+   "name":"Direction D\u00e9partementale des Territoires des Vosges",
+   "page":"https://www.data.gouv.fr/fr/organizations/direction-departementale-des-territoires-des-vosges/",
+   "slug":"direction-departementale-des-territoires-des-vosges",
+   "uri":"https://www.data.gouv.fr/api/1/organizations/direction-departementale-des-territoires-des-vosges/",
+   "url":"http://www.vosges.gouv.fr/Services-de-l-Etat/Agriculture-environnement-amenagement-et-logement/Direction-Departementale-des-Territoires"
+}

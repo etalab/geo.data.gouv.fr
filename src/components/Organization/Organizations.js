@@ -1,11 +1,11 @@
 import React from 'react'
-import Organization from './Organization'
+import OrganizationPreview from './OrganizationPreview'
 import { container } from './Organizations.css'
 
 const Organizations = ({ organizations }) => {
   return (
     <div className={container}>
-      {organizations.map((organization, idx) => <Organization key={idx} organization={organization} />)}
+      {organizations.map((organization, idx) => <OrganizationPreview key={idx} organization={organization} />)}
     </div>
   )
 }

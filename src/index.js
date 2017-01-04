@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import moment from 'moment'
 import Publication from './components/Publication/Publication'
+import Organization from './components/Organization/Organization'
 import PublishingDatasets from './components/Publication/PublishingDatasets'
 import HarvestDetail from './components/Harvest/HarvestDetail'
 import WrappedDatasets from './components/Dataset/WrappedDatasets'
@@ -20,6 +21,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/publication" component={Publication} />
+      <Route path="/publication/:organizationId" component={Organization} />
       <Route path="/publication/:organizationId/datasets" component={PublishingDatasets} />
       <Route path="/catalogs" component={Catalogs} />
       <Route path="/catalogs/:catalogId" component={CatalogDetail} />

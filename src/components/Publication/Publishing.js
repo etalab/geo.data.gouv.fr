@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import User from '../User/User'
 import styles from './Publishing.css'
 
-const Publishing = ({ user, section, organization = null}) => {
-  if (!user) return null
+class Publishing extends Component {
+  render() {
+    const { user, organization, section } = this.props
 
-  return (
-    <div className={styles.publishing}>
-      <User user={user}/>
+    if (!user) return null
 
-      {organization ? <User user={user}/> : null}
+    return (
+      <div className={styles.publishing}>
+        <User user={user}/>
 
-      {section}
-    </div>
-  )
+        {organization ? <img className={styles.organizationLogo} alt="organization logo" src={organization.logo}></img> : null}
+
+        {section}
+      </div>
+    )
+  }
 }
 
 export default Publishing
