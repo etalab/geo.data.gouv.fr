@@ -19,10 +19,10 @@ describe('<DatasetsToBePublished />', () => {
   })
 
   describe('toPublish state', () => {
-    it('should be init with all datasets', () => {
+    it('should be init with empty array', () => {
       const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
 
-      expect(wrapper.state('toPublish')).to.eql(datasets)
+      expect(wrapper.state('toPublish')).to.eql([])
     })
   })
 
@@ -31,7 +31,9 @@ describe('<DatasetsToBePublished />', () => {
       it('should display "Publier toutes les données" text', () => {
         const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
 
-        expect(wrapper.text()).to.contain('Tout décocher')
+        wrapper.instance().setState({toPublish: datasets})
+
+        expect(wrapper.text()).to.contain('Tout désélectionner')
         expect(wrapper.text()).to.contain('Publier toutes les données')
       })
     })
@@ -43,8 +45,8 @@ describe('<DatasetsToBePublished />', () => {
 
         wrapper.instance().removeDatasetToPublish(dataset)
 
-        expect(wrapper.text()).to.contain('Tout cocher')
-        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
+        expect(wrapper.text()).to.contain('Tout sélectionner')
+        expect(wrapper.text()).to.contain('Publier les données sélectionnées')
       })
     })
 
@@ -55,8 +57,8 @@ describe('<DatasetsToBePublished />', () => {
 
         wrapper.instance().removeDatasetToPublish(dataset)
 
-        expect(wrapper.text()).to.contain('Tout cocher')
-        expect(wrapper.text()).to.contain('Publier les données séléctionnées')
+        expect(wrapper.text()).to.contain('Tout sélectionner')
+        expect(wrapper.text()).to.contain('Publier les données sélectionnées')
       })
     })
   })
@@ -79,8 +81,9 @@ describe('<DatasetsToBePublished />', () => {
         const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().addDatasetToPublish(dataset)
+        wrapper.instance().addDatasetToPublish(dataset)
 
-        expect(wrapper.state('toPublish').length).to.equal(3)
+        expect(wrapper.state('toPublish').length).to.equal(1)
       })
     })
   })

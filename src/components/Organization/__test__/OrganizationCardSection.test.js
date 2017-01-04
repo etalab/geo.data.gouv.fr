@@ -10,7 +10,7 @@ import catalog from '../../../fetch/__test__/catalog.json'
 describe('<OrganizationCardSection />', () => {
   describe('No error', () => {
     it('should display metrics', () => {
-      const organizationMetrics = <OrganizationMetrics organizationId={user.organizations[0].id} metrics={metrics} />
+      const organizationMetrics = <OrganizationMetrics organizationId={user.organizations[0]._id} metrics={metrics} />
       const wrapper = shallow(<OrganizationCardSection organization={user.organizations[0]} metrics={metrics} catalog={catalog} />)
 
       expect(wrapper).to.contain(organizationMetrics)
