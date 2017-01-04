@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin: 20px;
 }
@@ -8,7 +8,7 @@
 @media (max-width: 768px) {
   .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin: 10px;
   }
