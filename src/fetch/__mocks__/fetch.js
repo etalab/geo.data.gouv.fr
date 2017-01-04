@@ -8,6 +8,7 @@ import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 import user from '../__test__/user.json'
 import organization from '../__test__/organization.json'
+import organizationDetail from '../__test__/organizationDetail.json'
 import organizationMetrics from '../__test__/organizationMetrics.json'
 import organizationDatasets from '../__test__/organizationDatasets.json'
 import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
@@ -62,6 +63,12 @@ export function getUser() {
 export function getOrganization(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   if (organizationId === '1') return Promise.resolve(organization)
+  return Promise.reject(new Error('organization not found'))
+}
+
+export function getOrganizationDetail(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationDetail)
   return Promise.reject(new Error('organization not found'))
 }
 
