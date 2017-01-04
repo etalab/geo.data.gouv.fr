@@ -14,7 +14,7 @@
 }
 
 .section > div {
-  background-color: white;
+  background-color: var(--white);
   padding: 1em;
 }
 

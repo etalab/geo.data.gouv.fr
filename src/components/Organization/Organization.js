@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import OrganizationCard from './OrganizationCard'
-import { fetchOrganizationMetrics, getOrganization, fetchCatalog } from '../../fetch/fetch'
+import Errors from '../Errors/Errors'
+import Publishing from '../Publication/Publishing'
+import PublishingSection from '../Publication/PublishingSection'
+import OrganizationCardSection from './OrganizationCardSection'
+import { fetchOrganizationMetrics, getOrganizationDetail, getUser, getOrganization, fetchCatalog } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
 class Organization extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      organizationDetail: null,
+      user: null,
+      organization: null,
       metrics: null,
       catalog: null,
       errors: [],
@@ -16,8 +20,10 @@ class Organization extends Component {
 
   componentWillMount() {
     return Promise.all([
+      this.updateUser(),
       this.updateMetrics(),
       this.updateOrganization(),
+      this.updateOrganizationDetail(),
     ])
   }
 
@@ -25,22 +31,36 @@ class Organization extends Component {
     return cancelAllPromises(this)
   }
 
+  updateUser() {
+    return waitForDataAndSetState(getUser(), this, 'user')
+  }
+
+
   updateMetrics() {
-    return waitForDataAndSetState(fetchOrganizationMetrics(this.props.organization.id), this, 'metrics')
+    return waitForDataAndSetState(fetchOrganizationMetrics(this.props.params.organizationId), this, 'metrics')
   }
 
   updateOrganization() {
-    return waitForDataAndSetState(getOrganization(this.props.organization.id), this, 'organizationDetail')
-      .then(() => waitForDataAndSetState(fetchCatalog(this.state.organizationDetail.sourceCatalog), this, 'catalog'))
+    return waitForDataAndSetState(getOrganization(this.props.params.organizationId), this, 'organization')
+      .then(() => waitForDataAndSetState(fetchCatalog(this.state.organization.sourceCatalog), this, 'catalog'))
+  }
+
+  updateOrganizationDetail() {
+    return waitForDataAndSetState(getOrganizationDetail(this.props.params.organizationId), this, 'organizationDetail')
   }
 
   render() {
-    const { organization } = this.props
-    const { organizationDetail, metrics, catalog, errors } = this.state
-    if (organization && catalog && metrics) {
-      return <OrganizationCard organization={organization} metrics={metrics} {...organizationDetail} errors={errors} />
+    const { user, organizationDetail, metrics, catalog, errors } = this.state
+    const component = <OrganizationCardSection {...this.state} />
+    const section = <PublishingSection title={'Organisation'} component={component} toWait={(organizationDetail && catalog && metrics)} />
+
+    if (errors.length) {
+      return <Errors errors={errors} />
+    } else if (user && organizationDetail) {
+      return <Publishing user={user} organization={organizationDetail} section={section} />
+    } else {
+      return null
     }
-    return null
   }
 }
 

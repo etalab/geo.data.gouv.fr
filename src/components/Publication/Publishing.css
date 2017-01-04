@@ -1,11 +1,26 @@
+@import "../../theme/shadows";
+
 .publishing {
   padding: 60px 40px;
   display: block;
+}
+
+.organizationLogo {
+  box-shadow: var(--shadow);
+  position: absolute;
+  top: 100px;
+  max-width: 50px;
+  border-radius: 60px;
+  left: 52%;
 }
 
 @media (max-width: 768px) {
   .publishing {
     padding: 0;
     padding-top: 60px;
+  }
+
+  .organizationLogo {
+    left: 56%;
   }
 }
