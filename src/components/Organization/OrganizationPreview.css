@@ -4,6 +4,7 @@
 .container {
   box-shadow: var(--shadow);
   margin: 2em;
+  max-width: 186px;
 }
 
 .organization {
@@ -11,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .img {
@@ -25,6 +27,8 @@
   background-color: var(--blue);
   font-size: 1rem;
   padding: 1em;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
