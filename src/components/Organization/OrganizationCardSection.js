@@ -9,12 +9,12 @@ const OrganizationCardSection = ({ organization, metrics, catalog }) => {
     <div className={styles.content}>
       <div className={styles.section}>
         <h4>Jeux de données</h4>
-        <OrganizationMetrics metrics={metrics} organizationId={organization.id} />
+        <OrganizationMetrics metrics={metrics} organizationId={organization._id} />
       </div>
 
       <div className={styles.section}>
         <h4>Producteurs source</h4>
-        <OrganizationProducers organizationId={organization.id} producers={organization.producers} />
+        <OrganizationProducers organizationId={organization._id} producers={organization.producers} />
       </div>
 
       <div className={styles.section}>
