@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import Catalog from '../Catalog/Catalog'
 import OrganizationMetrics from './OrganizationMetrics'
 import OrganizationProducers from './OrganizationProducers'
@@ -20,6 +21,10 @@ const OrganizationCardSection = ({ organization, metrics, catalog }) => {
       <div className={styles.section}>
         <h4>Catalogue source</h4>
         <Catalog catalogId={catalog.id} size={'small'} />
+      </div>
+
+      <div className={styles.previousPage}>
+        <Link to={'/publication'}><i className="arrow left icon"></i> Retour aux organisations</Link>
       </div>
     </div>
   )
