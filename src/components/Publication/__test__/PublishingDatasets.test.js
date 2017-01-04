@@ -10,7 +10,7 @@ const PublishingDatasets = require('proxyquire')('../PublishingDatasets', {
   '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
 }).default
 
-describe('<PublishingDatasets />', () => {
+describe.only('<PublishingDatasets />', () => {
 
   describe('When all goes well', () => {
 
