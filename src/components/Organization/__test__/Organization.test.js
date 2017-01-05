@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import organizationDetail from '../../../fetch/__test__/organizationDetail.json'
 import metrics from '../../../fetch/__test__/organizationMetrics.json'
@@ -14,7 +14,7 @@ describe('<Organization />', () => {
   describe('When all goes well', () => {
 
     it('should assign metrics, organizationDetail and catalog to this.state', () => {
-      const wrapper = mount(<Organization params={{organizationId: '1'}} />)
+      const wrapper = shallow(<Organization params={{organizationId: '1'}} />)
 
       return wrapper.instance()
         .componentWillMount()
