@@ -1,5 +1,4 @@
 import { getCandidateCatalogs, computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
-import { get } from 'lodash'
 
 describe('catalogs', function () {
   const currentDate = new Date('2016-07-15')
