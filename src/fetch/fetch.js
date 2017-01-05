@@ -103,3 +103,20 @@ export function publishDataset(datasetId, organizationId) {
     body: JSON.stringify({ organization: organizationId })
   })
 }
+
+export function updateCatalogSource(sourceCatalogs, organizationId) {
+  if (!sourceCatalogs || !sourceCatalogs.length || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
+  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'PUT',
+    mode: 'cors',
+    credentials: 'include',
+    body: JSON.stringify({
+      sourceCatalogs: sourceCatalogs,
+      publishAll: true,
+   })
+  })
+}
