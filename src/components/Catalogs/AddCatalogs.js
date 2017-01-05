@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { get, sortBy, filter } from 'lodash'
-import { computeCatalogScore } from '../../helpers/catalogs'
+import { getCatalogOrderByScore, getCandidateCatalogs } from '../../helpers/catalogs'
 import ContentLoader from '../Loader/ContentLoader'
 import { fetchCatalogs } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
@@ -22,15 +21,12 @@ class AddCatalogs extends Component {
   }
 
   render() {
+    const { catalogs } = this.state
     const { sourceCatalogs, addCatalog } = this.props
     if (!this.state.catalogs) return <div className={loader}><ContentLoader /></div>
 
-    const filteredCatalogs = filter(this.state.catalogs, catalog => !sourceCatalogs.includes(catalog.id))
-    const opennedCatalogs = filter(filteredCatalogs, catalog =>
-      get(catalog, 'metrics.datasets.partitions.openness.yes', 0) > 1 &&
-      get(catalog, 'metrics.datasets.partitions.download.yes', 0) > 1
-    )
-    const sortedCatalogs = sortBy(opennedCatalogs, catalog => -computeCatalogScore(catalog))
+    const candidateCatalogs = getCandidateCatalogs(catalogs, sourceCatalogs)
+    const sortedCatalogs = getCatalogOrderByScore(candidateCatalogs)
 
     return (
       <div className={container}>

@@ -3,7 +3,7 @@ import { pull } from 'lodash'
 import AddCatalogs from '../Catalogs/AddCatalogs'
 import Catalog from '../Catalog/Catalog'
 import Errors from '../Errors/Errors'
-import { updateCatalogSource  } from '../../fetch/fetch'
+import { updateCatalogSources  } from '../../fetch/fetch'
 import { catalogsStyle, divider, catalog, remove } from './SourceCatalogs.css'
 
 class SourceCatalogs extends Component {
@@ -16,7 +16,7 @@ class SourceCatalogs extends Component {
     }
   }
 
-  displayCatalogs() {
+  toggleCatalogList() {
     this.setState({displayCatalogs: !this.state.displayCatalogs})
   }
 
@@ -26,7 +26,7 @@ class SourceCatalogs extends Component {
 
     if (!catalogs.includes(catalogId)) {
       const newCatalogs = [...catalogs, catalogId]
-      updateCatalogSource(newCatalogs, organizationId)
+      updateCatalogSources(newCatalogs, organizationId)
       .then(() => this.setState({catalogs: newCatalogs}))
     }
   }
@@ -37,7 +37,7 @@ class SourceCatalogs extends Component {
 
     if (catalogs.includes(catalogId)) {
       const newCatalogs = pull(catalogs, catalogId)
-      updateCatalogSource(newCatalogs, organizationId)
+      updateCatalogSources(newCatalogs, organizationId)
       .then(() => this.setState({catalogs: newCatalogs}))
     }
   }
@@ -46,7 +46,7 @@ class SourceCatalogs extends Component {
     const { displayCatalogs, catalogs, errors } = this.state
 
     if (errors.length) return <Errors errors={errors} />
-    const displayCatalogsButton = <button onClick={() => this.displayCatalogs()}>Ajouter des catalogues</button>
+    const displayCatalogsButton = <button onClick={() => this.toggleCatalogList()}>Ajouter des catalogues</button>
     const moreCatalogs = <AddCatalogs sourceCatalogs={catalogs} addCatalog={(catalogId) => this.addCatalog(catalogId)} />
 
     return (

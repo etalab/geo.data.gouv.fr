@@ -1,7 +1,50 @@
-import { computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
+import { getCandidateCatalogs, computeFreshnessScore, isObsolete, computeOpenScore, computeDownloadableScore, computeCatalogScore } from '../catalogs'
+import { get } from 'lodash'
 
 describe('catalogs', function () {
   const currentDate = new Date('2016-07-15')
+
+  describe('getCandidateCatalogs(catalogs, sourceCatalogs)', function () {
+    describe('catalog download or openness data is not defined', () => {
+      it('should not return catalog', () => {
+        const sourceCatalogs = ['1', '2', '3']
+        const catalog = { id: '4', metrics: null }
+        const catalogs = [catalog]
+
+        expect(getCandidateCatalogs(catalogs, sourceCatalogs)).to.eql([])
+      })
+    })
+
+    describe('catalog has no open or download data', () => {
+      it('should not return catalog', () => {
+        const sourceCatalogs = ['1', '2', '3']
+        const catalog = { id: '4', metrics: { datasets: { partitions: { openness: { yes: 0 }, download: { yes: 0 } } } } }
+        const catalogs = [catalog]
+
+        expect(getCandidateCatalogs(catalogs, sourceCatalogs)).to.eql([])
+      })
+    })
+
+    describe('catalog has at least one open and download data', () => {
+      it('should return catalog', () => {
+        const sourceCatalogs = ['1', '2', '3']
+        const catalog = { id: '4', metrics: { datasets: { partitions: { openness: { yes: 42 }, download: { yes: 1 } } } } }
+        const catalogs = [catalog]
+
+        expect(getCandidateCatalogs(catalogs, sourceCatalogs)).to.eql([catalog])
+      })
+    })
+
+    describe('catalog is already in catalogSources', () => {
+      it('should not return catalog', () => {
+        const sourceCatalogs = ['1', '2', '3']
+        const catalog = { id: '1', metrics: { datasets: { partitions: { openness: { yes: 42 }, download: { yes: 1 } } } } }
+        const catalogs = [catalog]
+
+        expect(getCandidateCatalogs(catalogs, sourceCatalogs)).to.eql([])
+      })
+    })
+  })
 
   describe('computeFreshnessScore(moment)', function () {
     describe('moment is not defined', function () {

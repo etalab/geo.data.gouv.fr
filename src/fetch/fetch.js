@@ -1,4 +1,5 @@
 import superfetch from '../helpers/superfetch'
+import { _put } from '../helpers/put'
 import { convertFilters } from '../helpers/manageFilters'
 import qs from 'qs'
 const _f = superfetch;
@@ -92,31 +93,18 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
 
 export function publishDataset(datasetId, organizationId) {
   if (!datasetId || !organizationId) return Promise.reject(new Error('datasetId and organizationId are required'))
-  return _f(`https://inspire.data.gouv.fr/dgv/api/datasets/${datasetId}/publication`, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: 'PUT',
-    mode: 'cors',
-    credentials: 'include',
-    body: JSON.stringify({ organization: organizationId })
-  })
+  const url = `https://inspire.data.gouv.fr/dgv/api/datasets/${datasetId}/publication`
+
+  return _put(url, { organization: organizationId })
 }
 
-export function updateCatalogSource(sourceCatalogs, organizationId) {
-  if (!sourceCatalogs || !sourceCatalogs.length || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
-  return _f(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}`, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: 'PUT',
-    mode: 'cors',
-    credentials: 'include',
-    body: JSON.stringify({
-      sourceCatalogs: sourceCatalogs,
-      publishAll: true,
-   })
-  })
+export function updateCatalogSources(sourceCatalogs, organizationId) {
+  if (!sourceCatalogs || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
+  const url = `https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}`
+  const params = {
+    sourceCatalogs: sourceCatalogs,
+    publishAll: true,
+  }
+
+  return _put(url, params)
 }

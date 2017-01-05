@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { sortBy } from 'lodash'
-import { computeCatalogScore } from '../../helpers/catalogs'
+import { getCatalogOrderByScore } from '../../helpers/catalogs'
 import ContentLoader from '../Loader/ContentLoader'
 import { fetchCatalogs } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
@@ -24,7 +23,7 @@ class Catalogs extends Component {
   render() {
     if (!this.state.catalogs) return <div className={loader}><ContentLoader /></div>
 
-    const sortedCatalogs = sortBy(this.state.catalogs, catalog => -computeCatalogScore(catalog))
+    const sortedCatalogs = getCatalogOrderByScore(this.state.catalogs)
 
     return (
       <div className={container}>
