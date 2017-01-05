@@ -16,6 +16,10 @@ export default class DatasetDetail extends Component {
     this.state = {errors: []}
   }
 
+  componentDidMount() {
+    document.title = 'Fiche jeu de données'
+  }
+
   componentWillMount() {
     return Promise.all([
       this.updateDataset(),

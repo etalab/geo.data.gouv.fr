@@ -40,6 +40,10 @@ class WrappedDatasets extends Component {
     this.state = { query: parseQuery(this.props.location.query) }
   }
 
+  componentDidMount() {
+    document.title = 'Recherche jeu de données'
+  }
+
   render() {
     return <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
   }

@@ -12,6 +12,10 @@ class Catalogs extends Component {
     this.state = {errors: []}
   }
 
+  componentDidMount() {
+    document.title = 'Catalogues'
+  }
+
   componentWillMount() {
     return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs')
   }

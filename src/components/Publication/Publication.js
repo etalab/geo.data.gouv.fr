@@ -14,6 +14,10 @@ class Admin extends Component {
     }
   }
 
+  componentDidMount() {
+    document.title = 'Vos organisations'
+  }
+
   componentWillMount() {
     return waitForDataAndSetState(getUser(), this, 'user')
       .then(() => {

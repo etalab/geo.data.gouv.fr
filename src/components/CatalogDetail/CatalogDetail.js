@@ -16,6 +16,10 @@ class CatalogDetail extends Component {
     this.state = {errors: []}
   }
 
+  componentDidMount() {
+    document.title = 'Catalogue'
+  }
+
   componentWillMount() {
     return Promise.all([
       this.updateCatalog(),

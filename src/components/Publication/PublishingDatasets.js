@@ -12,6 +12,10 @@ class PublishingDatasets extends Component {
     this.state = {errors: []}
   }
 
+  componentDidMount() {
+    document.title = 'Jeux de données'
+  }
+
   componentWillMount() {
     return Promise.all([
       this.updateUser(),

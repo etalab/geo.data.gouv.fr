@@ -18,6 +18,10 @@ class Organization extends Component {
     }
   }
 
+  componentDidMount() {
+    document.title = 'État de la publication'
+  }
+
   componentWillMount() {
     return Promise.all([
       this.updateUser(),

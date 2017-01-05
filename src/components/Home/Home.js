@@ -14,6 +14,10 @@ class Home extends Component {
     this.state = {errors: []}
   }
 
+  componentDidMount() {
+    document.title = 'Accueil'
+  }
+
   componentWillMount() {
     return waitForDataAndSetState(fetchGlobalMetrics(), this, 'metrics')
   }

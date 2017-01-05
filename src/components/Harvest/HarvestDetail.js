@@ -13,6 +13,10 @@ class HarvestDetail extends Component {
     this.state = {errors: []}
   }
 
+  componentDidMount() {
+    document.title = 'Détails moissonnage'
+  }
+
   componentWillMount() {
     return Promise.all([
       this.updateCatalog(),
