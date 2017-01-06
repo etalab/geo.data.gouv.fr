@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-button {
+.harvest > button {
   margin: 2em;
   padding: 15px 20px;
   color: #fff;
