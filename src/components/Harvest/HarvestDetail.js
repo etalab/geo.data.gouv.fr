@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DocumentTitle from 'react-document-title'
 import { Link } from 'react-router'
 import { fetchCatalog, fetchHarvest } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
@@ -11,10 +12,6 @@ class HarvestDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {errors: []}
-  }
-
-  componentDidMount() {
-    document.title = 'Détails moissonnage'
   }
 
   componentWillMount() {
@@ -48,10 +45,12 @@ class HarvestDetail extends Component {
     const { harvest, catalog } = this.state
     const { params } = this.props
 
-    if (harvest && catalog) {
-      const successful = harvest.status === 'successful'
+    if (!harvest || !catalog) return null
 
-      return (
+    const successful = harvest.status === 'successful'
+
+    return (
+      <DocumentTitle title={`Moissonnage: ${harvest._id}`}>
         <div className={container}>
           <h1>
             <Link to={`/catalogs/${params.catalogId}`}>{catalog.name}</Link>
@@ -65,9 +64,8 @@ class HarvestDetail extends Component {
             {successful ? <HarvestResults logs={harvest.log}/> : <HarvestLogs logs={harvest.log}/>}
           </div>
         </div>
-    )} else {
-      return <div></div>
-    }
+      </DocumentTitle>
+    )
   }
 }
 

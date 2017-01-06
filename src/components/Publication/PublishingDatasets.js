@@ -12,10 +12,6 @@ class PublishingDatasets extends Component {
     this.state = {errors: []}
   }
 
-  componentDidMount() {
-    document.title = 'Jeux de données'
-  }
-
   componentWillMount() {
     return Promise.all([
       this.updateUser(),
@@ -49,14 +45,15 @@ class PublishingDatasets extends Component {
     const { params: { organizationId } } = this.props
     const { user, published, notPublishedYet, publishedByOthers, errors } = this.state
     const datasets = {published, notPublishedYet, publishedByOthers}
-    const component = <OrganizationDatasets {...datasets} organizationId={organizationId} />
-    const section = <PublishingSection title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
 
     if (errors.length) {
       return <Errors errors={errors} />
     }
     else if (user) {
+      const component = <OrganizationDatasets {...datasets} organizationId={organizationId} />
       const organization = user.organizations.find(organization => organization.id === organizationId)
+      const section = <PublishingSection pageTitle={organization.name} title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
+
       return <Publishing user={user} organization={organization} section={section} />
     } else {
       return null

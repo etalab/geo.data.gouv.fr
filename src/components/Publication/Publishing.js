@@ -9,13 +9,13 @@ class Publishing extends Component {
     if (!user) return null
 
     return (
-      <div className={styles.publishing}>
-        <User user={user}/>
+        <div className={styles.publishing}>
+          <User user={user}/>
 
-        {organization ? <img className={styles.organizationLogo} alt="organization logo" src={organization.logo}></img> : null}
+          {organization ? <img className={styles.organizationLogo} alt="organization logo" src={organization.logo}></img> : null}
 
-        {section}
-      </div>
+          {section}
+        </div>
     )
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DocumentTitle from 'react-document-title'
 import { isArray, forEach } from 'lodash'
 import qs from 'qs'
 import Datasets from './Datasets'
@@ -39,13 +40,13 @@ class WrappedDatasets extends Component {
     super(props)
     this.state = { query: parseQuery(this.props.location.query) }
   }
-
-  componentDidMount() {
-    document.title = 'Recherche jeu de données'
-  }
-
+  
   render() {
-    return <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
+    return (
+      <DocumentTitle title={'Recherche jeu de données'}>
+        <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
+      </DocumentTitle>
+    )
   }
 }
 
