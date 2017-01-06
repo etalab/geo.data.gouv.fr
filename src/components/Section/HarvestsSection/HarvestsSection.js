@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import Histogram from '../../Charts/Histogram/Histogram'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
-import { fetchHarvests } from '../../../fetch/fetch'
+import { fetchHarvests, syncCatalog } from '../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components'
-import { harvest, chart } from './HarvestsSection.css'
+import { harvest, chart, pending } from './HarvestsSection.css'
 
 class HarvestsSection extends Component {
   constructor(props) {
     super(props)
-    this.state = {errors: []}
+    this.state = {
+      isPending: this.props.catalog.service.sync.pending,
+      errors: []
+    }
   }
 
   componentWillMount() {
@@ -18,6 +21,11 @@ class HarvestsSection extends Component {
 
   componentWillUnmount() {
     return cancelAllPromises(this)
+  }
+
+  sync() {
+    this.setState({isPending: true})
+    syncCatalog(this.props.catalog._id)
   }
 
   getGraphData() {
@@ -37,18 +45,22 @@ class HarvestsSection extends Component {
 
     if (!harvests ) return null
 
+    const { isPending } = this.state
+    const { catalog } = this.props
+
     const dataGraph = this.getGraphData()
     const histogram = <Histogram className={chart} data={dataGraph} width="400" height="220" />
 
     return (
       <div className={harvest}>
-        <HarvestsTable harvests={harvests} catalog={this.props.catalog} />
+        <HarvestsTable harvests={harvests} catalog={catalog} />
         <div className={chart}>
           <Chart
             title={'Évolution des Enregistrements'}
             description={'Évolution du nombre d\'enregistrements par moissonnage'}
             chart={histogram} />
         </div>
+        {isPending ? <div className={pending}>Synchronisation en cours ...</div> : <button onClick={() => this.sync()}>Synchroniser</button>}
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import superfetch from '../helpers/superfetch'
 import { _put } from '../helpers/put'
+import { _post } from '../helpers/post'
 import { convertFilters } from '../helpers/manageFilters'
 import qs from 'qs'
 const _f = superfetch;
@@ -107,4 +108,9 @@ export function updateCatalogSources(sourceCatalogs, organizationId) {
   }
 
   return _put(url, params)
+}
+
+export function syncCatalog(catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  return _post(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/sync`)
 }
