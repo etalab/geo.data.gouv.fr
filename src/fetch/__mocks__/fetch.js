@@ -95,3 +95,7 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
   if (organizationId === '1') return Promise.resolve(organizationDatasets)
   return Promise.reject(new Error('organization published by others datasets not found'))
 }
+
+export function updateCatalogSources(sourceCatalogs, organizationId) {
+  if (!sourceCatalogs || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
+}

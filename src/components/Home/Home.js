@@ -39,7 +39,7 @@ class Home extends Component {
             <button className={inverted} onClick={() => this.userSearch('records', this.refs.searchInput.state.textInput)}>Rechercher un enregistrement</button>
           </div>
           <span>OU</span>
-          <Link className={catalogLinks} to="catalogs">Explorer les 106 catalogues</Link>
+          <Link className={catalogLinks} to="catalogs">Explorer les 110 catalogues</Link>
         </div>
 
         <div className={datagouv}>

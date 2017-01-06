@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Catalog from '../Catalog/Catalog'
 import OrganizationMetrics from './OrganizationMetrics'
 import OrganizationProducers from './OrganizationProducers'
+import SourceCatalogs from '../Catalog/SourceCatalogs'
 import styles from './OrganizationCardSection.css'
 
-const OrganizationCardSection = ({ organization, metrics, catalog }) => {
+const OrganizationCardSection = ({ organization, metrics }) => {
   return (
     <div className={styles.content}>
       <div className={styles.section}>
@@ -19,8 +19,8 @@ const OrganizationCardSection = ({ organization, metrics, catalog }) => {
       </div>
 
       <div className={styles.section}>
-        <h4>Catalogue source</h4>
-        <Catalog catalogId={catalog.id} size={'small'} />
+        <h4>Catalogues source</h4>
+        <SourceCatalogs organizationId={organization._id} sourceCatalogs={organization.sourceCatalogs} />
       </div>
 
       <div className={styles.previousPage}>

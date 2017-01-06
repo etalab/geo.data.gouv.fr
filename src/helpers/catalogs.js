@@ -1,5 +1,16 @@
 import moment from 'moment'
-import { get } from 'lodash'
+import { sortBy, filter, get } from 'lodash'
+
+export function getCandidateCatalogs(catalogs, sourceCatalogs) {
+  return filter(catalogs, catalog =>
+    !sourceCatalogs.includes(catalog.id) &&
+    get(catalog, 'metrics.datasets.partitions.openness.yes', 0) >= 1 &&
+    get(catalog, 'metrics.datasets.partitions.download.yes', 0) >= 1)
+}
+
+export function getCatalogOrderByScore(catalogs) {
+  return sortBy(catalogs, catalog => -computeCatalogScore(catalog))
+}
 
 export function isObsolete(catalog, currentDate = new Date()) {
   const mostRecentRevisionDate = get(catalog, 'metrics.mostRecentRevisionDate')
