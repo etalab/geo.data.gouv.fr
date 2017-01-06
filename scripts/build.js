@@ -119,7 +119,7 @@ function build(previousSizeMap) {
 
   // Write dummy circle.yml file
   fs.mkdirsSync(__dirname + '/../build');
-  fs.writeFileSync(__dirname + '/../build/circle.yml', 'test:\n\toverride:\n\t\t- echo "No tests"');
+  fs.copySync(__dirname + '/../circle.yml', __dirname + '/../build/circle.yml');
 
   webpack(config).run((err, stats) => {
     if (err) {
