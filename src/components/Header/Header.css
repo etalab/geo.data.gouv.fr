@@ -21,11 +21,35 @@
   font-size: 2em;
 }
 
-.login {
+.log {
   font-size: 1em;
 }
 
-.login:focus,
-.login:hover {
+.log:focus,
+.log:hover {
   text-decoration: underline;
+}
+
+.authentification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.account:focus,
+.account:hover {
+  text-decoration: underline;
+}
+
+.avatar {
+  width: 30px;
+  margin-right: 0.3em;
+  border-radius: 60px;
 }
