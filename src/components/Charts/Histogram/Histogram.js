@@ -17,8 +17,9 @@ export function formatData(data) {
 class Histogram extends Component {
   render() {
     const { data, width, height } = this.props
+    const formatedData = formatData(data)
 
-    return <Line data={formatData(data)} width={width} height={height} />
+    return <Line data={formatedData} width={width} height={height} />
   }
 }
 

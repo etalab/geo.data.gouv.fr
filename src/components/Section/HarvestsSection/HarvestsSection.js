@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import MediaQuery from 'react-responsive'
 import Histogram from '../../Charts/Histogram/Histogram'
 import HarvestsTable from '../../HarvestsTable/HarvestsTable'
 import Chart from '../../Charts/Chart'
@@ -34,38 +33,24 @@ class HarvestsSection extends Component {
   }
 
   render() {
-    if (this.state.harvests) {
-      const dataGraph = this.getGraphData()
+    const { harvests } = this.state
 
-      return (
-        <div className={harvest}>
-          <HarvestsTable harvests={this.state.harvests} catalog={this.props.catalog} />
-          <div className={chart}>
-            <MediaQuery minWidth={701} >
-              <Chart
-                title={'Évolution des Enregistrements'}
-                description={'Évolution du nombre d\'enregistrements par moissonnage'}
-                chart={<Histogram data={dataGraph} width="500" height="200" />} />
-            </MediaQuery>
+    if (!harvests ) return null
 
-            <MediaQuery minWidth={501} maxWidth={700} >
-              <Chart
-                title={'Évolution des Enregistrements'}
-                description={'Évolution du nombre d\'enregistrements par moissonnage'}
-                chart={<Histogram data={dataGraph} width="400" height="220" />} />
-            </MediaQuery>
+    const dataGraph = this.getGraphData()
+    const histogram = <Histogram className={chart} data={dataGraph} width="400" height="220" />
 
-            <MediaQuery maxWidth={500} >
-              <Chart
-                title={'Évolution des Enregistrements'}
-                description={'Évolution du nombre d\'enregistrements par moissonnage'}
-                chart={<Histogram data={dataGraph} width="260" height="180" />} />
-            </MediaQuery>
-          </div>
+    return (
+      <div className={harvest}>
+        <HarvestsTable harvests={harvests} catalog={this.props.catalog} />
+        <div className={chart}>
+          <Chart
+            title={'Évolution des Enregistrements'}
+            description={'Évolution du nombre d\'enregistrements par moissonnage'}
+            chart={histogram} />
         </div>
-    )} else {
-      return <div></div>
-    }
+      </div>
+    )
   }
 }
 
