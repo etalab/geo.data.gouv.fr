@@ -6,7 +6,7 @@ import AddButton from '../Buttons/AddButton'
 import RemoveButton from '../Buttons/RemoveButton'
 import Errors from '../Errors/Errors'
 import { updateCatalogSources  } from '../../fetch/fetch'
-import { catalogsStyle, divider, catalog, remove } from './SourceCatalogs.css'
+import { catalogsStyle, catalog, buttonStyle, remove } from './SourceCatalogs.css'
 
 class SourceCatalogs extends Component {
   constructor(props) {
@@ -61,8 +61,10 @@ class SourceCatalogs extends Component {
             </div>
             )}
         </div>
-        <hr className={divider} />
-        {!displayCatalogs ? displayCatalogsButton : moreCatalogs}
+
+        <div className={buttonStyle}>
+          {!displayCatalogs ? displayCatalogsButton : moreCatalogs}
+        </div>
       </div>
     )
   }
