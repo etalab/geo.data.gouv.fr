@@ -1,0 +1,15 @@
+@import "../../theme/colors";
+
+button.add:hover {
+  padding: 0.5em;
+  color: var(--blue);
+  background-color: #fff;
+  border: 1px solid var(--blue);
+}
+
+button.add {
+  padding: 0.5em;
+  color: #fff;
+  background-color: var(--blue);
+  border: 1px solid #fff;
+}
