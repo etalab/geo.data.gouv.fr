@@ -4,6 +4,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #d0d0d0;
 }
 
 .catalogsStyle a {
@@ -15,22 +18,12 @@
   flex-direction: column;
 }
 
-.divider {
-  margin: 2em 0em;
-}
-
-button {
-  padding: 0.5em;
-  color: var(--blue);
-  background-color: #fff;
-  border: 1px solid var(--blue);
-}
-
-button.remove {
+.remove {
   width: 300px;
   margin: 0px 7px;
   padding: 0.5em;
-  background-color: var(--red);
-  color: #fff;
-  border: 1px solid;
+}
+
+.buttonStyle {
+  margin: 0.5em;
 }

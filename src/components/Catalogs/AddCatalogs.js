@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getCatalogOrderByScore, getCandidateCatalogs } from '../../helpers/catalogs'
 import ContentLoader from '../Loader/ContentLoader'
+import AddButton from '../Buttons/AddButton'
 import { fetchCatalogs } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
 import CatalogPreview from '../Catalog/CatalogPreview'
@@ -33,7 +34,7 @@ class AddCatalogs extends Component {
         {sortedCatalogs.map((catalog, idx) =>
           <div key={idx} className={card}>
             <CatalogPreview catalog={catalog} />
-            <button className={add} onClick={() => addCatalog(catalog.id)}>Ajouter</button>
+            <AddButton style={add} action={() => addCatalog(catalog.id)} text={'Ajouter'} />
           </div>
           )}
         <div className={warningMsg}><i className="warning icon"></i>Seuls les catalogues disposant de données ouvertes et téléchargeables sont disponible ici.</div>
