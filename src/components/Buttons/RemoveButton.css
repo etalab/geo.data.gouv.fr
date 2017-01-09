@@ -1,0 +1,15 @@
+@import "../../theme/colors";
+
+button.remove:hover {
+  padding: 0.5em;
+  color: var(--red);
+  background-color: #fff;
+  border: 1px solid var(--red);
+}
+
+button.remove {
+  padding: 0.5em;
+  color: #fff;
+  background-color: var(--red);
+  border: 1px solid #fff;
+}
