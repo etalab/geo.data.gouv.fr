@@ -4,7 +4,7 @@ import styles from './Publishing.css'
 
 class Publishing extends Component {
   render() {
-    const { user, organization, section } = this.props
+    const { user, organizationLogo, section } = this.props
 
     if (!user) return null
 
@@ -12,7 +12,7 @@ class Publishing extends Component {
         <div className={styles.publishing}>
           <User user={user}/>
 
-          {organization ? <img className={styles.organizationLogo} alt="organization logo" src={organization.logo}></img> : null}
+          {organizationLogo ? <img className={styles.organizationLogo} alt="organization logo" src={organizationLogo}></img> : null}
 
           {section}
         </div>

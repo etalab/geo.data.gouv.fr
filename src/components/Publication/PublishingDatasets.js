@@ -54,7 +54,7 @@ class PublishingDatasets extends Component {
       if (organization) {
         const section = <PublishingSection pageTitle={organization.name} title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
 
-        return <Publishing user={user} organization={organization} section={section} />
+        return <Publishing user={user} organizationLogo={organization.logo} section={section} />
       }
     }
 
