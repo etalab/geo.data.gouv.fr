@@ -1,4 +1,4 @@
-export default function superfetch(url, options={}) {
+export function superfetch(url, options={}) {
   return fetch(url, options)
     .then(response => {
       if (response.status === 401) throw new Error('Unauthorized')
@@ -10,4 +10,17 @@ export default function superfetch(url, options={}) {
       console.error(err);
       throw err
     });
+}
+
+export function superRequest(url, method, params={}) {
+  return superfetch(url, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: method,
+    mode: 'cors',
+    credentials: 'include',
+    body: JSON.stringify(params)
+  })
 }
