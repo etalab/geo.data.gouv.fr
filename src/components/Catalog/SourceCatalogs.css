@@ -19,18 +19,8 @@
   margin: 2em 0em;
 }
 
-button {
-  padding: 0.5em;
-  color: var(--blue);
-  background-color: #fff;
-  border: 1px solid var(--blue);
-}
-
-button.remove {
+.remove {
   width: 300px;
   margin: 0px 7px;
   padding: 0.5em;
-  background-color: var(--red);
-  color: #fff;
-  border: 1px solid;
 }

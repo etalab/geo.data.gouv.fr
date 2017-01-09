@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { pull } from 'lodash'
 import AddCatalogs from '../Catalogs/AddCatalogs'
 import Catalog from '../Catalog/Catalog'
+import AddButton from '../Buttons/AddButton'
+import RemoveButton from '../Buttons/RemoveButton'
 import Errors from '../Errors/Errors'
 import { updateCatalogSources  } from '../../fetch/fetch'
 import { catalogsStyle, divider, catalog, remove } from './SourceCatalogs.css'
@@ -46,7 +48,7 @@ class SourceCatalogs extends Component {
     const { displayCatalogs, catalogs, errors } = this.state
 
     if (errors.length) return <Errors errors={errors} />
-    const displayCatalogsButton = <button onClick={() => this.toggleCatalogList()}>Ajouter des catalogues</button>
+    const displayCatalogsButton = <AddButton action={() => this.toggleCatalogList()} text={'Ajouter des catalogues'} />
     const moreCatalogs = <AddCatalogs sourceCatalogs={catalogs} addCatalog={(catalogId) => this.addCatalog(catalogId)} />
 
     return (
@@ -55,7 +57,7 @@ class SourceCatalogs extends Component {
           {catalogs.map(id =>
             <div key={id} className={catalog}>
               <Catalog catalogId={id} size={'small'} />
-              <button className={remove} onClick={() => this.removeCatalog(id)}>Supprimer</button>
+              <RemoveButton style={remove} action={() => this.removeCatalog(id)} text={'Supprimer'}/>
             </div>
             )}
         </div>

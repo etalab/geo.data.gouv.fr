@@ -22,13 +22,8 @@
   margin-top: 5em;
 }
 
-button.add {
-  width: 300px;
+.add {
   margin-top: 5px;
-  padding: 0.5em;
-  background-color: var(--blue);
-  color: #fff;
-  border: 1px solid;
 }
 
 .warningMsg {
