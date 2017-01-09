@@ -39,6 +39,10 @@ export function fetchDataset(datasetId) {
   return _f(`https://inspire.data.gouv.fr/api/geogw/records/${datasetId}`)
 }
 
+export function getProducers() {
+  return _f('https://inspire.data.gouv.fr/dgv/api/producers')
+}
+
 export function fetchGeoJSON(link) {
   if (!link) return Promise.reject(new Error('link is required'))
   return _f(link + '?format=GeoJSON&projection=WGS84')

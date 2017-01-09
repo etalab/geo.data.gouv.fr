@@ -3,6 +3,7 @@ import catalogs from '../__test__/catalogs.json'
 import metrics from '../__test__/metrics.json'
 import harvest from '../__test__/harvest.json'
 import harvests from '../__test__/harvests.json'
+import producers from '../__test__/producers.json'
 import globalMetrics from '../__test__/globalMetrics.json'
 import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
@@ -28,6 +29,11 @@ export function fetchCatalog(catalogId) {
 export function fetchCatalogs() {
   return Promise.resolve(catalogs) // Finding a solution to Promise.reject()
 }
+
+export function getProducers() {
+  return Promise.resolve(producers)
+}
+
 
 export function fetchHarvest(catalogId, harvestId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
