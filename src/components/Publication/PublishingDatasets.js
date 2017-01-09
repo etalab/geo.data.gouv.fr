@@ -46,18 +46,19 @@ class PublishingDatasets extends Component {
     const { user, published, notPublishedYet, publishedByOthers, errors } = this.state
     const datasets = {published, notPublishedYet, publishedByOthers}
 
-    if (errors.length) {
-      return <Errors errors={errors} />
-    }
-    else if (user) {
+    if (errors.length) return <Errors errors={errors} />
+
+    if (user) {
       const component = <OrganizationDatasets {...datasets} organizationId={organizationId} />
       const organization = user.organizations.find(organization => organization.id === organizationId)
-      const section = <PublishingSection pageTitle={organization.name} title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
+      if (organization) {
+        const section = <PublishingSection pageTitle={organization.name} title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
 
-      return <Publishing user={user} organization={organization} section={section} />
-    } else {
-      return null
+        return <Publishing user={user} organization={organization} section={section} />
+      }
     }
+
+    return null
   }
 }
 
