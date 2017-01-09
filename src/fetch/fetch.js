@@ -115,3 +115,18 @@ export function syncCatalog(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   return superRequest(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/sync`, 'POST')
 }
+
+export function dissociateProducer(producerId, organizationId) {
+  if (!producerId && organizationId) return Promise.reject(new Error('producerId and organizationId is required'))
+  const url = `https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/producers/${producerId}`
+
+  return superRequest(url, 'DELETE')
+}
+
+export function associateProducer(producerId, organizationId) {
+  if (!producerId && organizationId) return Promise.reject(new Error('producerId and organizationId is required'))
+  const url = `https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/producers`
+  const params = { '_id': producerId, 'associatedTo': organizationId }
+
+  return superRequest(url, 'POST', params)
+}
