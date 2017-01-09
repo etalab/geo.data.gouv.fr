@@ -33,7 +33,7 @@ class Admin extends Component {
   render() {
     const { user } = this.state
     const component = user ? <Organizations organizations={user.organizations} /> : null
-    const section = <PublishingSection title={'Vos organisations'} component={component} toWait={user} />
+    const section = <PublishingSection pageTitle={'Vos organisations'} title={'Vos organisations'} component={component} toWait={user} />
 
     return <Publishing user={user} section={section} />
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DocumentTitle from 'react-document-title'
 import { browserHistory } from 'react-router'
 import SearchInput from '../SearchInput/SearchInput'
 import ContentLoader from '../Loader/ContentLoader'
@@ -15,7 +16,7 @@ class CatalogDetail extends Component {
     super(props)
     this.state = {errors: []}
   }
-
+  
   componentWillMount() {
     return Promise.all([
       this.updateCatalog(),
@@ -45,20 +46,22 @@ class CatalogDetail extends Component {
     if (!catalog || !metrics) return <div className={loader}><ContentLoader /></div>
 
     return (
-      <div className={container}>
-        <div className={sectionNoPadding}>
-          <CatalogSection catalog={catalog} />
-          <StatisticsSection metrics={metrics} />
-        </div>
+      <DocumentTitle title={catalog.name}>
+        <div className={container}>
+          <div className={sectionNoPadding}>
+            <CatalogSection catalog={catalog} />
+            <StatisticsSection metrics={metrics} />
+          </div>
 
-        <div className={section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
-        <div className={section}><HarvestsSection catalog={catalog} /></div>
+          <div className={section}><OrganizationsSection metrics={metrics} catalog={catalog}/></div>
+          <div className={section}><HarvestsSection catalog={catalog} /></div>
 
-        <div className={section}>
-          <h2>Rechercher dans les jeux de données du catalogue</h2>
-          <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
+          <div className={section}>
+            <h2>Rechercher dans les jeux de données du catalogue</h2>
+            <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     )
   }
 }

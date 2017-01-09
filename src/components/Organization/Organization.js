@@ -49,13 +49,13 @@ class Organization extends Component {
   }
 
   render() {
-    const { user, organization, metrics, organizationDetail, errors } = this.state
+    const { user, organization, organizationDetail, metrics, errors } = this.state
 
     if (errors.length) {
       return <Errors errors={errors} />
     } else if (user && organizationDetail) {
       const component = <OrganizationCardSection {...this.state} />
-      const section = <PublishingSection title={organizationDetail.name} component={component} toWait={(organizationDetail && organization && metrics)} />
+      const section = <PublishingSection pageTitle={organizationDetail.name} title={organizationDetail.name} component={component} toWait={(organizationDetail && organization && metrics)} />
 
       return <Publishing user={user} organization={organizationDetail} section={section} />
     } else {

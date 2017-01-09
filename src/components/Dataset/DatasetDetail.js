@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DocumentTitle from 'react-document-title'
 import { fetchDataset, fetchCatalogs } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 import ContentLoader from '../Loader/ContentLoader'
@@ -40,25 +41,27 @@ export default class DatasetDetail extends Component {
     if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
 
     return (
-      <div className={container}>
-        <DatasetSection dataset={dataset} />
+      <DocumentTitle title={dataset.metadata.title}>
+        <div className={container}>
+          <DatasetSection dataset={dataset} />
 
-        <div className={section}>
-          <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
-        </div>
+          <div className={section}>
+            <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
+          </div>
 
-        <div className={section}>
-          <DatasetChecklist dataset={dataset} />
-        </div>
+          <div className={section}>
+            <DatasetChecklist dataset={dataset} />
+          </div>
 
-        <div className={section}>
-          <DownloadDatasets distributions={dataset.dataset.distributions} />
-        </div>
+          <div className={section}>
+            <DownloadDatasets distributions={dataset.dataset.distributions} />
+          </div>
 
-        <div className={section}>
-          <LinksSection links={dataset.metadata.links} />
+          <div className={section}>
+            <LinksSection links={dataset.metadata.links} />
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     )
   }
 }
