@@ -3,20 +3,20 @@ import { _put } from '../helpers/put'
 import { _post } from '../helpers/post'
 import { convertFilters } from '../helpers/manageFilters'
 import qs from 'qs'
-const _f = superfetch;
+const _f = superfetch
 
 export function fetchMetrics(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
-  return _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}/metrics`);
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  return _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}/metrics`)
 }
 
 export function fetchCatalog(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
-  return  _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`);
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  return  _f(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
 }
 
 export function fetchCatalogs() {
-  return _f('https://inspire.data.gouv.fr/api/geogw/catalogs');
+  return _f('https://inspire.data.gouv.fr/api/geogw/catalogs')
 }
 
 export function fetchHarvest(catalogId, harvestId) {
@@ -31,7 +31,7 @@ export function fetchHarvests(catalogId) {
 }
 
 export function fetchGlobalMetrics() {
-  return _f('https://inspire.data.gouv.fr/dgv/api/datasets/metrics');
+  return _f('https://inspire.data.gouv.fr/dgv/api/datasets/metrics')
 }
 
 export function fetchDataset(datasetId) {

@@ -15,13 +15,13 @@ import organizationDatasets from '../__test__/organizationDatasets.json'
 import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
 
 export function fetchMetrics(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (catalogId === '1') return Promise.resolve(metrics)
   return Promise.reject(new Error('metrics not found'))
 }
 
 export function fetchCatalog(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (catalogId === '1') return Promise.resolve(catalog)
   return Promise.reject(new Error('catalog not found'))
 }
