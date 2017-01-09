@@ -22,10 +22,10 @@ class Header extends Component {
 
   render() {
     const { user } = this.state
-    const loginRedirect = encodeURI(`${process.env.PUBLIC_URL}/publication`)
-    const logoutRedirect = encodeURI(`${process.env.PUBLIC_URL}`)
-    const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${loginRedirect}`
-    const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${logoutRedirect}`
+    const loginRedirect = `${process.env.PUBLIC_URL}/publication`
+    const logoutRedirect = `${process.env.PUBLIC_URL}`
+    const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
+    const logoutUrl =`https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={log} href={logInUrl}>Publier des données</a>
 
     return (
