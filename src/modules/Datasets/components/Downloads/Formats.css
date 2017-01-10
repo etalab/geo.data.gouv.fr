@@ -1,0 +1,13 @@
+@import "../../../../theme/colors";
+
+.button {
+  padding: 5px 10px;
+  margin: 1px;
+  border: none;
+  outline: none;
+}
+
+.selected {
+  background-color: var(--blue);
+  color: #fff;
+}
