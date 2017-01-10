@@ -36,10 +36,6 @@ export function fetchDataset(datasetId) {
   return superfetch(`https://inspire.data.gouv.fr/api/geogw/records/${datasetId}`)
 }
 
-export function getProducers() {
-  return superfetch('https://inspire.data.gouv.fr/dgv/api/producers')
-}
-
 export function fetchGeoJSON(link) {
   if (!link) return Promise.reject(new Error('link is required'))
   return superfetch(link + '?format=GeoJSON&projection=WGS84')
@@ -116,6 +112,15 @@ export function syncCatalog(catalogId) {
   return superRequest(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/sync`, 'POST')
 }
 
+export function getProducers() {
+  return superfetch('https://inspire.data.gouv.fr/dgv/api/producers')
+}
+
+export function getOrganizationProducers(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  return superfetch(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/producers`)
+}
+
 export function dissociateProducer(producerId, organizationId) {
   if (!producerId && organizationId) return Promise.reject(new Error('producerId and organizationId is required'))
   const url = `https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/producers/${producerId}`
@@ -129,4 +134,11 @@ export function associateProducer(producerId, organizationId) {
   const params = { '_id': producerId, 'associatedTo': organizationId }
 
   return superRequest(url, 'POST', params)
+}
+
+export function getProducersToAssociate(catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  const url = `https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/records?resultParts=facets&opendata=yes&availability=yes&facets[keyword]=0`
+
+  return superfetch(url)
 }

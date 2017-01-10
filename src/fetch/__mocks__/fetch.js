@@ -9,6 +9,7 @@ import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 import user from '../__test__/user.json'
 import organization from '../__test__/organization.json'
+import organizationProducers from '../__test__/organizationProducers.json'
 import organizationDetail from '../__test__/organizationDetail.json'
 import organizationMetrics from '../__test__/organizationMetrics.json'
 import organizationDatasets from '../__test__/organizationDatasets.json'
@@ -104,4 +105,10 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
 
 export function updateCatalogSources(sourceCatalogs, organizationId) {
   if (!sourceCatalogs || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
+}
+
+export function getOrganizationProducers(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationProducers)
+  return Promise.reject(new Error('organization published by others datasets not found'))
 }
