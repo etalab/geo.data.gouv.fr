@@ -2,9 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import moment from 'moment'
-import Publication from './components/Publication/Publication'
-import Organization from './components/Organization/Organization'
-import PublishingDatasets from './components/Publication/PublishingDatasets'
+
 import WrappedDatasets from './components/Dataset/WrappedDatasets'
 import App from './components/App/App'
 import Home from './components/Home/Home'
@@ -14,6 +12,10 @@ import NotFound from './components/NotFound/NotFound'
 import Catalogs from './modules/Catalogs/pages/Catalogs/Catalogs'
 import CatalogDetail from './modules/Catalogs/pages/CatalogDetail/CatalogDetail'
 import HarvestDetail from './modules/Catalogs/pages/HarvestDetail/HarvestDetail'
+
+import Publication from './modules/Publication/pages/Publication/Publication'
+import Organization from './modules/Publication/pages/Organization/Organization'
+import PublishingDatasets from './modules/Publication/pages/PublishingDatasets/PublishingDatasets'
 
 moment.locale('fr')
 
