@@ -10,16 +10,16 @@ describe('producers', function () {
 
       expect(getUnrelated(producers)).to.eql([unrelatedProducer])
     })
+  })
 
-    describe('getRelatedToOther(producers, organizationId)', () => {
-      it('should return an array of producers related to others organizations', () => {
-        const relatedToOtherProducer = {_id: 'relatedProducer', associatedTo: 42}
-        const relatedProducer = {_id: 'relatedProducer', associatedTo: 1}
-        const unrelatedProducer = {_id: 'unrelatedProducer'}
-        const producers = [relatedProducer, unrelatedProducer]
+  describe('getRelatedToOther(producers, organizationId)', () => {
+    it('should return an array of producers related to others organizations', () => {
+      const relatedToOtherProducer = {_id: 'relatedToOtherProducer', associatedTo: 42}
+      const relatedProducer = {_id: 'relatedProducer', associatedTo: 1}
+      const unrelatedProducer = {_id: 'unrelatedProducer'}
+      const producers = [relatedToOtherProducer, relatedProducer, unrelatedProducer]
 
-        expect(getRelatedToOther(producers, 1)).to.eql([relatedToOtherProducer])
-      })
+      expect(getRelatedToOther(producers, 1)).to.eql([relatedToOtherProducer])
     })
   })
 })
