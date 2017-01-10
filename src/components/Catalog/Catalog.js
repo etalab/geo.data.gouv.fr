@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CatalogPreview from './CatalogPreview'
+import CatalogPreview from '../CatalogPreview/CatalogPreview'
 import { fetchCatalog } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import ContentLoader from '../../Loader/ContentLoader'
 
-import catalogs from '../../../fetch/__test__/catalogs.json'
+import ContentLoader from '../../../../../components/Loader/ContentLoader'
+import catalogs from '../../../../../fetch/__test__/catalogs.json'
 
 const Catalogs = require('proxyquire')('../Catalogs', {
-  '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
+  '../../../../fetch/fetch': require('../../../../../fetch/__mocks__/fetch')
 }).default
 
 describe('<Catalogs />', () => {

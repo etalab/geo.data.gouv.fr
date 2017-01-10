@@ -1,8 +1,10 @@
 import React from 'react'
-import DoughnutChart from '../../Charts/DoughnutChart/DoughnutChart'
-import Chart from '../../Charts/Chart'
-import Counter from '../../Statistics/Counter/Counter'
-import Percent from '../../Statistics/Percent/Percent'
+
+import Chart from '../../../../components/Charts/Chart'
+import DoughnutChart from '../../../../components/Charts/DoughnutChart/DoughnutChart'
+import Counter from '../../../../components/Statistics/Counter/Counter'
+import Percent from '../../../../components/Statistics/Percent/Percent'
+
 import { container, section, chart } from './StatisticsSection.css'
 
 const StatisticsSection = ({metrics}) => {

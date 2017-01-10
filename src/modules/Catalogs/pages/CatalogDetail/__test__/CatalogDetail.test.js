@@ -1,12 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import ContentLoader from '../../Loader/ContentLoader'
 
-import catalog from '../../../fetch/__test__/catalog.json'
-import metrics from '../../../fetch/__test__/metrics.json'
+import ContentLoader from '../../../../../components/Loader/ContentLoader'
+
+import catalog from '../../../../../fetch/__test__/catalog.json'
+import metrics from '../../../../../fetch/__test__/metrics.json'
 
 const CatalogDetail = require('proxyquire')('../CatalogDetail', {
-  '../../fetch/fetch': require('../../../fetch/__mocks__/fetch')
+  '../../../../fetch/fetch': require('../../../../../fetch/__mocks__/fetch')
 }).default
 
 describe('<CatalogDetail />', () => {

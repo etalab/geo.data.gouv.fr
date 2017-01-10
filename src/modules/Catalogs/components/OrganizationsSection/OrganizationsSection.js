@@ -1,6 +1,8 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import Facet from '../../Facets/Facet'
+
+import Facet from '../../../../components/Facets/Facet'
+
 import { group, facets } from './OrganizationsSection.css'
 
 const OrganizationsSection = ({metrics, catalog}) => {

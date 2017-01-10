@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
 import { Link } from 'react-router'
-import { fetchCatalog, fetchHarvest } from '../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
-import HarvestLogs from './HarvestLogs'
-import HarvestResults from './HarvestResults'
+
+// Import Helpers
+import { fetchCatalog, fetchHarvest } from '../../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
+
+// Import Shared Components
+import LastHarvestStatus from '../../../../components/LastHarvestStatus/LastHarvestStatus'
+
+// Import Components
+import HarvestLogs from '../../components/HarvestLogs/HarvestLogs'
+import HarvestResults from '../../components/HarvestResults/HarvestResults'
+
+// Import CSS
 import { container, results } from './HarvestDetail.css'
 
 class HarvestDetail extends Component {

@@ -4,7 +4,7 @@ import ContentLoader from '../Loader/ContentLoader'
 import AddButton from '../Buttons/AddButton'
 import { fetchCatalogs } from '../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
-import CatalogPreview from '../Catalog/CatalogPreview'
+import CatalogPreview from '../CatalogPreview/CatalogPreview'
 import { container, card, add, loader, warningMsg } from './AddCatalogs.css'
 
 class AddCatalogs extends Component {

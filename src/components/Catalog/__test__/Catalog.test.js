@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import CatalogPreview from '../CatalogPreview'
+import CatalogPreview from '../../CatalogPreview/CatalogPreview'
 
 import catalog from '../../../fetch/__test__/catalog.json'
 

@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
-import { getCatalogOrderByScore } from '../../helpers/catalogs'
 import DocumentTitle from 'react-document-title'
-import ContentLoader from '../Loader/ContentLoader'
-import { fetchCatalogs } from '../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components';
-import CatalogPreview from '../Catalog/CatalogPreview'
+
+// Import Shared Components
+import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
+import ContentLoader from '../../../../components/Loader/ContentLoader'
+
+// Import Helpers
+import { fetchCatalogs } from '../../../../fetch/fetch';
+import { getCatalogOrderByScore } from '../../../../helpers/catalogs'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
+
+// Import CSS
 import { container, loader } from './Catalogs.css'
 
 class Catalogs extends Component {

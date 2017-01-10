@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
 import { browserHistory } from 'react-router'
-import SearchInput from '../SearchInput/SearchInput'
-import ContentLoader from '../Loader/ContentLoader'
-import CatalogSection from '../Section/CatalogSection/CatalogSection'
-import StatisticsSection from '../Section/StatisticsSection/StatisticsSection'
-import OrganizationsSection from '../Section/OrganizationsSection/OrganizationsSection'
-import HarvestsSection from '../Section/HarvestsSection/HarvestsSection'
-import { fetchCatalog, fetchMetrics } from '../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+
+// Import Helpers
+import { fetchCatalog, fetchMetrics } from '../../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
+
+// Import Shared Components
+import SearchInput from '../../../../components/SearchInput/SearchInput'
+import ContentLoader from '../../../../components/Loader/ContentLoader'
+
+// Import Components
+import CatalogSection from '../../components/CatalogSection/CatalogSection'
+import StatisticsSection from '../../components/StatisticsSection/StatisticsSection'
+import OrganizationsSection from '../../components/OrganizationsSection/OrganizationsSection'
+import HarvestsSection from '../../components/HarvestsSection/HarvestsSection'
+
+// Import CSS
 import { section, sectionNoPadding, container, loader} from './CatalogDetail.css'
 
 class CatalogDetail extends Component {
@@ -16,7 +24,7 @@ class CatalogDetail extends Component {
     super(props)
     this.state = {errors: []}
   }
-  
+
   componentWillMount() {
     return Promise.all([
       this.updateCatalog(),

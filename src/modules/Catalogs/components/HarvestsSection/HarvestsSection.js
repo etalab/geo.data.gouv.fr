@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import Histogram from '../../Charts/Histogram/Histogram'
-import HarvestsTable from '../../HarvestsTable/HarvestsTable'
-import Chart from '../../Charts/Chart'
-import { fetchHarvests, syncCatalog } from '../../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../../helpers/components'
+
+import Histogram from '../../../../components/Charts/Histogram/Histogram'
+import HarvestsTable from '../../../../components/HarvestsTable/HarvestsTable'
+import Chart from '../../../../components/Charts/Chart'
+
+import { fetchHarvests, syncCatalog } from '../../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
+
 import { harvest, chart, pending } from './HarvestsSection.css'
 
 class HarvestsSection extends Component {

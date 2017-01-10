@@ -5,14 +5,15 @@ import moment from 'moment'
 import Publication from './components/Publication/Publication'
 import Organization from './components/Organization/Organization'
 import PublishingDatasets from './components/Publication/PublishingDatasets'
-import HarvestDetail from './components/Harvest/HarvestDetail'
 import WrappedDatasets from './components/Dataset/WrappedDatasets'
 import App from './components/App/App'
 import Home from './components/Home/Home'
-import Catalogs from './components/Catalogs/Catalogs'
-import CatalogDetail from './components/CatalogDetail/CatalogDetail'
 import DatasetDetail from './components/Dataset/DatasetDetail'
 import NotFound from './components/NotFound/NotFound'
+
+import Catalogs from './modules/Catalogs/pages/Catalogs/Catalogs'
+import CatalogDetail from './modules/Catalogs/pages/CatalogDetail/CatalogDetail'
+import HarvestDetail from './modules/Catalogs/pages/HarvestDetail/HarvestDetail'
 
 moment.locale('fr')
 
