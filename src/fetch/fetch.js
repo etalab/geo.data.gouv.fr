@@ -66,7 +66,7 @@ export function getOrganization(organizationId) {
 
 export function getOrganizationDetail(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
-  return _get(`https://www.data.gouv.fr/api/1/organizations/${organizationId}/`)
+  return _get(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/profile`)
 }
 
 export function fetchOrganizationMetrics(organizationId) {
