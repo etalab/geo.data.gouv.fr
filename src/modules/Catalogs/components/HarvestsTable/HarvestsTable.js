@@ -1,5 +1,7 @@
 import React from 'react'
+
 import HarvestRow from './HarvestRow'
+
 import style from './HarvestsTable.css'
 
 const HarvestsTable = ({harvests, catalog}) => {
