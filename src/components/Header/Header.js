@@ -36,7 +36,7 @@ class Header extends Component {
             <Link to={'/publication'}>
               <div className={account}>
                 <img alt="avatar" className={avatar} src={user.avatar} />
-                {user.first_name} {user.last_name}
+                {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
             <a className={log} href={logoutUrl}>Déconnexion<i className="power icon"></i></a>
