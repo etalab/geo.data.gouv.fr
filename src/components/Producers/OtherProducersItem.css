@@ -1,0 +1,5 @@
+@import "../../theme/colors";
+
+.item>a:hover {
+  text-decoration: underline;
+}

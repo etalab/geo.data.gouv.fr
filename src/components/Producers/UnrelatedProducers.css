@@ -1,0 +1,54 @@
+@import "../../theme/shadows";
+@import "../../theme/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  box-shadow: var(--shadow);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: center;
+  border-bottom: 2px solid;
+  background-color: whitesmoke;
+  border-color: var(--blue);
+  font-size: 1.1em;
+}
+
+.subtitle {
+  color: #a2a2a2;
+}
+
+
+.producers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  margin: 0.2em;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.producers:hover {
+  background-color: whitesmoke;
+}
+
+button.associate {
+  margin: 0.3em;
+  padding: 0.5em;
+  color: var(--blue);
+  background-color: #fff;
+  border: 1px solid var(--blue);
+}
+
+button.associate:hover {
+  margin: 0.3em;
+  padding: 0.5em;
+  color: #fff;
+  background-color: var(--blue);
+  border: 1px solid #fff;
+}

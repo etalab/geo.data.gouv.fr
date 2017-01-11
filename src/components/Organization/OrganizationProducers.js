@@ -1,36 +1,51 @@
 import React, { Component } from 'react'
+import Publishing from '../Publication/Publishing'
+import PublishingSection from '../Publication/PublishingSection'
+import Producers from '../Producers/Producers'
 import Errors from '../Errors/Errors'
-import { getProducers } from '../../fetch/fetch'
+import { getUser, getOrganization } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-class OrganizationProducers extends Component {
+class PublishingDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      producers: [],
-      errors: []
-    }
+    this.state = {errors: []}
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(getProducers(), this, 'producers')
+    return Promise.all([
+      this.updateUser(),
+      this.updateOrganization(),
+    ])
   }
 
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
 
+  updateUser() {
+    return waitForDataAndSetState(getUser(), this, 'user')
+  }
+
+  updateOrganization() {
+    return waitForDataAndSetState(getOrganization(this.props.params.organizationId), this, 'organization')
+  }
+
   render() {
-    const { producers, errors } = this.state
+    const { params: { organizationId } } = this.props
+    const { user, organization, errors } = this.state
 
-    if (errors.length) return <Errors errors={errors}/>
-    if (!producers.length) return null
+    if (errors.length) return <Errors errors={errors} />
+    if (user && organization) {
+      const organizationLogo = user.organizations.find(organization => organization.id === organizationId).logo
+      const component = <Producers organization={organization} />
+      const section = <PublishingSection pageTitle={`${organization.name} - Producteurs`} title={'Producteurs'} component={component} toWait={organization} />
 
-    return (
-      <div>
-      </div>
-    )
+      return <Publishing user={user} organizationLogo={organizationLogo} section={section} />
+      }
+
+    return null
   }
 }
 
-export default OrganizationProducers
+export default PublishingDatasets
