@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import OrganizationProducersPreview from '../OrganizationProducersPreview/OrganizationProducersPreview'
 import OrganizationMetrics from '../OrganizationMetrics/OrganizationMetrics'
-import OrganizationProducers from '../OrganizationProducers/OrganizationProducers'
 
 import SourceCatalogs from '../SourceCatalogs/SourceCatalogs'
 
@@ -18,7 +18,7 @@ const OrganizationCardSection = ({ organization, metrics }) => {
 
       <div className={styles.section}>
         <h4>Producteurs source</h4>
-        <OrganizationProducers organizationId={organization._id} producers={organization.producers} />
+        <OrganizationProducersPreview organizationId={organization._id} producers={organization.producers} />
       </div>
 
       <div className={styles.section}>

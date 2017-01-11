@@ -59,7 +59,7 @@ class Organization extends Component {
       const component = <OrganizationCardSection {...this.state} />
       const section = <PublishingSection pageTitle={organizationDetail.name} title={organizationDetail.name} component={component} toWait={(organizationDetail && organization && metrics)} />
 
-      return <Publishing user={user} organization={organizationDetail} section={section} />
+      return <Publishing user={user} organizationLogo={organizationDetail.logo} section={section} />
     } else {
       return null
     }

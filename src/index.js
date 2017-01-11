@@ -14,6 +14,7 @@ import HarvestDetail from './modules/Catalogs/pages/HarvestDetail/HarvestDetail'
 import Publication from './modules/Publication/pages/Publication/Publication'
 import Organization from './modules/Publication/pages/Organization/Organization'
 import PublishingDatasets from './modules/Publication/pages/PublishingDatasets/PublishingDatasets'
+import OrganizationProducers from './modules/Publication/pages/OrganizationProducers/OrganizationProducers'
 
 import WrappedDatasets from './modules/Datasets/pages/WrappedDatasets/WrappedDatasets'
 import DatasetDetail from './modules/Datasets/pages/DatasetDetail/DatasetDetail'
@@ -27,6 +28,7 @@ ReactDOM.render((
       <Route path="/publication" component={Publication} />
       <Route path="/publication/:organizationId" component={Organization} />
       <Route path="/publication/:organizationId/datasets" component={PublishingDatasets} />
+      <Route path="/publication/:organizationId/producers" component={OrganizationProducers} />
       <Route path="/catalogs" component={Catalogs} />
       <Route path="/catalogs/:catalogId" component={CatalogDetail} />
       <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />

@@ -3,24 +3,26 @@ import catalogs from '../__test__/catalogs.json'
 import metrics from '../__test__/metrics.json'
 import harvest from '../__test__/harvest.json'
 import harvests from '../__test__/harvests.json'
+import producers from '../__test__/producers.json'
 import globalMetrics from '../__test__/globalMetrics.json'
 import datasetsSearch from '../__test__/datasetsSearch.json'
 import dataset from '../__test__/dataset.json'
 import user from '../__test__/user.json'
 import organization from '../__test__/organization.json'
+import organizationProducers from '../__test__/organizationProducers.json'
 import organizationDetail from '../__test__/organizationDetail.json'
 import organizationMetrics from '../__test__/organizationMetrics.json'
 import organizationDatasets from '../__test__/organizationDatasets.json'
 import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
 
 export function fetchMetrics(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (catalogId === '1') return Promise.resolve(metrics)
   return Promise.reject(new Error('metrics not found'))
 }
 
 export function fetchCatalog(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'));
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (catalogId === '1') return Promise.resolve(catalog)
   return Promise.reject(new Error('catalog not found'))
 }
@@ -28,6 +30,11 @@ export function fetchCatalog(catalogId) {
 export function fetchCatalogs() {
   return Promise.resolve(catalogs) // Finding a solution to Promise.reject()
 }
+
+export function getProducers() {
+  return Promise.resolve(producers)
+}
+
 
 export function fetchHarvest(catalogId, harvestId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
@@ -98,4 +105,10 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
 
 export function updateCatalogSources(sourceCatalogs, organizationId) {
   if (!sourceCatalogs || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
+}
+
+export function getOrganizationProducers(organizationId) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationProducers)
+  return Promise.reject(new Error('organization published by others datasets not found'))
 }

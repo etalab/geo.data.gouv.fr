@@ -1,0 +1,395 @@
+[
+   {
+      "_id":"Agence de Service et de Paiement (ASP)",
+      "_created":"2015-07-24T12:52:08.445Z",
+      "associatedTo":"54637e78c751df506189ec20",
+      "__v":0
+   },
+   {
+      "_id":"Agence de l'eau Adour Garonne",
+      "_created":"2016-09-20T19:07:05.448Z",
+      "associatedTo":"5420b971a3a7297b491991df",
+      "__v":0
+   },
+   {
+      "_id":"Agence de l'eau Adour-Garonne",
+      "_created":"2016-05-17T08:47:53.526Z",
+      "associatedTo":"5420b971a3a7297b491991df",
+      "__v":0
+   },
+   {
+      "_id":"BRGM",
+      "_created":"2015-07-24T12:52:34.671Z",
+      "associatedTo":"54637e78c751df506189ec20",
+      "__v":0
+   },
+   {
+      "_id":"BRGM Poitou-Charentes",
+      "_created":"2015-07-24T12:52:35.436Z",
+      "associatedTo":"54637e78c751df506189ec20",
+      "__v":0
+   },
+   {
+      "_id":"DDT 04 (Direction Départementale des Territoires des Alpes de Haute-Provence)",
+      "_created":"2015-06-26T21:19:36.980Z",
+      "associatedTo":"558dc1c0c751df341aa453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 09 (Direction Départementale des Territoires de l'Ariège)",
+      "_created":"2015-06-25T12:35:48.536Z",
+      "associatedTo":"558bf578c751df2f9ea453ea",
+      "__v":0
+   },
+   {
+      "_id":"DDT 09 (Direction Départementale des Territoires del'Ariège)",
+      "_created":"2016-03-20T17:32:02.221Z",
+      "associatedTo":"558bf578c751df2f9ea453ea",
+      "__v":0
+   },
+   {
+      "_id":"DDT 09 (Direction Départementaledes Territoires de l'Ariège)",
+      "_created":"2016-03-20T17:32:03.612Z",
+      "associatedTo":"558bf578c751df2f9ea453ea",
+      "__v":0
+   },
+   {
+      "_id":"DDT 09(Direction Départementale des Territoires de l'Ariège)",
+      "_created":"2016-03-20T17:32:04.934Z",
+      "associatedTo":"558bf578c751df2f9ea453ea",
+      "__v":0
+   },
+   {
+      "_id":"DDT 10 (Direction Départementale des Territoires de l'Aube)",
+      "_created":"2015-06-23T14:33:58.036Z",
+      "associatedTo":"55896df6c751df54e9a453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 15 (Direction Départementale des Territoires du Cantal)",
+      "_created":"2015-06-24T16:23:04.186Z",
+      "associatedTo":"558ad939c751df7c4fa453bc",
+      "__v":0
+   },
+   {
+      "_id":"DDT 15 (Direction Départementale des Territoires du Cantal) Service Connaissance Aménagement Développement",
+      "_created":"2015-06-24T16:23:05.346Z",
+      "associatedTo":"558ad939c751df7c4fa453bc",
+      "__v":0
+   },
+   {
+      "_id":"DDT 15 (Direction Départementale des Territoires du Cantal) Service Economie Agricole",
+      "_created":"2015-06-24T16:23:06.055Z",
+      "associatedTo":"558ad939c751df7c4fa453bc",
+      "__v":0
+   },
+   {
+      "_id":"DDT 15 (Direction Départementale des Territoires du Cantal) Service Environnement",
+      "_created":"2015-06-24T16:23:06.771Z",
+      "associatedTo":"558ad939c751df7c4fa453bc",
+      "__v":0
+   },
+   {
+      "_id":"DDT 15 (Direction Départementale des Territoires du Cantal) Service Habitat Logement",
+      "_created":"2015-06-24T16:23:07.497Z",
+      "associatedTo":"558ad939c751df7c4fa453bc",
+      "__v":0
+   },
+   {
+      "_id":"DDT 16 (Direction Départementale des Territoires de Charente)",
+      "_created":"2015-07-07T16:43:38.737Z",
+      "associatedTo":"559c0165c751df414e390bd4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 18 (Direction Départementale des Territoires du Cher)",
+      "_created":"2016-03-20T16:52:37.098Z",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 18 (Direction Départementale des Territoiresdu Cher)",
+      "_created":"2016-03-20T16:52:39.014Z",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 18 (Direction Départementale desTerritoires du Cher)",
+      "_created":"2016-03-20T16:52:39.598Z",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 18 (Direction Départementaledes Territoires du Cher)",
+      "_created":"2016-03-20T16:52:40.171Z",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 18 (DirectionDépartementale des Territoires du Cher)",
+      "_created":"2016-03-20T16:52:40.850Z",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 18(Direction Départementale des Territoires du Cher)",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 19 (Direction Départementale des Territoires de la Corrèze)",
+      "_created":"2015-06-25T08:52:43.240Z",
+      "associatedTo":"558bc11cc751df5bfda453ba",
+      "__v":0
+   },
+   {
+      "_id":"DDT 25 (Direction Départementale des Territoires du Doubs)",
+      "_created":"2015-07-08T14:48:34.693Z",
+      "associatedTo":"559d3813c751df392b390bd4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 28 (Direction Départementale des Territoires d'Eure-et-Loir)",
+      "_created":"2015-06-23T14:59:44.105Z",
+      "associatedTo":"55897427c751df54e9a453dd",
+      "__v":0
+   },
+   {
+      "_id":"DDT 37 (Direction Départementale des Territoires  d'Indre-et-Loire)",
+      "associatedTo":"55ae43f488ee38443d3ca288",
+      "__v":0
+   },
+   {
+      "_id":"DDT 37 (Direction départementale des territoires  d'Indre-et-Loire)",
+      "_created":"2015-07-21T13:09:35.564Z",
+      "associatedTo":"55ae43f488ee38443d3ca288",
+      "__v":0
+   },
+   {
+      "_id":"DDT 38 (Direction Départementale des Territoires de l'Isère)",
+      "_created":"2015-12-02T20:44:08.383Z",
+      "associatedTo":"552cc6bec751df224637dddb",
+      "__v":0
+   },
+   {
+      "_id":"DDT 41 (Direction Départementale des Territoires du Loir-et-Cher)",
+      "_created":"2015-06-27T12:56:18.064Z",
+      "associatedTo":"558e9d43c751df75fea453d1",
+      "__v":0
+   },
+   {
+      "_id":"DDT 45 (Direction Départementale des Territoires du Loiret)",
+      "_created":"2015-07-23T13:55:51.848Z",
+      "associatedTo":"55b0f23788ee3838d73ca289",
+      "__v":0
+   },
+   {
+      "_id":"DDT 47 (Direction Départementale des Territoires du Lot-et-Garonne)",
+      "_created":"2015-06-24T16:50:58.982Z",
+      "associatedTo":"558adf97c751df04a0a453df",
+      "__v":0
+   },
+   {
+      "_id":"DDT 48 (Direction Départementale des Territoires de la Lozère)",
+      "_created":"2015-06-24T09:56:16.681Z",
+      "associatedTo":"558a7e80c751df627ca453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 51 (Direction Départementale des Territoires de la Marne)",
+      "_created":"2015-06-27T12:52:05.944Z",
+      "associatedTo":"558e9c3ec751df75fea453c7",
+      "__v":0
+   },
+   {
+      "_id":"DDT 54 (Direction Départementale des Territoires de Meurthe-et-Moselle)",
+      "_created":"2015-06-22T16:28:38.636Z",
+      "associatedTo":"55883748c751df7971a453bc",
+      "__v":0
+   },
+   {
+      "_id":"DDT 61 (Direction Départementale des Territoires de l'Orne)",
+      "associatedTo":"558e9b15c751df2a26a453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 63 (Direction Départementale des Territoires du Puy-de-dôme)",
+      "_created":"2015-12-03T11:37:45.079Z",
+      "associatedTo":"565f741788ee380296e72046",
+      "__v":0
+   },
+   {
+      "_id":"DDT 68 (Direction Départementale des Territoires du Haut-Rhin)",
+      "_created":"2016-07-04T22:37:52.445Z",
+      "associatedTo":"534fff70a3a7292c64a77dc9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 68/DIR/MIT",
+      "_created":"2016-07-04T22:38:15.861Z",
+      "associatedTo":"534fff70a3a7292c64a77dc9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 69 (Direction Départementale des Territoires du Rhône)",
+      "_created":"2015-06-15T18:41:38.574Z",
+      "associatedTo":"552cc6bec751df224637dddb",
+      "__v":0
+   },
+   {
+      "_id":"DDT 70 (Direction Départementale des Territoires de la Haute-Saône)",
+      "_created":"2015-07-08T14:52:45.841Z",
+      "associatedTo":"559d3913c751df33ec390bd7",
+      "__v":0
+   },
+   {
+      "_id":"DDT 71 - Direction Départementale des Territoires de Saône-et-Loire",
+      "_created":"2015-06-27T13:06:06.863Z",
+      "associatedTo":"558e9f93c751df2d9aa453d4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 72 (Direction Départementale des Territoires de la Sarthe)",
+      "_created":"2015-06-27T13:02:03.586Z",
+      "associatedTo":"558e9e4ac751df2a26a453da",
+      "__v":0
+   },
+   {
+      "_id":"DDT 74 (Direction Départementale des Territoires de la Haute-Savoie)",
+      "_created":"2016-03-20T17:29:59.744Z",
+      "associatedTo":"56eed4d2c751df3308d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 74 (Direction Départementale des Territoiresde la Haute-Savoie)",
+      "_created":"2016-03-20T17:28:31.955Z",
+      "associatedTo":"56eed4d2c751df3308d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT 77 (Direction Départementale des Territoires de Seine-et-Marne)",
+      "_created":"2015-06-22T20:35:44.044Z",
+      "associatedTo":"55887171c751df3f82a453c4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 77 -  Service Habitat et Rénovation Urbaine",
+      "_created":"2015-06-22T20:35:45.948Z",
+      "associatedTo":"55887171c751df3f82a453c4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 77 - Service Environnement, Prévention des Risques",
+      "_created":"2015-06-22T20:35:47.835Z",
+      "associatedTo":"55887171c751df3f82a453c4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 77 - Service de l'Ingénierie Durable, de la Construction et de l'Energie",
+      "_created":"2015-06-22T20:35:47.049Z",
+      "associatedTo":"55887171c751df3f82a453c4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 77 – Service Aménagement, Planification et Prospective",
+      "_created":"2015-06-22T20:35:48.624Z",
+      "associatedTo":"55887171c751df3f82a453c4",
+      "__v":0
+   },
+   {
+      "_id":"DDT 88 (Direction Départementale des Territoires des Vosges)",
+      "_created":"2015-06-22T20:22:26.717Z",
+      "associatedTo":"55886e4dc751df3f7aa453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT 91 (Direction Départementale des Territoires de l'Essonne)",
+      "_created":"2015-06-24T16:33:34.340Z",
+      "associatedTo":"558adba9c751df04a0a453c1",
+      "__v":0
+   },
+   {
+      "_id":"DDT 95 (Direction Départementale des Territoires du Val d'Oise)",
+      "_created":"2015-06-24T10:01:31.667Z",
+      "associatedTo":"558a7f99c751df760ba453bf",
+      "__v":0
+   },
+   {
+      "_id":"DDT de Saône-et-Loire",
+      "_created":"2015-06-27T13:06:13.025Z",
+      "associatedTo":"558e9f93c751df2d9aa453d4",
+      "__v":0
+   },
+   {
+      "_id":"DDT de l'Ariège",
+      "_created":"2016-03-20T17:32:09.272Z",
+      "associatedTo":"558bf578c751df2f9ea453ea",
+      "__v":0
+   },
+   {
+      "_id":"DDT de l'Orne",
+      "_created":"2015-06-27T12:46:53.889Z",
+      "associatedTo":"558e9b15c751df2a26a453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT du Gers",
+      "_created":"2015-06-23T14:25:37.065Z",
+      "associatedTo":"55896c18c751df5864a453b9",
+      "__v":0
+   },
+   {
+      "_id":"DDT09 (Direction Départementale des Territoires de l'Ariège)",
+      "_created":"2016-03-20T17:32:14.206Z",
+      "associatedTo":"558bf578c751df2f9ea453ea",
+      "__v":0
+   },
+   {
+      "_id":"DDT18 (Direction Départementale des Territoires du Cher)",
+      "_created":"2016-03-20T16:52:49.995Z",
+      "associatedTo":"56eed43ec751df31e5d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT47/SRS/PR",
+      "_created":"2015-06-24T16:51:06.297Z",
+      "associatedTo":"558adf97c751df04a0a453df",
+      "__v":0
+   },
+   {
+      "_id":"DDT74 (Direction Départementale des Territoires de la Haute-Savoie)",
+      "_created":"2016-03-20T17:28:41.015Z",
+      "associatedTo":"56eed4d2c751df3308d6e93b",
+      "__v":0
+   },
+   {
+      "_id":"DDT95 - Mission Prévention des Risques",
+      "_created":"2015-06-24T10:01:36.908Z",
+      "associatedTo":"558a7f99c751df760ba453bf",
+      "__v":0
+   },
+   {
+      "_id":"DDT95 - Pôle Géomatique",
+      "_created":"2015-06-24T10:01:37.831Z",
+      "associatedTo":"558a7f99c751df760ba453bf",
+      "__v":0
+   },
+   {
+      "_id":"DDT95 - Pôle Urbanisme",
+      "_created":"2015-06-24T10:01:38.596Z",
+      "associatedTo":"558a7f99c751df760ba453bf",
+      "__v":0
+   },
+   {
+      "_id":"DDT 54 (Direction Départementaledes Territoires de Meurthe-et-Moselle)"
+   },
+   {
+      "_id":"DIRM Sud Atlantique"
+   },
+   {
+      "_id":"DAAF 972 (Direction de l'Alimentation, de l'Agriculture et de la Forêt de la Martinique)"
+   },
+   {
+      "_id":"DRIEA-IF/UTEA75"
+   }
+]
