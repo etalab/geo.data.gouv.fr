@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
+
 import HarvestDelta from './HarvestDelta'
-import { doneSince } from '../../helpers/doneSince'
+
+import { doneSince } from '../../../../helpers/doneSince'
 
 const displayStyle = {
   successful: {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
+import HarvestsTable from '../../components/HarvestsTable/HarvestsTable'
+
 import Histogram from '../../../../components/Charts/Histogram/Histogram'
-import HarvestsTable from '../../../../components/HarvestsTable/HarvestsTable'
 import Chart from '../../../../components/Charts/Chart'
 
 import { fetchHarvests, syncCatalog } from '../../../../fetch/fetch'
