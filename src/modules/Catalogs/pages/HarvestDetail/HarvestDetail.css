@@ -1,0 +1,14 @@
+@import "../../../../theme/shadows";
+
+.container {
+  margin: 4em;
+  padding: 2em;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.results {
+  margin: 2em 0;
+  padding: 1em;
+  background-color: whitesmoke;
+}
