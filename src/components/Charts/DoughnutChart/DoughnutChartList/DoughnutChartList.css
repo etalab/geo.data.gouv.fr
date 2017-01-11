@@ -1,10 +1,10 @@
 .container {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
 }
 
-.label {
-  margin: 0.2em;
+.container > .label {
+  margin: 1px;
 }
 
 @media (min-width: 551px) {
