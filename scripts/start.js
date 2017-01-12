@@ -1,3 +1,4 @@
+/* eslint no-console: off */
 process.env.NODE_ENV = 'development';
 
 // Load environment variables from .env file. Surpress warnings using silent
