@@ -1,11 +1,22 @@
 @import "../../../theme/colors";
 
-.largeLabel {
+.large {
   font-size: 4rem;
   line-height: 4rem;
 }
 
+.small {
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
+.medium {
+  font-weight: 300;
+}
+
 .defaultLabel {
+  font-size: 2rem;
+  line-height: 2rem;
   font-weight: 300;
 }
 
@@ -13,14 +24,14 @@
   text-align: center;
 }
 
-.successLabel {
+.success {
   color: var(--green);
 }
 
-.warningLabel {
+.warning {
   color: var(--yellow);
 }
 
-.errorLabel {
+.error {
   color: var(--red);
 }

@@ -14,9 +14,9 @@ const CatalogPreview = ({ catalog }) => {
 
   const metricsPreview = !metrics ? <div>Aucun donnée disponible</div> :
           <div className={container}>
-            <Percent value={openness} total={metrics.datasets.totalCount} label="Données ouvertes" icon="unlock alternate icon" />
-            <Percent value={download} total={metrics.datasets.totalCount} label="Téléchargeable" icon="download" />
-            <Counter value={metrics.records.totalCount} label="Enregistrements" />
+            <Percent value={openness} total={metrics.datasets.totalCount} size="small" label="Données ouvertes" icon="unlock alternate icon" />
+            <Percent value={download} total={metrics.datasets.totalCount} size="small" label="Téléchargeable" icon="download" />
+            <Counter value={metrics.records.totalCount} size="small" label="Enregistrements" />
           </div>
 
   return (
