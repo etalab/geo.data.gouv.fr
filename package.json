@@ -27,6 +27,7 @@
     "eslint-plugin-flowtype": "^2.21.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-mocha": "^4.8.0",
     "eslint-plugin-react": "^6.4.1",
     "expect": "^1.20.2",
     "filesize": "^3.3.0",
@@ -87,11 +88,17 @@
   },
   "eslintConfig": {
     "extends": "react-app",
+    "plugins": [
+      "mocha"
+    ],
     "rules": {
       "quotes": [
         "error",
         "single"
-      ]
+      ],
+      "no-console": "error",
+      "no-debugger": "error",
+      "mocha/no-exclusive-tests": "error"
     }
   },
   "babel": {
