@@ -15,7 +15,6 @@ const Counter = ({value, label, unit='', size='', color='', icon='', title=''}) 
     [error]: color === 'error',
   });
 
-  console.log(size === 'small')
   const labelStyle = size === 'small' ? small : defaultLabel
 
   const titleDiv = title ? <h3>{title}</h3> : null
