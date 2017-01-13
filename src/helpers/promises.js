@@ -19,6 +19,13 @@ export function makeCancelable(promise) {
   };
 }
 
+export function acceptNotFound(promise) {
+  return promise.catch(err => {
+    if (err.status === 404) return;
+    throw err;
+  });
+}
+
 
 export function cancelAll(promises) {
   promises.map(promise => promise.cancel());
