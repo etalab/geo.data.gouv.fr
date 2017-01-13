@@ -6,9 +6,9 @@ import OrganizationMetrics from '../OrganizationMetrics/OrganizationMetrics'
 
 import SourceCatalogs from '../SourceCatalogs/SourceCatalogs'
 
-import styles from './OrganizationCardSection.css'
+import styles from './ManageOrganization.css'
 
-const OrganizationCardSection = ({ organization, metrics }) => {
+const ManageOrganization = ({ organization, metrics }) => {
   return (
     <div className={styles.content}>
       <div className={styles.section}>
@@ -33,4 +33,4 @@ const OrganizationCardSection = ({ organization, metrics }) => {
   )
 }
 
-export default OrganizationCardSection
+export default ManageOrganization
