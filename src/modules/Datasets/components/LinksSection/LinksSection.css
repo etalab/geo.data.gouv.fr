@@ -1,0 +1,7 @@
+.linkList a:hover {
+  text-decoration: underline;
+}
+
+.linkList li {
+  margin-top: 2px;
+}
