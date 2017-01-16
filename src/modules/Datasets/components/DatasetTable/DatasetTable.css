@@ -1,3 +1,5 @@
+@import "../../../../theme/colors";
+
 .table table {
   margin: 10px;
 }
@@ -20,16 +22,20 @@
 
 .table th, .table td {
   text-align: center;
-  padding: 5px;
+  padding: 7px;
 }
 
 /* PAGINATION */
 .table a {
   padding: 10px;
-  background-color: #fff;
-  margin: 8px;
 }
 
 .table a.reactable-current-page {
-  background-color: #d0ebf5;
+  color: #fff;
+  background-color: var(--blue);
+}
+
+.table a:hover {
+  color: #fff;
+  background-color: var(--blue);
 }
