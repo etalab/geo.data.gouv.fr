@@ -8,7 +8,7 @@ import AddButton from '../../../../components/Buttons/AddButton'
 import RemoveButton from '../../../../components/Buttons/RemoveButton'
 import Errors from '../../../../components/Errors/Errors'
 
-import { updateCatalogSources  } from '../../../../fetch/fetch'
+import { updateOrganizationAccount  } from '../../../../fetch/fetch'
 
 import { catalogsStyle, catalog, buttonStyle, remove } from './SourceCatalogs.css'
 
@@ -32,7 +32,7 @@ class SourceCatalogs extends Component {
 
     if (!catalogs.includes(catalogId)) {
       const newCatalogs = [...catalogs, catalogId]
-      updateCatalogSources(newCatalogs, organizationId)
+      updateOrganizationAccount(organizationId, { sourceCatalogs: newCatalogs })
       .then(() => this.setState({catalogs: newCatalogs}))
     }
   }
@@ -43,7 +43,7 @@ class SourceCatalogs extends Component {
 
     if (catalogs.includes(catalogId)) {
       const newCatalogs = pull(catalogs, catalogId)
-      updateCatalogSources(newCatalogs, organizationId)
+      updateOrganizationAccount(organizationId, { sourceCatalogs: newCatalogs })
       .then(() => this.setState({catalogs: newCatalogs}))
     }
   }
