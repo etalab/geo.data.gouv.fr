@@ -13,6 +13,14 @@ const MAP = {
   osmAttribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 }
 
+const styleLoader = {
+    width: '6em',
+    height: '6em',
+    top: '46%',
+    left: '50%',
+    borderWidth: '10px'
+}
+
 class PreviewMap extends Component {
   constructor(props) {
     super(props)
@@ -43,16 +51,16 @@ class PreviewMap extends Component {
       </div>
     )
 
-    const loader = (
+    const loader = loading && !errors.length ? (
       <div className={styles.load}>
-        <ContentLoader className={styles.loader} />
+        <ContentLoader style={styleLoader} />
       </div>
-    )
+    ) : null
 
     return (
       <div className={styles.container}>
         {errors.length ? err : null}
-        {loading && !errors.length ? loader : null}
+        {loader}
         <Map ref="map" className={styles.map} center={position} zoom={this.state.zoom} >
           <TileLayer attribution={MAP.osmAttribution} url={MAP.osmUrl} />
           {geojson && !errors.length ? <GeoJSON ref="vectors" data={geojson} /> : null}

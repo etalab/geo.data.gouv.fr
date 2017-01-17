@@ -18,15 +18,6 @@
   opacity: 0.3;
 }
 
-.loader {
-  z-index: 402;
-  width: 6em;
-  height: 6em;
-  top: 46%;
-  left: 51%;
-  border-width: 10px;
-}
-
 .errors {
   position: absolute;
   top: 0;
