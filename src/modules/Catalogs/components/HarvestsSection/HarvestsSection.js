@@ -49,7 +49,7 @@ class HarvestsSection extends Component {
 
     if (!harvests ) return null
 
-    const { isPending } = this.state
+    const { isPending } = { isPending: true }
     const { catalog } = this.props
 
     const dataGraph = this.getGraphData()
@@ -57,7 +57,7 @@ class HarvestsSection extends Component {
 
     return (
       <div className={harvest}>
-        <HarvestsTable harvests={harvests} catalog={catalog} />
+        <HarvestsTable harvests={harvests} catalog={catalog} pending={isPending} />
         <div className={chart}>
           <Chart
             title={'Évolution des Enregistrements'}
