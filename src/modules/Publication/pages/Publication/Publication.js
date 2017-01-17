@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import Publishing from '../../components/Publishing/Publishing'
-import PublishingSection from '../../components/PublishingSection/PublishingSection'
+import Layout from '../../components/Layout/Layout'
 import Organizations from '../../components/Organizations/Organizations'
+import Errors from '../../../../components/Errors/Errors'
 
 import { getUser } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
@@ -33,11 +33,21 @@ class Admin extends Component {
   }
 
   render() {
-    const { user } = this.state
-    const component = user ? <Organizations organizations={user.organizations} /> : null
-    const section = <PublishingSection pageTitle={'Vos organisations'} title={'Vos organisations'} component={component} toWait={user} />
+    const { user, errors } = this.state
 
-    return <Publishing user={user} section={section} />
+    if (errors.length) {
+      return <Errors errors={errors} />
+    }
+
+    if (!user) {
+      return <Errors errors={['Vous devez être authentifié pour accéder à cette page']} /> // TODO: Vous devez être authentifié
+    }
+
+    return (
+      <Layout user={user} pageTitle={'Vos organisations'} title={'Vos organisations'}>
+        <Organizations organizations={user.organizations} />
+      </Layout>
+    )
   }
 }
 

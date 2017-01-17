@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-import Publishing from '../../components/Publishing/Publishing'
-import PublishingSection from '../../components/PublishingSection/PublishingSection'
+import Layout from '../../components/Layout/Layout'
 import OrganizationDatasets from '../../components/OrganizationDatasets/OrganizationDatasets'
 
 import Errors from '../../../../components/Errors/Errors'
@@ -12,7 +11,8 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 class PublishingDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = {errors: []}
+    const { params: { organizationId } } = props
+    this.state = { errors: [], organizationId }
   }
 
   componentWillMount() {
@@ -33,35 +33,40 @@ class PublishingDatasets extends Component {
   }
 
   updatePublished() {
-    return waitForDataAndSetState(fetchOrganizationPublished(this.props.params.organizationId), this, 'published')
+    return waitForDataAndSetState(fetchOrganizationPublished(this.state.organizationId), this, 'published')
   }
 
   updateNotPublishedYet() {
-    return waitForDataAndSetState(fetchOrganizationNotPublishedYet(this.props.params.organizationId), this, 'notPublishedYet')
+    return waitForDataAndSetState(fetchOrganizationNotPublishedYet(this.state.organizationId), this, 'notPublishedYet')
   }
 
   updatePublishedByOthers() {
-    return waitForDataAndSetState(fetchOrganizationPublishedByOthers(this.props.params.organizationId), this, 'publishedByOthers')
+    return waitForDataAndSetState(fetchOrganizationPublishedByOthers(this.state.organizationId), this, 'publishedByOthers')
   }
 
   render() {
-    const { params: { organizationId } } = this.props
-    const { user, published, notPublishedYet, publishedByOthers, errors } = this.state
-    const datasets = {published, notPublishedYet, publishedByOthers}
 
-    if (errors.length) return <Errors errors={errors} />
+    const { organizationId, user, published, notPublishedYet, publishedByOthers, errors } = this.state
+    const datasets = { published, notPublishedYet, publishedByOthers }
 
-    if (user) {
-      const component = <OrganizationDatasets {...datasets} organizationId={organizationId} />
-      const organization = user.organizations.find(organization => organization.id === organizationId)
-      if (organization) {
-        const section = <PublishingSection pageTitle={organization.name} title={'Jeux de données'} component={component} toWait={(published && notPublishedYet && publishedByOthers)} />
-
-        return <Publishing user={user} organizationLogo={organization.logo} section={section} />
-      }
+    if (errors.length) {
+      return <Errors errors={errors} />
     }
 
-    return null
+    if (!user) {
+      return <Errors errors={['Vous devez être authentifié pour accéder à cette page']} /> // TODO: Vous devez être authentifié
+    }
+
+    const organization = user.organizations.find(organization => organization.id === organizationId)
+    if (!organization) return null
+
+    if (!datasets.published || !datasets.notPublishedYet || !datasets.publishedByOthers) return null
+
+    return (
+      <Layout user={user} pageTitle={organization.name} title={'Jeux de données'}>
+        <OrganizationDatasets {...datasets} organizationId={organizationId} />
+      </Layout>
+    )
   }
 }
 
