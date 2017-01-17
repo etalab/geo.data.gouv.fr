@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Layout from '../../components/Layout/Layout'
 import ManageOrganization from '../../components/ManageOrganization/ManageOrganization'
+import ActivateOrganization from '../../components/ActivateOrganization/ActivateOrganization'
 
 import { fetchOrganizationMetrics, getOrganizationDetail, getUser, getOrganization } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
@@ -51,6 +52,11 @@ class Organization extends Component {
     return waitForDataAndSetState(acceptNotFound(getOrganizationDetail(this.props.params.organizationId)), this, 'organizationDetail')
   }
 
+  onActivation(organizationAccount) {
+    this.updateMetrics()
+    this.updateOrganization()
+  }
+
   render() {
     const { user, organization, organizationDetail, metrics, errors } = this.state
 
@@ -67,7 +73,11 @@ class Organization extends Component {
     }
 
     if (!organization || !metrics) {
-      return <Errors errors={['Cette organisation n\'est pas active sur inspire.beta.gouv.fr']} /> // TODO: Cette organisation n'est pas active sur inspire.beta.gouv.fr
+      return (
+        <Layout user={user} organizationLogo={organizationDetail.logo} pageTitle={organizationDetail.name} title={organizationDetail.name}>
+          <ActivateOrganization organizationId={organizationDetail.id} onActivation={() => this.onActivation()} />
+        </Layout>
+      )
     }
 
     return (
