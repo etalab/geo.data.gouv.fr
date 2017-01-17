@@ -49,7 +49,7 @@ class HarvestsSection extends Component {
 
     if (!harvests ) return null
 
-    const { isPending } = this.state
+    const { isPending } = { isPending: true }
     const { catalog } = this.props
 
     const dataGraph = this.getGraphData()

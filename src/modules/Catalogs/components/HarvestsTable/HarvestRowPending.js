@@ -3,13 +3,9 @@ import React from 'react'
 const HarvestRowPending = () => {
   return (
     <tr>
-      <td>
-        <div>En cours...</div>
+      <td colspan="5">
+        En cours...
       </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
   )
 }
