@@ -90,7 +90,8 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
 }
 
 export function publishDataset(datasetId, organizationId) {
-  if (!datasetId || !organizationId) return Promise.reject(new Error('datasetId and organizationId are required'))
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   const url = `https://inspire.data.gouv.fr/dgv/api/datasets/${datasetId}/publication`
 
   return _put(url, { organization: organizationId })
