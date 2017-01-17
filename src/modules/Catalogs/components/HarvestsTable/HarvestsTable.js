@@ -1,10 +1,11 @@
 import React from 'react'
 
 import HarvestRow from './HarvestRow'
+import HarvestRowPending from './HarvestRowPending'
 
 import style from './HarvestsTable.css'
 
-const HarvestsTable = ({harvests, catalog}) => {
+const HarvestsTable = ({harvests, catalog, pending=false}) => {
     return (
       <table className={style.table}>
 
@@ -19,6 +20,7 @@ const HarvestsTable = ({harvests, catalog}) => {
         </thead>
 
         <tbody>
+          {pending ? <HarvestRowPending /> : null}
           {harvests.map((harvest, idx) => <HarvestRow key={idx} harvest={harvest} previousHarvest={harvests[idx + 1] || 0} catalog={catalog} />)}
         </tbody>
 
