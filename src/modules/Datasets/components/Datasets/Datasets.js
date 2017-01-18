@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import qs from 'qs'
 
 import DatasetsResults from '../DatasetsResults/DatasetsResults'
 
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import Filter from '../../../../components/Filter/Filter'
 
-import { search, buildSearchQuery } from '../../../../fetch/fetch'
+import { search } from '../../../../fetch/fetch'
+import { convertFilters } from '../../../../helpers/manageFilters'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 import { addFilter, removeFilter } from '../../../../helpers/manageFilters'
 
 import style from './Datasets.css'
+
+
+export function buildSearchQuery(q, filters, page) {
+  const qsFilters = convertFilters(filters)
+  const qPart = (q && q.length) ? { q } : {}
+  const pagePart = (page && page > 1) ? { page } : {}
+  return qs.stringify({ ...qPart, ...pagePart, ...qsFilters }, { indices: false })
+}
 
 class Datasets extends Component {
   constructor(props) {

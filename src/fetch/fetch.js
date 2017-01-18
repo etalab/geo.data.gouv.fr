@@ -41,13 +41,6 @@ export function fetchGeoJSON(link) {
   return _get(link + '?format=GeoJSON&projection=WGS84')
 }
 
-export function buildSearchQuery(q, filters, page) {
-  const qsFilters = convertFilters(filters)
-  const query = qs.stringify({q, page, ...qsFilters}, { indices: false })
-
-  return query
-}
-
 export function search(q, filters, offset) {
   const qsFilters = convertFilters(filters)
   const query = qs.stringify({q, offset, ...qsFilters}, { indices: false })
