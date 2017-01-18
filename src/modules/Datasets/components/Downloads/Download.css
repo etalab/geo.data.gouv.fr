@@ -1,14 +1,49 @@
+@import "../../../../theme/colors";
+
+.download {
+  border-left: 2px solid var(--blue);
+  padding-left: 10px;
+  margin: 15px;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2px;
-  padding: 0 10px;
-  align-items: baseline;
+  margin-top: 10px;
+  align-items: center;
   justify-content: space-between;
 }
 
-.button {
-  margin-left: 2px;
+.title {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.formats {
+  margin: 5px;
+}
+
+.container a {
+  padding: 5px;
+}
+
+.container a:hover {
+  color: #fff;
+  cursor: pointer;
+  background-color: var(--blue);
+}
+
+button {
   padding: 5px 10px;
+  color: #fff;
   border: none;
+  background-color: var(--blue);
+}
+
+button:hover {
+  background-color: var(--highlightBlue);
+}
+
+button:disabled {
+  background-color: #f0f0f0;
 }

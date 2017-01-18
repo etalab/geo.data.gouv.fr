@@ -6,6 +6,7 @@
 
 .table {
   min-width: 40%;
+  max-heigh: 460px;
 }
 
 .table table, .table th, .table td {

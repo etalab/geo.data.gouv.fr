@@ -1,12 +1,12 @@
 @import "../../../../theme/colors";
 
 .container {
-  width: 55%;
+  width: 100%;
   position: relative;
 }
 
 .map {
-  height: 560px;
+  height: 460px;
 }
 
 .load {

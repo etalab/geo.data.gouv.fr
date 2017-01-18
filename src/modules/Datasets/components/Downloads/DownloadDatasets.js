@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import VectorDownload from '../Downloads/VectorDownload'
 import OtherDownload from '../Downloads/OtherDownload'
-import DatasetTable from '../DatasetTable/DatasetTable'
-import PreviewMap from '../PreviewMap/PreviewMap'
+import Visualizer from '../Visualizer/Visualizer'
 
 import { fetchGeoJSON } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
@@ -14,6 +13,7 @@ class DownloadDatasets extends Component {
     super(props)
     this.state = {
       preview: null,
+      geojson: null,
       errors: [],
     }
   }
@@ -29,25 +29,12 @@ class DownloadDatasets extends Component {
 
   render() {
     const { distributions } = this.props
-    const { format, preview, geojson, errors } = this.state
+    const { preview, geojson, errors } = this.state
     const vectorDistributions = distributions.filter(distribution => !distribution.originalDistribution)
     const otherDistributions = distributions.filter(distribution => distribution.originalDistribution === true)
 
-    const map = (preview && preview.display === 'map') ?
-      <PreviewMap
-        distribution={preview.distribution}
-        geojson={geojson}
-        loading={preview && !geojson}
-        errors={errors}/>
-      : null
-
-    const table = (preview && preview.display === 'table') ?
-      <DatasetTable features={geojson ? geojson.features : []} />
-      : null
-
     const otherDownload = (otherDistributions.length) ? <OtherDownload distributions={otherDistributions} /> : null
-    const vectorDownload = <VectorDownload distributions={vectorDistributions} format={format}
-      choosePreview={(format) => this.selectPreview(format)} preview={preview} />
+    const vectorDownload = <VectorDownload distributions={vectorDistributions} choosePreview={(format) => this.selectPreview(format)} preview={preview} />
 
     return (
       <div className={content}>
@@ -57,9 +44,10 @@ class DownloadDatasets extends Component {
           {vectorDownload}
           {otherDownload}
         </div>
-
-        {map}
-        {table}
+        <Visualizer
+          preview={preview}
+          geojson={geojson}
+          errors={errors} />
       </div>
     )
   }
