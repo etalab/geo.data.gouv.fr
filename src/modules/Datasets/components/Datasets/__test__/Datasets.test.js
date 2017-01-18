@@ -81,7 +81,7 @@ describe('<Datasets />', () => {
       const wrapper = mount(<Datasets pathname={'pathname'} query={query} />)
 
       return wrapper.instance()
-        .componentWillMount()
+        .componentDidMount()
         .then(() => {
           wrapper.instance().handleChangePage({selected: 0})
           expect(wrapper.state('page')).to.equal(1)
