@@ -33,19 +33,14 @@ export function parseQuery(query) {
   }
 }
 
-class WrappedDatasets extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { query: parseQuery(this.props.location.query) }
-  }
+function WrappedDatasets({ location }) {
+  const query = parseQuery(location.query)
 
-  render() {
-    return (
-      <DocumentTitle title={'Recherche jeu de données'}>
-        <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
-      </DocumentTitle>
-    )
-  }
+  return (
+    <DocumentTitle title={'Recherche jeu de données'}>
+      <Datasets pathname={location.pathname} query={query}/>
+    </DocumentTitle>
+  )
 }
 
 export default WrappedDatasets
