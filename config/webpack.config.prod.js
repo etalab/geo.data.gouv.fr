@@ -77,6 +77,8 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: ['.js', '.json', '.jsx', ''],
     alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat',
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web'
@@ -138,6 +140,8 @@ module.exports = {
   },
 
   plugins: [
+    // Remove all moment locales except fr
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/),
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
