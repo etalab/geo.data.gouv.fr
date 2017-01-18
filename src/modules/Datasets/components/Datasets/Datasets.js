@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router'
 import qs from 'qs'
 
 import DatasetsResults from '../DatasetsResults/DatasetsResults'
-
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import Filter from '../../../../components/Filter/Filter'
 
@@ -31,7 +30,12 @@ class Datasets extends Component {
     }
   }
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.query || this.props.query === nextProps.query) return
+    this.setState(nextProps.query)
+  }
+
+  componentDidMount() {
     return this.fetchRecords()
   }
 

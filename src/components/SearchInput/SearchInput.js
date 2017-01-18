@@ -4,7 +4,12 @@ import { wrapper, input, button } from './SearchInput.css'
 class SearchInput extends Component {
   constructor(props) {
     super(props)
-    this.state = { textInput: this.props.textInput || '' }
+    this.state = { textInput: props.textInput || '' }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.textInput || this.props.textInput === nextProps.textInput) return
+    this.setState({ textInput: nextProps.textInput })
   }
 
   handleChange(event) {
