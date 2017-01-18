@@ -4,6 +4,7 @@ import CheckLicense from '../Checks/CheckLicense'
 import CheckProducers from '../Checks/CheckProducers'
 import CheckDataAvailability from '../Checks/CheckDataAvailability'
 
+import { checklist } from './DatasetChecklist.css'
 
 class DatasetChecklist extends Component {
   render() {
@@ -12,7 +13,7 @@ class DatasetChecklist extends Component {
     return (
       <div>
         <h3>Publication sur data.gouv.fr</h3>
-        <div>
+        <div className={checklist}>
           <CheckLicense license={metadata.license} />
           <CheckProducers organizations={organizations} />
           <CheckDataAvailability distributions={dataset.distributions} />
