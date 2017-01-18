@@ -32,66 +32,51 @@ class Datasets extends Component {
   }
 
   componentWillMount() {
-    return this.search()
+    return this.fetchRecords()
   }
 
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
 
-  search(changes = {}) {
-    const params = Object.assign({}, this.state, changes);
-    let { textInput, filters, offset, page } = params
-    const query = buildSearchQuery(textInput, filters, page)
+  fetchRecords() {
+    const { textInput, filters, page = 1 } = this.state
     let allFilters = filters
-
-    if (!offset && page) {
-      offset = (page - 1) * 20 // Comment remplacer 20 par limit
-    }
-
+    const offset = (page - 1) * 20
     if (this.props.pathname === 'datasets') {
-      allFilters = [...filters, {name: 'availability', value: 'yes'}]
+      allFilters = [...filters, { name: 'availability', value: 'yes' }]
     }
-
-    browserHistory.push(`${this.props.pathname}?${query}`)
-
     return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
+  }
+
+  search(changes = {}) {
+    window.scrollTo(0, 0);
+    return this.setState(changes, () => {
+      const params = Object.assign({}, this.state, changes)
+      let { textInput, filters, page } = params
+      const query = buildSearchQuery(textInput, filters, page)
+      if (window.location.search === `?${query}`) return
+      browserHistory.push(`${this.props.pathname}?${query}`)
+      return this.fetchRecords()
+    })
   }
 
   addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
-    const changes = { filters, offset: 0, page: 1, datasets: null }
-
-    this.setState(changes)
-    this.search(changes)
+    return this.search({ filters, page: 1, datasets: null })
   }
 
   removeFilter(filter) {
     const filters = removeFilter(this.state.filters, filter)
-    const changes = { filters, offset: 0, page: 1, datasets: null }
-
-    this.setState(changes)
-    this.search(changes)
+    return this.search({ filters, page: 1, datasets: null })
   }
 
   userSearch(textInput) {
-    const changes = { textInput, datasets: null, offset: 0, page: 1 }
-    this.setState(changes)
-    this.search(changes)
+    return this.search({ textInput, datasets: null, page: 1 })
   }
 
-  handleChangePage(data) {
-    const limit = this.state.datasets.query.limit
-    const selected = data.selected
-    const offset = Math.ceil(selected * limit)
-    const page = (offset / limit) + 1
-    const changes = { page, offset }
-
-    window.scrollTo(0, 0);
-
-    this.setState(changes, () => {
-      this.search(changes)
-    })
+  handleChangePage({ selected }) {
+    return this.search({ page: selected + 1 })
   }
 
   render() {
