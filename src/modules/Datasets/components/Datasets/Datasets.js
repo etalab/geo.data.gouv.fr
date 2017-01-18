@@ -32,7 +32,7 @@ class Datasets extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.query || this.props.query === nextProps.query) return
-    this.setState(nextProps.query)
+    this.search(nextProps.query, false)
   }
 
   componentDidMount() {
@@ -53,14 +53,17 @@ class Datasets extends Component {
     return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
   }
 
-  search(changes = {}) {
+  pushToHistory() {
+    let { textInput, filters, page } = this.state
+    const query = buildSearchQuery(textInput, filters, page)
+    if (window.location.search === `?${query}`) return
+    browserHistory.push(`${this.props.pathname}?${query}`)
+  }
+
+  search(changes = {}, pushToHistory = true) {
     window.scrollTo(0, 0);
     return this.setState(changes, () => {
-      const params = Object.assign({}, this.state, changes)
-      let { textInput, filters, page } = params
-      const query = buildSearchQuery(textInput, filters, page)
-      if (window.location.search === `?${query}`) return
-      browserHistory.push(`${this.props.pathname}?${query}`)
+      if (pushToHistory) this.pushToHistory()
       return this.fetchRecords()
     })
   }
