@@ -1,0 +1,17 @@
+.visualizer {
+  flex-grow: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttons > button {
+  width: 50%;
+}
+
+button:disabled {
+  background-color: #f0f0f0;
+}
