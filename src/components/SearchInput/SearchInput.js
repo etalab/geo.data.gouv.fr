@@ -12,18 +12,18 @@ class SearchInput extends Component {
     this.setState({ textInput: nextProps.textInput })
   }
 
-  handleChange(event) {
+  onChange(event) {
     this.setState({textInput: event.target.value});
   }
 
-  handleKeyPress(event) {
+  onKeyPress(event) {
     if (event.key === 'Enter') {
-      this.props.handleTextChange(this.state.textInput)
+      this.props.onSearch(this.state.textInput)
     }
   }
 
   search() {
-    this.props.handleTextChange(this.state.textInput)
+    this.props.onSearch(this.state.textInput)
   }
 
   render() {
@@ -33,8 +33,8 @@ class SearchInput extends Component {
           type='text'
           value={this.state.textInput}
           className={input}
-          onChange={(e) => this.handleChange(e)}
-          onKeyPress={(e) => this.handleKeyPress(e)}
+          onChange={e => this.onChange(e)}
+          onKeyPress={e => this.onKeyPress(e)}
           placeholder="Rechercher..." />
         {this.props.searchButton ? <button className={button} onClick={() => this.search()}>Rechercher</button> : undefined}
       </div>

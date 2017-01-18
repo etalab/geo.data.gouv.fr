@@ -37,7 +37,7 @@ class Home extends Component {
     return (
       <div>
         <div className={masthead}>
-          <SearchInput ref="searchInput" handleTextChange={(textInput) => this.userSearch('datasets', textInput)} />
+          <SearchInput ref="searchInput" onSearch={(textInput) => this.userSearch('datasets', textInput)} />
           <div className={buttons}>
             <button onClick={() => this.userSearch('datasets', this.refs.searchInput.state.textInput)}>Rechercher un jeu de données</button>
             <button className={inverted} onClick={() => this.userSearch('records', this.refs.searchInput.state.textInput)}>Rechercher un enregistrement</button>
