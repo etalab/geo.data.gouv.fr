@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import DocumentTitle from 'react-document-title'
 import { isArray, forEach } from 'lodash'
-import qs from 'qs'
 
 import Datasets from '../../components/Datasets/Datasets'
 
@@ -27,12 +26,10 @@ export function _extractFilters(query) {
 }
 
 export function parseQuery(query) {
-  const parse = qs.parse(query)
-
   return {
-    textInput: parse.q,
-    page: parse.page,
-    filters: _extractFilters(parse),
+    textInput: query.q,
+    page: query.page || 1,
+    filters: _extractFilters(query),
   }
 }
 

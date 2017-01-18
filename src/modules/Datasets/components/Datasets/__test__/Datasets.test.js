@@ -21,7 +21,6 @@ describe('buildSearchQuery()', () => {
       ],
     }
     const expectedUrl = 'q=42&page=2&keywords=keyword1&keywords=keyword2&organizations=foo'
-
     const builQuery = buildSearchQuery(
       componentState.textInput,
       componentState.filters,
@@ -48,7 +47,6 @@ describe('<Datasets />', () => {
       wrapper.instance().addFilter({name: 'filter2', value: 'value2'})
 
       expect(wrapper.state('page')).to.equal(1)
-      expect(wrapper.state('offset')).to.equal(0)
       expect(wrapper.state('filters')).to.deep.equal([{name: 'filter1', value: 'value1'}, {name: 'filter2', value: 'value2'}])
     })
   })
@@ -58,7 +56,6 @@ describe('<Datasets />', () => {
       wrapper.instance().removeFilter({name: 'filter1', value: 'value1'})
 
       expect(wrapper.state('page')).to.equal(1)
-      expect(wrapper.state('offset')).to.equal(0)
       expect(wrapper.state('filters')).to.deep.equal([])
     })
   })
@@ -70,7 +67,6 @@ describe('<Datasets />', () => {
 
       expect(wrapper.state('textInput')).to.deep.equal(textInput)
       expect(wrapper.state('filters')).to.deep.equal([{name: 'filter1', value: 'value1'}])
-      expect(wrapper.state('offset')).to.equal(0)
       expect(wrapper.state('page')).to.equal(1)
     })
   })
@@ -88,7 +84,6 @@ describe('<Datasets />', () => {
         .componentWillMount()
         .then(() => {
           wrapper.instance().handleChangePage({selected: 0})
-          expect(wrapper.state('offset')).to.equal(0)
           expect(wrapper.state('page')).to.equal(1)
         })
     })

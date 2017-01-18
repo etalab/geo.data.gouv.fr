@@ -36,7 +36,12 @@ describe('_extractFilters', () => {
 
 describe('parseQuery', () => {
   it('should create an array of filters', () => {
-    const query = 'q=42&page=2&keyword=keyword1&keyword=keyword2&organization=foo'
+    const query = {
+      q: '42',
+      page: '2',
+      keyword: ['keyword1', 'keyword2'],
+      organization: 'foo'
+    }
     const result = parseQuery(query)
 
     expect(result).to.deep.equal(
