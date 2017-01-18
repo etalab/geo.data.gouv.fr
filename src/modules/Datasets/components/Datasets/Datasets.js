@@ -77,6 +77,8 @@ class Datasets extends Component {
     const page = (offset / limit) + 1
     const changes = { page, offset }
 
+    window.scrollTo(0, 0);
+
     this.setState(changes, () => {
       this.search(changes)
     })
