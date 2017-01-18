@@ -21,15 +21,15 @@ const filePackage = {
   '_id': '582bb403b631a32a2b33c376'
 }
 
-const format = {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS42'}
+const format = {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'}
 
-describe('<Download />', () => {
+describe.only('<Download />', () => {
 
   describe('Available dataset', () => {
 
   describe('featureType', () => {
     it('should create a link to download wfs-featureType dataset type', () => {
-      const link = <a href='https://inspire.data.gouv.fr/api/geogw/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&amp;projection=WGS42'>drac:bretagne_immeuble_mh</a>
+      const link = <a href="https://inspire.data.gouv.fr/api/geogw/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&amp;projection=WGS84">GeoJSON</a>
       const wrapper = shallow(<Download distribution={featureType} dlFormat={format}/>)
       expect(wrapper).to.contain(link)
     })
@@ -37,7 +37,7 @@ describe('<Download />', () => {
 
     describe('file-package', () => {
       it('should create a link to download file-package dataset type', () => {
-        const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download?format=GeoJSON&amp;projection=WGS42'>N_AC1_GENERATEUR_SUP_S_032.TAB</a>
+        const link = <a href='https://inspire.data.gouv.fr/api/geogw/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download?format=GeoJSON&amp;projection=WGS84'>GeoJSON</a>
         const wrapper = shallow(<Download distribution={filePackage} dlFormat={format}/>)
         expect(wrapper).to.contain(link)
       })
@@ -51,7 +51,7 @@ describe('<Download />', () => {
       dataset.available = false
       const wrapper = shallow(<Download distribution={featureType} dlFormat={format} />)
 
-      expect(wrapper).to.have.html('<div>drac:bretagne_immeuble_mh</div>')
+      expect(wrapper).to.contains.html('<p>Indisponible</p>')
     })
   })
 
