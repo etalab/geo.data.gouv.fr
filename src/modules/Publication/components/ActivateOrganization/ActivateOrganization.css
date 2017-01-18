@@ -1,14 +1,12 @@
 @import "../../../../theme/colors";
 
-button.activate:hover {
-  padding: 0.5em;
-  color: var(--blue);
-  background-color: #fff;
-  border: 1px solid var(--blue);
+.msg {
+  margin-top: 2em;
+  text-align: center;
 }
 
 button.activate {
-  padding: 0.5em;
+  padding: 1em 1.5em;
   color: #fff;
   background-color: var(--blue);
   border: 1px solid #fff;

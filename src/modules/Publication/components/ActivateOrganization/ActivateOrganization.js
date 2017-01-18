@@ -5,7 +5,7 @@ import Errors from '../../../../components/Errors/Errors'
 import { markAsCancelable, cancelAllPromises } from '../../../../helpers/components'
 import { updateOrganizationAccount } from '../../../../fetch/fetch'
 
-import { activate } from './ActivateOrganization.css'
+import { msg, activate } from './ActivateOrganization.css'
 
 class ActivateOrganization extends Component {
   constructor(props) {
@@ -43,8 +43,8 @@ class ActivateOrganization extends Component {
     }
 
     return (
-      <div>
-        <p>L'outil de publication n'est pas encore activé.</p>
+      <div className={msg}>
+        <h3>L'outil de publication n'est pas encore activé.</h3>
         <button className={activate} onClick={() => this.activateAccount()} disabled={activating}>Activer l'outil</button>
       </div>
     )
