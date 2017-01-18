@@ -1,4 +1,6 @@
+/* eslint no-console: off */
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import DocumentTitle from 'react-document-title'
 import { isArray, forEach } from 'lodash'
 import qs from 'qs'
@@ -39,10 +41,25 @@ export function parseQuery(query) {
 class WrappedDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = { query: parseQuery(this.props.location.query) }
+    this.state = {
+      search: this.props.location.search,
+      query: parseQuery(this.props.location.query)
+    }
+  }
+
+  updateQuery() {
+    this.setState({query: parseQuery(this.props.location.query)})
   }
 
   render() {
+    browserHistory.listen( location => {
+      if (location.pathname === '/datasets' || location.pathname === '/records') {
+        if (location.action === 'POP' ) {
+          if (location.search !== this.state.search) window.location.reload()
+        }
+      }
+    })
+
     return (
       <DocumentTitle title={'Recherche jeu de données'}>
         <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
