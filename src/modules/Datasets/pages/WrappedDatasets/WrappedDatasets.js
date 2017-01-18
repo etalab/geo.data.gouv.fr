@@ -35,7 +35,6 @@ export function parseQuery(query) {
 }
 
 function handleLocation(location) {
-  console.log({ query: parseQuery(location.query), pathname: location.pathname })
   return { query: parseQuery(location.query), pathname: location.pathname }
 }
 
