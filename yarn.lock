@@ -4429,9 +4429,9 @@ react-leaflet@^1.0.1:
     lodash "^4.0.0"
     warning "^3.0.0"
 
-react-paginate@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-4.1.0.tgz#1a3379f1a029874fc9bf173438fd621f83648940"
+react-paginate@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-4.1.1.tgz#32a51b198669999604df23e34bab2f58273e7612"
   dependencies:
     classnames "^2.2.5"
 
