@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
-import CheckItem from './CheckItem'
-
-import Accordion from '../../../../components/Accordion/Accordion'
+import Check from './Check'
 
 export const ACCEPTED_LICENSES = [
   'fr-lo',
@@ -11,13 +9,17 @@ export const ACCEPTED_LICENSES = [
 
 class CheckLicense extends Component {
   check() {
-    const license = this.props.license
+    const { license } = this.props
     let valid = false
     let msg = ''
-    let content = <div>
-      <div>Les licenses reconnue sont: </div>
-        {ACCEPTED_LICENSES}
-    </div>
+    let content = (
+      <div>
+        Les licenses reconnue sont :
+        <ul>
+          { ACCEPTED_LICENSES.map( (licence, idx) => <li key={idx}>{licence}</li>) }
+        </ul>
+      </div>
+    )
 
     if (!license) {
       msg = 'Aucune licence n\'a pu être trouvée.'
@@ -33,11 +35,13 @@ class CheckLicense extends Component {
   }
 
   render() {
-    const check = this.check()
+    const { valid, msg, content } = this.check()
 
-    return <Accordion
-              title={<CheckItem name={'Licence'} content={check.content} valid={check.valid} />}
-              msg={check.msg} />
+    return (
+      <Check title='Licence' isValid={valid} msg={msg}>
+        {content}
+      </Check>
+      )
     }
 }
 

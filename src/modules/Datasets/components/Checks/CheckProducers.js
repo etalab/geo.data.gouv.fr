@@ -1,31 +1,31 @@
 import React, { Component } from 'react'
 
-import CheckItem from './CheckItem'
-
-import Accordion from '../../../../components/Accordion/Accordion'
+import Check from './Check'
 
 class CheckProducers extends Component {
   check() {
-    const organizations = this.props.organizations
+    const { organizations } = this.props
 
     if (!!organizations && organizations.length > 0) {
       return {
         valid: true,
         msg: 'Au moins un producteur est identifié.',
+        content: organizations
       }
     }
 
-    return {msg: 'Le producteur n\'a pas été identifié.', valid: false}
+    return { msg: 'Le producteur n\'a pas été identifié.', valid: false }
   }
 
   render() {
-    const check = this.check()
+    const { valid, msg, content } = this.check()
 
-    return <Accordion
-              title={<CheckItem name={'Producteur'} valid={check.valid} />}
-              content={this.props.organizations}
-              msg={check.msg} />
-    }
+    return (
+      <Check title='Producteur' isValid={valid} msg={msg}>
+        {content ? content : null }
+      </Check>
+      )
+  }
 }
 
 export default CheckProducers

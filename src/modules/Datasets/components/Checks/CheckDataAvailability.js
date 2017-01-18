@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
+import Check from './Check'
 import CheckItem from './CheckItem'
-
-import Accordion from '../../../../components/Accordion/Accordion'
 
 class DatasetDataAvailability extends Component {
   check() {
@@ -23,12 +22,13 @@ class DatasetDataAvailability extends Component {
   }
 
   render() {
-    const check = this.check()
+    const { valid, msg, content } = this.check()
 
-    return <Accordion
-              title={<CheckItem name={'Disponibilité de la donnée'} valid={check.valid} />}
-              content={check.content}
-              msg={check.msg} />
+    return (
+      <Check title='Disponibilité de la donnée' isValid={valid} msg={msg}>
+        {content ? content : null }
+      </Check>
+      )
     }
 }
 
