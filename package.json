@@ -65,6 +65,7 @@
     "lodash": "^4.16.4",
     "marked": "^0.3.6",
     "moment": "^2.14.1",
+    "piwik-react-router": "^0.4.0",
     "preact": "^7.1.0",
     "preact-compat": "^3.9.4",
     "qs": "^6.3.0",
