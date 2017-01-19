@@ -5,6 +5,16 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-items: baseline;
+  margin-top: 2em;
 }
 
 .harvest > button {
@@ -13,6 +23,10 @@
   color: #fff;
   background-color: var(--blue);
   border: 1px solid;
+}
+
+.chart {
+  margin: 2em;
 }
 
 .pending {

@@ -8,7 +8,7 @@ import Chart from '../../../../components/Charts/Chart'
 import { fetchHarvests, syncCatalog } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { harvest, chart, pending } from './HarvestsSection.css'
+import { harvest, chart, stats, pending } from './HarvestsSection.css'
 
 class HarvestsSection extends Component {
   constructor(props) {
@@ -53,18 +53,23 @@ class HarvestsSection extends Component {
     const { catalog } = this.props
 
     const dataGraph = this.getGraphData()
-    const histogram = <Histogram className={chart} data={dataGraph} width="400" height="220" />
+    const histogram = <Histogram data={dataGraph} width="400" height="220" />
 
     return (
-      <div className={harvest}>
-        <HarvestsTable harvests={harvests} catalog={catalog} pending={isPending} />
-        <div className={chart}>
-          <Chart
-            title={'Évolution des Enregistrements'}
-            description={'Évolution du nombre d\'enregistrements par moissonnage'}
-            chart={histogram} />
+      <div>
+        <h2>Moissonnage du catalogue</h2>
+        <div className={harvest}>
+          <div className={stats}>
+            <HarvestsTable harvests={harvests} catalog={catalog} pending={isPending} />
+            <div className={chart}>
+              <Chart
+                title={'Évolution des Enregistrements'}
+                description={'Évolution du nombre d\'enregistrements par moissonnage'}
+                chart={histogram} />
+            </div>
+          </div>
+          {isPending ? <div className={pending}>Synchronisation en cours ...</div> : <button onClick={() => this.sync()}>Synchroniser</button>}
         </div>
-        {isPending ? <div className={pending}>Synchronisation en cours ...</div> : <button onClick={() => this.sync()}>Synchroniser</button>}
       </div>
     )
   }
