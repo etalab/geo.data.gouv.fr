@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import { buildSearchQuery } from '../Datasets'
 
 const Datasets = require('proxyquire')('../Datasets', {
   '../../../../fetch/fetch': require('../../../../../fetch/__mocks__/fetch'),
@@ -7,6 +8,27 @@ const Datasets = require('proxyquire')('../Datasets', {
     browserHistory: {push:  () => {}}
   }
 }).default
+
+describe('buildSearchQuery()', () => {
+  it('should return a query', () => {
+    const componentState = {
+      textInput: '42',
+      page: 2,
+      filters: [
+        {name: 'keywords', value: 'keyword1'},
+        {name: 'keywords', value: 'keyword2'},
+        {name: 'organizations', value: 'foo'},
+      ],
+    }
+    const expectedUrl = 'q=42&page=2&keywords=keyword1&keywords=keyword2&organizations=foo'
+    const builQuery = buildSearchQuery(
+      componentState.textInput,
+      componentState.filters,
+      componentState.page,
+    )
+    expect(builQuery).to.equal(expectedUrl)
+  })
+})
 
 describe('<Datasets />', () => {
 
@@ -25,7 +47,6 @@ describe('<Datasets />', () => {
       wrapper.instance().addFilter({name: 'filter2', value: 'value2'})
 
       expect(wrapper.state('page')).to.equal(1)
-      expect(wrapper.state('offset')).to.equal(0)
       expect(wrapper.state('filters')).to.deep.equal([{name: 'filter1', value: 'value1'}, {name: 'filter2', value: 'value2'}])
     })
   })
@@ -35,7 +56,6 @@ describe('<Datasets />', () => {
       wrapper.instance().removeFilter({name: 'filter1', value: 'value1'})
 
       expect(wrapper.state('page')).to.equal(1)
-      expect(wrapper.state('offset')).to.equal(0)
       expect(wrapper.state('filters')).to.deep.equal([])
     })
   })
@@ -47,7 +67,6 @@ describe('<Datasets />', () => {
 
       expect(wrapper.state('textInput')).to.deep.equal(textInput)
       expect(wrapper.state('filters')).to.deep.equal([{name: 'filter1', value: 'value1'}])
-      expect(wrapper.state('offset')).to.equal(0)
       expect(wrapper.state('page')).to.equal(1)
     })
   })
@@ -62,10 +81,9 @@ describe('<Datasets />', () => {
       const wrapper = mount(<Datasets pathname={'pathname'} query={query} />)
 
       return wrapper.instance()
-        .componentWillMount()
+        .componentDidMount()
         .then(() => {
           wrapper.instance().handleChangePage({selected: 0})
-          expect(wrapper.state('offset')).to.equal(0)
           expect(wrapper.state('page')).to.equal(1)
         })
     })

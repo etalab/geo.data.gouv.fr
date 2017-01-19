@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
 import { isArray, forEach } from 'lodash'
-import qs from 'qs'
+import { browserHistory } from 'react-router'
 
 import Datasets from '../../components/Datasets/Datasets'
 
@@ -27,25 +27,40 @@ export function _extractFilters(query) {
 }
 
 export function parseQuery(query) {
-  const parse = qs.parse(query)
-
   return {
-    textInput: parse.q,
-    page: parse.page,
-    filters: _extractFilters(parse),
+    textInput: query.q,
+    page: query.page || 1,
+    filters: _extractFilters(query),
   }
+}
+
+function handleLocation(location) {
+  return { query: parseQuery(location.query), pathname: location.pathname }
 }
 
 class WrappedDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = { query: parseQuery(this.props.location.query) }
+    this.state = handleLocation(props.location)
+  }
+
+  componentDidMount() {
+    this.handle = browserHistory.listen(location => {
+      if (location.pathname !== '/datasets' && location.pathname !== '/records') return;
+      if (location.action !== 'POP') return
+      this.setState(handleLocation(location))
+    })
+  }
+
+  componentWillUnmount() {
+    this.handle()
   }
 
   render() {
+    const { query, pathname } = this.state
     return (
       <DocumentTitle title={'Recherche jeu de données'}>
-        <Datasets pathname={this.props.location.pathname} query={this.state.query}/>
+        <Datasets pathname={pathname} query={query}/>
       </DocumentTitle>
     )
   }

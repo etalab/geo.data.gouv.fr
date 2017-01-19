@@ -1,7 +1,6 @@
 import React from 'react'
 
 import DatasetPreview from '../DatasetPreview/DatasetPreview'
-
 import Facets from '../../../../components/Facets/Facets'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 import WrappedPagination from '../../../../components/Pagination/WrappedPagination'
@@ -28,7 +27,7 @@ const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, 
           <div className={counter}><strong>{datasets.count}</strong> {datasets.count > 1 ? 'jeux de données trouvés' : 'jeu de données trouvé'}</div>
           <div className={results}>
             <div className={result}>
-              {datasets.results.map((dataset, idx) => <DatasetPreview key={idx} dataset={dataset} addFilter={(filter) => addFilter(filter)}/>)}
+              {datasets.results.map(dataset => <DatasetPreview key={dataset._id} dataset={dataset} addFilter={(filter) => addFilter(filter)}/>)}
             </div>
             <Facets
               facets={datasets.facets}

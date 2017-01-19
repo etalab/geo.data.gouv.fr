@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import qs from 'qs'
 
 import DatasetsResults from '../DatasetsResults/DatasetsResults'
-
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import Filter from '../../../../components/Filter/Filter'
 
-import { search, buildSearchQuery } from '../../../../fetch/fetch'
+import { search } from '../../../../fetch/fetch'
+import { convertFilters } from '../../../../helpers/manageFilters'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 import { addFilter, removeFilter } from '../../../../helpers/manageFilters'
 
 import style from './Datasets.css'
+
+
+export function buildSearchQuery(q, filters, page) {
+  const qsFilters = convertFilters(filters)
+  const qPart = (q && q.length) ? { q } : {}
+  const pagePart = (page && page > 1) ? { page } : {}
+  return qs.stringify({ ...qPart, ...pagePart, ...qsFilters }, { indices: false })
+}
 
 class Datasets extends Component {
   constructor(props) {
@@ -21,67 +30,60 @@ class Datasets extends Component {
     }
   }
 
-  componentWillMount() {
-    return this.search()
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.query || this.props.query === nextProps.query) return
+    this.search(nextProps.query, false)
+  }
+
+  componentDidMount() {
+    return this.fetchRecords()
   }
 
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
 
-  search(changes = {}) {
-    const params = Object.assign({}, this.state, changes);
-    let { textInput, filters, offset, page } = params
-    const query = buildSearchQuery(textInput, filters, page)
+  fetchRecords() {
+    const { textInput, filters, page = 1 } = this.state
     let allFilters = filters
-
-    if (!offset && page) {
-      offset = (page - 1) * 20 // Comment remplacer 20 par limit
-    }
-
+    const offset = (page - 1) * 20
     if (this.props.pathname === 'datasets') {
-      allFilters = [...filters, {name: 'availability', value: 'yes'}]
+      allFilters = [...filters, { name: 'availability', value: 'yes' }]
     }
-
-    browserHistory.push(`${this.props.pathname}?${query}`)
-
     return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
+  }
+
+  pushToHistory() {
+    let { textInput, filters, page } = this.state
+    const query = buildSearchQuery(textInput, filters, page)
+    if (window.location.search === `?${query}`) return
+    browserHistory.push(`${this.props.pathname}?${query}`)
+  }
+
+  search(changes = {}, pushToHistory = true) {
+    window.scrollTo(0, 0);
+    return this.setState(changes, () => {
+      if (pushToHistory) this.pushToHistory()
+      return this.fetchRecords()
+    })
   }
 
   addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
-    const changes = { filters, offset: 0, page: 1, datasets: null }
-
-    this.setState(changes)
-    this.search(changes)
+    return this.search({ filters, page: 1, datasets: null })
   }
 
   removeFilter(filter) {
     const filters = removeFilter(this.state.filters, filter)
-    const changes = { filters, offset: 0, page: 1, datasets: null }
-
-    this.setState(changes)
-    this.search(changes)
+    return this.search({ filters, page: 1, datasets: null })
   }
 
   userSearch(textInput) {
-    const changes = { textInput, datasets: null, offset: 0, page: 1 }
-    this.setState(changes)
-    this.search(changes)
+    return this.search({ textInput, datasets: null, page: 1 })
   }
 
-  handleChangePage(data) {
-    const limit = this.state.datasets.query.limit
-    const selected = data.selected
-    const offset = Math.ceil(selected * limit)
-    const page = (offset / limit) + 1
-    const changes = { page, offset }
-
-    window.scrollTo(0, 0);
-
-    this.setState(changes, () => {
-      this.search(changes)
-    })
+  handleChangePage({ selected }) {
+    return this.search({ page: selected + 1 })
   }
 
   render() {
@@ -93,7 +95,7 @@ class Datasets extends Component {
             textInput={textInput}
             filters={filters}
             searchButton={true}
-            handleTextChange={(textInput) => this.userSearch(textInput)} />
+            onSearch={(textInput) => this.userSearch(textInput)} />
 
           <div className={style.filters}>{filters.length ? 'Filtres actifs' : 'Aucun filtre actif'}</div>
           {filters.map((filter, idx) => <Filter detail={true} remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
