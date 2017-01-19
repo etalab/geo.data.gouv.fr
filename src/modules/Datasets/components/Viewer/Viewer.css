@@ -1,3 +1,5 @@
+@import "../../../../theme/colors";
+
 .visualizer {
   flex-grow: 1;
 }
@@ -12,6 +14,17 @@
   width: 50%;
 }
 
-button:disabled {
+.buttons button {
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  background-color: var(--blue);
+}
+
+.buttons button:hover {
+  background-color: var(--highlightBlue);
+}
+
+.buttons button:disabled {
   background-color: #f0f0f0;
 }

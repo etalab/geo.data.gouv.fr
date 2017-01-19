@@ -1,6 +1,6 @@
 import React from 'react'
 import { strRightBack } from 'underscore.string'
-import { download, container, title, formats } from './Download.css'
+import { download, container, title, viewerButton, formats } from './Download.css'
 
 const FORMATS = [
   {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'},
@@ -39,8 +39,8 @@ const Download = ({ distribution, isPreview, preview }) => {
             </div>
           </div>
           { !distribution.available ?
-            <button disabled>Visualiser</button> :
-            <button onClick={() => preview({distribution, link})}>
+            <button className={viewerButton} disabled>Visualiser</button> :
+            <button className={viewerButton} onClick={() => preview({distribution, link})}>
               Visualiser { isPreview ? <i className="unhide icon"></i> : null }
             </button>
           }
