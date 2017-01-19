@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import Publishing from '../../components/Publishing/Publishing'
-import PublishingSection from '../../components/PublishingSection/PublishingSection'
+
+import Layout from '../../components/Layout/Layout'
 import Producers from '../../../../components/Producers/Producers'
 import Errors from '../../../../components/Errors/Errors'
+
 import { getUser, getOrganization } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
+
 
 class PublishingDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = {errors: []}
+    const { params: { organizationId } } = props
+    this.state = { errors: [], organizationId }
   }
 
   componentWillMount() {
@@ -32,19 +35,25 @@ class PublishingDatasets extends Component {
   }
 
   render() {
-    const { params: { organizationId } } = this.props
-    const { user, organization, errors } = this.state
 
-    if (errors.length) return <Errors errors={errors} />
-    if (user && organization) {
-      const organizationLogo = user.organizations.find(organization => organization.id === organizationId).logo
-      const component = <Producers organization={organization} />
-      const section = <PublishingSection pageTitle={`${organization.name} - Producteurs`} title={'Producteurs'} component={component} toWait={organization} />
+    const { user, organization, errors, organizationId } = this.state
 
-      return <Publishing user={user} organizationLogo={organizationLogo} section={section} />
-      }
+    if (errors.length) {
+      return <Errors errors={errors} />
+    }
 
-    return null
+    if (!user) {
+      return <Errors errors={['Vous devez être authentifié pour accéder à cette page']} /> // TODO: Vous devez être authentifié
+    }
+
+    if (!organization) return null;
+    const organizationLogo = user.organizations.find(organization => organization.id === organizationId).logo
+
+    return (
+      <Layout user={user} organizationLogo={organizationLogo} pageTitle={`${organization.name} - Producteurs`} title={'Producteurs'}>
+        <Producers organization={organization} />
+      </Layout>
+    )
   }
 }
 

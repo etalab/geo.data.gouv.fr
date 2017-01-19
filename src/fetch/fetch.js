@@ -83,21 +83,17 @@ export function fetchOrganizationPublishedByOthers(organizationId) {
 }
 
 export function publishDataset(datasetId, organizationId) {
-  if (!datasetId || !organizationId) return Promise.reject(new Error('datasetId and organizationId are required'))
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   const url = `https://inspire.data.gouv.fr/dgv/api/datasets/${datasetId}/publication`
 
   return _put(url, { organization: organizationId })
 }
 
-export function updateCatalogSources(sourceCatalogs, organizationId) {
-  if (!sourceCatalogs || !organizationId) return Promise.reject(new Error('sourceCatalogs and organizationId are required'))
+export function updateOrganizationAccount(organizationId, organization = {}) {
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   const url = `https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}`
-  const params = {
-    sourceCatalogs: sourceCatalogs,
-    publishAll: true,
-  }
-
-  return _put(url, params)
+  return _put(url, organization)
 }
 
 export function syncCatalog(catalogId) {

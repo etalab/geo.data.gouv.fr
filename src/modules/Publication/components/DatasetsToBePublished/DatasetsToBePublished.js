@@ -22,11 +22,11 @@ class DatasetsToBePublished extends Component {
   }
 
   addDatasetToPublish(dataset) {
-    let toPublish = this.state.toPublish
+    let { toPublish } = this.state
 
     if (toPublish.includes(dataset)) return
     toPublish.push(dataset)
-    this.setState({toPublish})
+    this.setState({ toPublish })
   }
 
   removeDatasetToPublish(dataset) {

@@ -5,11 +5,15 @@ export function cancelAllPromises(component) {
   return cancelAll(component.cancelablePromises);
 }
 
-export function waitForDataAndSetState(dataPromise, component, stateName) {
-  const cancelablePromise = makeCancelable(dataPromise);
-
+export function markAsCancelable(promise, component) {
+  const cancelablePromise = makeCancelable(promise);
   if (!component.cancelablePromises) component.cancelablePromises = []
   component.cancelablePromises.push(cancelablePromise)
+  return cancelablePromise;
+}
+
+export function waitForDataAndSetState(dataPromise, component, stateName) {
+  const cancelablePromise = markAsCancelable(dataPromise, component);
 
   return cancelablePromise.promise
     .then(data => {

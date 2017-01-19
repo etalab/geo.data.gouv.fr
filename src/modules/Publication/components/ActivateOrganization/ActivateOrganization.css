@@ -1,0 +1,13 @@
+@import "../../../../theme/colors";
+
+.msg {
+  margin-top: 2em;
+  text-align: center;
+}
+
+button.activate {
+  padding: 1em 1.5em;
+  color: #fff;
+  background-color: var(--blue);
+  border: 1px solid #fff;
+}
