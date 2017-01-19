@@ -1,8 +1,7 @@
 {
-  "name": "dashboard-inspire",
-  "version": "0.0.1",
-  "homepage": "https://inspire.beta.gouv.fr",
-  "private": true,
+  "name": "inspire.data.gouv.fr",
+  "version": "1.0.0",
+  "homepage": "https://inspire.data.gouv.fr",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-eslint": "^7.0.0",
