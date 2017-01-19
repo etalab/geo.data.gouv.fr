@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import VectorDownload from '../Downloads/VectorDownload'
 import OtherDownload from '../Downloads/OtherDownload'
-import Visualizer from '../Visualizer/Visualizer'
+import Viewer from '../Viewer/Viewer'
 
 import { fetchGeoJSON } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
@@ -44,7 +44,7 @@ class DownloadDatasets extends Component {
           {vectorDownload}
           {otherDownload}
         </div>
-        <Visualizer
+        <Viewer
           preview={preview}
           geojson={geojson}
           errors={errors} />

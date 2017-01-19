@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import DatasetTable from '../DatasetTable/DatasetTable'
 import PreviewMap from '../PreviewMap/PreviewMap'
 
-import { visualizer, buttons } from './Visualizer.css'
+import { visualizer, buttons } from './Viewer.css'
 
-class Visualizer extends Component {
+class Viewer extends Component {
   constructor(props) {
     super(props)
     this.state = { mode: 'map' }
@@ -49,4 +49,4 @@ class Visualizer extends Component {
   }
 }
 
-export default Visualizer
+export default Viewer
