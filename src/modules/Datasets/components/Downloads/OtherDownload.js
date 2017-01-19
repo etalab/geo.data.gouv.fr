@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { other } from './OtherDownload.css'
+
 const OtherDownload = ({ distributions }) => {
   return (
-    <div>
+    <div className={other}>
       <h4>Autres Données</h4>
       {
         distributions.map((distribution, idx) => {
