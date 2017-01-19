@@ -23,7 +23,7 @@ const filePackage = {
 
 const format = {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'}
 
-describe.only('<Download />', () => {
+describe('<Download />', () => {
 
   describe('Available dataset', () => {
 
