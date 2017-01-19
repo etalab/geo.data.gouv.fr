@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import moment from 'moment'
+import createPiwikConnector from 'piwik-react-router'
 
 import App from './components/App/App'
 import Home from './components/Home/Home'
@@ -20,6 +21,12 @@ import WrappedDatasets from './modules/Datasets/pages/WrappedDatasets/WrappedDat
 import DatasetDetail from './modules/Datasets/pages/DatasetDetail/DatasetDetail'
 
 moment.locale('fr')
+
+// Piwik
+createPiwikConnector({
+  url: 'https://stats.data.gouv.fr',
+  siteId: 32
+}).connectToHistory(browserHistory);
 
 ReactDOM.render((
   <Router history={browserHistory}>
