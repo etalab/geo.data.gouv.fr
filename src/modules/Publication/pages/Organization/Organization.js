@@ -1,90 +1,34 @@
 import React, { Component } from 'react'
 
-import Layout from '../../components/Layout/Layout'
-import ManageOrganization from '../../components/ManageOrganization/ManageOrganization'
-import ActivateOrganization from '../../components/ActivateOrganization/ActivateOrganization'
+import OrganizationHome from '../../components/OrganizationHome/OrganizationHome'
 
 import { fetchOrganizationMetrics, getOrganizationDetail, getUser, getOrganization } from '../../../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
-import { acceptNotFound } from '../../../../helpers/promises'
-import Errors from '../../../../components/Errors/Errors'
+import withResolver from '../../../../helpers/withResolver'
 
 class Organization extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      user: null,
-      organization: null,
-      organizationDetail: null,
-      metrics: null,
-      catalog: null,
-      errors: [],
+    this.state = { dependencies: this.getDependencies() }
+  }
+
+  getDependencies() {
+    const { params: { organizationId } } = this.props
+
+    return {
+      user: getUser(),
+      metrics: fetchOrganizationMetrics(organizationId),
+      organization: getOrganization(organizationId),
+      organizationDetails: getOrganizationDetail(organizationId)
     }
   }
 
-  componentWillMount() {
-    return Promise.all([
-      this.updateUser(),
-      this.updateMetrics(),
-      this.updateOrganization(),
-      this.updateOrganizationDetail(),
-    ])
-  }
-
-  componentWillUnmount() {
-    return cancelAllPromises(this)
-  }
-
-  updateUser() {
-    return waitForDataAndSetState(getUser(), this, 'user')
-  }
-
-
-  updateMetrics() {
-    return waitForDataAndSetState(acceptNotFound(fetchOrganizationMetrics(this.props.params.organizationId)), this, 'metrics')
-  }
-
-  updateOrganization() {
-    return waitForDataAndSetState(acceptNotFound(getOrganization(this.props.params.organizationId)), this, 'organization')
-  }
-
-  updateOrganizationDetail() {
-    return waitForDataAndSetState(acceptNotFound(getOrganizationDetail(this.props.params.organizationId)), this, 'organizationDetail')
-  }
-
-  onActivation(organizationAccount) {
-    this.updateMetrics()
-    this.updateOrganization()
+  update() {
+    this.setState({ dependencies: this.getDependencies() })
   }
 
   render() {
-    const { user, organization, organizationDetail, metrics, errors } = this.state
-
-    if (errors.length) {
-      return <Errors errors={errors} />
-    }
-
-    if (!user) {
-      return <Errors errors={['Vous devez être authentifié pour accéder à cette page']} /> // TODO: Vous devez être authentifié
-    }
-
-    if (!organizationDetail) {
-      return <Errors errors={['Cette organisation n\'existe pas sur data.gouv.fr']} /> // TODO: Cette organisation n'existe pas sur data.gouv.fr
-    }
-
-    if (!organization || !metrics) {
-      return (
-        <Layout user={user} organizationLogo={organizationDetail.logo} pageTitle={organizationDetail.name} title={organizationDetail.name}>
-          <ActivateOrganization organizationId={organizationDetail.id} onActivation={() => this.onActivation()} />
-        </Layout>
-      )
-    }
-
-    return (
-      <Layout user={user} organizationLogo={organizationDetail.logo} pageTitle={organizationDetail.name} title={organizationDetail.name}>
-        <ManageOrganization {...this.state} />
-      </Layout>
-    )
+    const OrganizationWithResolver = withResolver(OrganizationHome, this.state.dependencies)
+    return <OrganizationWithResolver onActivation={() => this.update()} />
   }
 }
 
