@@ -1,20 +1,16 @@
 import React from 'react'
 import { strRightBack } from 'underscore.string'
-import { container, button } from './Download.css'
+import { download, container, title, formats } from './Download.css'
 
-const displayStyle = {
-  active: {
-    backgroundColor: '#2185C5',
-    color: '#fff',
-  },
-  inactive: {
-    backgroundColor: '#ddd',
-    color: '#000',
-  },
-}
+const FORMATS = [
+  {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'},
+  {label: 'SHP/L93', format: 'SHP', projection: 'Lambert93'},
+  {label: 'SHP/W84', format: 'SHP', projection: 'WGS84'},
+  {label: 'KML', format: 'KML', projection: 'WGS84'},
+  {label: 'CSV', format: 'CSV', projection: 'WGS84'},
+]
 
-const Download = ({distribution, dlFormat, isPreview, preview, display}) => {
-  const { format, projection } = dlFormat
+const Download = ({ distribution, isPreview, preview }) => {
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
   let layerName
 
@@ -29,19 +25,29 @@ const Download = ({distribution, dlFormat, isPreview, preview, display}) => {
 
   const name = layerName || distribution.typeName
 
-  if (distribution.available) {
-    return (
-      <div className={container}>
-        <a href={link  + `?format=${format}&projection=${projection}`}>{name}</a>
-        <div>
-          <button className={button} style={(isPreview && display === 'map') ? displayStyle.active : displayStyle.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'map'})}>Carte</button>
-          <button className={button} style={(isPreview && display === 'table') ? displayStyle.active : displayStyle.inactive} onClick={() => preview && preview({distribution: distribution, link, display: 'table'})}>Tableau</button>
+  return (
+    <div className={download}>
+      <div className={title}>{name}</div>
+      <div>
+        <div className={container}>
+          <div>
+            <div>Télécharger<i className="download icon"></i></div>
+            <div className={formats}>
+              { !distribution.available ? <p>Indisponible</p> :
+                FORMATS.map( (format, idx) => <a key={idx} href={link  + `?format=${format.format}&projection=${format.projection}`}>{format.label}</a>)
+              }
+            </div>
+          </div>
+          { !distribution.available ?
+            <button disabled>Visualiser</button> :
+            <button onClick={() => preview({distribution, link})}>
+              Visualiser { isPreview ? <i className="unhide icon"></i> : null }
+            </button>
+          }
         </div>
       </div>
-    )
-  } else {
-    return <div className={container}>{name}</div>
-  }
+    </div>
+  )
 }
 
 export default Download
