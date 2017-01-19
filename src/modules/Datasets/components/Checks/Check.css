@@ -1,0 +1,11 @@
+@import "../../../../theme/colors";
+
+.check {
+  margin: 1em;
+}
+
+.content {
+  border-left: 2px solid var(--blue);
+  margin-left: 1em;
+  padding-left: 1em;
+}
