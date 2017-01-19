@@ -33,17 +33,17 @@
   background-color: var(--blue);
 }
 
-button {
+button.viewerButton {
   padding: 5px 10px;
   color: #fff;
   border: none;
   background-color: var(--blue);
 }
 
-button:hover {
+button.viewerButton:hover {
   background-color: var(--highlightBlue);
 }
 
-button:disabled {
+button.viewerButton:disabled {
   background-color: #f0f0f0;
 }
