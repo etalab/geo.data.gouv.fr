@@ -7,7 +7,7 @@ import { container } from './Organizations.css'
 
 const Organizations = ({ organizations }) => {
   return (
-    <DocumentTitle title={'Vos organizations'}>
+    <DocumentTitle title={'Vos organisations'}>
       <div className={container}>
         {organizations.map((organization, idx) => <OrganizationPreview key={idx} organization={organization} />)}
       </div>
