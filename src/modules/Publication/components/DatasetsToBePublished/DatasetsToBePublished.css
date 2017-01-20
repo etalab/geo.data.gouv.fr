@@ -17,6 +17,21 @@
   text-align: center;
 }
 
+button.refresh  {
+  display: flex;
+  align-items: baseline;
+  margin: 0.5em 1em;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  background-color: var(--blue);
+  display: inline-block;
+}
+
+button.refresh i  {
+  margin-left: 10px;
+}
+
 .disable,
 .disable:hover {
   background-color: whitesmoke;
