@@ -47,7 +47,8 @@ class PublishingDatasets extends Component {
     }
 
     if (!organization) return null;
-    const organizationLogo = user.organizations.find(organization => organization.id === organizationId).logo
+    const candidateOrganization = user.organizations.find(org => org.id === organizationId)
+    const organizationLogo = candidateOrganization && candidateOrganization.logo
 
     return (
       <Layout user={user} organizationLogo={organizationLogo} pageTitle={`${organization.name} - Producteurs`} title={'Producteurs'}>
