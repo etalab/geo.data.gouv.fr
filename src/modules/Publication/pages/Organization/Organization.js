@@ -4,6 +4,7 @@ import OrganizationHome from '../../components/OrganizationHome/OrganizationHome
 
 import { fetchOrganizationMetrics, getOrganizationDetail, getUser, getOrganization } from '../../../../fetch/fetch'
 import withResolver from '../../../../helpers/withResolver'
+import { acceptNotFound } from '../../../../helpers/promises'
 
 class Organization extends Component {
   constructor(props) {
@@ -16,9 +17,9 @@ class Organization extends Component {
 
     return {
       user: getUser(),
-      metrics: fetchOrganizationMetrics(organizationId),
-      organization: getOrganization(organizationId),
-      organizationDetails: getOrganizationDetail(organizationId)
+      metrics: acceptNotFound(fetchOrganizationMetrics(organizationId)),
+      organization: acceptNotFound(getOrganization(organizationId)),
+      organizationDetails: acceptNotFound(getOrganizationDetail(organizationId))
     }
   }
 
