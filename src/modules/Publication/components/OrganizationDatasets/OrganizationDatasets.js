@@ -5,10 +5,10 @@ import DatasetsPublication from '../DatasetsPublication/DatasetsPublication'
 
 import { previousPage } from './OrganizationDatasets.css'
 
-const OrganizationDatasets = ({ published, notPublishedYet, publishedByOthers, organizationId }) => {
+const OrganizationDatasets = ({ published, notPublishedYet, publishedByOthers, update, organizationId }) => {
   return (
     <div>
-      <DatasetsPublication datasets={notPublishedYet} organizationId={organizationId} title={'Données en attente de publication'} status={'error'} />
+      <DatasetsPublication datasets={notPublishedYet} organizationId={organizationId} title={'Données en attente de publication'} status={'error'} update={() => update()} />
       <DatasetsPublication datasets={published} organizationId={organizationId} title={'Données publiées'} status={'success'} />
       <DatasetsPublication datasets={publishedByOthers} organizationId={organizationId} title={'Données publiées par une autre organisation'} status={'warning'} />
       <div className={previousPage}>
