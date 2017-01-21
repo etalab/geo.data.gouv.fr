@@ -19,9 +19,9 @@ class ActivateOrganization extends Component {
 
   activateAccount() {
     this.setState({ activating: true })
-    const cancelablePromise = markAsCancelable(updateOrganizationAccount(this.props.organizationId))
+    const cancelablePromise = markAsCancelable(updateOrganizationAccount(this.props.organizationId), this)
 
-    return cancelablePromise
+    return cancelablePromise.promise
       .then(() => {
         this.setState({ activating: false })
         this.props.onActivation()
