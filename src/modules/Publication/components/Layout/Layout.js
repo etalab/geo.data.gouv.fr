@@ -9,6 +9,7 @@ import styles from './Layout.css'
 
 function Layout({ user, organization, pageTitle, title, children }) {
   if (!user) return null
+  const organizationLogo = !organization.logo ? organization.logo : 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Pas_d\'image_disponible.svg/200px-Pas_d\'image_disponible.svg.png'
 
   return (
     <DocumentTitle title={pageTitle}>
@@ -16,7 +17,7 @@ function Layout({ user, organization, pageTitle, title, children }) {
         <User user={user}/>
         {organization ?
           <Link to={`/publication/${organization.id}`}>
-            <img className={styles.organizationLogo} alt="organization logo" src={organization.logo}></img>
+            <img className={styles.organizationLogo} alt="organization logo" src={organizationLogo}></img>
           </Link> :
           null
           }
