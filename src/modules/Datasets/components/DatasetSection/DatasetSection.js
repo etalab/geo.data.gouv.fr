@@ -29,7 +29,7 @@ const DatasetSection = ({dataset, style}) => {
           <MarkdownViewer markdown={dataset.metadata.description} />
         }
         <p>
-          <b>Origine de la donnée : </b>{dataset.metadata.lineage ? dataset.metadata.lineage : 'inconnue'}
+          <b>Origine de la donnée : </b>{dataset.metadata.lineage ? dataset.metadata.lineage : 'Non renseignée'}
         </p>
       </div>
     </div>
