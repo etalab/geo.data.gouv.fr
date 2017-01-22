@@ -44,6 +44,13 @@ class PublishingDatasets extends Component {
     return waitForDataAndSetState(fetchOrganizationPublishedByOthers(this.state.organizationId), this, 'publishedByOthers')
   }
 
+  updateDatasets() {
+    return Promise.all([
+      this.updatePublished(),
+      this.updateNotPublishedYet(),
+    ])
+  }
+
   render() {
 
     const { organizationId, user, published, notPublishedYet, publishedByOthers, errors } = this.state
@@ -64,7 +71,7 @@ class PublishingDatasets extends Component {
 
     return (
       <Layout user={user} pageTitle={organization.name} title={'Jeux de données'}>
-        <OrganizationDatasets {...datasets} organizationId={organizationId} />
+        <OrganizationDatasets {...datasets} update={() => this.updateDatasets()} organizationId={organizationId} />
       </Layout>
     )
   }
