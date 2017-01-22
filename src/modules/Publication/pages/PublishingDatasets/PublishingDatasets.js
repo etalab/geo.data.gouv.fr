@@ -65,13 +65,12 @@ class PublishingDatasets extends Component {
     }
 
     const candidateOrganization = user.organizations.find(organization => organization.id === organizationId)
-    const organizationLogo = candidateOrganization && candidateOrganization.logo
     if (!candidateOrganization) return null
 
     if (!datasets.published || !datasets.notPublishedYet || !datasets.publishedByOthers) return null
 
     return (
-      <Layout user={user} organizationLogo={organizationLogo} pageTitle={candidateOrganization.name} title={'Jeux de données'}>
+      <Layout user={user} organization={candidateOrganization} pageTitle={candidateOrganization.name} title={'Jeux de données'}>
         <OrganizationDatasets {...datasets} update={() => this.updateDatasets()} organizationId={organizationId} />
       </Layout>
     )

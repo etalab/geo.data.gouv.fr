@@ -19,14 +19,14 @@ export default function PureOrganization(props) {
 
   if (!organization || !metrics) {
     return (
-      <Layout user={user} organizationLogo={organizationDetails.logo} pageTitle={organizationDetails.name} title={organizationDetails.name}>
+      <Layout user={user} organization={organizationDetails} pageTitle={organizationDetails.name} title={organizationDetails.name}>
         <ActivateOrganization organizationId={organizationDetails.id} onActivation={() => props.onActivation()} />
       </Layout>
     )
   }
 
   return (
-    <Layout user={user} organizationLogo={organizationDetails.logo} pageTitle={organizationDetails.name} title={organizationDetails.name}>
+    <Layout user={user} organization={organizationDetails} pageTitle={organizationDetails.name} title={organizationDetails.name}>
       <ManageOrganization {...props} />
     </Layout>
   )
