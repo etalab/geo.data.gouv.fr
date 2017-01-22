@@ -1,8 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import OrganizationDatasets from '../../../components/OrganizationDatasets/OrganizationDatasets'
-
 import Errors from '../../../../../components/Errors/Errors'
 
 import datasets from '../../../../../fetch/__test__/organizationDatasets.json'
@@ -30,13 +28,14 @@ describe('<PublishingDatasets />', () => {
     })
 
     it('should render a OrganizationDatasets component', () => {
-      const component = <OrganizationDatasets organizationId={'1'} published={datasets} notPublishedYet={notPublishedYet} publishedByOthers={datasets} />
       const wrapper = mount(<PublishingDatasets params={{organizationId: '1'}} />)
 
       return wrapper.instance()
         .componentWillMount()
         .then(() => {
-          expect(wrapper).to.contain(component)
+          expect(wrapper).to.contains.html('<div>Données en attente de publication</div>')
+          expect(wrapper).to.contains.html('<div>Données publiées</div>')
+          expect(wrapper).to.contains.html('<div>Données publiées par une autre organisation</div>')
         })
     })
   })
