@@ -24,8 +24,13 @@ const DatasetSection = ({dataset, style}) => {
       </div>
 
       <div className={section}>
-        <MarkdownViewer markdown={dataset.metadata.description} />
-        <p><b>Origine de la donnée : </b>{dataset.metadata.lineage}</p>
+        {!dataset.metadata.description || !dataset.metadata.description.length ?
+          <div>Aucune description.</div> :
+          <MarkdownViewer markdown={dataset.metadata.description} />
+        }
+        <p>
+          <b>Origine de la donnée : </b>{dataset.metadata.lineage ? dataset.metadata.lineage : 'inconnue'}
+        </p>
       </div>
     </div>
   )
