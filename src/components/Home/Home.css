@@ -90,9 +90,17 @@
 
 .catalogs {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .catalogs > a {
-  margin: 0 20px;
+  margin: 10px 20px;
+}
+
+@media (max-width: 551px) {
+  .masthead h1 {
+    font-size: 1em;
+    margin: 1.4em;
+  }
 }

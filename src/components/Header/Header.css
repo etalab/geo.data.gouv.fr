@@ -55,3 +55,24 @@
   margin-right: 0.3em;
   border-radius: 60px;
 }
+
+@media (max-width: 551px) {
+  .home {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .account {
+    margin-right: 0.4em;
+  }
+
+  .logout {
+    display: none;
+  }
+
+  .avatar {
+    width: 25px;
+    margin-left: 0;
+    margin-right: 0.1em;
+  }
+}
