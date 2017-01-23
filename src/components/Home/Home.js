@@ -140,7 +140,7 @@ class Home extends Component {
       <div>
         <div className={masthead}>
           <h1>
-            Gérez vos données géographiques avec des outils compatibles Inspire, publiez sans effort sur <a href='http://www.data.gouv.fr/fr/'>data.gouv.fr</a>
+            Trouvez facilement les données géographiques dont vous avez besoin
           </h1>
           <SearchInput placeholder={'Rechercher un jeu de donnée'} onSearch={(textInput) => this.userSearch('datasets', textInput)} searchButton={true} />
           <Link className={datasetLinks} to="datasets">Voir tous les jeux de données</Link>
