@@ -27,6 +27,8 @@ class SearchInput extends Component {
   }
 
   render() {
+    const { placeholder } = this.props
+
     return (
       <div className={wrapper}>
         <input
@@ -35,7 +37,7 @@ class SearchInput extends Component {
           className={input}
           onChange={e => this.onChange(e)}
           onKeyPress={e => this.onKeyPress(e)}
-          placeholder="Rechercher..." />
+          placeholder={placeholder ? placeholder : 'Rechercher...'} />
         {this.props.searchButton ? <button className={button} onClick={() => this.search()}>Rechercher</button> : undefined}
       </div>
     )

@@ -2,10 +2,11 @@
 
 .nav {
   background-color: var(--blue);
-  padding: 20px 2em;
+  padding: 2em 2em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--white);
 }
 
 .nav a {
@@ -19,6 +20,7 @@
 
 .home {
   font-size: 2em;
+  font-weight: bold;
 }
 
 .log {

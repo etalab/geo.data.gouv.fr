@@ -12,7 +12,7 @@
 }
 
 .paper {
-  background-color: white;
+  background-color: #fff;
   padding: 2em 20px;
   box-shadow: var(--shadow);
 }

@@ -66,7 +66,7 @@ class CatalogDetail extends Component {
 
           <div className={section}>
             <h2>Rechercher dans les jeux de données du catalogue</h2>
-            <SearchInput ref="searchInput" onSearch={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
+            <SearchInput onSearch={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
           </div>
         </div>
       </DocumentTitle>
