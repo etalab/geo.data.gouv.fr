@@ -64,13 +64,13 @@ class PublishingDatasets extends Component {
       return <Errors errors={['Vous devez être authentifié pour accéder à cette page']} /> // TODO: Vous devez être authentifié
     }
 
-    const organization = user.organizations.find(organization => organization.id === organizationId)
-    if (!organization) return null
+    const candidateOrganization = user.organizations.find(organization => organization.id === organizationId)
+    if (!candidateOrganization) return null
 
     if (!datasets.published || !datasets.notPublishedYet || !datasets.publishedByOthers) return null
 
     return (
-      <Layout user={user} pageTitle={organization.name} title={'Jeux de données'}>
+      <Layout user={user} organization={candidateOrganization} pageTitle={candidateOrganization.name} title={'Jeux de données'}>
         <OrganizationDatasets {...datasets} update={() => this.updateDatasets()} organizationId={organizationId} />
       </Layout>
     )

@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router'
+
 import { section, img, detail } from './User.css'
 
 const User = ({ user }) => {
@@ -6,8 +8,10 @@ const User = ({ user }) => {
 
   return (
     <div className={section}>
-      <img className={img} src={avatar.url} alt={avatar.alt} />
-      <a className={detail} href={user.page}>{user.first_name} {user.last_name}</a>
+      <Link className={detail} to='/publication'>
+        <img className={img} src={avatar.url} alt={avatar.alt} />
+        <div>{user.first_name} {user.last_name}</div>
+      </Link>
     </div>
   )
 }
