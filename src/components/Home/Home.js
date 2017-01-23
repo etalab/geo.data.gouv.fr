@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 
 import SearchInput from '../SearchInput/SearchInput'
-
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
 
 import { masthead, datasetLinks, catalogLinks, datagouv, paper, catalogs } from './Home.css'
@@ -146,14 +145,11 @@ class Home extends Component {
           <Link className={datasetLinks} to="datasets">Voir tous les jeux de données</Link>
         </div>
 
-
         <div className={datagouv}>
           <div className={paper}>
             <h2>Les catalogues moissonnés</h2>
             <div className={catalogs}>
-              {
-                catalogsMock.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)
-              }
+              { catalogsMock.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />) }
             </div>
             <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
           </div>
