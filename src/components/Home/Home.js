@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 
+import EventBriteWidget from '../Workshop/EventBriteWidget'
 import SearchInput from '../SearchInput/SearchInput'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
 
@@ -152,6 +153,9 @@ class Home extends Component {
               { catalogsMock.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />) }
             </div>
             <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
+
+            <h2>Événements à venir</h2>
+            <EventBriteWidget />
           </div>
         </div>
       </div>
