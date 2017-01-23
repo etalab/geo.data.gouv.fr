@@ -28,7 +28,7 @@ class DoughnutChart extends Component {
   }
 
   render() {
-    const data = this.formatData(this.props.data)
+    const data = this.formatData(this.props.data || {})
 
     if (data.length === 0) {
       return <h1>Aucune donnée</h1>
