@@ -9,7 +9,7 @@ import { masthead, datasetLinks, catalogLinks, datagouv, paper, catalogs } from 
 
 const catalogsMock = [
   {
-    'id':'5387761fb01aa2342e124c96',
+    '_id':'5387761fb01aa2342e124c96',
     'name':'GrandLyon Smart Data',
     'service':{
       'location':'https://download.data.grandlyon.com/catalogue/srv/fr/csw',
@@ -43,7 +43,7 @@ const catalogsMock = [
     }
   },
   {
-    'id':'54d5de332eb5568ca8350f3f',
+    '_id':'54d5de332eb5568ca8350f3f',
     'name':'Région Bretagne',
     'service':{
       'location':'http://applications.region-bretagne.fr/geonetwork/srv/fre/csw',
@@ -76,7 +76,7 @@ const catalogsMock = [
     }
   },
   {
-    'id':'54f5a39a62781800bf6db9e6',
+    '_id':'54f5a39a62781800bf6db9e6',
     'name':'Adour-Garonne (EauFrance)',
     'service':{
       'location':'http://catalogue.adour-garonne.eaufrance.fr/catalog/srv/fre/csw-sie-seul',
