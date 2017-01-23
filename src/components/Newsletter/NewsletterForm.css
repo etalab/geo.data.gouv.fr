@@ -1,0 +1,27 @@
+@import "../../theme/colors";
+
+.button {
+  background-color: var(--blue);
+  border: none;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--highlightBlue);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.input {
+  padding: 10px 15px;
+  margin-left: 1em;
+  border: none;
+  color: var(--blue);
+}

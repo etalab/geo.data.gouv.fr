@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CircularProgress from '../CircularProgress/CircularProgress'
 import { browserHistory, Link } from 'react-router'
+
 import SearchInput from '../SearchInput/SearchInput'
 import HomepageCounter from '../Statistics/HomepageCounter/HomepageCounter'
 import { fetchGlobalMetrics  } from '../../fetch/fetch'

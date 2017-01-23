@@ -1,8 +1,12 @@
 @import "../../theme/colors";
 
 .footer {
-  padding: 40px;
+  padding: 30px;
   text-align: center;
   color: var(--blue);
   background-color: var(--darkblue);
+}
+
+.footer p {
+  margin-top: 2em;
 }
