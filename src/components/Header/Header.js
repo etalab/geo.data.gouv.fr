@@ -29,17 +29,17 @@ class Header extends Component {
     const login = <a className={log} href={logInUrl}>Publier des données</a>
 
     return (
-      <nav className={nav} role="navigation">
-        <a className={home} href='/'>Inspire</a>
+      <nav className={nav} role='navigation'>
+        <a className={home} href='/'>inspire.data.gouv.fr</a>
         {!user ? login : (
           <div className={authentification}>
             <Link to={'/publication'}>
               <div className={account}>
-                <img alt="avatar" className={avatar} src={user.avatar} />
+                <img alt='avatar' className={avatar} src={user.avatar} />
                 {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
-            <a className={log} href={logoutUrl}>Déconnexion<i className="power icon"></i></a>
+            <a className={log} href={logoutUrl}>Déconnexion<i className='power icon'></i></a>
           </div>
         )}
       </nav>

@@ -1,13 +1,125 @@
 import React, { Component } from 'react'
-import CircularProgress from '../CircularProgress/CircularProgress'
 import { browserHistory, Link } from 'react-router'
 
 import SearchInput from '../SearchInput/SearchInput'
-import HomepageCounter from '../Statistics/HomepageCounter/HomepageCounter'
-import { fetchGlobalMetrics  } from '../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-import { masthead, buttons, inverted, catalogLinks, datagouv, paper } from './Home.css'
+import CatalogPreview from '../CatalogPreview/CatalogPreview'
+
+import { masthead, datasetLinks, catalogLinks, datagouv, paper, catalogs } from './Home.css'
+
+const catalogsMock = [
+  {
+    'id':'5387761fb01aa2342e124c96',
+    'name':'GrandLyon Smart Data',
+    'service':{
+      'location':'https://download.data.grandlyon.com/catalogue/srv/fr/csw',
+      'sync':{
+        'status':'successful',
+        'finishedAt':'2017-01-23T01:03:24.373Z'
+      }
+    },
+    'metrics':{
+      'datasets':{
+        'partitions':{
+          'download':{
+            'not-determined':31,
+            'yes':409
+          },
+          'openness':{
+            'not-determined':17,
+            'yes':423
+          },
+          'dataType':{
+            'none':2,
+            'grid':218,
+            'vector':220
+          }
+        },
+        'totalCount':440
+      },
+      'records':{
+        'totalCount':846
+      }
+    }
+  },
+  {
+    'id':'54d5de332eb5568ca8350f3f',
+    'name':'Région Bretagne',
+    'service':{
+      'location':'http://applications.region-bretagne.fr/geonetwork/srv/fre/csw',
+      'sync':{
+        'status':'successful',
+        'finishedAt':'2017-01-23T01:07:06.331Z'
+      }
+    },
+    'metrics':{
+      'datasets':{
+        'partitions':{
+          'download':{
+            'not-determined':11,
+            'yes':79
+          },
+          'openness':{
+            'not-determined':10,
+            'yes':80
+          },
+          'dataType':{
+            'grid':1,
+            'vector':89
+          }
+        },
+        'totalCount':90
+      },
+      'records':{
+        'totalCount':94
+      }
+    }
+  },
+  {
+    'id':'54f5a39a62781800bf6db9e6',
+    'name':'Adour-Garonne (EauFrance)',
+    'service':{
+      'location':'http://catalogue.adour-garonne.eaufrance.fr/catalog/srv/fre/csw-sie-seul',
+      'sync':{
+        'status':'successful',
+        'finishedAt':'2017-01-23T01:05:21.864Z',
+      },
+    },
+    'metrics':{
+      'datasets':{
+        'partitions':{
+          'download':{
+            'not-determined':9,
+            'yes':64
+          },
+          'openness':{
+            'not-determined':13,
+            'yes':60
+          },
+          'dataType':{
+            'none':21,
+            'vector':52
+          }
+        },
+        'totalCount':73
+      },
+      'records':{
+        'partitions':{
+          'metadataType':{
+            'Dublin Core':29,
+            'ISO 19139':75
+          },
+          'recordType':{
+            'service':2,
+            'other':29,
+            'dataset':73
+          }
+        },
+        'totalCount':104
+      }
+    }
+  }
+]
 
 class Home extends Component {
   constructor(props) {
@@ -19,42 +131,31 @@ class Home extends Component {
     document.title = 'Accueil'
   }
 
-  componentWillMount() {
-    return waitForDataAndSetState(fetchGlobalMetrics(), this, 'metrics')
-  }
-
-  componentWillUnmount() {
-    return cancelAllPromises(this)
-  }
-
   userSearch(path, textInput) {
     browserHistory.push(`${path}?q=${textInput}`)
   }
 
   render() {
-    const loader =  <CircularProgress />
-    const published = this.state.metrics ? <HomepageCounter value={this.state.metrics.published} /> : loader
-
     return (
       <div>
         <div className={masthead}>
-          <SearchInput ref="searchInput" onSearch={(textInput) => this.userSearch('datasets', textInput)} />
-          <div className={buttons}>
-            <button onClick={() => this.userSearch('datasets', this.refs.searchInput.state.textInput)}>Rechercher un jeu de données</button>
-            <button className={inverted} onClick={() => this.userSearch('records', this.refs.searchInput.state.textInput)}>Rechercher un enregistrement</button>
-          </div>
-          <span>OU</span>
-          <Link className={catalogLinks} to="catalogs">Explorer les 110 catalogues</Link>
+          <h1>
+            Gérez vos données géographiques avec des outils compatibles Inspire, publiez sans effort sur <a href='http://www.data.gouv.fr/fr/'>data.gouv.fr</a>
+          </h1>
+          <SearchInput placeholder={'Rechercher un jeu de donnée'} onSearch={(textInput) => this.userSearch('datasets', textInput)} searchButton={true} />
+          <Link className={datasetLinks} to="datasets">Voir tous les jeux de données</Link>
         </div>
 
-        <div className={datagouv}>
-          <p>
-            Votre organisation gère des <b>données géographiques</b> avec des outils compatibles Inspire et souhaite les rendre disponibles sans effort sur <a href="http://www.data.gouv.fr/fr/">data.gouv.fr</a>
-          </p>
 
+        <div className={datagouv}>
           <div className={paper}>
-            <h3>Jeux de données publiés</h3>
-            {published}
+            <h2>Les catalogues moissonnés</h2>
+            <div className={catalogs}>
+              {
+                catalogsMock.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)
+              }
+            </div>
+            <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
           </div>
         </div>
       </div>

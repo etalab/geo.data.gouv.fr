@@ -1,15 +1,17 @@
 @import "../../theme/colors";
 
 .masthead {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding: 8%;
+  padding: 20vh 8%;
+  text-align: center;
 }
 
 .masthead span {
   line-height: 4em;
+}
+
+.masthead h1 {
+  font-size: 1.4em;
+  margin-bottom: 2em;
 }
 
 .buttons button {
@@ -32,29 +34,32 @@
   padding: 1em;
 }
 
-.catalogLinks {
-  font-size: 1.5em;
+.datasetLinks {
+  display: block;
+  margin-top: 2em;
+  font-size: 1em;
 }
 
 .datagouv {
-  background-color: #FFF;
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  background-color: var(--blue);
+  border: 1px solid var(--darkblue);
   padding: 40px;
-  margin: 0 8% 4em;
 }
 
-.datagouv p {
-  font-size: 1.2em;
-  font-weight: lighter;
-  text-align: center;
-  font-variant: small-caps;
+.datagouv h2 {
+  color: white;
+  text-transform: uppercase;
 }
 
-.datagouv p a {
-  font-weight: bolder;
-  font-size: 1.3em;
-  font-variant: normal;
+.catalogLinks {
+  margin-top: 2em;
+  color: white;
+}
+
+.catalogLinks:focus,
+.catalogLinks:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -81,4 +86,13 @@
   .paper {
     padding: 0;
   }
+}
+
+.catalogs {
+  display: flex;
+  justify-content: center;
+}
+
+.catalogs > a {
+  margin: 0 20px;
 }
