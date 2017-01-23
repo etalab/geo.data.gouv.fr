@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import { nav, home, log, account, authentification, avatar } from './Header.css'
+import { nav, home, log, account, logout, authentification, avatar } from './Header.css'
 
 class Header extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Header extends Component {
                 {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
-            <a className={log} href={logoutUrl}>Déconnexion<i className='power icon'></i></a>
+            <a className={log} href={logoutUrl}><span className={logout}>Déconnexion</span><i className='power icon'></i></a>
           </div>
         )}
       </nav>
