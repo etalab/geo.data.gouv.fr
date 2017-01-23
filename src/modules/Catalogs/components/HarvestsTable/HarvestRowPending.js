@@ -3,7 +3,7 @@ import React from 'react'
 const HarvestRowPending = () => {
   return (
     <tr>
-      <td colspan="5">
+      <td colSpan="5">
         En cours...
       </td>
     </tr>
