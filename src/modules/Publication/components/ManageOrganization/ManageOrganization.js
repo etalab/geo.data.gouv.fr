@@ -12,8 +12,8 @@ const ManageOrganization = ({ organization, metrics }) => {
   return (
     <div className={styles.content}>
       <div className={styles.section}>
-        <h4>Jeux de données</h4>
-        <OrganizationMetrics metrics={metrics} organizationId={organization._id} />
+        <h4>Catalogues source</h4>
+        <SourceCatalogs organizationId={organization._id} sourceCatalogs={organization.sourceCatalogs} />
       </div>
 
       <div className={styles.section}>
@@ -22,8 +22,8 @@ const ManageOrganization = ({ organization, metrics }) => {
       </div>
 
       <div className={styles.section}>
-        <h4>Catalogues source</h4>
-        <SourceCatalogs organizationId={organization._id} sourceCatalogs={organization.sourceCatalogs} />
+        <h4>Jeux de données</h4>
+        <OrganizationMetrics metrics={metrics} organizationId={organization._id} />
       </div>
 
       <div className={styles.previousPage}>
