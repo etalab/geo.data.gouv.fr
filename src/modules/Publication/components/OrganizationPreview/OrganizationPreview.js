@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import styles from './OrganizationPreview.css'
 
 const OrganizationPreview = ({ organization }) => {
-  const logo = organization.logo || 'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png'
+  const logo = organization && organization.logo ? organization.logo : '/assets/no-img.png'
 
   return (
     <div className={styles.container}>
