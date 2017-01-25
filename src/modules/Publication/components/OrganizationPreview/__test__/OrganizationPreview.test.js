@@ -21,7 +21,7 @@ describe('<OrganizationPreview />', () => {
       user.organizations[0].logo = null
       const wrapper = shallow(<OrganizationPreview organization={user.organizations[0]} metrics={metrics} sourceCatalog={sourceCatalog} producers={producers} errors={[]} />)
 
-      expect(wrapper).to.have.html().match(/No_picture_available.png/)
+      expect(wrapper).to.have.html().match(/no-img.png/)
     })
   })
 
