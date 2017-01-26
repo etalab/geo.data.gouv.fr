@@ -35,12 +35,12 @@ class HarvestsSection extends Component {
   getGraphData() {
     const reorderedHarvests = [...this.state.harvests].reverse()
     const data = []
-    for (let harvest of reorderedHarvests) {
+    reorderedHarvests.forEach(harvest => {
       if (harvest.status === 'successful') {
         const date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
         data[date] = harvest.itemsFound
       }
-    }
+    })
     return data
   }
 
