@@ -99,7 +99,7 @@
         "error",
         "single"
       ],
-      "no-console": "error",
+      "no-console": "warn",
       "no-debugger": "error",
       "mocha/no-exclusive-tests": "error"
     }
