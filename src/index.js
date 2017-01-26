@@ -17,6 +17,8 @@ import Organization from './modules/Publication/pages/Organization/Organization'
 import PublishingDatasets from './modules/Publication/pages/PublishingDatasets/PublishingDatasets'
 import OrganizationProducers from './modules/Publication/pages/OrganizationProducers/OrganizationProducers'
 
+import Events from './modules/Events/pages/Events/Events'
+
 import WrappedDatasets from './modules/Datasets/pages/WrappedDatasets/WrappedDatasets'
 import DatasetDetail from './modules/Datasets/pages/DatasetDetail/DatasetDetail'
 
@@ -32,6 +34,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
+      <Route path="/events" component={Events} />
       <Route path="/publication" component={Publication} />
       <Route path="/publication/:organizationId" component={Organization} />
       <Route path="/publication/:organizationId/datasets" component={PublishingDatasets} />
