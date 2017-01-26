@@ -8,9 +8,9 @@ import { events, eventsList } from './Events.css'
 
 const Events = () => {
   return (
-    <DocumentTitle title={'Évènements'}>
+    <DocumentTitle title={'Événements'}>
       <div className={events}>
-        <h1>Évènements à venir</h1>
+        <h1>Événements à venir</h1>
         <div className={eventsList}>
           <EventBriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=31410303062"/>
         </div>
