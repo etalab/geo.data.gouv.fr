@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EventBriteWidget = ({ src }) => {
+const EventbriteWidget = ({ src }) => {
   return <iframe
             src={src}
             frameBorder="0"
@@ -11,4 +11,4 @@ const EventBriteWidget = ({ src }) => {
             scrolling="no" />
 }
 
-export default EventBriteWidget
+export default EventbriteWidget
