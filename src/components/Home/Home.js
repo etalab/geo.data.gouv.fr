@@ -5,7 +5,7 @@ import EventbriteWidget from '../Event/EventbriteWidget'
 import SearchInput from '../SearchInput/SearchInput'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
 
-import { masthead, datasetLinks, catalogLinks, datagouv, paper, catalogs } from './Home.css'
+import { masthead, datasetLinks, catalogLinks, datagouv, events, paper, catalogs } from './Home.css'
 
 const catalogsMock = [
   {
@@ -155,7 +155,10 @@ class Home extends Component {
             <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
 
             <h2 id="evenements">Événements à venir</h2>
-            <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=31410303062"/>
+            <div className={events}>
+              <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=31410303062"/>
+              <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=31508534876"/>
+            </div>
           </div>
         </div>
       </div>
