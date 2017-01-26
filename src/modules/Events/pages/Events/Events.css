@@ -9,7 +9,10 @@
 
 .eventsList {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
+}
+
+.eventsList iframe {
+  margin: 1em;
 }
