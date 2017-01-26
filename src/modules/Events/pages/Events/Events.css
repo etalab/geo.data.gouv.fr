@@ -1,0 +1,15 @@
+.events {
+  margin: 2em;
+  text-align: center;
+}
+
+.events h1 {
+  margin: 1em;
+}
+
+.eventsList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}

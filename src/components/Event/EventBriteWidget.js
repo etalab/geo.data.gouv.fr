@@ -1,8 +1,8 @@
 import React from 'react'
 
-const EventBriteWidget = () => {
+const EventBriteWidget = ({ src }) => {
   return <iframe
-            src="https://www.eventbrite.fr/countdown-widget?eid=31410303062"
+            src={src}
             frameBorder="0"
             height="379"
             width="195"
