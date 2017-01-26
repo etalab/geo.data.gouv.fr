@@ -88,6 +88,16 @@
   }
 }
 
+.events {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.events iframe {
+  margin: 1em;
+}
+
 .catalogs {
   display: flex;
   flex-wrap: wrap;
