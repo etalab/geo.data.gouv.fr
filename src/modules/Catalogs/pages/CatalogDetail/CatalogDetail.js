@@ -9,6 +9,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 // Import Shared Components
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
+import Errors from '../../../../components/Errors/Errors'
 
 // Import Components
 import CatalogSection from '../../components/CatalogSection/CatalogSection'

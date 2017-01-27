@@ -1,0 +1,15 @@
+@import "../../theme/colors";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: var(--blue);
+  margin-top: 2em;
+}
+
+.container h3 {
+  font-size: 4em;
+}
