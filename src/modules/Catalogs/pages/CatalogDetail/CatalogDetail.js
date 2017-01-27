@@ -9,6 +9,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 // Import Shared Components
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
+import Errors from '../../../../components/Errors/Errors'
 
 // Import Components
 import CatalogSection from '../../components/CatalogSection/CatalogSection'
@@ -49,7 +50,9 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    const { catalog, metrics } = this.state
+    const { catalog, metrics, errors } = this.state
+
+    if (errors.length) return <Errors errors={errors} />
 
     if (!catalog || !metrics) return <div className={loader}><ContentLoader /></div>
 

@@ -8,6 +8,7 @@ import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
+import Errors from '../../../../components/Errors/Errors'
 
 import { fetchDataset, fetchCatalogs } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
@@ -40,7 +41,9 @@ export default class DatasetDetail extends Component {
   }
 
   render() {
-    const { dataset, catalogs } = this.state
+    const { dataset, catalogs, errors } = this.state
+
+    if (errors.length) return <Errors errors={errors} />
 
     if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
 

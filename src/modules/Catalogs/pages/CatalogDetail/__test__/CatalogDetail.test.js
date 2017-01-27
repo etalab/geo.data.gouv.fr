@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import ContentLoader from '../../../../../components/Loader/ContentLoader'
+import Errors from '../../../../../components/Errors/Errors'
 
 import catalog from '../../../../../fetch/__test__/catalog.json'
 import metrics from '../../../../../fetch/__test__/metrics.json'
@@ -26,7 +27,7 @@ describe('<CatalogDetail />', () => {
   describe('fetch', () => {
 
     describe('updateMetrics()', () => {
-      it('Should assign metrics to this.state ', () => {
+      it('should assign metrics to this.state ', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
 
         return wrapper
@@ -35,7 +36,7 @@ describe('<CatalogDetail />', () => {
           .then(() => expect(wrapper.state('metrics')).to.equal(metrics))
       })
 
-      it('Should add an error to this.state, catalogId is required', () => {
+      it('should add an error to this.state, catalogId is required', () => {
         const wrapper = shallow(<CatalogDetail params={{}}/>)
 
         return wrapper
@@ -44,7 +45,17 @@ describe('<CatalogDetail />', () => {
           .then(() => expect(wrapper.state('errors')).to.contain('catalogId is required'))
       })
 
-      it('Should add an error to this.state, metrics not found', () => {
+      it('should render a Errors component', () => {
+        const wrapper = shallow(<CatalogDetail params={{}}/>)
+        const errors = <Errors errors={['catalogId is required']} />
+
+        return wrapper
+          .instance()
+          .componentWillMount()
+          .then(() => expect(wrapper).to.contain(errors))
+      })
+
+      it('should add an error to this.state, metrics not found', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
 
         return wrapper
@@ -55,7 +66,7 @@ describe('<CatalogDetail />', () => {
     })
 
     describe('updateCatalog()', () => {
-      it('Should assign catalog to this.state', () => {
+      it('should assign catalog to this.state', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
         return wrapper
           .instance()
@@ -63,7 +74,7 @@ describe('<CatalogDetail />', () => {
           .then(() => expect(wrapper.state('catalog')).to.equal(catalog))
       })
 
-      it('Should add an error to this.state, catalogId is required', () => {
+      it('should add an error to this.state, catalogId is required', () => {
         const wrapper = shallow(<CatalogDetail params={{}}/>)
 
         return wrapper
@@ -72,7 +83,7 @@ describe('<CatalogDetail />', () => {
           .then(() => expect(wrapper.state('errors')).to.contain('catalogId is required'))
       })
 
-      it('Should add an error to this.state, catalog not found', () => {
+      it('should add an error to this.state, catalog not found', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '0'}} />)
 
         return wrapper
@@ -83,7 +94,7 @@ describe('<CatalogDetail />', () => {
     })
 
     describe('componentWillMount()', () => {
-      it('Should assign catalog and metrics to this.state when data is retrieved', () => {
+      it('should assign catalog and metrics to this.state when data is retrieved', () => {
         const wrapper = shallow(<CatalogDetail params={{catalogId: '1'}} />)
         return wrapper
           .instance()

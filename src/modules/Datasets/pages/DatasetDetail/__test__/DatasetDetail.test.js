@@ -1,7 +1,8 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 
 import CircularProgress from '../../../../../components/CircularProgress/CircularProgress'
+import Errors from '../../../../../components/Errors/Errors'
 import datasetMock from '../../../../../fetch/__test__/dataset.json'
 
 const DatasetDetail = require('proxyquire')('../DatasetDetail', {
@@ -28,6 +29,18 @@ describe('<DatasetDetail />', () => {
           const titleBlock = <h1>{datasetMock.metadata.title}</h1>
           expect(wrapper.containsMatchingElement(titleBlock)).to.be.true
         })
+    })
+  })
+
+  describe('If an error occurs', () => {
+    it('should render a Errors component', () => {
+      const wrapper = shallow(<DatasetDetail params={{}}/>)
+      const errors = <Errors errors={['datasetId is required']} />
+
+      return wrapper
+        .instance()
+        .componentWillMount()
+        .then(() => expect(wrapper).to.contain(errors))
     })
   })
 

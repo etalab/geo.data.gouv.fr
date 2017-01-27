@@ -1,20 +1,17 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 
-const styles = {
-    errors: {
-      width: '90%',
-      textAlign: 'center',
-    }
-}
+import { container } from './Errors.css'
 
 const Errors = ({ errors }) => {
-  const title = errors.length > 1 ? <h3>Des erreurs sont survenues :</h3> : <h3>Une erreur est survenue :</h3>
+  const title = errors.length > 1 ? <h3>Des erreurs sont survenues</h3> : <h3>Une erreur est survenue</h3>
   return (
     <DocumentTitle title={'Erreur'}>
-      <div style={styles.errors}>
+      <div className={container}>
         {title}
-        {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
       </div>
     </DocumentTitle>
   )
