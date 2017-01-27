@@ -50,7 +50,9 @@ class CatalogDetail extends Component {
   }
 
   render() {
-    const { catalog, metrics } = this.state
+    const { catalog, metrics, errors } = this.state
+
+    if (errors.length) return <Errors errors={errors} />
 
     if (!catalog || !metrics) return <div className={loader}><ContentLoader /></div>
 
