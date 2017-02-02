@@ -19,7 +19,7 @@ class DatasetTable extends Component {
           sortable={true}
           itemsPerPage={20}
           pageButtonLimit={20}
-          noDataText="Chargement..." />
+          noDataText="Les données sont vides" />
       )
     }
 }

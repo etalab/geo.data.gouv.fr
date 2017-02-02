@@ -41,13 +41,18 @@ class PreviewMap extends Component {
   }
 
   render() {
-    const { geojson, loading, errors, distribution } = this.props
+    const { geojson, loading, distribution } = this.props
     const position = [this.state.lat, this.state.lng]
+    const errors = [...this.props.errors]
+
+    if (!geojson || !geojson.features || geojson.features.length === 0) {
+      errors.push('Les données sont vides')
+    }
 
     const err = (
       <div className={styles.errors}>
         <strong>Une erreur est survenue lors du chargement de {distribution && (distribution.typeName || distribution.layer)}</strong>
-        <br/>{errors.map(error => error)}
+        <br/>{errors}
       </div>
     )
 

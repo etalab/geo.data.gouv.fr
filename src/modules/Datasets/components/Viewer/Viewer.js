@@ -38,7 +38,7 @@ class Viewer extends Component {
     } else {
       return (
         <div className={visualizer}>
-          <DatasetTable features={geojson ? geojson.features : []} />
+          <DatasetTable features={(geojson && geojson.features) ? geojson.features : []} />
           <div className={buttons}>
             <button onClick={() => this.changeMode('map')}>Carte</button>
             <button disabled>Tableau</button>
