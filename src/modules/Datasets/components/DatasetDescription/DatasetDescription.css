@@ -1,9 +1,11 @@
 @import "../../../../theme/colors";
 
 .container {
-  display: flex;
   flex-direction: column;
   margin-bottom: 1em;
+  display: block;
+  white-space: pre-wrap;
+  width: 60vw;
 }
 
 .action {
