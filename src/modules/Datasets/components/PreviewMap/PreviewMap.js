@@ -41,11 +41,11 @@ class PreviewMap extends Component {
   }
 
   render() {
-    const { geojson, loading, distribution } = this.props
+    const { geojson, distribution } = this.props
     const position = [this.state.lat, this.state.lng]
     const errors = [...this.props.errors]
 
-    if (!geojson || !geojson.features || geojson.features.length === 0) {
+    if (geojson && (!geojson.features || geojson.features.length === 0)) {
       errors.push('Les données sont vides')
     }
 
@@ -56,7 +56,7 @@ class PreviewMap extends Component {
       </div>
     )
 
-    const loader = loading && !errors.length ? (
+    const loader = !geojson && !errors.length ? (
       <div className={styles.load}>
         <ContentLoader style={styleLoader} />
       </div>

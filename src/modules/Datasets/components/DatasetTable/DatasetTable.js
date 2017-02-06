@@ -5,12 +5,21 @@ import style from './DatasetTable.css'
 
 class DatasetTable extends Component {
     render() {
-      const { features } = this.props
-      const data = features.map(feature => {
-        delete feature.properties.gml_id
+      const { geojson } = this.props
+      let noDataText = 'Chargement...'
+      let data = []
 
-        return feature.properties
-      })
+      if (geojson) {
+        if (!geojson.features || !geojson.features.length) {
+          noDataText = 'Les données sont vides'
+        } else {
+          data = geojson.features.map(feature => {
+            delete feature.properties.gml_id
+
+            return feature.properties
+          })
+        }
+      }
 
       return (
         <Table
@@ -19,7 +28,7 @@ class DatasetTable extends Component {
           sortable={true}
           itemsPerPage={20}
           pageButtonLimit={20}
-          noDataText="Les données sont vides" />
+          noDataText={noDataText} />
       )
     }
 }
