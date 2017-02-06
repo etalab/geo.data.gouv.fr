@@ -27,7 +27,6 @@ class Viewer extends Component {
           <PreviewMap
             distribution={preview.distribution}
             geojson={geojson}
-            loading={preview && !geojson}
             errors={errors}/>
           <div className={buttons}>
             <button disabled>Carte</button>
@@ -38,7 +37,7 @@ class Viewer extends Component {
     } else {
       return (
         <div className={visualizer}>
-          <DatasetTable features={geojson ? geojson.features : []} />
+          <DatasetTable geojson={geojson} />
           <div className={buttons}>
             <button onClick={() => this.changeMode('map')}>Carte</button>
             <button disabled>Tableau</button>
