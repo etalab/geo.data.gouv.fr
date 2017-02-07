@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.link {
+  margin-right: 20px;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
+
+.link path {
+  transition: all .25s ease-in-out;
+}
+
+.link * {
+  pointer-events: none;
+}
+
+.link:hover .twitter path {
+  fill: #1da1f2;
+}
+
+.link:hover .medium path {
+  fill: #02b875
+}
+
+
+@media (max-width: 768px) {
+	.container {
+		margin-bottom: 24px;
+	}
+}
