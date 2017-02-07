@@ -131,8 +131,8 @@ class Home extends Component {
     document.title = 'Accueil'
   }
 
-  userSearch(path, textInput) {
-    browserHistory.push(`${path}?q=${textInput}`)
+  userSearch(textInput) {
+    browserHistory.push({ pathname: '/search', query: {q: textInput, availability: 'yes'} })
   }
 
   render() {
@@ -142,8 +142,8 @@ class Home extends Component {
           <h1>
             Trouvez facilement les données géographiques dont vous avez besoin
           </h1>
-          <SearchInput placeholder={'Rechercher un jeu de donnée'} onSearch={(textInput) => this.userSearch('datasets', textInput)} searchButton={true} />
-          <Link className={datasetLinks} to="datasets">Voir tous les jeux de données</Link>
+          <SearchInput placeholder={'Rechercher un jeu de donnée'} onSearch={(textInput) => this.userSearch(textInput)} searchButton={true} />
+          <Link className={datasetLinks} to="search">Voir tous les jeux de données</Link>
         </div>
 
         <div className={datagouv}>

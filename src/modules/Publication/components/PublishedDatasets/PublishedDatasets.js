@@ -9,7 +9,7 @@ const PublishedDatasets = ({ datasets }) => {
     <div>
       {datasets.map((dataset, idx) =>
         <div key={idx} className={data}>
-          <Link to={`/datasets/${dataset._id}`}>{dataset.title}</Link>
+          <Link to={`/search/${dataset._id}`}>{dataset.title}</Link>
           <a href={dataset.remoteUrl} target="blank">Fiche data.gouv.fr</a>
         </div>
       )}

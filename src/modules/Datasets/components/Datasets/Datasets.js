@@ -57,7 +57,7 @@ class Datasets extends Component {
     let { textInput, filters, page } = this.state
     const query = buildSearchQuery(textInput, filters, page)
     if (window.location.search === `?${query}`) return
-    browserHistory.push(`${this.props.pathname}?${query}`)
+    browserHistory.push('/search?' + query)
   }
 
   search(changes = {}, pushToHistory = true) {

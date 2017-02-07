@@ -45,8 +45,8 @@ class CatalogDetail extends Component {
     return waitForDataAndSetState(fetchCatalog(this.props.params.catalogId), this, 'catalog')
   }
 
-  userSearch(path, textInput) {
-    browserHistory.push({ pathname: '/datasets', query: {q: textInput, catalog: this.state.catalog.name} })
+  userSearch(textInput) {
+    browserHistory.push({ pathname: '/search', query: {q: textInput, availability: 'yes', catalog: this.state.catalog.name} })
   }
 
   render() {
@@ -69,7 +69,7 @@ class CatalogDetail extends Component {
 
           <div className={section}>
             <h2>Rechercher dans les jeux de données du catalogue</h2>
-            <SearchInput onSearch={(textInput) => this.userSearch('datasets', textInput)} searchButton={true}/>
+            <SearchInput onSearch={(textInput) => this.userSearch(textInput)} searchButton={true}/>
           </div>
         </div>
       </DocumentTitle>
