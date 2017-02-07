@@ -4,9 +4,10 @@
   flex-direction: column;
   display: flex;
   position: relative;
-  background-color: var(--white);
 }
 
 .body {
   z-index: 1;
+  background-color: var(--white);
+  min-height: 100vh;
 }
