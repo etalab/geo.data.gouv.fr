@@ -10,32 +10,32 @@
 }
 
 .space {
-	height: 340px;
-	position: relative;
-	z-index: -2;
-	pointer-events: none;
+  height: 340px;
+  position: relative;
+  z-index: -2;
+  pointer-events: none;
 }
 
 .main {
   padding: 30px;
   bottom: 0;
-	width: 100%;
-	position: fixed;
-	z-index: -1;
-	will-change: transform;
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translate3d(0,0,0);
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0);
 }
 
 @media (max-width: 768px) {
-	.space {
-		height: 250px;
-	}
+  .space {
+    height: 250px;
+  }
 }
 @media (max-width: 1280px) {
-	.space {
-		height: 340px;
-	}
+  .space {
+    height: 340px;
+  }
 }
 
 .info {
@@ -46,10 +46,10 @@
 }
 
 @media (max-width: 768px) {
-	.info {
-		flex-direction: column-reverse;
+  .info {
+    flex-direction: column-reverse;
     align-items: center;
-	}
+  }
 
   .info p {
     text-align: center;
