@@ -36,10 +36,10 @@ class NewsletterForm extends Component {
     const { value } = this.state
 
     return (
-      <div id="mc_embed_signup">
+      <div id="mc_embed_signup" className={style.container}>
         <form action="//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
           <div id="mc_embed_signup_scroll">
-            <h2>Inscrivez-vous pour recevoir nos communications :</h2>
+            <h2 className={style.title}>Inscrivez-vous pour recevoir nos communications :</h2>
             <div className={style.form}>
               <label htmlFor="mce-EMAIL">Votre adresse email </label>
               <input className={style.input} type="email" value={value} onChange={(e) => this.handleChange(e)} name="EMAIL" id="mce-EMAIL" />

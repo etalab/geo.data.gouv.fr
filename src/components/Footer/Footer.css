@@ -1,12 +1,57 @@
 @import "../../theme/colors";
 
 .footer {
-  padding: 30px;
-  text-align: center;
   color: var(--blue);
   background-color: var(--darkblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
 }
 
-.footer p {
+.space {
+	height: 340px;
+	position: relative;
+	z-index: -2;
+	pointer-events: none;
+}
+
+.main {
+  padding: 30px;
+  bottom: 0;
+	width: 100%;
+	position: fixed;
+	z-index: -1;
+	will-change: transform;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+}
+
+@media (max-width: 768px) {
+	.space {
+		height: 250px;
+	}
+}
+@media (max-width: 1280px) {
+	.space {
+		height: 340px;
+	}
+}
+
+.info {
   margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+	.info {
+		flex-direction: column-reverse;
+    align-items: center;
+	}
+
+  .info p {
+    text-align: center;
+  }
 }
