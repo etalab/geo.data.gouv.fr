@@ -8,7 +8,7 @@ import { group, facets } from './OrganizationsSection.css'
 const OrganizationsSection = ({metrics, catalog}) => {
   const { organizations, keywords } = metrics.records.counts
 
-  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/records', query: {...filter, catalog: catalog.name} })
+  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/search', query: {...filter, catalog: catalog.name} })
   const sections = [{name: 'organization', title: 'Organisations', filters: organizations}, {name: 'keyword', title: 'Mots-clés', filters: keywords}]
 
   return (

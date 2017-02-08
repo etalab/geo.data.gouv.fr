@@ -34,21 +34,18 @@ export function parseQuery(query) {
   }
 }
 
-function handleLocation(location) {
-  return { query: parseQuery(location.query), pathname: location.pathname }
-}
 
 class WrappedDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = handleLocation(props.location)
+    this.state = { query: parseQuery(props.location.query) }
   }
 
   componentDidMount() {
     this.handle = browserHistory.listen(location => {
-      if (location.pathname !== '/datasets' && location.pathname !== '/records') return;
-      if (location.action !== 'POP') return
-      this.setState(handleLocation(location))
+      if (location.pathname === '/search' && location.action === 'POP') {
+        this.setState({ query: parseQuery(location.query) })
+      }
     })
   }
 
@@ -57,10 +54,10 @@ class WrappedDatasets extends Component {
   }
 
   render() {
-    const { query, pathname } = this.state
+    const { query } = this.state
     return (
       <DocumentTitle title={'Recherche jeu de données'}>
-        <Datasets pathname={pathname} query={query}/>
+        <Datasets query={query}/>
       </DocumentTitle>
     )
   }

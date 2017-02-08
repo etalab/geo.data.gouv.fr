@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, Redirect, IndexRoute, browserHistory } from 'react-router'
 import moment from 'moment'
 import createPiwikConnector from 'piwik-react-router'
 
@@ -42,10 +42,9 @@ ReactDOM.render((
       <Route path="/catalogs" component={Catalogs} />
       <Route path="/catalogs/:catalogId" component={CatalogDetail} />
       <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />
-      <Route path="/datasets" component={WrappedDatasets} />
+      <Route path="/search" component={WrappedDatasets} />
+      <Redirect from="/datasets" to="/search" />
       <Route path="/datasets/:datasetId" component={DatasetDetail} />
-      <Route path="/records" component={WrappedDatasets} />
-      <Route path="/records/:recordId" component={DatasetDetail} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
