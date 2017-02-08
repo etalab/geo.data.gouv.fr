@@ -27,7 +27,7 @@ class DatasetPreview extends Component {
 
     return (
       <div className={container}>
-        <h4><Link to={`/search/${recordId}`}>{metadata.title}</Link></h4>
+        <h4><Link to={`/datasets/${recordId}`}>{metadata.title}</Link></h4>
 
         <DatasetDescription description={metadata.description} shortDescription={this.state.shortDescription} showMore={() => this.wrapDescription()} />
 
