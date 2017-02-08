@@ -143,7 +143,7 @@ class Home extends Component {
             Trouvez facilement les données géographiques dont vous avez besoin
           </h1>
           <SearchInput placeholder={'Rechercher un jeu de donnée'} onSearch={(textInput) => this.userSearch(textInput)} searchButton={true} />
-          <Link className={datasetLinks} to="search">Voir tous les jeux de données</Link>
+          <Link className={datasetLinks} to="/search?availability=yes">Voir tous les jeux de données</Link>
         </div>
 
         <div className={datagouv}>

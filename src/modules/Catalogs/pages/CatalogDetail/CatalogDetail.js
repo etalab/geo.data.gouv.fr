@@ -46,7 +46,7 @@ class CatalogDetail extends Component {
   }
 
   userSearch(textInput) {
-    browserHistory.push({ pathname: '/search', query: {q: textInput, availability: 'yes', catalog: this.state.catalog.name} })
+    browserHistory.push({ pathname: '/search', query: {q: textInput, catalog: this.state.catalog.name} })
   }
 
   render() {

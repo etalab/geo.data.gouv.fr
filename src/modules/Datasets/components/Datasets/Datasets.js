@@ -5,16 +5,14 @@ import qs from 'qs'
 import DatasetsResults from '../DatasetsResults/DatasetsResults'
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import Filter from '../../../../components/Filter/Filter'
-import ToggleSwitch from '../../../../components/ToggleSwitch/ToggleSwitch'
 
 import { search } from '../../../../fetch/fetch'
 import { convertFilters } from '../../../../helpers/manageFilters'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
-import { addFilter, removeFilter, isActive } from '../../../../helpers/manageFilters'
+import { addFilter, removeFilter } from '../../../../helpers/manageFilters'
 
 import style from './Datasets.css'
 
-const availabilityFilter = { name: 'availability', value: 'yes' }
 
 export function buildSearchQuery(q, filters, page) {
   const qsFilters = convertFilters(filters)
@@ -67,14 +65,6 @@ class Datasets extends Component {
     })
   }
 
-  toggleSwitch() {
-    if (isActive(this.state.filters, availabilityFilter)) {
-      this.removeFilter(availabilityFilter)
-    } else {
-      this.addFilter(availabilityFilter)
-    }
-  }
-
   addFilter(filter) {
     const filters = addFilter(this.state.filters, filter)
     return this.search({ filters, page: 1, datasets: null })
@@ -95,8 +85,6 @@ class Datasets extends Component {
 
   render() {
     const { textInput, filters, datasets, page, errors } = this.state
-    const availabiliyIsActive = isActive(this.state.filters, availabilityFilter)
-
     return (
       <div>
         <div className={style.searchWrapper}>
@@ -106,18 +94,9 @@ class Datasets extends Component {
             searchButton={true}
             onSearch={(textInput) => this.userSearch(textInput)} />
 
-          <div className={style.searchFilters}>
-            <div>
-              <div className={style.filters}>{filters.length ? 'Filtres actifs' : 'Aucun filtre actif'}</div>
-              {filters.map((filter, idx) => <Filter detail={true} remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
-            </div>
-            <div className={style.searchSwitch}>
-              <ToggleSwitch action={() => this.toggleSwitch()} active={availabiliyIsActive}/>
-              <div>Disponible sur data.gouv.fr</div>
-            </div>
-          </div>
+          <div className={style.filters}>{filters.length ? 'Filtres actifs' : 'Aucun filtre actif'}</div>
+          {filters.map((filter, idx) => <Filter detail={true} remove={true} key={idx} filter={filter} onClick={(filter) => this.removeFilter(filter)} />)}
         </div>
-
 
         <DatasetsResults
           datasets={datasets}
