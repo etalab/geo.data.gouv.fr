@@ -53,7 +53,7 @@ class HarvestsSection extends Component {
     const { catalog } = this.props
 
     const dataGraph = this.getGraphData()
-    const histogram = <Histogram data={dataGraph} width="400" height="220" />
+    const histogram = <Histogram data={dataGraph} width={400} height={220} />
 
     return (
       <div>

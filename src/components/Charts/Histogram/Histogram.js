@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { Line } from 'react-chartjs'
+import React from 'react'
+
+import { Line } from 'react-chartjs-2'
+
 import { colors } from '../../../tools.js'
 
 export function formatData(data) {
@@ -7,20 +9,19 @@ export function formatData(data) {
     'labels': Object.keys(data).map( item => item),
     'datasets': [
       {
-        fillColor: colors[0].value,
+        label: 'Enregistrements',
+        lineTension: 0.2,
+        backgroundColor: colors[0],
         data: Object.keys(data).map( item => data[item])
       }
     ],
   }
 }
 
-class Histogram extends Component {
-  render() {
-    const { data, width, height } = this.props
-    const formatedData = formatData(data)
+const Histogram = ({ data, width, height }) => {
+  const formatedData = formatData(data)
 
-    return <Line data={formatedData} width={width} height={height} />
-  }
+  return <Line data={formatedData} width={width} height={height} />
 }
 
 export default Histogram
