@@ -37,6 +37,11 @@
   margin-right: 4em;
 }
 
+.copy:hover {
+  cursor: copy;
+  font-size: medium;
+}
+
 @media (min-width: 700px) {
   .container h1 {
     padding-right: 40%;
