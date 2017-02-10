@@ -39,7 +39,6 @@
 
 .copy:hover {
   cursor: copy;
-  font-size: medium;
 }
 
 @media (min-width: 700px) {

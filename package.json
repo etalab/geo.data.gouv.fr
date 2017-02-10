@@ -68,7 +68,7 @@
     "preact": "^7.1.0",
     "preact-compat": "^3.9.4",
     "qs": "^6.3.0",
-    "react": "^15.4",
+    "react": "^15.4.2",
     "react-addons-create-fragment": "^15.4.0",
     "react-chartjs": "^0.8.0",
     "react-copy-to-clipboard": "^4.2.3",
