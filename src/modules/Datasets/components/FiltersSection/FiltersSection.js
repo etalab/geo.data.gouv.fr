@@ -6,7 +6,7 @@ import Facet from '../../../../components/Facets/Facet'
 import { group, facets } from './FiltersSection.css'
 
 const FiltersSection = ({keywords, organizations, catalogs}) => {
-  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/records', query: {...filter} })
+  const goToSearch = (filter) => () => browserHistory.push({ pathname: '/search', query: {...filter} })
   const sections = [
     {name: 'organization', title: 'Organisations', filters: organizations},
     {name: 'catalog', title: 'Catalogues', filters: catalogs.map( catalog => catalog.name)},

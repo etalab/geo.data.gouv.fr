@@ -47,9 +47,6 @@ class Datasets extends Component {
     const { textInput, filters, page = 1 } = this.state
     let allFilters = filters
     const offset = (page - 1) * 20
-    if (this.props.pathname === 'datasets') {
-      allFilters = [...filters, { name: 'availability', value: 'yes' }]
-    }
     return waitForDataAndSetState(search(textInput, allFilters, offset), this, 'datasets')
   }
 
@@ -57,7 +54,7 @@ class Datasets extends Component {
     let { textInput, filters, page } = this.state
     const query = buildSearchQuery(textInput, filters, page)
     if (window.location.search === `?${query}`) return
-    browserHistory.push(`${this.props.pathname}?${query}`)
+    browserHistory.push('/search?' + query)
   }
 
   search(changes = {}, pushToHistory = true) {
