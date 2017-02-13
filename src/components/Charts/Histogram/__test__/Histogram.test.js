@@ -8,6 +8,15 @@ import data from './data.json'
 describe('<Histogram />', () => {
   const height = 100
   const width = 100
+  const options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        }
+      }]
+    }
+  }
 
   it('Should format data', () => {
     const formatedData = {
@@ -38,6 +47,6 @@ describe('<Histogram />', () => {
   it('Should render a Line component', () => {
     const wrapper = shallow(<Histogram data={data} height={height} width={width}/>)
 
-    expect(wrapper).to.contain(<Line data={formatData(data)} height={height} width={width}/>)
+    expect(wrapper).to.contain(<Line data={formatData(data)} height={height} width={width} options={options}/>)
   })
 })

@@ -20,8 +20,17 @@ export function formatData(data) {
 
 const Histogram = ({ data, width, height }) => {
   const formatedData = formatData(data)
+  const options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        }
+      }]
+    }
+  }
 
-  return <Line data={formatedData} width={width} height={height} />
+  return <Line data={formatedData} width={width} height={height} options={options} />
 }
 
 export default Histogram
