@@ -70,7 +70,6 @@
     "qs": "^6.3.0",
     "react": "^15.4",
     "react-addons-create-fragment": "^15.4.0",
-    "react-chartjs": "^0.8.0",
     "react-chartjs-2": "^2.0.0",
     "react-document-title": "^2.0.2",
     "react-dom": "^15.4",

@@ -4443,10 +4443,6 @@ react-chartjs-2@^2.0.0:
   dependencies:
     lodash.isequal "^4.4.0"
 
-react-chartjs@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/react-chartjs/-/react-chartjs-0.8.0.tgz#d41386b3d3cbfef9003f5a655e7ea48a49fbfa19"
-
 react-dev-utils@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-0.4.2.tgz#ba6fae581fe945a2fc402e9b27c71fda4f62f6a1"
