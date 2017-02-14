@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, Redirect, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, Redirect, IndexRoute, browserHistory, applyRouterMiddleware } from 'react-router'
+import { useScroll } from 'react-router-scroll'
 import moment from 'moment'
 import createPiwikConnector from 'piwik-react-router'
 
@@ -29,9 +30,8 @@ createPiwikConnector({
   url: 'https://stats.data.gouv.fr',
   siteId: 32
 }).connectToHistory(browserHistory);
-
 ReactDOM.render((
-  <Router history={browserHistory}>
+  <Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/events" component={Events} />
