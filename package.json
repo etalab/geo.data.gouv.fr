@@ -55,8 +55,8 @@
     "recursive-readdir": "^2.1.0",
     "strip-ansi": "^3.0.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
     "chart.js": "^2.5.0",
