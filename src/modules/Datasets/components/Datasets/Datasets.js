@@ -58,7 +58,6 @@ class Datasets extends Component {
   }
 
   search(changes = {}, pushToHistory = true) {
-    window.scrollTo(0, 0);
     return this.setState(changes, () => {
       if (pushToHistory) this.pushToHistory()
       return this.fetchRecords()
