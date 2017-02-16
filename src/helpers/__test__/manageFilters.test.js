@@ -1,6 +1,22 @@
-import { addFilter, removeFilter, replaceFilter, convertFilters, isActive } from '../manageFilters'
+import { addFilter, removeFilter, replaceFilter, translateFilters, convertFilters, isActive } from '../manageFilters'
 
 describe('manageFilters', () => {
+
+  describe('translate', () => {
+    describe('Known filter', () => {
+      it('should translate filter', () => {
+        const filter = 'availability'
+        expect(translateFilters(filter)).to.equal('Téléchargeable')
+      })
+    })
+
+    describe('Unknown filter', () => {
+      it('should translate filter', () => {
+        const filter = 'unknown'
+        expect(translateFilters(filter)).to.equal(filter)
+      })
+    })
+  })
 
   describe('addFilter()', () => {
     it('should add a new filter', () => {
