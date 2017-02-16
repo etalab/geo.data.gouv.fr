@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { filterTradTable } from '../../helpers/manageFilters'
+import { translateFilters } from '../../helpers/manageFilters'
 
 import { link } from './Filter.css'
 
 const Filter = (props) => {
   const { detail, remove, filter, style, onClick } = props
-  const title = filterTradTable[filter.name]
+  const title = translateFilters(filter.name)
 
   return (
     <button className={link} title={`${title}: ${filter.value}`} style={style} onClick={() => onClick && onClick(filter)}>

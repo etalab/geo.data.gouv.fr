@@ -1,7 +1,7 @@
 import React from 'react'
 import Facet from './Facet'
 
-import { isActive, filterTradTable } from '../../helpers/manageFilters'
+import { isActive, translateFilters } from '../../helpers/manageFilters'
 
 import { container } from './FacetsGroup.css'
 
@@ -16,7 +16,7 @@ export default ({ type, facets, filters, addFilter }) => {
 
   return (
     <div className={container}>
-      <h4>{filterTradTable[type]}</h4>
+      <h4>{translateFilters(type)}</h4>
       {facets.map((facet, idx) => <Facet
         key={idx}
         name={type}
