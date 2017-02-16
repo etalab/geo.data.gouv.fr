@@ -11,6 +11,12 @@ export const filterTradTable = {
   representationType: 'Type géographique',
   type: 'Type',
   catalog: 'Catalogue',
+  yes: 'Oui',
+  no: 'Non',
+  'not-determined': 'Non déterminé',
+  other: 'Autre',
+  unknown: 'Inconnu',
+  none: 'Aucun',
 }
 
 export function translateFilters(filter) {

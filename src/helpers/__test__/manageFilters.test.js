@@ -12,7 +12,7 @@ describe('manageFilters', () => {
 
     describe('Unknown filter', () => {
       it('should translate filter', () => {
-        const filter = 'unknown'
+        const filter = 'Improbable filter name'
         expect(translateFilters(filter)).to.equal(filter)
       })
     })
