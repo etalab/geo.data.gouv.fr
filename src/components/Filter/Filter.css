@@ -1,7 +1,6 @@
 @import "../../theme/colors";
 
 .link {
-  text-transform: capitalize;
   position: relative;
   padding: .4em .5em;
   margin: 2px 2px 2px 0;
@@ -15,6 +14,10 @@
   max-width: 200px;
   overflow: hidden;
   border: none;
+}
+
+.link::first-letter {
+  text-transform: uppercase;
 }
 
 .link:hover {

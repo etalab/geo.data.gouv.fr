@@ -6,7 +6,7 @@ describe('manageFilters', () => {
     describe('Known filter', () => {
       it('should translate filter', () => {
         const filter = 'availability'
-        expect(translateFilters(filter)).to.equal('Téléchargeable')
+        expect(translateFilters(filter)).to.equal('téléchargeable')
       })
     })
 
