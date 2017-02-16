@@ -1,5 +1,22 @@
 import { remove, unionWith, find, isEqual, some } from 'lodash'
 
+export const filterTradTable = {
+  availability: 'Téléchargeable',
+  dgvPublication: 'Publié sur data.gouv.fr',
+  distributionFormat: 'Format de distribution',
+  keyword: 'Mot-clé',
+  metadataType: 'Type de metadonnée',
+  opendata: 'Donnée ouverte',
+  organization: 'Organisation',
+  representationType: 'Type géographique',
+  type: 'Type',
+  catalog: 'Catalogue',
+}
+
+export function translateFilters(filter) {
+  return filterTradTable[filter] || filter
+}
+
 export function addFilter(oldFilters, newFilter) {
   return unionWith(oldFilters, [newFilter], isEqual)
 }
@@ -15,7 +32,7 @@ export function replaceFilter(oldFilters, newFilter) {
 
   if (!filter) return addFilter(oldFilters, newFilter)
   filter.value = newFilter.value
-  
+
   return oldFilters
 }
 

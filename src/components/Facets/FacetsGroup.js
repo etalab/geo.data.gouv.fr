@@ -1,7 +1,11 @@
 import React from 'react'
 import Facet from './Facet'
-import { isActive } from '../../helpers/manageFilters'
+
+import { isActive, translateFilters } from '../../helpers/manageFilters'
+
 import { container } from './FacetsGroup.css'
+
+
 
 export default ({ type, facets, filters, addFilter }) => {
   const activeMap = facets.map(facet => isActive(filters, {name: type, value: facet.value}))
@@ -12,7 +16,7 @@ export default ({ type, facets, filters, addFilter }) => {
 
   return (
     <div className={container}>
-      <h4>{type}</h4>
+      <h4>{translateFilters(type)}</h4>
       {facets.map((facet, idx) => <Facet
         key={idx}
         name={type}
