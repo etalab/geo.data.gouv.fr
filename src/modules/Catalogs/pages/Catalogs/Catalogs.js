@@ -2,16 +2,14 @@ import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
 
 // Import Shared Components
-import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
-import ContentLoader from '../../../../components/Loader/ContentLoader'
+import CatalogPreviewList from '../../../../components/CatalogPreview/CatalogPreviewList'
 
 // Import Helpers
-import { fetchCatalogs } from '../../../../fetch/fetch';
-import { getCatalogOrderByScore } from '../../../../helpers/catalogs'
-import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
+import { fetchCatalogs } from '../../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
 // Import CSS
-import { container, loader } from './Catalogs.css'
+import { container } from './Catalogs.css'
 
 class Catalogs extends Component {
   constructor(props) {
@@ -28,14 +26,12 @@ class Catalogs extends Component {
   }
 
   render() {
-    if (!this.state.catalogs) return <div className={loader}><ContentLoader /></div>
-
-    const sortedCatalogs = getCatalogOrderByScore(this.state.catalogs)
+    const { catalogs } = this.state
 
     return (
       <DocumentTitle title={'Catalogues'}>
         <div className={container}>
-          {sortedCatalogs.map((catalog, idx) => <CatalogPreview key={idx} catalog={catalog} />)}
+          <CatalogPreviewList catalogs={catalogs} />
         </div>
       </DocumentTitle>
     )

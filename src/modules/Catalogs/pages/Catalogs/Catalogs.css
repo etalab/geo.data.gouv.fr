@@ -3,13 +3,8 @@
   padding-top: 2em;
 }
 
-.container > a {
+.container a {
   margin: 1em 3em;
-}
-
-.loader {
-  text-align: center;
-  margin-top: 5em;
 }
 
 @media (max-width: 768px) {

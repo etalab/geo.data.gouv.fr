@@ -98,13 +98,13 @@
   margin: 1em;
 }
 
-.catalogs {
+.catalogsList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.catalogs > a {
+.catalogsList a {
   margin: 10px 20px;
 }
 
