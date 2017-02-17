@@ -49,7 +49,11 @@ class Home extends Component {
             <div className={catalogsList}>
               <CatalogPreviewList catalogs={catalogs} limit={3} />
             </div>
-            <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
+
+            {catalogs ?
+              <Link className={catalogLinks} to="catalogs">Voir les <b>{catalogs.length}</b> catalogues</Link> :
+              <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
+            }
 
             <h2 id="evenements">Événements à venir</h2>
             <div className={events}>
