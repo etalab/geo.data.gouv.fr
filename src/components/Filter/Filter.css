@@ -9,15 +9,24 @@
   text-align: center;
   color: var(--blue);
   background-color: var(--lightestblue);
-  text-overflow: ellipsis;
   font-size: 12px;
-  max-width: 200px;
   overflow: hidden;
   border: none;
 }
 
-.link::first-letter {
+.link span {
+  display: table-cell;
+}
+
+.link span::first-letter {
   text-transform: uppercase;
+}
+
+.filterValue {
+  padding-left: 5px;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  overflow: hidden;
 }
 
 .link:hover {
