@@ -6,6 +6,7 @@ import DatasetSection from '../../components/DatasetSection/DatasetSection'
 import DatasetChecklist from '../../components/DatasetChecklist/DatasetChecklist'
 import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
+import Contact from '../../components/Contact/Contact'
 import Section from '../../components/Section/Section'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
@@ -70,6 +71,10 @@ export default class DatasetDetail extends Component {
           <div className={side}>
             <Section title={'data.gouv.fr'}>
               <DatasetChecklist dataset={dataset} />
+            </Section>
+
+            <Section title={'Contact'}>
+              <Contact contact={dataset.producer}/>
             </Section>
           </div>
 
