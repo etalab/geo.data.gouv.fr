@@ -39,7 +39,6 @@ class DownloadDatasets extends Component {
     return (
       <div className={content}>
         <div className={vector}>
-          <h3>Téléchargements</h3>
           <h4>Données vectorielles</h4>
           {vectorDownload}
           {otherDownload}

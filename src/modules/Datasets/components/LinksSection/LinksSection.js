@@ -7,7 +7,6 @@ const LinksSection = ({links, style}) => {
 
   return (
     <div>
-      <h3>Liens</h3>
       {links.length ? (
         <ul className={linkList}>
           {links.map( (link, idx) => <li key={idx}><a style={style} href={link.href}>{getName(link)}</a></li>)}
