@@ -6,6 +6,7 @@ import DatasetSection from '../../components/DatasetSection/DatasetSection'
 import DatasetChecklist from '../../components/DatasetChecklist/DatasetChecklist'
 import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
+import Section from '../../components/Section/Section'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 import Errors from '../../../../components/Errors/Errors'
@@ -13,7 +14,7 @@ import Errors from '../../../../components/Errors/Errors'
 import { fetchDataset, fetchCatalogs } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { loader, container, section } from './DatasetDetail.css'
+import { container, loader, main, side } from './DatasetDetail.css'
 
 export default class DatasetDetail extends Component {
 
@@ -50,23 +51,28 @@ export default class DatasetDetail extends Component {
     return (
       <DocumentTitle title={dataset.metadata.title}>
         <div className={container}>
-          <DatasetSection dataset={dataset} />
+          <div className={main}>
+            <DatasetSection dataset={dataset} />
 
-          <div className={section}>
-            <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
+            <Section title={'Filtres'}>
+              <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
+            </Section>
+
+            <Section title={'Téléchargements'}>
+              <DownloadDatasets distributions={dataset.dataset.distributions} />
+            </Section>
+
+            <Section title={'Liens'}>
+              <LinksSection links={dataset.metadata.links} />
+            </Section>
           </div>
 
-          <div className={section}>
-            <DatasetChecklist dataset={dataset} />
+          <div className={side}>
+            <Section title={'data.gouv.fr'}>
+              <DatasetChecklist dataset={dataset} />
+            </Section>
           </div>
 
-          <div className={section}>
-            <DownloadDatasets distributions={dataset.dataset.distributions} />
-          </div>
-
-          <div className={section}>
-            <LinksSection links={dataset.metadata.links} />
-          </div>
         </div>
       </DocumentTitle>
     )
