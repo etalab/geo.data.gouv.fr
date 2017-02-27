@@ -1,3 +1,19 @@
 .container div {
   margin-top: 1em;
 }
+
+.name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tag {
+  font-size: small;
+  color: #fff;
+  width: 30%;
+  padding: 3px 2px;
+  border-radius: 3px;
+  text-align: center;
+}
