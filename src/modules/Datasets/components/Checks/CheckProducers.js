@@ -1,31 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Check from './Check'
 
-class CheckProducers extends Component {
-  check() {
-    const { organizations } = this.props
+const CheckProducers = ({ valid, organizations }) => {
+  const msg = valid ? 'Au moins un producteur est identifié.' : 'Le producteur n\'a pas été identifié.'
 
-    if (!!organizations && organizations.length > 0) {
-      return {
-        valid: true,
-        msg: 'Au moins un producteur est identifié.',
-        content: organizations
-      }
-    }
-
-    return { msg: 'Le producteur n\'a pas été identifié.', valid: false }
-  }
-
-  render() {
-    const { valid, msg, content } = this.check()
-
-    return (
-      <Check title='Producteur' isValid={valid} msg={msg}>
-        {content ? content : null }
-      </Check>
-      )
-  }
+  return (
+    <Check title='Producteur' isValid={valid} msg={msg}>
+      {organizations ? organizations : null }
+    </Check>
+    )
 }
 
 export default CheckProducers

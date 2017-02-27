@@ -1,35 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Check from './Check'
 import CheckItem from './CheckItem'
 
-class DatasetDataAvailability extends Component {
-  check() {
-    const distributions = this.props.distributions
+const DatasetDataAvailability = ({ valid, distributions }) => {
+  let content = null
+  let msg = valid ?
+    'Au moins une des distribution est disponible.' :
+    'Aucune distribution n\'a été trouvée.'
 
-    if (!!distributions && distributions.some((distribution) => distribution.available)) {
-      return {
-        valid: true,
-        msg: 'Au moins une des distribution est disponible.',
-        content: distributions.map((distribution, idx) => {
-          const name = distribution.typeName || distribution.layer || distribution.name
-          return <CheckItem key={idx} name={name} valid={distribution.available} />
-        }),
-      }
-    }
-
-    return {msg: 'Aucune distribution n\'a été trouvée.', valid: false}
+  if (valid) {
+    content = distributions.map((distribution, idx) => {
+      const name = distribution.typeName || distribution.layer || distribution.name
+      return <CheckItem key={idx} name={name} valid={distribution.available} />
+    })
   }
 
-  render() {
-    const { valid, msg, content } = this.check()
-
-    return (
-      <Check title='Disponibilité de la donnée' isValid={valid} msg={msg}>
-        {content ? content : null }
-      </Check>
-      )
-    }
+  return (
+    <Check title='Disponibilité de la donnée' isValid={valid} msg={msg}>
+      {content}
+    </Check>
+    )
 }
 
 export default DatasetDataAvailability
