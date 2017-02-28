@@ -6,6 +6,7 @@ import DatasetSection from '../../components/DatasetSection/DatasetSection'
 import DatasetChecklist from '../../components/DatasetChecklist/DatasetChecklist'
 import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
+import OrganizationsList from '../../components/OrganizationsList/OrganizationsList'
 import Section from '../../components/Section/Section'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
@@ -54,8 +55,12 @@ export default class DatasetDetail extends Component {
           <div className={main}>
             <DatasetSection dataset={dataset} />
 
+              <Section title={'Organisations'}>
+                <OrganizationsList organizations={dataset.organizations}/>
+              </Section>
+
             <Section title={'Filtres'}>
-              <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
+              <FiltersSection keywords={dataset.metadata.keywords} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
             </Section>
 
             <Section title={'Téléchargements'}>

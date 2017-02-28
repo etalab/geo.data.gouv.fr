@@ -1,5 +1,5 @@
-@import "../../../../theme/colors";
-@import "../../../../theme/shadows";
+@import "../../theme/colors";
+@import "../../theme/shadows";
 
 .container {
   box-shadow: var(--shadow);

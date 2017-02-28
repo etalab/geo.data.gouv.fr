@@ -3,9 +3,9 @@ import { shallow } from 'enzyme'
 
 import OrganizationPreview from '../OrganizationPreview'
 
-import organizationDetail from '../../../../../fetch/__test__/organization.json'
-import metrics from '../../../../../fetch/__test__/organizationMetrics.json'
-import user from '../../../../../fetch/__test__/user.json'
+import organizationDetail from '../../../fetch/__test__/organization.json'
+import metrics from '../../../fetch/__test__/organizationMetrics.json'
+import user from '../../../fetch/__test__/user.json'
 
 describe('<OrganizationPreview />', () => {
   const { sourceCatalog, producers } = organizationDetail

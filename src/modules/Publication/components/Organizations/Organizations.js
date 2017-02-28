@@ -1,7 +1,7 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 
-import OrganizationPreview from '../OrganizationPreview/OrganizationPreview'
+import OrganizationPreview from '../../../../components/OrganizationPreview/OrganizationPreview'
 
 import { container } from './Organizations.css'
 
