@@ -8,6 +8,7 @@ import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
 import Contacts from '../../components/Contact/Contacts'
 import Thumbnails from '../../components/Thumbnails/Thumbnails'
+import Producer from '../../components/Producer/Producer'
 import Section from '../../components/Section/Section'
 import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
 
@@ -70,6 +71,10 @@ export default class DatasetDetail extends Component {
           </div>
 
           <div className={side}>
+
+            <Section title={'Producteur'}>
+              <Producer producer={dataset.producer} />
+            </Section>
 
             {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length ?
               <Section title={'Aperçu des données'}>
