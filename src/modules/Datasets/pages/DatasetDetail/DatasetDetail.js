@@ -6,6 +6,7 @@ import DatasetSection from '../../components/DatasetSection/DatasetSection'
 import DatasetChecklist from '../../components/DatasetChecklist/DatasetChecklist'
 import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
+import Previews from '../../components/Previews/Previews'
 import Section from '../../components/Section/Section'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
@@ -70,6 +71,13 @@ export default class DatasetDetail extends Component {
             <Section title={'Publication sur data.gouv.fr'}>
               <DatasetChecklist dataset={dataset} />
             </Section>
+
+            {dataset.previews && dataset.previews.length ?
+              <Section title={'Prévisualisations'}>
+                <Previews previews={dataset.previews} />
+              </Section> :
+              null
+            }
           </div>
 
         </div>
