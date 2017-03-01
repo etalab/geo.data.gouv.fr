@@ -6,7 +6,7 @@ import { container, histo } from './TechnicalInformations.css'
 const TechnicalInformations = ({ dataset, technicalInformations }) => {
   const { type, license, id } = dataset.metadata
   const revisionDate = doneSince(dataset.revisionDate)
-  const other = {} //Waiting for data
+  const other = {} // Waiting for data
 
   return (
     <div className={container}>
