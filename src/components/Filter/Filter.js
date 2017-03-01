@@ -2,7 +2,7 @@ import React from 'react'
 
 import { translateFilters } from '../../helpers/manageFilters'
 
-import { link } from './Filter.css'
+import { link, filterValue } from './Filter.css'
 
 const Filter = (props) => {
   const { detail, remove, filter, style, onClick } = props
@@ -11,7 +11,7 @@ const Filter = (props) => {
 
   return (
     <button className={link} title={`${title}: ${value}`} style={style} onClick={() => onClick && onClick(filter)}>
-      { detail && `${title}: ` }{value}
+      <span>{ detail && `${title}:` }</span><span className={filterValue}>{value}</span>
       { remove && <span>&nbsp;<i className="fa fa-close" /></span>}
     </button>
   )
