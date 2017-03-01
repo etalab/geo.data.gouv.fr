@@ -6,7 +6,17 @@ import { container, histo } from './TechnicalInformations.css'
 const TechnicalInformations = ({ dataset, technicalInformations }) => {
   const { type, license, id } = dataset.metadata
   const revisionDate = doneSince(dataset.revisionDate)
-  const { history, other } = technicalInformations
+  // TEST
+  const { history, other } = {
+      history: {
+        updateFrequency: 'Quotidienne',
+        creationDate: '10/12/2014',
+      },
+      other: {
+        scale: '1 / 5000',
+        resolution: '1m',
+      }
+    }
 
   return (
     <div className={container}>
