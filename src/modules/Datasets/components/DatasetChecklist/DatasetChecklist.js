@@ -5,6 +5,9 @@ import CheckProducers from '../Checks/CheckProducers'
 import CheckDataAvailability from '../Checks/CheckDataAvailability'
 import Button from '../../../../components/Buttons/Button'
 
+import { getDataGouvPublication } from '../../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
+
 import { checklist, highlight } from './DatasetChecklist.css'
 import { checkLicense, checkProducers, checkDataAvailability } from '../../../../helpers/dataGouvChecks'
 
@@ -14,22 +17,30 @@ class DatasetChecklist extends Component {
     this.state = {showDetails: false}
   }
 
+  componentWillMount() {
+    return waitForDataAndSetState(getDataGouvPublication(this.props.dataset.recordId), this, 'dataGouvPublication')
+  }
+
+  componentWillUnmount() {
+    return cancelAllPromises(this)
+  }
+
   handleDetails() {
     this.setState({showDetails: !this.state.showDetails})
   }
 
   render() {
-    const { showDetails } = this.state
+    const { showDetails, dataGouvPublication } = this.state
     const { metadata, organizations, dataset } = this.props.dataset
     const licenseCheck = checkLicense(metadata.license)
     const producersCheck = checkProducers(organizations)
     const dataAvailabilityCheck = checkDataAvailability(dataset.distributions)
 
     if (licenseCheck && producersCheck && dataAvailabilityCheck) {
-      if (metadata.datagouvLink) {
+      if (dataGouvPublication) {
         return (
           <div>
-            <a href={metadata.datagouvLink}>Consulter</a> le jeu de données sur <a href="https://www.data.gouv.fr/">data.gouv.fr</a>
+            <a href={dataGouvPublication.remoteUrl}>Consulter</a> le jeu de données sur <a href="https://www.data.gouv.fr/">data.gouv.fr</a>
           </div>
         )
       } else {
