@@ -135,3 +135,10 @@ export function getProducersToAssociate(catalogId) {
 export function getOrganizations(organizationsId) {
   return Promise.all(organizationsId.map( id => getOrganization(id)))
 }
+
+export function getDataGouvPublication(datasetId) {
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  const url = `https://inspire.data.gouv.fr/api/geogw/records/${datasetId}/publications/dgv`
+
+  return _get(url)
+}
