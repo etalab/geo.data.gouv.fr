@@ -13,6 +13,7 @@ const Events = () => {
         <h1>Événements à venir</h1>
         <div className={eventsList}>
           <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=31508534876"/>
+          <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=32256259340"/>
         </div>
       </div>
     </DocumentTitle>
