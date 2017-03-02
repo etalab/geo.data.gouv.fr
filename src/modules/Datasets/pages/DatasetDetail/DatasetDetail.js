@@ -43,7 +43,6 @@ export default class DatasetDetail extends Component {
 
   render() {
     const { dataset, catalogs, errors } = this.state
-
     if (errors.length) return <Errors errors={errors} />
 
     if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
@@ -68,7 +67,7 @@ export default class DatasetDetail extends Component {
           </div>
 
           <div className={side}>
-            <Section title={'data.gouv.fr'}>
+            <Section title={'Publication sur data.gouv.fr'}>
               <DatasetChecklist dataset={dataset} />
             </Section>
           </div>

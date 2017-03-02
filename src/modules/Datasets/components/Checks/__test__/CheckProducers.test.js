@@ -4,38 +4,24 @@ import { shallow } from 'enzyme'
 import CheckProducers from '../CheckProducers'
 
 describe('<CheckProducers />', () => {
-  describe('check()', () => {
-    it('should return true when the array contains at least one element', () => {
-      const organizations = ['producteur']
-      const wrapper = shallow(<CheckProducers organizations={organizations} />)
+  it('should return true when the array contains at least one element', () => {
+    const organizations = ['producteur']
+    const wrapper = shallow(<CheckProducers organizations={organizations} valid={true}/>)
 
-      const result = wrapper.instance().check()
+    expect(wrapper.html()).to.contain('Au moins un producteur est identifié.')
+  })
 
-      expect(result).to.deep.equal({
-        content: organizations,
-        msg: 'Au moins un producteur est identifié.',
-        valid: true})
-    })
+  it('should return false when the array contains no elements', () => {
+    const organizations = []
+    const wrapper = shallow(<CheckProducers organizations={organizations} valid={false}/>)
 
-    it('should return false when the array contains no elements', () => {
-      const organizations = []
-      const wrapper = shallow(<CheckProducers organizations={organizations} />)
+    expect(wrapper.html()).to.contain('Le producteur n&#x27;a pas été identifié.')
+  })
 
-      const result = wrapper.instance().check()
+  it('should return false when the array is undefined', () => {
+    const organizations = undefined
+    const wrapper = shallow(<CheckProducers organizations={organizations} valid={false}/>)
 
-      expect(result).to.deep.equal({
-        msg: 'Le producteur n\'a pas été identifié.',
-        valid: false})
-    })
-
-    it('should return false when the array is undefined', () => {
-      const wrapper = shallow(<CheckProducers />)
-
-      const result = wrapper.instance().check({msg: '', content: {}, valid: false})
-
-      expect(result).to.deep.equal({
-        msg: 'Le producteur n\'a pas été identifié.',
-        valid: false})
-    })
+    expect(wrapper.html()).to.contain('Le producteur n&#x27;a pas été identifié.')
   })
 })
