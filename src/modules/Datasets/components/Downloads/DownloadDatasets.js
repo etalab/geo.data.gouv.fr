@@ -16,9 +16,11 @@ class DownloadDatasets extends Component {
     return (
       <div className={content}>
         <div className={vector}>
-          {vectorDistributions.map((distribution, idx) =>
+          {vectorDistributions.length ? vectorDistributions.map((distribution, idx) =>
             <Download key={idx} distribution={distribution} />
-          )}
+          ) :
+          <p>Aucune donnée vectorielle n'est disponible.</p>
+        }
           {otherDistributions.length ?
             <OtherDownload distributions={otherDistributions} />
             : null

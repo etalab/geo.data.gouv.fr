@@ -29,6 +29,7 @@ const Download = ({ distribution }) => {
     <div className={container}>
       <img src={distribution.preview  || '/assets/no-img.png'} alt="preview" />
       <div className={title}>{name}</div>
+      {distribution.available ?
         <select onChange={(evt) => window.location.href = evt.target.value}>>
           <option className={selectTitle}>Télécharger</option>
           {FORMATS.map((format, idx) =>
@@ -36,7 +37,12 @@ const Download = ({ distribution }) => {
               {format.label}
             </option>
           )}
+        </select> :
+        <select disabled>
+          <option >Télécharger</option>
         </select>
+      }
+
     </div>
   )
 }
