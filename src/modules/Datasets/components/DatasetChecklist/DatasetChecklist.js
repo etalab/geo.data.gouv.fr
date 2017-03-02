@@ -40,7 +40,7 @@ class DatasetChecklist extends Component {
       if (dataGouvPublication) {
         return (
           <div>
-            <a href={dataGouvPublication.remoteUrl}>Consulter</a> le jeu de données sur data.gouv.fr.
+            <a href={dataGouvPublication.remoteUrl}>Consulter le jeu de données sur data.gouv.fr</a>
           </div>
         )
       } else {
