@@ -31,7 +31,7 @@ describe('<DatasetChecklist />', () => {
         dataset.recordId = null
         const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
-        expect(wrapper.html()).to.contain('Ce jeu de données peut être publié sur data.gouv.fr')
+        expect(wrapper.text()).to.contain('Ce jeu de données peut être publié sur data.gouv.fr')
       })
     })
   })
@@ -41,7 +41,7 @@ describe('<DatasetChecklist />', () => {
       dataset.organizations = []
       const wrapper = shallow(<DatasetChecklist dataset={dataset} />)
 
-      expect(wrapper.html()).to.contain('Ce jeu de données ne peut pas être publié sur data.gouv.fr')
+      expect(wrapper.text()).to.contain('Ce jeu de données ne peut pas être publié sur data.gouv.fr')
     })
   })
 })
