@@ -67,7 +67,7 @@ export default class DatasetDetail extends Component {
           </div>
 
           <div className={side}>
-            <Section title={'data.gouv.fr'}>
+            <Section title={'Publication sur data.gouv.fr'}>
               <DatasetChecklist dataset={dataset} />
             </Section>
           </div>

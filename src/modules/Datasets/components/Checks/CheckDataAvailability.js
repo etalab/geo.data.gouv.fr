@@ -5,7 +5,7 @@ import CheckItem from './CheckItem'
 
 const DatasetDataAvailability = ({ valid, distributions }) => {
   let content = null
-  let msg = valid ?
+  const msg = valid ?
     'Au moins une des distribution est disponible.' :
     'Aucune distribution n\'a été trouvée.'
 

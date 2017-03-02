@@ -40,13 +40,13 @@ class DatasetChecklist extends Component {
       if (dataGouvPublication) {
         return (
           <div>
-            <a href={dataGouvPublication.remoteUrl}>Consulter</a> le jeu de données sur <a href="https://www.data.gouv.fr/">data.gouv.fr</a>
+            <a href={dataGouvPublication.remoteUrl}>Consulter</a> le jeu de données sur data.gouv.fr.
           </div>
         )
       } else {
         return (
           <div>
-            Ce jeu de données peut être publié sur data.gouv.fr
+            Ce jeu de données <b>peut</b> être publié sur data.gouv.fr
             <div className={highlight}>Une action du producteur est nécessaire.</div>
           </div>
         )
@@ -54,7 +54,7 @@ class DatasetChecklist extends Component {
     } else {
       return (
         <div className={checklist}>
-          Ce jeu de données ne peut pas être publié sur data.gouv.fr
+          Ce jeu de données <b>ne peut pas</b> être publié sur data.gouv.fr
           {showDetails ?
             (
               <div>
