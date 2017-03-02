@@ -1,5 +1,17 @@
+@import "../../../../theme/colors";
+
 .checklist {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+}
+
+.checklist button {
+  margin-top: 1em;
+  width: 50%;
+}
+
+.highlight {
+  margin-top: 1em;
+  color: var(--blue);
 }
