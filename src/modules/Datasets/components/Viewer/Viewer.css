@@ -28,3 +28,14 @@
 .buttons button:disabled {
   background-color: #f0f0f0;
 }
+
+.buttons .closeButton {
+  border: none;
+  max-width: 36px;
+  color: #fff;
+  background-color: #FF6358;
+}
+
+.buttons .closeButton:hover {
+  background-color: #FF7565;
+}

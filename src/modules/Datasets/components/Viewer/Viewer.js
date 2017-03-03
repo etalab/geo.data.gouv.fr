@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import DatasetTable from '../DatasetTable/DatasetTable'
 import PreviewMap from '../PreviewMap/PreviewMap'
 
-import { visualizer, buttons } from './Viewer.css'
+import { visualizer, buttons, closeButton } from './Viewer.css'
 
 class Viewer extends Component {
   constructor(props) {
@@ -15,33 +15,39 @@ class Viewer extends Component {
     this.setState({ mode })
   }
 
+  closed() {
+
+  }
+
   render() {
     const { mode } = this.state
-    const { preview, geojson, errors } = this.props
+    const { preview, geojson, closePreview, errors } = this.props
 
     if (!preview) return null
 
     if (mode === 'map') {
       return (
         <div className={visualizer}>
+          <div className={buttons}>
+            <button disabled>Carte</button>
+            <button onClick={() => this.changeMode('table')}>Tableau</button>
+            <button className={closeButton} onClick={() => closePreview()}>X</button>
+          </div>
           <PreviewMap
             distribution={preview.distribution}
             geojson={geojson}
             errors={errors}/>
-          <div className={buttons}>
-            <button disabled>Carte</button>
-            <button onClick={() => this.changeMode('table')}>Tableau</button>
-          </div>
         </div>
       )
     } else {
       return (
         <div className={visualizer}>
-          <DatasetTable geojson={geojson} />
           <div className={buttons}>
             <button onClick={() => this.changeMode('map')}>Carte</button>
             <button disabled>Tableau</button>
+            <button className={closeButton} onClick={() => closePreview()}>X</button>
           </div>
+          <DatasetTable geojson={geojson} />
         </div>
       )
     }
