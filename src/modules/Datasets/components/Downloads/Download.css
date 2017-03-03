@@ -1,49 +1,35 @@
 @import "../../../../theme/colors";
 
-.download {
-  border-left: 2px solid var(--blue);
-  padding-left: 10px;
-  margin: 15px;
-}
-
 .container {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  max-width: 240px;
+  margin: 0 1em 1em 0;
+}
+
+.container img {
+  width: 240px;
+}
+
+.container select {
+  border: none;
+  padding: .5em;
+  margin: 0;
+  width: 100%;
+  height: 28px;
+  background-color: #2185C5;
+  color: #fff;
 }
 
 .title {
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin: 10px 0 10px 0;
+  font-weight: 400;
 }
 
-.formats {
-  margin: 5px;
-}
-
-.container a {
-  padding: 5px;
-}
-
-.container a:hover {
-  color: #fff;
-  cursor: pointer;
-  background-color: var(--blue);
-}
-
-button.viewerButton {
-  padding: 5px 10px;
-  color: #fff;
-  border: none;
-  background-color: var(--blue);
-}
-
-button.viewerButton:hover {
-  background-color: var(--highlightBlue);
-}
-
-button.viewerButton:disabled {
-  background-color: #f0f0f0;
+option.selectTitle{
+    display: none;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
 }

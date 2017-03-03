@@ -1,6 +1,6 @@
 import React from 'react'
 import { strRightBack } from 'underscore.string'
-import { download, container, title, viewerButton, formats } from './Download.css'
+import { container, title, selectTitle } from './Download.css'
 
 const FORMATS = [
   {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'},
@@ -10,7 +10,7 @@ const FORMATS = [
   {label: 'CSV', format: 'CSV', projection: 'WGS84'},
 ]
 
-const Download = ({ distribution, isPreview, preview }) => {
+const Download = ({ distribution }) => {
   let link = 'https://inspire.data.gouv.fr/api/geogw/'
   let layerName
 
@@ -26,26 +26,23 @@ const Download = ({ distribution, isPreview, preview }) => {
   const name = layerName || distribution.typeName
 
   return (
-    <div className={download}>
+    <div className={container}>
+      <img src={distribution.preview  || '/assets/no-img.png'} alt="preview" />
       <div className={title}>{name}</div>
-      <div>
-        <div className={container}>
-          <div>
-            <div>Télécharger<i className="download icon"></i></div>
-            <div className={formats}>
-              { !distribution.available ? <p>Indisponible</p> :
-                FORMATS.map( (format, idx) => <a key={idx} href={link  + `?format=${format.format}&projection=${format.projection}`}>{format.label}</a>)
-              }
-            </div>
-          </div>
-          { !distribution.available ?
-            <button className={viewerButton} disabled>Visualiser</button> :
-            <button className={viewerButton} onClick={() => preview({distribution, link})}>
-              Visualiser { isPreview ? <i className="unhide icon"></i> : null }
-            </button>
-          }
-        </div>
-      </div>
+      {distribution.available ?
+        <select onChange={(evt) => window.location.href = evt.target.value}>>
+          <option className={selectTitle}>Télécharger</option>
+          {FORMATS.map((format, idx) =>
+            <option key={idx} value={link  + `?format=${format.format}&projection=${format.projection}`}>
+              {format.label}
+            </option>
+          )}
+        </select> :
+        <select disabled>
+          <option >Télécharger</option>
+        </select>
+      }
+
     </div>
   )
 }

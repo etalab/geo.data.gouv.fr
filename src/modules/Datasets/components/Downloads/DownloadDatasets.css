@@ -1,20 +1,9 @@
 .content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  overflow-x: scroll;
+  flex-direction: column;
 }
 
 .vector {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
-  flex-grow: 1;
-  max-width: 60%;
-}
-
-@media (max-width: 768px) {
-  .vector {
-    max-width: 100%;
-  }
+  flex-wrap: wrap;
 }
