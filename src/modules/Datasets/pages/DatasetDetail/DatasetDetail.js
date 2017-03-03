@@ -6,7 +6,7 @@ import DatasetSection from '../../components/DatasetSection/DatasetSection'
 import DatasetChecklist from '../../components/DatasetChecklist/DatasetChecklist'
 import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
-import Previews from '../../components/Previews/Previews'
+import Thumbnails from '../../components/Thumbnails/Thumbnails'
 import Section from '../../components/Section/Section'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
@@ -72,9 +72,9 @@ export default class DatasetDetail extends Component {
               <DatasetChecklist dataset={dataset} />
             </Section>
 
-            {dataset.previews && dataset.previews.length ?
-              <Section title={'Prévisualisations'}>
-                <Previews previews={dataset.previews} />
+            {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length ?
+              <Section title={'Vignettes'}>
+                <Thumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
               </Section> :
               null
             }
