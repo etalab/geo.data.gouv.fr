@@ -1,18 +1,11 @@
 .container {
-
+  text-align: center;
 }
 
 .container img {
-  width: 120px;
+  width: 160px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto;
-}
-
-.infos {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  margin-top: 1em;
 }

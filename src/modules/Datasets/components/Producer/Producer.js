@@ -1,17 +1,14 @@
 import React from 'react'
 
-import { container, infos } from './Producer.css'
+import { container } from './Producer.css'
 
 const Producer = ({ producer }) => {
   if (!producer) return <div>Information indisponible</div>
 
   return (
     <div className={container}>
-      <div><img src={producer.logo || '/assets/no-img.png'} alt="producer logo" /></div>
-      <div className={infos}>
-        <div><b>{producer.producers.length}</b> producteurs</div>
-        <div><b>{producer.datasets.length}</b> jeux de données</div>
-      </div>
+      <img src={producer.logo || '/assets/avatar.png'} alt="producer logo" />
+      <h4>{producer.name}</h4>
     </div>
   )
 }
