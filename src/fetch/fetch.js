@@ -49,7 +49,26 @@ export function search(q, filters, offset) {
 }
 
 export function getUser() {
-  return _get('https://inspire.data.gouv.fr/dgv/api/me')
+  const url = 'https://inspire.data.gouv.fr/dgv/api/me'
+  const options = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    mode: 'cors',
+    credentials: 'include',
+    method: 'GET',
+  }
+
+  return fetch(url, options)
+    .then(response => {
+      if (response.status === 500) throw new Error('Internal Server Error')
+      if (response.status === 401) throw new Error('Unauthorized')
+      return response.json()
+    })
+    .catch((err) => {
+      throw err
+    });
 }
 
 export function getOrganization(organizationId) {
@@ -138,7 +157,7 @@ export function getOrganizations(organizationsId) {
 
 export function getDataGouvPublication(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  const url = `https://inspire.data.gouv.fr/api/geogw/records/${datasetId}/publications/dgv`
+  const url = `https://inspire.data.gouv.fr/api/geogw/records/${datasetId}/publications`
 
   return _get(url)
 }

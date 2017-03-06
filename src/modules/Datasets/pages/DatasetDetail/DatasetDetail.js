@@ -34,7 +34,7 @@ export default class DatasetDetail extends Component {
       this.updateDataGouvPublication(),
     ])
   }
-  
+
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
@@ -55,7 +55,7 @@ export default class DatasetDetail extends Component {
     const { dataset, catalogs, dataGouvPublication, errors } = this.state
     if (errors.length) return <Errors errors={errors} />
 
-    if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
+    if (!dataset || !catalogs || !dataGouvPublication) return <div className={loader}><ContentLoader /></div>
 
     return (
       <DocumentTitle title={dataset.metadata.title}>
@@ -79,7 +79,10 @@ export default class DatasetDetail extends Component {
           <div className={side}>
 
             <Section title={'Producteur'}>
-              <Producer datasetId={dataGouvPublication.remoteId} />
+              <Producer
+                datasetId={dataGouvPublication.length ? dataGouvPublication[0].remoteId : null}
+                producerName={dataset.organizations[0]}
+                />
             </Section>
 
             {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length ?

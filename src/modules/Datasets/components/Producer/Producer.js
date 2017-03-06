@@ -20,14 +20,15 @@ class Producer extends Component {
   }
 
   render() {
+    const { datasetId, producerName } = this.props
     const { dataset } = this.state
 
-    if (!dataset) return null
+    if (datasetId && !dataset) return null
 
     return (
       <div className={container}>
-        <img src={dataset.organization.logo || '/assets/avatar.png'} alt="producer logo" />
-        <h4>{dataset.organization.name}</h4>
+        <img src={dataset ? dataset.organization.logo : '/assets/avatar.png'} alt="producer logo" />
+        <h4>{producerName}</h4>
       </div>
     )
   }
