@@ -15,7 +15,7 @@ import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 import Errors from '../../../../components/Errors/Errors'
 
-import { fetchDataset, fetchCatalogs } from '../../../../fetch/fetch'
+import { fetchDataset, fetchCatalogs, getDataGouvPublication } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
 import { container, loader, main, side } from './DatasetDetail.css'
@@ -31,8 +31,10 @@ export default class DatasetDetail extends Component {
     return Promise.all([
       this.updateDataset(),
       this.updateCatalogs(),
+      this.updateDataGouvPublication(),
     ])
   }
+  
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
@@ -45,8 +47,12 @@ export default class DatasetDetail extends Component {
     return waitForDataAndSetState(fetchCatalogs(), this, 'catalogs')
   }
 
+  updateDataGouvPublication() {
+    return waitForDataAndSetState(getDataGouvPublication(this.props.params.datasetId), this, 'dataGouvPublication')
+  }
+
   render() {
-    const { dataset, catalogs, errors } = this.state
+    const { dataset, catalogs, dataGouvPublication, errors } = this.state
     if (errors.length) return <Errors errors={errors} />
 
     if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
@@ -73,7 +79,7 @@ export default class DatasetDetail extends Component {
           <div className={side}>
 
             <Section title={'Producteur'}>
-              <Producer producer={dataset.producer} />
+              <Producer datasetId={dataGouvPublication.remoteId} />
             </Section>
 
             {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length ?
