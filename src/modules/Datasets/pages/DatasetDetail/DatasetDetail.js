@@ -55,7 +55,7 @@ export default class DatasetDetail extends Component {
     const { dataset, catalogs, dataGouvPublication, errors } = this.state
     if (errors.length) return <Errors errors={errors} />
 
-    if (!dataset || !catalogs || !dataGouvPublication) return <div className={loader}><ContentLoader /></div>
+    if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
 
     return (
       <DocumentTitle title={dataset.metadata.title}>
