@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import DatasetTable from '../DatasetTable/DatasetTable'
 import PreviewMap from '../PreviewMap/PreviewMap'
 
-import { visualizer, buttons, closeButton } from './Viewer.css'
+import { visualizer, buttons, closeButton, active } from './Viewer.css'
 
 class Viewer extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class Viewer extends Component {
       return (
         <div className={visualizer}>
           <div className={buttons}>
-            <button disabled>Carte</button>
+            <button className={active}>Carte</button>
             <button onClick={() => this.changeMode('table')}>Tableau</button>
             <button className={closeButton} onClick={() => closePreview()}>X</button>
           </div>
@@ -44,7 +44,7 @@ class Viewer extends Component {
         <div className={visualizer}>
           <div className={buttons}>
             <button onClick={() => this.changeMode('map')}>Carte</button>
-            <button disabled>Tableau</button>
+            <button className={active}>Tableau</button>
             <button className={closeButton} onClick={() => closePreview()}>X</button>
           </div>
           <DatasetTable geojson={geojson} />
