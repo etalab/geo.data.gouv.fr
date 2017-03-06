@@ -25,8 +25,9 @@
   background-color: var(--highlightBlue);
 }
 
-.buttons button:disabled {
-  background-color: #f0f0f0;
+button.active {
+  padding: 3px 10px;
+  border-bottom: 4px solid var(--lightblue);
 }
 
 .buttons .closeButton {
