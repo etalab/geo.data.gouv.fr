@@ -12,7 +12,10 @@ class Producer extends Component {
   }
 
   componentWillMount() {
-    return waitForDataAndSetState(getDatasetOnDataGouv(this.props.datasetId), this, 'dataset')
+    const { datasetId } = this.props
+
+    if (!datasetId) return
+    return waitForDataAndSetState(getDatasetOnDataGouv(datasetId), this, 'dataset')
   }
 
   componentWillUnmount() {

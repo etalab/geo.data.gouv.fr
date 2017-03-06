@@ -51,10 +51,6 @@ export function search(q, filters, offset) {
 export function getUser() {
   const url = 'https://inspire.data.gouv.fr/dgv/api/me'
   const options = {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
     mode: 'cors',
     credentials: 'include',
     method: 'GET',
@@ -160,6 +156,7 @@ export function getDataGouvPublication(datasetId) {
   const url = `https://inspire.data.gouv.fr/api/geogw/records/${datasetId}/publications`
 
   return _get(url)
+    .then(p => p.find(pub => pub.target === 'dgv'))
 }
 
 // DATA.GOUV.FR
