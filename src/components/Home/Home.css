@@ -88,14 +88,13 @@
   }
 }
 
-.events {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.events a {
+  color: #fff;
 }
 
-.events iframe {
-  margin: 1em;
+.events a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .catalogs {
