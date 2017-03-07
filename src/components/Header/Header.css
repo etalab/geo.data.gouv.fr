@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: space-between;
   color: var(--white);
+  z-index: 1;
 }
 
 .nav a {
