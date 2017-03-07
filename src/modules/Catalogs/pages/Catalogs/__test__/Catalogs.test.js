@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import ContentLoader from '../../../../../components/Loader/ContentLoader'
 import catalogs from '../../../../../fetch/__test__/catalogs.json'
@@ -22,7 +22,8 @@ describe('<Catalogs />', () => {
 
   it('should render a loader when no catalog is fetch', () => {
     const loader = <ContentLoader />
-    const wrapper = shallow(<Catalogs />)
+    const wrapper = mount(<Catalogs />)
+
     expect(wrapper.containsMatchingElement(loader)).to.be.true
   })
 })
