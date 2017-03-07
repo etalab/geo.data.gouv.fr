@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 
-import EventbriteWidget from '../Event/EventbriteWidget'
 import SearchInput from '../SearchInput/SearchInput'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
 
@@ -156,8 +155,7 @@ class Home extends Component {
 
             <h2 id="evenements">Événements à venir</h2>
             <div className={events}>
-              <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=31508534876"/>
-              <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=32256259340"/>
+              <Link to="events">Voir nos prochains évènements</Link>
             </div>
           </div>
         </div>
