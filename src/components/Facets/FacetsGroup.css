@@ -8,6 +8,10 @@
   margin-bottom: 1em;
 }
 
+.container h4:first-letter {
+  text-transform: uppercase;
+}
+
 @media (max-width: 768px) {
   .container {
     display: none;
