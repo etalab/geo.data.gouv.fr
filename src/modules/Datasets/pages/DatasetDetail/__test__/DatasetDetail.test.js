@@ -26,8 +26,7 @@ describe('<DatasetDetail />', () => {
       return wrapper.instance()
         .componentWillMount()
         .then(() => {
-          const titleBlock = <h1>{datasetMock.metadata.title}</h1>
-          expect(wrapper.containsMatchingElement(titleBlock)).to.be.true
+          expect(wrapper.html()).to.contain(datasetMock.metadata.title)
         })
     })
   })
