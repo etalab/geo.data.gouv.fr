@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, TileLayer, Polygon } from 'react-leaflet'
+import { Map, TileLayer, GeoJSON } from 'react-leaflet'
 
 import styles from './SpatialExtentMap.css'
 
@@ -36,14 +36,16 @@ class SpatialExtentMap extends Component {
 
   render() {
     const { zoom, lat, lng } = this.state
-    const { polygon } = this.props
+    const { extent } = this.props
     const position = [lat, lng]
+    const feature = { type: 'Feature', geometry: extent, properties: {} }
+    const fc = { type: 'FeatureCollection', features: [feature] }
 
     return (
       <div className={styles.container}>
-        <Map ref="spatialMap" className={styles.map} center={position} zoom={zoom}>
+        <Map ref="spatialMap" className={styles.map} center={position} zoom={zoom} zoomControl={false}>
           <TileLayer attribution={MAP.osmAttribution} url={MAP.osmUrl} />
-          <Polygon color='blue' ref="vectors" positions={polygon} />
+          <GeoJSON color='blue' fillOpacity={0.1} weight={2} ref="vectors" data={fc} />
         </Map>
       </div>
     )

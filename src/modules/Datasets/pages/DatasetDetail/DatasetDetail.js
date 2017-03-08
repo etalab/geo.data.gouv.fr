@@ -88,7 +88,7 @@ export default class DatasetDetail extends Component {
 
             {dataset.metadata.spatialExtent ?
               <Section title={'Étendue spatiale'}>
-                <SpatialExtentMap polygon={dataset.metadata.spatialExtent.coordinates} />
+                <SpatialExtentMap extent={dataset.metadata.spatialExtent} />
               </Section> : null
             }
           </div>
