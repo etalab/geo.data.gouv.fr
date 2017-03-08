@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container div {
+  margin-bottom: 5px;
+}
+
+.histo {
+}

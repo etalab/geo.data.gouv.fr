@@ -10,6 +10,7 @@ import Contacts from '../../components/Contact/Contacts'
 import Thumbnails from '../../components/Thumbnails/Thumbnails'
 import Producer from '../../components/Producer/Producer'
 import Discussions from '../../components/Discussions/Discussions'
+import TechnicalInformations from '../../components/TechnicalInformations/TechnicalInformations'
 import Section from '../../components/Section/Section'
 import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
 
@@ -65,6 +66,10 @@ export default class DatasetDetail extends Component {
         <div className={container}>
           <div className={main}>
             <DatasetSection dataset={dataset} />
+
+            <Section title={'Informations technique'}>
+              <TechnicalInformations dataset={dataset} />
+            </Section>
 
             <Section title={'Téléchargements'}>
               <DownloadDatasets distributions={dataset.dataset.distributions} />
