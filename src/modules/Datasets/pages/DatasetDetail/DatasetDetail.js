@@ -9,7 +9,7 @@ import FiltersSection from '../../components/FiltersSection/FiltersSection'
 import Contacts from '../../components/Contact/Contacts'
 import Thumbnails from '../../components/Thumbnails/Thumbnails'
 import Section from '../../components/Section/Section'
-import PreviewMap from '../PreviewMap/PreviewMap'
+import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 import Errors from '../../../../components/Errors/Errors'
@@ -86,9 +86,11 @@ export default class DatasetDetail extends Component {
               <Contacts contacts={dataset.metadata.contacts}/>
             </Section>
 
-            <Section title={'Étendue spatiale'}>
-              <PreviewMap geojson={dataset.metadata.spatiale.geojson}/>
-            </Section>
+            {dataset.metadata.spatialExtent ?
+              <Section title={'Étendue spatiale'}>
+                <SpatialExtentMap polygon={dataset.metadata.spatialExtent.coordinates} />
+              </Section> : null
+            }
           </div>
 
         </div>
