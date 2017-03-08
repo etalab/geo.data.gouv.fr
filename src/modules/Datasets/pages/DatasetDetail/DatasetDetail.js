@@ -7,6 +7,7 @@ import DatasetChecklist from '../../components/DatasetChecklist/DatasetChecklist
 import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
 import Contacts from '../../components/Contact/Contacts'
+import Thumbnails from '../../components/Thumbnails/Thumbnails'
 import Section from '../../components/Section/Section'
 
 import ContentLoader from '../../../../components/Loader/ContentLoader'
@@ -44,7 +45,6 @@ export default class DatasetDetail extends Component {
 
   render() {
     const { dataset, catalogs, errors } = this.state
-
     if (errors.length) return <Errors errors={errors} />
 
     if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
@@ -69,7 +69,15 @@ export default class DatasetDetail extends Component {
           </div>
 
           <div className={side}>
-            <Section title={'data.gouv.fr'}>
+
+            {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length ?
+              <Section title={'Aperçu des données'}>
+                <Thumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
+              </Section> :
+              null
+            }
+
+            <Section title={'Publication sur data.gouv.fr'}>
               <DatasetChecklist dataset={dataset} />
             </Section>
 

@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 
 import Check from './Check'
 
-export const ACCEPTED_LICENSES = [
-  'fr-lo',
-  'odbl',
-]
+import { ACCEPTED_LICENSES } from '../../../../helpers/dataGouvChecks'
 
 class CheckLicense extends Component {
   check() {
     const { license } = this.props
-    let valid = false
     let msg = ''
     let content = (
       <div>
@@ -24,18 +20,18 @@ class CheckLicense extends Component {
     if (!license) {
       msg = 'Aucune licence n\'a pu être trouvée.'
     } else if (ACCEPTED_LICENSES.includes(license)) {
-      valid = true
       msg = `La licence ${license} est valide.`
       content = undefined
     } else {
       msg = `La licence ${license} n'est pas reconnue.`
     }
 
-    return {msg, content, valid}
+    return {msg, content}
   }
 
   render() {
-    const { valid, msg, content } = this.check()
+    const { valid } = this.props
+    const { msg, content } = this.check()
 
     return (
       <Check title='Licence' isValid={valid} msg={msg}>

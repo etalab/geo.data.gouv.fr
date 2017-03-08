@@ -1,0 +1,28 @@
+@import "../../../../theme/colors";
+
+.main img {
+  width: 280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list img {
+  margin: 1em;
+  width: 68px;
+}
+
+.list img:hover {
+  cursor: pointer;
+}
+
+img.selected {
+  border: 2px solid var(--blue);
+}

@@ -1,22 +1,22 @@
 import { remove, unionWith, find, isEqual, some } from 'lodash'
 
 export const filterTradTable = {
-  availability: 'Téléchargeable',
-  dgvPublication: 'Publié sur data.gouv.fr',
-  distributionFormat: 'Format de distribution',
-  keyword: 'Mot-clé',
-  metadataType: 'Type de metadonnée',
-  opendata: 'Donnée ouverte',
-  organization: 'Organisation',
-  representationType: 'Type géographique',
-  type: 'Type',
-  catalog: 'Catalogue',
-  yes: 'Oui',
-  no: 'Non',
-  'not-determined': 'Non déterminé',
-  other: 'Autre',
-  unknown: 'Inconnu',
-  none: 'Aucun',
+  availability: 'téléchargeable',
+  dgvPublication: 'publié sur data.gouv.fr',
+  distributionFormat: 'format de distribution',
+  keyword: 'mot-clé',
+  metadataType: 'type de metadonnée',
+  opendata: 'donnée ouverte',
+  organization: 'organisation',
+  representationType: 'type géographique',
+  type: 'type',
+  catalog: 'catalogue',
+  yes: 'oui',
+  no: 'non',
+  'not-determined': 'non déterminé',
+  other: 'autre',
+  unknown: 'inconnu',
+  none: 'aucun',
 }
 
 export function translateFilters(filter) {

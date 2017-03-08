@@ -1,7 +1,6 @@
 @import "../../theme/colors";
 
 .link {
-  text-transform: capitalize;
   position: relative;
   padding: .4em .5em;
   margin: 2px 2px 2px 0;
@@ -10,11 +9,24 @@
   text-align: center;
   color: var(--blue);
   background-color: var(--lightestblue);
-  text-overflow: ellipsis;
   font-size: 12px;
-  max-width: 200px;
   overflow: hidden;
   border: none;
+}
+
+.link span {
+  display: table-cell;
+}
+
+.link span::first-letter {
+  text-transform: uppercase;
+}
+
+.filterValue {
+  padding-left: 5px;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  overflow: hidden;
 }
 
 .link:hover {
