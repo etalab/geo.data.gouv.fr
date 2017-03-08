@@ -4745,9 +4745,9 @@ react-element-to-jsx-string@^5.0.0:
     stringify-object "2.4.0"
     traverse "^0.6.6"
 
-react-leaflet@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.1.0.tgz#0ec55ff030fae8c90e6e00a48163dcbccbadb4d8"
+react-leaflet@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.1.1.tgz#850751010b12306a4e640a6d1952f8b615812c9d"
   dependencies:
     lodash "^4.0.0"
     warning "^3.0.0"
@@ -5087,7 +5087,11 @@ scroll-behavior@^0.9.1:
     dom-helpers "^3.0.0"
     invariant "^2.2.1"
 
-semver@~5.3.0:
+select-hose@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
+
+"semver@2 || 3 || 4 || 5", semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
