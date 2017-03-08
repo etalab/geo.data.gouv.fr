@@ -29,6 +29,7 @@ class Discussions extends Component {
     const { datasetId } = this.props
 
     if (!discussions) return null
+    if (!discussions.length) return <a href={`https://www.data.gouv.fr/fr/datasets/${datasetId}/#discussion-create`}>Démarrer une nouvelle discussion sur data.gouv.fr</a>
 
     return (
       <div className={container}>
