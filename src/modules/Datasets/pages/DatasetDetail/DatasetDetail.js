@@ -9,6 +9,7 @@ import FiltersSection from '../../components/FiltersSection/FiltersSection'
 import Contacts from '../../components/Contact/Contacts'
 import Thumbnails from '../../components/Thumbnails/Thumbnails'
 import Producer from '../../components/Producer/Producer'
+import Discussions from '../../components/Discussions/Discussions'
 import Section from '../../components/Section/Section'
 import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
 
@@ -53,6 +54,8 @@ export default class DatasetDetail extends Component {
 
   render() {
     const { dataset, catalogs, dataGouvPublication, errors } = this.state
+    const remoteId = dataGouvPublication ? dataGouvPublication.remoteId : null
+
     if (errors.length) return <Errors errors={errors} />
 
     if (!dataset || !catalogs) return <div className={loader}><ContentLoader /></div>
@@ -63,16 +66,20 @@ export default class DatasetDetail extends Component {
           <div className={main}>
             <DatasetSection dataset={dataset} />
 
-            <Section title={'Filtres'}>
-              <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
-            </Section>
-
             <Section title={'Téléchargements'}>
               <DownloadDatasets distributions={dataset.dataset.distributions} />
             </Section>
 
             <Section title={'Liens'}>
               <LinksSection links={dataset.metadata.links} />
+            </Section>
+
+            <Section title={'Discussions'}>
+              <Discussions datasetId={remoteId}/>
+            </Section>
+
+            <Section title={'Filtres'}>
+              <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
             </Section>
           </div>
 

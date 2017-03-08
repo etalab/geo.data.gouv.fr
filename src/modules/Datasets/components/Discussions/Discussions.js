@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
-import { getDatasetOnDataGouv } from '../../../../fetch/fetch'
+import Discussion from './Discussion'
+
+import { getDiscussions } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { container } from './Producer.css'
+import { container } from './Discussions.css'
 
-class Producer extends Component {
+class Discussions extends Component {
   constructor(props) {
     super(props)
     this.state = {errors: []}
@@ -15,7 +17,7 @@ class Producer extends Component {
     const { datasetId } = this.props
 
     if (!datasetId) return
-    return waitForDataAndSetState(getDatasetOnDataGouv(datasetId), this, 'dataset')
+    return waitForDataAndSetState(getDiscussions(datasetId), this, 'discussions')
   }
 
   componentWillUnmount() {
@@ -23,15 +25,14 @@ class Producer extends Component {
   }
 
   render() {
+    const { discussions } = this.state
     const { datasetId } = this.props
-    const { dataset } = this.state
 
-    if (!datasetId || !dataset || !dataset.organization) return null
+    if (!discussions) return null
 
     return (
       <div className={container}>
-        <img src={dataset ? dataset.organization.logo : '/assets/avatar.png'} alt="producer logo" />
-        <h4>{dataset.organization.name}</h4>
+        {discussions.data.map((discussion, idx) => <Discussion key={idx} datasetId={datasetId} discussion={discussion} />)}
       </div>
     )
   }
@@ -39,4 +40,4 @@ class Producer extends Component {
 
 
 
-export default Producer
+export default Discussions
