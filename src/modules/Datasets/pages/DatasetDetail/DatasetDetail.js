@@ -81,7 +81,6 @@ export default class DatasetDetail extends Component {
             <Section title={'Producteur'}>
               <Producer
                 datasetId={dataGouvPublication ? dataGouvPublication.remoteId : null}
-                producerName={dataset.organizations}
                 />
             </Section>
 
