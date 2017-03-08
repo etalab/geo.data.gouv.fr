@@ -6,7 +6,7 @@ import { divider } from './Contacts.css'
 
 const Contacts = ({ contacts }) => {
   if (!contacts || !contacts.length) return <div>Aucun contact</div>
-  
+
   return (
     <div>
       {contacts.map((contact, idx) =>

@@ -74,7 +74,7 @@ export default class DatasetDetail extends Component {
             </Section>
 
             <Section title={'Contacts'}>
-              <Contacts contacts={dataset.contacts}/>
+              <Contacts contacts={dataset.metadata.contacts}/>
             </Section>
           </div>
 

@@ -1,29 +1,27 @@
 import React from 'react'
 
+import { translateRole, tagsColors } from '../../../../helpers/roles'
+
 import { container, name, tag } from './Contact.css'
-
-import { colors } from '../../../../tools'
-
-const tags = {
-  producer: colors[0],
-  distributor: colors[1],
-}
 
 const Contact = ({ contact }) => {
   const unknown = 'Non renseigné'
+  const address = contact.address ?
+    `${contact.address[0]} ${contact.town} - ${contact.postalCode} ${contact.country}` :
+    null
 
   if (!contact) return <div>{unknown}</div>
 
   return (
     <div className={container}>
       <div className={name}>
-        <div>{contact.nom ? contact.nom : unknown}</div>
-        <div className={tag} style={{backgroundColor: tags[contact.role]}}>{contact.role}</div>
+        <div>{contact.organizationName ? contact.organizationName : unknown}</div>
+        <div className={tag} style={{backgroundColor: tagsColors[contact.role]}}>{translateRole(contact.role)}</div>
       </div>
-      <div>{contact.address ? contact.address : unknown}</div>
-      <div><i className="call icon"></i>{contact.tel ? contact.tel : unknown}</div>
+      <div>{address}</div>
+      <div><i className="call icon"></i>{contact.phoneNumber ? contact.phoneNumber : unknown}</div>
       <div><i className="mail outline icon"></i>
-        {contact.mail ? <a href={`mailto:${contact.mail}`}>{contact.mail}</a> : unknown}
+        {contact.email ? <a href={`emailto:${contact.email}`}>{contact.email}</a> : unknown}
       </div>
     </div>
   )
