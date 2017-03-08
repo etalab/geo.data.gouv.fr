@@ -67,7 +67,7 @@ export default class DatasetDetail extends Component {
           <div className={main}>
             <DatasetSection dataset={dataset} />
 
-            <Section title={'Informations technique'}>
+            <Section title={'Informations techniques'}>
               <TechnicalInformations dataset={dataset} technicalInformations={{}}/>
             </Section>
 
