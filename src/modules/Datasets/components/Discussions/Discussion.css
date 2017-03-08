@@ -1,0 +1,49 @@
+@import "../../../../theme/colors";
+
+.container {
+  margin: 0.3em;
+  padding: 1em;
+  border-left: 1px solid var(--blue);
+  margin-bottom: 1em;
+}
+
+.resolved {
+  float: right;
+  text-align: right;
+  background-color: var(--green);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.title {
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.replies {
+  margin-top: 0.5em;
+  color: var(--blue)
+}
+
+.replies:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.answer {
+  margin-right: 1em;
+}
+
+.answer:hover {
+  text-decoration: underline;
+}
