@@ -28,12 +28,13 @@ class Discussions extends Component {
     const { discussions } = this.state
     const { datasetId } = this.props
 
-    if (!discussions) return null
-    if (!discussions.length) return <a href={`https://www.data.gouv.fr/fr/datasets/${datasetId}/#discussion-create`}>Démarrer une nouvelle discussion sur data.gouv.fr</a>
-
     return (
       <div className={container}>
-        {discussions.data.map((discussion, idx) => <Discussion key={idx} datasetId={datasetId} discussion={discussion} />)}
+        {discussions ?
+          discussions.data.map((discussion, idx) => <Discussion key={idx} datasetId={datasetId} discussion={discussion} />)
+          : null
+        }
+        <a href={`https://www.data.gouv.fr/fr/datasets/${datasetId}/#discussion-create`}>Démarrer une nouvelle discussion sur data.gouv.fr</a>
       </div>
     )
   }
