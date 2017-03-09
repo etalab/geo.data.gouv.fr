@@ -90,17 +90,16 @@ export default class DatasetDetail extends Component {
 
           <div className={side}>
 
-            <Section title={'Producteur'}>
-              <Producer
-                datasetId={dataGouvPublication ? dataGouvPublication.remoteId : null}
-                />
-            </Section>
+            {remoteId ?
+              <Section title={'Producteur'}>
+                <Producer datasetId={remoteId} />
+              </Section> : null
+            }
 
             {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length ?
               <Section title={'Aperçu des données'}>
                 <Thumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
-              </Section> :
-              null
+              </Section> : null
             }
 
             <Section title={'Publication sur data.gouv.fr'}>
