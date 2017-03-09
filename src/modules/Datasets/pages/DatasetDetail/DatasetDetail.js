@@ -106,15 +106,15 @@ export default class DatasetDetail extends Component {
               <DatasetChecklist dataset={dataset} />
             </Section>
 
-            <Section title={'Contacts'}>
-              <Contacts contacts={dataset.metadata.contacts}/>
-            </Section>
-
             {dataset.metadata.spatialExtent ?
               <Section title={'Étendue spatiale'}>
                 <SpatialExtentMap extent={dataset.metadata.spatialExtent} />
               </Section> : null
             }
+
+            <Section title={'Contacts'}>
+              <Contacts contacts={dataset.metadata.contacts}/>
+            </Section>
           </div>
 
         </div>
