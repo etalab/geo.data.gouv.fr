@@ -1,23 +1,20 @@
-@import "../../../../theme/shadows";
-
 .container {
+  margin: 3em;
   display: flex;
-  flex-direction: column;
-  margin: 5em;
+}
+
+.main {
+  width: 70%;
+  margin-right: 1em;
+}
+
+.side {
+  width: 30%;
 }
 
 .loader {
   text-align: center;
   margin-top: 5em;
-}
-
-.section {
-  padding-top: 2em;
-  padding-bottom: 2em;
-  background-color: white;
-  padding: 2em;
-  margin-bottom: 2em;
-  box-shadow: var(--shadow);
 }
 
 @media (max-width: 768px) {

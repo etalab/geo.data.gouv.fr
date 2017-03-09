@@ -23,6 +23,10 @@ class DownloadDatasets extends Component {
     return waitForDataAndSetState(fetchGeoJSON(preview.link), this, 'geojson')
   }
 
+  resetPreview() {
+    this.setState({preview: null})
+  }
+
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
@@ -39,12 +43,12 @@ class DownloadDatasets extends Component {
     return (
       <div className={content}>
         <div className={vector}>
-          <h3>Téléchargements</h3>
           <h4>Données vectorielles</h4>
           {vectorDownload}
           {otherDownload}
         </div>
         <Viewer
+          closePreview={() => this.resetPreview()}
           preview={preview}
           geojson={geojson}
           errors={errors} />

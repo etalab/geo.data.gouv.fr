@@ -1,0 +1,29 @@
+@import "../../../../theme/colors";
+
+.avatar {
+  min-width: 50px;
+  max-height: 50px;
+}
+
+.message {
+  display: flex;
+  margin-top: 1em;
+}
+
+.header {
+  display: flex;
+}
+
+.userName {
+  font-weight: bold;
+}
+
+.postedOn {
+  margin-left: 1em;
+  font-weight: 100;
+  color: #505050;
+}
+
+.content {
+  margin-left: 0.5em;
+}

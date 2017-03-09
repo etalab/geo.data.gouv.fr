@@ -14,6 +14,8 @@ import organizationDetail from '../__test__/organizationDetail.json'
 import organizationMetrics from '../__test__/organizationMetrics.json'
 import organizationDatasets from '../__test__/organizationDatasets.json'
 import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
+import dataGouvPublication from '../__test__/dataGouvPublication.json'
+import dataGouvDataset from '../__test__/dataGouvDataset.json'
 
 export function fetchMetrics(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
@@ -107,4 +109,16 @@ export function getOrganizationProducers(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   if (organizationId === '1') return Promise.resolve(organizationProducers)
   return Promise.reject(new Error('organization published by others datasets not found'))
+}
+
+export function getDataGouvPublication(datasetId) {
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  if (datasetId === '1') return Promise.resolve(dataGouvPublication)
+  return Promise.reject(new Error('data.gouv.fr publication not found'))
+}
+
+export function getDatasetOnDataGouv(datasetId) {
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  if (datasetId === '1') return Promise.resolve(dataGouvDataset)
+  return Promise.reject(new Error('data.gouv.fr dataset not found'))
 }
