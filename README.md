@@ -2,7 +2,7 @@
 
 Trouvez facilement les données géographiques dont vous avez besoin
 
-[![CircleCI](https://circleci.com/gh/sgmap/inspire/tree/master.svg?style=svg)](https://circleci.com/gh/sgmap/inspire/tree/master)
+CircleCI : [![CircleCI](https://circleci.com/gh/sgmap/inspire/tree/master.svg?style=svg)](https://circleci.com/gh/sgmap/inspire/tree/master)
 
 ## Prérequis
 
