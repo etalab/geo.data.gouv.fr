@@ -22,3 +22,22 @@
     margin: 0em;
   }
 }
+
+@media (max-width: 1200px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
