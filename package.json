@@ -2,6 +2,7 @@
   "name": "inspire.data.gouv.fr",
   "version": "1.0.0",
   "homepage": "https://inspire.data.gouv.fr",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-eslint": "^7.0.0",
