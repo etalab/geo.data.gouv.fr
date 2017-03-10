@@ -10,30 +10,32 @@ Interface du site [inspire.data.gouv.fr](https://inspire.data.gouv.fr) basée su
 
 Ce projet _front_ utilise [React](https://facebook.github.io/react/) et [Webpack](https://webpack.js.org/).
 
-## Prérequis
+## Contribuer au code
+
+### Prérequis
 
 * [Node.js](https://nodejs.org/en/) >= 6
 * [yarn](https://yarnpkg.com) (mais ça fonctionne aussi avec npm)
 
-## Installation des dépendances
+### Installation des dépendances
 
 ```bash
 yarn
 ```
 
-## Développement
+### Développement
 
 ```bash
 yarn start # Lance le serveur de développement
 ```
 
-## Tests
+### Tests
 
 ```bash
 yarn test
 ```
 
-## Déploiement sur GitHub Pages
+### Déploiement sur GitHub Pages
 
 ```bash
 yarn build
@@ -42,8 +44,9 @@ yarn deploy
 
 ## Mainteneurs principaux
 
-* [Jérôme Desboeufs](https://github.com/jdesboeufs), Etalab
-* [Théophile Merlière](https://github.com/tmerlier), Etalab
+[Jérôme Desboeufs](https://github.com/jdesboeufs) et [Théophile Merlière](https://github.com/tmerlier)
+
+Ce projet est largement ouvert aux contributions.
 
 ## License
 
