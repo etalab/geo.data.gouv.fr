@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+
 import { nav, home, log, account, logout, authentification, avatar } from './Header.css'
 
 class Header extends Component {

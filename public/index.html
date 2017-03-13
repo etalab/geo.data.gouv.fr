@@ -33,6 +33,20 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,modernizr:es6string,modernizr:es6array,es7"></script>
   </head>
   <body>
+    <!--[if lt IE 10]>
+    <div class="browsehappy text-center">
+      Vous utilisez un navigateur web obsolète et donc <strong>non sécurisé</strong>.
+      <br>Cette application ne fonctionne pas sur celui-ci.
+      <br><a href="http://browsehappy.com/">Mettez à jour votre navigateur</a> pour l'utiliser.
+      <br>Si vous utilisez un poste fourni par votre employeur, demandez à votre administrateur d'installer une version récente de <a href="https://www.mozilla.org/fr/firefox/new/">Mozilla Firefox</a> ou <a href="http://www.google.com/chrome/">Google Chrome</a>.
+      <br>Si vous êtes sous Windows XP (SP2), Vista, 7 ou supérieur, l'installation de Chrome peut être réalisée de manière autonome
+      <br>sans droits d'administration sur votre poste,
+      <a href="https://www.google.com/chrome/browser/index.html?standalone=1">faites-le vous-même</a> !
+    </div>
+    <script type="text/javascript">
+      window.incompatibleBrowser = true;
+    </script>
+    <![endif]-->
     <div id="root"></div>
   </body>
 </html>
