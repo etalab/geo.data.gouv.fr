@@ -11,9 +11,9 @@ import Thumbnails from '../../components/Thumbnails/Thumbnails'
 import Producer from '../../components/Producer/Producer'
 import Discussions from '../../components/Discussions/Discussions'
 import TechnicalInformations from '../../components/TechnicalInformations/TechnicalInformations'
-import Section from '../../components/Section/Section'
 import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
 
+import Section from '../../../../components/Section/Section'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 import Errors from '../../../../components/Errors/Errors'
 
