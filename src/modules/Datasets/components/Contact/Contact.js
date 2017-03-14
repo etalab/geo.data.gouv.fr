@@ -21,7 +21,7 @@ const Contact = ({ contact }) => {
       <div>{address}</div>
       <div><i className="call icon"></i>{contact.phoneNumber ? contact.phoneNumber : unknown}</div>
       <div><i className="mail outline icon"></i>
-        {contact.email ? <a href={`emailto:${contact.email}`}>{contact.email}</a> : unknown}
+        {contact.email ? <a href={`mailto:${contact.email}`}>{contact.email}</a> : unknown}
       </div>
     </div>
   )
