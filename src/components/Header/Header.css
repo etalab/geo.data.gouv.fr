@@ -1,5 +1,9 @@
 @import "../../theme/colors";
 
+.header {
+  z-index: 1;
+}
+
 .nav {
   background-color: var(--blue);
   padding: 2em 2em;
@@ -7,7 +11,6 @@
   align-items: center;
   justify-content: space-between;
   color: var(--white);
-  z-index: 1;
 }
 
 .nav a {
