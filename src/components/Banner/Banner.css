@@ -1,0 +1,25 @@
+@import "../../theme/colors";
+
+.banner {
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.8em;
+}
+
+.banner > div {
+  float: right;
+}
+
+.banner > div:hover {
+  cursor: pointer;
+}
+
+
+.warning {
+  background-color: var(--yellow);
+}
+
+.error {
+  background-color: var(--red);
+}
