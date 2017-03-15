@@ -6,6 +6,11 @@ export function _fetch(url, method, data) {
     mode: 'cors',
     method: method || 'GET',
   }
+
+  if (url.includes('https://inspire.data.gouv.fr/dgv/api')) {
+    options.credentials = 'include'
+  }
+
   if (data) options.body = JSON.stringify(data)
 
   return fetch(url, options)
