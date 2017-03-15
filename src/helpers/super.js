@@ -2,6 +2,7 @@ export function _fetch(url, method, data) {
   const options = {
     headers: {
       'Accept': 'application/json',
+      'Content-Type': 'application/json',
     },
     mode: 'cors',
     method: method || 'GET',
