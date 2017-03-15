@@ -16,3 +16,9 @@
 .eventsList iframe {
   margin: 1em;
 }
+
+.pastEventsList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
