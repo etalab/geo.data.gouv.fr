@@ -153,9 +153,9 @@ class Home extends Component {
             </div>
             <Link className={catalogLinks} to="catalogs">Voir tous les catalogues</Link>
 
-            <h2 id="evenements">Événements à venir</h2>
+            <h2 id="evenements">Nos événements</h2>
             <div className={events}>
-              <Link to="events">Voir nos prochains évènements</Link>
+              <Link to="events">Voir nos événements</Link>
             </div>
           </div>
         </div>
