@@ -21,7 +21,7 @@ const TechnicalInformations = ({ dataset }) => {
         <div>Dernière mise à jour : <b>{revisionDate}</b></div>
       </div>
       <div>
-        <h4>Autre informations</h4>
+        <h4>Autres informations</h4>
           <div>Type : <b>{type || 'inconnu'}</b></div>
           <div>Licence : <b>{license || 'non déterminé'}</b></div>
           {other.scale ? <div>Échelle : <b>{other.scale}</b></div> : null}
