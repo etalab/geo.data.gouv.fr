@@ -2,7 +2,6 @@ export function _fetch(url, method, data) {
   const options = {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
     },
     mode: 'cors',
     method: method || 'GET',
@@ -12,7 +11,10 @@ export function _fetch(url, method, data) {
     options.credentials = 'include'
   }
 
-  if (data) options.body = JSON.stringify(data)
+  if (data) {
+    options.headers['Content-Type'] = 'application/json'
+    options.body = JSON.stringify(data)
+  }
 
   return fetch(url, options)
     .then(response => {
