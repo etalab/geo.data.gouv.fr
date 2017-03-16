@@ -86,7 +86,11 @@ export default class DatasetDetail extends Component {
             <Section title={'Filtres'}>
               <FiltersSection keywords={dataset.metadata.keywords} organizations={dataset.organizations} catalogs={catalogs.filter(catalog => dataset.catalogs.includes(catalog._id))} />
             </Section>
+
+            <div>Identifiant du jeu de données : <b>{dataset.metadata.id}</b></div>
+
           </div>
+
 
           <div className={side}>
 
