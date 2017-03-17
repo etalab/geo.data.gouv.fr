@@ -43,7 +43,7 @@ class SpatialExtentMap extends Component {
 
     return (
       <div className={styles.container}>
-        <Map ref="spatialMap" className={styles.map} center={position} zoom={zoom} scrollWheelZoom={false} zoomControl={false}>
+        <Map ref="spatialMap" className={styles.map} center={position} zoom={zoom} dragging={false} scrollWheelZoom={false} zoomControl={false}>
           <TileLayer attribution={MAP.osmAttribution} url={MAP.osmUrl} />
           <GeoJSON color='blue' fillOpacity={0.1} weight={2} ref="vectors" data={fc} />
         </Map>

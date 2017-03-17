@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  justify-content: space-between;
 }
 
 .container div {
@@ -8,4 +7,5 @@
 }
 
 .histo {
+  margin-right: 4em;
 }
