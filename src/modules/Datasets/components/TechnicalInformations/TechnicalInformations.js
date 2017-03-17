@@ -7,9 +7,8 @@ import { frequencies } from '../../../../helpers/frequencies'
 import { container, histo } from './TechnicalInformations.css'
 
 const TechnicalInformations = ({ dataset }) => {
-  const { type, license, updateFrequency, creationDate, revisionDate, equivalentScaleDenominator } = dataset.metadata
+  const { type, license, updateFrequency, creationDate, revisionDate, equivalentScaleDenominator, spatialResolution } = dataset.metadata
   const createDate = creationDate ? moment(creationDate).format('DD/MM/YYYY') : 'inconnue'
-  const neededData = {}
 
   return (
     <div className={container}>
@@ -24,7 +23,7 @@ const TechnicalInformations = ({ dataset }) => {
           <div>Type : <b>{type || 'inconnu'}</b></div>
           <div>Licence : <b>{license || 'non déterminé'}</b></div>
           {equivalentScaleDenominator ? <div>Échelle : <b>1 / {equivalentScaleDenominator}</b></div> : null}
-          {neededData.resolution ? <div>Résolution : <b>{neededData.resolution}</b></div> : null}
+          {spatialResolution ? <div>Résolution : <b>{spatialResolution.value} {spatialResolution.unit}</b></div> : null}
       </div>
     </div>
   )
