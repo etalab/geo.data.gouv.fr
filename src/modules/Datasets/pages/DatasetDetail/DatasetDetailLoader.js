@@ -43,6 +43,7 @@ export default class DatasetDetailLoader extends Component {
   }
 
   render() {
+    const { datasetId } = this.props.params
     const { dataset, catalogs, dataGouvPublication, errors } = this.state
 
     if (errors.length) return <Errors errors={errors} />
@@ -51,7 +52,7 @@ export default class DatasetDetailLoader extends Component {
 
     return (
       <DocumentTitle title={dataset.metadata.title}>
-        <DatasetDetail dataset={dataset} catalogs={catalogs} dataGouvPublication={dataGouvPublication} />
+        <DatasetDetail datasetId={datasetId} dataset={dataset} catalogs={catalogs} dataGouvPublication={dataGouvPublication} />
       </DocumentTitle>
     )
   }

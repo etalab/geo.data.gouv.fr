@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
 import Discussion from './Discussion'
+import DiscussionForm from './DiscussionForm'
 
-import { getDiscussions } from '../../../../fetch/fetch'
+import Button from '../../../../components/Buttons/Button'
+
+import { getDiscussions, getUser } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
 import { container } from './Discussions.css'
@@ -10,31 +13,61 @@ import { container } from './Discussions.css'
 class Discussions extends Component {
   constructor(props) {
     super(props)
-    this.state = {errors: []}
+    this.state = {discussionForm: false, formError: false, errors: []}
   }
 
   componentWillMount() {
-    const { datasetId } = this.props
+    return Promise.all([
+      this.updateDiscussions(),
+      this.updateUser(),
+    ])
+  }
 
-    if (!datasetId) return
-    return waitForDataAndSetState(getDiscussions(datasetId), this, 'discussions')
+  updateUser() {
+    return waitForDataAndSetState(getUser(), this, 'user')
+  }
+
+  updateDiscussions() {
+    const { remoteId } = this.props
+
+    if (!remoteId) return
+    return waitForDataAndSetState(getDiscussions(remoteId), this, 'discussions')
   }
 
   componentWillUnmount() {
     return cancelAllPromises(this)
   }
 
+  showDiscussionForm() {
+    this.setState({discussionForm: true})
+  }
+
+  createDiscussion(title, comment) {
+    if (!title || !comment) return this.setState({ formError: true })
+    this.setState({ formError: false })
+    console.log('creation de la discussion: ', title, ' ', comment);
+  }
+
   render() {
-    const { discussions } = this.state
-    const { datasetId } = this.props
+    const { discussions, discussionForm, user, formError } = this.state
+    const { datasetId, remoteId } = this.props
+    const redirect = `${process.env.PUBLIC_URL}/datasets/${datasetId}`
+    const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(redirect)}`
+
+    const newDiscussion = user ?
+      <Button text={'Démarrer une nouvelle discussion'} action={() => this.showDiscussionForm()}/> :
+      <a href={logInUrl}><Button text={'Démarrer une nouvelle discussion'}/></a>
 
     return (
       <div className={container}>
         {discussions ?
-          discussions.data.map((discussion, idx) => <Discussion key={idx} datasetId={datasetId} discussion={discussion} />)
+          discussions.data.map((discussion, idx) => <Discussion key={idx} remoteId={remoteId} discussion={discussion} />)
           : null
         }
-        <a href={`https://www.data.gouv.fr/fr/datasets/${datasetId}/#discussion-create`}>Démarrer une nouvelle discussion sur data.gouv.fr</a>
+        {discussionForm ?
+          <DiscussionForm user={user} error={formError} createDiscussion={(title, comment) => this.createDiscussion(title, comment)} /> :
+          newDiscussion
+        }
       </div>
     )
   }
