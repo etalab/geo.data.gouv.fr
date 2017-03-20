@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Button from '../../../../components/Buttons/Button'
+
 import Message from './Message'
 
 import style from './Discussion.css'
@@ -22,7 +24,7 @@ class Discussion extends Component {
     let replies
 
     if (!repliesNb) {
-      replies = 'Aucune réponse'
+      replies = null
     } else if (repliesNb === 1) {
       replies = '1 réponse'
     } else {
@@ -36,7 +38,7 @@ class Discussion extends Component {
         <div className={style.messages}>
           { more ? conversation : <Message message={discussion.discussion[0]} />}
           <div className={style.action}>
-            { more || !repliesNb ? <a className={style.answer} href={`https://www.data.gouv.fr/fr/datasets/${datasetId}/#discussion-${discussion.id}`}>Répondre sur data.gouv.fr</a> : null }
+            { more || !repliesNb ? <Button action={() => this.reply()} text='Répondre' /> : null }
             <div className={style.replies} onClick={() =>this.displayMore()}>
               { more ? 'Fermer' : replies }
             </div>
