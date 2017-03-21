@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { cloneDeep } from 'lodash'
 
 import DatasetSection from '../DatasetSection'
-import MarkdownViewer from '../../Markdown/MarkdownViewer'
+import DatasetDescription from '../../DatasetDescription/DatasetDescription'
 
 import datasetMock from '../../../../../fetch/__test__/dataset.json'
 import { doneSince } from '../../../../../helpers/doneSince'
@@ -21,15 +21,11 @@ describe('<DatasetSection />', () => {
     })
 
     it('should display dataset description', () => {
-      expect(wrapper.contains(<MarkdownViewer markdown={datasetMock.metadata.description} />)).to.be.true
+      expect(wrapper.containsMatchingElement(<DatasetDescription description={datasetMock.metadata.description} shortDescription={true} />)).to.be.true
     })
 
     it('should display dataset type', () => {
       expect(wrapper.contains(datasetMock.metadata.type)).to.be.true
-    })
-
-    it('should display dataset license', () => {
-      expect(wrapper.contains(datasetMock.metadata.license)).to.be.true
     })
 
     it('should display dataset revision date', () => {
