@@ -28,10 +28,6 @@ describe('<DatasetSection />', () => {
       expect(wrapper.contains(datasetMock.metadata.type)).to.be.true
     })
 
-    it('should display dataset license', () => {
-      expect(wrapper.contains(datasetMock.metadata.license)).to.be.true
-    })
-
     it('should display dataset revision date', () => {
       expect(wrapper.contains(doneSince(datasetMock.revisionDate))).to.be.true
     })
@@ -45,17 +41,12 @@ describe('<DatasetSection />', () => {
     let wrapper, modifiedDatasetMock
     beforeEach(() => {
       modifiedDatasetMock = cloneDeep(datasetMock)
-      modifiedDatasetMock.metadata.license = undefined
       modifiedDatasetMock.metadata.type = undefined
       wrapper = shallow(<DatasetSection dataset={modifiedDatasetMock} style={{}} />)
     })
 
     it('should display dataset type', () => {
       expect(wrapper.contains('inconnu')).to.be.true
-    })
-
-    it('should display dataset license', () => {
-      expect(wrapper.contains('non déterminé')).to.be.true
     })
   })
 

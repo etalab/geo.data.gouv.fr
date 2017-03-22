@@ -12,15 +12,15 @@ class CheckLicense extends Component {
       <div>
         Les licenses reconnue sont :
         <ul>
-          { ACCEPTED_LICENSES.map( (licence, idx) => <li key={idx}>{licence}</li>) }
+          { Object.keys(ACCEPTED_LICENSES).map((licence, idx) => <li key={idx}>{licence}</li>) }
         </ul>
       </div>
     )
 
     if (!license) {
       msg = 'Aucune licence n\'a pu être trouvée.'
-    } else if (ACCEPTED_LICENSES.includes(license)) {
-      msg = `La licence ${license} est valide.`
+    } else if (ACCEPTED_LICENSES[license]) {
+      msg = `La licence ${ACCEPTED_LICENSES[license].name} est valide.`
       content = undefined
     } else {
       msg = `La licence ${license} n'est pas reconnue.`
