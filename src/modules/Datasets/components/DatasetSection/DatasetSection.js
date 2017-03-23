@@ -4,22 +4,25 @@ import MarkdownViewer from '../Markdown/MarkdownViewer'
 
 import { doneSince } from '../../../../helpers/doneSince'
 
-import { section, container, resume, infos } from './DatasetSection.css'
+import { section, container, head, resume, infos } from './DatasetSection.css'
 
-const DatasetSection = ({dataset, style}) => {
+const DatasetSection = ({ dataset }) => {
   const type = dataset.metadata.type || 'inconnu'
   const license = dataset.metadata.license || 'non déterminé'
   const revisionDate = doneSince(dataset.revisionDate)
 
   return (
     <div className={container}>
-      <div className={resume}>
-        <h1>{dataset.metadata.title}</h1>
-        <div className={infos}>
-          <div>Type : <span>{type}</span></div>
-          <div>Licence : <span>{license}</span></div>
-          <div>Dernière mise à jour : <span>{revisionDate}</span></div>
+      <div className={head}>
+        <div className={resume}>
+          <h1>{dataset.metadata.title}</h1>
+          <div className={infos}>
+            <div>Type : <span>{type}</span></div>
+            <div>Licence : <span>{license}</span></div>
+            <div>Dernière mise à jour : <span>{revisionDate}</span></div>
+          </div>
         </div>
+        <img src='/assets/inspire-icons/hy.svg' alt='inspire-theme-icon'/>
       </div>
 
       <div className={section}>

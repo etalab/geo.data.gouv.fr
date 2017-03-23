@@ -20,12 +20,26 @@
   word-wrap: break-word;
 }
 
+.head {
+  display: flex;
+  align-items: center;
+  background-color: var(--blue);
+}
+
+.head img {
+  width: 100px;
+  height: 100px;
+  margin-right: 2em;
+  padding: 0.3em;
+  border-radius: 60px;
+  background-color: #fff;
+}
+
 .resume {
   display: flex;
   flex-direction: column;
   padding: 2em;
   color: #fff;
-  background-color: var(--blue);
 }
 
 .infos {
@@ -41,4 +55,21 @@
   .container h1 {
     padding-right: 40%;
   }
+}
+
+@media (max-width: 760px) {
+
+  .container h1 {
+    font-size: large;
+  }
+
+  .head img {
+    width: 50px;
+    height: 50px;
+    margin-right: 2em;
+    border-radius: 60px;
+    padding: 0.3em;
+    background-color: #fff;
+  }
+
 }
