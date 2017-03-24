@@ -35,6 +35,10 @@ describe('<DatasetSection />', () => {
     it('should display lineage', () => {
       expect(wrapper.contains(datasetMock.metadata.lineage)).to.be.true
     })
+
+    it('should display purpose', () => {
+      expect(wrapper.contains(datasetMock.metadata.purpose)).to.be.true
+    })
   })
 
   describe('When metadata are undefined', () => {

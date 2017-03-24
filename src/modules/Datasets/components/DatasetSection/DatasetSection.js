@@ -19,7 +19,7 @@ class DatasetSection extends Component {
   render() {
     const { dataset } = this.props
     const { shortDescription } = this.state
-    const { title, description, lineage } = dataset.metadata
+    const { title, description, purpose, lineage } = dataset.metadata
     const type = dataset.metadata.type || 'inconnu'
     const license = dataset.metadata.license || 'non déterminé'
     const revisionDate = doneSince(dataset.revisionDate)
@@ -40,6 +40,9 @@ class DatasetSection extends Component {
             description={description}
             shortDescription={shortDescription}
             showMore={() => this.wrapDescription()} />
+          <p>
+            <b>Objectif : </b>{purpose ? purpose : 'Non renseignée'}
+          </p>
           <p>
             <b>Origine de la donnée : </b>{lineage ? lineage : 'Non renseignée'}
           </p>
