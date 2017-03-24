@@ -106,19 +106,25 @@ export default class DatasetDetail extends Component {
               </Section> : null
             }
 
-            <Section title={'Publication sur data.gouv.fr'}>
-              <DatasetChecklist dataset={dataset} />
-            </Section>
-
             {dataset.metadata.spatialExtent ?
               <Section title={'Étendue spatiale'}>
                 <SpatialExtentMap extent={dataset.metadata.spatialExtent} />
               </Section> : null
             }
 
+            <Section title={'Publication sur data.gouv.fr'}>
+              <DatasetChecklist dataset={dataset} />
+            </Section>
+
             <Section title={'Contacts'}>
               <Contacts contacts={dataset.metadata.contacts}/>
             </Section>
+
+            {dataset.metadata.credit ?
+              <Section title={'Contributions'}>
+                {dataset.metadata.credit}
+              </Section> : null
+            }
           </div>
 
         </div>
