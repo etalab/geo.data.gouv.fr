@@ -92,7 +92,7 @@
         "protocol":"OGC:WMS-1.1.1-http-get-map"
       }
     ],
-    "license":null,
+    "license": "fr-lo",
     "spatialExtent":{
       "type":"Polygon",
       "coordinates":[
