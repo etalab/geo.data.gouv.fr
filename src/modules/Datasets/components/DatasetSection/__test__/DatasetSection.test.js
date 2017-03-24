@@ -13,7 +13,7 @@ describe('<DatasetSection />', () => {
   describe('When all metadata are defined', () => {
     let wrapper
     beforeEach(() => {
-      wrapper = shallow(<DatasetSection dataset={datasetMock} style={{}} />)
+      wrapper = shallow(<DatasetSection dataset={datasetMock} />)
     })
 
     it('should display dataset title', () => {

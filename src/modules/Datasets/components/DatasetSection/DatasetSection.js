@@ -4,7 +4,7 @@ import DatasetDescription from '../DatasetDescription/DatasetDescription'
 
 import { doneSince } from '../../../../helpers/doneSince'
 
-import { section, container, resume, infos } from './DatasetSection.css'
+import { section, container, head, resume, theme, infos } from './DatasetSection.css'
 
 class DatasetSection extends Component {
   constructor(props) {
@@ -19,19 +19,24 @@ class DatasetSection extends Component {
   render() {
     const { dataset } = this.props
     const { shortDescription } = this.state
-    const { title, description, purpose, lineage } = dataset.metadata
-    const type = dataset.metadata.type || 'inconnu'
-    const license = dataset.metadata.license || 'non déterminé'
+    const { title, description, type, purpose, lineage, license, inspireTheme } = dataset.metadata
     const revisionDate = doneSince(dataset.revisionDate)
 
     return (
       <div className={container}>
-        <div className={resume}>
-          <h1>{title}</h1>
-          <div className={infos}>
-            <div>Type : <span>{type}</span></div>
-            <div>Licence : <span>{license}</span></div>
-            <div>Dernière mise à jour : <span>{revisionDate}</span></div>
+        <div className={head}>
+          <div className={resume}>
+            <h1>{title}</h1>
+            <div className={infos}>
+              <div>Type : <span>{type || 'inconnu'}</span></div>
+              <div>Licence : <span>{license || 'non déterminé'}</span></div>
+              <div>Dernière mise à jour : <span>{revisionDate}</span></div>
+            </div>
+          </div>
+
+          <div className={theme}>
+            <div><img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon'/></div>
+            <div><a href={inspireTheme.uri}>{inspireTheme.label.fr}</a></div>
           </div>
         </div>
 
