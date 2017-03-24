@@ -4,11 +4,10 @@ import MarkdownViewer from '../Markdown/MarkdownViewer'
 
 import { doneSince } from '../../../../helpers/doneSince'
 
-import { section, container, head, resume, infos } from './DatasetSection.css'
+import { section, container, head, resume, theme, infos } from './DatasetSection.css'
 
 const DatasetSection = ({ dataset }) => {
-  const type = dataset.metadata.type || 'inconnu'
-  const license = dataset.metadata.license || 'non déterminé'
+  const { type, license, inspireTheme } = dataset.metadata
   const revisionDate = doneSince(dataset.revisionDate)
 
   return (
@@ -17,12 +16,16 @@ const DatasetSection = ({ dataset }) => {
         <div className={resume}>
           <h1>{dataset.metadata.title}</h1>
           <div className={infos}>
-            <div>Type : <span>{type}</span></div>
-            <div>Licence : <span>{license}</span></div>
+            <div>Type : <span>{type || 'inconnu'}</span></div>
+            <div>Licence : <span>{license || 'non déterminé'}</span></div>
             <div>Dernière mise à jour : <span>{revisionDate}</span></div>
           </div>
         </div>
-        <img src='/assets/inspire-icons/hy.svg' alt='inspire-theme-icon'/>
+        <div className={theme}>
+          <div><img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon'/></div>
+          <div><a href={inspireTheme.uri}>{inspireTheme.label.fr}</a></div>
+
+        </div>
       </div>
 
       <div className={section}>

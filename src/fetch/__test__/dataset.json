@@ -11,6 +11,9 @@
     "type":"dataset",
     "spatialRepresentationType":"vector",
     "lineage":"Numérisation des plans des documents d'urbanisme sur le référentiel du cadastre",
+    "purpose":null,
+    "credit":null,
+    "status":"completed",
     "keywords":[
       "planningCadastre",
       "urbanisme",
@@ -20,6 +23,15 @@
       "Zones de gestion, de restriction ou de réglementation et unités de déclaration",
       "document d'urbanisme"
     ],
+    "inspireTheme":{
+      "id":"am",
+      "uri":"http://inspire.ec.europa.eu/theme/am",
+      "label":{
+        "fr":"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
+        "en":"Area management/restriction/regulation zones and reporting units"
+      }
+    },
+    "topicCategory":"planningCadastre",
     "thumbnails":[
       {
         "originalUrl":"http://sig.pays-de-dinan.org/images/geobretagne/prescription_pct_plu_pays_de_dinan.png",
@@ -107,17 +119,21 @@
           ]
         ]
       ]
-    }
+    },
+    "updateFrequency":"asNeeded",
+    "equivalentScaleDenominator":5000,
+    "spatialResolution":null,
+    "revisionDate":"2015-07-20T00:00:00.000Z"
   },
   "publications":[
 
   ],
   "recordHash":"69e4b29cdd1b63c82477bce68bc1c32d413de5f9",
   "revisionDate":"2015-11-20T14:49:25.000Z",
-  "__v":278,
-  "updatedAt":"2017-03-08T14:20:47.835Z",
-  "consolidatedAt":"2017-03-08T14:20:47.835Z",
-  "hash":"20ba0443d4b6d7069dd8d0ba75ca77cb32a6a941",
+  "__v":382,
+  "updatedAt":"2017-03-24T10:22:01.827Z",
+  "consolidatedAt":"2017-03-24T10:22:01.827Z",
+  "hash":"88de4ec6ac3090af12264247af9b64fb0b6ce3aa",
   "alternateResources":[
     {
       "available":null,
@@ -136,13 +152,13 @@
         "service":"55dc635c2984a74b70f53b50",
         "typeName":"information_pct",
         "available":true,
-        "_id":"58c0133f23f0b96bcd22006b"
+        "_id":"58d4f34949922c58abb7fb73"
       }
     ]
   },
   "catalogs":[
     "5387a5aa785588482f5acb4d",
-    "538781513081a0b92eccc31a",
-    "5387a37d785588482f5acb45"
+    "5387a37d785588482f5acb45",
+    "538781513081a0b92eccc31a"
   ]
 }

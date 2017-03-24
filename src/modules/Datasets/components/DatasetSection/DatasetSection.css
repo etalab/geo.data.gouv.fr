@@ -23,12 +23,13 @@
 .head {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   background-color: var(--blue);
 }
 
 .head img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-right: 2em;
   padding: 0.3em;
   border-radius: 60px;
@@ -37,24 +38,37 @@
 
 .resume {
   display: flex;
+  width: 70%;
   flex-direction: column;
   padding: 2em;
   color: #fff;
 }
 
+.theme {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.theme a {
+  margin-top: 10px;
+  color: #fff;
+  font-size: smaller;
+}
+
+.theme a:hover {
+  text-decoration: underline;
+}
+
 .infos {
   display: flex;
+  font-size: small;
 }
 
 .infos > div {
   margin-bottom: 0.5em;
   margin-right: 4em;
-}
-
-@media (min-width: 700px) {
-  .container h1 {
-    padding-right: 40%;
-  }
 }
 
 @media (max-width: 760px) {
