@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 
 import DatasetDescription from '../DatasetDescription/DatasetDescription'
 
-import { doneSince } from '../../../../helpers/doneSince'
+import Button from '../../../../components/Buttons/Button'
 
-import { section, container, head, resume, theme, infos } from './DatasetSection.css'
+import { doneSince } from '../../../../helpers/doneSince'
+import { statusTranslate } from '../../../../helpers/status'
+
+import { section, container, head, resume, theme, infos, stat } from './DatasetSection.css'
 
 class DatasetSection extends Component {
   constructor(props) {
@@ -17,10 +20,11 @@ class DatasetSection extends Component {
   }
 
   render() {
-    const { dataset } = this.props
+    const { dataset, warning, hideStatusWarning } = this.props
     const { shortDescription } = this.state
-    const { title, description, type, purpose, lineage, license, inspireTheme } = dataset.metadata
+    const { title, description, status, type, purpose, lineage, license, inspireTheme } = dataset.metadata
     const revisionDate = doneSince(dataset.revisionDate)
+    const completStatus = statusTranslate[status]
 
     return (
       <div className={container}>
@@ -41,16 +45,25 @@ class DatasetSection extends Component {
         </div>
 
         <div className={section}>
-          <DatasetDescription
-            description={description}
-            shortDescription={shortDescription}
-            showMore={() => this.wrapDescription()} />
-          <p>
-            <b>Objectif : </b>{purpose ? purpose : 'Non renseignée'}
-          </p>
-          <p>
-            <b>Origine de la donnée : </b>{lineage ? lineage : 'Non renseignée'}
-          </p>
+          {warning ?
+            <div className={stat}>
+              <h3>Cette fiche de données est {completStatus.status}</h3>
+              <div>{completStatus.consequences}</div>
+              <Button text="Afficher tout de même" action={() => hideStatusWarning()} />
+            </div> :
+            <div>
+              <DatasetDescription
+                description={description}
+                shortDescription={shortDescription}
+                showMore={() => this.wrapDescription()} />
+              <p>
+                <b>Objectif : </b>{purpose ? purpose : 'Non renseignée'}
+              </p>
+              <p>
+                <b>Origine de la donnée : </b>{lineage ? lineage : 'Non renseignée'}
+              </p>
+            </div>
+          }
         </div>
       </div>
     )

@@ -20,6 +20,17 @@
   word-wrap: break-word;
 }
 
+.stat {
+  display: flex;
+  padding: 3em;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat button {
+  margin: 2em;
+}
+
 .head {
   display: flex;
   align-items: center;
