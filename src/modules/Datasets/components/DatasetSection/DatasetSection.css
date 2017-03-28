@@ -20,6 +20,17 @@
   word-wrap: break-word;
 }
 
+.container span a {
+  color: #7ECEFD;
+}
+
+.container span a:hover {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 .stat {
   display: flex;
   padding: 3em;

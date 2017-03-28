@@ -6,6 +6,7 @@ import Button from '../../../../components/Buttons/Button'
 
 import { doneSince } from '../../../../helpers/doneSince'
 import { statusTranslate } from '../../../../helpers/status'
+import { getLicense } from '../../../../helpers/dataGouvChecks'
 
 import { section, container, head, resume, theme, infos, stat } from './DatasetSection.css'
 
@@ -22,9 +23,10 @@ class DatasetSection extends Component {
   render() {
     const { dataset, warning, hideStatusWarning } = this.props
     const { shortDescription } = this.state
-    const { title, description, status, type, purpose, lineage, license, inspireTheme } = dataset.metadata
+    const { title, description, status, type, purpose, lineage, inspireTheme } = dataset.metadata
     const revisionDate = doneSince(dataset.revisionDate)
     const completStatus = statusTranslate[status]
+    const license = getLicense(dataset.metadata.license)
 
     return (
       <div className={container}>
@@ -33,7 +35,7 @@ class DatasetSection extends Component {
             <h1>{title}</h1>
             <div className={infos}>
               <div>Type : <span>{type || 'inconnu'}</span></div>
-              <div>Licence : <span>{license || 'non déterminé'}</span></div>
+              <div>Licence : <span>{license.name ? <a href={license.link}>{license.name}</a> : license}</span></div>
               <div>Dernière mise à jour : <span>{revisionDate}</span></div>
             </div>
           </div>

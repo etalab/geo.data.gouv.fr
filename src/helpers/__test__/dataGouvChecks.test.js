@@ -1,10 +1,10 @@
-import { ACCEPTED_LICENSES, checkLicense, checkDataAvailability, checkProducers } from '../dataGouvChecks'
+import { ACCEPTED_LICENSES, checkLicense, getLicense, checkDataAvailability, checkProducers } from '../dataGouvChecks'
 
 describe('dataGouvChecks', () => {
   describe('checkLicense()', () => {
     describe('ACCEPTED_LICENSES', () => {
       it('should be true for all accepted licenses', () => {
-        ACCEPTED_LICENSES.map(license => {
+        Object.keys(ACCEPTED_LICENSES).map(license => {
           expect(checkLicense(license)).to.be.true
           return true
         })
@@ -18,6 +18,21 @@ describe('dataGouvChecks', () => {
 
     it('should be false when license is undefined and specify the error', () => {
       expect(checkLicense(undefined)).to.be.false
+    })
+  })
+
+  describe('checkLicense()', () => {
+    it('should return "inconnue" when license is not in ACCEPTED_LICENSES', () => {
+      expect(getLicense('lol')).to.equal('inconnue')
+    })
+
+    it('should return "non déterminée" when license undefined', () => {
+      expect(getLicense(undefined)).to.equal('non déterminée')
+    })
+
+    it('should return the license when it is in ACCEPTED_LICENSES', () => {
+      const license = 'odbl'
+      expect(getLicense(license)).to.equal(ACCEPTED_LICENSES[license])
     })
   })
 

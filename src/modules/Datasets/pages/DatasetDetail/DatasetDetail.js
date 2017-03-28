@@ -27,6 +27,7 @@ export default class DatasetDetail extends Component {
 
   isWarningStatus() {
     const { dataset } = this.props
+
     if (dataset.metadata.status) {
       if (statusTranslate[dataset.metadata.status] && statusTranslate[dataset.metadata.status].consequences) {
         return true
