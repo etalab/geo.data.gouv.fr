@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import { Map, TileLayer, GeoJSON } from 'react-leaflet'
 
+import CenteredMap from '../../../../components/CenteredMap'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 
 import styles from './PreviewMap.css'
 
 const MAP = {
-  latitude: 47,
-  longitude: 1,
+  lat: 47,
+  lon: 1,
   zoom: 5.5,
-  osmUrl: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-  osmAttribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 }
 
 const styleLoader = {
@@ -22,27 +20,9 @@ const styleLoader = {
 }
 
 class PreviewMap extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      lat: MAP.latitude,
-      lng: MAP.longitude,
-      zoom: MAP.zoom,
-    }
-  }
-
-  componentDidUpdate() {
-    const { vectors, map } = this.refs
-
-    if (vectors && map) {
-      const bounds = vectors.leafletElement.getBounds()
-      map.leafletElement.fitBounds(bounds)
-    }
-  }
 
   render() {
     const { geojson, distribution } = this.props
-    const position = [this.state.lat, this.state.lng]
     const errors = [...this.props.errors]
 
     if (geojson && (!geojson.features || geojson.features.length === 0)) {
@@ -66,10 +46,7 @@ class PreviewMap extends Component {
       <div className={styles.container}>
         {errors.length ? err : null}
         {loader}
-        <Map ref="map" className={styles.map} center={position} zoom={this.state.zoom} >
-          <TileLayer attribution={MAP.osmAttribution} url={MAP.osmUrl} />
-          {geojson && !errors.length ? <GeoJSON ref="vectors" data={geojson} /> : null}
-        </Map>
+        {geojson ? <CenteredMap vectors={geojson} className={styles.map} zoom={MAP.zoom} lat={MAP.lat} lon={MAP.lon} /> : null}
       </div>
     )
   }
