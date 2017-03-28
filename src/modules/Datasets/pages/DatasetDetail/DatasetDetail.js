@@ -12,6 +12,7 @@ import Producer from '../../components/Producer/Producer'
 import Discussions from '../../components/Discussions/Discussions'
 import TechnicalInformations from '../../components/TechnicalInformations/TechnicalInformations'
 import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
+import License from '../../components/License/License'
 
 import Section from '../../../../components/Section/Section'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
@@ -66,6 +67,10 @@ export default class DatasetDetail extends Component {
         <div className={container}>
           <div className={main}>
             <DatasetSection dataset={dataset} />
+
+            <Section title={'Licence'}>
+              <License license={dataset.metadata.license} />
+            </Section>
 
             <Section title={'Informations techniques'}>
               <TechnicalInformations dataset={dataset} />

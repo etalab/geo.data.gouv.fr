@@ -8,7 +8,6 @@ import { section, container, resume, infos } from './DatasetSection.css'
 
 const DatasetSection = ({dataset, style}) => {
   const type = dataset.metadata.type || 'inconnu'
-  const license = dataset.metadata.license || 'non déterminé'
   const revisionDate = doneSince(dataset.revisionDate)
 
   return (
@@ -17,7 +16,6 @@ const DatasetSection = ({dataset, style}) => {
         <h1>{dataset.metadata.title}</h1>
         <div className={infos}>
           <div>Type : <span>{type}</span></div>
-          <div>Licence : <span>{license}</span></div>
           <div>Dernière mise à jour : <span>{revisionDate}</span></div>
         </div>
       </div>

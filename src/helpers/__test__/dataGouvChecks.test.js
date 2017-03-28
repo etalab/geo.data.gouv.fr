@@ -4,7 +4,7 @@ describe('dataGouvChecks', () => {
   describe('checkLicense()', () => {
     describe('ACCEPTED_LICENSES', () => {
       it('should be true for all accepted licenses', () => {
-        ACCEPTED_LICENSES.map(license => {
+        Object.keys(ACCEPTED_LICENSES).map(license => {
           expect(checkLicense(license)).to.be.true
           return true
         })

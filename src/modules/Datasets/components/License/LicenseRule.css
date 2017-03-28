@@ -1,0 +1,26 @@
+@import "../../../../theme/colors";
+
+.container h5:first-letter {
+    text-transform: uppercase;
+}
+
+.container ul {
+	list-style-type: none;
+}
+
+.container ul li:before {
+	content: "\2022";
+	margin-right: 10px;
+}
+
+.container.permissions ul li:before {
+  color: var(--green);
+}
+
+.container.conditions ul li:before {
+  color: var(--blue);
+}
+
+.container.limitations ul li:before {
+  color: var(--red);
+}

@@ -3,6 +3,7 @@ import moment from 'moment'
 
 import { doneSince } from '../../../../helpers/doneSince'
 import { frequencies } from '../../../../helpers/frequencies'
+import { ACCEPTED_LICENSES } from '../../../../helpers/dataGouvChecks'
 
 import { container, histo } from './TechnicalInformations.css'
 
@@ -21,7 +22,7 @@ const TechnicalInformations = ({ dataset }) => {
       <div>
         <h4>Autres informations</h4>
           <div>Type : <b>{type || 'inconnu'}</b></div>
-          <div>Licence : <b>{license || 'non déterminé'}</b></div>
+          <div>Licence : <b>{ACCEPTED_LICENSES[license].name || 'non déterminé'}</b></div>
           {equivalentScaleDenominator ? <div>Échelle : <b>1 / {equivalentScaleDenominator}</b></div> : null}
           {spatialResolution ? <div>Résolution : <b>{spatialResolution.value} {spatialResolution.unit}</b></div> : null}
       </div>
