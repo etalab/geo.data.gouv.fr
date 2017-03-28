@@ -21,7 +21,7 @@ import OrganizationProducers from './modules/Publication/pages/OrganizationProdu
 import Events from './modules/Events/pages/Events/Events'
 
 import WrappedDatasets from './modules/Datasets/pages/WrappedDatasets/WrappedDatasets'
-import DatasetDetail from './modules/Datasets/pages/DatasetDetail/DatasetDetail'
+import DatasetDetailLoader from './modules/Datasets/pages/DatasetDetail/DatasetDetailLoader'
 
 moment.locale('fr')
 
@@ -44,7 +44,7 @@ ReactDOM.render((
       <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />
       <Route path="/search" component={WrappedDatasets} />
       <Redirect from="/datasets" to="/search" />
-      <Route path="/datasets/:datasetId" component={DatasetDetail} />
+      <Route path="/datasets/:datasetId" component={DatasetDetailLoader} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
