@@ -8,7 +8,7 @@ export const topicCategories = {
   environment: 'environnement',
   geoscientificInformation: 'informations géoscientifiques',
   health: 'santé',
-  imageryBaseMapsEarthCover: 'imagerie, fonds de cartes, occupation de sols',
+  imageryBaseMapsEarthCover: 'imagerie, fonds de cartes, occupation des sols',
   intelligenceMilitary: 'infrastructures militaires',
   inlandWaters: 'eaux intérieures',
   location: 'localisation',

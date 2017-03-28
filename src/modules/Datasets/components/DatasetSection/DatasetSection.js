@@ -47,7 +47,8 @@ class DatasetSection extends Component {
         <div className={section}>
           {warning ?
             <div className={stat}>
-              <h3>Cette fiche de données est {completStatus.status}</h3>
+              <h2>Attention !</h2>
+              <h3>Cette fiche de données est {completStatus.status}.</h3>
               <div>{completStatus.consequences}</div>
               <Button text="Afficher tout de même" action={() => hideStatusWarning()} />
             </div> :
@@ -57,7 +58,7 @@ class DatasetSection extends Component {
                 shortDescription={shortDescription}
                 showMore={() => this.wrapDescription()} />
               <p>
-                <b>Objectif : </b>{purpose ? purpose : 'Non renseignée'}
+                <b>Objectif : </b>{purpose ? purpose : 'Non renseigné'}
               </p>
               <p>
                 <b>Origine de la donnée : </b>{lineage ? lineage : 'Non renseignée'}

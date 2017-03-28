@@ -22,9 +22,9 @@ const TechnicalInformations = ({ dataset }) => {
       </div>
       <div>
         <h4>Autres informations</h4>
-          <div>Catégorie du jeu de données : <b>{topicCategories[topicCategory] || 'Non renseignée'}</b></div>
+          <div>Catégorie du jeu de données : <b>{topicCategories[topicCategory] || 'non renseignée'}</b></div>
           <div>Type : <b>{type || 'inconnu'}</b></div>
-          <div>Licence : <b>{license || 'non déterminé'}</b></div>
+          <div>Licence : <b>{license || 'non déterminée'}</b></div>
           {status && statusTranslate[status] ? <div>État : <b>{statusTranslate[status].status}</b></div> : null}
           {equivalentScaleDenominator ? <div>Échelle : <b>1 / {equivalentScaleDenominator}</b></div> : null}
           {spatialResolution ? <div>Résolution : <b>{spatialResolution.value} {spatialResolution.unit}</b></div> : null}
