@@ -8,9 +8,9 @@ import PastEvent from '../../../../components/Event/PastEvent'
 import { events, eventsList, pastEventsList } from './Events.css'
 
 const pastEvents = [
-  {name: 'Atelier #1', date: '06/10/2016', link: 'https://github.com/sgmap/inspire/files/838072/1489399578890.pdf'},
-  {name: 'Atelier #3', date: '09/02/2017', link: 'https://github.com/sgmap/inspire/files/838076/Synthese.atelier.3.pdf'},
-  {name: 'Atelier #4', date: '09/03/2017', link: ''},
+  {name: 'Atelier #1', date: '06/10/2016', link: '/assets/ateliers/synthese_atelier_1.pdf'},
+  {name: 'Atelier #3', date: '09/02/2017', link: '/assets/ateliers/synthese_atelier_3.pdf'},
+  {name: 'Atelier #4', date: '09/03/2017', link: '/assets/ateliers/synthese_atelier_4.pdf'},
 ]
 
 const Events = () => {
