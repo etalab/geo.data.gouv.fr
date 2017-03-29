@@ -40,7 +40,6 @@
     "ignore-styles": "^5.0.1",
     "jsdom": "^9.6.0",
     "mocha": "^3.1.2",
-    "object-assign": "^4.1.0",
     "postcss": "^5.2.6",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^2.9.0",
