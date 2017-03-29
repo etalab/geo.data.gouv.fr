@@ -1,5 +1,5 @@
 import React from 'react'
-import { prune } from 'underscore.string'
+import prune from 'underscore.string/prune'
 
 import MarkdownViewer from '../Markdown/MarkdownViewer'
 

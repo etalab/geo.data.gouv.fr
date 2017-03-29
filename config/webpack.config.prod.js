@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var url = require('url');
+
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
 
@@ -48,11 +49,26 @@ module.exports = {
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
   devtool: 'source-map',
-  // In production, we only want to load the polyfills and the app code.
-  entry: [
-    require.resolve('./polyfills'),
-    paths.appIndexJs
-  ],
+
+  entry: {
+    app: paths.appIndexJs,
+    vendor: [
+      'preact',
+      'preact-compat',
+      'react-leaflet',
+      'react-chartjs-2',
+      'marked',
+      'reactable',
+      'moment',
+      'react-router',
+      'react-paginate',
+      'react-document-title',
+      'react-router-scroll',
+      'piwik-react-router',
+      'qs',
+    ],
+  },
+
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -137,6 +153,13 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: 'manifest',
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
@@ -187,11 +210,7 @@ module.exports = {
       }
     }),
   ],
-  // Some libraries import Node modules but don't use them in the browser.
-  // Tell Webpack to provide empty mocks for them so importing them works.
   node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
+    Buffer: false, // Currently css-loader exports an unused function which rely on Buffer
   }
 };

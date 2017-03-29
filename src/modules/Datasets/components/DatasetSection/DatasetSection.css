@@ -43,13 +43,17 @@
 }
 
 .head {
+  background-color: var(--blue);
+}
+
+.inspireThemeHead {
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: var(--blue);
 }
 
-.head img {
+.inspireThemeHead img {
   width: 80px;
   height: 80px;
   margin-right: 2em;
@@ -100,7 +104,7 @@
     font-size: large;
   }
 
-  .head img {
+  .inspireThemeHead img {
     width: 50px;
     height: 50px;
     margin-right: 2em;
