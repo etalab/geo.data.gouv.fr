@@ -157,6 +157,9 @@ module.exports = {
       name: 'vendor',
       minChunks: Infinity,
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: 'manifest',
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
