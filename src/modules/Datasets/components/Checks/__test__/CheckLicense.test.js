@@ -1,15 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { ACCEPTED_LICENSES } from '../../../../../helpers/dataGouvChecks'
 import CheckLicense from '../CheckLicense'
 
 describe('<CheckLicense />', () => {
   it('should be true for all accepted licenses', () => {
-    const license = ACCEPTED_LICENSES[0]
+    const license = 'odbl'
     const wrapper = shallow(<CheckLicense license={license} valid={true} />)
 
-    expect(wrapper.html()).to.contain(`La licence ${license} est valide.`)
+    expect(wrapper.html()).to.contain('La licence Open Database License (ODbL 1.0) est valide.')
   })
 
   it('should be false for any other licenses and specify the error', () => {

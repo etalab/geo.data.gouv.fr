@@ -2,7 +2,7 @@
 
 .container {
   flex-direction: column;
-  margin-bottom: 1em;
+  margin-bottom: 4em;
   display: block;
   white-space: pre-wrap;
   width: 60vw;
@@ -14,5 +14,5 @@
   border: none;
   padding: 5px 10px;
   border-bottom: 1px solid;
-  align-self: flex-end;
+  float: right;
 }

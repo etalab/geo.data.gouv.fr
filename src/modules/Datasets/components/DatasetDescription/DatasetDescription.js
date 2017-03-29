@@ -6,6 +6,7 @@ import MarkdownViewer from '../Markdown/MarkdownViewer'
 import style from './DatasetDescription.css'
 
 const DatasetDescription = ({description, shortDescription, showMore}) => {
+  if (!description || !description.length) return <div>Aucune description.</div>
   const action = (description && description.length > 1000) ? <button className={style.action} onClick={() => showMore()}>{shortDescription ? 'Afficher la suite' : 'Réduire'}</button> : null
 
   return (
