@@ -8,7 +8,7 @@ import { doneSince } from '../../../../helpers/doneSince'
 import { statusTranslate } from '../../../../helpers/status'
 import { getLicense } from '../../../../helpers/dataGouvChecks'
 
-import { section, container, head, resume, theme, infos, stat } from './DatasetSection.css'
+import { section, container, head, inspireThemeHead, resume, theme, infos, stat } from './DatasetSection.css'
 
 class DatasetSection extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class DatasetSection extends Component {
 
     return (
       <div className={container}>
-        <div className={head}>
+        <div className={inspireTheme ? inspireThemeHead : head}>
           <div className={resume}>
             <h1>{title}</h1>
             <div className={infos}>
@@ -40,10 +40,12 @@ class DatasetSection extends Component {
             </div>
           </div>
 
-          <div className={theme}>
-            <div><img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon'/></div>
-            <div><a href={inspireTheme.uri}>{inspireTheme.label.fr}</a></div>
-          </div>
+          { inspireTheme ?
+            <div className={theme}>
+              <div><img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon'/></div>
+              <div><a href={inspireTheme.uri}>{inspireTheme.label.fr}</a></div>
+            </div> : null
+          }
         </div>
 
         <div className={section}>
