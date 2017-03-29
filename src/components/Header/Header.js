@@ -25,8 +25,8 @@ class Header extends Component {
   render() {
     const { user } = this.state
     const loginRedirect = `${process.env.PUBLIC_URL}/publication`
-    const currentLocation = window.location.pathname.split('/')[1]
-    const logoutRedirect = currentLocation === 'publication' ? process.env.PUBLIC_URL : `${process.env.PUBLIC_URL}${window.location.pathname}`
+    const isPublication = window.location.pathname.startsWith('/publication')
+    const logoutRedirect = isPublication ? process.env.PUBLIC_URL : process.env.PUBLIC_URL + window.location.pathname
     const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
     const logoutUrl =`https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={log} href={logInUrl}>Publier des données</a>
