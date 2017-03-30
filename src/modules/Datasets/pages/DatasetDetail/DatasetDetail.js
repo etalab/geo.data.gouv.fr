@@ -12,46 +12,15 @@ import Discussions from '../../components/Discussions/Discussions'
 import TechnicalInformations from '../../components/TechnicalInformations/TechnicalInformations'
 import SpatialExtentMap from '../../components/SpatialExtentMap/SpatialExtentMap'
 
-import { statusTranslate } from '../../../../helpers/status'
-
 import Section from '../../../../components/Section/Section'
 
-import { container, warning, main, side } from './DatasetDetail.css'
+import { container, main, side } from './DatasetDetail.css'
 
 export default class DatasetDetail extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {errors: [], statusWarning: this.isWarningStatus()}
-  }
-
-  isWarningStatus() {
-    const { dataset } = this.props
-
-    if (dataset.metadata.status) {
-      if (statusTranslate[dataset.metadata.status] && statusTranslate[dataset.metadata.status].consequences) {
-        return true
-      }
-    }
-    return false
-  }
-
-  hideStatusWarning() {
-    this.setState({statusWarning: false})
-  }
-
   render() {
-    const { statusWarning } = this.state
     const { dataset, catalogs, dataGouvPublication } = this.props
     const remoteId = dataGouvPublication ? dataGouvPublication.remoteId : null
-
-    if (statusWarning) {
-      return (
-        <div className={warning}>
-          <DatasetSection dataset={dataset} warning={statusWarning} hideStatusWarning={() => this.hideStatusWarning()} />
-        </div>
-      )
-    }
 
     return (
       <div className={container}>

@@ -17,12 +17,6 @@
   margin-top: 5em;
 }
 
-.warning {
-  display: flex;
-  justify-content: center;
-  margin: 3em;
-}
-
 @media (max-width: 768px) {
   .container {
     margin: 0em;
