@@ -147,14 +147,14 @@ export function getDataGouvPublication(datasetId) {
 // DATA.GOUV.FR
 export function getDatasetOnDataGouv(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  const url = `https://www.data.gouv.fr/api/1/datasets/${datasetId}/`
+  const url = `https://inspire.data.gouv.fr/dgv/proxy-api/1/datasets/${datasetId}/`
 
   return _get(url)
 }
 
 export function getDiscussions(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  const url = `https://www.data.gouv.fr/api/1/discussions/?for=${datasetId}`
+  const url = `https://inspire.data.gouv.fr/dgv/proxy-api/1/discussions/?for=${datasetId}`
 
   return _get(url)
 }
