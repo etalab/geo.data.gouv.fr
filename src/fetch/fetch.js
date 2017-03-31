@@ -158,3 +158,15 @@ export function getDiscussions(datasetId) {
 
   return _get(url)
 }
+
+export function createNewDiscussion(discussion) {
+  const url = 'https://next.data.gouv.fr/api/1/discussions/'
+
+  return _post(url, discussion)
+}
+
+export function createNewReply(content, discussionId) {
+  const url = 'https://next.data.gouv.fr/api/1/discussions/' + discussionId
+
+  return _post(url, content)
+}

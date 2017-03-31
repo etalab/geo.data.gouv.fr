@@ -1,3 +1,5 @@
+const DATAGOUV_APIKEY = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiNTg0ZTY4MWFjNzUxZGY1ZTlkYzBiYjdlIiwidGltZSI6MTQ5MDg4NzA1Ni43OTczMDZ9.u20YSniY59IFw6MgYQATmLCm3CW--vf3aYQ3HmpkTPA'
+
 export function _fetch(url, method, data) {
   const options = {
     headers: {
@@ -9,6 +11,13 @@ export function _fetch(url, method, data) {
 
   if (url.includes('https://inspire.data.gouv.fr/dgv/api')) {
     options.credentials = 'include'
+  }
+
+  if (url.includes('https://next.data.gouv.fr/api/1' && DATAGOUV_APIKEY)) {
+    url = url.replace('www', 'next')
+    options.headers = {
+      'X-API-KEY': DATAGOUV_APIKEY
+    }
   }
 
   if (data) {
