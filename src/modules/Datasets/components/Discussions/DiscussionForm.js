@@ -19,30 +19,34 @@ class DiscussionForm extends Component {
   }
 
   onKeyPress(event) {
-    if (event.key === 'Enter') {
-      const { title, comment } = this.state
-      this.props.createDiscussion(title, comment)
-    }
+    if (event.key === 'Enter') this.search()
   }
 
   search() {
+    const { discussionId, replyMode, returForm, discussionTEST } = this.props
     const { title, comment } = this.state
-    this.props.createDiscussion(title, comment)
+
+    if (replyMode) returForm(comment, discussionId, discussionTEST)
+
+    returForm(title, comment, discussionId)
   }
 
   render() {
     const { title, comment } = this.state
-    const { user, error } = this.props
+    const { user, replyMode = false, error } = this.props
+    const titleInput = (
+      <input
+        type='text'
+        value={title}
+        onChange={e => this.onTitleChange(e)}
+        onKeyPress={e => this.onKeyPress(e)}
+        placeholder='Titre' />
+    )
 
     return (
       <div className={discussionForm}>
-        {error ? <p>Merci de préciser le titre et le commentaire de votre discussion.</p> : null}
-        <input
-          type='text'
-          value={title}
-          onChange={e => this.onTitleChange(e)}
-          onKeyPress={e => this.onKeyPress(e)}
-          placeholder='Titre' />
+        {error ? <p>Merci de préciser {!replyMode ? 'le titre et' : ''} le commentaire.</p> : null}
+        {!replyMode ? titleInput : null}
         <div className={commentInput}>
           <img className={avatar} src={user.avatar || '/assets/avatar.png'} alt="avatar"/>
           <textarea
@@ -53,7 +57,7 @@ class DiscussionForm extends Component {
             placeholder='Commentaire' />
         </div>
 
-        <Button action={() => this.search()} text='Démarrer une discussion' />
+        <Button action={() => this.search()} text={replyMode ? 'Répondre' : 'Démarrer une discussion'} />
       </div>
     )
   }

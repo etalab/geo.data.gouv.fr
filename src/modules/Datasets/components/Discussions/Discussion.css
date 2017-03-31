@@ -30,6 +30,12 @@
   align-items: baseline;
 }
 
+.form {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
 .replies {
   margin: 0.5em 0.5em;
   color: var(--blue)

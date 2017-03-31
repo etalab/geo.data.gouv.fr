@@ -1,24 +1,36 @@
 import React, { Component } from 'react'
 
 import Button from '../../../../components/Buttons/Button'
+import AuthentificationNeeded from '../../../../components/AuthentificationNeeded/AuthentificationNeeded'
 
 import Message from './Message'
+import DiscussionForm from './DiscussionForm'
 
 import style from './Discussion.css'
 
 class Discussion extends Component {
   constructor(props) {
     super(props)
-    this.state = { more: false }
+    this.state = { more: false, replyInput: false }
   }
 
-  displayMore() {
-    this.setState({ more: !this.state.more })
+  extendsHandle(e) {
+    e.stopPropagation()
+    this.setState({ replyInput: false, more: !this.state.more })
+  }
+
+  replyForm() {
+    this.setState({ more: true, replyInput: true })
+  }
+
+  newReply(content, discussionId, discussionTEST) {
+    this.setState({ replyInput: false })
+    this.props.returForm(content, discussionId, discussionTEST)
   }
 
   render() {
-    const { more } = this.state
-    const { discussion, datasetId } = this.props
+    const { more, replyInput } = this.state
+    const { discussion, user, formError } = this.props
     const conversation = discussion.discussion.map((msg, idx) => <Message key={idx} message={msg} />)
     const repliesNb = discussion.discussion.length - 1
     let replies
@@ -31,15 +43,27 @@ class Discussion extends Component {
       replies = `${repliesNb} réponses`
     }
 
+    const reply = replyInput ?
+      <AuthentificationNeeded user={user}>
+        <DiscussionForm
+          replyMode={true}
+          user={user}
+          discussionId={discussion.id}
+          error={formError}
+          returForm={(content, discussionId, discussionTEST) => this.newReply(content, discussionId, discussionTEST)}
+          discussionTEST={discussion}/>
+      </AuthentificationNeeded> :
+      <Button action={() => this.replyForm()} text='Répondre' />
+
     return (
       <div className={style.container}>
         { discussion.closed ? <div className={style.resolved}><i className="checkmark icon"></i></div> : null}
         <div className={style.title}>{discussion.title}</div>
         <div className={style.messages}>
           { more ? conversation : <Message message={discussion.discussion[0]} />}
-          <div className={style.action}>
-            { more || !repliesNb ? <Button action={() => this.reply()} text='Répondre' /> : null }
-            <div className={style.replies} onClick={() =>this.displayMore()}>
+          <div className={replyInput ? style.form : style.action}>
+            { more || !repliesNb ? reply : null }
+            <div className={style.replies} onClick={(e) => this.extendsHandle(e)}>
               { more ? 'Fermer' : replies }
             </div>
           </div>
