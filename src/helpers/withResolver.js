@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { cancelAllPromises, waitForDataAndSetState } from './components'
-import Promise from 'bluebird'
 
 import Errors from '../components/Errors/Errors'
 import ContentLoader from '../components/Loader/ContentLoader'
@@ -14,9 +13,9 @@ export default function withResolver(WrappedComponent, dependencies) {
     }
 
     componentDidMount() {
-      const dependenciesPromise = Promise.map(Object.keys(dependencies), dependencyName => {
+      const dependenciesPromise = Promise.all(Object.keys(dependencies).map(dependencyName => {
         return waitForDataAndSetState(dependencies[dependencyName], this, dependencyName)
-      })
+      }))
 
       dependenciesPromise.then(() => this.setState({ dependenciesReady: true }))
 

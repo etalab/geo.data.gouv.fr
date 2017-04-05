@@ -82,7 +82,7 @@ class Discussions extends Component {
 
   render() {
     const { discussions, discussionForm, user, formError } = this.state
-    const { datasetId, remoteId } = this.props
+    const { remoteId } = this.props
 
     return (
       <div className={container}>

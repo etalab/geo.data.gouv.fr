@@ -42,7 +42,7 @@ export default class DatasetDetail extends Component {
 
   render() {
     const { statusWarning } = this.state
-    const { dataset, datasetId, catalogs, dataGouvPublication } = this.props
+    const { dataset, catalogs, dataGouvPublication } = this.props
     const remoteId = dataGouvPublication ? dataGouvPublication.remoteId : null
 
     if (statusWarning) {
@@ -71,7 +71,7 @@ export default class DatasetDetail extends Component {
           </Section>
 
           <Section title={'Discussions'}>
-            <Discussions datasetId={datasetId} remoteId={remoteId}/>
+            <Discussions remoteId={remoteId}/>
           </Section>
 
           <Section title={'Filtres'}>

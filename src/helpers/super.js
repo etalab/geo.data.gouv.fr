@@ -1,4 +1,6 @@
-const DATAGOUV_APIKEY = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiNTg0ZTY4MWFjNzUxZGY1ZTlkYzBiYjdlIiwidGltZSI6MTQ5MDg4NzA1Ni43OTczMDZ9.u20YSniY59IFw6MgYQATmLCm3CW--vf3aYQ3HmpkTPA'
+// const DATAGOUV_APIKEY = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiNTg0ZTY4MWFjNzUxZGY1ZTlkYzBiYjdlIiwidGltZSI6MTQ5MDg4NzA1Ni43OTczMDZ9.u20YSniY59IFw6MgYQATmLCm3CW--vf3aYQ3HmpkTPA'
+const overrideDataGouvApiUrl = process.env.INSPIRE_DATAGOUV_API_URL || 'https://next.data.gouv.fr/api'
+const dataGouvApiKey = process.env.INSPIRE_DATAGOUV_API_KEY
 
 export function _fetch(url, method, data) {
   const options = {
@@ -13,10 +15,13 @@ export function _fetch(url, method, data) {
     options.credentials = 'include'
   }
 
-  if (url.includes('https://next.data.gouv.fr/api/1' && DATAGOUV_APIKEY)) {
-    url = url.replace('www', 'next')
-    options.headers = {
-      'X-API-KEY': DATAGOUV_APIKEY
+  if (url.includes('https://inspire.data.gouv.fr/dgv/proxy-api')) {
+    if (dataGouvApiKey) {
+      url = url.replace('https://inspire.data.gouv.fr/dgv/proxy-api', overrideDataGouvApiUrl)
+      options.headers['X-API-KEY'] = dataGouvApiKey
+      options.mode = undefined
+    } else {
+      options.credentials = 'include'
     }
   }
 

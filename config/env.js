@@ -1,7 +1,7 @@
 // Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
 // injected into the application via DefinePlugin in Webpack configuration.
 
-var REACT_APP = /^REACT_APP_/i;
+var REACT_APP = /^INSPIRE_/i;
 
 function getClientEnvironment(publicUrl) {
   return Object

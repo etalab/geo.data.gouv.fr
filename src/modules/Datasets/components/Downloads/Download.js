@@ -1,5 +1,5 @@
 import React from 'react'
-import { strRightBack } from 'underscore.string'
+import strRightBack from 'underscore.string/strRightBack'
 import { download, container, title, viewerButton, formats } from './Download.css'
 
 const FORMATS = [

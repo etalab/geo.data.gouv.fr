@@ -12,7 +12,10 @@ class CheckLicense extends Component {
       <div>
         Les licenses reconnue sont :
         <ul>
-          { Object.keys(ACCEPTED_LICENSES).map( (licence, idx) => <li key={idx}>{licence.name}</li>) }
+          { Object.keys(ACCEPTED_LICENSES).map((licence, idx) => {
+            const li = ACCEPTED_LICENSES[licence]
+            return <li key={idx}><a href={li.link}>{li.name}</a></li>
+          }) }
         </ul>
       </div>
     )
