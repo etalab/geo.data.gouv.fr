@@ -1,0 +1,14 @@
+.sticky {
+  z-index: 600;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 18px;
+  color: white;
+  right: 20px;
+}
+
+.closeIcon:hover {
+  cursor: pointer;
+}

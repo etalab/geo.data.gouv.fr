@@ -3,10 +3,9 @@ import React, { Component } from 'react'
 import DatasetDescription from '../DatasetDescription/DatasetDescription'
 
 import { doneSince } from '../../../../helpers/doneSince'
-import { statusTranslate, isWarningStatus } from '../../../../helpers/status'
 import { getLicense } from '../../../../helpers/dataGouvChecks'
 
-import { section, container, head, inspireThemeHead, resume, theme, infos, stat, bold } from './DatasetSection.css'
+import { section, container, head, inspireThemeHead, resume, theme, infos } from './DatasetSection.css'
 
 class DatasetSection extends Component {
   constructor(props) {
@@ -23,7 +22,6 @@ class DatasetSection extends Component {
     const { shortDescription } = this.state
     const { title, description, status, type, purpose, lineage, inspireTheme } = dataset.metadata
     const revisionDate = doneSince(dataset.revisionDate)
-    const completStatus = statusTranslate[status]
     const license = getLicense(dataset.metadata.license)
 
     return (
@@ -45,13 +43,6 @@ class DatasetSection extends Component {
             </div> : null
           }
         </div>
-
-        { isWarningStatus(status) ?
-          <div className={stat}>
-            <div className={bold}>Attention ce jeu de données est considéré comme {completStatus.status} par son producteur</div>
-            <div>{completStatus.consequences}</div>
-          </div> : null
-        }
 
         <div className={section}>
           <div>

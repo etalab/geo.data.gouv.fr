@@ -1,3 +1,5 @@
+@import "../../../../theme/colors";
+
 .container {
   margin: 3em;
   display: flex;
@@ -10,6 +12,21 @@
 
 .side {
   width: 30%;
+}
+
+.stat {
+  padding: 1em;
+  text-align: center;
+  background-color: var(--yellow);
+  color: #fff;
+}
+
+.stat button {
+  margin: 2em;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .loader {

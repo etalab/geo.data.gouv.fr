@@ -30,22 +30,6 @@
   cursor: pointer;
 }
 
-
-.stat {
-  padding: 1em;
-  text-align: center;
-  background-color: var(--yellow);
-  color: #fff;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.stat button {
-  margin: 2em;
-}
-
 .head {
   background-color: var(--blue);
 }
