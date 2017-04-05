@@ -1,12 +1,21 @@
+@import "../../theme/colors";
+
 .sticky {
   z-index: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--yellow);
+}
+
+.msg {
+  width: 100%;
 }
 
 .closeIcon {
-  position: absolute;
-  top: 18px;
-  color: white;
-  right: 20px;
+  color: #fff;
+  padding: 1em;
 }
 
 .closeIcon:hover {

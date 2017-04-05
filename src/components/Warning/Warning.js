@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Sticky } from 'react-sticky'
 
-import { sticky, closeIcon } from './Warning.css'
+import { sticky, msg, closeIcon } from './Warning.css'
 
 class Warning extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Warning extends Component {
 
     return (
       <Sticky className={sticky}>
-        {children}
+        <div className={msg}>{children}</div>
         <div className={closeIcon} onClick={() => this.closeWarning()}><i className="big remove icon"></i></div>
       </Sticky>
     )
