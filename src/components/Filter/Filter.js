@@ -12,7 +12,7 @@ const Filter = (props) => {
   return (
     <button className={link} title={`${title}: ${value}`} style={style} onClick={() => onClick && onClick(filter)}>
       <span>{ detail && `${title}:` }</span><span className={filterValue}>{value}</span>
-      { remove && <span>&nbsp;<i className="fa fa-close" /></span>}
+      { remove && <span>&nbsp;<i className="remove icon" /></span>}
     </button>
   )
 }
