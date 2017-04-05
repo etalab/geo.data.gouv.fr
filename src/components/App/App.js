@@ -1,17 +1,20 @@
 import React from 'react'
+import { StickyContainer } from 'react-sticky'
+
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+
 import { content, body } from './App.css'
 
 const App = ({children}) => {
   return (
-    <div className={content}>
+    <StickyContainer className={content}>
       <Header />
       <div className={body}>
         {children}
       </div>
       <Footer />
-    </div>
+    </StickyContainer>
   )
 }
 
