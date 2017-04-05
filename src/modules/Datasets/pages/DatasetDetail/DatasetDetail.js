@@ -16,7 +16,7 @@ import Section from '../../../../components/Section/Section'
 
 import { statusTranslate, isWarningStatus } from '../../../../helpers/status'
 
-import { container, main, side, stat, bold } from './DatasetDetail.css'
+import { container, main, side } from './DatasetDetail.css'
 
 export default class DatasetDetail extends Component {
 
@@ -29,11 +29,8 @@ export default class DatasetDetail extends Component {
     return (
       <div>
         { isWarningStatus(status) ?
-          <Warning>
-            <div className={stat}>
-              <div className={bold}>Attention ce jeu de données est considéré comme {completStatus.status} par son producteur</div>
-              <div>{completStatus.consequences}</div>
-            </div>
+          <Warning title={`Attention ce jeu de données est considéré comme ${completStatus.status} par son producteur`}>
+            {completStatus.consequences}
           </Warning>
            : null
         }

@@ -5,12 +5,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1em;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
+}
+
+.warning {
   background-color: var(--yellow);
 }
 
-.msg {
-  width: 100%;
+.errorStyle {
+  background-color: var(--red);
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .closeIcon {

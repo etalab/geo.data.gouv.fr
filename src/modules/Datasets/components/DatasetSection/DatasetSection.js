@@ -20,7 +20,7 @@ class DatasetSection extends Component {
   render() {
     const { dataset } = this.props
     const { shortDescription } = this.state
-    const { title, description, status, type, purpose, lineage, inspireTheme } = dataset.metadata
+    const { title, description, type, purpose, lineage, inspireTheme } = dataset.metadata
     const revisionDate = doneSince(dataset.revisionDate)
     const license = getLicense(dataset.metadata.license)
 
