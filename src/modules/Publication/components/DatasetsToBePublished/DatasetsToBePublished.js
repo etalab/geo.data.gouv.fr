@@ -20,7 +20,7 @@ class DatasetsToBePublished extends Component {
     const { organizationId } = this.props
 
     if (toPublish.length) {
-      this.setState({ publicationsInProgress: toPublish })
+      this.setState({ publicationsInProgress: [...toPublish] })
       toPublish.map( dataset => publishDataset(dataset._id, organizationId))
     }
   }
