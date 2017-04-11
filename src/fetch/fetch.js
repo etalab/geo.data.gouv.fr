@@ -160,13 +160,13 @@ export function getDiscussions(datasetId) {
 }
 
 export function createNewDiscussion(discussion) {
-  const url = 'https://inspire.data.gouv.fr/dgv/proxy-api/discussions'
+  const url = 'https://inspire.data.gouv.fr/dgv/proxy-api/1/discussions/'
 
   return _post(url, discussion)
 }
 
 export function createNewReply(content, discussionId) {
-  const url = 'https://inspire.data.gouv.fr/dgv/proxy-api/discussions/' + discussionId
+  const url = 'https://inspire.data.gouv.fr/dgv/proxy-api/1/discussions/' + discussionId + '/'
 
   return _post(url, content)
 }

@@ -1,4 +1,3 @@
-// const DATAGOUV_APIKEY = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiNTg0ZTY4MWFjNzUxZGY1ZTlkYzBiYjdlIiwidGltZSI6MTQ5MDg4NzA1Ni43OTczMDZ9.u20YSniY59IFw6MgYQATmLCm3CW--vf3aYQ3HmpkTPA'
 const overrideDataGouvApiUrl = process.env.INSPIRE_DATAGOUV_API_URL || 'https://next.data.gouv.fr/api'
 const dataGouvApiKey = process.env.INSPIRE_DATAGOUV_API_KEY
 
