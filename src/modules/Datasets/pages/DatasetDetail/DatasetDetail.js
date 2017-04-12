@@ -53,7 +53,7 @@ export default class DatasetDetail extends Component {
           </Section>
 
           <Section title={'Discussions'}>
-            <Discussions datasetId={remoteId}/>
+            <Discussions remoteId={remoteId}/>
           </Section>
 
           <Section title={'Filtres'}>

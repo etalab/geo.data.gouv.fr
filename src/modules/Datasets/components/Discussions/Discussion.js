@@ -1,33 +1,58 @@
 import React, { Component } from 'react'
 
+import Button from '../../../../components/Buttons/Button'
+import AuthentificationNeeded from '../../../../components/AuthentificationNeeded/AuthentificationNeeded'
+
 import Message from './Message'
+import DiscussionForm from './DiscussionForm'
 
 import style from './Discussion.css'
 
 class Discussion extends Component {
   constructor(props) {
     super(props)
-    this.state = { more: false }
+    this.state = { more: false, replyInput: false }
   }
 
-  displayMore() {
-    this.setState({ more: !this.state.more })
+  extendsHandle(e) {
+    e.stopPropagation()
+    this.setState({ replyInput: false, more: !this.state.more })
+  }
+
+  replyForm() {
+    this.setState({ more: true, replyInput: true })
+  }
+
+  newReply(content, discussionId) {
+    this.setState({ replyInput: false })
+    this.props.returForm(content, discussionId)
   }
 
   render() {
-    const { more } = this.state
-    const { discussion, datasetId } = this.props
+    const { more, replyInput } = this.state
+    const { discussion, user, formError } = this.props
     const conversation = discussion.discussion.map((msg, idx) => <Message key={idx} message={msg} />)
     const repliesNb = discussion.discussion.length - 1
     let replies
 
     if (!repliesNb) {
-      replies = 'Aucune réponse'
+      replies = null
     } else if (repliesNb === 1) {
       replies = '1 réponse'
     } else {
       replies = `${repliesNb} réponses`
     }
+
+    const reply = replyInput ?
+      <AuthentificationNeeded user={user}>
+        <DiscussionForm
+          replyMode={true}
+          user={user}
+          discussionId={discussion.id}
+          error={formError}
+          returForm={(content, discussionId) => this.newReply(content, discussionId)} />
+      </AuthentificationNeeded> :
+      <Button action={() => this.replyForm()} text='Répondre' />
 
     return (
       <div className={style.container}>
@@ -35,9 +60,9 @@ class Discussion extends Component {
         <div className={style.title}>{discussion.title}</div>
         <div className={style.messages}>
           { more ? conversation : <Message message={discussion.discussion[0]} />}
-          <div className={style.action}>
-            { more || !repliesNb ? <a className={style.answer} href={`https://www.data.gouv.fr/fr/datasets/${datasetId}/#discussion-${discussion.id}`}>Répondre sur data.gouv.fr</a> : null }
-            <div className={style.replies} onClick={() =>this.displayMore()}>
+          <div className={replyInput ? style.form : style.action}>
+            { more || !repliesNb ? reply : null }
+            <div className={style.replies} onClick={(e) => this.extendsHandle(e)}>
               { more ? 'Fermer' : replies }
             </div>
           </div>

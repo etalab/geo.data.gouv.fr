@@ -1,0 +1,41 @@
+@import "../../../../theme/colors";
+
+.discussionForm {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--blue);
+  margin: 0.3em;
+}
+
+.discussionForm p {
+  margin-left: 1em;
+  color: var(--red);
+}
+
+.discussionForm input {
+  padding: 1em;
+  margin: 0 1em 0.5em 1em;
+  border: 1px solid;
+}
+
+.discussionForm textarea {
+  padding: 1em;
+  width: 100%;
+  border: 1px solid;
+}
+
+.discussionForm button {
+  margin: 0 1em 0.5em 1em;
+}
+
+.commentInput {
+  display: flex;
+  align-items: center;
+  margin: 0 1em 0.5em 1em;
+}
+
+.avatar {
+  margin: 1em 1em 1em 0;
+  min-width: 50px;
+  max-height: 50px;
+}
