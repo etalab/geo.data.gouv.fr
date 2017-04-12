@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import DatasetSection from '../../../components/DatasetSection/DatasetSection'
 import datasetMock from '../../../../../fetch/__test__/dataset.json'
 
 const DatasetDetail = require('proxyquire')('../DatasetDetail', {

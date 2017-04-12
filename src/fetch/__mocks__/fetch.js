@@ -16,6 +16,7 @@ import organizationDatasets from '../__test__/organizationDatasets.json'
 import organizationNotPublishedYetDatasets from '../__test__/organizationNotPublishedYetDatasets.json'
 import dataGouvPublication from '../__test__/dataGouvPublication.json'
 import dataGouvDataset from '../__test__/dataGouvDataset.json'
+import discussions from '../__test__/discussions.json'
 
 export function fetchMetrics(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
@@ -117,8 +118,20 @@ export function getDataGouvPublication(datasetId) {
   return Promise.reject(new Error('data.gouv.fr publication not found'))
 }
 
+// DATA.GOUV.FR
 export function getDatasetOnDataGouv(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
   if (datasetId === '1') return Promise.resolve(dataGouvDataset)
   return Promise.reject(new Error('data.gouv.fr dataset not found'))
+}
+
+export function getDiscussions(datasetId) {
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  if (datasetId === '1') return Promise.resolve(discussions)
+  return Promise.reject(new Error('data.gouv.fr dataset not found'))
+}
+
+export function createNewDiscussion(discussion) {
+  if (!discussion) return Promise.reject(new Error('discussion is required'))
+  return Promise.resolve(discussion)
 }

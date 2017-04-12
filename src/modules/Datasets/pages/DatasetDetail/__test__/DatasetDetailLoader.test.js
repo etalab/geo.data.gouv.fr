@@ -3,7 +3,6 @@ import { mount, shallow } from 'enzyme'
 
 import CircularProgress from '../../../../../components/CircularProgress/CircularProgress'
 import Errors from '../../../../../components/Errors/Errors'
-import datasetMock from '../../../../../fetch/__test__/dataset.json'
 
 const DatasetDetailLoader = require('proxyquire')('../DatasetDetailLoader', {
   '../../../../fetch/fetch': require('../../../../../fetch/__mocks__/fetch')
@@ -20,13 +19,14 @@ describe('<DatasetDetailLoader />', () => {
   })
 
   describe('Loaded dataset', () => {
-    it('should display dataset title', () => {
+    it('should not display a <CircularProgress />', () => {
       const wrapper = mount(<DatasetDetailLoader params={{ datasetId: '1' }} />)
+      const progress = <CircularProgress />
 
       return wrapper.instance()
         .componentWillMount()
         .then(() => {
-          expect(wrapper.html()).to.contain(datasetMock.metadata.title)
+          expect(wrapper.containsMatchingElement(progress)).to.be.false
         })
     })
   })
