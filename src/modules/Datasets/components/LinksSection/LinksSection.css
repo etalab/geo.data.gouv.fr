@@ -1,3 +1,9 @@
+.linkList {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
 .linkList a:hover {
   text-decoration: underline;
 }
