@@ -10,7 +10,7 @@ class DatasetsPublication extends Component {
 
   render() {
     const { datasets, title, update, organizationId, status } = this.props
-
+    const sortedDatasets = datasets.sort((a, b) => a.title.localeCompare(b.title))
     const headerStyle = cx(header, {
       [success]: status === 'success',
       [warning]: status === 'warning',
@@ -23,7 +23,9 @@ class DatasetsPublication extends Component {
             <div>{title}</div>
             <div>{datasets.length}</div>
           </div>
-          {status === 'error' ? <DatasetsToBePublished datasets={datasets} update={() => update()} organizationId={organizationId} /> : <PublishedDatasets datasets={datasets} />}
+          {status === 'error' ?
+            <DatasetsToBePublished datasets={sortedDatasets} update={() => update()} organizationId={organizationId} /> :
+            <PublishedDatasets datasets={sortedDatasets} />}
         </div>
     )
   }
