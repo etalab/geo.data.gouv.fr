@@ -99,6 +99,14 @@ export function fetchOrganizationNotPublishedYet(organizationId) {
   return Promise.reject(new Error('organization not published yet datasets not found'))
 }
 
+export function publishDataset(datasetId, organizationId) {
+  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
+  if (!organizationId) return Promise.reject(new Error('organizationId is required'))
+  if (organizationId === '1') return Promise.resolve(organizationNotPublishedYetDatasets)
+
+  return
+}
+
 export function fetchOrganizationPublishedByOthers(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   if (organizationId === '1') return Promise.resolve(organizationDatasets)

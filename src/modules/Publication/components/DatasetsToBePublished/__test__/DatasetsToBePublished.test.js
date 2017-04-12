@@ -1,7 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import DatasetsToBePublished from '../DatasetsToBePublished'
+const DatasetsToBePublished = require('proxyquire')('../DatasetsToBePublished', {
+  '../../../../fetch/fetch': require('../../../../../fetch/__mocks__/fetch')
+}).default
 
 const datasets = [
   {_id: 1, title: 'dataset1'},
@@ -11,9 +13,27 @@ const datasets = [
 
 describe('<DatasetsToBePublished />', () => {
 
+  describe('Publication in progress', () => {
+    it('should display only one dataset in progress', () => {
+      const dataset1 = datasets[0]
+      const dataset2 = datasets[1]
+      const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
+
+      wrapper.instance().addDatasetToPublish(dataset1)
+      wrapper.instance().publishDatasets()
+      wrapper.instance().addDatasetToPublish(dataset2)
+
+      expect(wrapper.state().publicationsInProgress.includes(dataset1)).to.be.true
+      expect(wrapper.state().publicationsInProgress.includes(dataset2)).to.be.false
+      expect(wrapper.html()).to.contain('<div><a>dataset1</a><div>Publication en cours...</div></div>')
+      expect(wrapper.html()).to.contain('<div><a>dataset2</a><input type="checkbox" checked=""/>')
+
+    })
+  })
+
   describe('When datasets is empty', () => {
     it('should render a message', () => {
-      const wrapper = shallow(<DatasetsToBePublished datasets={[]} title={''} status={''} />)
+      const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={[]} title={''} status={''} />)
 
       expect(wrapper.text()).to.contain('Aucun jeu de données.')
     })
@@ -21,7 +41,7 @@ describe('<DatasetsToBePublished />', () => {
 
   describe('toPublish state', () => {
     it('should be init with empty array', () => {
-      const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+      const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
       expect(wrapper.state('toPublish')).to.eql([])
     })
@@ -30,7 +50,7 @@ describe('<DatasetsToBePublished />', () => {
   describe('Publishing button', () => {
     describe('When toPublish state contain all datasets', () => {
       it('should display "Publier toutes les données" text', () => {
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().setState({toPublish: datasets})
 
@@ -42,7 +62,7 @@ describe('<DatasetsToBePublished />', () => {
     describe('When toPublish state contain at least one datasets', () => {
       it('should display "Publier les données séléctionnées" text', () => {
         const dataset = datasets[0]
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().removeDatasetToPublish(dataset)
 
@@ -54,7 +74,7 @@ describe('<DatasetsToBePublished />', () => {
     describe('When toPublish state contain any dataset', () => {
       it('should be disable', () => {
         const dataset = {_id: 1, title: 'dataset1'}
-        const wrapper = shallow(<DatasetsToBePublished datasets={[dataset]} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={[dataset]} title={''} status={''} />)
 
         wrapper.instance().removeDatasetToPublish(dataset)
 
@@ -68,7 +88,7 @@ describe('<DatasetsToBePublished />', () => {
     describe('when dataset is not in toPublish', () => {
       it('should be add to toPublish array', () => {
         const dataset = {_id: 4, title: 'dataset4'}
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().addDatasetToPublish(dataset)
 
@@ -79,7 +99,7 @@ describe('<DatasetsToBePublished />', () => {
     describe('when dataset is already in toPublish', () => {
       it('should not be add to toPublish array', () => {
         const dataset = datasets[0]
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().addDatasetToPublish(dataset)
         wrapper.instance().addDatasetToPublish(dataset)
@@ -93,7 +113,7 @@ describe('<DatasetsToBePublished />', () => {
     describe('when dataset is in toPublish', () => {
       it('should remove from toPublish array', () => {
         const dataset = {_id: 1, title: 'dataset1'}
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().setState({toPublish: datasets})
         wrapper.instance().removeDatasetToPublish(dataset)
@@ -108,7 +128,7 @@ describe('<DatasetsToBePublished />', () => {
     describe('when dataset is not in toPublish', () => {
       it('should do nothing', () => {
         const dataset = {_id: 4, title: 'dataset4'}
-        const wrapper = shallow(<DatasetsToBePublished datasets={datasets} title={''} status={''} />)
+        const wrapper = shallow(<DatasetsToBePublished organizationId="1" datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().setState({toPublish: datasets})
         wrapper.instance().removeDatasetToPublish(dataset)
