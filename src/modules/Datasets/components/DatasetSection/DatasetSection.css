@@ -30,18 +30,6 @@
   cursor: pointer;
 }
 
-
-.stat {
-  display: flex;
-  padding: 3em;
-  flex-direction: column;
-  align-items: center;
-}
-
-.stat button {
-  margin: 2em;
-}
-
 .head {
   background-color: var(--blue);
 }
