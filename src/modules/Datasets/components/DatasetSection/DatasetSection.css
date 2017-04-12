@@ -30,18 +30,6 @@
   cursor: pointer;
 }
 
-
-.stat {
-  display: flex;
-  padding: 3em;
-  flex-direction: column;
-  align-items: center;
-}
-
-.stat button {
-  margin: 2em;
-}
-
 .head {
   background-color: var(--blue);
 }
@@ -56,7 +44,6 @@
 .inspireThemeHead img {
   width: 80px;
   height: 80px;
-  margin-right: 2em;
   padding: 0.3em;
   border-radius: 60px;
   background-color: #fff;
@@ -107,7 +94,6 @@
   .inspireThemeHead img {
     width: 50px;
     height: 50px;
-    margin-right: 2em;
     border-radius: 60px;
     padding: 0.3em;
     background-color: #fff;

@@ -1,3 +1,5 @@
+@import "../../../../theme/colors";
+
 .container {
   margin: 3em;
   display: flex;
@@ -15,12 +17,6 @@
 .loader {
   text-align: center;
   margin-top: 5em;
-}
-
-.warning {
-  display: flex;
-  justify-content: center;
-  margin: 3em;
 }
 
 @media (max-width: 768px) {

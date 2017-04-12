@@ -46,7 +46,7 @@ class DatasetChecklist extends Component {
       } else {
         return (
           <div>
-            Ce jeu de données <b>peut</b> être publié sur data.gouv.fr
+            <div>Ce jeu de données <b>peut</b> être publié sur data.gouv.fr</div>
             <div className={highlight}>Une action du producteur est nécessaire.</div>
           </div>
         )
@@ -54,7 +54,7 @@ class DatasetChecklist extends Component {
     } else {
       return (
         <div className={checklist}>
-          Ce jeu de données <b>ne peut pas</b> être publié sur data.gouv.fr
+          <div>Ce jeu de données <b>ne peut pas</b> être publié sur data.gouv.fr</div>
           {showDetails ?
             (
               <div>
