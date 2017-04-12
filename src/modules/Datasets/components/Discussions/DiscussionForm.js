@@ -23,10 +23,10 @@ class DiscussionForm extends Component {
   }
 
   search() {
-    const { discussionId, replyMode, returForm, discussionTEST } = this.props
+    const { discussionId, replyMode, returForm } = this.props
     const { title, comment } = this.state
 
-    if (replyMode) returForm(comment, discussionId, discussionTEST)
+    if (replyMode) returForm(comment, discussionId)
 
     returForm(title, comment, discussionId)
   }

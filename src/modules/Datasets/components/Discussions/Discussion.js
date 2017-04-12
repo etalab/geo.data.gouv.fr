@@ -23,9 +23,9 @@ class Discussion extends Component {
     this.setState({ more: true, replyInput: true })
   }
 
-  newReply(content, discussionId, discussionTEST) {
+  newReply(content, discussionId) {
     this.setState({ replyInput: false })
-    this.props.returForm(content, discussionId, discussionTEST)
+    this.props.returForm(content, discussionId)
   }
 
   render() {
@@ -50,8 +50,7 @@ class Discussion extends Component {
           user={user}
           discussionId={discussion.id}
           error={formError}
-          returForm={(content, discussionId, discussionTEST) => this.newReply(content, discussionId, discussionTEST)}
-          discussionTEST={discussion}/>
+          returForm={(content, discussionId) => this.newReply(content, discussionId)} />
       </AuthentificationNeeded> :
       <Button action={() => this.replyForm()} text='Répondre' />
 

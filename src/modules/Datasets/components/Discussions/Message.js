@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import { doneSince } from '../../../../helpers/doneSince'
 
 import style from './Message.css'
@@ -10,7 +11,7 @@ const Message = ({message}) => {
       <div className={style.content}>
         <div className={style.header}>
           <div className={style.userName}>{message.posted_by.first_name} {message.posted_by.last_name}</div>
-          <div className={style.postedOn}>{doneSince(message.posted_on)}</div>
+          <div className={style.postedOn}>{doneSince(moment(message.posted_on).add(2, 'hh'))}</div>
         </div>
         <div>{message.content}</div>
       </div>

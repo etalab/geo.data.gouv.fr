@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { find } from 'lodash'
 
 import Discussion from './Discussion'
 import DiscussionForm from './DiscussionForm'
@@ -66,17 +65,13 @@ class Discussions extends Component {
       })
   }
 
-  createReply(comment, discussionId, discussionTEST) {
-    const { discussions } = this.state
-
+  createReply(comment, discussionId) {
     if (!comment) return this.setState({ formError: true })
 
-    createNewReply({ comment }, discussionId, discussionTEST)
-      .then(discussion => {
-        const updatedDiscussions = find(discussions.data, discussion => discussion.id === discussionId)
-
-        updatedDiscussions.discussion.push(discussion)
-        this.setState({ discussions: updatedDiscussions, discussionForm: false, formError: false })
+    createNewReply({ comment }, discussionId)
+      .then(() => {
+        this.updateDiscussions()
+        this.setState({ discussionForm: false, formError: false })
       })
   }
 
@@ -94,7 +89,7 @@ class Discussions extends Component {
               formError={formError}
               remoteId={remoteId}
               discussion={discussion}
-              returForm={(comment, discussionId, discussionTEST) => this.createReply(comment, discussionId, discussionTEST)} />)
+              returForm={(comment, discussionId) => this.createReply(comment, discussionId)} />)
           : null
         }
         {discussionForm ?
