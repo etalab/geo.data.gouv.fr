@@ -1,7 +1,11 @@
 .data {
   display: flex;
   justify-content: space-between;
-  margin: 1em;
+  padding: 1em;
+}
+
+.data:hover {
+  background-color: whitesmoke;
 }
 
 .progress {
