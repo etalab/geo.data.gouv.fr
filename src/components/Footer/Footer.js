@@ -14,7 +14,7 @@ class Footer extends Component {
           <NewsletterForm />
 
           <div className={info}>
-            <p>Fait avec <span style={{ color: 'white' }}>♥</span> par <a style={{ color: 'white' }} href="https://beta.gouv.fr">l'Incubateur de Services Numériques</a></p>
+            <p>Fait avec <span style={{ color: 'white' }}>♥</span> par <a style={{ color: 'white' }} href="https://www.etalab.gouv.fr/">la mission Etalab</a></p>
 
             <SocialLinks />
           </div>
