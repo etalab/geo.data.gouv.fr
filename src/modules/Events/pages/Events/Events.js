@@ -12,6 +12,7 @@ const pastEvents = [
   {name: 'Atelier #3', date: '09/02/2017', link: '/assets/ateliers/synthese_atelier_3.pdf'},
   {name: 'Atelier #4', date: '09/03/2017', link: '/assets/ateliers/synthese_atelier_4.pdf'},
   {name: 'Atelier #5', date: '18/04/2017', link: ''},
+  {name: 'Atelier #6', date: '18/05/2017', link: ''},
 ]
 
 const Events = () => {
@@ -22,8 +23,7 @@ const Events = () => {
 
         <h1>Événements à venir</h1>
         <div className={eventsList}>
-          <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=32842679338"/>
-          <EventbriteWidget src="https://www.eventbrite.fr/countdown-widget?eid=33885350997"/>
+          Aucun événement programmé pour le moment.
         </div>
 
         <h1>Événements passés</h1>
