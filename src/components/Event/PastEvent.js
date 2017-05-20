@@ -4,8 +4,10 @@ import Section from '../Section/Section'
 
 import { event } from './PastEvent.css'
 
-const PastEvent = ({ pastEvent }) => {
+const PastEvent =  props => {
+  const pastEvent = props.event
   const noLinkMessage = pastEvent.linkComingSoon ? 'Compte-rendu bientôt disponible…' : 'Pas de compte-rendu'
+
   return (
     <Section title={pastEvent.name}>
       <div className={event}>
