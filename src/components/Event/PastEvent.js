@@ -4,18 +4,19 @@ import Section from '../Section/Section'
 
 import { event } from './PastEvent.css'
 
-const PastEvent = ({ name, date, link }) => {
+const PastEvent = ({ pastEvent }) => {
+  const noLinkMessage = pastEvent.linkComingSoon ? 'Compte-rendu bientôt disponible…' : 'Pas de compte-rendu'
   return (
-    <Section title={name}>
+    <Section title={pastEvent.name}>
       <div className={event}>
         <i className="huge file text icon"></i>
         <div>
-          <div>{date}</div>
-          {link ?
+          <div>{pastEvent.date}</div>
+          {pastEvent.link ?
             <div>
-              <a href={link}>Télécharger le compte rendu</a>
+              <a href={pastEvent.link}>Télécharger le compte rendu</a>
             </div>
-            : <div>Bientôt disponible...</div>
+            : <div>{noLinkMessage}</div>
           }
         </div>
       </div>
