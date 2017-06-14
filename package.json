@@ -74,7 +74,7 @@
     "react-leaflet": "^1.1.1",
     "react-paginate": "^4.1.1",
     "react-responsive": "^1.1.5",
-    "react-router": "^3.0.1",
+    "react-router": "3.0.3",
     "react-router-scroll": "^0.4.1",
     "react-sticky": "^5.0.5",
     "reactable": "^0.14.1",
