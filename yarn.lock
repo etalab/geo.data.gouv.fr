@@ -4803,7 +4803,7 @@ react-router-scroll@^0.4.1:
     scroll-behavior "^0.9.1"
     warning "^3.0.0"
 
-react-router@^3.0.1:
+react-router@3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-3.0.3.tgz#e95304b2e418482e5ecff2699d2b8aae52d5f884"
   dependencies:
