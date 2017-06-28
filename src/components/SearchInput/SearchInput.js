@@ -1,45 +1,27 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { wrapper, input, button } from './SearchInput.css'
 
-class SearchInput extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { textInput: props.textInput || '' }
-  }
+class SearchInput extends PureComponent {
+  onSubmit(event) {
+    event.preventDefault();
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.textInput || this.props.textInput === nextProps.textInput) return
-    this.setState({ textInput: nextProps.textInput })
-  }
-
-  onChange(event) {
-    this.setState({textInput: event.target.value});
-  }
-
-  onKeyPress(event) {
-    if (event.key === 'Enter') {
-      this.props.onSearch(this.state.textInput)
-    }
-  }
-
-  search() {
-    this.props.onSearch(this.state.textInput)
+    this.props.onSearch(event.target.query.value);
   }
 
   render() {
-    const { placeholder } = this.props
+    const { placeholder, textInput } = this.props
 
     return (
-      <div className={wrapper}>
+      <form onSubmit={e => this.onSubmit(e)} className={wrapper}>
         <input
           type='text'
-          value={this.state.textInput}
+          name='query'
+          value={textInput}
           className={input}
-          onChange={e => this.onChange(e)}
-          onKeyPress={e => this.onKeyPress(e)}
-          placeholder={placeholder ? placeholder : 'Rechercher...'} />
-        {this.props.searchButton ? <button className={button} onClick={() => this.search()}>Rechercher</button> : undefined}
-      </div>
+          placeholder={placeholder ? placeholder : 'Rechercher…'} />
+
+        {this.props.searchButton ? <button type='submit' className={button}>Rechercher</button> : undefined}
+      </form>
     )
   }
 }
