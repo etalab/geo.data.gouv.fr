@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
 import { isArray, forEach } from 'lodash'
 import { browserHistory } from 'react-router'
+import qs from 'qs'
 
 import Datasets from '../../components/Datasets/Datasets'
+
+import { convertFilters } from '../../../../helpers/manageFilters'
 
 const DISABLED_FILTERS = [ 'q', 'page', 'offset', 'limit' ]
 
@@ -34,11 +37,19 @@ export function parseQuery(query) {
   }
 }
 
+export function buildSearchQuery(q, filters, page) {
+  const qsFilters = convertFilters(filters)
+  const qPart = (q && q.length) ? { q } : {}
+  const pagePart = (page && page > 1) ? { page } : {}
+  return qs.stringify({ ...qPart, ...pagePart, ...qsFilters }, { indices: false })
+}
 
 class WrappedDatasets extends Component {
   constructor(props) {
     super(props)
-    this.state = { query: parseQuery(props.location.query) }
+    this.state = parseQuery(props.location.query)
+
+    this.updateQuery = this.updateQuery.bind(this)
   }
 
   componentDidMount() {
@@ -53,11 +64,26 @@ class WrappedDatasets extends Component {
     this.handle()
   }
 
+  pushToHistory() {
+    let { textInput, filters, page } = this.state
+    const query = buildSearchQuery(textInput, filters, page)
+    if (window.location.search === `?${query}`) return
+    browserHistory.push('/search?' + query)
+  }
+
+  updateQuery(changes = {}, pushToHistory = true) {
+    this.setState(changes, () => {
+      if (pushToHistory) this.pushToHistory()
+    })
+  }
+
   render() {
-    const { query } = this.state
     return (
       <DocumentTitle title={'Recherche jeu de données'}>
-        <Datasets query={query}/>
+        <Datasets
+          query={this.state}
+          updateQuery={this.updateQuery}
+        />
       </DocumentTitle>
     )
   }
