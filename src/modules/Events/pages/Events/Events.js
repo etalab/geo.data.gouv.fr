@@ -2,7 +2,6 @@ import React from 'react'
 
 import DocumentTitle from 'react-document-title'
 
-import EventbriteWidget from '../../../../components/Event/EventbriteWidget'
 import PastEvent from '../../../../components/Event/PastEvent'
 
 import { events, eventsList, pastEventsList } from './Events.css'

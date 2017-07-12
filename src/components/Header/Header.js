@@ -32,7 +32,7 @@ class Header extends Component {
     const login = <a className={log} href={logInUrl}>Publier des données</a>
 
     return (
-      <nav className={nav} role='navigation'>
+      <nav className={nav}>
         <a className={home} href='/'>inspire.data.gouv.fr</a>
         {!user ? login : (
           <div className={authentification}>
