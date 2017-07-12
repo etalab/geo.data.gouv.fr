@@ -1,11 +1,11 @@
-process.env.NODE_ENV = 'test';
+// Remove the PUBLIC_URL, if defined
 process.env.PUBLIC_URL = '';
 
 require('babel-register')();
 
-var jsdom = require('jsdom').jsdom;
+const { jsdom }  = require('jsdom')
 
-var exposedProperties = ['window', 'navigator', 'document'];
+const exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('<!doctype html><html><body></body></html>');
 global.window = document.defaultView;
@@ -21,8 +21,8 @@ global.navigator = window.navigator = {
   platform: 'node.js',
 };
 
-var chai = require('chai')
-var chaiEnzyme = require('chai-enzyme')
+const chai = require('chai')
+const chaiEnzyme = require('chai-enzyme')
 
 global.expect = chai.expect
 chai.use(chaiEnzyme())
