@@ -1,5 +1,5 @@
-@import "../../../../theme/shadows";
-@import "../../../../theme/colors";
+@import "../../../../theme/shadows.css";
+@import "../../../../theme/colors.css";
 
 .section {
   padding-top: 2em;

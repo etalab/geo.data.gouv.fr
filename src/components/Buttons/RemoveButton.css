@@ -1,4 +1,4 @@
-@import "../../theme/colors";
+@import "../../theme/colors.css";
 
 button.remove:hover {
   padding: 0.5em;
