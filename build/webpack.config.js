@@ -126,8 +126,7 @@ config.module.rules.push({
             sourcemap: project.sourcemaps
           }
         }
-      },
-      'postcss-loader'
+      }
     ]
   })
 })

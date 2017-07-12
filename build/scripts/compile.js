@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
+const mkdirp = require('mkdirp')
 const chalk = require('chalk')
 const gzipSize = require('gzip-size')
 const filesize = require('filesize');
@@ -102,6 +103,7 @@ const displayAssetsSummary = (assets, previousAssets) => {
 
 const saveAssetsSummary = (assets, assetsSummaryPath) => {
   try {
+    mkdirp.sync(path.dirname(assetsSummaryPath))
     fs.writeFileSync(assetsSummaryPath, JSON.stringify(assets, null, 2), 'utf-8')
 
     logger.success(`Saved JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`)
