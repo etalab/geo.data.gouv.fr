@@ -9,7 +9,7 @@
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
     "test": "cross-env NODE_ENV=test mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
     "deploy": "gh-pages -d dist",
-    "lint": "eslint config scripts src"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
@@ -81,25 +81,5 @@
     "react-sticky": "^5.0.5",
     "reactable": "^0.14.1",
     "underscore.string": "^3.3.4"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "plugins": [
-      "mocha"
-    ],
-    "globals": {
-      "__DEV__": false,
-      "__TEST__": false,
-      "__PROD__": false
-    },
-    "rules": {
-      "quotes": [
-        "error",
-        "single"
-      ],
-      "no-console": "warn",
-      "no-debugger": "error",
-      "mocha/no-exclusive-tests": "error"
-    }
   }
 }

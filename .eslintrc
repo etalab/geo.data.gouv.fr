@@ -1,0 +1,20 @@
+{
+    "extends": "react-app",
+    "plugins": [
+      "mocha"
+    ],
+    "globals": {
+      "__DEV__": false,
+      "__TEST__": false,
+      "__PROD__": false
+    },
+    "rules": {
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "no-console": "warn",
+      "no-debugger": "error",
+      "mocha/no-exclusive-tests": "error"
+    }
+  }
