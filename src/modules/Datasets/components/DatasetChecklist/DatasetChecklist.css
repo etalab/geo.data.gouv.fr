@@ -1,4 +1,4 @@
-@import "../../../../theme/colors";
+@import "../../../../theme/colors.css";
 
 .checklist {
   display: flex;

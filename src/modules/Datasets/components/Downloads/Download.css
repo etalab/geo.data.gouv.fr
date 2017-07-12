@@ -1,4 +1,4 @@
-@import "../../../../theme/colors";
+@import "../../../../theme/colors.css";
 
 .download {
   border-left: 2px solid var(--blue);

@@ -1,51 +1,68 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, Redirect, IndexRoute, browserHistory, applyRouterMiddleware } from 'react-router'
-import { useScroll } from 'react-router-scroll'
-import moment from 'moment'
+import { browserHistory } from 'react-router'
 import createPiwikConnector from 'piwik-react-router'
+import moment from 'moment'
 
-import App from './components/App/App'
-import Home from './components/Home/Home'
-import NotFound from './components/NotFound/NotFound'
-
-import Catalogs from './modules/Catalogs/pages/Catalogs/Catalogs'
-import CatalogDetail from './modules/Catalogs/pages/CatalogDetail/CatalogDetail'
-import HarvestDetail from './modules/Catalogs/pages/HarvestDetail/HarvestDetail'
-
-import Publication from './modules/Publication/pages/Publication/Publication'
-import Organization from './modules/Publication/pages/Organization/Organization'
-import PublishingDatasets from './modules/Publication/pages/PublishingDatasets/PublishingDatasets'
-import OrganizationProducers from './modules/Publication/pages/OrganizationProducers/OrganizationProducers'
-
-import Events from './modules/Events/pages/Events/Events'
-
-import WrappedDatasets from './modules/Datasets/pages/WrappedDatasets/WrappedDatasets'
-import DatasetDetailLoader from './modules/Datasets/pages/DatasetDetail/DatasetDetailLoader'
-
+// Locale
+// ------------------------------------
 moment.locale('fr')
 
+
 // Piwik
+// ------------------------------------
 createPiwikConnector({
   url: 'https://stats.data.gouv.fr',
   siteId: 32
 }).connectToHistory(browserHistory);
-ReactDOM.render((
-  <Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="/events" component={Events} />
-      <Route path="/publication" component={Publication} />
-      <Route path="/publication/:organizationId" component={Organization} />
-      <Route path="/publication/:organizationId/datasets" component={PublishingDatasets} />
-      <Route path="/publication/:organizationId/producers" component={OrganizationProducers} />
-      <Route path="/catalogs" component={Catalogs} />
-      <Route path="/catalogs/:catalogId" component={CatalogDetail} />
-      <Route path="/catalogs/:catalogId/harvest/:harvestId" component={HarvestDetail} />
-      <Route path="/search" component={WrappedDatasets} />
-      <Redirect from="/datasets" to="/search" />
-      <Route path="/datasets/:datasetId" component={DatasetDetailLoader} />
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>
-), document.getElementById('root'))
+
+
+// Render Setup
+// ------------------------------------
+const MOUNT_NODE = document.getElementById('root')
+
+let render = () => {
+  const Router = require('./router').default
+
+  ReactDOM.render(
+    <Router />,
+    MOUNT_NODE
+  )
+}
+
+// Development Tools
+// ------------------------------------
+if (__DEV__) {
+  if (module.hot) {
+    const renderApp = render
+    const renderError = (error) => {
+      const RedBox = require('redbox-react').default
+
+      ReactDOM.render(<RedBox error={error} />, MOUNT_NODE)
+    }
+
+    render = () => {
+      try {
+        renderApp()
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e)
+        renderError(e)
+      }
+    }
+
+    // Setup hot module replacement
+    module.hot.accept([
+      './router',
+    ], () =>
+      setImmediate(() => {
+        ReactDOM.unmountComponentAtNode(MOUNT_NODE)
+        render()
+      })
+    )
+  }
+}
+
+// Let's Go!
+// ------------------------------------
+if (!__TEST__) render()

@@ -1,4 +1,4 @@
-@import "../../theme/colors";
+@import "../../theme/colors.css";
 
 .container {
   display: flex;

@@ -1,4 +1,4 @@
-@import "../../theme/colors";
+@import "../../theme/colors.css";
 
 button.add:hover {
   padding: 0.5em;

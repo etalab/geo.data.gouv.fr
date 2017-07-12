@@ -1,4 +1,4 @@
-const overrideDataGouvApiUrl = process.env.INSPIRE_DATAGOUV_API_URL || 'https://next.data.gouv.fr/api'
+const dataGouvApiUrl = process.env.INSPIRE_DATAGOUV_API_URL
 const dataGouvApiKey = process.env.INSPIRE_DATAGOUV_API_KEY
 
 export function _fetch(url, method, data) {
@@ -16,7 +16,7 @@ export function _fetch(url, method, data) {
 
   if (url.includes('https://inspire.data.gouv.fr/dgv/proxy-api')) {
     if (dataGouvApiKey) {
-      url = url.replace('https://inspire.data.gouv.fr/dgv/proxy-api', overrideDataGouvApiUrl)
+      url = url.replace('https://inspire.data.gouv.fr/dgv/proxy-api', dataGouvApiUrl)
       options.headers['X-API-KEY'] = dataGouvApiKey
       options.mode = undefined
     } else {
