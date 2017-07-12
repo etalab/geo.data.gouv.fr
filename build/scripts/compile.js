@@ -102,9 +102,7 @@ const displayAssetsSummary = (assets, previousAssets) => {
 
 const saveAssetsSummary = (assets, assetsSummaryPath) => {
   try {
-    fs.writeFileSync(assetsSummaryPath, JSON.stringify(assets, null, 2), {
-      encoding: 'utf-8'
-    })
+    fs.writeFileSync(assetsSummaryPath, JSON.stringify(assets, null, 2), 'utf-8')
 
     logger.success(`Saved JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`)
   }
