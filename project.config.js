@@ -50,7 +50,6 @@ module.exports = {
 
   /** The list of modules to bundle separately from the core application code */
   vendors: [
-    'lodash',
     'marked',
     'moment',
     'piwik-react-router',
