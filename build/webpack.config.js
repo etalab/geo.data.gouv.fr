@@ -247,7 +247,8 @@ if (__PROD__) {
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
-      reportFilename: path.join('..', project.reportDir, 'bundles.html')
+      reportFilename: path.join('..', project.reportDir, 'bundles.html'),
+      defaultSizes: 'gzip'
     })
   )
 }
