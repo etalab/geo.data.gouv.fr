@@ -51,8 +51,8 @@ const retrievePreviousAssets = assetsSummaryPath => {
         acc[asset.genericName] = asset
         return acc
       }, {})
-  } catch (Error) {
-    logger.warn('Previous bundle stats could not be loaded, bundles will not be compared.')
+  } catch (err) {
+    logger.warn('Previous bundle stats could not be loaded, bundles will not be compared.', err)
   }
 
   return null
@@ -106,8 +106,8 @@ const saveAssetsSummary = (assets, assetsSummaryPath) => {
 
     logger.success(`Saved JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`)
   }
-  catch (Error) {
-    logger.warn(`Could not save JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`)
+  catch (err) {
+    logger.warn(`Could not save JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`, err)
   }
 }
 
