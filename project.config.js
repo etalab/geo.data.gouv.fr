@@ -48,9 +48,6 @@ module.exports = {
     INSPIRE_DATAGOUV_API_KEY: null
   },
 
-  /** Whether to enable verbose logging */
-  verbose: false,
-
   /** The list of modules to bundle separately from the core application code */
   vendors: [
     'lodash',
