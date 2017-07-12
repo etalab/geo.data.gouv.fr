@@ -11,7 +11,7 @@ import { getCatalogOrderByScore } from '../../../../helpers/catalogs'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
 
 // Import CSS
-import { container, loader } from './Catalogs.css'
+import { container, loader } from './Catalogs.scss'
 
 class Catalogs extends Component {
   constructor(props) {

@@ -1,0 +1,49 @@
+@import 'variables';
+
+.download {
+  border-left: 2px solid $blue;
+  padding-left: 10px;
+  margin: 15px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    padding: 5px;
+
+    &:hover {
+      color: #fff;
+      cursor: pointer;
+      background-color: $blue;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.formats {
+  margin: 5px;
+}
+
+.viewerButton {
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  background-color: $blue;
+
+  &:hover {
+    background-color: $highlightBlue;
+  }
+
+  &:disabled {
+    background-color: #f0f0f0;
+  }
+}

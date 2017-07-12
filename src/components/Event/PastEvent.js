@@ -2,7 +2,7 @@ import React from 'react'
 
 import Section from '../Section/Section'
 
-import { event } from './PastEvent.css'
+import { event } from './PastEvent.scss'
 
 const PastEvent =  props => {
   const pastEvent = props.event

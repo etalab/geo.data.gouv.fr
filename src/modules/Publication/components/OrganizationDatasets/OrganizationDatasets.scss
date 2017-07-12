@@ -1,0 +1,14 @@
+@import 'variables';
+
+.previousPage {
+  margin: 0.5em 1em;
+  padding: 10px;
+  color: #fff;
+  background-color: $blue;
+  border-radius: 20px;
+  display: inline-block;
+
+  a, a:focus, a:hover {
+    color: #fff;
+  }
+}

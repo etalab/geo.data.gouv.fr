@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import DatasetTable from '../DatasetTable/DatasetTable'
 import PreviewMap from '../PreviewMap/PreviewMap'
 
-import { visualizer, buttons, closeButton, active } from './Viewer.css'
+import { visualizer, buttons, closeButton, active } from './Viewer.scss'
 
 class Viewer extends Component {
   constructor(props) {

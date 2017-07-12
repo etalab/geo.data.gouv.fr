@@ -1,6 +1,6 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import { notFound } from './NotFound.css'
+import { notFound } from './NotFound.scss'
 
 const NotFound = () => {
   return (

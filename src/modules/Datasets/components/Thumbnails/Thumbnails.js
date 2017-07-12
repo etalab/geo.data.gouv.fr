@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { main, list, selected } from './Thumbnails.css'
+import { main, list, selected } from './Thumbnails.scss'
 
 class Thumbnails extends Component {
   constructor(props) {

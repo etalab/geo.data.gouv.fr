@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { getDatasetOnDataGouv } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { container } from './Producer.css'
+import { container } from './Producer.scss'
 
 class Producer extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-import style from './NewsletterForm.css'
+import style from './NewsletterForm.scss'
 
 class NewsletterForm extends Component {
   constructor(props) {

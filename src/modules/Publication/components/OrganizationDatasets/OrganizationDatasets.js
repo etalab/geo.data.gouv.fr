@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import DatasetsPublication from '../DatasetsPublication/DatasetsPublication'
 
-import { previousPage } from './OrganizationDatasets.css'
+import { previousPage } from './OrganizationDatasets.scss'
 
 const OrganizationDatasets = ({ published, notPublishedYet, publishedByOthers, update, organizationId }) => {
   return (

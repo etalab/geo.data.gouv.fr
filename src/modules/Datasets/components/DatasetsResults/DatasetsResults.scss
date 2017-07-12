@@ -1,0 +1,29 @@
+.results {
+  display: flex;
+  margin: 2em 4em;
+}
+
+.result {
+  flex-grow: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 0;
+    margin-top: 10px;
+  }
+}
+
+.loader {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.counter {
+  margin-left: 4em;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 4em 2em;
+}

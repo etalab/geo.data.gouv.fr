@@ -1,0 +1,54 @@
+@import 'variables';
+
+.container {
+  margin: 0.3em;
+  padding: 1em;
+  border-left: 1px solid $blue;
+  margin-bottom: 1em;
+}
+
+.resolved {
+  float: right;
+  text-align: right;
+  background-color: $green;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.title {
+  color: $blue;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.form {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.replies {
+  margin: 0.5em 0.5em;
+  color: $blue;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.answer {
+  margin-right: 1em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

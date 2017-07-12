@@ -1,10 +1,10 @@
 import React from 'react'
 import marked from 'marked'
-import './MarkdownViewer.css'
+import styles from './MarkdownViewer.scss'
 
 const MarkdownViewer = ({markdown}) => {
   const md = marked(markdown)
-  return <p className="markdown-wrapper" dangerouslySetInnerHTML={{__html : md}} />
+  return <p className={styles.markdownWrapper} dangerouslySetInnerHTML={{__html : md}} />
 }
 
 export default MarkdownViewer

@@ -6,7 +6,7 @@ import AuthentificationNeeded from '../../../../components/AuthentificationNeede
 import Message from './Message'
 import DiscussionForm from './DiscussionForm'
 
-import style from './Discussion.css'
+import style from './Discussion.scss'
 
 class Discussion extends Component {
   constructor(props) {

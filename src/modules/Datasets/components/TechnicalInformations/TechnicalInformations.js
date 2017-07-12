@@ -7,7 +7,7 @@ import { topicCategories } from '../../../../helpers/topicCategories'
 import { statusTranslate } from '../../../../helpers/status'
 import { getLicense } from '../../../../helpers/dataGouvChecks'
 
-import { container, histo } from './TechnicalInformations.css'
+import { container, histo } from './TechnicalInformations.scss'
 
 const TechnicalInformations = ({ dataset }) => {
   const { type, status, updateFrequency, creationDate, revisionDate, equivalentScaleDenominator, spatialResolution, topicCategory } = dataset.metadata

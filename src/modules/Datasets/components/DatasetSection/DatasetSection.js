@@ -5,7 +5,7 @@ import DatasetDescription from '../DatasetDescription/DatasetDescription'
 import { doneSince } from '../../../../helpers/doneSince'
 import { getLicense } from '../../../../helpers/dataGouvChecks'
 
-import { section, container, head, inspireThemeHead, resume, theme, infos } from './DatasetSection.css'
+import { section, container, head, inspireThemeHead, resume, theme, infos } from './DatasetSection.scss'
 
 class DatasetSection extends Component {
   constructor(props) {

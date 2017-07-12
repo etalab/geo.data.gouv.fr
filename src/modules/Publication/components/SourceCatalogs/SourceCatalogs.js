@@ -10,7 +10,7 @@ import Errors from '../../../../components/Errors/Errors'
 
 import { updateOrganizationAccount  } from '../../../../fetch/fetch'
 
-import { catalogsStyle, catalog, buttonStyle, remove } from './SourceCatalogs.css'
+import { catalogsStyle, catalog, buttonStyle, remove } from './SourceCatalogs.scss'
 
 class SourceCatalogs extends Component {
   constructor(props) {

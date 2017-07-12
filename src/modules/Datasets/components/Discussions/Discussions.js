@@ -9,8 +9,6 @@ import AuthentificationNeeded from '../../../../components/AuthentificationNeede
 import { getDiscussions, getUser, createNewDiscussion, createNewReply } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { container } from './Discussions.css'
-
 class Discussions extends Component {
   constructor(props) {
     super(props)
@@ -80,7 +78,7 @@ class Discussions extends Component {
     const { remoteId } = this.props
 
     return (
-      <div className={container}>
+      <div>
         {discussions ?
           discussions.data.map((discussion, idx) =>
             <Discussion

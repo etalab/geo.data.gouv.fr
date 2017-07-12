@@ -8,7 +8,7 @@ import { fetchCatalogs } from '../../../../fetch/fetch';
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
 import { getCatalogOrderByScore, getCandidateCatalogs } from '../../../../helpers/catalogs'
 
-import { container, card, add, loader, warningMsg } from './AddCatalogs.css'
+import { container, card, add, loader, warningMsg } from './AddCatalogs.scss'
 
 class AddCatalogs extends Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import Counter from '../Statistics/Counter/Counter'
 import Percent from '../Statistics/Percent/Percent'
 import ObsoleteWarning from './ObsoleteWarning'
 import { get } from 'lodash'
-import { container, link, paper, title } from './CatalogPreview.css'
+import { container, link, paper, title } from './CatalogPreview.scss'
 
 const CatalogPreview = ({ catalog }) => {
   let metrics = catalog.metrics

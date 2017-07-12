@@ -1,0 +1,36 @@
+@import 'variables';
+
+.link {
+  position: relative;
+  padding: .4em .5em;
+  margin: 2px 2px 2px 0;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  color: $blue;
+  background-color: $lightestblue;
+  font-size: 12px;
+  overflow: hidden;
+  border: none;
+
+  &:hover {
+    opacity: 1;
+    background-color: $blue;
+    color: #FFF;
+  }
+
+  span {
+    display: table-cell;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.filterValue {
+  padding-left: 5px;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  overflow: hidden;
+}

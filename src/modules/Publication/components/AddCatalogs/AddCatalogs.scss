@@ -1,0 +1,40 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-between;
+
+  & > a {
+    margin: 1em 3em;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 0;
+
+    & > a {
+      margin: 1em;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.loader {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.add {
+  margin-top: 5px;
+}
+
+.warningMsg {
+  padding: 1em;
+  color: $yellow;
+}

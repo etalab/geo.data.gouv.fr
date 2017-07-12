@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import { data } from './PublishedDatasets.css'
+import { data } from './PublishedDatasets.scss'
 
 const PublishedDatasets = ({ datasets }) => {
   if (!datasets.length) return <div className={data}>Aucun jeu de données.</div>

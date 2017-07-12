@@ -9,7 +9,7 @@ import Errors from '../../../../components/Errors/Errors'
 import { fetchDataset, fetchCatalogs, getDataGouvPublication } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { loader } from './DatasetDetail.css'
+import { loader } from './DatasetDetail.scss'
 
 export default class DatasetDetailLoader extends Component {
 

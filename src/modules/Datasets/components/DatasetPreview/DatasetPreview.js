@@ -5,7 +5,7 @@ import DatasetDescription from '../DatasetDescription/DatasetDescription'
 
 import Filter from '../../../../components/Filter/Filter'
 
-import { container, list } from './DatasetPreview.css'
+import { container, list } from './DatasetPreview.scss'
 
 class DatasetPreview extends Component {
   constructor(props) {

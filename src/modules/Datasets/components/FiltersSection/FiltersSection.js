@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 import Facet from '../../../../components/Facets/Facet'
 
-import { group, facets } from './FiltersSection.css'
+import { group, facets } from './FiltersSection.scss'
 
 const FiltersSection = ({keywords, organizations, catalogs}) => {
   const goToSearch = (filter) => () => browserHistory.push({ pathname: '/search', query: {...filter} })

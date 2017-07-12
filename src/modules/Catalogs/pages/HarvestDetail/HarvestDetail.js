@@ -14,7 +14,7 @@ import HarvestLogs from '../../components/HarvestLogs/HarvestLogs'
 import HarvestResults from '../../components/HarvestResults/HarvestResults'
 
 // Import CSS
-import { container, results } from './HarvestDetail.css'
+import { container, results } from './HarvestDetail.scss'
 
 class HarvestDetail extends Component {
   constructor(props) {

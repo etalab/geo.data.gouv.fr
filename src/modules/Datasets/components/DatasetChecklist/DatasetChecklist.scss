@@ -1,0 +1,17 @@
+@import 'variables';
+
+.checklist {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  button {
+    margin-top: 1em;
+    width: 50%;
+  }
+}
+
+.highlight {
+  margin-top: 1em;
+  color: $blue;
+}

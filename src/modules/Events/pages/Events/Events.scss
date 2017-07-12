@@ -1,0 +1,24 @@
+.events {
+  margin: 2em;
+  text-align: center;
+
+  h1 {
+    margin: 1em;
+  }
+}
+
+.eventsList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  iframe {
+    margin: 1em;
+  }
+}
+
+.pastEventsList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

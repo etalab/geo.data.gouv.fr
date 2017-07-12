@@ -1,0 +1,14 @@
+@import 'variables';
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $blue;
+  font-size: 2em;
+  margin: 2em;
+
+  h1 {
+    font-size: 4em;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { doneSince } from '../../../../helpers/doneSince'
 
-import style from './Message.css'
+import style from './Message.scss'
 
 const Message = ({message}) => {
   return (

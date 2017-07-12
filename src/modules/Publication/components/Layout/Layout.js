@@ -4,7 +4,7 @@ import DocumentTitle from 'react-document-title'
 
 import User from '../../../../components/User/User'
 
-import styles from './Layout.css'
+import styles from './Layout.scss'
 
 
 function Layout({ user, organization, pageTitle, title, children }) {

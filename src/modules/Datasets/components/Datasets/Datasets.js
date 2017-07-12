@@ -8,7 +8,7 @@ import { search } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 import { addFilter, removeFilter } from '../../../../helpers/manageFilters'
 
-import style from './Datasets.css'
+import style from './Datasets.scss'
 
 
 class Datasets extends PureComponent {

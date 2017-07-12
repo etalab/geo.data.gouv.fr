@@ -1,0 +1,28 @@
+@import 'variables';
+
+.circularProgress {
+  border-radius: 50%;
+  width: 4em;
+  min-width: 4em;
+  height: 4em;
+  min-height: 4em;
+  border: .25rem solid $lightblue;
+  border-top-color: $blue;
+  animation: spin 1s infinite linear;
+  position: relative;
+  margin: auto;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-indent: 100%;
+  overflow: hidden;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

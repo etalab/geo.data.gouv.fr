@@ -8,7 +8,7 @@ import Button from '../../../../components/Buttons/Button'
 import { getDataGouvPublication } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { checklist, highlight } from './DatasetChecklist.css'
+import { checklist, highlight } from './DatasetChecklist.scss'
 import { checkLicense, checkProducers, checkDataAvailability } from '../../../../helpers/dataGouvChecks'
 
 class DatasetChecklist extends Component {

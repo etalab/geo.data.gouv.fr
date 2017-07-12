@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CenteredMap from '../../../../components/CenteredMap'
-import styles from './SpatialExtentMap.css'
+import styles from './SpatialExtentMap.scss'
 
 function SpatialExtentMap ({ extent }) {
   const feature = { type: 'Feature', geometry: extent, properties: {} }

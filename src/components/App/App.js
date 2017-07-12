@@ -4,7 +4,7 @@ import { StickyContainer } from 'react-sticky'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-import { content, body } from './App.css'
+import { content, body } from './App.scss'
 
 const App = ({children}) => {
   return (

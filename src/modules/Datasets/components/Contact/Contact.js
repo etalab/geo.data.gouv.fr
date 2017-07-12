@@ -2,7 +2,7 @@ import React from 'react'
 
 import { translateRole, tagsColors } from '../../../../helpers/roles'
 
-import { container, name, tag } from './Contact.css'
+import { container, name, tag } from './Contact.scss'
 
 const Contact = ({ contact }) => {
   const unknown = 'Non renseigné'

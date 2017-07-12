@@ -1,0 +1,18 @@
+@import 'variables';
+
+.container {
+  flex-direction: column;
+  margin-bottom: 4em;
+  display: block;
+  white-space: pre-wrap;
+  width: 60vw;
+}
+
+.action {
+  background-color: $blue;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-bottom: 1px solid;
+  float: right;
+}

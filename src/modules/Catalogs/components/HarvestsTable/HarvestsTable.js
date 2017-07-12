@@ -3,7 +3,7 @@ import React from 'react'
 import HarvestRow from './HarvestRow'
 import HarvestRowPending from './HarvestRowPending'
 
-import style from './HarvestsTable.css'
+import style from './HarvestsTable.scss'
 
 const HarvestsTable = ({harvests, catalog, pending = false}) => {
   return (

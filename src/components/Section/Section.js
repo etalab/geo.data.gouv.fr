@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { section } from './Section.css'
+import { section } from './Section.scss'
 
 const Section = ({ title, children }) => {
   return (

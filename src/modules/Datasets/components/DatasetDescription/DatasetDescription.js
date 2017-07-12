@@ -3,7 +3,7 @@ import prune from 'underscore.string/prune'
 
 import MarkdownViewer from '../Markdown/MarkdownViewer'
 
-import style from './DatasetDescription.css'
+import style from './DatasetDescription.scss'
 
 const DatasetDescription = ({description, shortDescription, showMore}) => {
   if (!description || !description.length) return <div>Aucune description.</div>

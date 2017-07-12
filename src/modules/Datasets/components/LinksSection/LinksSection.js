@@ -1,5 +1,5 @@
 import React from 'react'
-import { linkList } from './LinksSection.css'
+import { linkList } from './LinksSection.scss'
 
 const LinksSection = ({links, style}) => {
   // Some links have no name, use href as fallback

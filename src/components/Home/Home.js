@@ -4,7 +4,7 @@ import { browserHistory, Link } from 'react-router'
 import SearchInput from '../SearchInput/SearchInput'
 import CatalogPreview from '../CatalogPreview/CatalogPreview'
 
-import { masthead, datasetLinks, catalogLinks, datagouv, events, paper, catalogs } from './Home.css'
+import { masthead, datasetLinks, catalogLinks, datagouv, events, paper, catalogs } from './Home.scss'
 
 const catalogsMock = [
   {

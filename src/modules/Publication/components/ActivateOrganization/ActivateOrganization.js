@@ -5,7 +5,7 @@ import Errors from '../../../../components/Errors/Errors'
 import { markAsCancelable, cancelAllPromises } from '../../../../helpers/components'
 import { updateOrganizationAccount } from '../../../../fetch/fetch'
 
-import { msg, activate } from './ActivateOrganization.css'
+import { msg, activate } from './ActivateOrganization.scss'
 
 class ActivateOrganization extends Component {
   constructor(props) {

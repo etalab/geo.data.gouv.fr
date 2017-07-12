@@ -1,0 +1,29 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  box-shadow: $box-shadow;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 1px solid;
+  background-color: whitesmoke;
+  font-size: 1.1em;
+}
+
+.success {
+  border-color: $green;
+}
+
+.warning {
+  border-color: $yellow;
+}
+
+.error {
+  border-color: $red;
+}

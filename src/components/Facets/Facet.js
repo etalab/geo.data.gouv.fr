@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Filter from '../Filter/Filter'
-import styles from './Facet.css'
+import styles from './Facet.scss'
 
 class Facet extends Component {
   render() {

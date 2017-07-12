@@ -2,7 +2,7 @@ import React from 'react'
 
 import { translateFilters } from '../../helpers/manageFilters'
 
-import { link, filterValue } from './Filter.css'
+import { link, filterValue } from './Filter.scss'
 
 const Filter = (props) => {
   const { detail, remove, filter, style, onClick } = props

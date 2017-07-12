@@ -1,0 +1,13 @@
+.linkList {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: clip;
+
+  li {
+    margin-top: 2px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

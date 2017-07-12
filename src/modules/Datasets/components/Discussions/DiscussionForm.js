@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Button from '../../../../components/Buttons/Button'
 
-import { discussionForm, commentInput, avatar } from './DiscussionForm.css'
+import { discussionForm, commentInput, avatar } from './DiscussionForm.scss'
 
 class DiscussionForm extends Component {
   constructor(props) {
