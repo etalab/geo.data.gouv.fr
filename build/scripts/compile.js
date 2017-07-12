@@ -114,7 +114,7 @@ const saveAssetsSummary = (assets, assetsSummaryPath) => {
 }
 
 const compile = () => {
-  const assetsSummaryPath = path.join(project.reportDir, 'bundles.json')
+  const assetsSummaryPath = path.resolve(path.join(project.reportDir, 'bundles.json'))
 
   logger.info('Starting compiler…')
   logger.info('Target application environment: ' + chalk.bold(project.env))
