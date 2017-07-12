@@ -59,6 +59,7 @@
     "react": "^15.4",
     "react-addons-test-utils": "^15.4",
     "react-dom": "^15.4",
+    "redbox-react": "^1.4.3",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
     "webpack-bundle-analyzer": "^2.8.2",
@@ -92,6 +93,11 @@
     "plugins": [
       "mocha"
     ],
+    "globals": {
+      "__DEV__": false,
+      "__TEST__": false,
+      "__PROD__": false
+    },
     "rules": {
       "quotes": [
         "error",
