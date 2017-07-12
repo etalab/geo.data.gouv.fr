@@ -31,6 +31,7 @@ test:
   override:
     - yarn lint
     - yarn test
+    - yarn build
 
 deployment:
   production:
