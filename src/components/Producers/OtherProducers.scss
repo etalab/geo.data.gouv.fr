@@ -12,7 +12,7 @@
   justify-content: space-between;
   padding: 1em;
   border-bottom: 2px solid;
-  background-color: whitesmoke;
+  background-color: $whitesmoke;
   border-color: $yellow;
   align-items: center;
   font-size: 1.1em;
@@ -21,7 +21,7 @@
 .subtitle {
   color: #a2a2a2;
 
-  & > p {
+  > p {
     margin-top: 3px;
   }
 }
@@ -32,10 +32,10 @@
   justify-content: space-between;
   padding: 0.5em 1em;
   margin: 0.2em;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid $whitesmoke;
 
   &:hover {
-    background-color: whitesmoke;
+    background-color: $whitesmoke;
   }
 }
 

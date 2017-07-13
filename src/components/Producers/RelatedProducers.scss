@@ -12,7 +12,7 @@
   justify-content: space-between;
   padding: 1em;
   border-bottom: 2px solid;
-  background-color: whitesmoke;
+  background-color: $whitesmoke;
   border-color: $green;
   font-size: 1.1em;
 }
@@ -23,10 +23,10 @@
   justify-content: space-between;
   padding: 0 1em;
   margin: 0.2em;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid $whitesmoke;
 
   :hover {
-    background-color: whitesmoke;
+    background-color: $whitesmoke;
   }
 }
 

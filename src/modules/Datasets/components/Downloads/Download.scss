@@ -33,14 +33,14 @@
   margin: 5px;
 }
 
-.viewerButton {
+.viewer-button {
   padding: 5px 10px;
   color: #fff;
-  border: none;
+  border: 0;
   background-color: $blue;
 
   &:hover {
-    background-color: $highlightBlue;
+    background-color: $highlight-blue;
   }
 
   &:disabled {

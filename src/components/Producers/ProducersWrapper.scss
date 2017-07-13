@@ -13,7 +13,7 @@
   padding: 1em;
   align-items: center;
   border-bottom: 2px solid;
-  background-color: whitesmoke;
+  background-color: $whitesmoke;
   border-color: $blue;
   font-size: 1.1em;
 }
@@ -28,9 +28,9 @@
   justify-content: space-between;
   padding: 0 1em;
   margin: 0.2em;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid $whitesmoke;
 
   &:hover {
-    background-color: whitesmoke;
+    background-color: $whitesmoke;
   }
 }

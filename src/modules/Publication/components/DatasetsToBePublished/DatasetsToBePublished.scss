@@ -9,7 +9,7 @@
   }
 }
 
-.publishButton {
+.publish-button {
   background-color: $blue;
   color: #fff;
   padding: 1em;
@@ -17,13 +17,12 @@
   text-align: center;
 }
 
-.refresh  {
-  display: flex;
+.refresh {
   align-items: baseline;
   margin: 0.5em 1em;
   padding: 10px;
   color: #fff;
-  border: none;
+  border: 0;
   background-color: $blue;
   display: inline-block;
 
@@ -34,8 +33,8 @@
 
 .disable,
 .disable:hover {
-  background-color: whitesmoke;
-  color: grey;
+  background-color: $whitesmoke;
+  color: $grey;
   padding: 1em;
   width: 49%;
   text-align: center;
@@ -50,7 +49,7 @@
   text-align: center;
 }
 
-.noData {
+.no-data {
   display: flex;
   justify-content: space-between;
   margin: 1em;

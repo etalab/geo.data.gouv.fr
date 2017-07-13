@@ -2,14 +2,14 @@
   text-align: center;
   padding-top: 2em;
 
-  & > a {
+  > a {
     margin: 1em 3em;
   }
 
   @media (max-width: 768px) {
     padding-top: 0;
 
-    & > a {
+    > a {
       margin: 1em;
     }
   }

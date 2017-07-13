@@ -1,6 +1,6 @@
 @import 'variables';
 
-.discussionForm {
+.discussion-form {
   display: flex;
   flex-direction: column;
   border-left: 1px solid $blue;
@@ -13,7 +13,7 @@
 
   input {
     padding: 1em;
-    margin: 0 1em 0.5em 1em;
+    margin: 0 1em 0.5em;
     border: 1px solid;
   }
 
@@ -24,14 +24,14 @@
   }
 
   button {
-    margin: 0 1em 0.5em 1em;
+    margin: 0 1em 0.5em;
   }
 }
 
-.commentInput {
+.comment-input {
   display: flex;
   align-items: center;
-  margin: 0 1em 0.5em 1em;
+  margin: 0 1em 0.5em;
 }
 
 .avatar {

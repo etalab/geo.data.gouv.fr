@@ -25,7 +25,7 @@ section > div {
   }
 }
 
-.previousPage {
+.previous-page {
   margin-top: 2em;
   width: 200px;
   padding: 10px;
@@ -33,7 +33,9 @@ section > div {
   background-color: $blue;
   border-radius: 20px;
 
-  a, a:focus, a:hover {
+  a,
+  a:focus,
+  a:hover {
     color: #fff;
   }
 }

@@ -2,7 +2,7 @@
 
 .link {
   position: relative;
-  padding: .4em .5em;
+  padding: 0.4em 0.5em;
   margin: 2px 2px 2px 0;
   white-space: nowrap;
   text-decoration: none;
@@ -11,24 +11,24 @@
   background-color: $lightestblue;
   font-size: 12px;
   overflow: hidden;
-  border: none;
+  border: 0;
 
   &:hover {
     opacity: 1;
     background-color: $blue;
-    color: #FFF;
+    color: #fff;
   }
 
   span {
     display: table-cell;
 
-    &:first-letter {
+    &::first-letter {
       text-transform: uppercase;
     }
   }
 }
 
-.filterValue {
+.filter-value {
   padding-left: 5px;
   text-overflow: ellipsis;
   max-width: 200px;

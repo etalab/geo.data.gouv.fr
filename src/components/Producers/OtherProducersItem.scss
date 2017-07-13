@@ -1,5 +1,3 @@
-.item {
-  & > a:hover {
-    text-decoration: underline;
-  }
+.item > a:hover {
+  text-decoration: underline;
 }

@@ -9,24 +9,24 @@
   justify-content: space-around;
   align-items: center;
 
-  & > button {
+  > button {
     width: 50%;
   }
 
   button {
     padding: 5px 10px;
     color: #fff;
-    border: none;
+    border: 0;
     background-color: $blue;
 
     &:hover {
-        background-color: $highlightBlue;
-      }
+      background-color: $highlight-blue;
+    }
   }
 }
 
-.closeButton {
-  border: none;
+.close-button {
+  border: 0;
   max-width: 36px;
   color: #fff;
   background-color: $red;

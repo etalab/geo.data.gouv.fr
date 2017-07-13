@@ -1,9 +1,7 @@
 @import 'variables';
 
 .section {
-  padding-top: 2em;
-  padding-bottom: 2em;
-  background-color: white;
+  background-color: #fff;
   padding: 2em;
 }
 
@@ -39,7 +37,7 @@
   background-color: $blue;
 }
 
-.inspireThemeHead {
+.inspire-theme-head {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -94,7 +92,7 @@
   flex-wrap: wrap;
   font-size: small;
 
-  & > div {
+  > div {
     margin-bottom: 0.5em;
     margin-right: 4em;
   }

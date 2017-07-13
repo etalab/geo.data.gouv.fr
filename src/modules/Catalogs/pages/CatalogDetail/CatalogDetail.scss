@@ -1,9 +1,7 @@
 @import 'variables';
 
 .section {
-  padding-top: 2em;
-  padding-bottom: 2em;
-  background-color: #FFF;
+  background-color: #fff;
   padding: 2em;
   margin-bottom: 2em;
   box-shadow: $box-shadow;
@@ -15,8 +13,8 @@
   }
 }
 
-.sectionNoPadding {
-  background-color: #FFF;
+.section-no-padding {
+  background-color: #fff;
   margin-bottom: 2em;
   box-shadow: $box-shadow;
 }

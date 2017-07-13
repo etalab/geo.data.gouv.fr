@@ -1,14 +1,14 @@
-.searchWrapper {
+.search-wrapper {
   margin: 4em;
 
   @media (max-width: 768px) {
-    margin: 10px 0 0 0;
+    margin: 10px 0 0;
   }
 }
 
 .filters {
   display: inline-block;
-  padding: .4em .5em;
+  padding: 0.4em 0.5em;
   margin: 2px 2px 2px 0;
   font-size: 12px;
 }

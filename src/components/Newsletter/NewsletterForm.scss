@@ -10,13 +10,13 @@
 
 .button {
   background-color: $blue;
-  border: none;
+  border: 0;
   padding: 10px 15px;
   color: #fff;
 
   &:hover {
     cursor: pointer;
-    background-color: $highlightBlue;
+    background-color: $highlight-blue;
   }
 }
 
@@ -34,6 +34,6 @@
 .input {
   padding: 10px 15px;
   margin-left: 1em;
-  border: none;
-  color: $blue
+  border: 0;
+  color: $blue;
 }

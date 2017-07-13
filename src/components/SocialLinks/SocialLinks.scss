@@ -4,15 +4,15 @@
   justify-content: space-around;
 
   @media (max-width: 768px) {
-		margin-bottom: 24px;
-	}
+    margin-bottom: 24px;
+  }
 }
 
 .link {
   margin-right: 20px;
 
   path {
-    transition: all .25s ease-in-out;
+    transition: all 0.25s ease-in-out;
   }
 
   * {
@@ -29,7 +29,7 @@
     }
 
     .medium path {
-      fill: #02b875
+      fill: #02b875;
     }
   }
 }

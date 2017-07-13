@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const project = require('../project.config')
 
@@ -65,7 +66,9 @@ const config = {
       __DEV__,
       __TEST__,
       __PROD__
-    }, project.globals))
+    }, project.globals)),
+
+    new StyleLintPlugin()
   ]
 }
 
@@ -109,6 +112,7 @@ config.module.rules.push({
         loader: 'css-loader',
         options: {
           modules: true,
+          camelCase: true,
           sourceMap: project.sourcemaps,
           minimize: {
             autoprefixer: {

@@ -28,15 +28,15 @@
 
 .buttons {
   button {
-    margin: 40px 20px 10px 20px;
+    margin: 40px 20px 10px;
     padding: 15px 20px;
     background-color: #fff;
     border: 1px solid $blue;
+  }
 
-    &.inverted {
-      background-color: $blue;
-      color: #fff;
-    }
+  .inverted {
+    background-color: $blue;
+    color: #fff;
   }
 
   @media (max-width: 768px) {
@@ -46,7 +46,7 @@
     margin-top: 10px;
 
     button {
-      margin: 0 0 10px 0;
+      margin: 0 0 10px;
       padding: 1em;
     }
   }
@@ -64,7 +64,7 @@
   }
 }
 
-.datasetLinks {
+.dataset-links {
   display: block;
   margin-top: 2em;
   font-size: 1em;
@@ -76,18 +76,18 @@
   padding: 40px;
 
   h2 {
-    color: white;
+    color: #fff;
     text-transform: uppercase;
   }
 }
 
-.catalogLinks {
+.catalog-links {
   margin-top: 2em;
-  color: white;
+  color: #fff;
 
   &:focus,
   &:hover {
-    color: white;
+    color: #fff;
     text-decoration: underline;
   }
 }
@@ -108,7 +108,7 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  & > a {
+  > a {
     margin: 10px 20px;
   }
 }
