@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactable'
 
-import style from './DatasetTable.css'
+import style from './DatasetTable.scss'
 
 class DatasetTable extends Component {
     render() {

@@ -1,0 +1,15 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: $blue;
+  margin-top: 2em;
+
+  h3 {
+    font-size: 4em;
+  }
+}

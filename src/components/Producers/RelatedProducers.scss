@@ -1,0 +1,47 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  box-shadow: $box-shadow;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 2px solid;
+  background-color: $whitesmoke;
+  border-color: $green;
+  font-size: 1.1em;
+}
+
+.producers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  margin: 0.2em;
+  border-bottom: 1px solid $whitesmoke;
+
+  :hover {
+    background-color: $whitesmoke;
+  }
+}
+
+.dissociate {
+  margin: 0.3em;
+  padding: 0.5em;
+  color: $blue;
+  background-color: #fff;
+  border: 1px solid $blue;
+
+  &:hover {
+    margin: 0.3em;
+    padding: 0.5em;
+    color: #fff;
+    background-color: $blue;
+    border: 1px solid #fff;
+  }
+}

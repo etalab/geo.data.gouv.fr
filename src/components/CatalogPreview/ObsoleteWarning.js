@@ -1,6 +1,6 @@
 import React from 'react'
 import { isObsolete } from '../../helpers/catalogs'
-import { container } from './ObsoleteWarning.css'
+import { container } from './ObsoleteWarning.scss'
 
 // When testing you may need to define the current date to avoid test cases obsolescence
 const ObsoleteWarning = ({ catalog, currentDate }) => {

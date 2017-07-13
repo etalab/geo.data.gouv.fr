@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './RelatedProducers.css'
+import style from './RelatedProducers.scss'
 
 const RelatedProducers = ({ producers, action }) => {
 

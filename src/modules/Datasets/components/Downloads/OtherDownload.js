@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { other } from './OtherDownload.css'
+import { other } from './OtherDownload.scss'
 
 const OtherDownload = ({ distributions }) => {
   return (

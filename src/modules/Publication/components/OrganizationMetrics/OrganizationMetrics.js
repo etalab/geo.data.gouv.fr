@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { link } from './OrganizationMetrics.css'
+import { link } from './OrganizationMetrics.scss'
 
 const OrganizationMetrics = ({ organizationId, metrics }) => {
   const { published, notPublishedYet, publishedByOthers} = metrics

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { simpleButton } from './Button.css'
+import { simpleButton } from './Button.scss'
 
 const Button = ({ text, action }) => {
   return <button className={simpleButton} onClick={() => action()}>{text}</button>

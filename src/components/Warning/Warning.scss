@@ -1,0 +1,38 @@
+@import 'variables';
+
+.sticky {
+  z-index: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.warning {
+  background-color: $yellow;
+}
+
+.error-style {
+  background-color: $red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.close-icon {
+  color: #fff;
+  padding: 1em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

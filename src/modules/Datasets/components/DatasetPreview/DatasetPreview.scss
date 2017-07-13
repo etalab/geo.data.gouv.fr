@@ -1,0 +1,18 @@
+@import 'variables';
+
+.container {
+  margin-bottom: 3em;
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: $box-shadow;
+  margin-right: 2em;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-bottom: 1em;
+  }
+}
+
+.list {
+  line-height: 18px;
+}

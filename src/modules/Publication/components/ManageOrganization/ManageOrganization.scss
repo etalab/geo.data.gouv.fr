@@ -1,0 +1,48 @@
+@import 'variables';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 2em;
+
+  h4 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5em;
+  }
+}
+
+section > div {
+  background-color: $white;
+  padding: 1em;
+
+  p {
+    margin-bottom: 4px;
+  }
+}
+
+.previous-page {
+  margin-top: 2em;
+  width: 200px;
+  padding: 10px;
+  color: #fff;
+  background-color: $blue;
+  border-radius: 20px;
+
+  a,
+  a:focus,
+  a:hover {
+    color: #fff;
+  }
+}
+
+.organization {
+  @media (max-width: 768px) {
+    padding: 1em;
+    text-align: center;
+  }
+}

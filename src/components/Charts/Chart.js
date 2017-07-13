@@ -1,5 +1,5 @@
 import React from 'react'
-import { container } from './Chart.css'
+import { container } from './Chart.scss'
 
 const Chart = ({chart, description}) => {
   return (

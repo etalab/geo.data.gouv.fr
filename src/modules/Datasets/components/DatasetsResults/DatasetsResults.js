@@ -5,7 +5,7 @@ import Facets from '../../../../components/Facets/Facets'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 import WrappedPagination from '../../../../components/Pagination/WrappedPagination'
 
-import { loader, results, result, counter, paginationWrapper } from './DatasetsResults.css'
+import { loader, results, result, counter, paginationWrapper } from './DatasetsResults.scss'
 
 const DatasetsResults = ({datasets, filters, page, addFilter, handleChangePage, errors}) => {
   if (!!errors.length) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { find } from 'lodash'
-import { item } from './OtherProducersItem.css'
+import { item } from './OtherProducersItem.scss'
 
 const OtherProducersItem = ({ organizations, producer }) => {
   const organization = find(organizations, (organization) => organization._id === producer.associatedTo )

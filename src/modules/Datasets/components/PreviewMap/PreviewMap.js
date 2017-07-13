@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import CenteredMap from '../../../../components/CenteredMap'
 import ContentLoader from '../../../../components/Loader/ContentLoader'
 
-import styles from './PreviewMap.css'
+import styles from './PreviewMap.scss'
 
 const MAP = {
   lat: 47,

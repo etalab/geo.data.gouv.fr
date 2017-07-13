@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Sticky } from 'react-sticky'
 
-import { sticky, content, bold, warning, errorStyle, closeIcon } from './Warning.css'
+import { sticky, content, bold, warning, errorStyle, closeIcon } from './Warning.scss'
 
 class Warning extends Component {
   constructor(props) {

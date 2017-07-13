@@ -1,0 +1,79 @@
+@import 'variables';
+
+.nav {
+  background-color: $blue;
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $white;
+  z-index: 1;
+
+  a {
+    color: $white;
+
+    &:focus,
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.home {
+  font-size: 2em;
+  font-weight: bold;
+
+  @media (max-width: 551px) {
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
+
+.log {
+  font-size: 1em;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.authentification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1em;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 551px) {
+    margin-right: 0.4em;
+  }
+}
+
+.avatar {
+  width: 30px;
+  margin-right: 0.3em;
+  border-radius: 60px;
+
+  @media (max-width: 551px) {
+    width: 25px;
+    margin-left: 0;
+    margin-right: 0.1em;
+  }
+}
+
+.logout {
+  @media (max-width: 551px) {
+    display: none;
+  }
+}

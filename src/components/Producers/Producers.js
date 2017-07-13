@@ -8,7 +8,7 @@ import OtherProducers from './OtherProducers'
 import { getRelated, getUnrelated, getRelatedToOther } from '../../helpers/producers'
 import { getOrganizationProducers, dissociateProducer, associateProducer } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import { previousPage } from './Producers.css'
+import { previousPage } from './Producers.scss'
 
 class Producers extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import strRightBack from 'underscore.string/strRightBack'
-import { download, container, title, viewerButton, formats } from './Download.css'
+import { download, container, title, viewerButton, formats } from './Download.scss'
 
 const FORMATS = [
   {label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84'},

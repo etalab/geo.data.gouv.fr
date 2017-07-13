@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import styles from './OrganizationPreview.css'
+import styles from './OrganizationPreview.scss'
 
 const OrganizationPreview = ({ organization }) => {
   const logo = organization && organization.logo ? organization.logo : '/assets/no-img.png'

@@ -1,0 +1,26 @@
+@import 'variables';
+
+.main img {
+  width: 280px;
+  display: block;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    margin: 1em;
+    width: 68px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.selected {
+  border: 2px solid $blue;
+}

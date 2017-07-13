@@ -1,0 +1,42 @@
+@import 'variables';
+
+.visualizer {
+  flex-grow: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  > button {
+    width: 50%;
+  }
+
+  button {
+    padding: 5px 10px;
+    color: #fff;
+    border: 0;
+    background-color: $blue;
+
+    &:hover {
+      background-color: $highlight-blue;
+    }
+  }
+}
+
+.close-button {
+  border: 0;
+  max-width: 36px;
+  color: #fff;
+  background-color: $red;
+
+  &:hover {
+    background-color: $red;
+  }
+}
+
+.active {
+  padding: 3px 10px;
+  border-bottom: 4px solid $lightblue;
+}

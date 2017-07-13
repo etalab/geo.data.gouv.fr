@@ -3,7 +3,7 @@ import Facet from './Facet'
 
 import { isActive, translateFilters } from '../../helpers/manageFilters'
 
-import { container } from './FacetsGroup.css'
+import { container } from './FacetsGroup.scss'
 
 
 

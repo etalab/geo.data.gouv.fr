@@ -6,7 +6,7 @@ import Viewer from '../Viewer/Viewer'
 
 import { fetchGeoJSON } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
-import { content, vector } from './DownloadDatasets.css';
+import { content, vector } from './DownloadDatasets.scss';
 
 class DownloadDatasets extends Component {
   constructor(props) {

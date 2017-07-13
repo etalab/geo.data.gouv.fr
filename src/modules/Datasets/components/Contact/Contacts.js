@@ -2,7 +2,7 @@ import React from 'react'
 
 import Contact from './Contact'
 
-import { divider } from './Contacts.css'
+import { divider } from './Contacts.scss'
 
 const Contacts = ({ contacts }) => {
   if (!contacts || !contacts.length) return <div>Aucun contact</div>

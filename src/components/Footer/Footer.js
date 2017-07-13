@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import NewsletterForm from '../Newsletter/NewsletterForm'
 import SocialLinks from '../SocialLinks/SocialLinks'
 
-import { footer, space, main, info } from './Footer.css'
+import { footer, space, main, info } from './Footer.scss'
 
 class Footer extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import { section, img, detail } from './User.css'
+import { section, img, detail } from './User.scss'
 
 const User = ({ user }) => {
   const avatar = user.avatar ? {url: user.avatar, alt: user.slug} : {url: 'assets/avatar.png', alt: 'no avatar'}

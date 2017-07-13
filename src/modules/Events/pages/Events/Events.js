@@ -4,7 +4,7 @@ import DocumentTitle from 'react-document-title'
 
 import PastEvent from '../../../../components/Event/PastEvent'
 
-import { events, eventsList, pastEventsList } from './Events.css'
+import { events, eventsList, pastEventsList } from './Events.scss'
 
 const pastEvents = [
   {name: 'Atelier #1', date: '06/10/2016', link: '/assets/ateliers/synthese_atelier_1.pdf'},

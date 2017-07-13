@@ -1,0 +1,34 @@
+@import 'variables';
+
+.section {
+  background-color: #fff;
+  padding: 2em;
+  margin-bottom: 2em;
+  box-shadow: $box-shadow;
+
+  h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 1em;
+  }
+}
+
+.section-no-padding {
+  background-color: #fff;
+  margin-bottom: 2em;
+  box-shadow: $box-shadow;
+}
+
+.container {
+  padding: 40px;
+  display: block;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.loader {
+  text-align: center;
+  margin-top: 5em;
+}

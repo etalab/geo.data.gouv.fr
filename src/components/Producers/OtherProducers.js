@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import OtherProducersItem from './OtherProducersItem'
 import { getOrganizations } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import style from './OtherProducers.css'
+import style from './OtherProducers.scss'
 
 class OtherProducers extends Component {
   constructor(props) {

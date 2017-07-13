@@ -1,0 +1,27 @@
+.avatar {
+  min-width: 50px;
+  max-height: 50px;
+}
+
+.message {
+  display: flex;
+  margin-top: 1em;
+}
+
+.header {
+  display: flex;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.posted-on {
+  margin-left: 1em;
+  font-weight: 100;
+  color: #505050;
+}
+
+.content {
+  margin-left: 0.5em;
+}

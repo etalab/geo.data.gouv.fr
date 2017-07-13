@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { container, link, medium, twitter } from './SocialLinks.css'
+import { container, link, medium, twitter } from './SocialLinks.scss'
 
 const SocialLinks = () => {
   return (

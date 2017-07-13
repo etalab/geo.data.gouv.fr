@@ -1,0 +1,27 @@
+.catalogs-style {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #d0d0d0;
+
+  a {
+    margin: 0.5em;
+  }
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+}
+
+.remove {
+  width: 300px;
+  margin: 0 7px;
+  padding: 0.5em;
+}
+
+.button-style {
+  margin: 0.5em;
+}

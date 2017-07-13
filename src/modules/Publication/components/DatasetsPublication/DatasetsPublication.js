@@ -4,7 +4,7 @@ import cx from 'classnames'
 import DatasetsToBePublished from '../DatasetsToBePublished/DatasetsToBePublished'
 import PublishedDatasets from '../PublishedDatasets/PublishedDatasets'
 
-import { container, header, success, warning, error } from './DatasetsPublication.css'
+import { container, header, success, warning, error } from './DatasetsPublication.scss'
 
 class DatasetsPublication extends Component {
 

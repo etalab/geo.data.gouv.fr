@@ -8,7 +8,7 @@ import Chart from '../../../../components/Charts/Chart'
 import { fetchHarvests, syncCatalog } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-import { harvest, chart, stats, pending } from './HarvestsSection.css'
+import { harvest, chart, stats, pending } from './HarvestsSection.scss'
 
 class HarvestsSection extends Component {
   constructor(props) {

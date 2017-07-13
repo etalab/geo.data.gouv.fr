@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { wrapper, input, button } from './SearchInput.css'
+import { wrapper, input, button } from './SearchInput.scss'
 
 class SearchInput extends PureComponent {
   onSubmit(event) {

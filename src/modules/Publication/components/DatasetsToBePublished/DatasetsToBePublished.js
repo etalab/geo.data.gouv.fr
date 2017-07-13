@@ -4,7 +4,7 @@ import { publishDataset } from '../../../../fetch/fetch'
 
 import DatasetToSelect from '../DatasetToSelect/DatasetToSelect'
 
-import { buttons, noData, publishButton, button, refresh, disable, selection } from './DatasetsToBePublished.css'
+import { buttons, noData, publishButton, button, refresh, disable, selection } from './DatasetsToBePublished.scss'
 
 class DatasetsToBePublished extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { container, label } from './DoughnutChartList.css'
+import { container, label } from './DoughnutChartList.scss'
 
 const DoughnutChartList = ({data}) => {
 

@@ -6,7 +6,7 @@ import DoughnutChart from '../../../../components/Charts/DoughnutChart/DoughnutC
 import Counter from '../../../../components/Statistics/Counter/Counter'
 import Percent from '../../../../components/Statistics/Percent/Percent'
 
-import { container, section, chart } from './StatisticsSection.css'
+import { container, section, chart } from './StatisticsSection.scss'
 
 const StatisticsSection = ({metrics}) => {
   const openness = get(metrics, 'datasets.partitions.openness.yes', 0)

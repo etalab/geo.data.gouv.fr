@@ -1,0 +1,38 @@
+@import 'variables';
+
+.publishing {
+  padding: 60px 40px;
+  display: block;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    padding-top: 60px;
+  }
+}
+
+.organization-logo {
+  box-shadow: $box-shadow;
+  background-color: #fff;
+  position: absolute;
+  top: 100px;
+  max-width: 50px;
+  border-radius: 60px;
+  left: 52%;
+
+  @media (max-width: 768px) {
+    left: 56%;
+  }
+}
+
+.container {
+  padding-top: 100px;
+  padding-bottom: 2em;
+  background-color: #fff;
+  margin-bottom: 2em;
+  box-shadow: $box-shadow;
+
+  h3 {
+    padding: 0 1em;
+    font-weight: 400;
+  }
+}

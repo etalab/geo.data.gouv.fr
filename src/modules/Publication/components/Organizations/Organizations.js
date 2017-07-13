@@ -3,7 +3,7 @@ import DocumentTitle from 'react-document-title'
 
 import OrganizationPreview from '../OrganizationPreview/OrganizationPreview'
 
-import { container } from './Organizations.css'
+import { container } from './Organizations.scss'
 
 const Organizations = ({ organizations }) => {
   return (

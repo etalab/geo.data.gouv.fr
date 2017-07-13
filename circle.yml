@@ -22,7 +22,8 @@ dependencies:
 
 test:
   override:
-    - yarn lint
+    - yarn lint:scripts
+    - yarn lint:styles
     - yarn test
     - yarn build
 

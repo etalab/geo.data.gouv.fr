@@ -1,5 +1,5 @@
 import React from 'react'
-import { container } from './CatalogSection.css'
+import { container } from './CatalogSection.scss'
 
 const CatalogSection = ({catalog}) => {
   return (

@@ -6,7 +6,7 @@ import OrganizationMetrics from '../OrganizationMetrics/OrganizationMetrics'
 
 import SourceCatalogs from '../SourceCatalogs/SourceCatalogs'
 
-import styles from './ManageOrganization.css'
+import styles from './ManageOrganization.scss'
 
 const ManageOrganization = ({ organization, metrics }) => {
   return (

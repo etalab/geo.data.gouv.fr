@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { container, defaultLabel, large, medium, small, success, warning, error } from './Counter.css'
+import { container, defaultLabel, large, medium, small, success, warning, error } from './Counter.scss'
 
 
 const Counter = ({value, label, unit='', size='', color='', icon='', title=''}) => {

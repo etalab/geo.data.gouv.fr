@@ -1,0 +1,38 @@
+@import 'variables';
+
+.harvest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  > button {
+    margin: 2em;
+    padding: 15px 20px;
+    color: #fff;
+    background-color: $blue;
+    border: 1px solid;
+  }
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-items: baseline;
+  margin-top: 2em;
+}
+
+.chart {
+  margin: 2em;
+}
+
+.pending {
+  margin: 2em;
+  padding: 15px 20px;
+  color: $grey;
+  background-color: #f2f2f2;
+  border-color: $grey;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import { data, progress } from './DatasetToSelect.css'
+import { data, progress } from './DatasetToSelect.scss'
 
 const DatasetToSelect = ({ dataset, isSelected, inProgress, change }) => {
 

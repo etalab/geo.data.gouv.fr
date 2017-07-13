@@ -18,7 +18,7 @@ import OrganizationsSection from '../../components/OrganizationsSection/Organiza
 import HarvestsSection from '../../components/HarvestsSection/HarvestsSection'
 
 // Import CSS
-import { section, sectionNoPadding, container, loader} from './CatalogDetail.css'
+import { section, sectionNoPadding, container, loader} from './CatalogDetail.scss'
 
 class CatalogDetail extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 import Facet from '../../../../components/Facets/Facet'
 
-import { group, facets } from './OrganizationsSection.css'
+import { group, facets } from './OrganizationsSection.scss'
 
 const OrganizationsSection = ({metrics, catalog}) => {
   const { organizations, keywords } = metrics.records.counts

@@ -5,7 +5,7 @@ import { Doughnut } from 'react-chartjs-2'
 import Percent from '../../Statistics/Percent/Percent'
 import { colors } from '../../../tools.js'
 
-import { container } from './DoughnutChart.css'
+import { container } from './DoughnutChart.scss'
 
 export function formatData(data) {
   const labels = Object.keys(data)

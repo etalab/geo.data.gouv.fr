@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { link } from './OrganizationProducersPreview.css'
+import { link } from './OrganizationProducersPreview.scss'
 
 const OrganizationProducersPreview = ({ organizationId, producers }) => {
   return (

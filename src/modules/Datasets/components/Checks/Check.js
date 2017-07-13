@@ -2,7 +2,7 @@ import React from 'react'
 
 import CheckItem from './CheckItem'
 
-import style from './Check.css'
+import style from './Check.scss'
 
 const Check = ({ title, isValid, msg, children }) => {
   return (

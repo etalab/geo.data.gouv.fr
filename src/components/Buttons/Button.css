@@ -1,8 +1,0 @@
-@import "../../theme/colors.css";
-
-button.simpleButton {
-  padding: 0.5em;
-  color: #fff;
-  background-color: var(--blue);
-  border: 1px solid #fff;
-}

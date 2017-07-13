@@ -16,7 +16,7 @@ import Section from '../../../../components/Section/Section'
 
 import { statusTranslate, isWarningStatus } from '../../../../helpers/status'
 
-import { container, main, side } from './DatasetDetail.css'
+import { container, main, side } from './DatasetDetail.scss'
 
 export default class DatasetDetail extends Component {
 

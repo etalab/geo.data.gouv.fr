@@ -1,5 +1,5 @@
 import React from 'react'
-import { container, header, label } from './ProducersWrapper.css'
+import { container, header, label } from './ProducersWrapper.scss'
 
 const ProducersWrapper = ({ title, subtitle, producers, producersList }) => {
   return (

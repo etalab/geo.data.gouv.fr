@@ -1,8 +1,0 @@
-@import "../../theme/shadows.css";
-
-.section {
-  background-color: white;
-  padding: 2em;
-  margin-bottom: 2em;
-  box-shadow: var(--shadow);
-}
