@@ -11,10 +11,14 @@ moment.locale('fr')
 
 // Piwik
 // ------------------------------------
-createPiwikConnector({
-  url: 'https://stats.data.gouv.fr',
-  siteId: 32
-}).connectToHistory(browserHistory);
+const { PIWIK_URL, PIWIK_SITE_ID } = process.env
+
+if (PIWIK_URL && PIWIK_SITE_ID) {
+  createPiwikConnector({
+    url: PIWIK_URL,
+    siteId: PIWIK_SITE_ID
+  }).connectToHistory(browserHistory);
+}
 
 
 // Render Setup
@@ -29,6 +33,7 @@ let render = () => {
     MOUNT_NODE
   )
 }
+
 
 // Development Tools
 // ------------------------------------
@@ -62,6 +67,7 @@ if (__DEV__) {
     )
   }
 }
+
 
 // Let's Go!
 // ------------------------------------
