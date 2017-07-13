@@ -112,7 +112,7 @@ config.module.rules.push({
         loader: 'css-loader',
         options: {
           modules: true,
-          camelCase: true,
+          camelCase: 'only',
           sourceMap: project.sourcemaps,
           minimize: {
             autoprefixer: {
