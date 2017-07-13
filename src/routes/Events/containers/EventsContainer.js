@@ -1,6 +1,6 @@
 import React from 'react'
 
-import EventsView from '../components/EventsView'
+import EventsPage from '../components/EventsPage'
 
 const pastEvents = [
   {name: 'Atelier #1', date: '06/10/2016', link: '/assets/ateliers/synthese_atelier_1.pdf'},
@@ -12,5 +12,5 @@ const pastEvents = [
 ]
 
 export default () => (
-  <EventsView pastEvents={pastEvents} />
+  <EventsPage pastEvents={pastEvents} />
 )

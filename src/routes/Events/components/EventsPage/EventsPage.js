@@ -3,9 +3,9 @@ import DocumentTitle from 'react-document-title'
 
 import Event from '../Event'
 
-import styles from './EventsView.scss'
+import styles from './EventsPage.scss'
 
-const Events = ({ pastEvents }) => (
+const EventsPage = ({ pastEvents }) => (
   <DocumentTitle title={'Événements'}>
     <div className={styles.events}>
 
@@ -24,4 +24,4 @@ const Events = ({ pastEvents }) => (
   </DocumentTitle>
 )
 
-export default Events
+export default EventsPage
