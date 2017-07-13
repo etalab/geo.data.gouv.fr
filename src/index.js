@@ -9,6 +9,14 @@ import moment from 'moment'
 moment.locale('fr')
 
 
+// Store Initialization
+// ------------------------------------
+// This will be a redux store eventually, for now we just define
+// an empty object so that we have something to pass along the
+// routers.
+const store = {}
+
+
 // Piwik
 // ------------------------------------
 const { PIWIK_URL, PIWIK_SITE_ID } = process.env
@@ -26,10 +34,11 @@ if (PIWIK_URL && PIWIK_SITE_ID) {
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  const Router = require('./router').default
+  const App = require('./components/App').default
+  const routes = require('./routes').default(store)
 
   ReactDOM.render(
-    <Router />,
+    <App store={store} routes={routes} />,
     MOUNT_NODE
   )
 }
@@ -58,7 +67,8 @@ if (__DEV__) {
 
     // Setup hot module replacement
     module.hot.accept([
-      './router',
+      './components/App',
+      './routes/index'
     ], () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)

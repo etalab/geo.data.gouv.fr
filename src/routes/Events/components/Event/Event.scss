@@ -1,3 +1,12 @@
+@import 'variables';
+
+.container {
+  background-color: #fff;
+  padding: 2em;
+  margin-bottom: 2em;
+  box-shadow: $box-shadow;
+}
+
 .event {
   width: 300px;
   display: flex;
