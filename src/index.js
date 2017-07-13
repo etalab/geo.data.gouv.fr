@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router'
 import createPiwikConnector from 'piwik-react-router'
 import moment from 'moment'
 
+import createStore from './store/createStore'
+
 // Locale
 // ------------------------------------
 moment.locale('fr')
@@ -14,7 +16,7 @@ moment.locale('fr')
 // This will be a redux store eventually, for now we just define
 // an empty object so that we have something to pass along the
 // routers.
-const store = {}
+const store = createStore(window.__INITIAL_STATE__)
 
 
 // Piwik

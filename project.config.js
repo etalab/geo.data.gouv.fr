@@ -65,9 +65,12 @@ module.exports = {
     'react-document-title',
     'react-leaflet',
     'react-paginate',
+    'react-redux',
     'react-router',
     'react-router-scroll',
     'react-sticky',
-    'reactable'
+    'reactable',
+    'redux',
+    'redux-thunk'
   ]
 }
