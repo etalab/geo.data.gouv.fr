@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomeView from '../components/HomeView'
+import HomePage from '../components/HomePage'
 
 const catalogsMock = [
   {
@@ -117,5 +117,5 @@ const catalogsMock = [
 ]
 
 export default () => (
-  <HomeView catalogs={catalogsMock} />
+  <HomePage catalogs={catalogsMock} />
 )

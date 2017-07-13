@@ -4,9 +4,9 @@ import { browserHistory, Link } from 'react-router'
 import SearchInput from '../../../../components/SearchInput/SearchInput'
 import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
 
-import styles from './HomeView.scss'
+import styles from './HomePage.scss'
 
-class Home extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props)
     this.state = {errors: []}
@@ -54,4 +54,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default HomePage
