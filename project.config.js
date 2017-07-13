@@ -45,7 +45,10 @@ module.exports = {
     PUBLIC_URL: `http://${development.host}:${development.port}`,
 
     INSPIRE_DATAGOUV_API_URL: 'https://next.data.gouv.fr/api',
-    INSPIRE_DATAGOUV_API_KEY: null
+    INSPIRE_DATAGOUV_API_KEY: null,
+
+    PIWIK_URL: null,
+    PIWIK_SITE_ID: null
   },
 
   /** The list of modules to bundle separately from the core application code */
