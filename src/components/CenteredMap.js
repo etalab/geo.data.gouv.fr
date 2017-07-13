@@ -28,7 +28,16 @@ class CenteredMap extends Component {
     const { vectors, className, frozen } = this.props
 
     return (
-      <Map ref="map" className={className} center={[lat, lon]} zoom={zoom} dragging={!frozen} scrollWheelZoom={false} zoomControl={!frozen}>
+      <Map
+        ref="map"
+        className={className}
+        center={[lat, lon]}
+        zoom={zoom}
+        dragging={!frozen}
+        scrollWheelZoom={false}
+        doubleClickZoom={false}
+        zoomControl={!frozen}
+      >
         <TileLayer attribution={MAP.osmAttribution} url={MAP.osmUrl} />
         <GeoJSON color='blue' fillOpacity={0.1} weight={2} ref="vectors" data={vectors} />
       </Map>
