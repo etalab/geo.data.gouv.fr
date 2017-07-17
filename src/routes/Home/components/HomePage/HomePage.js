@@ -7,11 +7,6 @@ import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview
 import styles from './HomePage.scss'
 
 class HomePage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {errors: []}
-  }
-
   componentDidMount() {
     document.title = 'Accueil'
   }

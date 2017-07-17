@@ -1,5 +1,7 @@
-const dataGouvApiUrl = process.env.INSPIRE_DATAGOUV_API_URL
-const dataGouvApiKey = process.env.INSPIRE_DATAGOUV_API_KEY
+const {
+  INSPIRE_DATAGOUV_API_URL,
+  INSPIRE_DATAGOUV_API_KEY
+} = process.env
 
 export function _fetch(url, method, data) {
   const options = {
@@ -7,7 +9,7 @@ export function _fetch(url, method, data) {
       'Accept': 'application/json',
     },
     mode: 'cors',
-    method: method || 'GET',
+    method: method || 'GET'
   }
 
   if (url.includes('https://inspire.data.gouv.fr/dgv/api')) {
@@ -15,9 +17,9 @@ export function _fetch(url, method, data) {
   }
 
   if (url.includes('https://inspire.data.gouv.fr/dgv/proxy-api')) {
-    if (dataGouvApiKey) {
-      url = url.replace('https://inspire.data.gouv.fr/dgv/proxy-api', dataGouvApiUrl)
-      options.headers['X-API-KEY'] = dataGouvApiKey
+    if (INSPIRE_DATAGOUV_API_KEY) {
+      url = url.replace('https://inspire.data.gouv.fr/dgv/proxy-api', INSPIRE_DATAGOUV_API_URL)
+      options.headers['X-API-KEY'] = INSPIRE_DATAGOUV_API_KEY
       options.mode = undefined
     } else {
       options.credentials = 'include'
@@ -29,18 +31,14 @@ export function _fetch(url, method, data) {
     options.body = JSON.stringify(data)
   }
 
-  return fetch(url, options)
-    .then(response => {
-      if (response.status === 500) throw new Error('Internal Server Error')
-      if (response.status === 401) throw new Error('Unauthorized')
-      if (response.status === 404) throw new Error('Not found')
-      if (response.status === 202) return
-      if (response.status === 204) return
-      return response.json()
-    })
-    .catch((err) => {
-      throw err
-    });
+  return fetch(url, options).then(response => {
+    if (response.status === 500) throw new Error('Internal Server Error')
+    if (response.status === 401) throw new Error('Unauthorized')
+    if (response.status === 404) throw new Error('Not found')
+    if (response.status === 202) return
+    if (response.status === 204) return
+    return response.json()
+  })
 }
 
 export function _get(url) {

@@ -1,6 +1,6 @@
 .results {
   display: flex;
-  margin: 2em 4em;
+  margin: 2em 0;
 }
 
 .result {
@@ -16,10 +16,6 @@
 .loader {
   text-align: center;
   margin-top: 5em;
-}
-
-.counter {
-  margin-left: 4em;
 }
 
 .pagination-wrapper {

@@ -13,9 +13,6 @@ moment.locale('fr')
 
 // Store Initialization
 // ------------------------------------
-// This will be a redux store eventually, for now we just define
-// an empty object so that we have something to pass along the
-// routers.
 const store = createStore(window.__INITIAL_STATE__)
 
 

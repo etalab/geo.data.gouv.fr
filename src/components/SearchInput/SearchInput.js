@@ -2,6 +2,12 @@ import React, { PureComponent } from 'react'
 import { wrapper, input, button } from './SearchInput.scss'
 
 class SearchInput extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
   onSubmit(event) {
     event.preventDefault();
 
@@ -12,15 +18,17 @@ class SearchInput extends PureComponent {
     const { placeholder, textInput } = this.props
 
     return (
-      <form onSubmit={e => this.onSubmit(e)} className={wrapper}>
+      <form onSubmit={this.onSubmit} className={wrapper}>
         <input
           type='text'
           name='query'
-          value={textInput}
+          defaultValue={textInput}
           className={input}
           placeholder={placeholder ? placeholder : 'Rechercher…'} />
 
-        {this.props.searchButton ? <button type='submit' className={button}>Rechercher</button> : undefined}
+        {this.props.searchButton && (
+          <button type='submit' className={button}>Rechercher</button>
+        )}
       </form>
     )
   }
