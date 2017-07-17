@@ -52,6 +52,7 @@
     "jsdom": "^9.6.0",
     "mkdirp": "^0.5.1",
     "mocha": "^3.1.2",
+    "module-alias": "^2.0.0",
     "node-sass": "^4.5.3",
     "proxyquire": "^1.7.10",
     "react": "^15.6.1",

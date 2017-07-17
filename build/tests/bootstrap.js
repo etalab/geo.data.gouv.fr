@@ -3,7 +3,11 @@ process.env.PUBLIC_URL = '';
 
 require('babel-register')();
 
-const { jsdom }  = require('jsdom')
+const { jsdom } = require('jsdom')
+const moduleAlias = require('module-alias')
+const path = require('path')
+
+moduleAlias.addAlias('common', path.join(__dirname, '../../src'))
 
 const exposedProperties = ['window', 'navigator', 'document'];
 
