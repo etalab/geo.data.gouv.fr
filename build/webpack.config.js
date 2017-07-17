@@ -41,6 +41,8 @@ const config = {
       '.json'
     ],
     alias: {
+      'common': inProject(project.srcDir),
+
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
     }
