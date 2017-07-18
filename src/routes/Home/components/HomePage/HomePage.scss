@@ -81,7 +81,7 @@
   }
 }
 
-.catalog-links {
+.link {
   margin-top: 2em;
   color: #fff;
 
@@ -92,23 +92,12 @@
   }
 }
 
-.events {
-  a {
-    color: #fff;
-
-    &:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-  }
-}
-
 .catalogs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
 
-  > a {
-    margin: 10px 20px;
-  }
+.catalog {
+  margin: 10px 20px;
 }

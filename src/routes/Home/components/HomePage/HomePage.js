@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 
 import SearchInput from 'common/components/SearchInput'
-import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
+import CatalogPreview from 'common/components/CatalogPreview'
 
 import styles from './HomePage.scss'
 
@@ -42,15 +42,20 @@ class HomePage extends Component {
           <div className={styles.paper}>
             <h2>Les catalogues moissonnés</h2>
             <div className={styles.catalogs}>
-              { catalogs.map((catalog, idx) => (
-                <CatalogPreview key={idx} catalog={catalog} />
+              {catalogs.map(catalog => (
+                <div className={styles.catalog}>
+                  <CatalogPreview
+                    key={catalog._id}
+                    catalog={catalog}
+                  />
+                </div>
               ))}
             </div>
-            <Link className={styles.catalogLinks} to="catalogs">Voir tous les catalogues</Link>
+            <Link to="catalogs" className={styles.link}>Voir tous les catalogues</Link>
 
             <h2 id="evenements">Nos événements</h2>
-            <div className={styles.events}>
-              <Link to="events">Voir nos événements</Link>
+            <div>
+              <Link to="events" className={styles.link}>Voir nos événements</Link>
             </div>
           </div>
         </div>
