@@ -56,10 +56,9 @@ class SearchPage extends React.Component {
         <div className={styles.container}>
           <div className={styles.search}>
             <SearchInput
-              textInput={query.textInput}
-              filters={query.filters}
-              searchButton
+              defaultValue={query.textInput}
               onSearch={this.updateQuery}
+              hasButton
             />
             <FiltersSummary
               filters={query.filters}

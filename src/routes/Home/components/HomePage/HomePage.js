@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 
-import SearchInput from '../../../../components/SearchInput/SearchInput'
+import SearchInput from 'common/components/SearchInput'
 import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
 
 import styles from './HomePage.scss'
@@ -11,8 +11,14 @@ class HomePage extends Component {
     document.title = 'Accueil'
   }
 
-  userSearch(textInput) {
-    browserHistory.push({ pathname: '/search', query: {q: textInput, availability: 'yes'} })
+  search = value => {
+    browserHistory.push({
+      pathname: '/search',
+      query: {
+        q: value,
+        availability: 'yes'
+      }
+    })
   }
 
   render() {
@@ -24,7 +30,11 @@ class HomePage extends Component {
           <h1>
             Trouvez facilement les données géographiques dont vous avez besoin
           </h1>
-          <SearchInput placeholder={'Rechercher un jeu de donnée'} onSearch={(textInput) => this.userSearch(textInput)} searchButton={true} />
+          <SearchInput
+            placeholder='Rechercher un jeu de données'
+            onSearch={this.search}
+            hasButton
+          />
           <Link className={styles.datasetLinks} to="/search?availability=yes">Voir tous les jeux de données</Link>
         </div>
 
