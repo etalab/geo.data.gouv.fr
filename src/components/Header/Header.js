@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-import { nav, home, log, account, logout, authentification, avatar } from './Header.scss'
+import styles from './Header.scss'
 
 class Header extends Component {
   constructor(props) {
@@ -29,20 +29,21 @@ class Header extends Component {
     const logoutRedirect = isPublication ? process.env.PUBLIC_URL : process.env.PUBLIC_URL + window.location.pathname
     const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
     const logoutUrl =`https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
-    const login = <a className={log} href={logInUrl}>Publier des données</a>
+    const login = <a className={styles.log} href={logInUrl}>Publier des données</a>
 
     return (
-      <nav className={nav}>
-        <a className={home} href='/'>inspire.data.gouv.fr</a>
+      <nav className={styles.nav}>
+        <IndexLink to='/' className={styles.home}>inspire.data.gouv.fr</IndexLink>
+
         {!user ? login : (
-          <div className={authentification}>
+          <div className={styles.authentification}>
             <Link to={'/publication'}>
-              <div className={account}>
-                <img alt='avatar' className={avatar} src={user.avatar} />
+              <div className={styles.account}>
+                <img alt='avatar' className={styles.avatar} src={user.avatar} />
                 {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
-            <a className={log} href={logoutUrl}><span className={logout}>Déconnexion</span><i className='power icon'></i></a>
+            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>Déconnexion</span><i className='power icon'></i></a>
           </div>
         )}
       </nav>
