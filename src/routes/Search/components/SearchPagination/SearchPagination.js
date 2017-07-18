@@ -15,10 +15,6 @@ const SearchPagination = ({
 }) => {
   const selected = page - 1 || 0
 
-  if (pageCount < 2) {
-    return null
-  }
-
   return (
     <Paginate
       previousLabel={previousLabel}

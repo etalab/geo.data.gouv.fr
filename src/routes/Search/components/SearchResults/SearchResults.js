@@ -36,13 +36,15 @@ const SearchResults = ({ count, page, query, results, facets, addFilter, changeP
         </div>
       )}
 
-      <div className={styles.paginationWrapper}>
-        <SearchPagination
-          page={page}
-          pageCount={pageCount}
-          onPageChange={changePage}
-        />
-      </div>
+      {pageCount > 1 && (
+        <div className={styles.paginationWrapper}>
+          <SearchPagination
+            page={page}
+            pageCount={pageCount}
+            onPageChange={changePage}
+          />
+        </div>
+      )}
     </div>
   )
 }
