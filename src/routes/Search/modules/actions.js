@@ -11,6 +11,8 @@ import {
   SEARCH_EXECUTE_FAILURE
 } from './constants'
 
+const { INSPIRE_API_URL } = process.env
+
 export const execute = (query, limit = 20) => dispatch => {
   dispatch({
     type: SEARCH_EXECUTE_PENDING
@@ -19,7 +21,7 @@ export const execute = (query, limit = 20) => dispatch => {
   const filters = flattenFilters(query.filters)
 
   return _get(
-    `https://inspire.data.gouv.fr/api/geogw/records?${qs.stringify({
+    `${INSPIRE_API_URL}/records?${qs.stringify({
       ...filters,
       q: query.textInput,
       offset: (query.page - 1) * limit,
