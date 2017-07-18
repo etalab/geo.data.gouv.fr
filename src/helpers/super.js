@@ -1,6 +1,9 @@
 const {
-  INSPIRE_DATAGOUV_API_URL,
-  INSPIRE_DATAGOUV_API_KEY
+  DATAGOUV_API_URL,
+  DATAGOUV_API_KEY,
+
+  PUBLICATION_API_URL,
+  PROXY_API_URL
 } = process.env
 
 export function _fetch(url, method, data) {
@@ -12,14 +15,14 @@ export function _fetch(url, method, data) {
     method: method || 'GET'
   }
 
-  if (url.includes('https://inspire.data.gouv.fr/dgv/api')) {
+  if (url.includes(PUBLICATION_API_URL)) {
     options.credentials = 'include'
   }
 
-  if (url.includes('https://inspire.data.gouv.fr/dgv/proxy-api')) {
-    if (INSPIRE_DATAGOUV_API_KEY) {
-      url = url.replace('https://inspire.data.gouv.fr/dgv/proxy-api', INSPIRE_DATAGOUV_API_URL)
-      options.headers['X-API-KEY'] = INSPIRE_DATAGOUV_API_KEY
+  if (url.includes(PROXY_API_URL)) {
+    if (DATAGOUV_API_KEY) {
+      url = url.replace(PROXY_API_URL, DATAGOUV_API_URL)
+      options.headers['X-API-KEY'] = DATAGOUV_API_KEY
       options.mode = undefined
     } else {
       options.credentials = 'include'

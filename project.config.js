@@ -46,8 +46,12 @@ module.exports = {
   environment: {
     PUBLIC_URL: getPublicUrl(),
 
-    INSPIRE_DATAGOUV_API_URL: 'https://next.data.gouv.fr/api',
-    INSPIRE_DATAGOUV_API_KEY: null,
+    DATAGOUV_API_URL: 'https://next.data.gouv.fr/api',
+    DATAGOUV_API_KEY: null,
+
+    PROXY_API_URL: 'https://inspire.data.gouv.fr/dgv/proxy-api',
+    PUBLICATION_API_URL: 'https://inspire.data.gouv.fr/dgv/api',
+    INSPIRE_API_URL: 'https://inspire.data.gouv.fr/api/geogw',
 
     PIWIK_URL: null,
     PIWIK_SITE_ID: null
