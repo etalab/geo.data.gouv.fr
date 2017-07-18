@@ -5,15 +5,12 @@ import Facets from 'common/components/Facets/Facets'
 
 import SearchResultsCount from  '../SearchResultsCount'
 import SearchResult from '../SearchResult'
-
-// import DatasetPreview from '../../../../modules/Datasets/components/DatasetPreview/DatasetPreview'
-// import DatasetPreview from '../DatasetPreview/DatasetPreview'
-import WrappedPagination from '../../../../components/Pagination/WrappedPagination'
+import SearchPagination from '../SearchPagination'
 
 import styles from './SearchResults.scss'
 
 const SearchResults = ({ count, page, query, results, facets, addFilter, changePage }) => {
-  const max = results ? Math.ceil(count / query.limit) : 0
+  const pageCount = results ? Math.ceil(count / query.limit) : 0
 
   return (
     <div>
@@ -40,10 +37,10 @@ const SearchResults = ({ count, page, query, results, facets, addFilter, changeP
       )}
 
       <div className={styles.paginationWrapper}>
-        <WrappedPagination
-          max={max}
+        <SearchPagination
           page={page}
-          handleChangePage={changePage}
+          pageCount={pageCount}
+          onPageChange={changePage}
         />
       </div>
     </div>
