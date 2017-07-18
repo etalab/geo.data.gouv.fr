@@ -6,7 +6,7 @@ import styles from './SearchInput.scss'
 class SearchInput extends React.PureComponent {
   static propTypes = {
     placeholder: PropTypes.string,
-    defaultValue: PropTypes.string.isRequired,
+    defaultValue: PropTypes.string,
 
     hasButton: PropTypes.bool,
     buttonLabel: PropTypes.string,
@@ -16,6 +16,7 @@ class SearchInput extends React.PureComponent {
 
   static defaultProps = {
     placeholder: 'Rechercher…',
+    defaultValue: '',
 
     hasButton: false,
     buttonLabel: 'Rechercher'
