@@ -43,11 +43,8 @@ class HomePage extends Component {
             <h2>Les catalogues moissonnés</h2>
             <div className={styles.catalogs}>
               {catalogs.map(catalog => (
-                <div className={styles.catalog}>
-                  <CatalogPreview
-                    key={catalog._id}
-                    catalog={catalog}
-                  />
+                <div key={catalog._id} className={styles.catalog}>
+                  <CatalogPreview catalog={catalog} />
                 </div>
               ))}
             </div>
