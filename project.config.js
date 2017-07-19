@@ -64,7 +64,6 @@ module.exports = {
     'piwik-react-router',
     'preact',
     'preact-compat',
-    'qs',
     'react-chartjs-2',
     'react-document-title',
     'react-leaflet',
