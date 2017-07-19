@@ -43,6 +43,8 @@ const config = {
     alias: {
       'common': inProject(project.srcDir),
 
+      'lodash': 'lodash-es',
+
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
     }

@@ -74,7 +74,7 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "leaflet": "^1.0.2",
-    "lodash": "^4.16.4",
+    "lodash-es": "^4.17.4",
     "marked": "^0.3.6",
     "moment": "^2.14.1",
     "piwik-react-router": "^0.6.0",
