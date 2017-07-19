@@ -5,40 +5,32 @@ import {
 } from './constants'
 
 const initialState = {
-  list: {
-    pending: false,
-    error: false,
-    catalogs: {}
-  }
+  pending: false,
+  error: false,
+  catalogs: []
 }
 
 const handlers = {
   [CATALOGS_LIST_PENDING]: (state, action) => ({
     ...state,
 
-    list: {
-      pending: true,
-      error: false
-    }
+    pending: true,
+    error: false
   }),
 
   [CATALOGS_LIST_SUCCESS]: (state, action) => ({
     ...state,
 
-    list: {
-      pending: false,
-      catalogs: action.payload,
-      error: false
-    }
+    pending: false,
+    catalogs: action.payload,
+    error: false
   }),
 
   [CATALOGS_LIST_FAILURE]: (state, action) => ({
     ...state,
 
-    list: {
-      pending: false,
-      error: action.error
-    }
+    pending: false,
+    error: action.error
   })
 }
 

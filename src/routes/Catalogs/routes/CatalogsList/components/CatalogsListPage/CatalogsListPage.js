@@ -5,19 +5,16 @@ import DocumentTitle from 'react-document-title'
 import Loader from 'common/components/Loader'
 import CatalogPreview from 'common/components/CatalogPreview'
 
-import styles from './CatalogsPage.scss'
+import styles from './CatalogsListPage.scss'
 
-const CatalogsPage = ({ catalogs, pending, error }) => (
+const CatalogsListPage = ({ catalogs, pending, error }) => (
   <DocumentTitle title={'Catalogues'}>
     <div className={styles.container}>
       <Loader loading={pending} error={error}>
         <div>
           {catalogs.map(catalog => (
-            <div className={styles.catalog}>
-              <CatalogPreview
-                key={catalog._id}
-                catalog={catalog}
-              />
+            <div key={catalog._id} className={styles.catalog} >
+              <CatalogPreview catalog={catalog} />
             </div>
           ))}
         </div>
@@ -26,7 +23,7 @@ const CatalogsPage = ({ catalogs, pending, error }) => (
   </DocumentTitle>
 )
 
-CatalogsPage.propTypes = {
+CatalogsListPage.propTypes = {
   catalogs: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired
   })).isRequired,
@@ -39,4 +36,4 @@ CatalogsPage.propTypes = {
   ]).isRequired
 }
 
-export default CatalogsPage
+export default CatalogsListPage
