@@ -18,11 +18,6 @@ export default store => ({
   async onEnter({ location }) {
     const search = await import(/* webpackChunkName: 'search' */ './modules/search')
 
-    injectReducer(store, {
-      key: 'search',
-      reducer: search.reducer
-    })
-
     store.dispatch(search.actions.execute(
       search.query.parse(location.query)
     ))
