@@ -12,7 +12,7 @@ import HarvestsSection from 'common/modules/Catalogs/components/HarvestsSection/
 import styles from './CatalogView.scss'
 
 const CatalogView = ({ catalog, metrics, search }) => {
-  const onSearch = query => search(query, {
+  const onSearch = query => search({
     q: query,
     catalog: catalog.name,
   })
