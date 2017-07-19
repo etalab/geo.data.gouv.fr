@@ -16,7 +16,8 @@ class SearchPage extends React.Component {
     const { update, query } = this.props
 
     update({
-      filters: unionWith(query.filters, [filter], isEqual)
+      filters: unionWith(query.filters, [filter], isEqual),
+      page: 1
     })
   }
 
@@ -24,7 +25,17 @@ class SearchPage extends React.Component {
     const { update, query } = this.props
 
     update({
-      filters: query.filters.filter(f => f.name !== filter.name || f.value !== filter.value)
+      filters: query.filters.filter(f => f.name !== filter.name || f.value !== filter.value),
+      page: 1
+    })
+  }
+
+    updateQuery = query => {
+    const { update } = this.props
+
+    update({
+      q: query,
+      page: 1
     })
   }
 
@@ -38,14 +49,6 @@ class SearchPage extends React.Component {
         page: page
       })
     }
-  }
-
-  updateQuery = query => {
-    const { update } = this.props
-
-    update({
-      q: query
-    })
   }
 
   render() {
