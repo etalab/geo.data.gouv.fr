@@ -7,10 +7,14 @@ import CatalogView from '../CatalogView'
 
 import styles from './CatalogPage.scss'
 
-const CatalogPage = ({ catalog, metrics }) => (
+const CatalogPage = ({ catalog, metrics, search }) => (
   <div className={styles.container}>
     <Loader loading={catalog.pending || metrics.pending} error={catalog.error || metrics.error}>
-      <CatalogView catalog={catalog.catalog} metrics={metrics.metrics} />
+      <CatalogView
+        catalog={catalog.catalog}
+        metrics={metrics.metrics}
+        search={search}
+      />
     </Loader>
   </div>
 )
@@ -36,7 +40,9 @@ CatalogPage.propTypes = {
       PropTypes.bool,
       PropTypes.object
     ]).isRequired
-  }).isRequired
+  }).isRequired,
+
+  search: PropTypes.func.isRequired
 }
 
 export default CatalogPage

@@ -10,45 +10,59 @@ import HarvestsSection from 'common/modules/Catalogs/components/HarvestsSection/
 
 import styles from './CatalogView.scss'
 
-const CatalogView = ({ catalog, metrics }) => (
-  <DocumentTitle title={catalog.name}>
-    <div>
-      <div className={styles.header}>
-        <h1>{catalog.name}</h1>
+class CatalogView extends React.PureComponent {
+  static propTypes = {
+    catalog: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }),
 
-        <a href={catalog.service.location} target='_blank'>
-          Accès direct au service du catalogue
-        </a>
-      </div>
+    metrics: PropTypes.shape({
+    }),
 
-      <div className={styles.section}>
-        <StatisticsSection metrics={metrics} />
-      </div>
+    search: PropTypes.func.isRequired
+  }
 
-      <div className={styles.section}>
-        <OrganizationsSection metrics={metrics} catalog={catalog}/>
-      </div>
+  onSearch = query => {
+    const { search, catalog } = this.props
 
-      <div className={styles.section}>
-        <HarvestsSection catalog={catalog} />
-      </div>
+    search(query, catalog.name)
+  }
 
-      <div className={styles.section}>
-        <h2>Rechercher dans les jeux de données du catalogue</h2>
-        <SearchInput onSearch={(textInput) => this.userSearch(textInput)} hasButton />
-      </div>
-    </div>
-  </DocumentTitle>
-)
+  render() {
+    const { catalog, metrics } = this.props
 
-CatalogView.propTypes = {
-  catalog: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }),
+    return (
+      <DocumentTitle title={catalog.name}>
+        <div>
+          <div className={styles.header}>
+            <h1>{catalog.name}</h1>
 
-  metrics: PropTypes.shape({
-  })
+            <a href={catalog.service.location} target='_blank'>
+              Accès direct au service du catalogue
+            </a>
+          </div>
+
+          <div className={styles.section}>
+            <StatisticsSection metrics={metrics} />
+          </div>
+
+          <div className={styles.section}>
+            <OrganizationsSection metrics={metrics} catalog={catalog}/>
+          </div>
+
+          <div className={styles.section}>
+            <HarvestsSection catalog={catalog} />
+          </div>
+
+          <div className={styles.section}>
+            <h2>Rechercher dans les jeux de données du catalogue</h2>
+            <SearchInput onSearch={this.onSearch} hasButton />
+          </div>
+        </div>
+      </DocumentTitle>
+    )
+  }
 }
 
 export default CatalogView
