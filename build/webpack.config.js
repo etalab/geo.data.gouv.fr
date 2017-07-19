@@ -43,7 +43,10 @@ const config = {
     alias: {
       'common': inProject(project.srcDir),
 
-      'lodash': 'lodash-es',
+      // Aliasing lodash.isequal to lodash/isEqual for perf purposes:
+      // lodash.isequal embeds a lot of lodash that is already in the bundle.
+      // This allows us to save about 4KB gzipped.
+      'lodash.isequal': 'lodash/isEqual',
 
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
