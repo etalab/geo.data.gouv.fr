@@ -1,0 +1,12 @@
+.container {
+  margin-bottom: 1em;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.facet {
+  display: inline-block;
+  margin: 2px 5px;
+}

@@ -5,13 +5,17 @@ import DocumentTitle from 'react-document-title'
 import SearchInput from 'common/components/SearchInput'
 
 import CatalogStatistics from '../CatalogStatistics'
-import OrganizationsSection from 'common/modules/Catalogs/components/OrganizationsSection/OrganizationsSection'
+import CatalogFacetsList from '../CatalogFacetsList'
+
 import HarvestsSection from 'common/modules/Catalogs/components/HarvestsSection/HarvestsSection'
 
 import styles from './CatalogView.scss'
 
 const CatalogView = ({ catalog, metrics, search }) => {
-  const onSearch = query => search(query, catalog.name)
+  const onSearch = query => search(query, {
+    q: query,
+    catalog: catalog.name,
+  })
 
   return (
     <DocumentTitle title={catalog.name}>
@@ -29,7 +33,7 @@ const CatalogView = ({ catalog, metrics, search }) => {
         </div>
 
         <div className={styles.section}>
-          <OrganizationsSection metrics={metrics} catalog={catalog}/>
+          <CatalogFacetsList catalog={catalog} metrics={metrics} search={search} />
         </div>
 
         <div className={styles.section}>
