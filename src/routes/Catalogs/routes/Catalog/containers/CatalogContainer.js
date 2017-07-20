@@ -7,7 +7,7 @@ import CatalogPage from '../components/CatalogPage'
 
 export default connect(
   state => ({
-    catalog: state.catalog,
+    catalog: state.catalog.catalog,
     metrics: state.catalog.metrics,
     harvests: state.catalog.harvests,
 

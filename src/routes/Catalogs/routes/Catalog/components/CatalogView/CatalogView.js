@@ -18,7 +18,7 @@ class CatalogView extends React.PureComponent {
       service: PropTypes.shape({
         location: PropTypes.string.isRequired
       }).isRequired
-    }),
+    }).isRequired,
 
     metrics: PropTypes.object.isRequired,
     harvests: PropTypes.object.isRequired,

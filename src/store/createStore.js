@@ -6,13 +6,8 @@ import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
 const createStore = (initialState = {}) => {
-  // Middleware configuration
-  // ------------------------------------
-  const middleware = [thunk]
-
   // Store enhancers
   // ------------------------------------
-  const enhancers = []
   let composeEnhancers = compose
 
   if (__DEV__) {
@@ -21,15 +16,13 @@ const createStore = (initialState = {}) => {
     }
   }
 
-
-  // Store Instantiation and HMR Setup
+  // Store Instantiation
   // ------------------------------------
   const store = createReduxStore(
     makeRootReducer(),
     initialState,
     composeEnhancers(
-      applyMiddleware(...middleware),
-      ...enhancers
+      applyMiddleware(thunk)
     )
   )
   store.asyncReducers = {}
@@ -37,6 +30,8 @@ const createStore = (initialState = {}) => {
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
   store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
 
+  // HMR Setup
+  // ------------------------------------
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       const reducers = require('./reducers').default

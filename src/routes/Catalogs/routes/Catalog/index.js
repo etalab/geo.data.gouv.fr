@@ -16,9 +16,14 @@ export default store => ({
   },
 
   async onEnter({ params }) {
-    const actions = await import(/* webpackChunkName: 'catalogs' */ './modules/actions')
+    const catalog = await import(/* webpackChunkName: 'catalogs' */ './modules/catalog')
 
-    store.dispatch(actions.get(params.catalog))
-    store.dispatch(actions.getMetrics(params.catalog))
+    injectReducer(store, {
+      key: 'catalog',
+      reducer: catalog.reducer
+    })
+
+    store.dispatch(catalog.actions.get(params.catalog))
+    store.dispatch(catalog.actions.getMetrics(params.catalog))
   }
 })

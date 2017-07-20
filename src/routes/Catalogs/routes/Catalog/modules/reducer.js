@@ -21,9 +21,11 @@ import {
 } from './constants'
 
 const initialState = {
-  pending: false,
-  error: false,
-  catalog: null,
+  catalog: {
+    pending: false,
+    error: false,
+    catalog: null,
+  },
 
   metrics: {
     pending: false,
@@ -50,23 +52,35 @@ const handlers = {
   [CATALOGS_GET_PENDING]: (state, action) => ({
     ...state,
 
-    pending: true,
-    error: false
+    catalog: {
+      ...state.catalog,
+
+      pending: true,
+      error: false
+    }
   }),
 
   [CATALOGS_GET_SUCCESS]: (state, action) => ({
     ...state,
 
-    pending: false,
-    catalog: action.payload,
-    error: false
+    catalog: {
+      ...state.catalog,
+
+      pending: false,
+      catalog: action.payload,
+      error: false
+    }
   }),
 
   [CATALOGS_GET_FAILURE]: (state, action) => ({
     ...state,
 
-    pending: false,
-    error: action.error
+    catalog: {
+      ...state.catalog,
+
+      pending: false,
+      error: action.error
+    }
   }),
 
 
@@ -153,13 +167,17 @@ const handlers = {
     catalog: {
       ...state.catalog,
 
-      service: {
-        ...state.catalog.service,
+      catalog: {
+        ...state.catalog.catalog,
 
-        sync: {
-          ...state.catalog.service.sync,
+        service: {
+          ...state.catalog.catalog.service,
 
-          pending: true
+          sync: {
+            ...state.catalog.catalog.service.sync,
+
+            pending: true
+          }
         }
       }
     }

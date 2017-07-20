@@ -14,8 +14,13 @@ export default store => ({
   },
 
   async onEnter() {
-    const actions = await import(/* webpackChunkName: 'catalogs' */ './modules/actions')
+    const catalogs = await import(/* webpackChunkName: 'catalogs' */ './modules/catalogs')
 
-    store.dispatch(actions.list())
+    injectReducer(store, {
+      key: 'catalogs',
+      reducer: catalogs.reducer
+    })
+
+    store.dispatch(catalogs.actions.list())
   }
 })
