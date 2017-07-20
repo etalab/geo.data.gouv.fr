@@ -5,6 +5,9 @@ import EventsRoute from './Events'
 import SearchRoute from './Search'
 import CatalogsRoute from './Catalogs'
 
+import DatasetsRoute from './Datasets'
+import PublicationRoute from './Publication'
+
 import NotFoundRoute from './NotFound'
 
 export const createRoutes = store => ({
@@ -15,6 +18,9 @@ export const createRoutes = store => ({
     EventsRoute(store),
     SearchRoute(store),
     CatalogsRoute(store),
+
+    DatasetsRoute(),
+    PublicationRoute(),
 
     NotFoundRoute
   ]
