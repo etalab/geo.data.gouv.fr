@@ -5,13 +5,17 @@ import Loader from 'common/components/Loader'
 
 import CatalogHarvestView from '../CatalogHarvestView'
 
+import styles from './CatalogHarvestPage.scss'
+
 const CatalogHarvestPage = ({ catalog, harvest }) => (
-  <Loader loading={catalog.pending || harvest.pending} error={catalog.error || harvest.error}>
-    <CatalogHarvestView
-      catalog={catalog.catalog}
-      harvest={harvest.harvest}
-    />
-  </Loader>
+  <div className={styles.container}>
+    <Loader loading={catalog.pending || harvest.pending} error={catalog.error || harvest.error}>
+      <CatalogHarvestView
+        catalog={catalog.catalog}
+        harvest={harvest.harvest}
+      />
+    </Loader>
+  </div>
 )
 
 CatalogHarvestPage.propTypes = {
