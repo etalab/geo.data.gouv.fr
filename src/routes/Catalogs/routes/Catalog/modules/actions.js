@@ -1,4 +1,4 @@
-import { _get } from 'common/helpers/super'
+import { _get, _post } from 'common/helpers/super'
 
 import {
   CATALOGS_GET_PENDING,
@@ -7,7 +7,15 @@ import {
 
   CATALOGS_GET_METRICS_PENDING,
   CATALOGS_GET_METRICS_SUCCESS,
-  CATALOGS_GET_METRICS_FAILURE
+  CATALOGS_GET_METRICS_FAILURE,
+
+  CATALOGS_GET_HARVESTS_PENDING,
+  CATALOGS_GET_HARVESTS_SUCCESS,
+  CATALOGS_GET_HARVESTS_FAILURE,
+
+  CATALOGS_SYNC_PENDING,
+  CATALOGS_SYNC_SUCCESS,
+  CATALOGS_SYNC_FAILURE
 } from './constants'
 
 const { INSPIRE_API_URL } = process.env
@@ -56,3 +64,52 @@ export const getMetrics = id => dispatch => {
   })
 }
 
+export const getHarvests = id => dispatch => {
+  dispatch({
+    type: CATALOGS_GET_HARVESTS_PENDING
+  })
+
+  return _get(
+    `${INSPIRE_API_URL}/services/${id}/synchronizations`
+  )
+  .then(data => {
+    dispatch({
+      type: CATALOGS_GET_HARVESTS_SUCCESS,
+      payload: data
+    })
+  })
+  .catch(err => {
+    dispatch({
+      type: CATALOGS_GET_HARVESTS_FAILURE,
+      error: err
+    })
+  })
+}
+
+export const syncCatalog = id => dispatch => {
+  dispatch({
+    type: CATALOGS_SYNC_PENDING
+  })
+
+  return _post(
+    `${INSPIRE_API_URL}/services/${id}/sync`
+  )
+  .then(data => {
+    dispatch({
+      type: CATALOGS_SYNC_SUCCESS,
+      payload: data
+    })
+  })
+  .catch(err => {
+    dispatch({
+      type: CATALOGS_SYNC_FAILURE,
+      error: err
+    })
+  })
+  .then(() => {
+    // WARNING: This should be done differently eventually.
+    // Today, we’re reloading the catalog in order to refresh the harvest view.
+    // At least, we should poll for changes.
+    dispatch(get(id))
+  })
+}
