@@ -136,39 +136,9 @@ const handlers = {
 
   // CATALOGS_SYNC
   // ------------------------------------
-  [CATALOGS_SYNC_PENDING]: (state, action) => ({
-    ...state,
-
-    harvests: {
-      ...state.harvests,
-
-      pending: true,
-      error: false
-    }
-  }),
-
-  [CATALOGS_SYNC_SUCCESS]: (state, action) => ({
-    ...state,
-
-    harvests: {
-      ...state.harvests,
-
-      pending: false,
-      harvests: action.payload,
-      error: false
-    }
-  }),
-
-  [CATALOGS_SYNC_FAILURE]: (state, action) => ({
-    ...state,
-
-    harvests: {
-      ...state.harvests,
-
-      pending: false,
-      error: action.error
-    }
-  })
+  [CATALOGS_SYNC_PENDING]: (state, action) => state,
+  [CATALOGS_SYNC_SUCCESS]: (state, action) => state,
+  [CATALOGS_SYNC_FAILURE]: (state, action) => state
 }
 
 export default function (state = initialState, action) {
