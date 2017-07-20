@@ -106,10 +106,4 @@ export const syncCatalog = id => dispatch => {
       error: err
     })
   })
-  .then(() => {
-    // WARNING: This should be done differently eventually.
-    // Today, we’re reloading the catalog in order to refresh the harvest view.
-    // At least, we should poll for changes.
-    dispatch(get(id))
-  })
 }

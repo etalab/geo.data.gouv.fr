@@ -137,7 +137,23 @@ const handlers = {
   // CATALOGS_SYNC
   // ------------------------------------
   [CATALOGS_SYNC_PENDING]: (state, action) => state,
-  [CATALOGS_SYNC_SUCCESS]: (state, action) => state,
+  [CATALOGS_SYNC_SUCCESS]: (state, action) => ({
+    ...state,
+
+    catalog: {
+      ...state.catalog,
+
+      service: {
+        ...state.catalog.service,
+
+        sync: {
+          ...state.catalog.service.sync,
+
+          pending: true
+        }
+      }
+    }
+  }),
   [CATALOGS_SYNC_FAILURE]: (state, action) => state
 }
 
