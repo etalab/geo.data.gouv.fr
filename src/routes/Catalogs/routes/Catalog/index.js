@@ -1,7 +1,7 @@
 import { injectReducer } from 'common/store/reducers'
 
 export default store => ({
-  path: ':id',
+  path: ':catalog',
 
   async getComponent(nextState, cb) {
     const CatalogContainer = await import(/* webpackChunkName: 'catalogs' */ './containers/CatalogContainer')
@@ -18,7 +18,7 @@ export default store => ({
   async onEnter({ params }) {
     const actions = await import(/* webpackChunkName: 'catalogs' */ './modules/actions')
 
-    store.dispatch(actions.get(params.id))
-    store.dispatch(actions.getMetrics(params.id))
+    store.dispatch(actions.get(params.catalog))
+    store.dispatch(actions.getMetrics(params.catalog))
   }
 })

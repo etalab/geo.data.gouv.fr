@@ -15,7 +15,11 @@ import {
 
   CATALOGS_SYNC_PENDING,
   CATALOGS_SYNC_SUCCESS,
-  CATALOGS_SYNC_FAILURE
+  CATALOGS_SYNC_FAILURE,
+
+  HARVESTS_GET_PENDING,
+  HARVESTS_GET_SUCCESS,
+  HARVESTS_GET_FAILURE
 } from './constants'
 
 const { INSPIRE_API_URL } = process.env
@@ -103,6 +107,28 @@ export const syncCatalog = id => dispatch => {
   .catch(err => {
     dispatch({
       type: CATALOGS_SYNC_FAILURE,
+      error: err
+    })
+  })
+}
+
+export const getHarvest = (catalogId, harvestId) => dispatch => {
+  dispatch({
+    type: HARVESTS_GET_PENDING
+  })
+
+  return _get(
+    `${INSPIRE_API_URL}/services/${catalogId}/synchronizations/${harvestId}`
+  )
+  .then(data => {
+    dispatch({
+      type: HARVESTS_GET_SUCCESS,
+      payload: data
+    })
+  })
+  .catch(err => {
+    dispatch({
+      type: HARVESTS_GET_FAILURE,
       error: err
     })
   })

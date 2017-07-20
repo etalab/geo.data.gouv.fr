@@ -13,7 +13,11 @@ import {
 
   CATALOGS_SYNC_PENDING,
   CATALOGS_SYNC_SUCCESS,
-  CATALOGS_SYNC_FAILURE
+  CATALOGS_SYNC_FAILURE,
+
+  HARVESTS_GET_PENDING,
+  HARVESTS_GET_SUCCESS,
+  HARVESTS_GET_FAILURE
 } from './constants'
 
 const initialState = {
@@ -31,6 +35,12 @@ const initialState = {
     pending: false,
     error: false,
     harvests: []
+  },
+
+  harvest: {
+    pending: false,
+    error: false,
+    harvest: null
   }
 }
 
@@ -154,7 +164,41 @@ const handlers = {
       }
     }
   }),
-  [CATALOGS_SYNC_FAILURE]: (state, action) => state
+  [CATALOGS_SYNC_FAILURE]: (state, action) => state,
+
+
+  // HARVESTS_GET
+  // ------------------------------------
+  [HARVESTS_GET_PENDING]: (state, action) => ({
+    ...state,
+
+    harvest: {
+      ...state.harvest,
+
+      pending: true,
+      error: false
+    }
+  }),
+  [HARVESTS_GET_SUCCESS]: (state, action) => ({
+    ...state,
+
+    harvest: {
+      ...state.harvest,
+
+      pending: false,
+      harvest: action.payload
+    }
+  }),
+  [HARVESTS_GET_FAILURE]: (state, action) => ({
+    ...state,
+
+    harvest: {
+      ...state.harvest,
+
+      pending: false,
+      error: action.error
+    }
+  })
 }
 
 export default function (state = initialState, action) {
