@@ -30,7 +30,8 @@ test:
 
 deployment:
   production:
-    branch: master
+    tag: /v[0-9]+(\.[0-9]+)*/
+    owner: etalab
     commands:
       - git config --global user.email "infra@beta.gouv.fr"
       - git config --global user.name "CircleCI"
