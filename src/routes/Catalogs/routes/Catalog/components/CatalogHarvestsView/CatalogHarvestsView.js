@@ -83,7 +83,7 @@ class CatalogHarvestsView extends React.PureComponent {
                 title={'Évolution des Enregistrements'}
                 description={'Évolution du nombre d’enregistrements par moissonnage'}
                 chart={
-                  <Histogram data={this.getGraphData()} height={100} />
+                  <Histogram data={this.getGraphData()} />
                 }
               />
             </div>
