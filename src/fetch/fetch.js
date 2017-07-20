@@ -1,5 +1,19 @@
 import { _get, _put, _post, _delete } from '../helpers/super'
 
+export function fetchMetrics(catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  return _get(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}/metrics`)
+}
+
+export function fetchCatalog(catalogId) {
+  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
+  return  _get(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
+}
+
+export function fetchCatalogs() {
+  return _get('https://inspire.data.gouv.fr/api/geogw/catalogs')
+}
+
 export function fetchHarvest(catalogId, harvestId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (!harvestId) return Promise.reject(new Error('harvestId is required'))
