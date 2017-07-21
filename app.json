@@ -1,9 +1,5 @@
 {
-  "name": "inspire",
-  "scripts": {},
-  "env": {},
-  "formation": {},
-  "addons": [],
+  "name": "geo.data.gouv.fr",
   "buildpacks": [
     {
       "url": "heroku/nodejs"
