@@ -1,6 +1,12 @@
 const env = process.env.NODE_ENV || 'development'
 const port = process.env.PORT || 3000
 
+function getPublicUrl() {
+  if (process.env.PUBLIC_URL) return process.env.PUBLIC_URL
+  if (process.env.HEROKU_APP_NAME) return `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
+  return `http://localhost:${port}`
+}
+
 module.exports = {
   /** Development server port */
   port,
@@ -38,7 +44,7 @@ module.exports = {
 
   /** A hash map of environment variables to retrieve and their default values */
   environment: {
-    PUBLIC_URL: `http://localhost:${port}`,
+    PUBLIC_URL: getPublicUrl(),
 
     INSPIRE_DATAGOUV_API_URL: 'https://next.data.gouv.fr/api',
     INSPIRE_DATAGOUV_API_KEY: null,
