@@ -1,13 +1,9 @@
 const env = process.env.NODE_ENV || 'development'
-
-const development = {
-  host: 'localhost',
-  port: process.env.PORT || 3000
-}
+const port = process.env.PORT || 3000
 
 module.exports = {
-  /** Development server configuration */
-  development,
+  /** Development server port */
+  port,
 
   /** The environment to use when building the project */
   env,
@@ -42,7 +38,7 @@ module.exports = {
 
   /** A hash map of environment variables to retrieve and their default values */
   environment: {
-    PUBLIC_URL: `http://${development.host}:${development.port}`,
+    PUBLIC_URL: `http://localhost:${port}`,
 
     INSPIRE_DATAGOUV_API_URL: 'https://next.data.gouv.fr/api',
     INSPIRE_DATAGOUV_API_KEY: null,
