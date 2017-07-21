@@ -4,14 +4,15 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "cross-env NODE_ENV=development node build/scripts/start",
+    "start": "node build/scripts/start",
     "compile": "node build/scripts/compile",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
     "test": "cross-env NODE_ENV=test mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "lint:scripts": "eslint .",
-    "lint:styles": "stylelint **/*.scss"
+    "lint:styles": "stylelint **/*.scss",
+    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
