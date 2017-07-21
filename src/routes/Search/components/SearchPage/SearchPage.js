@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
 import { unionWith, isEqual } from 'lodash'
@@ -11,7 +12,28 @@ import SearchResults from '../SearchResults'
 
 import styles from './SearchPage.scss'
 
-class SearchPage extends React.Component {
+class SearchPage extends React.PureComponent {
+  static propTypes = {
+    query: PropTypes.shape({
+      textInput: PropTypes.string,
+      page: PropTypes.number.isRequired,
+      filters: PropTypes.array.isRequired
+    }).isRequired,
+
+    search: PropTypes.shape({
+      pending: PropTypes.bool.isRequired,
+      error: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+      ]).isRequired,
+      query: PropTypes.object.isRequired,
+      results: PropTypes.array.isRequired,
+      facets: PropTypes.object.isRequired
+    }).isRequired,
+
+    update: PropTypes.func.isRequired
+  }
+
   addFilter = filter => {
     const { update, query } = this.props
 
@@ -30,7 +52,7 @@ class SearchPage extends React.Component {
     })
   }
 
-    updateQuery = query => {
+  updateQuery = query => {
     const { update } = this.props
 
     update({
