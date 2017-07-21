@@ -1,26 +1,53 @@
-import React, { PureComponent } from 'react'
-import { wrapper, input, button } from './SearchInput.scss'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class SearchInput extends PureComponent {
-  onSubmit(event) {
+import styles from './SearchInput.scss'
+
+class SearchInput extends React.PureComponent {
+  static propTypes = {
+    placeholder: PropTypes.string,
+    defaultValue: PropTypes.string,
+
+    hasButton: PropTypes.bool,
+    buttonLabel: PropTypes.string,
+
+    onSearch: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    placeholder: 'Rechercher…',
+    defaultValue: '',
+
+    hasButton: false,
+    buttonLabel: 'Rechercher'
+  }
+
+  onSubmit = event => {
+    const { onSearch } = this.props
+
     event.preventDefault();
 
-    this.props.onSearch(event.target.query.value);
+    onSearch(event.target.query.value);
   }
 
   render() {
-    const { placeholder, textInput } = this.props
+    const { placeholder, defaultValue, hasButton, buttonLabel } = this.props
 
     return (
-      <form onSubmit={e => this.onSubmit(e)} className={wrapper}>
+      <form onSubmit={this.onSubmit} className={styles.container}>
         <input
           type='text'
           name='query'
-          value={textInput}
-          className={input}
-          placeholder={placeholder ? placeholder : 'Rechercher…'} />
+          defaultValue={defaultValue}
+          className={styles.input}
+          placeholder={placeholder}
+        />
 
-        {this.props.searchButton ? <button type='submit' className={button}>Rechercher</button> : undefined}
+        {hasButton && (
+          <button type='submit' className={styles.button}>
+            {buttonLabel}
+          </button>
+        )}
       </form>
     )
   }

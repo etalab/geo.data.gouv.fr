@@ -1,0 +1,13 @@
+@import 'variables';
+
+.container {
+  padding: 2em;
+  background: #fff;
+  box-shadow: $box-shadow;
+}
+
+.results {
+  margin: 2em 0;
+  padding: 1em;
+  background-color: $whitesmoke;
+}

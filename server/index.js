@@ -9,7 +9,6 @@ const compress = require('compression')
 const app = express()
 app.use(compress())
 
-// ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
 if (project.env === 'development') {

@@ -1,19 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { shallow } from 'enzyme'
 import Loader from '../Loader'
-import CircularProgress from '../../CircularProgress/CircularProgress'
 
 describe('Loader', () => {
-  it('should display a loader when value is undefined', () => {
-    const loader =  <CircularProgress size={1} />
-    const wrapper = shallow(<Loader value={undefined} component={<Component />} />)
+  it('should display a loader when loading is true', () => {
+    const wrapper = shallow(<Loader loading />)
 
-    expect(wrapper.contains(loader)).to.be.true
+    expect(wrapper).to.containMatchingElement(<div><div>Chargement…</div></div>)
   })
 
-  it('should display a component when value is defined', () => {
-    const component =  <Component />
-    const wrapper = shallow(<Loader value={1} component={component} />)
-    expect(wrapper.contains(component)).to.be.true
+  it('should change the label when defined', () => {
+    const wrapper = shallow(<Loader loading label='Hello' />)
+
+    expect(wrapper).to.containMatchingElement(<div>Hello</div>)
+  })
+
+  it('should display an error when not loading and errored', () => {
+    const error = new Error('Sorry…')
+    const wrapper = shallow(<Loader loading={false} error={error} />)
+
+    expect(wrapper).to.containMatchingElement(<div>Une erreur est survenue : Sorry….</div>)
+  })
+
+  it('should display the underlying component when everything is ok', () => {
+    const child = <div>Finally!</div>
+    const wrapper = shallow(<Loader loading={false}>{child}</Loader>)
+
+    expect(wrapper).to.contain(child)
   })
 })

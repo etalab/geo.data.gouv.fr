@@ -41,6 +41,13 @@ const config = {
       '.json'
     ],
     alias: {
+      'common': inProject(project.srcDir),
+
+      // Aliasing lodash.isequal to lodash/isEqual for perf purposes:
+      // lodash.isequal embeds a lot of lodash that is already in the bundle.
+      // This allows us to save about 4KB gzipped.
+      'lodash.isequal': 'lodash/isEqual',
+
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
     }
@@ -112,7 +119,7 @@ config.module.rules.push({
         loader: 'css-loader',
         options: {
           modules: true,
-          camelCase: true,
+          camelCase: 'only',
           sourceMap: project.sourcemaps,
           minimize: {
             autoprefixer: {

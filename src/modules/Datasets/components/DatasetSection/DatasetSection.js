@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import DatasetDescription from '../DatasetDescription/DatasetDescription'
+import MarkdownPreview from 'common/components/MarkdownPreview'
 
 import { doneSince } from '../../../../helpers/doneSince'
 import { getLicense } from '../../../../helpers/dataGouvChecks'
@@ -8,18 +8,8 @@ import { getLicense } from '../../../../helpers/dataGouvChecks'
 import { section, container, head, inspireThemeHead, resume, theme, infos } from './DatasetSection.scss'
 
 class DatasetSection extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {shortDescription: true}
-  }
-
-  wrapDescription() {
-    this.setState({shortDescription: !this.state.shortDescription})
-  }
-
   render() {
     const { dataset } = this.props
-    const { shortDescription } = this.state
     const { title, description, type, purpose, lineage, inspireTheme } = dataset.metadata
     const revisionDate = doneSince(dataset.revisionDate)
     const license = getLicense(dataset.metadata.license)
@@ -46,10 +36,9 @@ class DatasetSection extends Component {
 
         <div className={section}>
           <div>
-            <DatasetDescription
-              description={description}
-              shortDescription={shortDescription}
-              showMore={() => this.wrapDescription()} />
+            { description && (
+              <MarkdownPreview markdown={description} />
+            )}
             <p>
               <b>Objectif : </b>{purpose ? purpose : 'Non renseigné'}
             </p>

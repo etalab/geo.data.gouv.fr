@@ -1,0 +1,47 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 960px) {
+    flex-wrap: wrap;
+  }
+}
+
+.table {
+  flex: 1;
+
+  @media (min-width: 960px) {
+    margin-right: 3rem;
+  }
+
+  flex-basis: 100%;
+}
+
+.stats {
+  flex: 1;
+
+  @media (min-width: 960px) {
+    margin-left: 3rem;
+  }
+
+  flex-basis: 100%;
+}
+
+.sync {
+  margin-top: 1.4em;
+  padding: 0.6em 2em;
+  color: #fff;
+  background-color: $blue;
+  border: 1px solid $blue;
+  display: block;
+  width: 100%;
+
+  &:disabled {
+    background-color: $lightgrey;
+    color: $grey;
+    border-color: $lightgrey;
+    cursor: not-allowed;
+  }
+}

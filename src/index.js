@@ -4,9 +4,16 @@ import { browserHistory } from 'react-router'
 import createPiwikConnector from 'piwik-react-router'
 import moment from 'moment'
 
+import createStore from './store/createStore'
+
 // Locale
 // ------------------------------------
 moment.locale('fr')
+
+
+// Store Initialization
+// ------------------------------------
+const store = createStore(window.__INITIAL_STATE__)
 
 
 // Piwik
@@ -26,10 +33,11 @@ if (PIWIK_URL && PIWIK_SITE_ID) {
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  const Router = require('./router').default
+  const App = require('./components/App').default
+  const routes = require('./routes').default(store)
 
   ReactDOM.render(
-    <Router />,
+    <App store={store} routes={routes} />,
     MOUNT_NODE
   )
 }
@@ -58,7 +66,8 @@ if (__DEV__) {
 
     // Setup hot module replacement
     module.hot.accept([
-      './router',
+      './components/App',
+      './routes/index'
     ], () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)

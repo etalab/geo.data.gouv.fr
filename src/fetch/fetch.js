@@ -1,6 +1,4 @@
-import qs from 'qs'
 import { _get, _put, _post, _delete } from '../helpers/super'
-import { convertFilters } from '../helpers/manageFilters'
 
 export function fetchMetrics(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
@@ -39,13 +37,6 @@ export function fetchDataset(datasetId) {
 export function fetchGeoJSON(link) {
   if (!link) return Promise.reject(new Error('link is required'))
   return _get(link + '?format=GeoJSON&projection=WGS84')
-}
-
-export function search(q, filters, offset) {
-  const qsFilters = convertFilters(filters)
-  const query = qs.stringify({q, offset, ...qsFilters}, { indices: false })
-
-  return _get('https://inspire.data.gouv.fr/api/geogw/records?' + query)
 }
 
 export function getUser() {

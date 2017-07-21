@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+  padding-top: 2em;
+}
+
+.catalog {
+  margin: 1em 3em;
+  display: inline-block;
+
+  @media (max-width: 768px) {
+    margin: 1em;
+  }
+}
