@@ -62,6 +62,10 @@ if (project.env === 'development') {
   )
 
   app.use(express.static(path.resolve(project.basePath, project.outDir)))
+
+  app.use('*', (req, res) => {
+    res.sendFile(path.resolve(project.basePath, project.outDir, 'index.html'))
+  })
 }
 
 module.exports = app
