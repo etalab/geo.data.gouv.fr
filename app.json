@@ -1,0 +1,8 @@
+{
+  "name": "geo.data.gouv.fr",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

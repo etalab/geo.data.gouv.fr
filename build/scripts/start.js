@@ -1,7 +1,11 @@
-const { development } = require('../../project.config')
+const { port, env } = require('../../project.config')
 const logger = require('../lib/logger')
 
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = env
+}
+
 logger.info('Starting server…')
-require('../../server').listen(development.port, development.host, () => {
-  logger.success(`Server is running at http://${development.host}:${development.port}`)
+require('../../server').listen(port, () => {
+  logger.success(`Server is listening on port ${port}`)
 })
