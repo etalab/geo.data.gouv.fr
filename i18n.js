@@ -6,6 +6,7 @@ import HeaderTrad from './src/components/Header/HeaderTrad.json'
 import HomePageTrad from './src/routes/Home/components/HomePage/HomePageTrad.json'
 import LanguageSelectionTrad from './src/components/LanguageSelection/LanguageSelectionTrad.json'
 import NewsletterFormTrad from './src/components/Newsletter/NewsletterFormTrad.json'
+import NotFoundPageTrad from './src/routes/NotFound/components/NotFoundPage/NotFoundPageTrad.json'
 import SearchInputTrad from './src/components/SearchInput/SearchInputTrad.json'
 
 i18n
@@ -19,6 +20,7 @@ i18n
         HomePage: HomePageTrad.en,
         LanguageSelection: LanguageSelectionTrad.en,
         NewsletterForm: NewsletterFormTrad.en,
+        NotFoundPage: NotFoundPageTrad.en,
         SearchInput: SearchInputTrad.en
       },
       fr: {
@@ -26,6 +28,8 @@ i18n
         Header: HeaderTrad.fr,
         HomePage: HomePageTrad.fr,
         LanguageSelection: LanguageSelectionTrad.fr,
+        NewsletterForm: NewsletterFormTrad.fr,
+        NotFoundPage: NotFoundPageTrad.fr,
         SearchInput: SearchInputTrad.fr
       }
     },
