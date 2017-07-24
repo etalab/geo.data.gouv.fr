@@ -5,6 +5,7 @@ import FooterTrad from './src/components/Footer/FooterTrad.json'
 import HomePageTrad from './src/routes/Home/components/HomePage/HomePageTrad.json'
 import LanguageSelectionTrad from './src/components/LanguageSelection/LanguageSelectionTrad.json'
 import NewsletterFormTrad from './src/components/Newsletter/NewsletterFormTrad.json'
+import SearchInputTrad from './src/components/SearchInput/SearchInputTrad.json'
 
 i18n
   .use(LanguageDetector)
@@ -15,13 +16,14 @@ i18n
         Footer: FooterTrad.en,
         HomePage: HomePageTrad.en,
         LanguageSelection: LanguageSelectionTrad.en,
-        NewsletterForm: NewsletterFormTrad.en
+        NewsletterForm: NewsletterFormTrad.en,
+        SearchInput: SearchInputTrad.en
       },
       fr: {
         Footer: FooterTrad.fr,
         HomePage: HomePageTrad.fr,
         LanguageSelection: LanguageSelectionTrad.fr,
-        NewsletterForm: NewsletterFormTrad.fr
+        SearchInput: SearchInputTrad.fr
       }
     },
     fallbackLng: 'en',
