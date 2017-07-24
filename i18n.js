@@ -2,6 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 import FooterTrad from './src/components/Footer/FooterTrad.json'
+import HeaderTrad from './src/components/Header/HeaderTrad.json'
 import HomePageTrad from './src/routes/Home/components/HomePage/HomePageTrad.json'
 import LanguageSelectionTrad from './src/components/LanguageSelection/LanguageSelectionTrad.json'
 import NewsletterFormTrad from './src/components/Newsletter/NewsletterFormTrad.json'
@@ -14,6 +15,7 @@ i18n
     resources: {
       en: {
         Footer: FooterTrad.en,
+        Header: HeaderTrad.en,
         HomePage: HomePageTrad.en,
         LanguageSelection: LanguageSelectionTrad.en,
         NewsletterForm: NewsletterFormTrad.en,
@@ -21,6 +23,7 @@ i18n
       },
       fr: {
         Footer: FooterTrad.fr,
+        Header: HeaderTrad.fr,
         HomePage: HomePageTrad.fr,
         LanguageSelection: LanguageSelectionTrad.fr,
         SearchInput: SearchInputTrad.fr
