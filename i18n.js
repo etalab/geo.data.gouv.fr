@@ -3,6 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 
 import FooterTrad from './src/components/Footer/FooterTrad.json'
 import LanguageSelectionTrad from './src/components/LanguageSelection/LanguageSelectionTrad.json'
+import NewsletterFormTrad from './src/components/Newsletter/NewsletterFormTrad.json'
 
 i18n
   .use(LanguageDetector)
@@ -11,11 +12,13 @@ i18n
     resources: {
       en: {
         Footer: FooterTrad.en,
-        LanguageSelection: LanguageSelectionTrad.en
+        LanguageSelection: LanguageSelectionTrad.en,
+        NewsletterForm: NewsletterFormTrad.en
       },
       fr: {
         Footer: FooterTrad.fr,
-        LanguageSelection: LanguageSelectionTrad.fr
+        LanguageSelection: LanguageSelectionTrad.fr,
+        NewsletterForm: NewsletterFormTrad.fr
       }
     },
     fallbackLng: 'en',

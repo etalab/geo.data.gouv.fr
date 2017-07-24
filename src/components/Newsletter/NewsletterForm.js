@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { translate } from 'react-i18next'
 
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
@@ -28,22 +29,23 @@ class NewsletterForm extends Component {
     return cancelAllPromises(this)
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange = event => {
+    this.setState({value: event.target.value})
   }
 
   render() {
+    const { t } = this.props
     const { value } = this.state
 
     return (
       <div id="mc_embed_signup" className={style.container}>
         <form action="//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
           <div id="mc_embed_signup_scroll">
-            <h2 className={style.title}>Inscrivez-vous pour recevoir nos communications :</h2>
+            <h2 className={style.title}>{t('newsletter_sign_up')} :</h2>
             <div className={style.form}>
-              <label htmlFor="mce-EMAIL">Votre adresse email </label>
-              <input className={style.input} type="email" value={value} onChange={(e) => this.handleChange(e)} name="EMAIL" id="mce-EMAIL" />
-              <input type="submit" value="S'inscrire" name="subscribe" id="mc-embedded-subscribe" className={style.button} />
+              <label htmlFor="mce-EMAIL">{t('label')}</label>
+              <input className={style.input} type="email" value={value} onChange={this.handleChange} name="EMAIL" id="mce-EMAIL" />
+              <input type="submit" value={t('input_value')} name="subscribe" id="mc-embedded-subscribe" className={style.button} />
             </div>
 
             <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
@@ -57,4 +59,4 @@ class NewsletterForm extends Component {
   }
 }
 
-export default NewsletterForm
+export default translate('NewsletterForm')(NewsletterForm)
