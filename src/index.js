@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
 import createPiwikConnector from 'piwik-react-router'
 import moment from 'moment'
+import { I18nextProvider } from 'react-i18next'
+import i18n from '../i18n'
 
 import createStore from './store/createStore'
 
@@ -37,7 +39,7 @@ let render = () => {
   const routes = require('./routes').default(store)
 
   ReactDOM.render(
-    <App store={store} routes={routes} />,
+    <I18nextProvider i18n={ i18n }><App store={store} routes={routes} /></I18nextProvider>,
     MOUNT_NODE
   )
 }
