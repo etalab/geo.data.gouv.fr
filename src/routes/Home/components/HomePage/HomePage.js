@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
+import { translate } from 'react-i18next'
 
 import SearchInput from 'common/components/SearchInput'
 import CatalogPreview from 'common/components/CatalogPreview'
@@ -8,7 +9,8 @@ import styles from './HomePage.scss'
 
 class HomePage extends Component {
   componentDidMount() {
-    document.title = 'Accueil'
+    const { t } = this.props
+    document.title = t('home')
   }
 
   search = value => {
@@ -22,25 +24,25 @@ class HomePage extends Component {
   }
 
   render() {
-    const { catalogs } = this.props
+    const { catalogs, t } = this.props
 
     return (
       <div>
         <div className={styles.masthead}>
           <h1>
-            Trouvez facilement les données géographiques dont vous avez besoin
+            {t('tagline')}
           </h1>
           <SearchInput
-            placeholder='Rechercher un jeu de données'
+            placeholder={t('SearchInput_placeholder')}
             onSearch={this.search}
             hasButton
           />
-          <Link className={styles.datasetLinks} to="/search?availability=yes">Voir tous les jeux de données</Link>
+          <Link className={styles.datasetLinks} to="/search?availability=yes">{t('datasets_link')}</Link>
         </div>
 
         <div className={styles.datagouv}>
           <div className={styles.paper}>
-            <h2>Les catalogues moissonnés</h2>
+            <h2>{t('catalogs_section_title')}</h2>
             <div className={styles.catalogs}>
               {catalogs.map(catalog => (
                 <div key={catalog._id} className={styles.catalog}>
@@ -48,11 +50,11 @@ class HomePage extends Component {
                 </div>
               ))}
             </div>
-            <Link to="catalogs" className={styles.link}>Voir tous les catalogues</Link>
+            <Link to="catalogs" className={styles.link}>{t('catalogs_link')}</Link>
 
-            <h2 id="evenements">Nos événements</h2>
+            <h2 id="evenements">{t('events_section_title')}</h2>
             <div>
-              <Link to="events" className={styles.link}>Voir nos événements</Link>
+              <Link to="events" className={styles.link}>{t('events_link')}</Link>
             </div>
           </div>
         </div>
@@ -61,4 +63,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage
+export default translate('HomePage')(HomePage)
