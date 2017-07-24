@@ -1,0 +1,10 @@
+{
+  "fr": {
+    "success": "Réussi",
+    "fail": "En échec"
+  },
+  "en": {
+    "success": "Succeeded",
+    "fail": "Failed"
+  }
+}

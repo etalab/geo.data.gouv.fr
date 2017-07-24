@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { Link } from 'react-router'
 import { get } from 'lodash'
 
@@ -11,30 +12,30 @@ import ObsoleteWarning from './ObsoleteWarning'
 
 import styles from './CatalogPreview.scss'
 
-const CatalogPreview = ({ catalog }) => {
+const CatalogPreview = ({ catalog, t }) => {
   let metrics = catalog.metrics
   let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
 
   const metricsPreview = !metrics ? (
-    <div>Aucun donnée disponible</div>
+    <div>{t('no_data')}</div>
   ) : (
     <div className={styles.container}>
       <Percent
         value={openness}
         total={metrics.datasets.totalCount}
         size='small'
-        label='Données ouvertes'
+        label={t('open_data_label')}
         icon='unlock alternate icon'
       />
       <Percent
         value={download}
         total={metrics.datasets.totalCount}
         size='small'
-        label='Téléchargeable'
+        label={t('downloadable_label')}
         icon='download'
       />
-      <Counter value={metrics.records.totalCount} size='small' label='Enregistrements' />
+    <Counter value={metrics.records.totalCount} size='small' label={t('records_label')} />
     </div>
   )
 
@@ -68,4 +69,4 @@ CatalogPreview.propTypes = {
   })
 }
 
-export default CatalogPreview
+export default translate('CatalogPreview')(CatalogPreview)
