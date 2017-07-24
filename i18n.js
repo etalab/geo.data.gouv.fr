@@ -1,6 +1,7 @@
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
+import FooterTrad from './src/components/Footer/FooterTrad.json'
 import LanguageSelectionTrad from './src/components/LanguageSelection/LanguageSelectionTrad.json'
 
 i18n
@@ -9,10 +10,12 @@ i18n
     // we init with resources
     resources: {
       en: {
-        LanguageSelection: LanguageSelectionTrad.en,
+        Footer: FooterTrad.en,
+        LanguageSelection: LanguageSelectionTrad.en
       },
       fr: {
-        LanguageSelection: LanguageSelectionTrad.fr,
+        Footer: FooterTrad.fr,
+        LanguageSelection: LanguageSelectionTrad.fr
       }
     },
     fallbackLng: 'en',
