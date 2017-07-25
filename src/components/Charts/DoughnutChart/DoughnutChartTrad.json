@@ -1,0 +1,22 @@
+{
+  "fr": {
+    "no_data": "Aucune donnée",
+    "dataset": "jeu de données",
+    "nonGeographicDataset": "jeu de données non géographique",
+    "service": "service",
+    "other": "autre",
+    "vector": "vecteurs",
+    "none": "aucun",
+    "grid": "imagerie"
+  },
+  "en": {
+    "no_data": "No data",
+    "dataset": "dataset",
+    "nonGeographicDataset": "non geographic dataset",
+    "service": "service",
+    "other": "other",
+    "vector": "vector",
+    "none": "none",
+    "grid": "grid"
+  }
+}

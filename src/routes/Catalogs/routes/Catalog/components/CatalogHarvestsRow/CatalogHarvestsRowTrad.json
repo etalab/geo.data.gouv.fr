@@ -1,0 +1,12 @@
+{
+  "fr": {
+    "success": "Réussi",
+    "fail": "Échec",
+    "details": "Détails"
+  },
+  "en": {
+    "success": "Successful",
+    "fail": "Failure",
+    "details": "Details"
+  }
+}
