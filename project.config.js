@@ -49,7 +49,7 @@ module.exports = {
     DATAGOUV_API_URL: 'https://next.data.gouv.fr/api',
     DATAGOUV_API_KEY: null,
 
-    PROXY_API_URL: 'https://inspire.data.gouv.fr/dgv/proxy-api',
+    PROXY_API_URL: 'https://inspire.data.gouv.fr/dgv/proxy-api/1',
     PUBLICATION_API_URL: 'https://inspire.data.gouv.fr/dgv/api',
     INSPIRE_API_URL: 'https://inspire.data.gouv.fr/api/geogw',
 
