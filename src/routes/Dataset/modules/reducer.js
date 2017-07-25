@@ -1,11 +1,31 @@
 import {
   DATASETS_GET_PENDING,
   DATASETS_GET_SUCCESS,
-  DATASETS_GET_FAILURE
+  DATASETS_GET_FAILURE,
+
+  DATASETS_GET_PUBLICATION_PENDING,
+  DATASETS_GET_PUBLICATION_SUCCESS,
+  DATASETS_GET_PUBLICATION_FAILURE,
+
+  DATASETS_DATA_GOUV_GET_PENDING,
+  DATASETS_DATA_GOUV_GET_SUCCESS,
+  DATASETS_DATA_GOUV_GET_FAILURE
 } from './constants'
 
 const initialState = {
   dataset: {
+    pending: false,
+    error: false,
+    dataset: null
+  },
+
+  publication: {
+    pending: false,
+    error: false,
+    publication: null
+  },
+
+  dataGouvDataset: {
     pending: false,
     error: false,
     dataset: null
@@ -43,6 +63,80 @@ const handlers = {
 
     dataset: {
       ...state.dataset,
+
+      pending: false,
+      error: action.error
+    }
+  }),
+
+
+  // DATASETS_GET_PUBLICATION
+  // ------------------------------------
+  [DATASETS_GET_PUBLICATION_PENDING]: (state, action) => ({
+    ...state,
+
+    publication: {
+      ...state.publication,
+
+      pending: true,
+      error: false
+    }
+  }),
+
+  [DATASETS_GET_PUBLICATION_SUCCESS]: (state, action) => ({
+    ...state,
+
+    publication: {
+      ...state.publication,
+
+      pending: false,
+      publication: action.payload,
+      error: false
+    }
+  }),
+
+  [DATASETS_GET_PUBLICATION_FAILURE]: (state, action) => ({
+    ...state,
+
+    publication: {
+      ...state.publication,
+
+      pending: false,
+      error: action.error
+    }
+  }),
+
+
+  // DATASETS_DATA_GOUV_GET
+  // ------------------------------------
+  [DATASETS_DATA_GOUV_GET_PENDING]: (state, action) => ({
+    ...state,
+
+    dataGouvDataset: {
+      ...state.dataGouvDataset,
+
+      pending: true,
+      error: false
+    }
+  }),
+
+  [DATASETS_DATA_GOUV_GET_SUCCESS]: (state, action) => ({
+    ...state,
+
+    dataGouvDataset: {
+      ...state.dataGouvDataset,
+
+      pending: false,
+      dataset: action.payload,
+      error: false
+    }
+  }),
+
+  [DATASETS_DATA_GOUV_GET_FAILURE]: (state, action) => ({
+    ...state,
+
+    dataGouvDataset: {
+      ...state.dataGouvDataset,
 
       pending: false,
       error: action.error

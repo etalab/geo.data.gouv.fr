@@ -1,7 +1,7 @@
 @import 'variables';
 
 .container {
-  margin-bottom: 2em;
+  margin-bottom: 1rem;
   box-shadow: $box-shadow;
 
   span {
@@ -30,7 +30,7 @@
 
 .section {
   background-color: #fff;
-  padding: 2em;
+  padding: 1.6rem 2rem;
 }
 
 .head {
@@ -65,13 +65,13 @@
 .resume {
   display: flex;
   flex-direction: column;
-  margin: 2em 6em 2em 2em;
+  padding: 1.6rem 6rem 1.6rem 2rem;
   color: #fff;
 }
 
 .theme {
   display: flex;
-  margin: 1.5em 2em;
+  margin: 1rem 2rem;
   flex-direction: column;
   text-align: center;
   align-items: center;

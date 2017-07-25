@@ -20,23 +20,46 @@ class DatasetPage extends React.PureComponent {
       ]).isRequired,
     }).isRequired,
 
-    getDataset: PropTypes.func.isRequired
+    publication: PropTypes.shape({
+      publication: PropTypes.object,
+
+      pending: PropTypes.bool.isRequired,
+
+      error: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.object
+      ]).isRequired,
+    }).isRequired,
+
+    dataGouvDataset: PropTypes.object.isRequired,
+
+    getDataset: PropTypes.func.isRequired,
+    getPublication: PropTypes.func.isRequired,
+    getDataGouvDataset: PropTypes.func.isRequired
   }
 
   componentDidMount() {
-    const { getDataset, datasetId } = this.props
+    const { getDataset, getPublication, datasetId } = this.props
 
     getDataset(datasetId)
+    getPublication(datasetId)
   }
 
   render () {
-    const { dataset } = this.props
+    const { dataset, publication, dataGouvDataset, getDataGouvDataset } = this.props
 
     return (
      <div>
-        <Loader loading={dataset.pending || !dataset.dataset} error={dataset.error} className={styles.loader}>
+        <Loader
+          loading={dataset.pending || !dataset.dataset || publication.pending}
+          error={dataset.error}
+          className={styles.loader}
+        >
           <DatasetView
             dataset={dataset.dataset}
+            publication={publication.publication}
+            dataGouvDataset={dataGouvDataset}
+            getDataGouvDataset={getDataGouvDataset}
           />
         </Loader>
       </div>
