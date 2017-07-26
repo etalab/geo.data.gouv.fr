@@ -102,6 +102,16 @@ config.module.rules.push(
   }
 )
 
+// JSON5 (allows for comments)
+// ------------------------------------
+config.module.rules.push(
+  {
+    test: /\.json$/,
+    include: inProject(project.srcDir),
+    loader: 'json5-loader'
+  }
+)
+
 // Styles
 // ------------------------------------
 const extractStyles = new ExtractTextPlugin({
