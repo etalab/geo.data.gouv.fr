@@ -1,12 +1,16 @@
 @import 'variables';
 
+.container {
+  display: flex;
+}
+
 .image {
   display: flex;
   width: 260px;
-  height: 260px;
+  max-height: 260px;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 2rem auto;
 
   img {
     max-width: 260px;
@@ -14,23 +18,38 @@
   }
 }
 
+.thumb-container {
+  margin: 0.5rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  border-left: 1px solid $whitesmoke;
+  padding-left: 1.6rem;
 
   img {
-    margin: 10px 10px 0;
     width: 70px;
-
-    border: 2px solid transparent;
+    opacity: 0.4;
+    filter: grayscale(100%);
 
     &:hover {
-      cursor: pointer;
+      &:not(.selected) {
+        cursor: pointer;
+        opacity: 0.5;
+        filter: none;
+      }
     }
   }
 
   .selected {
-    border-color: $blue;
+    opacity: 1;
+    filter: none;
   }
 }

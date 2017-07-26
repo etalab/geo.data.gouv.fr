@@ -29,7 +29,7 @@ class DatasetThumbnails extends React.PureComponent {
     const { selected } = this.state
 
     return (
-      <div>
+      <div className={styles.container}>
         <div className={styles.image}>
           <img
             src={`https://inspire.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
@@ -39,7 +39,7 @@ class DatasetThumbnails extends React.PureComponent {
         {thumbnails.length > 1 && (
           <div className={styles.list}>
             {thumbnails.map(thumbnail => (
-              <div key={thumbnail.originalUrlHash}>
+              <div key={thumbnail.originalUrlHash} className={styles.thumbContainer}>
                 <img
                   src={`https://inspire.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
                   className={thumbnail === selected && styles.selected}
