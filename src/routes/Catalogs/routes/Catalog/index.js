@@ -1,7 +1,7 @@
 import { injectReducer } from 'common/store/reducers'
 
-export default store => ({
-  path: ':catalog',
+export default (store, i18n) => ({
+  path: ':catalogId',
 
   async getComponent(nextState, cb) {
     const CatalogContainer = await import(/* webpackChunkName: 'catalogs' */ './containers/CatalogContainer')
