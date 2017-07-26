@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
 import createPiwikConnector from 'piwik-react-router'
 import moment from 'moment'
-import { I18nextProvider } from 'react-i18next'
-import i18n from '../i18n'
 
 import createStore from './store/createStore'
+import setupI18n from './i18n'
+
 
 // Locale
 // ------------------------------------
+const i18n = setupI18n()
 moment.locale('fr')
 
 
@@ -36,10 +37,10 @@ const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
   const App = require('./components/App').default
-  const routes = require('./routes').default(store)
+  const routes = require('./routes').default(store, i18n)
 
   ReactDOM.render(
-    <I18nextProvider i18n={ i18n }><App store={store} routes={routes} /></I18nextProvider>,
+    <App store={store} routes={routes} i18n={i18n} />,
     MOUNT_NODE
   )
 }
