@@ -13,7 +13,7 @@ const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t, i18n }) =>
   <tr className={styles.row}>
     <td>
       <div className={styles[harvest.status]} >
-        {harvest.status === 'successful' ? t('success') : t('fail')}
+        {harvest.status === 'successful' ? t('CatalogHarvestsRow.success') : t('CatalogHarvestsRow.fail')}
       </div>
     </td>
     <td className={styles.center}>
@@ -29,7 +29,7 @@ const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t, i18n }) =>
     </td>
     <td className={styles.right}>
       <Link to={`/catalogs/${catalogId}/harvest/${harvest._id}`}>
-        {t('details')}
+        {t('CatalogHarvestsRow.details')}
       </Link>
     </td>
   </tr>
@@ -50,4 +50,4 @@ CatalogHarvestsRow.propTypes = {
   i18n: PropTypes.object.isRequired
 }
 
-export default translate('CatalogHarvestsRow')(CatalogHarvestsRow)
+export default translate('Catalogs.Catalog')(CatalogHarvestsRow)

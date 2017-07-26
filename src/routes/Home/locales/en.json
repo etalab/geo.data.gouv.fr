@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "home": "Home",
+    "tagline": "Easily find the geographic data you need",
+    "SearchInput_placeholder": "Search for a dataset",
+    "datasets_link": "View all datasets",
+    "catalogs_section_title": "Harvested catalogs",
+    "catalogs_link": "See all catalogs",
+    "events_section_title": "Our Events",
+    "events_link": "See our events"
+  }
+}

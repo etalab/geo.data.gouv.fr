@@ -1,5 +1,5 @@
 {
-  "fr": {
+  "HomePage": {
     "home": "Accueil",
     "tagline": "Trouvez facilement les données géographiques dont vous avez besoin",
     "SearchInput_placeholder": "Rechercher un jeu de donnée",
@@ -8,15 +8,5 @@
     "catalogs_link": "Voir tous les catalogues",
     "events_section_title": "Nos événements",
     "events_link": "Voir nos événements"
-  },
-  "en": {
-    "home": "Home",
-    "tagline": "Easily find the geographic data you need",
-    "SearchInput_placeholder": "Search for a dataset",
-    "datasets_link": "View all datasets",
-    "catalogs_section_title": "Harvested catalogs",
-    "catalogs_link": "See all catalogs",
-    "events_section_title": "Our Events",
-    "events_link": "See our events"
   }
 }
