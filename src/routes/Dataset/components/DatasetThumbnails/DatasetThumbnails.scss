@@ -2,36 +2,31 @@
 
 .container {
   display: flex;
+  flex-direction: column;
 }
 
 .image {
   display: flex;
-  width: 260px;
-  max-height: 240px;
+  width: 280px;
+  height: 190px;
   justify-content: center;
   align-items: center;
-  margin: 0.4em auto 0;
+  margin: auto;
 
   img {
-    max-width: 260px;
-    max-height: 240px;
-  }
-}
-
-.thumb-container {
-  margin-bottom: 0.8rem;
-
-  &:last-child {
-    margin-bottom: 0;
+    max-width: 280px;
+    max-height: 190px;
   }
 }
 
 .list {
-  border-left: 1px solid $whitesmoke;
-  padding-left: 1.6rem;
-  margin-left: 1.6rem;
+  display: flex;
+  border-top: 1px solid $whitesmoke;
+  padding-top: 0.6rem;
+  margin-top: 1rem;
 
   img {
+    display: block;
     width: 70px;
     opacity: 0.4;
     filter: grayscale(100%);
@@ -48,5 +43,14 @@
   .selected {
     opacity: 1;
     filter: none;
+  }
+}
+
+.thumb-container {
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+
+  &:last-child {
+    margin-right: 0;
   }
 }
