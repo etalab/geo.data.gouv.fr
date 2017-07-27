@@ -18,7 +18,7 @@ class CenteredMap extends React.PureComponent {
     frozen: false,
     lat: 47,
     lon: 1,
-    zoom: 4
+    zoom: 5
   }
 
   componentDidMount() {

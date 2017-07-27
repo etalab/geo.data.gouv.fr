@@ -4967,9 +4967,9 @@ react-i18next@^4.6.4:
   dependencies:
     hoist-non-react-statics "1.2.0"
 
-react-leaflet@^1.1.1:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.4.0.tgz#45b0d1ca2fe8fff91c3e023cfe4eab0783416491"
+react-leaflet@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.4.1.tgz#5cc502a34c1e710809fe33fc520483a03d5e3482"
   dependencies:
     babel-runtime "^6.23.0"
     lodash "^4.0.0"
