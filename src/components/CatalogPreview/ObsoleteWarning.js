@@ -5,7 +5,7 @@ import { isObsolete } from '../../helpers/catalogs'
 import { container } from './ObsoleteWarning.scss'
 
 // When testing you may need to define the current date to avoid test cases obsolescence
-const ObsoleteWarning = ({ catalog, currentDate, t }) => {
+export const ObsoleteWarning = ({ catalog, currentDate, t }) => {
   if (!isObsolete(catalog, currentDate)) return <span />
 
   return (

@@ -19,7 +19,7 @@ export function formatData(data, t) {
   }
 }
 
-const Histogram = ({ data, width, height, t }) => {
+export const Histogram = ({ data, width, height, t }) => {
   const formatedData = formatData(data, t)
   const options = {
     scales: {

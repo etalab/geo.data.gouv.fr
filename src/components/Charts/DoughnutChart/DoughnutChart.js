@@ -25,7 +25,7 @@ export function formatData(data, t) {
   }
 }
 
-const DoughnutChart = ({ data, t }) => {
+export const DoughnutChart = ({ data, t }) => {
   const formatedData = formatData(data || {}, t)
 
   if (formatedData.labels.length === 0) {

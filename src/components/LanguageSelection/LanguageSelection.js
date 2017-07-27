@@ -29,4 +29,4 @@ LanguageSelection.propTypes = {
   language: PropTypes.string.isRequired
 }
 
-export default translate('LanguageSelection')(LanguageSelection)
+export default translate('Common')(LanguageSelection)

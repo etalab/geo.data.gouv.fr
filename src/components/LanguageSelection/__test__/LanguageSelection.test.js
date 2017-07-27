@@ -1,11 +1,11 @@
 import React from 'react'
-import i18n from '../../../../i18n'
+import setupI18n from 'common/i18n'
 import { translate } from 'react-i18next'
 import LanguageSelection from '../LanguageSelection'
 import { mount } from 'enzyme'
 
 const context = {
-  i18n
+  i18n: setupI18n()
 }
 
 describe('<LanguageSelection />', () => {
