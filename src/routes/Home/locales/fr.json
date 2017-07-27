@@ -2,11 +2,11 @@
   "HomePage": {
     "home": "Accueil",
     "tagline": "Trouvez facilement les données géographiques dont vous avez besoin",
-    "SearchInput_placeholder": "Rechercher un jeu de donnée",
-    "datasets_link": "Voir tous les jeux de données",
-    "catalogs_section_title": "Les catalogues moissonnés",
-    "catalogs_link": "Voir tous les catalogues",
-    "events_section_title": "Nos événements",
-    "events_link": "Voir nos événements"
+    "SearchInputPlaceholder": "Rechercher un jeu de donnée",
+    "datasetsLink": "Voir tous les jeux de données",
+    "catalogsSectionTitle": "Les catalogues moissonnés",
+    "catalogsLink": "Voir tous les catalogues",
+    "eventsSectionTitle": "Nos événements",
+    "eventsLink": "Voir nos événements"
   }
 }

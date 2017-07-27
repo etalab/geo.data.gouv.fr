@@ -16,12 +16,10 @@ export default () => i18n
       },
     // en: {
     //   CatalogsListPage: CatalogsListPageTrad.en,
-    //   HomePage: HomePageTrad.en,
     //   NotFoundPage: NotFoundPageTrad.en,
     // },
     // fr: {
     //     CatalogsListPage: CatalogsListPageTrad.fr,
-    //     HomePage: HomePageTrad.fr,
     //     NotFoundPage: NotFoundPageTrad.fr,
     //   }
     },

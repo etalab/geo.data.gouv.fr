@@ -33,16 +33,16 @@ class HomePage extends Component {
             {t('HomePage.tagline')}
           </h1>
           <SearchInput
-            placeholder={t('HomePage.SearchInput_placeholder')}
+            placeholder={t('HomePage.SearchInputPlaceholder')}
             onSearch={this.search}
             hasButton
           />
-          <Link className={styles.datasetLinks} to="/search?availability=yes">{t('HomePage.datasets_link')}</Link>
+        <Link className={styles.datasetLinks} to="/search?availability=yes">{t('HomePage.datasetsLink')}</Link>
         </div>
 
         <div className={styles.datagouv}>
           <div className={styles.paper}>
-            <h2>{t('HomePage.catalogs_section_title')}</h2>
+            <h2>{t('HomePage.catalogsSectionTitle')}</h2>
             <div className={styles.catalogs}>
               {catalogs.map(catalog => (
                 <div key={catalog._id} className={styles.catalog}>
@@ -50,11 +50,11 @@ class HomePage extends Component {
                 </div>
               ))}
             </div>
-            <Link to="catalogs" className={styles.link}>{t('HomePage.catalogs_link')}</Link>
+            <Link to="catalogs" className={styles.link}>{t('HomePage.catalogsLink')}</Link>
 
-            <h2 id="evenements">{t('HomePage.events_section_title')}</h2>
+            <h2 id="evenements">{t('HomePage.eventsSectionTitle')}</h2>
             <div>
-              <Link to="events" className={styles.link}>{t('HomePage.events_link')}</Link>
+              <Link to="events" className={styles.link}>{t('HomePage.eventsLink')}</Link>
             </div>
           </div>
         </div>
