@@ -25,7 +25,7 @@ describe('<Histogram />', () => {
       labels: ['0', '1', '2', '3'],
       datasets: [
         {
-          label: 'label',
+          label: 'Histogram.label',
           lineTension: 0.2,
           backgroundColor: '#2185D0',
           data: [{'05/10/2016': 665}, {'06/10/2016': 665}, {'07/10/2016': 831}, {'08/10/2016': 832}]

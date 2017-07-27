@@ -1,0 +1,57 @@
+{
+  "CatalogPreview": {
+    "noData": "No data available",
+    "openDataLabel": "Open data",
+    "downloadableLabel": "Downloadable",
+    "recordsLabel": "Records"
+  },
+
+  "DoughnutChart": {
+    "noData": "No data",
+    "dataset": "dataset",
+    "nonGeographicDataset": "non geographic dataset",
+    "service": "service",
+    "other": "other",
+    "vector": "vector",
+    "none": "none",
+    "grid": "grid"
+  },
+
+  "Footer": {
+    "madeBy": "Made with {{heart}} by {{link}}"
+  },
+
+  "Header": {
+    "login": "Publishing data",
+    "logout": "Logout"
+  },
+
+  "Histogram": {
+    "label": "Records"
+  },
+
+  "LanguageSelection": {
+    "languageSelection": "Language selection"
+  },
+
+  "LastHarvestStatus": {
+    "success": "Succeeded",
+    "fail": "Failed"
+  },
+
+  "NewsletterForm": {
+    "newsletterSignUp": "Sign up to receive our communications",
+    "label": "Your email address",
+    "inputValue": "Subscribe"
+  },
+
+  "ObsoleteWarning": {
+    "obsoleteCatalog": "This catalog has not been updated for more than 6 months"
+  },
+
+  "SearchInput": {
+    "placeholder": "Search…",
+    "buttonLabel": "Search"
+  }
+
+}

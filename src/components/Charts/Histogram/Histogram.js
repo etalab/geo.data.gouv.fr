@@ -10,7 +10,7 @@ export function formatData(data, t) {
     'labels': Object.keys(data).map( item => item),
     'datasets': [
       {
-        label: t('label'),
+        label: t('Histogram.label'),
         lineTension: 0.2,
         backgroundColor: colors[0],
         data: Object.keys(data).map( item => data[item])
@@ -34,4 +34,4 @@ export const Histogram = ({ data, width, height, t }) => {
   return <Line data={formatedData} width={width} height={height} options={options} />
 }
 
-export default translate('Histogram')(Histogram)
+export default translate('Common')(Histogram)

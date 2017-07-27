@@ -1,19 +1,11 @@
 import React, { Component } from 'react'
-import { translate, Trans } from 'react-i18next'
+import { translate, Interpolate } from 'react-i18next'
 
 import NewsletterForm from '../Newsletter/NewsletterForm'
 import SocialLinks from '../SocialLinks/SocialLinks'
 import LanguageSelection from '../LanguageSelection/LanguageSelection'
 
 import { footer, space, main, info } from './Footer.scss'
-
-function Link({ to, children }) {
-  return <a style={{ color: 'white' }} href={to}>{children}</a>
-}
-
-function Span({ children }) {
-  return <span style={{ color: 'white' }}>{children}</span>
-}
 
 class Footer extends Component {
   render() {
@@ -25,9 +17,11 @@ class Footer extends Component {
           <NewsletterForm />
 
           <div className={info}>
-            <Trans>
-              Made with <Span>♥</Span> by <Link to='https://www.etalab.gouv.fr/'>Etalab</Link>
-            </Trans>
+            <Interpolate
+              i18nKey='Footer.madeBy'
+              heart={<span style={{ color: 'white' }}>♥</span>}
+              link={<a style={{ color: 'white' }} href='https://www.etalab.gouv.fr/'>Etalab</a>}
+            />
             <SocialLinks />
           </div>
           <LanguageSelection language={i18n.language}/>
@@ -37,4 +31,4 @@ class Footer extends Component {
   }
 }
 
-export default translate('Footer')(Footer)
+export default translate('Common')(Footer)

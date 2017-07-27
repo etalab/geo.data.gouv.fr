@@ -15,7 +15,7 @@ class LanguageSelection extends Component {
     const { language, t } = this.props
     return (
       <div>
-        {t('language_selection')} :
+        {t('LanguageSelection.languageSelection')} :
         <select className={style.select} value={language} onChange={this.changeLanguage}>
           <option value="en">English <span className={style.emoji} role="img" aria-label="uk-flag">🇬🇧</span></option>
           <option value="fr">Français <span className={style.emoji} role="img" aria-label="fr-flag">🇫🇷</span></option>

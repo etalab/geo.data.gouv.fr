@@ -10,9 +10,9 @@ const LastHarvestStatus = ({harvest, t, i18n}) => {
   let status
 
   if (harvest.status === 'successful') {
-    status = t('success')
+    status = t('LastHarvestStatus.success')
   } else {
-    status = t('fail')
+    status = t('LastHarvestStatus.fail')
   }
 
   return (
@@ -22,4 +22,4 @@ const LastHarvestStatus = ({harvest, t, i18n}) => {
   )
 }
 
-export default translate('LastHarvestStatus')(LastHarvestStatus)
+export default translate('Common')(LastHarvestStatus)

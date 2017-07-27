@@ -10,9 +10,9 @@ export const ObsoleteWarning = ({ catalog, currentDate, t }) => {
 
   return (
     <div className={container}>
-      <i className="icon warning"></i> {t('obsolete_catalog')}
+      <i className="icon warning"></i> {t('ObsoleteWarning.obsoleteCatalog')}
     </div>
   )
 }
 
-export default translate('ObsoleteWarning')(ObsoleteWarning)
+export default translate('Common')(ObsoleteWarning)

@@ -39,12 +39,12 @@ class SearchInput extends React.PureComponent {
           name='query'
           defaultValue={defaultValue}
           className={styles.input}
-          placeholder={placeholder || t('placeholder')}
+          placeholder={placeholder || t('SearchInput.placeholder')}
         />
 
         {hasButton && (
           <button type='submit' className={styles.button}>
-            {buttonLabel || t('button_label')}
+            {buttonLabel || t('SearchInput.buttonLabel')}
           </button>
         )}
       </form>
@@ -52,4 +52,4 @@ class SearchInput extends React.PureComponent {
   }
 }
 
-export default translate('SearchInput')(SearchInput)
+export default translate('Common')(SearchInput)

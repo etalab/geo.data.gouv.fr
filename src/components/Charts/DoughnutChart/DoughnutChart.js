@@ -29,7 +29,7 @@ export const DoughnutChart = ({ data, t }) => {
   const formatedData = formatData(data || {}, t)
 
   if (formatedData.labels.length === 0) {
-    return <h1>{t('no_data')}</h1>
+    return <h1>{t('DoughnutChart.noData')}</h1>
   }
 
   if (formatedData.labels.length === 1) {
@@ -43,4 +43,4 @@ export const DoughnutChart = ({ data, t }) => {
   )
 }
 
-export default translate('DoughnutChart')(DoughnutChart)
+export default translate('Common')(DoughnutChart)

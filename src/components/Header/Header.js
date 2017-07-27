@@ -31,7 +31,7 @@ class Header extends Component {
     const logoutRedirect = isPublication ? process.env.PUBLIC_URL : process.env.PUBLIC_URL + window.location.pathname
     const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
     const logoutUrl =`https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
-    const login = <a className={styles.log} href={logInUrl}>{t('login')}</a>
+    const login = <a className={styles.log} href={logInUrl}>{t('Header.login')}</a>
 
     return (
       <nav className={styles.nav}>
@@ -45,7 +45,7 @@ class Header extends Component {
                 {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
-            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('logout')}</span><i className='power icon'></i></a>
+            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('Header.logout')}</span><i className='power icon'></i></a>
           </div>
         )}
       </nav>
@@ -53,4 +53,4 @@ class Header extends Component {
   }
 }
 
-export default translate('Header')(Header)
+export default translate('Common')(Header)

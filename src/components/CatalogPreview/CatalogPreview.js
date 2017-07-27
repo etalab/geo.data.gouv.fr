@@ -18,24 +18,24 @@ const CatalogPreview = ({ catalog, t }) => {
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
 
   const metricsPreview = !metrics ? (
-    <div>{t('no_data')}</div>
+    <div>{t('CatalogPreview.noData')}</div>
   ) : (
     <div className={styles.container}>
       <Percent
         value={openness}
         total={metrics.datasets.totalCount}
         size='small'
-        label={t('open_data_label')}
+        label={t('CatalogPreview.openDataLabel')}
         icon='unlock alternate icon'
       />
       <Percent
         value={download}
         total={metrics.datasets.totalCount}
         size='small'
-        label={t('downloadable_label')}
+        label={t('CatalogPreview.downloadableLabel')}
         icon='download'
       />
-    <Counter value={metrics.records.totalCount} size='small' label={t('records_label')} />
+    <Counter value={metrics.records.totalCount} size='small' label={t('CatalogPreview.recordsLabel')} />
     </div>
   )
 
@@ -69,4 +69,4 @@ CatalogPreview.propTypes = {
   })
 }
 
-export default translate('CatalogPreview')(CatalogPreview)
+export default translate('Common')(CatalogPreview)
