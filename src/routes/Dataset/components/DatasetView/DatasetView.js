@@ -102,6 +102,14 @@ class DatasetView extends React.PureComponent {
               <DatasetBlock title='Contacts'>
                 <DatasetContactList contacts={dataset.metadata.contacts} />
               </DatasetBlock>
+
+              {dataset.metadata.credit && (
+                <DatasetBlock title='Contributions'>
+                  <div>
+                    {dataset.metadata.credit}
+                  </div>
+                </DatasetBlock>
+              )}
             </div>
           </div>
         </div>
