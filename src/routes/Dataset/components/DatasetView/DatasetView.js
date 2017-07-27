@@ -10,6 +10,7 @@ import DatasetHeader from '../DatasetHeader'
 import DatasetProducer from '../DatasetProducer'
 import DatasetThumbnails from '../DatasetThumbnails'
 import DatasetSpatialExtent from '../DatasetSpatialExtent'
+import DatasetContactList from '../DatasetContactList'
 
 import { isWarningStatus, statusTranslate } from './status'
 
@@ -21,7 +22,8 @@ class DatasetView extends React.PureComponent {
       metadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
         status: PropTypes.string,
-        spatialExtent: PropTypes.object
+        spatialExtent: PropTypes.object,
+        contacts: PropTypes.array.isRequired
       }).isRequired
     }).isRequired,
 
@@ -90,6 +92,13 @@ class DatasetView extends React.PureComponent {
                   <DatasetSpatialExtent extent={dataset.metadata.spatialExtent} />
                 </DatasetBlock>
               )}
+
+              <DatasetBlock title='Publication sur data.gouv.fr'>
+              </DatasetBlock>
+
+              <DatasetBlock title={'Contacts'}>
+                <DatasetContactList contacts={dataset.metadata.contacts} />
+              </DatasetBlock>
             </div>
           </div>
         </div>
