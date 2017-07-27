@@ -11,10 +11,10 @@ const CatalogHarvestsTable = ({ harvests, catalogId, harvesting, t }) => {
     <table className={styles.table}>
       <thead>
         <tr>
-          <th>{t('status')}</th>
-          <th className={styles.center}>{t('records')}</th>
-          <th className={styles.center}>{t('delta')}</th>
-          <th className={styles.center}>{t('date')}</th>
+          <th>{t('CatalogHarvestsTable.status')}</th>
+          <th className={styles.center}>{t('CatalogHarvestsTable.records')}</th>
+          <th className={styles.center}>{t('CatalogHarvestsTable.delta')}</th>
+          <th className={styles.center}>{t('CatalogHarvestsTable.date')}</th>
           <th className={styles.right}></th>
         </tr>
       </thead>
@@ -23,7 +23,7 @@ const CatalogHarvestsTable = ({ harvests, catalogId, harvesting, t }) => {
         {harvesting && (
           <tr>
             <td>
-              {t('in_progress')}
+              {t('CatalogHarvestsTable.inProgress')}
             </td>
             <td />
             <td />
@@ -34,7 +34,7 @@ const CatalogHarvestsTable = ({ harvests, catalogId, harvesting, t }) => {
         {!harvests.length ? (
           <tr>
             <td colSpan={5} className={styles.noResults}>
-              {t('no_harvest')}
+              {t('CatalogHarvestsTable.noHarvest')}
             </td>
           </tr>
         ) : harvests.map((harvest, idx) => (
@@ -61,4 +61,4 @@ CatalogHarvestsTable.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('CatalogHarvestsTable')(CatalogHarvestsTable)
+export default translate('Catalogs.Catalog')(CatalogHarvestsTable)

@@ -1,7 +1,44 @@
 {
+  "CatalogFacetsList": {
+    "organizationsTitle": "Organizations",
+    "keywordsTitle": "Keywords"
+  },
+
   "CatalogHarvestsRow": {
     "success": "Successful",
     "fail": "Failure",
     "details": "Details"
+  },
+
+  "CatalogHarvestsTable": {
+    "status": "Status",
+    "records": "Records",
+    "delta": "Delta",
+    "date": "Date",
+    "inProgress": "In progress…",
+    "noHarvest": "No harvest carried out…"
+  },
+
+  "CatalogHarvestsView": {
+    "title": "Catalog harvesting",
+    "buttonText": "Synchronize",
+    "chartTitle": "Records evolution",
+    "chartDescription": "Change in number of records per harvest"
+  },
+
+  "CatalogStatistics": {
+    "catalogIndicatorTitle": "Indicators for the complete catalog",
+    "recordsCounterTitle": "Records",
+    "recordsChartDescription": "Distribution of record types",
+    "metadataChartDescritpion": "Distribution of metadata types",
+    "datasetsIndicatorTitle": "Indicators for datasets",
+    "openDataPercentTitle": "Percentage of open data",
+    "downloadablePercentTitle": "Percentage of downloadable dataset",
+    "dataTypeChartDescription": "Distribution of data types"
+  },
+
+  "CatalogView": {
+    "catalogService": "Direct access to catalog service",
+    "catalogSearchTitle": "Search in catalog datasets"
   }
 }

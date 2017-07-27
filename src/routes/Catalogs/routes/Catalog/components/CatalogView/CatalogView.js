@@ -56,7 +56,7 @@ class CatalogView extends React.PureComponent {
             <h1>{catalog.name}</h1>
 
             <a href={catalog.service.location} target='_blank'>
-              {t('catalog_service')}
+              {t('CatalogView.catalogService')}
             </a>
           </div>
 
@@ -77,7 +77,7 @@ class CatalogView extends React.PureComponent {
           </div>
 
           <div className={styles.section}>
-            <h2>{t('catalog_search_title')}</h2>
+            <h2>{t('CatalogView.catalogSearchTitle')}</h2>
             <SearchInput onSearch={this.onSearch} hasButton />
           </div>
         </div>
@@ -86,4 +86,4 @@ class CatalogView extends React.PureComponent {
   }
 }
 
-export default translate('CatalogView')(CatalogView)
+export default translate('Catalogs.Catalog')(CatalogView)

@@ -20,12 +20,12 @@ const CatalogFacetsList = ({ catalog, metrics, search, t }) => {
   return (
     <div>
       <CatalogFacets
-        title={t('organizations_title')}
+        title={t('CatalogFacetsList.organizationsTitle')}
         filters={organizations}
         search={onOrganizationSearch}
       />
       <CatalogFacets
-        title={t('keywords_title')}
+        title={t('CatalogFacetsList.keywordsTitle')}
         filters={keywords}
         search={onKeywordSearch}
       />
@@ -52,4 +52,4 @@ CatalogFacetsList.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('CatalogFacetsList')(CatalogFacetsList)
+export default translate('Catalogs.Catalog')(CatalogFacetsList)

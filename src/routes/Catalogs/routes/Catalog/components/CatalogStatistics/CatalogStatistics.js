@@ -16,33 +16,33 @@ const CatalogStatistics = ({ metrics, t }) => {
 
   return (
     <div>
-      <h2 className={styles.title}>{t('catalog_indicator_title')}</h2>
+      <h2 className={styles.title}>{t('CatalogStatistics.catalogIndicatorTitle')}</h2>
       <div className={styles.section}>
 
         <div className={styles.chart}>
           <Counter
             size="large"
             value={metrics.records.totalCount}
-            title={t('records_counter_title')}
+            title={t('CatalogStatistics.recordsCounterTitle')}
           />
         </div>
 
         <div className={styles.chart}>
           <Chart
-            description={t('records_chart_description')}
+            description={t('CatalogStatistics.recordsChartDescription')}
             chart={<DoughnutChart data={metrics.records.partitions.recordType} />}
           />
         </div>
 
         <div className={styles.chart}>
           <Chart
-            description={t('metadata_chart_descritpion')}
+            description={t('CatalogStatistics.metadataChartDescritpion')}
             chart={<DoughnutChart data={metrics.records.partitions.metadataType} />}
           />
         </div>
       </div>
 
-      <h2>{t('datasets_indicator_title')}</h2>
+      <h2>{t('CatalogStatistics.datasetsIndicatorTitle')}</h2>
       <div className={styles.section}>
         <div className={styles.chart}>
           <Percent
@@ -50,7 +50,7 @@ const CatalogStatistics = ({ metrics, t }) => {
             total={metrics.datasets.totalCount}
             size="large"
             icon="unlock alternate icon"
-            title={t('open_data_percent_title')}
+            title={t('CatalogStatistics.openDataPercentTitle')}
           />
         </div>
 
@@ -60,13 +60,13 @@ const CatalogStatistics = ({ metrics, t }) => {
             total={metrics.datasets.totalCount}
             size="large"
             icon="download"
-            title={t('downloadable_percent_title')}
+            title={t('CatalogStatistics.downloadablePercentTitle')}
           />
         </div>
 
         <div className={styles.chart}>
           <Chart
-            description={t('data_type_chart_description')}
+            description={t('CatalogStatistics.dataTypeChartDescription')}
             chart={<DoughnutChart data={metrics.datasets.partitions.dataType} />} />
         </div>
       </div>
@@ -84,4 +84,4 @@ CatalogStatistics.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('CatalogStatistics')(CatalogStatistics)
+export default translate('Catalogs.Catalog')(CatalogStatistics)

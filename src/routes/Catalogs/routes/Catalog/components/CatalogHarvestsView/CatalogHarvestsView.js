@@ -63,7 +63,7 @@ class CatalogHarvestsView extends React.PureComponent {
 
     return (
       <div>
-        <h2>{t('title')}</h2>
+        <h2>{t('CatalogHarvestsView.title')}</h2>
 
         <Loader loading={harvests.pending} error={harvests.error}>
           <div className={styles.container}>
@@ -79,13 +79,13 @@ class CatalogHarvestsView extends React.PureComponent {
                 disabled={catalog.service.sync.pending}
                 onClick={this.onSync}
               >
-                {t('button_text')}
+                {t('CatalogHarvestsView.buttonText')}
               </button>
             </div>
             <div className={styles.stats}>
               <Chart
-                title={t('chart_title')}
-                description={t('chart_description')}
+                title={t('CatalogHarvestsView.chartTitle')}
+                description={t('CatalogHarvestsView.chartDescription')}
                 chart={
                   <Histogram data={this.getGraphData()} />
                 }
@@ -98,4 +98,4 @@ class CatalogHarvestsView extends React.PureComponent {
   }
 }
 
-export default translate('CatalogHarvestsView')(CatalogHarvestsView)
+export default translate('Catalogs.Catalog')(CatalogHarvestsView)
