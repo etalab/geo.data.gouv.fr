@@ -6,7 +6,6 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 // import CatalogHarvestsTableTrad from '../routes/Catalogs/routes/Catalog/components/CatalogHarvestsTable/CatalogHarvestsTableTrad.json'
 // import CatalogHarvestViewTrad from '../routes/Catalogs/routes/CatalogHarvest/components/CatalogHarvestView/CatalogHarvestViewTrad.json'
 // import CatalogHarvestsViewTrad from '../routes/Catalogs/routes/Catalog/components/CatalogHarvestsView/CatalogHarvestsViewTrad.json'
-// import CatalogPreviewTrad from '../components/CatalogPreview/CatalogPreviewTrad.json'
 // import CatalogsListPageTrad from '../routes/Catalogs/routes/CatalogsList/components/CatalogsListPage/CatalogsListPageTrad.json'
 // import CatalogStatisticsTrad from '../routes/Catalogs/routes/Catalog/components/CatalogStatistics/CatalogStatisticsTrad.json'
 // import CatalogViewTrad from '../routes/Catalogs/routes/Catalog/components/CatalogView/CatalogViewTrad.json'
@@ -26,10 +25,10 @@ export default () => i18n
   .init({
     resources: {
       en: {
-        Common: require('../locales/en.json')
+        Common: require('../locales/en')
       },
       fr: {
-        Common: require('../locales/fr.json')
+        Common: require('../locales/fr')
       },
     // en: {
     //   CatalogFacetsList: CatalogFacetsListTrad.en,
@@ -37,7 +36,6 @@ export default () => i18n
     //   CatalogHarvestsTable: CatalogHarvestsTableTrad.en,
     //   CatalogHarvestView: CatalogHarvestViewTrad.en,
     //   CatalogHarvestsView: CatalogHarvestsViewTrad.en,
-    //   CatalogPreview: CatalogPreviewTrad.en,
     //   CatalogsListPage: CatalogsListPageTrad.en,
     //   CatalogStatistics: CatalogStatisticsTrad.en,
     //   CatalogView: CatalogViewTrad.en,
@@ -59,7 +57,6 @@ export default () => i18n
     //     CatalogHarvestsTable: CatalogHarvestsTableTrad.fr,
     //     CatalogHarvestView: CatalogHarvestViewTrad.fr,
     //     CatalogHarvestsView: CatalogHarvestsViewTrad.fr,
-    //     CatalogPreview: CatalogPreviewTrad.fr,
     //     CatalogsListPage: CatalogsListPageTrad.fr,
     //     CatalogStatistics: CatalogStatisticsTrad.fr,
     //     CatalogView: CatalogViewTrad.fr,
