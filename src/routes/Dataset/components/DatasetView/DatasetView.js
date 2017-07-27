@@ -10,6 +10,7 @@ import DatasetHeader from '../DatasetHeader'
 import DatasetProducer from '../DatasetProducer'
 import DatasetThumbnails from '../DatasetThumbnails'
 import DatasetSpatialExtent from '../DatasetSpatialExtent'
+import DatasetDataGouvPublication from '../DatasetDataGouvPublication'
 import DatasetContactList from '../DatasetContactList'
 
 import { isWarningStatus, statusTranslate } from './status'
@@ -23,7 +24,8 @@ class DatasetView extends React.PureComponent {
         title: PropTypes.string.isRequired,
         status: PropTypes.string,
         spatialExtent: PropTypes.object,
-        contacts: PropTypes.array.isRequired
+        contacts: PropTypes.array.isRequired,
+        credit: PropTypes.string
       }).isRequired
     }).isRequired,
 
@@ -94,6 +96,7 @@ class DatasetView extends React.PureComponent {
               )}
 
               <DatasetBlock title='Publication sur data.gouv.fr'>
+                <DatasetDataGouvPublication dataset={dataset} publication={publication} />
               </DatasetBlock>
 
               <DatasetBlock title={'Contacts'}>
