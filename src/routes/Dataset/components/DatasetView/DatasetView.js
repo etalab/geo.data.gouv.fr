@@ -99,7 +99,7 @@ class DatasetView extends React.PureComponent {
                 <DatasetDataGouvPublication dataset={dataset} publication={publication} />
               </DatasetBlock>
 
-              <DatasetBlock title={'Contacts'}>
+              <DatasetBlock title='Contacts'>
                 <DatasetContactList contacts={dataset.metadata.contacts} />
               </DatasetBlock>
             </div>
