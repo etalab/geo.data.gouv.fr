@@ -9,6 +9,7 @@ import DatasetBlock from '../DatasetBlock'
 import DatasetHeader from '../DatasetHeader'
 import DatasetProducer from '../DatasetProducer'
 import DatasetThumbnails from '../DatasetThumbnails'
+import DatasetSpatialExtent from '../DatasetSpatialExtent'
 
 import { isWarningStatus, statusTranslate } from './status'
 
@@ -19,7 +20,8 @@ class DatasetView extends React.PureComponent {
     dataset: PropTypes.shape({
       metadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        status: PropTypes.string
+        status: PropTypes.string,
+        spatialExtent: PropTypes.object
       }).isRequired
     }).isRequired,
 
@@ -79,10 +81,13 @@ class DatasetView extends React.PureComponent {
 
               {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0 && (
                 <DatasetBlock title='Aperçu des données'>
-                  <DatasetThumbnails
-                    recordId={dataset.recordId}
-                    thumbnails={dataset.metadata.thumbnails}
-                  />
+                  <DatasetThumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
+                </DatasetBlock>
+              )}
+
+              {dataset.metadata.spatialExtent && (
+                <DatasetBlock title='Étendue spatiale'>
+                  <DatasetSpatialExtent extent={dataset.metadata.spatialExtent} />
                 </DatasetBlock>
               )}
             </div>
