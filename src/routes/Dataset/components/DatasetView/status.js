@@ -21,7 +21,7 @@ export const statusTranslate = {
   underDevelopment: {
     status: 'en construction',
     consequences: 'Certaines données peuvent être erronées ou vont subir des changements'
-  },
+  }
 }
 
 export function isWarningStatus(status) {
