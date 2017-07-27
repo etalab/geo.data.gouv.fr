@@ -18,7 +18,7 @@ const DatasetHeader = ({ dataset }) => {
     <div className={styles.container}>
       <div className={inspireTheme ? styles.inspireThemeHead : styles.head}>
         <div className={styles.resume}>
-          <h1>{title}</h1>
+          <h1 className={styles.title}>{title}</h1>
 
           <div className={styles.infos}>
             <div>

@@ -7,23 +7,19 @@
 .image {
   display: flex;
   width: 260px;
-  max-height: 260px;
+  max-height: 240px;
   justify-content: center;
   align-items: center;
-  margin: 2rem auto;
+  margin: 0.4em auto;
 
   img {
     max-width: 260px;
-    max-height: 260px;
+    max-height: 240px;
   }
 }
 
 .thumb-container {
-  margin: 0.5rem 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
+  margin-bottom: 0.8rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -33,6 +29,7 @@
 .list {
   border-left: 1px solid $whitesmoke;
   padding-left: 1.6rem;
+  margin-left: 1.6rem;
 
   img {
     width: 70px;

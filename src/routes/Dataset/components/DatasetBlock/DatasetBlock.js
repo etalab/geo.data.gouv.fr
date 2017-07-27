@@ -5,7 +5,7 @@ import styles from './DatasetBlock.scss'
 
 const DatasetBlock = ({ title, children }) => (
   <div className={styles.container}>
-    <h3>{title}</h3>
+    <h3 className={styles.title}>{title}</h3>
     {children}
   </div>
 )

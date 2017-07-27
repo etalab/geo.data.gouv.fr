@@ -20,11 +20,13 @@
       }
     }
   }
+}
+
+.title {
+  font-size: 1.7rem;
 
   @media (max-width: 760px) {
-    h1 {
-      font-size: large;
-    }
+    font-size: 1.3rem;
   }
 }
 
