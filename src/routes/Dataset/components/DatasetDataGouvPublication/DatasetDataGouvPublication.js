@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Button from 'common/components/Buttons/Button'
+import { Button } from 'common/components/Buttons'
 
 import { checkLicense, checkProducers, checkDataAvailability } from 'common/helpers/dataGouvChecks'
 
