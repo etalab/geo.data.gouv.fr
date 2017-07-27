@@ -9,7 +9,7 @@ import CatalogPreview from 'common/components/CatalogPreview'
 import styles from './CatalogsListPage.scss'
 
 const CatalogsListPage = ({ catalogs, pending, error, t }) => (
-  <DocumentTitle title={t('document_title')}>
+  <DocumentTitle title={t('CatalogsListPage.documentTitle')}>
     <div className={styles.container}>
       <Loader loading={pending} error={error}>
         <div>
@@ -39,4 +39,4 @@ CatalogsListPage.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('CatalogsListPage')(CatalogsListPage)
+export default translate('Catalogs.CatalogsList')(CatalogsListPage)
