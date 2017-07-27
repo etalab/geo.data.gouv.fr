@@ -22,7 +22,7 @@ export const createRoutes = (store, i18n) => ({
     DatasetsRoute(),
     PublicationRoute(),
 
-    NotFoundRoute
+    NotFoundRoute(store, i18n)
   ]
 })
 

@@ -8,9 +8,9 @@ const NotFoundPage = ({ t }) => (
   <DocumentTitle title={'Erreur 404'}>
     <div className={styles.notFound}>
       <h1>404</h1>
-      <p>{t('not_found')}</p>
+      <p>{t('NotFoundPage.notFound')}</p>
     </div>
   </DocumentTitle>
 )
 
-export default translate('NotFoundPage')(NotFoundPage)
+export default translate('NotFound')(NotFoundPage)
