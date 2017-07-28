@@ -5,7 +5,7 @@ import { Histogram, formatData } from '../Histogram'
 
 import data from './data.json'
 
-const t = k => k
+const translateMock = k => k
 
 describe('<Histogram />', () => {
   const height = 100
@@ -33,12 +33,12 @@ describe('<Histogram />', () => {
       ]
     }
 
-    expect(formatData(data, t)).to.deep.equal(formatedData)
+    expect(formatData(data, translateMock)).to.deep.equal(formatedData)
   })
 
   it('Should throw an error', (done) => {
     try {
-      shallow(<Histogram data={data} height={height} width={width} t={t} />)
+      shallow(<Histogram data={data} height={height} width={width} t={translateMock} />)
     }
     catch(err) {
       expect(err).to.deep.equal(new Error('chartType props must be Bar or Line'));
@@ -47,8 +47,8 @@ describe('<Histogram />', () => {
   })
 
   it('Should render a Line component', () => {
-    const wrapper = shallow(<Histogram data={data} height={height} width={width} t={t} />)
+    const wrapper = shallow(<Histogram data={data} height={height} width={width} t={translateMock} />)
 
-    expect(wrapper).to.contain(<Line data={formatData(data, t)} height={height} width={width} options={options}/>)
+    expect(wrapper).to.contain(<Line data={formatData(data, translateMock)} height={height} width={width} options={options}/>)
   })
 })

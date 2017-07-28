@@ -1,6 +1,7 @@
 import { injectReducer } from 'common/store/reducers'
+import { injectLocale } from 'common/i18n/helpers'
 
-export default store => ({
+export default (store, i18n) => ({
   path: ':catalog/harvest/:harvest',
 
   async getComponent(nextState, cb) {
@@ -10,6 +11,14 @@ export default store => ({
     injectReducer(store, {
       key: 'catalog',
       reducer: catalog.reducer
+    })
+
+    i18n.languages.forEach(async lang => {
+      injectLocale(i18n, {
+        locale: lang,
+        namespace: 'Catalogs.CatalogHarvest',
+        resources: await import(/* webpackMode: 'lazy-once', webpackChunkName: 'catalogs' */ `./locales/${lang}.json`)
+      })
     })
 
     cb(null, CatalogHarvestContainer.default)

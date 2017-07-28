@@ -15,7 +15,7 @@ describe('<CatalogPreview />', () => {
   describe('metrics is defined', () => {
     let wrapper
     beforeEach(() =>  {
-      wrapper = mount(<CatalogPreview catalog={catalog} />, {context})
+      wrapper = mount(<CatalogPreview catalog={catalog} />, { context })
     })
 
     it('should display the number of records', () => {

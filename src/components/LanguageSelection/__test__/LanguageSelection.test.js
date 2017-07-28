@@ -14,7 +14,7 @@ describe('<LanguageSelection />', () => {
     it('should display an english sentence', () => {
       const label = 'Language selection'
       const Component = translate(['LanguageSelection'], {})(LanguageSelection);
-      const wrapper = mount(<Component language={'en'} />, {context})
+      const wrapper = mount(<Component language={'en'} />, { context })
 
       wrapper.find('select').simulate('change', {target: {value : 'en'}})
 
@@ -26,7 +26,7 @@ describe('<LanguageSelection />', () => {
     it('should display an french sentence', () => {
       const label = 'Sélection de la langue'
       const Component = translate(['LanguageSelection'], {})(LanguageSelection);
-      const wrapper = mount(<Component language={'en'} />, {context})
+      const wrapper = mount(<Component language={'en'} />, { context })
 
       wrapper.find('select').simulate('change', {target: {value : 'fr'}})
 

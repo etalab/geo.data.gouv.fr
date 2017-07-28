@@ -15,17 +15,17 @@ const CatalogHarvestView = ({ catalog, harvest, t }) => {
   const successful = harvest.status === 'successful'
 
   return (
-    <DocumentTitle title={`${t('document_title')} : ${harvest._id}`}>
+    <DocumentTitle title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`}>
       <div className={styles.container}>
         <h1>
           <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>
         </h1>
 
-        <p>{t('harvest_id')}: <code>{harvest._id}</code></p>
+        <p>{t('CatalogHarvestView.harvestId')}: <code>{harvest._id}</code></p>
         <LastHarvestStatus harvest={harvest} />
 
         <div className={styles.results}>
-          <h2>{successful ? t('results') : t('logs')}</h2>
+          <h2>{successful ? t('CatalogHarvestView.results') : t('CatalogHarvestView.logs')}</h2>
           {successful ? (
             <CatalogHarvestResults logs={harvest.log} />
           ) : (
@@ -51,4 +51,4 @@ CatalogHarvestView.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('CatalogHarvestView')(CatalogHarvestView)
+export default translate('Catalogs.CatalogHarvest')(CatalogHarvestView)

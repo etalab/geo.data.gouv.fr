@@ -9,7 +9,7 @@
   "DoughnutChart": {
     "noData": "Aucune donnée",
     "dataset": "jeu de données",
-    "nonGeographicDataset": "jeu de données non géographique",
+    "nonGeographicDataset": "jeu de données non géographiques",
     "service": "service",
     "other": "autre",
     "vector": "vecteurs",

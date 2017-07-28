@@ -9,7 +9,7 @@ import CatalogHarvestsDelta from '../CatalogHarvestsDelta'
 
 import styles from './CatalogHarvestsRow.scss'
 
-const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t, i18n }) => (
+const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t }) => (
   <tr className={styles.row}>
     <td>
       <div className={styles[harvest.status]} >
@@ -25,7 +25,7 @@ const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t, i18n }) =>
       )}
     </td>
     <td className={styles.center}>
-      {doneSince(harvest.finished, i18n.language)}
+      {doneSince(harvest.finished)}
     </td>
     <td className={styles.right}>
       <Link to={`/catalogs/${catalogId}/harvest/${harvest._id}`}>
@@ -46,8 +46,7 @@ CatalogHarvestsRow.propTypes = {
     itemsFound: PropTypes.number
   }),
 
-  t: PropTypes.func.isRequired,
-  i18n: PropTypes.object.isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default translate('Catalogs.Catalog')(CatalogHarvestsRow)

@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import {ObsoleteWarning} from '../ObsoleteWarning'
+import { ObsoleteWarning } from '../ObsoleteWarning'
 
-const t = k => k
+const translateMock = k => k
 
 function shallowForCatalog(catalog) {
-  return shallow(<ObsoleteWarning catalog={catalog} currentDate={new Date('2016-07-15')} t={t}/>)
+  return shallow(<ObsoleteWarning catalog={catalog} currentDate={new Date('2016-07-15')} t={translateMock}/>)
 }
 
 describe('<ObsoleteWarning />', () => {
