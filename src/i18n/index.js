@@ -34,7 +34,7 @@ export default () => {
       }
     })
 
-    moment.locale(i18n.language)
+  moment.locale(i18n.language)
 
-    return i18n
+  return i18n
 }
