@@ -14,7 +14,9 @@
     "other": "autre",
     "vector": "vecteurs",
     "none": "aucun",
-    "grid": "imagerie"
+    "grid": "imagerie",
+    "Dublin Core": "Dublin Core",
+    "ISO 19139": "ISO 19139"
   },
 
   "Footer": {

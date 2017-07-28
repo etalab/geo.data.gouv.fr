@@ -15,7 +15,7 @@ export function formatData(data, t) {
     })
 
   return {
-    labels: labels.map(label => t(label)),
+    labels: labels.map(label => t(`DoughnutChart.${label}`)),
     datasets: [
       {
         data: labels.map(label => data[label]),
