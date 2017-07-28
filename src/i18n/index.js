@@ -12,6 +12,12 @@ export default () => i18n
         Common: require('../locales/fr.json')
       }
     },
+
+    whitelist: [
+      'en',
+      'fr'
+    ],
+
     fallbackLng: 'en',
 
     defaultNS: 'Common',
