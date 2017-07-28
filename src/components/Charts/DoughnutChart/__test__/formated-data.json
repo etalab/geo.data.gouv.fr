@@ -1,8 +1,8 @@
 {
   "labels": [
-    "dataset",
-    "nonGeographicDataset",
-    "service"
+    "DoughnutChart.dataset",
+    "DoughnutChart.nonGeographicDataset",
+    "DoughnutChart.service"
   ],
   "datasets": [
     {
