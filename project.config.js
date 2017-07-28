@@ -59,6 +59,8 @@ module.exports = {
 
   /** The list of modules to bundle separately from the core application code */
   vendors: [
+    'i18next',
+    'i18next-browser-languagedetector',
     'marked',
     'moment',
     'piwik-react-router',
@@ -66,6 +68,7 @@ module.exports = {
     'preact-compat',
     'react-chartjs-2',
     'react-document-title',
+    'react-i18next',
     'react-leaflet',
     'react-paginate',
     'react-redux',
