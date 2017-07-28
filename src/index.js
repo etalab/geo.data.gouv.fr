@@ -2,16 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
 import createPiwikConnector from 'piwik-react-router'
-import moment from 'moment'
 
 import createStore from './store/createStore'
-import setupI18n from './i18n'
-
-
-// Locale
-// ------------------------------------
-const i18n = setupI18n()
-moment.locale('fr')
 
 
 // Store Initialization
@@ -37,6 +29,7 @@ const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
   const App = require('./components/App').default
+  const i18n = require('./i18n').default()
   const routes = require('./routes').default(store, i18n)
 
   ReactDOM.render(
@@ -70,6 +63,7 @@ if (__DEV__) {
     // Setup hot module replacement
     module.hot.accept([
       './components/App',
+      './i18n/index',
       './routes/index'
     ], () =>
       setImmediate(() => {
