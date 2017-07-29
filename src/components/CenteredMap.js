@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Map, TileLayer, GeoJSON } from 'react-leaflet'
 
-
 class CenteredMap extends React.PureComponent {
   static propTypes = {
     vectors: PropTypes.object.isRequired,
@@ -22,20 +21,22 @@ class CenteredMap extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (this.vectors && this.map) {
-      const bounds = this.vectors.leafletElement.getBounds()
-      this.map.leafletElement.fitBounds(bounds)
+    if (this.vectors) {
+      this.setState({
+        bounds: this.vectors.leafletElement.getBounds()
+      })
     }
   }
 
   render() {
     const { vectors, className, frozen, lat, lon, zoom } = this.props
+    const { bounds } = this.state
 
     return (
       <Map
-        ref={map => { this.map = map }}
         className={className}
         center={[lat, lon]}
+        bounds={bounds}
         zoom={zoom}
         dragging={!frozen}
         scrollWheelZoom={false}
