@@ -37,7 +37,7 @@ class CenteredMap extends React.PureComponent {
         className={className}
         center={[lat, lon]}
         bounds={bounds}
-        zoom={zoom}
+        minZoom={zoom}
         dragging={!frozen}
         scrollWheelZoom={false}
         doubleClickZoom={false}
