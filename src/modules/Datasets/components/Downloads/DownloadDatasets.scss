@@ -1,7 +1,6 @@
 .content {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-flow: column wrap;
   overflow-x: scroll;
 }
 
