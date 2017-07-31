@@ -40,7 +40,7 @@ class CenteredMap extends React.PureComponent {
         minZoom={zoom}
         dragging={!frozen}
         scrollWheelZoom={false}
-        doubleClickZoom={false}
+        doubleClickZoom={!frozen}
         zoomControl={!frozen}
       >
         <TileLayer
