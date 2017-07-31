@@ -35,7 +35,8 @@ class DatasetPage extends React.PureComponent {
 
     getDataset: PropTypes.func.isRequired,
     getPublication: PropTypes.func.isRequired,
-    getDataGouvDataset: PropTypes.func.isRequired
+    getDataGouvDataset: PropTypes.func.isRequired,
+    fetchGeoJson: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -46,7 +47,7 @@ class DatasetPage extends React.PureComponent {
   }
 
   render () {
-    const { dataset, publication, dataGouvDataset, getDataGouvDataset } = this.props
+    const { dataset, publication, dataGouvDataset, getDataGouvDataset, fetchGeoJson } = this.props
 
     return (
      <div>
@@ -60,6 +61,7 @@ class DatasetPage extends React.PureComponent {
             publication={publication.publication}
             dataGouvDataset={dataGouvDataset}
             getDataGouvDataset={getDataGouvDataset}
+            fetchGeoJson={fetchGeoJson}
           />
         </Loader>
       </div>

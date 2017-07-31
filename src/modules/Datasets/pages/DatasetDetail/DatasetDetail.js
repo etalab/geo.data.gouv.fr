@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import LinksSection from '../../components/LinksSection/LinksSection'
-import DownloadDatasets from '../../components/Downloads/DownloadDatasets'
 import FiltersSection from '../../components/FiltersSection/FiltersSection'
 import Discussions from '../../components/Discussions/Discussions'
 import Section from '../../../../components/Section/Section'
@@ -20,10 +19,6 @@ export default class DatasetDetail extends Component {
       <div className={container}>
 
         <div className={main}>
-          <Section title={'Téléchargements'}>
-            <DownloadDatasets distributions={dataset.dataset.distributions} />
-          </Section>
-
           <Section title={'Liens'}>
             <LinksSection links={dataset.metadata.links} />
           </Section>

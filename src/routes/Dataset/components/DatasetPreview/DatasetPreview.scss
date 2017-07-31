@@ -1,0 +1,89 @@
+@import 'variables';
+
+.container {
+  margin-top: 3rem;
+  flex-grow: 1;
+}
+
+.loader {
+  margin-top: 1.4rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  > button {
+    width: 50%;
+  }
+
+  button {
+    padding: 5px 10px;
+    color: #fff;
+    border: 0;
+    background-color: $blue;
+
+    &:hover {
+      background-color: $highlight-blue;
+    }
+  }
+
+  .active {
+    background-color: $highlight-blue;
+  }
+}
+
+.close-button {
+  border: 0;
+  max-width: 36px;
+  color: #fff;
+  background-color: $red;
+
+  &:hover {
+    background-color: $red;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.map {
+  height: 460px;
+}
+
+.table {
+  min-width: 100%;
+
+  thead {
+    padding: 10px;
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding: 7px;
+    border-bottom: 1px solid $lightestblue;
+  }
+
+  tr:hover {
+    background-color: $whitesmoke;
+  }
+
+  // PAGINATION
+  a {
+    padding: 10px;
+
+    &:hover {
+      color: #fff;
+      background-color: $blue;
+    }
+  }
+
+  .reactable-current-page {
+    color: #fff;
+    background-color: $blue;
+  }
+}

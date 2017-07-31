@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { get, getPublication, getOnDataGouv } from '../modules/actions'
+import { get, getPublication, getOnDataGouv, fetchGeoJson } from '../modules/actions'
 
 import DatasetPage from '../components/DatasetPage'
 
@@ -15,6 +15,7 @@ export default connect(
   {
     getDataset: get,
     getPublication,
-    getDataGouvDataset: getOnDataGouv
+    getDataGouvDataset: getOnDataGouv,
+    fetchGeoJson
   }
 )(DatasetPage)

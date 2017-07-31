@@ -1,51 +1,88 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Table } from 'reactable'
 
-import DatasetTable from '../DatasetTable/DatasetTable'
-import PreviewMap from '../PreviewMap/PreviewMap'
+import Loader from 'common/components/Loader'
+import CenteredMap from 'common/components/CenteredMap'
 
-import { visualizer, buttons, closeButton, active } from './Viewer.scss'
+import styles from './DatasetPreview.scss'
 
-class Viewer extends React.PureComponent {
+class DatasetPreview extends React.PureComponent {
+  static propTypes = {
+    geoJson: PropTypes.shape({
+      data: PropTypes.object,
+
+      pending: PropTypes.bool.isRequired,
+
+      error: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.object
+      ]).isRequired,
+    }),
+
+    closePreview: PropTypes.func.isRequired
+  }
+
   state = {
     mode: 'map'
   }
 
-  changeMode = mode => {
+  setMode = mode => () => {
     this.setState({ mode })
   }
+
+  getTableData = geoJson => geoJson.features.map(feature => {
+    const properties = { ...feature.properties }
+    delete properties.gml_id
+    return properties
+  })
+
   render() {
+    const { geoJson, closePreview } = this.props
     const { mode } = this.state
-    const { preview, geojson, closePreview, errors } = this.props
 
-    if (!preview) return null
+    return (
+      <div className={styles.container}>
+        <div className={styles.buttons}>
+          <button
+            onClick={this.setMode('map')}
+            className={mode === 'map' && styles.active}
+          >
+            Carte
+          </button>
+          <button
+            onClick={this.setMode('table')}
+            className={mode === 'table' && styles.active}
+          >
+            Tableau
+          </button>
+          <button className={styles.closeButton} onClick={closePreview}>X</button>
+        </div>
 
-    if (mode === 'map') {
-      return (
-        <div className={visualizer}>
-          <div className={buttons}>
-            <button className={active}>Carte</button>
-            <button onClick={() => this.changeMode('table')}>Tableau</button>
-            <button className={closeButton} onClick={() => closePreview()}>X</button>
+        <Loader loading={geoJson.pending} error={geoJson.error} className={styles.loader}>
+          <div className={styles.wrapper}>
+            {mode === 'map' ? (
+              <CenteredMap
+                vectors={geoJson.data}
+                className={styles.map}
+                lat={47}
+                lon={1}
+                zoom={5.5}
+              />
+            ) : (
+              <Table
+                data={this.getTableData(geoJson.data)}
+                className={styles.table}
+                itemsPerPage={20}
+                pageButtonLimit={20}
+                sortable
+              />
+            )}
           </div>
-          <PreviewMap
-            distribution={preview.distribution}
-            geojson={geojson}
-            errors={errors}/>
-        </div>
-      )
-    } else {
-      return (
-        <div className={visualizer}>
-          <div className={buttons}>
-            <button onClick={() => this.changeMode('map')}>Carte</button>
-            <button className={active}>Tableau</button>
-            <button className={closeButton} onClick={() => closePreview()}>X</button>
-          </div>
-          <DatasetTable geojson={geojson} />
-        </div>
-      )
-    }
+        </Loader>
+      </div>
+    )
   }
 }
 
-export default Viewer
+export default DatasetPreview

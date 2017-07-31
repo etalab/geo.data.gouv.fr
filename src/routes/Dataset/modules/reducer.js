@@ -9,7 +9,11 @@ import {
 
   DATASETS_DATA_GOUV_GET_PENDING,
   DATASETS_DATA_GOUV_GET_SUCCESS,
-  DATASETS_DATA_GOUV_GET_FAILURE
+  DATASETS_DATA_GOUV_GET_FAILURE,
+
+  DATASETS_FETCH_GEOJSON_PENDING,
+  DATASETS_FETCH_GEOJSON_SUCCESS,
+  DATASETS_FETCH_GEOJSON_FAILURE
 } from './constants'
 
 const initialState = {
@@ -29,6 +33,12 @@ const initialState = {
     pending: false,
     error: false,
     dataset: null
+  },
+
+  geoJson: {
+    pending: false,
+    error: false,
+    data: null
   }
 }
 
@@ -137,6 +147,43 @@ const handlers = {
 
     dataGouvDataset: {
       ...state.dataGouvDataset,
+
+      pending: false,
+      error: action.error
+    }
+  }),
+
+
+  // DATASETS_FETCH_GEOJSON
+  // ------------------------------------
+  [DATASETS_FETCH_GEOJSON_PENDING]: (state, action) => ({
+    ...state,
+
+    geoJson: {
+      ...state.geoJson,
+
+      pending: true,
+      error: false
+    }
+  }),
+
+  [DATASETS_FETCH_GEOJSON_SUCCESS]: (state, action) => ({
+    ...state,
+
+    geoJson: {
+      ...state.geoJson,
+
+      pending: false,
+      data: action.payload,
+      error: false
+    }
+  }),
+
+  [DATASETS_FETCH_GEOJSON_FAILURE]: (state, action) => ({
+    ...state,
+
+    geoJson: {
+      ...state.geoJson,
 
       pending: false,
       error: action.error

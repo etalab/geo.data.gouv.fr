@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import DatasetDownload from '../DatasetDownload'
-
-import styles from './DatasetDownloadList.scss'
+import DatasetPreviewContainer from '../../containers/DatasetPreviewContainer'
 
 class DatasetDownloadList extends React.PureComponent {
   static propTypes = {
@@ -12,15 +11,27 @@ class DatasetDownloadList extends React.PureComponent {
       available: PropTypes.bool.isRequired,
       name: PropTypes.string,
       location: PropTypes.string
-    })).isRequired
+    })).isRequired,
+
+    fetchGeoJson: PropTypes.func.isRequired
   }
 
   setPreview = ({ distribution, link }) => {
+    const { fetchGeoJson } = this.props
+
     this.setState({
       preview: {
         distribution,
         link
       }
+    })
+
+    fetchGeoJson(link)
+  }
+
+  resetPreview = () => {
+    this.setState({
+      preview: null
     })
   }
 
@@ -32,7 +43,7 @@ class DatasetDownloadList extends React.PureComponent {
     const otherDistributions = distributions.filter(distribution => distribution.originalDistribution === true)
 
     return (
-      <div className={styles.container}>
+      <div>
         <div>
           {vectorDistributions.length > 0 && (
             <div>
@@ -42,7 +53,7 @@ class DatasetDownloadList extends React.PureComponent {
                   key={distribution._id}
                   distribution={distribution}
                   isPreview={preview && preview.distribution._id === distribution._id}
-                  preview={this.setPreview}
+                  setPreview={this.setPreview}
                 />
               ))}
             </div>
@@ -63,8 +74,12 @@ class DatasetDownloadList extends React.PureComponent {
           )}
         </div>
 
-
-        Viewer
+        {preview && (
+          <DatasetPreviewContainer
+            preview={preview}
+            closePreview={this.resetPreview}
+          />
+        )}
       </div>
     )
   }

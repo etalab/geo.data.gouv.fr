@@ -50,7 +50,8 @@ class DatasetView extends React.PureComponent {
       ]).isRequired,
     }).isRequired,
 
-    getDataGouvDataset: PropTypes.func.isRequired
+    getDataGouvDataset: PropTypes.func.isRequired,
+    fetchGeoJson: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -62,7 +63,7 @@ class DatasetView extends React.PureComponent {
   }
 
   render() {
-    const { dataset, publication, dataGouvDataset } = this.props
+    const { dataset, publication, dataGouvDataset, fetchGeoJson } = this.props
     const status = statusTranslate[dataset.metadata.status]
 
     return (
@@ -83,7 +84,7 @@ class DatasetView extends React.PureComponent {
 
               <DatasetBlock title='Téléchargements'>
                 {dataset.dataset.distributions.length > 0 ? (
-                  <DatasetDownloadList distributions={dataset.dataset.distributions} />
+                  <DatasetDownloadList distributions={dataset.dataset.distributions} fetchGeoJson={fetchGeoJson} />
                 ) : (
                   <div>Aucune donnée n'est téléchargeable.</div>
                 )}
