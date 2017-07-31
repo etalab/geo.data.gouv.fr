@@ -8,6 +8,7 @@ import Loader from 'common/components/Loader'
 import DatasetBlock from '../DatasetBlock'
 import DatasetHeader from '../DatasetHeader'
 import DatasetTechnicalInfo from '../DatasetTechnicalInfo'
+import DatasetDownloadList from '../DatasetDownloadList'
 import DatasetProducer from '../DatasetProducer'
 import DatasetThumbnails from '../DatasetThumbnails'
 import DatasetSpatialExtent from '../DatasetSpatialExtent'
@@ -27,6 +28,10 @@ class DatasetView extends React.PureComponent {
         spatialExtent: PropTypes.object,
         contacts: PropTypes.array.isRequired,
         credit: PropTypes.string
+      }).isRequired,
+
+      dataset: PropTypes.shape({
+        distributions: PropTypes.array.isRequired
       }).isRequired
     }).isRequired,
 
@@ -74,6 +79,14 @@ class DatasetView extends React.PureComponent {
 
               <DatasetBlock title='Informations techniques'>
                 <DatasetTechnicalInfo dataset={dataset} status={status} />
+              </DatasetBlock>
+
+              <DatasetBlock title='Téléchargements'>
+                {dataset.dataset.distributions.length > 0 ? (
+                  <DatasetDownloadList distributions={dataset.dataset.distributions} />
+                ) : (
+                  <div>Aucune donnée n'est téléchargeable.</div>
+                )}
               </DatasetBlock>
             </div>
 
