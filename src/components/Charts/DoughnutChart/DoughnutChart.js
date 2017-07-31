@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 
 import { Doughnut } from 'react-chartjs-2'
 
@@ -7,14 +8,14 @@ import { colors } from '../../../tools.js'
 
 import { container } from './DoughnutChart.scss'
 
-export function formatData(data) {
+export function formatData(data, t) {
   const labels = Object.keys(data)
     .sort((a, b) => {
       return data[a] < data[b]
     })
 
   return {
-    labels,
+    labels: labels.map(label => t(`DoughnutChart.${label}`)),
     datasets: [
       {
         data: labels.map(label => data[label]),
@@ -24,11 +25,11 @@ export function formatData(data) {
   }
 }
 
-const DoughnutChart = ({ data }) => {
-  const formatedData = formatData(data || {})
+export const DoughnutChart = ({ data, t }) => {
+  const formatedData = formatData(data || {}, t)
 
   if (formatedData.labels.length === 0) {
-    return <h1>Aucune donnée</h1>
+    return <h1>{t('DoughnutChart.noData')}</h1>
   }
 
   if (formatedData.labels.length === 1) {
@@ -42,4 +43,4 @@ const DoughnutChart = ({ data }) => {
   )
 }
 
-export default DoughnutChart
+export default translate('Common')(DoughnutChart)

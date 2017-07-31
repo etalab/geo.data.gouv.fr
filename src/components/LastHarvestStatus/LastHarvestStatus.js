@@ -1,17 +1,18 @@
 import React from 'react'
-import moment from 'moment'
+import { translate } from 'react-i18next'
 
-const LastHarvestStatus = ({harvest}) => {
+import { doneSince } from '../../helpers/doneSince'
+
+const LastHarvestStatus = ({harvest, t}) => {
   // Retro-compatibilite, l'API renvoie l'un ou l'autre
   const finishedAt = harvest.finishedAt || harvest.finished
-  const date = new Date(finishedAt).getTime()
-  const hoursDifference = moment(date).fromNow()
+  const hoursDifference = doneSince(finishedAt)
   let status
 
   if (harvest.status === 'successful') {
-    status = 'Réussi'
+    status = t('LastHarvestStatus.success')
   } else {
-    status = 'En échec'
+    status = t('LastHarvestStatus.fail')
   }
 
   return (
@@ -21,4 +22,4 @@ const LastHarvestStatus = ({harvest}) => {
   )
 }
 
-export default LastHarvestStatus
+export default translate('Common')(LastHarvestStatus)

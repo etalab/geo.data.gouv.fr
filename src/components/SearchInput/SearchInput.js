@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import styles from './SearchInput.scss'
 
@@ -15,11 +16,9 @@ class SearchInput extends React.PureComponent {
   }
 
   static defaultProps = {
-    placeholder: 'Rechercher…',
     defaultValue: '',
 
     hasButton: false,
-    buttonLabel: 'Rechercher'
   }
 
   onSubmit = event => {
@@ -31,7 +30,7 @@ class SearchInput extends React.PureComponent {
   }
 
   render() {
-    const { placeholder, defaultValue, hasButton, buttonLabel } = this.props
+    const { placeholder, defaultValue, hasButton, buttonLabel, t } = this.props
 
     return (
       <form onSubmit={this.onSubmit} className={styles.container}>
@@ -40,12 +39,12 @@ class SearchInput extends React.PureComponent {
           name='query'
           defaultValue={defaultValue}
           className={styles.input}
-          placeholder={placeholder}
+          placeholder={placeholder || t('SearchInput.placeholder')}
         />
 
         {hasButton && (
           <button type='submit' className={styles.button}>
-            {buttonLabel}
+            {buttonLabel || t('SearchInput.buttonLabel')}
           </button>
         )}
       </form>
@@ -53,4 +52,4 @@ class SearchInput extends React.PureComponent {
   }
 }
 
-export default SearchInput
+export default translate('Common')(SearchInput)

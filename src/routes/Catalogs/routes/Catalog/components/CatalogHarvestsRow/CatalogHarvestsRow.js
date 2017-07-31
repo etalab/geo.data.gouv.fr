@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { Link } from 'react-router'
 
 import { doneSince } from 'common/helpers/doneSince'
@@ -8,11 +9,11 @@ import CatalogHarvestsDelta from '../CatalogHarvestsDelta'
 
 import styles from './CatalogHarvestsRow.scss'
 
-const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId }) => (
+const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t }) => (
   <tr className={styles.row}>
     <td>
       <div className={styles[harvest.status]} >
-        {harvest.status === 'successful' ? 'Réussi' : 'Échec'}
+        {harvest.status === 'successful' ? t('CatalogHarvestsRow.success') : t('CatalogHarvestsRow.fail')}
       </div>
     </td>
     <td className={styles.center}>
@@ -28,7 +29,7 @@ const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId }) => (
     </td>
     <td className={styles.right}>
       <Link to={`/catalogs/${catalogId}/harvest/${harvest._id}`}>
-        Détails
+        {t('CatalogHarvestsRow.details')}
       </Link>
     </td>
   </tr>
@@ -43,7 +44,9 @@ CatalogHarvestsRow.propTypes = {
 
   previousHarvest: PropTypes.shape({
     itemsFound: PropTypes.number
-  })
+  }),
+
+  t: PropTypes.func.isRequired
 }
 
-export default CatalogHarvestsRow
+export default translate('Catalogs.Catalog')(CatalogHarvestsRow)

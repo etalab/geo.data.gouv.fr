@@ -1,19 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import CatalogHarvestsRow from '../CatalogHarvestsRow'
 
 import styles from './CatalogHarvestsTable.scss'
 
-const CatalogHarvestsTable = ({ harvests, catalogId, harvesting }) => {
+const CatalogHarvestsTable = ({ harvests, catalogId, harvesting, t }) => {
   return (
     <table className={styles.table}>
       <thead>
         <tr>
-          <th>Statut</th>
-          <th className={styles.center}>Enregistrements</th>
-          <th className={styles.center}>Delta</th>
-          <th className={styles.center}>Date</th>
+          <th>{t('CatalogHarvestsTable.status')}</th>
+          <th className={styles.center}>{t('CatalogHarvestsTable.records')}</th>
+          <th className={styles.center}>{t('CatalogHarvestsTable.delta')}</th>
+          <th className={styles.center}>{t('CatalogHarvestsTable.date')}</th>
           <th className={styles.right}></th>
         </tr>
       </thead>
@@ -22,7 +23,7 @@ const CatalogHarvestsTable = ({ harvests, catalogId, harvesting }) => {
         {harvesting && (
           <tr>
             <td>
-              En cours…
+              {t('CatalogHarvestsTable.inProgress')}
             </td>
             <td />
             <td />
@@ -33,7 +34,7 @@ const CatalogHarvestsTable = ({ harvests, catalogId, harvesting }) => {
         {!harvests.length ? (
           <tr>
             <td colSpan={5} className={styles.noResults}>
-              Aucun moissonage réalisé…
+              {t('CatalogHarvestsTable.noHarvest')}
             </td>
           </tr>
         ) : harvests.map((harvest, idx) => (
@@ -56,8 +57,8 @@ CatalogHarvestsTable.propTypes = {
 
   catalogId: PropTypes.string.isRequired,
 
-  harvesting: PropTypes.bool.isRequired
+  harvesting: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired
 }
 
-export default CatalogHarvestsTable
-
+export default translate('Catalogs.Catalog')(CatalogHarvestsTable)

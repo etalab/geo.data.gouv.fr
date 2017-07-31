@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import Loader from 'common/components/Loader'
 import Chart from 'common/components/Charts/Chart'
 import Histogram from 'common/components/Charts/Histogram/Histogram'
 
-import CatalogHarvestsTable from '../CatalogHavestsTable'
+import CatalogHarvestsTable from '../CatalogHarvestsTable'
 
 import styles from './CatalogHarvestsView.scss'
 
@@ -29,7 +30,10 @@ class CatalogHarvestsView extends React.PureComponent {
       }).isRequired
     }).isRequired,
 
-    syncCatalog: PropTypes.func.isRequired
+    syncCatalog: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired,
+    i18n: PropTypes.object.isRequired
   }
 
   onSync = event => {
@@ -39,14 +43,14 @@ class CatalogHarvestsView extends React.PureComponent {
   }
 
   getGraphData = () => {
-    const { harvests } = this.props
+    const { harvests, i18n } = this.props
 
     const ordered = [...harvests.harvests].reverse()
     const data = []
 
     ordered.forEach(harvest => {
       if (harvest.status === 'successful') {
-        const date = new Date(harvest.finished).toLocaleDateString().split('-').reverse().join('/')
+        const date = new Date(harvest.finished).toLocaleDateString(i18n.language).split('-').reverse().join('/')
         data[date] = harvest.itemsFound
       }
     })
@@ -55,11 +59,11 @@ class CatalogHarvestsView extends React.PureComponent {
   }
 
   render() {
-    const { harvests, catalog } = this.props
+    const { harvests, catalog, t } = this.props
 
     return (
       <div>
-        <h2>Moissonnage du catalogue</h2>
+        <h2>{t('CatalogHarvestsView.title')}</h2>
 
         <Loader loading={harvests.pending} error={harvests.error}>
           <div className={styles.container}>
@@ -75,13 +79,13 @@ class CatalogHarvestsView extends React.PureComponent {
                 disabled={catalog.service.sync.pending}
                 onClick={this.onSync}
               >
-                Synchroniser
+                {t('CatalogHarvestsView.buttonText')}
               </button>
             </div>
             <div className={styles.stats}>
               <Chart
-                title={'Évolution des Enregistrements'}
-                description={'Évolution du nombre d’enregistrements par moissonnage'}
+                title={t('CatalogHarvestsView.chartTitle')}
+                description={t('CatalogHarvestsView.chartDescription')}
                 chart={
                   <Histogram data={this.getGraphData()} />
                 }
@@ -94,4 +98,4 @@ class CatalogHarvestsView extends React.PureComponent {
   }
 }
 
-export default CatalogHarvestsView
+export default translate('Catalogs.Catalog')(CatalogHarvestsView)

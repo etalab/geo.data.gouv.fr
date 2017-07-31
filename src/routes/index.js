@@ -10,19 +10,19 @@ import PublicationRoute from './Publication'
 
 import NotFoundRoute from './NotFound'
 
-export const createRoutes = store => ({
+export const createRoutes = (store, i18n) => ({
   path: '/',
   component: PageLayout,
-  indexRoute: HomeRoute(store),
+  indexRoute: HomeRoute(store, i18n),
   childRoutes: [
-    EventsRoute(store),
-    SearchRoute(store),
-    CatalogsRoute(store),
+    EventsRoute(store, i18n),
+    SearchRoute(store, i18n),
+    CatalogsRoute(store, i18n),
 
     DatasetsRoute(),
     PublicationRoute(),
 
-    NotFoundRoute
+    NotFoundRoute(store, i18n)
   ]
 })
 

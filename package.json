@@ -74,6 +74,8 @@
   },
   "dependencies": {
     "chart.js": "^2.5.0",
+    "i18next": "^8.4.3",
+    "i18next-browser-languagedetector": "^2.0.0",
     "leaflet": "^1.0.2",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
@@ -84,6 +86,7 @@
     "react-addons-create-fragment": "^15.4.0",
     "react-chartjs-2": "^2.0.0",
     "react-document-title": "^2.0.2",
+    "react-i18next": "^4.6.4",
     "react-leaflet": "^1.1.1",
     "react-paginate": "^4.1.1",
     "react-redux": "^5.0.5",

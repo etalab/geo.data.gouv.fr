@@ -1,0 +1,59 @@
+{
+  "CatalogPreview": {
+    "noData": "Aucun donnée disponible",
+    "openDataLabel": "Données ouvertes",
+    "downloadableLabel": "Téléchargeable",
+    "recordsLabel": "Enregistrements"
+  },
+
+  "DoughnutChart": {
+    "noData": "Aucune donnée",
+    "dataset": "jeu de données",
+    "nonGeographicDataset": "jeu de données non géographiques",
+    "service": "service",
+    "other": "autre",
+    "vector": "vecteurs",
+    "none": "aucun",
+    "grid": "imagerie",
+    "Dublin Core": "Dublin Core",
+    "ISO 19139": "ISO 19139"
+  },
+
+  "Footer": {
+    "madeBy": "Fait avec {{heart}} par {{link}}"
+  },
+
+  "Header": {
+    "login": "Publier des données",
+    "logout": "Déconnexion"
+  },
+
+  "Histogram": {
+    "label": "Enregistrements"
+  },
+
+  "LanguageSelection": {
+    "languageSelection": "Sélection de la langue"
+  },
+
+  "LastHarvestStatus": {
+    "success": "Réussi",
+    "fail": "En échec"
+  },
+
+  "NewsletterForm": {
+    "newsletterSignUp": "Inscrivez-vous pour recevoir nos communications",
+    "label": "Votre adresse email",
+    "inputValue": "S’inscrire"
+  },
+
+  "ObsoleteWarning": {
+    "obsoleteCatalog": "Ce catalogue n’a pas été mis à jour depuis plus de 6 mois"
+  },
+
+  "SearchInput": {
+    "placeholder": "Rechercher…",
+    "buttonLabel": "Rechercher"
+  }
+
+}

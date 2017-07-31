@@ -1,0 +1,44 @@
+{
+  "CatalogFacetsList": {
+    "organizationsTitle": "Organisations",
+    "keywordsTitle": "Mots-clés"
+  },
+
+  "CatalogHarvestsRow": {
+    "success": "Réussi",
+    "fail": "Échec",
+    "details": "Détails"
+  },
+
+  "CatalogHarvestsTable": {
+    "status": "Statut",
+    "records": "Enregistrements",
+    "delta": "Delta",
+    "date": "Date",
+    "inProgress": "En cours…",
+    "noHarvest": "Aucun moissonage réalisé…"
+  },
+
+  "CatalogHarvestsView": {
+    "title": "Moissonnage du catalogue",
+    "buttonText": "Synchroniser",
+    "chartTitle": "Évolution des Enregistrements",
+    "chartDescription": "Évolution du nombre d’enregistrements par moissonnage"
+  },
+
+  "CatalogStatistics": {
+    "catalogIndicatorTitle": "Indicateurs concernant la totalité du catalogue",
+    "recordsCounterTitle": "Enregistrements",
+    "recordsChartDescription": "Répartition des types d‘enregistrements",
+    "metadataChartDescritpion": "Répartition des types de meta donnée",
+    "datasetsIndicatorTitle": "Indicateurs concernant les jeux de données",
+    "openDataPercentTitle": "Pourcentage de données ouvertes",
+    "downloadablePercentTitle": "Pourcentage de jeu de données téléchargeable",
+    "dataTypeChartDescription": "Répartition des types de donnée"
+  },
+
+  "CatalogView": {
+    "catalogService": "Accès direct au service du catalogue",
+    "catalogSearchTitle": "Rechercher dans les jeux de données du catalogue"
+  }
+}

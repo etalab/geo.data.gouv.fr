@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import DocumentTitle from 'react-document-title'
 
 import Loader from 'common/components/Loader'
@@ -7,8 +8,8 @@ import CatalogPreview from 'common/components/CatalogPreview'
 
 import styles from './CatalogsListPage.scss'
 
-const CatalogsListPage = ({ catalogs, pending, error }) => (
-  <DocumentTitle title={'Catalogues'}>
+const CatalogsListPage = ({ catalogs, pending, error, t }) => (
+  <DocumentTitle title={t('CatalogsListPage.documentTitle')}>
     <div className={styles.container}>
       <Loader loading={pending} error={error}>
         <div>
@@ -33,7 +34,9 @@ CatalogsListPage.propTypes = {
   error: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object
-  ]).isRequired
+  ]).isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
-export default CatalogsListPage
+export default translate('Catalogs.CatalogsList')(CatalogsListPage)

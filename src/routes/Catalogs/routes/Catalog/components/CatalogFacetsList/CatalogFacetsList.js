@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import CatalogFacets from '../CatalogFacets'
 
-const CatalogFacetsList = ({ catalog, metrics, search }) => {
+const CatalogFacetsList = ({ catalog, metrics, search, t }) => {
   const { organizations, keywords } = metrics.records.counts
 
   const onOrganizationSearch = facet => search({
@@ -19,12 +20,12 @@ const CatalogFacetsList = ({ catalog, metrics, search }) => {
   return (
     <div>
       <CatalogFacets
-        title='Organisations'
+        title={t('CatalogFacetsList.organizationsTitle')}
         filters={organizations}
         search={onOrganizationSearch}
       />
       <CatalogFacets
-        title='Mots-clés'
+        title={t('CatalogFacetsList.keywordsTitle')}
         filters={keywords}
         search={onKeywordSearch}
       />
@@ -46,7 +47,9 @@ CatalogFacetsList.propTypes = {
     }).isRequired
   }).isRequired,
 
-  search: PropTypes.func.isRequired
+  search: PropTypes.func.isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
-export default CatalogFacetsList
+export default translate('Catalogs.Catalog')(CatalogFacetsList)

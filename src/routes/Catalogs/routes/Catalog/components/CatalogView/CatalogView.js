@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
@@ -25,7 +26,9 @@ class CatalogView extends React.PureComponent {
 
     search: PropTypes.func.isRequired,
     getHarvests: PropTypes.func.isRequired,
-    syncCatalog: PropTypes.func.isRequired
+    syncCatalog: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -44,7 +47,7 @@ class CatalogView extends React.PureComponent {
   }
 
   render() {
-    const { catalog, metrics, harvests, search, syncCatalog } = this.props
+    const { catalog, metrics, harvests, search, syncCatalog, t } = this.props
 
     return (
       <DocumentTitle title={catalog.name}>
@@ -53,7 +56,7 @@ class CatalogView extends React.PureComponent {
             <h1>{catalog.name}</h1>
 
             <a href={catalog.service.location} target='_blank'>
-              Accès direct au service du catalogue
+              {t('CatalogView.catalogService')}
             </a>
           </div>
 
@@ -74,7 +77,7 @@ class CatalogView extends React.PureComponent {
           </div>
 
           <div className={styles.section}>
-            <h2>Rechercher dans les jeux de données du catalogue</h2>
+            <h2>{t('CatalogView.catalogSearchTitle')}</h2>
             <SearchInput onSearch={this.onSearch} hasButton />
           </div>
         </div>
@@ -83,4 +86,4 @@ class CatalogView extends React.PureComponent {
   }
 }
 
-export default CatalogView
+export default translate('Catalogs.Catalog')(CatalogView)

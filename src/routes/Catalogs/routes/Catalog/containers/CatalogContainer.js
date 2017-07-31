@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
-import { getHarvests, syncCatalog } from '../modules/actions'
+import { get, getMetrics, getHarvests, syncCatalog } from '../modules/actions'
 
 import CatalogPage from '../components/CatalogPage'
 
 export default connect(
-  state => ({
+  (state, ownProps) => ({
+    catalogId: ownProps.params.catalogId,
+
     catalog: state.catalog.catalog,
     metrics: state.catalog.metrics,
     harvests: state.catalog.harvests,
@@ -20,6 +22,8 @@ export default connect(
   }),
 
   {
+    getCatalog: get,
+    getMetrics,
     getHarvests,
     syncCatalog
   }

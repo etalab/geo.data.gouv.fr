@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "home": "Accueil",
+    "tagline": "Trouvez facilement les données géographiques dont vous avez besoin",
+    "SearchInputPlaceholder": "Rechercher un jeu de donnée",
+    "datasetsLink": "Voir tous les jeux de données",
+    "catalogsSectionTitle": "Les catalogues moissonnés",
+    "catalogsLink": "Voir tous les catalogues",
+    "eventsSectionTitle": "Nos événements",
+    "eventsLink": "Voir nos événements"
+  }
+}
