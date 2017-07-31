@@ -54,6 +54,7 @@ class DatasetDownloadList extends React.PureComponent {
                   distribution={distribution}
                   isPreview={preview && preview.distribution._id === distribution._id}
                   setPreview={this.setPreview}
+                  resetPreview={this.resetPreview}
                 />
               ))}
             </div>

@@ -14,7 +14,7 @@ const FORMATS = [
   { label: 'CSV', format: 'CSV', projection: 'WGS84' }
 ]
 
-const DatasetDownload = ({ distribution, isPreview, setPreview }) => {
+const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview }) => {
   let link, layerName
 
   if (distribution.type === 'file-package') {
@@ -50,7 +50,10 @@ const DatasetDownload = ({ distribution, isPreview, setPreview }) => {
           {!distribution.available ? (
             <button className={styles.viewerButton} disabled>Visualiser</button>
           ) : (
-            <button className={styles.viewerButton} onClick={() => setPreview({ distribution, link })}>
+            <button
+              className={styles.viewerButton}
+              onClick={isPreview ? resetPreview : (() => setPreview({ distribution, link }))}
+            >
               Visualiser {isPreview && (
                 <i className='unhide icon'></i>
               )}
@@ -73,7 +76,8 @@ DatasetDownload.propTypes = {
 
   isPreview: PropTypes.bool,
 
-  setPreview: PropTypes.func.isRequired
+  setPreview: PropTypes.func.isRequired,
+  resetPreview: PropTypes.func.isRequired
 }
 
 DatasetDownload.defaultProps = {
