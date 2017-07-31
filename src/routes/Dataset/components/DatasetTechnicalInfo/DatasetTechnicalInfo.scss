@@ -1,13 +1,26 @@
 .container {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
 
-  div div {
-    margin-bottom: 0.2rem;
+  @media (max-width: 551px) {
+    flex-flow: column;
+  }
 
-    &:last-child {
-      margin-bottom: 0;
+  div {
+    flex: 1;
+
+    div {
+      margin-bottom: 0.2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
+  }
+}
+
+.other {
+  @media (max-width: 551px) {
+    margin-top: 1.4rem;
   }
 }

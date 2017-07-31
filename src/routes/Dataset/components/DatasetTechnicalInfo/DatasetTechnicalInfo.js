@@ -35,7 +35,7 @@ const DatasetTechnicalInfo = ({ dataset, status }) => {
         <div>Dernière mise à jour : <b>{revisionDate ? doneSince(revisionDate) : createDate}</b></div>
       </div>
 
-      <div>
+      <div className={styles.other}>
         <h4>Autres informations</h4>
 
           <div>Catégorie du jeu de données : <b>{topicCategories[topicCategory] || 'non renseignée'}</b></div>
