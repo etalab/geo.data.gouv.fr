@@ -9,6 +9,7 @@ import DatasetBlock from '../DatasetBlock'
 import DatasetHeader from '../DatasetHeader'
 import DatasetTechnicalInfo from '../DatasetTechnicalInfo'
 import DatasetDownloadList from '../DatasetDownloadList'
+import DatasetLinks from '../DatasetLinks'
 import DatasetProducer from '../DatasetProducer'
 import DatasetThumbnails from '../DatasetThumbnails'
 import DatasetSpatialExtent from '../DatasetSpatialExtent'
@@ -27,7 +28,8 @@ class DatasetView extends React.PureComponent {
         status: PropTypes.string,
         spatialExtent: PropTypes.object,
         contacts: PropTypes.array.isRequired,
-        credit: PropTypes.string
+        credit: PropTypes.string,
+        links: PropTypes.array.isRequired
       }).isRequired,
 
       dataset: PropTypes.shape({
@@ -87,6 +89,14 @@ class DatasetView extends React.PureComponent {
                   <DatasetDownloadList distributions={dataset.dataset.distributions} fetchGeoJson={fetchGeoJson} />
                 ) : (
                   <div>Aucune donnée n'est téléchargeable.</div>
+                )}
+              </DatasetBlock>
+
+              <DatasetBlock title='Liens'>
+                {dataset.metadata.links.length > 0 ? (
+                  <DatasetLinks links={dataset.metadata.links} />
+                ) : (
+                  <div>Aucun lien disponible.</div>
                 )}
               </DatasetBlock>
             </div>
