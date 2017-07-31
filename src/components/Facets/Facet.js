@@ -1,26 +1,44 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import Filter from '../Filter/Filter'
+
 import styles from './Facet.scss'
 
-class Facet extends Component {
+class Facet extends React.PureComponent {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    count: PropTypes.number,
+    isActive: PropTypes.bool,
+    addFilter: PropTypes.func,
+    style: PropTypes.object
+  }
+
+  onClick = () => {
+    const { name, value, addFilter } = this.props
+
+    if (addFilter) {
+      addFilter({ name, value })
+    }
+  }
+
   render() {
-    const { style, name, value, count, addFilter, isActive } = this.props
+    const { name, value, count, isActive, style } = this.props
 
     if (isActive) {
       return null
     }
 
-    let onClick = null
-    let filter = {name, value}
-
-    if (addFilter) {
-      onClick = () => addFilter(filter)
-    }
-
     return (
       <div style={style} className={styles.container}>
-        <Filter filter={filter} onClick={onClick}/>
-        { count ? <span className={styles.count}>x&nbsp;{count}</span> : null }
+        <Filter
+          filter={{ name, value }}
+          onClick={this.onClick}
+        />
+        {count && (
+          <span className={styles.count}>x {count}</span>
+        )}
       </div>
     )
   }
