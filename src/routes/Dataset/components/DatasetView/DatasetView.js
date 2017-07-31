@@ -7,6 +7,7 @@ import Loader from 'common/components/Loader'
 
 import DatasetBlock from '../DatasetBlock'
 import DatasetHeader from '../DatasetHeader'
+import DatasetTechnicalInfo from '../DatasetTechnicalInfo'
 import DatasetProducer from '../DatasetProducer'
 import DatasetThumbnails from '../DatasetThumbnails'
 import DatasetSpatialExtent from '../DatasetSpatialExtent'
@@ -57,19 +58,23 @@ class DatasetView extends React.PureComponent {
 
   render() {
     const { dataset, publication, dataGouvDataset } = this.props
-    const translated = statusTranslate[dataset.metadata.status]
+    const status = statusTranslate[dataset.metadata.status]
 
     return (
       <DocumentTitle title={dataset.metadata.title}>
         <div>
           {isWarningStatus(dataset.metadata.status) && (
-            <Warning title={`Attention ce jeu de données est considéré comme ${translated.status} par son producteur`}>
-              {translated.consequences}
+            <Warning title={`Attention ce jeu de données est considéré comme ${status.status} par son producteur`}>
+              {status.consequences}
             </Warning>
           )}
           <div className={styles.container}>
             <div className={styles.main}>
               <DatasetHeader dataset={dataset} />
+
+              <DatasetBlock title='Informations techniques'>
+                <DatasetTechnicalInfo dataset={dataset} status={status} />
+              </DatasetBlock>
             </div>
 
             <div className={styles.aside}>

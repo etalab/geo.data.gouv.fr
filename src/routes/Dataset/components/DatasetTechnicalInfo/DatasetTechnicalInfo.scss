@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+
+  div div {
+    margin-bottom: 0.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
