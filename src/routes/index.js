@@ -4,8 +4,8 @@ import HomeRoute from './Home'
 import EventsRoute from './Events'
 import SearchRoute from './Search'
 import CatalogsRoute from './Catalogs'
+import DatasetRoute from './Dataset'
 
-import DatasetsRoute from './Datasets'
 import PublicationRoute from './Publication'
 
 import NotFoundRoute from './NotFound'
@@ -18,8 +18,8 @@ export const createRoutes = (store, i18n) => ({
     EventsRoute(store, i18n),
     SearchRoute(store, i18n),
     CatalogsRoute(store, i18n),
+    DatasetRoute(store, i18n),
 
-    DatasetsRoute(),
     PublicationRoute(),
 
     NotFoundRoute(store, i18n)

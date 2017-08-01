@@ -1,6 +1,8 @@
 // Remove the PUBLIC_URL, if defined
 process.env.PUBLIC_URL = '';
 
+process.env.INSPIRE_API_URL = 'inspire-api-url'
+
 require('babel-register')();
 
 const { jsdom } = require('jsdom')

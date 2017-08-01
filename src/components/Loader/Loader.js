@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import styles from './Loader.scss'
 
-const Loader = ({ loading, label = 'Chargement…', error, children }) => (
+const Loader = ({ loading, label = 'Chargement…',  className = '', error, children }) => (
   loading ? (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${className}`}>
       <div className={styles.loader}>
         {label}
       </div>
@@ -20,6 +20,8 @@ const Loader = ({ loading, label = 'Chargement…', error, children }) => (
 Loader.propTypes = {
   loading: PropTypes.bool.isRequired,
   label: PropTypes.string,
+
+  className: PropTypes.string,
 
   error: PropTypes.oneOfType([
     PropTypes.shape({

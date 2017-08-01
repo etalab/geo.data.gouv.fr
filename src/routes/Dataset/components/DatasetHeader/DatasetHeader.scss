@@ -1,0 +1,101 @@
+@import 'variables';
+
+.container {
+  margin-bottom: 1rem;
+  box-shadow: $box-shadow;
+
+  span {
+    margin-left: 0.3em;
+    font-weight: bold;
+    color: $lightblue;
+    word-wrap: break-word;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: #fff;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.title {
+  font-size: 1.7rem;
+
+  @media (max-width: 760px) {
+    font-size: 1.3rem;
+  }
+}
+
+.section {
+  background-color: #fff;
+  padding: 1.6rem 2rem;
+}
+
+.head {
+  background-color: $blue;
+}
+
+.inspire-theme-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $blue;
+
+  img {
+    width: 80px;
+    height: 80px;
+    padding: 0.3em;
+    border-radius: 60px;
+    background-color: #fff;
+  }
+
+  @media (max-width: 760px) {
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 60px;
+      padding: 0.3em;
+      background-color: #fff;
+    }
+  }
+}
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem 6rem 1.6rem 2rem;
+  color: #fff;
+}
+
+.theme {
+  display: flex;
+  margin: 1rem 2rem;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  a {
+    margin-top: 10px;
+    color: #fff;
+    font-size: smaller;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.infos {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: small;
+
+  > div {
+    margin-bottom: 0.5em;
+    margin-right: 4em;
+  }
+}

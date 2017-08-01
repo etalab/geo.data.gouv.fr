@@ -224,7 +224,13 @@ if (!__TEST__) {
     bundles.unshift('vendor')
     config.entry.vendor = project.vendors
   }
+
   config.plugins.push(new webpack.optimize.CommonsChunkPlugin({ names: bundles }))
+  config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    name: 'app',
+    async: 'common',
+    minChunks: 2
+  }))
 }
 
 // Production Optimizations

@@ -1,0 +1,52 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  display: flex;
+  width: 280px;
+  height: 190px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  img {
+    max-width: 280px;
+    max-height: 190px;
+  }
+}
+
+.list {
+  display: flex;
+  border-top: 1px solid $whitesmoke;
+  padding-top: 0.6rem;
+  margin-top: 1rem;
+
+  img {
+    display: block;
+    width: 70px;
+    opacity: 0.4;
+    filter: grayscale(100%);
+
+    &:hover {
+      &:not(.selected) {
+        cursor: pointer;
+        opacity: 0.5;
+        filter: none;
+      }
+    }
+  }
+
+  .selected {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.thumb-container {
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+}

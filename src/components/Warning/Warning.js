@@ -1,32 +1,47 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Sticky } from 'react-sticky'
 
-import { sticky, content, bold, warning, errorStyle, closeIcon } from './Warning.scss'
+import styles from './Warning.scss'
 
-class Warning extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { close: false }
+class Warning extends React.PureComponent {
+  static propTypes = {
+    error: PropTypes.bool,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired
   }
 
-  closeWarning() {
-    this.setState({close: true})
+  static defaultProps = {
+    error: false
+  }
+
+  state = {
+    displayed: true
+  }
+
+  closeWarning = () => {
+    this.setState({
+      displayed: false
+    })
   }
 
   render() {
-    const { close } = this.state
-    const { error, title, children } = this.props
-    const color = error ? errorStyle : warning
+    const { displayed } = this.state
 
-    if (close) return null
+    if (!displayed) return
+
+    const { error, title, children } = this.props
+    const color = error ? styles.errorStyle : styles.warning
 
     return (
-      <Sticky className={`${sticky} ${color}`}>
-        <div className={content}>
-          <div className={bold}>{title}</div>
+      <Sticky className={`${styles.sticky} ${color}`}>
+        <div className={styles.content}>
+          <div className={styles.bold}>{title}</div>
           {children}
         </div>
-        <div className={closeIcon} onClick={() => this.closeWarning()}><i className="big remove icon"></i></div>
+        <div className={styles.closeIcon} onClick={this.closeWarning}>
+          <i className="big remove icon" />
+        </div>
       </Sticky>
     )
   }
