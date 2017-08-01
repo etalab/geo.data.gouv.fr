@@ -1,8 +1,26 @@
 import React from 'react'
-import { remove } from './RemoveButton.scss'
+import PropTypes from 'prop-types'
 
-const RemoveButton = ({ text, action, style }) => {
-  return <button className={`${remove} ${style}`} onClick={() => action()}><i className='trash icon' />{text}</button>
+import Button from './Button'
+
+import styles from './RemoveButton.scss'
+
+const RemoveButton = ({ text, action, style }) => (
+  <Button
+    className={`${styles.remove} ${style}`}
+    action={action}
+    text={
+      <span>
+        <i className='trash icon' /> {text}
+      </span>
+    }
+  />
+)
+
+RemoveButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired,
+  style: PropTypes.string
 }
 
 export default RemoveButton
