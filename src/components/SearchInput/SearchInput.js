@@ -24,9 +24,9 @@ class SearchInput extends React.PureComponent {
   onSubmit = event => {
     const { onSearch } = this.props
 
-    event.preventDefault();
+    event.preventDefault()
 
-    onSearch(event.target.query.value);
+    onSearch(event.target.query.value)
   }
 
   render() {

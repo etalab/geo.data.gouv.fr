@@ -17,7 +17,7 @@ const Filter = ({ detail, remove, filter, style, onClick }) => {
     >
       <span>{detail && `${title}:`}</span><span className={styles.filterValue}>{value}</span>
       {remove && (
-        <span> <i className="remove icon" /></span>
+        <span> <i className='remove icon' /></span>
       )}
     </button>
   )

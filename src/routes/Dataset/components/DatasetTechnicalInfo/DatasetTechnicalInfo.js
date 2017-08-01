@@ -38,28 +38,28 @@ const DatasetTechnicalInfo = ({ dataset, status }) => {
       <div className={styles.other}>
         <h4>Autres informations</h4>
 
-          <div>Catégorie du jeu de données : <b>{topicCategories[topicCategory] || 'non renseignée'}</b></div>
-          <div>Type : <b>{type || 'inconnu'}</b></div>
+        <div>Catégorie du jeu de données : <b>{topicCategories[topicCategory] || 'non renseignée'}</b></div>
+        <div>Type : <b>{type || 'inconnu'}</b></div>
 
-          <div>
+        <div>
             Licence : {license.name ? (
               <a href={license.link}>{license.name}</a>
-            ) : (
-              <b>license</b>
-            )}
-          </div>
-
-          {status && (
-            <div>État : <b>{status.status}</b></div>
+          ) : (
+            <b>license</b>
           )}
+        </div>
 
-          {equivalentScaleDenominator && (
-            <div>Échelle : <b>1 / {equivalentScaleDenominator}</b></div>
-          )}
+        {status && (
+          <div>État : <b>{status.status}</b></div>
+        )}
 
-          {spatialResolution && (
-            <div>Résolution : <b>{spatialResolution.value} {spatialResolution.unit}</b></div>
-          )}
+        {equivalentScaleDenominator && (
+          <div>Échelle : <b>1 / {equivalentScaleDenominator}</b></div>
+        )}
+
+        {spatialResolution && (
+          <div>Résolution : <b>{spatialResolution.value} {spatialResolution.unit}</b></div>
+        )}
       </div>
     </div>
   )

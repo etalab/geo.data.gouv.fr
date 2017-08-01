@@ -34,7 +34,7 @@ const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview }) 
       <div>
         <div className={styles.container}>
           <div>
-            <div>Télécharger<i className='download icon'></i></div>
+            <div>Télécharger<i className='download icon' /></div>
             <div className={styles.formats}>
               {!distribution.available ? (
                 <p>Indisponible</p>
@@ -52,10 +52,10 @@ const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview }) 
           ) : (
             <button
               className={styles.viewerButton}
-              onClick={isPreview ? resetPreview : (() => setPreview({ distribution, link }))}
+              onClick={isPreview ? resetPreview : () => setPreview({ distribution, link })}
             >
               Visualiser {isPreview && (
-                <i className='unhide icon'></i>
+                <i className='unhide icon' />
               )}
             </button>
           )}

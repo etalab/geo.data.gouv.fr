@@ -8,7 +8,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 class Catalog extends Component {
   constructor(props) {
     super(props)
-    this.state = { catalog: null, errors: []}
+    this.state = { catalog: null, errors: [] }
   }
 
   componentWillMount() {

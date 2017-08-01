@@ -52,7 +52,6 @@ class PublishingDatasets extends Component {
   }
 
   render() {
-
     const { organizationId, user, published, notPublishedYet, publishedByOthers, errors } = this.state
     const datasets = { published, notPublishedYet, publishedByOthers }
 

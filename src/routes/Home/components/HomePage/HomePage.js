@@ -37,7 +37,7 @@ class HomePage extends Component {
             onSearch={this.search}
             hasButton
           />
-        <Link className={styles.datasetLinks} to="/search?availability=yes">{t('HomePage.datasetsLink')}</Link>
+          <Link className={styles.datasetLinks} to='/search?availability=yes'>{t('HomePage.datasetsLink')}</Link>
         </div>
 
         <div className={styles.datagouv}>
@@ -50,11 +50,11 @@ class HomePage extends Component {
                 </div>
               ))}
             </div>
-            <Link to="catalogs" className={styles.link}>{t('HomePage.catalogsLink')}</Link>
+            <Link to='catalogs' className={styles.link}>{t('HomePage.catalogsLink')}</Link>
 
-            <h2 id="evenements">{t('HomePage.eventsSectionTitle')}</h2>
+            <h2 id='evenements'>{t('HomePage.eventsSectionTitle')}</h2>
             <div>
-              <Link to="events" className={styles.link}>{t('HomePage.eventsLink')}</Link>
+              <Link to='events' className={styles.link}>{t('HomePage.eventsLink')}</Link>
             </div>
           </div>
         </div>

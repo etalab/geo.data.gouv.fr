@@ -20,8 +20,7 @@ export const parse = (query = {}) => {
           value: v
         })
       })
-    }
-    else {
+    } else {
       filters.push({ name, value })
     }
   })

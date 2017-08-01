@@ -2,7 +2,6 @@ import React from 'react'
 import style from './RelatedProducers.scss'
 
 const RelatedProducers = ({ producers, action }) => {
-
   return (
     <div className={style.container}>
       <div className={style.header}>

@@ -12,7 +12,7 @@ class Footer extends Component {
     const { i18n } = this.props
     return (
       <footer className={footer} >
-        <div className={space}></div>
+        <div className={space} />
         <div className={main}>
           <NewsletterForm />
 
@@ -24,7 +24,7 @@ class Footer extends Component {
             />
             <SocialLinks />
           </div>
-          <LanguageSelection language={i18n.language}/>
+          <LanguageSelection language={i18n.language} />
         </div>
       </footer>
     )

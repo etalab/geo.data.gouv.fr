@@ -21,7 +21,7 @@ const CatalogStatistics = ({ metrics, t }) => {
 
         <div className={styles.chart}>
           <Counter
-            size="large"
+            size='large'
             value={metrics.records.totalCount}
             title={t('CatalogStatistics.recordsCounterTitle')}
           />
@@ -48,8 +48,8 @@ const CatalogStatistics = ({ metrics, t }) => {
           <Percent
             value={openness}
             total={metrics.datasets.totalCount}
-            size="large"
-            icon="unlock alternate icon"
+            size='large'
+            icon='unlock alternate icon'
             title={t('CatalogStatistics.openDataPercentTitle')}
           />
         </div>
@@ -58,8 +58,8 @@ const CatalogStatistics = ({ metrics, t }) => {
           <Percent
             value={download}
             total={metrics.datasets.totalCount}
-            size="large"
-            icon="download"
+            size='large'
+            icon='download'
             title={t('CatalogStatistics.downloadablePercentTitle')}
           />
         </div>

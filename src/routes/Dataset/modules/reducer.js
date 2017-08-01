@@ -79,7 +79,6 @@ const handlers = {
     }
   }),
 
-
   // DATASETS_GET_PUBLICATION
   // ------------------------------------
   [DATASETS_GET_PUBLICATION_PENDING]: (state, action) => ({
@@ -116,7 +115,6 @@ const handlers = {
     }
   }),
 
-
   // DATASETS_DATA_GOUV_GET
   // ------------------------------------
   [DATASETS_DATA_GOUV_GET_PENDING]: (state, action) => ({
@@ -152,7 +150,6 @@ const handlers = {
       error: action.error
     }
   }),
-
 
   // DATASETS_FETCH_GEOJSON
   // ------------------------------------

@@ -7,13 +7,13 @@ import { colors } from '../../../tools.js'
 
 export function formatData(data, t) {
   return {
-    'labels': Object.keys(data).map( item => item),
+    'labels': Object.keys(data).map(item => item),
     'datasets': [
       {
         label: t('Histogram.label'),
         lineTension: 0.2,
         backgroundColor: colors[0],
-        data: Object.keys(data).map( item => data[item])
+        data: Object.keys(data).map(item => data[item])
       }
     ],
   }

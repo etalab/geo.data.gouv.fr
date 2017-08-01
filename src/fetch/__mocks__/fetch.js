@@ -38,7 +38,6 @@ export function getProducers() {
   return Promise.resolve(producers)
 }
 
-
 export function fetchHarvest(catalogId, harvestId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   if (!harvestId) return Promise.reject(new Error('harvestId is required'))
@@ -104,8 +103,6 @@ export function publishDataset(datasetId, organizationId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   if (organizationId === '1') return Promise.resolve(organizationNotPublishedYetDatasets)
-
-  return
 }
 
 export function fetchOrganizationPublishedByOthers(organizationId) {

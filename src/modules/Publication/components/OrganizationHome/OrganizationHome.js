@@ -5,7 +5,6 @@ import ManageOrganization from '../../components/ManageOrganization/ManageOrgani
 import ActivateOrganization from '../../components/ActivateOrganization/ActivateOrganization'
 import Errors from '../../../../components/Errors/Errors'
 
-
 export default function PureOrganization(props) {
   const { organizationDetails, organization, user, metrics } = props
 

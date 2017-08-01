@@ -2,7 +2,6 @@ import React from 'react'
 import style from './UnrelatedProducers.scss'
 
 const UnrelatedProducers = ({ producers, action }) => {
-
   return (
     <div className={style.container}>
       <div className={style.header}>

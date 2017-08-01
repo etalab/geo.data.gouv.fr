@@ -38,7 +38,7 @@ const DatasetHeader = ({ dataset }) => {
         {inspireTheme && (
           <div className={styles.theme}>
             <div>
-              <img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon'/>
+              <img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon' />
             </div>
             <div>
               <a href={inspireTheme.uri} target='_blank'>{inspireTheme.label.fr}</a>

@@ -8,7 +8,7 @@ const Event = ({ event }) => (
       {event.name}
     </h3>
     <div className={styles.event}>
-      <i className="huge file text icon"></i>
+      <i className='huge file text icon' />
       <div>
         <div>{event.date}</div>
         {event.link ? (
@@ -17,7 +17,7 @@ const Event = ({ event }) => (
           </div>
         ) : (
           <div>
-          {event.linkComingSoon ? 'Compte-rendu bientôt disponible…' : 'Pas de compte-rendu'}</div>
+            {event.linkComingSoon ? 'Compte-rendu bientôt disponible…' : 'Pas de compte-rendu'}</div>
         )}
       </div>
     </div>

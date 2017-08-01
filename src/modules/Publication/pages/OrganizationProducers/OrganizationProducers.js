@@ -7,7 +7,6 @@ import Errors from '../../../../components/Errors/Errors'
 import { getUser, getOrganization } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
-
 class PublishingDatasets extends Component {
   constructor(props) {
     super(props)
@@ -35,7 +34,6 @@ class PublishingDatasets extends Component {
   }
 
   render() {
-
     const { user, organization, errors, organizationId } = this.state
 
     if (errors.length) {
@@ -46,7 +44,7 @@ class PublishingDatasets extends Component {
       return <Errors errors={['Vous devez être authentifié pour accéder à cette page']} /> // TODO: Vous devez être authentifié
     }
 
-    if (!organization) return null;
+    if (!organization) return null
     const candidateOrganization = user.organizations.find(org => org.id === organizationId)
 
     return (

@@ -7,9 +7,9 @@ const CheckProducers = ({ valid, organizations }) => {
 
   return (
     <Check title='Producteur' isValid={valid} msg={msg}>
-      {organizations ? organizations : null }
+      {organizations || null }
     </Check>
-    )
+  )
 }
 
 export default CheckProducers

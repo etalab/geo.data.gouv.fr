@@ -27,7 +27,7 @@ class ActivateOrganization extends Component {
         this.props.onActivation()
       })
       .catch(err => {
-        if (err.isCanceled) return;
+        if (err.isCanceled) return
         this.setState({
           activating: false,
           errors: ['Impossible d\'activer l\'outil sur votre organisation']

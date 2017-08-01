@@ -65,16 +65,14 @@ class DatasetDataGouvPublication extends React.PureComponent {
       return (
         <div className={styles.checklist}>
           <div>Ce jeu de données <b>ne peut pas</b> être publié sur data.gouv.fr</div>
-          {expanded ?
-            (
-              <div>
-                <CheckLicense license={dataset.metadata.license} valid={licenseCheck} />
-                <CheckProducers organizations={dataset.organizations} valid={producersCheck} />
-                <CheckDataAvailability distributions={dataset.dataset.distributions} valid={dataAvailabilityCheck} />
-              </div>
-            ) : null
-          }
-          <Button text={`${expanded ? 'Masquer' : 'Afficher'} le détail`} action={this.toggleDetails}/>
+          {expanded && (
+            <div>
+              <CheckLicense license={dataset.metadata.license} valid={licenseCheck} />
+              <CheckProducers organizations={dataset.organizations} valid={producersCheck} />
+              <CheckDataAvailability distributions={dataset.dataset.distributions} valid={dataAvailabilityCheck} />
+            </div>
+          )}
+          <Button text={`${expanded ? 'Masquer' : 'Afficher'} le détail`} action={this.toggleDetails} />
         </div>
       )
     }

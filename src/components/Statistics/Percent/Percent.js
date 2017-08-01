@@ -19,8 +19,8 @@ const Percent = (props) => {
     <Counter
       {...props}
       value={percent}
-      unit="%"
-      color={color(percent)}/>
+      unit='%'
+      color={color(percent)} />
   )
 }
 

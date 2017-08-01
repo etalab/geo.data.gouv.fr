@@ -50,7 +50,7 @@ class DatasetPage extends React.PureComponent {
     const { dataset, publication, dataGouvDataset, getDataGouvDataset, fetchGeoJson } = this.props
 
     return (
-     <div>
+      <div>
         <Loader
           loading={dataset.pending || !dataset.dataset || publication.pending}
           error={dataset.error}

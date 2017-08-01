@@ -24,5 +24,4 @@ describe('<OrganizationPreview />', () => {
       expect(wrapper).to.have.html().match(/no-img.png/)
     })
   })
-
 })

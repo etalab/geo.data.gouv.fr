@@ -3,7 +3,7 @@ import Counter from '../Counter/Counter'
 
 const HomepageCounter = (props) => {
   return (
-    <Counter {...props} size="large" color="success" icon="database" />
+    <Counter {...props} size='large' color='success' icon='database' />
   )
 }
 

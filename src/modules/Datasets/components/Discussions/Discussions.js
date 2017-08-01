@@ -12,7 +12,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 class Discussions extends Component {
   constructor(props) {
     super(props)
-    this.state = {discussionForm: false, formError: false, errors: []}
+    this.state = { discussionForm: false, formError: false, errors: [] }
   }
 
   componentWillMount() {
@@ -38,7 +38,7 @@ class Discussions extends Component {
   }
 
   showDiscussionForm() {
-    this.setState({discussionForm: true})
+    this.setState({ discussionForm: true })
   }
 
   createDiscussion(title, comment, discussionId) {
@@ -51,8 +51,8 @@ class Discussions extends Component {
       comment,
       subject: {
         id: remoteId,
-        class: 'Dataset'}
-      }
+        class: 'Dataset' }
+    }
 
     createNewDiscussion(newDiscussion, discussionId)
       .then(discussion => {
@@ -79,8 +79,8 @@ class Discussions extends Component {
 
     return (
       <div>
-        {discussions ?
-          discussions.data.map((discussion, idx) =>
+        {discussions
+          ? discussions.data.map((discussion, idx) =>
             <Discussion
               key={idx}
               user={user}
@@ -90,20 +90,18 @@ class Discussions extends Component {
               returForm={(comment, discussionId) => this.createReply(comment, discussionId)} />)
           : null
         }
-        {discussionForm ?
-          <AuthentificationNeeded user={user}>
+        {discussionForm
+          ? <AuthentificationNeeded user={user}>
             <DiscussionForm
               user={user}
               error={formError}
               returForm={(title, comment, discussionId) => this.createDiscussion(title, comment, discussionId)} />
-          </AuthentificationNeeded> :
-          <Button text={'Démarrer une nouvelle discussion'} action={() => this.showDiscussionForm()}/>
+          </AuthentificationNeeded>
+          : <Button text={'Démarrer une nouvelle discussion'} action={() => this.showDiscussionForm()} />
         }
       </div>
     )
   }
 }
-
-
 
 export default Discussions

@@ -4,8 +4,8 @@ import ContentLoader from '../../../../components/Loader/ContentLoader'
 import AddButton from '../../../../components/Buttons/AddButton'
 import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
 
-import { fetchCatalogs } from '../../../../fetch/fetch';
-import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components';
+import { fetchCatalogs } from '../../../../fetch/fetch'
+import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 import { getCatalogOrderByScore, getCandidateCatalogs } from '../../../../helpers/catalogs'
 
 import { container, card, add, loader, warningMsg } from './AddCatalogs.scss'
@@ -13,7 +13,7 @@ import { container, card, add, loader, warningMsg } from './AddCatalogs.scss'
 class AddCatalogs extends Component {
   constructor(props) {
     super(props)
-    this.state = {errors: []}
+    this.state = { errors: [] }
   }
 
   componentWillMount() {
@@ -39,8 +39,8 @@ class AddCatalogs extends Component {
             <CatalogPreview catalog={catalog} />
             <AddButton style={add} action={() => addCatalog(catalog.id)} text={'Ajouter'} />
           </div>
-          )}
-        <div className={warningMsg}><i className="warning icon"></i>Seuls les catalogues disposant de données ouvertes et téléchargeables sont disponible ici.</div>
+        )}
+        <div className={warningMsg}><i className='warning icon' />Seuls les catalogues disposant de données ouvertes et téléchargeables sont disponible ici.</div>
       </div>
     )
   }

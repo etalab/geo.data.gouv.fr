@@ -3,7 +3,7 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const chalk = require('chalk')
 const gzipSize = require('gzip-size')
-const filesize = require('filesize');
+const filesize = require('filesize')
 const webpack = require('webpack')
 
 const logger = require('../lib/logger')
@@ -36,8 +36,7 @@ const computeSizeLabel = (current, previous) => {
 
   if (diff > 0) {
     return `${filesize(current)} (${chalk.red(`+ ${filesize(diff)}`)})`
-  }
-  else if (diff < 0) {
+  } else if (diff < 0) {
     return `${filesize(current)} (${chalk.green(`- ${filesize(-diff)}`)})`
   }
 
@@ -107,8 +106,7 @@ const saveAssetsSummary = (assets, assetsSummaryPath) => {
     fs.writeFileSync(assetsSummaryPath, JSON.stringify(assets, null, 2), 'utf-8')
 
     logger.success(`Saved JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`)
-  }
-  catch (err) {
+  } catch (err) {
     logger.warn(`Could not save JSON bundle stats in ${chalk.bold(assetsSummaryPath)}.`, err)
   }
 }
@@ -145,7 +143,7 @@ const compile = () => {
           }
         })
 
-      assets.sort((a, b) => b.gzip - a.gzip);
+      assets.sort((a, b) => b.gzip - a.gzip)
 
       const previousAssets = retrievePreviousAssets(assetsSummaryPath)
 

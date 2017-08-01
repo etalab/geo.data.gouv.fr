@@ -7,7 +7,6 @@ import PublishedDatasets from '../PublishedDatasets/PublishedDatasets'
 import { container, header, success, warning, error } from './DatasetsPublication.scss'
 
 class DatasetsPublication extends Component {
-
   render() {
     const { datasets, title, update, organizationId, status } = this.props
     const sortedDatasets = datasets.sort((a, b) => a.title.localeCompare(b.title))
@@ -18,15 +17,15 @@ class DatasetsPublication extends Component {
     })
 
     return (
-        <div className={container}>
-          <div className={headerStyle}>
-            <div>{title}</div>
-            <div>{datasets.length}</div>
-          </div>
-          {status === 'error' ?
-            <DatasetsToBePublished datasets={sortedDatasets} update={() => update()} organizationId={organizationId} /> :
-            <PublishedDatasets datasets={sortedDatasets} />}
+      <div className={container}>
+        <div className={headerStyle}>
+          <div>{title}</div>
+          <div>{datasets.length}</div>
         </div>
+        {status === 'error'
+          ? <DatasetsToBePublished datasets={sortedDatasets} update={() => update()} organizationId={organizationId} />
+          : <PublishedDatasets datasets={sortedDatasets} />}
+      </div>
     )
   }
 }

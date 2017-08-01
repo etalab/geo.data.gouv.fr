@@ -1,7 +1,7 @@
 import React from 'react'
-import {circularProgress} from './CircularProgress.scss'
+import { circularProgress } from './CircularProgress.scss'
 
-const CircularProgress = ({style}) => {
+const CircularProgress = ({ style }) => {
   return <div style={style} className={circularProgress}>Chargement...</div>
 }
 

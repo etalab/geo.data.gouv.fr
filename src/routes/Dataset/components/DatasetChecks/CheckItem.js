@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CheckItem = ({name, valid, msg}) => {
-  const checkmark = <i className="checkmark green icon"></i>
-  const remove = <i className="remove red icon"></i>
+const CheckItem = ({ name, valid, msg }) => {
+  const checkmark = <i className='checkmark green icon' />
+  const remove = <i className='remove red icon' />
 
   return (
     <div>

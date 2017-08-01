@@ -1,9 +1,9 @@
 import { getRelated, getUnrelated, getRelatedToOther } from '../producers'
 
 describe('producers', function () {
-  const relatedToOtherProducer = {_id: 'relatedToOtherProducer', associatedTo: 42}
-  const relatedProducer = {_id: 'relatedProducer', associatedTo: 1}
-  const unrelatedProducer = {_id: 'unrelatedProducer'}
+  const relatedToOtherProducer = { _id: 'relatedToOtherProducer', associatedTo: 42 }
+  const relatedProducer = { _id: 'relatedProducer', associatedTo: 1 }
+  const unrelatedProducer = { _id: 'unrelatedProducer' }
   const producers = [relatedToOtherProducer, relatedProducer, unrelatedProducer]
 
   describe('getRelated(producers, organizationId)', function () {

@@ -38,7 +38,7 @@ class Producers extends Component {
     const { organizationProducers } = this.state
     const { organization } = this.props
 
-    this.setState({organizationProducers: pull([...organizationProducers], producer)})
+    this.setState({ organizationProducers: pull([...organizationProducers], producer) })
 
     dissociateProducer(producer._id, organization._id)
       .then(() => this.updateProducersToAssociate())
@@ -48,7 +48,7 @@ class Producers extends Component {
     const { organizationProducers } = this.state
     const { organization } = this.props
 
-    this.setState({organizationProducers: pull([...organizationProducers], producer)})
+    this.setState({ organizationProducers: pull([...organizationProducers], producer) })
 
     associateProducer(producer._id, organization._id)
       .then(() => this.updateProducersToAssociate())
@@ -70,7 +70,7 @@ class Producers extends Component {
         <UnrelatedProducers producers={unrelatedProducers} action={(producer) => this.associate(producer)} />
         <OtherProducers producers={relateToOther} />
         <div className={previousPage}>
-          <Link to={`/publication/${organization._id}`}><i className="arrow left icon"></i> Retour</Link>
+          <Link to={`/publication/${organization._id}`}><i className='arrow left icon' /> Retour</Link>
         </div>
       </div>
     )

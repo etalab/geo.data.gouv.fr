@@ -5,9 +5,9 @@ import CheckItem from './CheckItem'
 
 const DatasetDataAvailability = ({ valid, distributions }) => {
   let content = null
-  const msg = valid ?
-    'Au moins une des distribution est disponible.' :
-    'Aucune distribution n\'a été trouvée.'
+  const msg = valid
+    ? 'Au moins une des distribution est disponible.'
+    : 'Aucune distribution n\'a été trouvée.'
 
   if (valid) {
     content = distributions.map((distribution, idx) => {
@@ -20,7 +20,7 @@ const DatasetDataAvailability = ({ valid, distributions }) => {
     <Check title='Disponibilité de la donnée' isValid={valid} msg={msg}>
       {content}
     </Check>
-    )
+  )
 }
 
 export default DatasetDataAvailability

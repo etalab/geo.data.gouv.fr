@@ -5,13 +5,11 @@ import { isActive, translateFilters } from '../../helpers/manageFilters'
 
 import { container } from './FacetsGroup.scss'
 
-
-
 export default ({ type, facets, filters, addFilter }) => {
-  const activeMap = facets.map(facet => isActive(filters, {name: type, value: facet.value}))
+  const activeMap = facets.map(facet => isActive(filters, { name: type, value: facet.value }))
 
   if (activeMap.indexOf(false) === -1) {
-    return null;
+    return null
   }
 
   return (

@@ -5,11 +5,11 @@ import FacetsGroup from './FacetsGroup'
 class Facets extends Component {
   render() {
     const { facets, filters, addFilter } = this.props
-    if (!facets) return <div></div>
+    if (!facets) return <div />
 
     const facetsArray = []
     forEach(facets, (value, key) => {
-      const facet = {type: key, value}
+      const facet = { type: key, value }
       facetsArray.push(facet)
     })
 

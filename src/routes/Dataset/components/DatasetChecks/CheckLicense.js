@@ -29,7 +29,7 @@ class CheckLicense extends Component {
       msg = `La licence ${license} n'est pas reconnue.`
     }
 
-    return {msg, content}
+    return { msg, content }
   }
 
   render() {
@@ -40,8 +40,8 @@ class CheckLicense extends Component {
       <Check title='Licence' isValid={valid} msg={msg}>
         {content}
       </Check>
-      )
-    }
+    )
+  }
 }
 
 export default CheckLicense

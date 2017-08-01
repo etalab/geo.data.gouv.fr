@@ -9,14 +9,13 @@ const context = {
 }
 
 describe('<LanguageSelection />', () => {
-
   describe('Switch language to english', () => {
     it('should display an english sentence', () => {
       const label = 'Language selection'
-      const Component = translate(['LanguageSelection'], {})(LanguageSelection);
+      const Component = translate(['LanguageSelection'], {})(LanguageSelection)
       const wrapper = mount(<Component language={'en'} />, { context })
 
-      wrapper.find('select').simulate('change', {target: {value : 'en'}})
+      wrapper.find('select').simulate('change', { target: { value : 'en' } })
 
       expect(wrapper.html()).to.contain(label)
     })
@@ -25,13 +24,12 @@ describe('<LanguageSelection />', () => {
   describe('Switch language to french', () => {
     it('should display an french sentence', () => {
       const label = 'Sélection de la langue'
-      const Component = translate(['LanguageSelection'], {})(LanguageSelection);
+      const Component = translate(['LanguageSelection'], {})(LanguageSelection)
       const wrapper = mount(<Component language={'en'} />, { context })
 
-      wrapper.find('select').simulate('change', {target: {value : 'fr'}})
+      wrapper.find('select').simulate('change', { target: { value : 'fr' } })
 
       expect(wrapper.html()).to.contain(label)
     })
   })
-
 })

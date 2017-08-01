@@ -4,7 +4,6 @@ import { cancelAllPromises, waitForDataAndSetState } from './components'
 import Errors from '../components/Errors/Errors'
 import ContentLoader from '../components/Loader/ContentLoader'
 
-
 export default function withResolver(WrappedComponent, dependencies) {
   return class ComponentWithResolver extends Component {
     constructor(props) {

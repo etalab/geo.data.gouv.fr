@@ -3,9 +3,7 @@ import Errors from '../Errors'
 import { shallow } from 'enzyme'
 
 describe('<Errors />', () => {
-
   describe('Only one error', () => {
-
     it('should display a sentence in the singular', () => {
       const error = ['une erreur']
       const title = <h3>Une erreur est survenue</h3>

@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import Filter from '../../../../components/Filter/Filter'
+import Filter from 'components/Filter/Filter'
 
 import styles from './FiltersSummary.scss'
 
@@ -20,5 +21,10 @@ const FiltersSummary = ({ filters, removeFilter }) => (
     ))}
   </div>
 )
+
+FiltersSummary.propTypes = {
+  filters: PropTypes.array.isRequired,
+  removeFilter: PropTypes.func.isRequired
+}
 
 export default FiltersSummary

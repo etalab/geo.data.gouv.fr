@@ -23,11 +23,11 @@ const DatasetContact = ({ contact }) => (
 
     <div className={styles.contact}>
       <div>
-        <i className="call icon" /> {contact.phoneNumber || 'Non renseigné'}
+        <i className='call icon' /> {contact.phoneNumber || 'Non renseigné'}
       </div>
 
       <div>
-        <i className="mail outline icon" /> {contact.email ? (
+        <i className='mail outline icon' /> {contact.email ? (
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
         ) : 'Non renseigné'}
       </div>

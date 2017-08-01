@@ -15,7 +15,7 @@ const CatalogHarvestsTable = ({ harvests, catalogId, harvesting, t }) => {
           <th className={styles.center}>{t('CatalogHarvestsTable.records')}</th>
           <th className={styles.center}>{t('CatalogHarvestsTable.delta')}</th>
           <th className={styles.center}>{t('CatalogHarvestsTable.date')}</th>
-          <th className={styles.right}></th>
+          <th className={styles.right} />
         </tr>
       </thead>
 

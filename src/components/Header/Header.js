@@ -29,8 +29,8 @@ class Header extends Component {
     const loginRedirect = `${process.env.PUBLIC_URL}/publication`
     const isPublication = window.location.pathname.startsWith('/publication')
     const logoutRedirect = isPublication ? process.env.PUBLIC_URL : process.env.PUBLIC_URL + window.location.pathname
-    const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
-    const logoutUrl =`https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
+    const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
+    const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={styles.log} href={logInUrl}>{t('Header.login')}</a>
 
     return (
@@ -45,7 +45,7 @@ class Header extends Component {
                 {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
-            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('Header.logout')}</span><i className='power icon'></i></a>
+            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('Header.logout')}</span><i className='power icon' /></a>
           </div>
         )}
       </nav>

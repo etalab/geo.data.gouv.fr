@@ -7,7 +7,7 @@ export function fetchMetrics(catalogId) {
 
 export function fetchCatalog(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  return  _get(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
+  return _get(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
 }
 
 export function fetchCatalogs() {
@@ -124,7 +124,7 @@ export function getProducersToAssociate(catalogId) {
 }
 
 export function getOrganizations(organizationsId) {
-  return Promise.all(organizationsId.map( id => getOrganization(id)))
+  return Promise.all(organizationsId.map(id => getOrganization(id)))
 }
 
 export function getDataGouvPublication(datasetId) {

@@ -83,7 +83,6 @@ const handlers = {
     }
   }),
 
-
   // CATALOGS_GET_METRICS
   // ------------------------------------
   [CATALOGS_GET_METRICS_PENDING]: (state, action) => ({
@@ -119,7 +118,6 @@ const handlers = {
       error: action.error
     }
   }),
-
 
   // CATALOGS_GET_HARVESTS
   // ------------------------------------
@@ -157,7 +155,6 @@ const handlers = {
     }
   }),
 
-
   // CATALOGS_SYNC
   // ------------------------------------
   [CATALOGS_SYNC_PENDING]: (state, action) => state,
@@ -183,7 +180,6 @@ const handlers = {
     }
   }),
   [CATALOGS_SYNC_FAILURE]: (state, action) => state,
-
 
   // HARVESTS_GET
   // ------------------------------------

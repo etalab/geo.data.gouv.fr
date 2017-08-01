@@ -1,5 +1,5 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 import Percent from '../../../Statistics/Percent/Percent'
 import { DoughnutChart, formatData } from '../DoughnutChart'
 import data from './data.json'
@@ -25,19 +25,18 @@ describe('<DoughnutChart />', () => {
   })
 
   describe('Specific data behavior', () => {
-
     it('Should render Percent component when only 1 data', () => {
-      const twoDataWrapper = shallow(<DoughnutChart data={{'dataset': 427}} t={translateMock} />)
-      const percent = <Percent value={100} total={100} label={formatedData.labels[0]} icon="database icon" />
+      const twoDataWrapper = shallow(<DoughnutChart data={{ 'dataset': 427 }} t={translateMock} />)
+      const percent = <Percent value={100} total={100} label={formatedData.labels[0]} icon='database icon' />
 
-      expect(twoDataWrapper.containsMatchingElement(percent)).to.deep.equal(true);
-    });
+      expect(twoDataWrapper.containsMatchingElement(percent)).to.deep.equal(true)
+    })
 
     it('Should render Percent component when no data', () => {
       const noDataWrapper = shallow(<DoughnutChart data={{}} t={translateMock} />)
       const noData = <h1>DoughnutChart.noData</h1>
 
-      expect(noDataWrapper.contains(noData)).to.deep.equal(true);
-    });
+      expect(noDataWrapper.contains(noData)).to.deep.equal(true)
+    })
   })
 })

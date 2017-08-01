@@ -33,12 +33,12 @@ export const DoughnutChart = ({ data, t }) => {
   }
 
   if (formatedData.labels.length === 1) {
-    return <Percent value={100} total={100} label={formatedData.labels[0]} icon="database icon" size="large" />
+    return <Percent value={100} total={100} label={formatedData.labels[0]} icon='database icon' size='large' />
   }
 
   return (
     <div className={container}>
-      <Doughnut className="doughnut computer" data={formatedData} width={360} />
+      <Doughnut className='doughnut computer' data={formatedData} width={360} />
     </div>
   )
 }

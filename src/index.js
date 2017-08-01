@@ -5,11 +5,9 @@ import createPiwikConnector from 'piwik-react-router'
 
 import createStore from './store/createStore'
 
-
 // Store Initialization
 // ------------------------------------
 const store = createStore(window.__INITIAL_STATE__)
-
 
 // Piwik
 // ------------------------------------
@@ -19,9 +17,8 @@ if (PIWIK_URL && PIWIK_SITE_ID) {
   createPiwikConnector({
     url: PIWIK_URL,
     siteId: PIWIK_SITE_ID
-  }).connectToHistory(browserHistory);
+  }).connectToHistory(browserHistory)
 }
-
 
 // Render Setup
 // ------------------------------------
@@ -37,7 +34,6 @@ let render = () => {
     MOUNT_NODE
   )
 }
-
 
 // Development Tools
 // ------------------------------------
@@ -73,7 +69,6 @@ if (__DEV__) {
     )
   }
 }
-
 
 // Let's Go!
 // ------------------------------------
