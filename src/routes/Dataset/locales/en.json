@@ -3,6 +3,14 @@
     "unknown": "Unknown"
   },
 
+  "CheckLicense": {
+    "licensesList": "Recognized licenses are",
+    "noLicenses": "No licenses could be found.",
+    "validLicense": "The {{ license }} license is valid.",
+    "unrecognizedLicense": "The {{ license }} license is not recognized.",
+    "title": "License"
+  },
+
   "CheckProducers": {
     "identifiedProducer": "At least one producer is identified.",
     "unindentifiedProducer": "The producer has not been identified.",

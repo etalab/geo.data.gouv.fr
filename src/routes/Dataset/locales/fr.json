@@ -3,6 +3,14 @@
     "unknown": "Non renseigné"
   },
 
+  "CheckLicense": {
+    "licensesList": "Les licenses reconnue sont",
+    "noLicenses": "Aucune licence n’a pu être trouvée.",
+    "validLicense": "La licence {{ license }} est valide.",
+    "unrecognizedLicense": "La licence {{ license }} n’est pas reconnue.",
+    "title": "Licence"
+  },
+
   "CheckProducers": {
     "identifiedProducer": "Au moins un producteur est identifié.",
     "unindentifiedProducer": "Le producteur n’a pas été identifié.",

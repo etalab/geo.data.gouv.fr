@@ -1,18 +1,19 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Check from './Check'
 
 import { ACCEPTED_LICENSES } from 'common/helpers/dataGouvChecks'
 
-class CheckLicense extends React.PureComponent {
+export class CheckLicense extends React.PureComponent {
   check() {
-    const { license } = this.props
+    const { license, t } = this.props
 
     let msg
     let content = (
       <div>
-        Les licenses reconnue sont :
+        {t('CheckLicense.licensesList')} :
         <ul>
           {Object.entries(ACCEPTED_LICENSES).map(([key, li]) => (
             <li key={key}>
@@ -24,23 +25,23 @@ class CheckLicense extends React.PureComponent {
     )
 
     if (!license) {
-      msg = 'Aucune licence n’a pu être trouvée.'
+      msg = t('CheckLicense.noLicenses')
     } else if (ACCEPTED_LICENSES[license]) {
-      msg = `La licence ${ACCEPTED_LICENSES[license].name} est valide.`
+      msg = t('CheckLicense.validLicense')
       content = undefined
     } else {
-      msg = `La licence ${license} n’est pas reconnue.`
+      msg = t('CheckLicense.unrecognizedLicense')
     }
 
     return { msg, content }
   }
 
   render() {
-    const { valid } = this.props
+    const { valid, t } = this.props
     const { msg, content } = this.check()
 
     return (
-      <Check title='Licence' isValid={valid} msg={msg}>
+      <Check title={t('CheckLicense.title')} isValid={valid} msg={msg}>
         {content}
       </Check>
     )
@@ -49,11 +50,12 @@ class CheckLicense extends React.PureComponent {
 
 CheckLicense.propTypes = {
   valid: PropTypes.bool,
-  license: PropTypes.string
+  license: PropTypes.string,
+  t: PropTypes.func.isRequired
 }
 
 CheckLicense.defaultProps = {
   valid: false
 }
 
-export default CheckLicense
+export default translate('Dataset')(CheckLicense)
