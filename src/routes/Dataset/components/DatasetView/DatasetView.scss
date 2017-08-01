@@ -1,5 +1,8 @@
 .container {
   margin: 3em;
+}
+
+.inner {
   display: flex;
 
   @media (max-width: 768px) {
