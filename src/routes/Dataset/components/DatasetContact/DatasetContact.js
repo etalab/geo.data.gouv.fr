@@ -1,15 +1,16 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import DatasetContactLabel from '../DatasetContactLabel'
 
 import styles from './DatasetContact.scss'
 
-const DatasetContact = ({ contact }) => (
+const DatasetContact = ({ contact, t }) => (
   <div className={styles.container}>
     <div className={styles.header}>
       <div className={styles.name}>
-        {contact.organizationName || 'Non renseigné'}
+        {contact.organizationName || t('DatasetContact.unknown')}
       </div>
 
       <DatasetContactLabel role={contact.role} />
@@ -23,13 +24,13 @@ const DatasetContact = ({ contact }) => (
 
     <div className={styles.contact}>
       <div>
-        <i className='call icon' /> {contact.phoneNumber || 'Non renseigné'}
+        <i className='call icon' /> {contact.phoneNumber || t('DatasetContact.unknown')}
       </div>
 
       <div>
         <i className='mail outline icon' /> {contact.email ? (
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        ) : 'Non renseigné'}
+        ) : t('DatasetContact.unknown')}
       </div>
     </div>
   </div>
@@ -45,7 +46,9 @@ DatasetContact.propTypes = {
     country: PropTypes.string,
     phoneNumber: PropTypes.string,
     email: PropTypes.string
-  }).isRequired
+  }).isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
-export default DatasetContact
+export default translate('Dataset')(DatasetContact)
