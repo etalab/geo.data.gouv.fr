@@ -5,9 +5,7 @@ import { Button } from 'common/components/Buttons'
 
 import { checkLicense, checkProducers, checkDataAvailability } from 'common/helpers/dataGouvChecks'
 
-import CheckLicense from 'common/modules/Datasets/components/Checks/CheckLicense'
-import CheckProducers from 'common/modules/Datasets/components/Checks/CheckProducers'
-import CheckDataAvailability from 'common/modules/Datasets/components/Checks/CheckDataAvailability'
+import { CheckLicense, CheckProducers, CheckDataAvailability } from '../DatasetChecks'
 
 import styles from './DatasetDataGouvPublication.scss'
 

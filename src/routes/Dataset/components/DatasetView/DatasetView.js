@@ -104,9 +104,11 @@ class DatasetView extends React.PureComponent {
                   )}
                 </DatasetBlock>
 
-                <DatasetBlock title='Discussions'>
-                  <Discussions remoteId={publication.remoteId}/>
-                </DatasetBlock>
+                {publication && publication.remoteId && (
+                  <DatasetBlock title='Discussions'>
+                    <Discussions remoteId={publication.remoteId}/>
+                  </DatasetBlock>
+                )}
 
                 <DatasetBlock title='Filtres'>
                   <DatasetFilters
