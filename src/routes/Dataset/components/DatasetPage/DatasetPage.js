@@ -9,6 +9,8 @@ import styles from './DatasetPage.scss'
 
 class DatasetPage extends React.PureComponent {
   static propTypes = {
+    datasetId: PropTypes.string.isRequired,
+
     dataset: PropTypes.shape({
       dataset: PropTypes.object,
 

@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import { browserHistory, Link } from 'react-router'
 import { translate } from 'react-i18next'
 
@@ -7,9 +9,18 @@ import CatalogPreview from 'common/components/CatalogPreview'
 
 import styles from './HomePage.scss'
 
-class HomePage extends Component {
+class HomePage extends React.PureComponent {
+  static propTypes = {
+    catalogs: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    })).isRequired,
+
+    t: PropTypes.func.isRequired
+  }
+
   componentDidMount() {
     const { t } = this.props
+
     document.title = t('HomePage.home')
   }
 

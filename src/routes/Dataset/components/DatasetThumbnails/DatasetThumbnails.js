@@ -5,7 +5,11 @@ import styles from './DatasetThumbnails.scss'
 
 class DatasetThumbnails extends React.PureComponent {
   static propTypes = {
-    recordId: PropTypes.string.isRequired
+    recordId: PropTypes.string.isRequired,
+    thumbnails: PropTypes.arrayOf(PropTypes.shape({
+      originalUrlHash: PropTypes.string.isRequired,
+      description: PropTypes.string
+    })).isRequired
   }
 
   constructor(props) {

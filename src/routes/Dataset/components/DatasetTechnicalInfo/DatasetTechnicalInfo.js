@@ -42,8 +42,8 @@ const DatasetTechnicalInfo = ({ dataset, status }) => {
         <div>Type : <b>{type || 'inconnu'}</b></div>
 
         <div>
-            Licence : {license.name ? (
-              <a href={license.link}>{license.name}</a>
+          Licence : {license.name ? (
+            <a href={license.link}>{license.name}</a>
           ) : (
             <b>license</b>
           )}
@@ -79,11 +79,11 @@ DatasetTechnicalInfo.propTypes = {
         unit: PropTypes.string.isRequired
       })
     }).isRequired,
+  }).isRequired,
 
-    status: PropTypes.shape({
-      status: PropTypes.string.isRequired
-    })
-  }).isRequired
+  status: PropTypes.shape({
+    status: PropTypes.string.isRequired
+  })
 }
 
 export default DatasetTechnicalInfo
