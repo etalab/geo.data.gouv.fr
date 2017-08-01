@@ -1,13 +1,17 @@
 import React from 'react'
-import moment from 'moment'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { translate } from 'react-i18next'
 
 import styles from './LanguageSelection.scss'
 
 class LanguageSelection extends React.PureComponent {
-  static PropTypes = {
-    language: PropTypes.string.isRequired
+  static propTypes = {
+    language: PropTypes.string.isRequired,
+    t: PropTypes.func.isRequired,
+    i18n: PropTypes.shape({
+      changeLanguage: PropTypes.func.isRequired
+    }).isRequired
   }
 
   changeLanguage = e => {

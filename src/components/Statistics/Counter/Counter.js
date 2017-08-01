@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
+
 import { container, defaultLabel, large, medium, small, success, warning, error } from './Counter.scss'
 
 const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', title = '' }) => {
@@ -28,6 +30,16 @@ const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', ti
       { labelDiv }
     </div>
   )
+}
+
+Counter.propTypes = {
+  value: PropTypes.number.isRequired,
+  label: PropTypes.string.isRequired,
+  unit: PropTypes.string,
+  size: PropTypes.string,
+  color: PropTypes.string,
+  icon: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default Counter

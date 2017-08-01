@@ -12,7 +12,8 @@ class SearchInput extends React.PureComponent {
     hasButton: PropTypes.bool,
     buttonLabel: PropTypes.string,
 
-    onSearch: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired
   }
 
   static defaultProps = {

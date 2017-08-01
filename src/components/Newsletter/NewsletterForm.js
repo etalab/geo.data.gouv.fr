@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import { getUser } from '../../fetch/fetch'
@@ -6,7 +7,11 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/compone
 
 import style from './NewsletterForm.scss'
 
-class NewsletterForm extends Component {
+class NewsletterForm extends React.Component {
+  static propTypes = {
+    t: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {
