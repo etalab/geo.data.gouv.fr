@@ -1,8 +1,4 @@
 {
-  "DatasetContact": {
-    "unknown": "Non renseigné"
-  },
-
   "CheckLicense": {
     "licensesList": "Les licenses reconnue sont",
     "noLicenses": "Aucune licence n’a pu être trouvée.",
@@ -15,5 +11,15 @@
     "identifiedProducer": "Au moins un producteur est identifié.",
     "unindentifiedProducer": "Le producteur n’a pas été identifié.",
     "title": "Producteur"
+  },
+
+  "DatasetContact": {
+    "unknown": "Non renseigné"
+  },
+
+  "CheckDataAvailability": {
+    "distributionAvailable": "Au moins une des distribution est disponible.",
+    "distributionUnavailable": "Aucune distribution n’a été trouvée.",
+    "title": "Disponibilité de la donnée"
   }
 }

@@ -1,8 +1,4 @@
 {
-  "DatasetContact": {
-    "unknown": "Unknown"
-  },
-
   "CheckLicense": {
     "licensesList": "Recognized licenses are",
     "noLicenses": "No licenses could be found.",
@@ -15,5 +11,15 @@
     "identifiedProducer": "At least one producer is identified.",
     "unindentifiedProducer": "The producer has not been identified.",
     "title": "Producer"
+  },
+
+  "DatasetContact": {
+    "unknown": "Unknown"
+  },
+
+  "CheckDataAvailability": {
+    "distributionAvailable": "At least one of the distribution is available.",
+    "distributionUnavailable": "No distribution found.",
+    "title": "Data availability"
   }
 }
