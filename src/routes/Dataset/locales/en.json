@@ -1,5 +1,11 @@
 {
   "DatasetContact": {
     "unknown": "Unknown"
+  },
+
+  "CheckProducers": {
+    "identifiedProducer": "At least one producer is identified.",
+    "unindentifiedProducer": "The producer has not been identified.",
+    "title": "Producer"
   }
 }
