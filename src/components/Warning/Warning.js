@@ -28,9 +28,7 @@ class Warning extends React.PureComponent {
   render() {
     const { displayed } = this.state
 
-    if (!displayed) {
-      return null
-    }
+    if (!displayed) return
 
     const { error, title, children } = this.props
     const color = error ? styles.errorStyle : styles.warning
