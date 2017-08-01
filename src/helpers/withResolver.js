@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { cancelAllPromises, waitForDataAndSetState } from './components'
 
 import Errors from '../components/Errors/Errors'
-import ContentLoader from '../components/Loader/ContentLoader'
+import Loader from '../components/Loader'
 
 export default function withResolver(WrappedComponent, dependencies) {
   return class ComponentWithResolver extends Component {
@@ -33,7 +33,7 @@ export default function withResolver(WrappedComponent, dependencies) {
       }
 
       if (!dependenciesReady) {
-        return <ContentLoader />
+        return <Loader loading />
       }
 
       return <WrappedComponent {...this.state} {...this.props} />

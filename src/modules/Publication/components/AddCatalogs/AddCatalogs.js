@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import ContentLoader from '../../../../components/Loader/ContentLoader'
+import Loader from '../../../../components/Loader'
 import AddButton from '../../../../components/Buttons/AddButton'
 import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
 
@@ -27,7 +27,7 @@ class AddCatalogs extends Component {
   render() {
     const { catalogs } = this.state
     const { sourceCatalogs, addCatalog } = this.props
-    if (!this.state.catalogs) return <div className={loader}><ContentLoader /></div>
+    if (!this.state.catalogs) return <Loader loading className={loader} />
 
     const candidateCatalogs = getCandidateCatalogs(catalogs, sourceCatalogs)
     const sortedCatalogs = getCatalogOrderByScore(candidateCatalogs)
