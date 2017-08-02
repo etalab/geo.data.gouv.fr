@@ -32,5 +32,43 @@
     "canNot": "can not",
     "hide": "Hide details",
     "show": "Show details"
+  },
+
+  "DatasetView": {
+    "obsoleteWarning": "Attention this dataset is considered as {{status}} by its producer",
+
+    "noLinks": "No links available.",
+    "noDownloads": "No data is available for download.",
+
+    "status": {
+      "completed": "completed",
+      "historicalArchive": "archived",
+      "obsolete": "obsolete",
+      "onGoing": "on going",
+      "planned": "planned",
+      "required": "update required",
+      "underDevelopment": "under development"
+    },
+
+    "consequences": {
+      "obsolete": "Data may be incomplete or out of date",
+      "underDevelopment": "Some data may be inaccurate or will change"
+    },
+
+    "section": {
+      "technicalInformations": "Technical Informations",
+      "downloads": "Downloads",
+      "links": "Links",
+      "discussions": "Discussions",
+      "filters": "Filters",
+      "producers": "Producers",
+      "preview": "Preview data",
+      "spatialExtent": "Spatial Extent",
+      "dgvPublication": "Publication on data.gouv.fr",
+      "contacts": "Contacts",
+      "contributions": "Contributions"
+    },
+
+    "id": "Dataset ID"
   }
 }

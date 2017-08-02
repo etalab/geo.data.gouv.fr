@@ -32,5 +32,43 @@
     "canNot": "ne peut pas",
     "hide": "Masquer le détail",
     "show": "Afficher le détail"
+  },
+
+  "DatasetView": {
+    "obsoleteWarning": "Attention ce jeu de données est considéré comme {{status}} par son producteur",
+
+    "noLinks": "Aucun lien disponible.",
+    "noDownloads": "Aucune donnée n’est téléchargeable.",
+
+    "status": {
+      "completed": "terminée",
+      "historicalArchive": "archivée",
+      "obsolete": "obsolète",
+      "onGoing": "en cours",
+      "planned": "planifiée",
+      "required": "mise à jour requise",
+      "underDevelopment": "en construction"
+    },
+
+    "consequences": {
+      "obsolete": "Les données peuvent être incomplètes ou ne plus être à jour",
+      "underDevelopment": "Certaines données peuvent être erronées ou vont subir des changements"
+    },
+
+    "section": {
+      "technicalInformations": "Informations techniques",
+      "downloads": "Téléchargements",
+      "links": "Liens",
+      "discussions": "Discussions",
+      "filters": "Filtres",
+      "producers": "Producteur",
+      "preview": "Aperçu des données",
+      "spatialExtent": "Étendue spatiale",
+      "dgvPublication": "Publication sur data.gouv.fr",
+      "contacts": "Contacts",
+      "contributions": "Contributions",
+
+      "id": "Identifiant du jeu de données"
+    }
   }
 }

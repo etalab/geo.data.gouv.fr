@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
@@ -18,8 +19,6 @@ import DatasetThumbnails from '../DatasetThumbnails'
 import DatasetSpatialExtent from '../DatasetSpatialExtent'
 import DatasetDataGouvPublication from '../DatasetDataGouvPublication'
 import DatasetContactList from '../DatasetContactList'
-
-import { isWarningStatus, statusTranslate } from './status'
 
 import styles from './DatasetView.scss'
 
@@ -56,7 +55,10 @@ class DatasetView extends React.PureComponent {
     }).isRequired,
 
     getDataGouvDataset: PropTypes.func.isRequired,
-    fetchGeoJson: PropTypes.func.isRequired
+    fetchGeoJson: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired,
+    i18n: PropTypes.object.isRequired
   }
 
   componentDidMount() {
@@ -68,15 +70,15 @@ class DatasetView extends React.PureComponent {
   }
 
   render() {
-    const { dataset, publication, dataGouvDataset, fetchGeoJson } = this.props
-    const status = statusTranslate[dataset.metadata.status]
+    const { dataset, publication, dataGouvDataset, fetchGeoJson, t, i18n } = this.props
+    const status = dataset.metadata.status
 
     return (
       <DocumentTitle title={dataset.metadata.title}>
         <div>
-          {isWarningStatus(dataset.metadata.status) && (
-            <Warning title={`Attention ce jeu de données est considéré comme ${status.status} par son producteur`}>
-              {status.consequences}
+          {i18n.exists(`Dataset:DatasetView.consequences.${status}`) && (
+            <Warning title={t('DatasetView.obsoleteWarning', { status: t(`DatasetView.status.${status}`) })}>
+              {t(`Dataset:DatasetView.consequences.${status}`)}
             </Warning>
           )}
           <div className={styles.container}>
@@ -84,32 +86,32 @@ class DatasetView extends React.PureComponent {
               <div className={styles.main}>
                 <DatasetHeader dataset={dataset} />
 
-                <DatasetBlock title='Informations techniques'>
+                <DatasetBlock title={t('DatasetView.section.technicalInformations')}>
                   <DatasetTechnicalInfo dataset={dataset} status={status} />
                 </DatasetBlock>
 
-                <DatasetBlock title='Téléchargements'>
+                <DatasetBlock title={t('DatasetView.section.downloads')}>
                   {dataset.dataset.distributions.length > 0 ? (
                     <DatasetDownloadList distributions={dataset.dataset.distributions} fetchGeoJson={fetchGeoJson} />
                   ) : (
-                    <div>Aucune donnée n'est téléchargeable.</div>
+                    <div>{t('noDownloads')}</div>
                   )}
                 </DatasetBlock>
 
                 {dataset.metadata.links.length > 0 && (
-                  <DatasetBlock title='Liens'>
+                  <DatasetBlock title={t('DatasetView.section.links')}>
                     <DatasetLinks links={dataset.metadata.links} />
                   </DatasetBlock>
                 )}
 
                 {publication && publication.remoteId && (
-                  <DatasetBlock title='Discussions'>
+                  <DatasetBlock title={t('DatasetView.section.discussions')}>
                     <Discussions remoteId={publication.remoteId} />
                   </DatasetBlock>
                 )}
 
                 {(dataset.metadata.keywords.length > 0 || dataset.organizations.length > 0) && (
-                  <DatasetBlock title='Filtres'>
+                  <DatasetBlock title={t('DatasetView.section.filters')}>
                     <DatasetFilters
                       keywords={dataset.metadata.keywords}
                       organizations={dataset.organizations}
@@ -120,7 +122,7 @@ class DatasetView extends React.PureComponent {
 
               <div className={styles.aside}>
                 {publication && publication.remoteId && (
-                  <DatasetBlock title='Producteur'>
+                  <DatasetBlock title={t('DatasetView.section.producer')}>
                     <Loader loading={dataGouvDataset.pending}>
                       {dataGouvDataset.dataset && (
                         <DatasetProducer organization={dataGouvDataset.dataset.organization} />
@@ -130,29 +132,29 @@ class DatasetView extends React.PureComponent {
                 )}
 
                 {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0 && (
-                  <DatasetBlock title='Aperçu des données'>
+                  <DatasetBlock title={t('DatasetView.section.preview')}>
                     <DatasetThumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
                   </DatasetBlock>
                 )}
 
                 {dataset.metadata.spatialExtent && (
-                  <DatasetBlock title='Étendue spatiale'>
+                  <DatasetBlock title={t('DatasetView.section.spatialExtent')}>
                     <DatasetSpatialExtent extent={dataset.metadata.spatialExtent} />
                   </DatasetBlock>
                 )}
 
-                <DatasetBlock title='Publication sur data.gouv.fr'>
+                <DatasetBlock title={t('DatasetView.section.dgvPublication')}>
                   <DatasetDataGouvPublication dataset={dataset} publication={publication} />
                 </DatasetBlock>
 
                 {dataset.metadata.contacts.length > 0 && (
-                  <DatasetBlock title='Contacts'>
+                  <DatasetBlock title={t('DatasetView.section.contacts')}>
                     <DatasetContactList contacts={dataset.metadata.contacts} />
                   </DatasetBlock>
                 )}
 
                 {dataset.metadata.credit && (
-                  <DatasetBlock title='Contributions'>
+                  <DatasetBlock title={t('DatasetView.section.contributions')}>
                     <div>
                       {dataset.metadata.credit}
                     </div>
@@ -162,7 +164,7 @@ class DatasetView extends React.PureComponent {
             </div>
 
             <div className={styles.footer}>
-              <div>Identifiant du jeu de données : <b>{dataset.metadata.id}</b></div>
+              <div>{t('DatasetView.id')} : <b>{dataset.metadata.id}</b></div>
             </div>
           </div>
         </div>
@@ -171,4 +173,4 @@ class DatasetView extends React.PureComponent {
   }
 }
 
-export default DatasetView
+export default translate('Dataset')(DatasetView)
