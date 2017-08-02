@@ -15,13 +15,13 @@ describe('<CheckProducers />', () => {
     const organizations = []
     const wrapper = shallow(<CheckProducers organizations={organizations} valid={false} />)
 
-    expect(wrapper.html()).to.contain('Le producteur n&#x27;a pas été identifié.')
+    expect(wrapper.html()).to.contain('Le producteur n’a pas été identifié.')
   })
 
   it('should return false when the array is undefined', () => {
     const organizations = undefined
     const wrapper = shallow(<CheckProducers organizations={organizations} valid={false} />)
 
-    expect(wrapper.html()).to.contain('Le producteur n&#x27;a pas été identifié.')
+    expect(wrapper.html()).to.contain('Le producteur n’a pas été identifié.')
   })
 })

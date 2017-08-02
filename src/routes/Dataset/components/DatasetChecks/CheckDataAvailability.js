@@ -1,26 +1,40 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Check from './Check'
 import CheckItem from './CheckItem'
 
-const DatasetDataAvailability = ({ valid, distributions }) => {
-  let content = null
+const CheckDataAvailability = ({ valid, distributions }) => {
   const msg = valid
     ? 'Au moins une des distribution est disponible.'
-    : 'Aucune distribution n\'a été trouvée.'
-
-  if (valid) {
-    content = distributions.map((distribution, idx) => {
-      const name = distribution.typeName || distribution.layer || distribution.name
-      return <CheckItem key={idx} name={name} valid={distribution.available} />
-    })
-  }
+    : 'Aucune distribution n’a été trouvée.'
 
   return (
     <Check title='Disponibilité de la donnée' isValid={valid} msg={msg}>
-      {content}
+      {valid && distributions.map(distribution => (
+        <CheckItem
+          key={distribution._id}
+          name={distribution.typeName || distribution.layer || distribution.name}
+          valid={distribution.available}
+        />
+      ))}
     </Check>
   )
 }
 
-export default DatasetDataAvailability
+CheckDataAvailability.propTypes = {
+  valid: PropTypes.bool,
+  distributions: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    available: PropTypes.bool,
+    typeName: PropTypes.string,
+    layer: PropTypes.string,
+    name: PropTypes.string
+  })).isRequired
+}
+
+CheckDataAvailability.defaultProps = {
+  valid: false
+}
+
+export default CheckDataAvailability

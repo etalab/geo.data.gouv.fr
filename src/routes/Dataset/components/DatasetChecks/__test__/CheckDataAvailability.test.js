@@ -15,19 +15,19 @@ describe('<DatasetDataAvailability />', () => {
     const distributions = [{ available: false }, { available: false }]
     const wrapper = shallow(<DatasetDataAvailability distributions={distributions} valid={false} />)
 
-    expect(wrapper.html()).to.contain('Aucune distribution n&#x27;a été trouvée.')
+    expect(wrapper.html()).to.contain('Aucune distribution n’a été trouvée.')
   })
 
   it('should return false when the array is empty', () => {
     const distributions = []
     const wrapper = shallow(<DatasetDataAvailability distributions={distributions} valid={false} />)
 
-    expect(wrapper.html()).to.contain('Aucune distribution n&#x27;a été trouvée.')
+    expect(wrapper.html()).to.contain('Aucune distribution n’a été trouvée.')
   })
 
   it('should return false when the array is undefined', () => {
     const wrapper = shallow(<DatasetDataAvailability valid={false} />)
 
-    expect(wrapper.html()).to.contain('Aucune distribution n&#x27;a été trouvée.')
+    expect(wrapper.html()).to.contain('Aucune distribution n’a été trouvée.')
   })
 })
