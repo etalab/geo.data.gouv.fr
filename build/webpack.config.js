@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 const project = require('../project.config')
@@ -74,6 +75,16 @@ const config = {
       __TEST__,
       __PROD__
     }, project.globals)),
+
+    new UnusedFilesWebpackPlugin({
+      pattern: `${project.srcDir}/**/*.*`,
+      globOptions: {
+        ignore: [
+          '**/__test__/**',
+          '**/__mocks__/**',
+        ]
+      }
+    }),
 
     new StyleLintPlugin()
   ]
