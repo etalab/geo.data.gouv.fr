@@ -21,7 +21,7 @@ const CatalogHarvestDelta = ({ delta }) => {
   return <div>0</div>
 }
 
-CatalogHarvestDelta.PropTypes = {
+CatalogHarvestDelta.propTypes = {
   delta: PropTypes.number
 }
 

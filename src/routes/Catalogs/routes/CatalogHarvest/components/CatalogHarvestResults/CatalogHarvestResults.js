@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const CatalogHarvestResults = ({ logs }) => (
   <ul>
@@ -9,5 +10,9 @@ const CatalogHarvestResults = ({ logs }) => (
     ))}
   </ul>
 )
+
+CatalogHarvestResults.propTypes = {
+  logs: PropTypes.arrayOf(PropTypes.string).isRequired
+}
 
 export default CatalogHarvestResults
