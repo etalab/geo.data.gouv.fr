@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { find } from 'lodash'
 
-import { item } from './OtherProducersItem.scss'
+import styles from './OtherProducersItem.scss'
 
 const OtherProducersItem = ({ organizations, producer }) => {
   const organization = find(organizations, organization => organization._id === producer.associatedTo)
 
   return (
-    <div className={item}>
+    <div className={styles.item}>
       Rattaché à <a href={`https://www.data.gouv.fr/fr/organizations/${organization._id}/`}>
         {organization.name}
       </a>

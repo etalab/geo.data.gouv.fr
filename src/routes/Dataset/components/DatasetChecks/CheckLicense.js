@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Check from './Check'
 
-import { ACCEPTED_LICENSES } from 'common//helpers/dataGouvChecks'
+import { ACCEPTED_LICENSES } from 'common/helpers/dataGouvChecks'
 
 class CheckLicense extends React.PureComponent {
   check() {
