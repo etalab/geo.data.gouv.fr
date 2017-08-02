@@ -96,13 +96,11 @@ class DatasetView extends React.PureComponent {
                   )}
                 </DatasetBlock>
 
-                <DatasetBlock title='Liens'>
-                  {dataset.metadata.links.length > 0 ? (
+                {dataset.metadata.links.length > 0 && (
+                  <DatasetBlock title='Liens'>
                     <DatasetLinks links={dataset.metadata.links} />
-                  ) : (
-                    <div>Aucun lien disponible.</div>
-                  )}
-                </DatasetBlock>
+                  </DatasetBlock>
+                )}
 
                 {publication && publication.remoteId && (
                   <DatasetBlock title='Discussions'>
