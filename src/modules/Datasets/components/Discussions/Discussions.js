@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 
 import Discussion from './Discussion'
@@ -51,7 +53,8 @@ class Discussions extends Component {
       comment,
       subject: {
         id: remoteId,
-        class: 'Dataset' }
+        class: 'Dataset'
+      }
     }
 
     createNewDiscussion(newDiscussion, discussionId)

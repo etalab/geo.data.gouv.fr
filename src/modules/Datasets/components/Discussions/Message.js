@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react'
 import moment from 'moment'
 import { doneSince } from '../../../../helpers/doneSince'
