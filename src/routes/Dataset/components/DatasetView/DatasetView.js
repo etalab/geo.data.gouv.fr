@@ -145,9 +145,11 @@ class DatasetView extends React.PureComponent {
                   <DatasetDataGouvPublication dataset={dataset} publication={publication} />
                 </DatasetBlock>
 
-                <DatasetBlock title='Contacts'>
-                  <DatasetContactList contacts={dataset.metadata.contacts} />
-                </DatasetBlock>
+                {dataset.metadata.contacts.length > 0 && (
+                  <DatasetBlock title='Contacts'>
+                    <DatasetContactList contacts={dataset.metadata.contacts} />
+                  </DatasetBlock>
+                )}
 
                 {dataset.metadata.credit && (
                   <DatasetBlock title='Contributions'>
