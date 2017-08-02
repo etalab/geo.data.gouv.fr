@@ -71,7 +71,7 @@ class DatasetPreview extends React.PureComponent {
               />
             ) : (
               <Table
-                data={this.getTableData(geoJson.data)}
+                data={geoJson.data && this.getTableData(geoJson.data)}
                 className={styles.table}
                 itemsPerPage={20}
                 pageButtonLimit={20}
