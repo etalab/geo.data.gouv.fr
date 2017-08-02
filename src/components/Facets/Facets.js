@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { forEach, sortBy } from 'lodash'
+
 import FacetsGroup from './FacetsGroup'
 
-class Facets extends Component {
+class Facets extends React.PureComponent {
   render() {
     const { facets, filters, addFilter } = this.props
     if (!facets) return <div />
@@ -27,6 +29,12 @@ class Facets extends Component {
       </div>
     )
   }
+}
+
+Facets.propTypes = {
+  facets: PropTypes.object,
+  filters: PropTypes.any,
+  addFilter: PropTypes.func
 }
 
 export default Facets

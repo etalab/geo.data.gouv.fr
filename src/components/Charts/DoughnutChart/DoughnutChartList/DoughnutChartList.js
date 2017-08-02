@@ -1,15 +1,23 @@
 import React from 'react'
-import { container, label } from './DoughnutChartList.scss'
+import PropTypes from 'prop-types'
 
-const DoughnutChartList = ({ data }) => {
-  const list = data.map((item, idx) =>
-    <div key={idx} className={`ui small ${item.colorName} ${label} label`}>
-      {item.label}
-    </div>)
+import styles from './DoughnutChartList.scss'
 
-  return (
-    <div className={container}>{list}</div>
-  )
+const DoughnutChartList = ({ data }) => (
+  <div className={styles.container}>
+    {data.map((item, idx) => (
+      <div key={idx} className={`ui small ${item.colorName} ${styles.label} label`}>
+        {item.label}
+      </div>
+    ))}
+  </div>
+)
+
+DoughnutChartList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    colorName: PropTypes.string
+  }))
 }
 
 export default DoughnutChartList

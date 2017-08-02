@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Counter from '../Counter/Counter'
 
 const color = (percent) => {
@@ -6,13 +8,14 @@ const color = (percent) => {
     return 'error'
   } else if (percent > 55) {
     return 'success'
-  } else {
-    return 'warning'
   }
+
+  return 'warning'
 }
 
-const Percent = (props) => {
+const Percent = props => {
   const { value, total } = props
+
   const percent = value ? Math.floor((value / total) * 100) : 0
 
   return (
@@ -20,8 +23,14 @@ const Percent = (props) => {
       {...props}
       value={percent}
       unit='%'
-      color={color(percent)} />
+      color={color(percent)}
+    />
   )
+}
+
+Percent.propTypes = {
+  value: PropTypes.number,
+  total: PropTypes.number.isRequired
 }
 
 export default Percent

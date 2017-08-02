@@ -1,13 +1,18 @@
 import React from 'react'
-import { container } from './Chart.scss'
+import PropTypes from 'prop-types'
 
-const Chart = ({ chart, description }) => {
-  return (
-    <div className={container}>
-      <h3>{description}</h3>
-      {chart}
-    </div>
-  )
+import styles from './Chart.scss'
+
+const Chart = ({ chart, description }) => (
+  <div className={styles.container}>
+    <h3>{description}</h3>
+    {chart}
+  </div>
+)
+
+Chart.propTypes = {
+  chart: PropTypes.node.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 export default Chart

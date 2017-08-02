@@ -1,6 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-
 import { Line } from 'react-chartjs-2'
 
 import { colors } from '../../../tools.js'
@@ -32,6 +32,13 @@ export const Histogram = ({ data, width, height, t }) => {
   }
 
   return <Line data={formatedData} width={width} height={height} options={options} />
+}
+
+Histogram.propTypes = {
+  data: PropTypes.array,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  t: PropTypes.func.isRequired
 }
 
 export default translate('Common')(Histogram)

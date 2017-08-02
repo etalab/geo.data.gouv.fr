@@ -1,13 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Tags = ({ tags }) => {
-  let arr = []
+const Tags = ({ tags }) => (
+  <div>
+    {tags.map((tag, idx) => (
+      <a className='ui small tag label' key={idx}>
+        {tag}
+      </a>
+    ))}
+  </div>
+)
 
-  for (var i = 0; i < tags.length; i++) {
-    arr.push(<a className='ui small tag label' key={i}>{tags[i]}</a>)
-  }
-
-  return (<div>{arr}</div>)
+Tags.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default Tags

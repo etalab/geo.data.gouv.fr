@@ -1,16 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { pull } from 'lodash'
 import { Link } from 'react-router'
+
 import Errors from '../Errors/Errors'
 import RelatedProducers from './RelatedProducers'
 import UnrelatedProducers from './UnrelatedProducers'
 import OtherProducers from './OtherProducers'
+
 import { getRelated, getUnrelated, getRelatedToOther } from '../../helpers/producers'
 import { getOrganizationProducers, dissociateProducer, associateProducer } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import { previousPage } from './Producers.scss'
 
-class Producers extends Component {
+import styles from './Producers.scss'
+
+class Producers extends React.Component {
+  static propTypes = {
+    organization: PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    }).isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -69,7 +79,7 @@ class Producers extends Component {
         <RelatedProducers producers={related} action={(producer) => this.dissociate(producer)} />
         <UnrelatedProducers producers={unrelatedProducers} action={(producer) => this.associate(producer)} />
         <OtherProducers producers={relateToOther} />
-        <div className={previousPage}>
+        <div className={styles.previousPage}>
           <Link to={`/publication/${organization._id}`}><i className='arrow left icon' /> Retour</Link>
         </div>
       </div>

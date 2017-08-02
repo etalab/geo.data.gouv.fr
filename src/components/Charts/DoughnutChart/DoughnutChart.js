@@ -1,12 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-
 import { Doughnut } from 'react-chartjs-2'
 
 import Percent from '../../Statistics/Percent/Percent'
 import { colors } from '../../../tools.js'
 
-import { container } from './DoughnutChart.scss'
+import styles from './DoughnutChart.scss'
 
 export function formatData(data, t) {
   const labels = Object.keys(data)
@@ -37,10 +37,15 @@ export const DoughnutChart = ({ data, t }) => {
   }
 
   return (
-    <div className={container}>
+    <div className={styles.container}>
       <Doughnut className='doughnut computer' data={formatedData} width={360} />
     </div>
   )
+}
+
+DoughnutChart.propTypes = {
+  data: PropTypes.object,
+  t: PropTypes.func.isRequired
 }
 
 export default translate('Common')(DoughnutChart)

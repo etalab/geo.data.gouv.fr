@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
 import { container } from './Errors.scss'
@@ -15,6 +16,10 @@ const Errors = ({ errors }) => {
       </div>
     </DocumentTitle>
   )
+}
+
+Errors.propTypes = {
+  errors: PropTypes.array.isRequired
 }
 
 export default Errors

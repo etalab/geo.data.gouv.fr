@@ -2,21 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-import { container, defaultLabel, large, medium, small, success, warning, error } from './Counter.scss'
+import styles from './Counter.scss'
 
 const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', title = '' }) => {
-  const labelSize = cx(medium, {
-    [large]: size === 'large',
-    [small]: size === 'small',
+  const labelSize = cx(styles.medium, {
+    [styles.large]: size === 'large',
+    [styles.small]: size === 'small',
   })
 
-  const labelColor = cx(medium, {
-    [success]: color === 'success',
-    [warning]: color === 'warning',
-    [error]: color === 'error',
+  const labelColor = cx(styles.medium, {
+    [styles.success]: color === 'success',
+    [styles.warning]: color === 'warning',
+    [styles.error]: color === 'error',
   })
 
-  const labelStyle = size === 'small' ? small : defaultLabel
+  const labelStyle = size === 'small' ? styles.small : styles.defaultLabel
 
   const titleDiv = title ? <h3>{title}</h3> : null
   const iconDiv = icon ? <i className={`${icon} icon`} /> : null
@@ -24,7 +24,7 @@ const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', ti
   const labelDiv = label ? <div className={labelStyle}>{label}</div> : null
 
   return (
-    <div className={container}>
+    <div className={styles.container}>
       { titleDiv }
       { valueDiv }
       { labelDiv }
@@ -34,7 +34,7 @@ const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', ti
 
 Counter.propTypes = {
   value: PropTypes.number.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   unit: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,

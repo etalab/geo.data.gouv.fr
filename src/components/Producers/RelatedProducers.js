@@ -1,23 +1,30 @@
 import React from 'react'
-import style from './RelatedProducers.scss'
+import PropTypes from 'prop-types'
 
-const RelatedProducers = ({ producers, action }) => {
-  return (
-    <div className={style.container}>
-      <div className={style.header}>
-        <div>Producteurs rattachés à votre organisation</div>
-        <div>{producers.length}</div>
-      </div>
-      <div className={style.list}>
-        {producers.map((producer, idx) => (
-          <div className={style.producers} key={idx}>
-            <div>{producer._id}</div>
-            <button className={style.dissociate} onClick={() => action(producer)}>Dissocier</button>
-          </div>
-        ))}
-      </div>
+import styles from './RelatedProducers.scss'
+
+const RelatedProducers = ({ producers, action }) => (
+  <div className={styles.container}>
+    <div className={styles.header}>
+      <div>Producteurs rattachés à votre organisation</div>
+      <div>{producers.length}</div>
     </div>
-  )
+    <div className={styles.list}>
+      {producers.map((producer, idx) => (
+        <div className={styles.producers} key={idx}>
+          <div>{producer._id}</div>
+          <button className={styles.dissociate} onClick={() => action(producer)}>Dissocier</button>
+        </div>
+      ))}
+    </div>
+  </div>
+)
+
+RelatedProducers.propTypes = {
+  producers: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired
+  })).isRequired,
+  action: PropTypes.func.isRequired
 }
 
 export default RelatedProducers

@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import OtherProducersItem from './OtherProducersItem'
 import { getOrganizations } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+
 import style from './OtherProducers.scss'
 
-class OtherProducers extends Component {
+class OtherProducers extends React.Component {
+  static propTypes = {
+    producers: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    })).isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {

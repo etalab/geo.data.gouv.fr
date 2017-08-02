@@ -23,6 +23,7 @@ class LanguageSelection extends React.PureComponent {
 
   render() {
     const { language, t } = this.props
+
     return (
       <div>
         {t('LanguageSelection.languageSelection')} :
