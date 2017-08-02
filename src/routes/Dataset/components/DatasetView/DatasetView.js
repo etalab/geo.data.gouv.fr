@@ -110,12 +110,14 @@ class DatasetView extends React.PureComponent {
                   </DatasetBlock>
                 )}
 
-                <DatasetBlock title='Filtres'>
-                  <DatasetFilters
-                    keywords={dataset.metadata.keywords}
-                    organizations={dataset.organizations}
-                  />
-                </DatasetBlock>
+                {(dataset.metadata.keywords.length > 0 || dataset.organizations.length > 0) && (
+                  <DatasetBlock title='Filtres'>
+                    <DatasetFilters
+                      keywords={dataset.metadata.keywords}
+                      organizations={dataset.organizations}
+                    />
+                  </DatasetBlock>
+                )}
               </div>
 
               <div className={styles.aside}>

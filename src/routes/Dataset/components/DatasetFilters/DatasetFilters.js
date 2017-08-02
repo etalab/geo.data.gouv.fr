@@ -21,7 +21,7 @@ const DatasetFilters = ({ organizations, keywords }) => {
 
   return (
     <div>
-      {sections.map(section => (
+      {sections.map(section => section.filters.length > 0 && (
         <div key={section.title} className={styles.group}>
           <h4>{section.title}</h4>
           <div className={styles.facets}>
