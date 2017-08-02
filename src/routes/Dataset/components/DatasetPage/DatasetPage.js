@@ -9,6 +9,8 @@ import styles from './DatasetPage.scss'
 
 class DatasetPage extends React.PureComponent {
   static propTypes = {
+    datasetId: PropTypes.string.isRequired,
+
     dataset: PropTypes.shape({
       dataset: PropTypes.object,
 
@@ -50,7 +52,7 @@ class DatasetPage extends React.PureComponent {
     const { dataset, publication, dataGouvDataset, getDataGouvDataset, fetchGeoJson } = this.props
 
     return (
-     <div>
+      <div>
         <Loader
           loading={dataset.pending || !dataset.dataset || publication.pending}
           error={dataset.error}

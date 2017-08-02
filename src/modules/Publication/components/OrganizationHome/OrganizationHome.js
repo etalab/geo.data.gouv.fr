@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react'
 
 import Layout from '../../components/Layout/Layout'
 import ManageOrganization from '../../components/ManageOrganization/ManageOrganization'
 import ActivateOrganization from '../../components/ActivateOrganization/ActivateOrganization'
 import Errors from '../../../../components/Errors/Errors'
-
 
 export default function PureOrganization(props) {
   const { organizationDetails, organization, user, metrics } = props

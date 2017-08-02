@@ -55,12 +55,12 @@ describe('dataGouvChecks', () => {
 
   describe('checkDataAvailability()', () => {
     it('should return true when the array contains at least one element whith available at true', () => {
-      const distributions = [{available: true}, {available: false}]
+      const distributions = [{ available: true }, { available: false }]
       expect(checkDataAvailability(distributions)).to.be.true
     })
 
     it('should return false when the array contains no elements whith available at true', () => {
-      const distributions = [{available: false}, {available: false}]
+      const distributions = [{ available: false }, { available: false }]
       expect(checkDataAvailability(distributions)).to.be.false
     })
 
@@ -74,5 +74,4 @@ describe('dataGouvChecks', () => {
       expect(checkDataAvailability(distributions)).to.be.false
     })
   })
-
 })

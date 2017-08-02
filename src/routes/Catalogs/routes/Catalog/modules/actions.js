@@ -32,18 +32,18 @@ export const get = id => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/catalogs/${id}`
   )
-  .then(data => {
-    dispatch({
-      type: CATALOGS_GET_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: CATALOGS_GET_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: CATALOGS_GET_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: CATALOGS_GET_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const getMetrics = id => dispatch => {
@@ -54,18 +54,18 @@ export const getMetrics = id => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/catalogs/${id}/metrics`
   )
-  .then(data => {
-    dispatch({
-      type: CATALOGS_GET_METRICS_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: CATALOGS_GET_METRICS_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: CATALOGS_GET_METRICS_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: CATALOGS_GET_METRICS_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const getHarvests = id => dispatch => {
@@ -76,18 +76,18 @@ export const getHarvests = id => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/services/${id}/synchronizations`
   )
-  .then(data => {
-    dispatch({
-      type: CATALOGS_GET_HARVESTS_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: CATALOGS_GET_HARVESTS_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: CATALOGS_GET_HARVESTS_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: CATALOGS_GET_HARVESTS_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const syncCatalog = id => dispatch => {
@@ -98,18 +98,18 @@ export const syncCatalog = id => dispatch => {
   return _post(
     `${INSPIRE_API_URL}/services/${id}/sync`
   )
-  .then(data => {
-    dispatch({
-      type: CATALOGS_SYNC_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: CATALOGS_SYNC_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: CATALOGS_SYNC_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: CATALOGS_SYNC_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const getHarvest = (catalogId, harvestId) => dispatch => {
@@ -120,16 +120,16 @@ export const getHarvest = (catalogId, harvestId) => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/services/${catalogId}/synchronizations/${harvestId}`
   )
-  .then(data => {
-    dispatch({
-      type: HARVESTS_GET_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: HARVESTS_GET_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: HARVESTS_GET_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: HARVESTS_GET_FAILURE,
+        error: err
+      })
     })
-  })
 }

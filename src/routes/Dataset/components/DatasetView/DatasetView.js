@@ -106,7 +106,7 @@ class DatasetView extends React.PureComponent {
 
                 {publication && publication.remoteId && (
                   <DatasetBlock title='Discussions'>
-                    <Discussions remoteId={publication.remoteId}/>
+                    <Discussions remoteId={publication.remoteId} />
                   </DatasetBlock>
                 )}
 

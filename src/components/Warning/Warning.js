@@ -40,7 +40,7 @@ class Warning extends React.PureComponent {
           {children}
         </div>
         <div className={styles.closeIcon} onClick={this.closeWarning}>
-          <i className="big remove icon" />
+          <i className='big remove icon' />
         </div>
       </Sticky>
     )

@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import { browserHistory, Link } from 'react-router'
 import { translate } from 'react-i18next'
 
@@ -7,9 +9,18 @@ import CatalogPreview from 'common/components/CatalogPreview'
 
 import styles from './HomePage.scss'
 
-class HomePage extends Component {
+class HomePage extends React.PureComponent {
+  static propTypes = {
+    catalogs: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    })).isRequired,
+
+    t: PropTypes.func.isRequired
+  }
+
   componentDidMount() {
     const { t } = this.props
+
     document.title = t('HomePage.home')
   }
 
@@ -37,7 +48,7 @@ class HomePage extends Component {
             onSearch={this.search}
             hasButton
           />
-        <Link className={styles.datasetLinks} to="/search?availability=yes">{t('HomePage.datasetsLink')}</Link>
+          <Link className={styles.datasetLinks} to='/search?availability=yes'>{t('HomePage.datasetsLink')}</Link>
         </div>
 
         <div className={styles.datagouv}>
@@ -50,11 +61,11 @@ class HomePage extends Component {
                 </div>
               ))}
             </div>
-            <Link to="catalogs" className={styles.link}>{t('HomePage.catalogsLink')}</Link>
+            <Link to='catalogs' className={styles.link}>{t('HomePage.catalogsLink')}</Link>
 
-            <h2 id="evenements">{t('HomePage.eventsSectionTitle')}</h2>
+            <h2 id='evenements'>{t('HomePage.eventsSectionTitle')}</h2>
             <div>
-              <Link to="events" className={styles.link}>{t('HomePage.eventsLink')}</Link>
+              <Link to='events' className={styles.link}>{t('HomePage.eventsLink')}</Link>
             </div>
           </div>
         </div>

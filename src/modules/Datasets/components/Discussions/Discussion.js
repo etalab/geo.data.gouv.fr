@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 
 import Button from '../../../../components/Buttons/Button'
@@ -43,20 +45,20 @@ class Discussion extends Component {
       replies = `${repliesNb} réponses`
     }
 
-    const reply = replyInput ?
-      <AuthentificationNeeded user={user}>
+    const reply = replyInput
+      ? <AuthentificationNeeded user={user}>
         <DiscussionForm
-          replyMode={true}
+          replyMode
           user={user}
           discussionId={discussion.id}
           error={formError}
           returForm={(content, discussionId) => this.newReply(content, discussionId)} />
-      </AuthentificationNeeded> :
-      <Button action={() => this.replyForm()} text='Répondre' />
+      </AuthentificationNeeded>
+      : <Button action={() => this.replyForm()} text='Répondre' />
 
     return (
       <div className={style.container}>
-        { discussion.closed ? <div className={style.resolved}><i className="checkmark icon"></i></div> : null}
+        { discussion.closed ? <div className={style.resolved}><i className='checkmark icon' /></div> : null}
         <div className={style.title}>{discussion.title}</div>
         <div className={style.messages}>
           { more ? conversation : <Message message={discussion.discussion[0]} />}

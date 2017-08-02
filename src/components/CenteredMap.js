@@ -52,7 +52,9 @@ class CenteredMap extends React.PureComponent {
           color='blue'
           fillOpacity={0.1}
           weight={2}
-          ref={vectors => { this.vectors = vectors }}
+          ref={vectors => {
+            this.vectors = vectors
+          }}
           data={vectors}
         />
       </Map>

@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 
 import Layout from '../../components/Layout/Layout'
@@ -52,7 +54,6 @@ class PublishingDatasets extends Component {
   }
 
   render() {
-
     const { organizationId, user, published, notPublishedYet, publishedByOthers, errors } = this.state
     const datasets = { published, notPublishedYet, publishedByOthers }
 

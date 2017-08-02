@@ -16,16 +16,16 @@ export const list = () => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/catalogs`
   )
-  .then(data => {
-    dispatch({
-      type: CATALOGS_LIST_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: CATALOGS_LIST_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: CATALOGS_LIST_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: CATALOGS_LIST_FAILURE,
+        error: err
+      })
     })
-  })
 }

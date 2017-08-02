@@ -1,21 +1,21 @@
 import Promise from 'bluebird'
 import React, { Component } from 'react'
 import { shallow } from 'enzyme'
-import { cancelAllPromises, waitForDataAndSetState  } from '../components'
+import { cancelAllPromises, waitForDataAndSetState } from '../components'
 import { makeCancelable } from '../promises'
 
 function reflect(promise) {
-  return Promise.resolve(promise).reflect();
+  return Promise.resolve(promise).reflect()
 }
 
 class TestComponent extends Component {
   constructor(props) {
     super(props)
-    this.state = {errors: []}
+    this.state = { errors: [] }
   }
 
   render() {
-    return <div/>
+    return <div />
   }
 }
 
@@ -27,14 +27,12 @@ function fakePromise() {
 
 function rejectedPromise() {
   return new Promise((resolve, reject) => {
-    setImmediate(() => reject('fakeReject'))
+    setImmediate(() => reject(new Error('fakeReject')))
   })
-
 }
 
 describe('components', () => {
   describe('cancelAllPromises', () => {
-
     it('should return when component has no promises', () => {
       const component = shallow(<TestComponent />)
 
@@ -42,7 +40,7 @@ describe('components', () => {
     })
 
     it('should return cancelAll function', () => {
-      const component = shallow(<TestComponent />);
+      const component = shallow(<TestComponent />)
       component.cancelablePromises = [makeCancelable(fakePromise()), makeCancelable(fakePromise())]
       cancelAllPromises(component)
       const canceledPromises = component.cancelablePromises.map(c => reflect(c.promise))
@@ -96,7 +94,7 @@ describe('components', () => {
             expect(component.state.errors.length).to.equal(1)
             return waitForDataAndSetState(rejectedPromise(), component, 'stateName')
               .then(() => expect(component.state.errors.length).to.equal(1))
-        })
+          })
       })
     })
   })

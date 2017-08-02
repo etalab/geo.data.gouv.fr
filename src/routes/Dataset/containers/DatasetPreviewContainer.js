@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import DatasetPreview from '../components/DatasetPreview'
@@ -8,7 +8,8 @@ const DatasetPreviewContainer = connect((state, ownProps) => {
     preview: ownProps.preview,
     closePreview: ownProps.closePreview,
     geoJson: state.dataset.geoJson
-  })}
+  })
+}
 )(DatasetPreview)
 
 DatasetPreviewContainer.propTypes = {

@@ -9,7 +9,7 @@ const SearchPagination = ({
   page,
   pageCount,
   onPageChange,
-  previousLabel='Précédent',
+  previousLabel = 'Précédent',
   nextLabel = 'Suivant',
   breakLabel = '…'
 }) => {

@@ -17,5 +17,4 @@ describe('<ManageOrganization />', () => {
       expect(wrapper).to.contain(organizationMetrics)
     })
   })
-
 })

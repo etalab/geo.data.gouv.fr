@@ -25,17 +25,15 @@ const { INSPIRE_API_URL } = process.env
 const previewMock = () => {}
 
 describe('<DatasetDownload />', () => {
-
   describe('Available dataset', () => {
+    describe('featureType', () => {
+      it('should create a link to download wfs-featureType dataset type', () => {
+        const link = <a href={`${INSPIRE_API_URL}/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&projection=WGS84`}>GeoJSON</a>
 
-  describe('featureType', () => {
-    it('should create a link to download wfs-featureType dataset type', () => {
-      const link = <a href={`${INSPIRE_API_URL}/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&projection=WGS84`}>GeoJSON</a>
-
-      const wrapper = shallow(<DatasetDownload distribution={featureType} preview={previewMock} />)
-      expect(wrapper).to.contain(link)
+        const wrapper = shallow(<DatasetDownload distribution={featureType} preview={previewMock} />)
+        expect(wrapper).to.contain(link)
+      })
     })
-  })
 
     describe('file-package', () => {
       it('should create a link to download file-package dataset type', () => {
@@ -46,7 +44,6 @@ describe('<DatasetDownload />', () => {
       })
     })
   })
-
 
   describe('Unavailable dataset', () => {
     it('should display only dataset name', () => {
@@ -59,5 +56,4 @@ describe('<DatasetDownload />', () => {
       expect(wrapper).to.contain(<p>Indisponible</p>)
     })
   })
-
 })

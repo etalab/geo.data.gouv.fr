@@ -1,8 +1,26 @@
 import React from 'react'
-import { add } from './AddButton.scss'
+import PropTypes from 'prop-types'
 
-const AddButton = ({ text, action, style }) => {
-  return <button className={`${add} ${style}`} onClick={() => action()}><i className="plus icon"></i>{text}</button>
+import Button from './Button'
+
+import styles from './AddButton.scss'
+
+const AddButton = ({ text, action, style }) => (
+  <Button
+    className={`${styles.add} ${style}`}
+    action={action}
+    text={
+      <span>
+        <i className='plus icon' /> {text}
+      </span>
+    }
+  />
+)
+
+AddButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired,
+  style: PropTypes.string
 }
 
 export default AddButton

@@ -38,7 +38,7 @@ const DatasetHeader = ({ dataset }) => {
         {inspireTheme && (
           <div className={styles.theme}>
             <div>
-              <img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon'/>
+              <img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon' />
             </div>
             <div>
               <a href={inspireTheme.uri} target='_blank'>{inspireTheme.label.fr}</a>
@@ -64,14 +64,21 @@ const DatasetHeader = ({ dataset }) => {
   )
 }
 
-DatasetHeader.PropTypes = {
+DatasetHeader.propTypes = {
   dataset: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    purpose: PropTypes.string.isRequired,
-    lineage: PropTypes.string.isRequired,
-    inspireTheme: PropTypes.string
+    metadata: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      type: PropTypes.string,
+      description: PropTypes.string,
+      purpose: PropTypes.string,
+      lineage: PropTypes.string,
+      inspireTheme: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        label: PropTypes.shape({
+          fr: PropTypes.string.isRequired
+        }).isRequired
+      })
+    }).isRequired
   }).isRequired
 }
 

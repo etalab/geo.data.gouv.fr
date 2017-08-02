@@ -28,7 +28,7 @@ describe('<Histogram />', () => {
           label: 'Histogram.label',
           lineTension: 0.2,
           backgroundColor: '#2185D0',
-          data: [{'05/10/2016': 665}, {'06/10/2016': 665}, {'07/10/2016': 831}, {'08/10/2016': 832}]
+          data: [{ '05/10/2016': 665 }, { '06/10/2016': 665 }, { '07/10/2016': 831 }, { '08/10/2016': 832 }]
         }
       ]
     }
@@ -39,16 +39,15 @@ describe('<Histogram />', () => {
   it('Should throw an error', (done) => {
     try {
       shallow(<Histogram data={data} height={height} width={width} t={translateMock} />)
+    } catch (err) {
+      expect(err).to.deep.equal(new Error('chartType props must be Bar or Line'))
     }
-    catch(err) {
-      expect(err).to.deep.equal(new Error('chartType props must be Bar or Line'));
-    }
-    done();
+    done()
   })
 
   it('Should render a Line component', () => {
     const wrapper = shallow(<Histogram data={data} height={height} width={width} t={translateMock} />)
 
-    expect(wrapper).to.contain(<Line data={formatData(data, translateMock)} height={height} width={width} options={options}/>)
+    expect(wrapper).to.contain(<Line data={formatData(data, translateMock)} height={height} width={width} options={options} />)
   })
 })

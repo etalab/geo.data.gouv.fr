@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { translate } from 'react-i18next'
 import DocumentTitle from 'react-document-title'
 
@@ -12,5 +14,9 @@ const NotFoundPage = ({ t }) => (
     </div>
   </DocumentTitle>
 )
+
+NotFoundPage.propTypes = {
+  t: PropTypes.func.isRequired
+}
 
 export default translate('NotFound')(NotFoundPage)

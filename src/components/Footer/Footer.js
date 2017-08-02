@@ -1,34 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { translate, Interpolate } from 'react-i18next'
 
 import NewsletterForm from '../Newsletter/NewsletterForm'
 import SocialLinks from '../SocialLinks/SocialLinks'
 import LanguageSelection from '../LanguageSelection/LanguageSelection'
 
-import { footer, space, main, info } from './Footer.scss'
+import styles from './Footer.scss'
 
-class Footer extends Component {
-  render() {
-    const { i18n } = this.props
-    return (
-      <footer className={footer} >
-        <div className={space}></div>
-        <div className={main}>
-          <NewsletterForm />
+const Footer = ({ i18n }) => (
+  <footer className={styles.footer} >
+    <div className={styles.space} />
+    <div className={styles.main}>
+      <NewsletterForm />
 
-          <div className={info}>
-            <Interpolate
-              i18nKey='Footer.madeBy'
-              heart={<span style={{ color: 'white' }}>♥</span>}
-              link={<a style={{ color: 'white' }} href='https://www.etalab.gouv.fr/'>Etalab</a>}
-            />
-            <SocialLinks />
-          </div>
-          <LanguageSelection language={i18n.language}/>
-        </div>
-      </footer>
-    )
-  }
+      <div className={styles.info}>
+        <Interpolate
+          i18nKey='Footer.madeBy'
+          heart={<span style={{ color: 'white' }}>♥</span>}
+          link={<a style={{ color: 'white' }} href='https://www.etalab.gouv.fr/'>Etalab</a>}
+        />
+        <SocialLinks />
+      </div>
+      <LanguageSelection language={i18n.language} />
+    </div>
+  </footer>
+)
+
+Footer.propTypes = {
+  i18n: PropTypes.shape({
+    language: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default translate('Common')(Footer)

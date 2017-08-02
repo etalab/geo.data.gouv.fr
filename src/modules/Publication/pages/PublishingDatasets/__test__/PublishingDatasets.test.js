@@ -11,11 +11,9 @@ const PublishingDatasets = require('proxyquire')('../PublishingDatasets', {
 }).default
 
 describe('<PublishingDatasets />', () => {
-
   describe('When all goes well', () => {
-
     it('should assign metrics, organizationDetail and catalog to this.state', () => {
-      const wrapper = mount(<PublishingDatasets params={{organizationId: '1'}} />)
+      const wrapper = mount(<PublishingDatasets params={{ organizationId: '1' }} />)
 
       return wrapper.instance()
         .componentWillMount()
@@ -28,7 +26,7 @@ describe('<PublishingDatasets />', () => {
     })
 
     it('should render a OrganizationDatasets component', () => {
-      const wrapper = mount(<PublishingDatasets params={{organizationId: '1'}} />)
+      const wrapper = mount(<PublishingDatasets params={{ organizationId: '1' }} />)
 
       return wrapper.instance()
         .componentWillMount()
@@ -44,7 +42,7 @@ describe('<PublishingDatasets />', () => {
     it('should display all errors', () => {
       const errors = ['organizationId is required']
       const err = <Errors errors={errors} />
-      const wrapper = mount(<PublishingDatasets params={{organizationId: null}} />)
+      const wrapper = mount(<PublishingDatasets params={{ organizationId: null }} />)
 
       return wrapper.instance()
         .componentWillMount()

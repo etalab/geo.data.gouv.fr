@@ -1,7 +1,6 @@
 import { translateFilters, convertFilters, isActive } from '../manageFilters'
 
 describe('manageFilters', () => {
-
   describe('translate', () => {
     describe('Known filter', () => {
       it('should translate filter', () => {
@@ -21,9 +20,9 @@ describe('manageFilters', () => {
   describe('convertFilters()', () => {
     it('should return a query', () => {
       const filters = [
-        {name: 'keywords', value: 'keyword1'},
-        {name: 'keywords', value: 'keyword2'},
-        {name: 'organizations', value: 'foo'},
+        { name: 'keywords', value: 'keyword1' },
+        { name: 'keywords', value: 'keyword2' },
+        { name: 'organizations', value: 'foo' },
       ]
       const convertedFilters = {
         keywords: ['keyword1', 'keyword2'],
@@ -37,16 +36,16 @@ describe('manageFilters', () => {
 
   describe('isActive()', () => {
     it('should return true', () => {
-      const filter = {name: 'keywords', value: 'keyword1'}
-      const filters = [{name: 'keywords', value: 'keyword1'}]
+      const filter = { name: 'keywords', value: 'keyword1' }
+      const filters = [{ name: 'keywords', value: 'keyword1' }]
 
       const result = isActive(filters, filter)
       expect(result).to.deep.equal(true)
     })
 
     it('should return false', () => {
-      const filter = {name: 'foo', value: 'bar'}
-      const filters = [{name: 'keywords', value: 'keyword1'}]
+      const filter = { name: 'foo', value: 'bar' }
+      const filters = [{ name: 'keywords', value: 'keyword1' }]
 
       const result = isActive(filters, filter)
       expect(result).to.deep.equal(false)

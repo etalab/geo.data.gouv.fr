@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
 import Event from '../Event'
@@ -23,5 +24,9 @@ const EventsPage = ({ pastEvents }) => (
     </div>
   </DocumentTitle>
 )
+
+EventsPage.propTypes = {
+  pastEvents: PropTypes.array.isRequired
+}
 
 export default EventsPage

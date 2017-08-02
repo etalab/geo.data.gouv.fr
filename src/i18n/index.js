@@ -2,7 +2,6 @@ import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import moment from 'moment'
 
-
 export default () => {
   const i18n = i18next
     .use(LanguageDetector)

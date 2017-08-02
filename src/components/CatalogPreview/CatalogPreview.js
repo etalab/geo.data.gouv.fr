@@ -35,7 +35,7 @@ const CatalogPreview = ({ catalog, t }) => {
         label={t('CatalogPreview.downloadableLabel')}
         icon='download'
       />
-    <Counter value={metrics.records.totalCount} size='small' label={t('CatalogPreview.recordsLabel')} />
+      <Counter value={metrics.records.totalCount} size='small' label={t('CatalogPreview.recordsLabel')} />
     </div>
   )
 
@@ -43,7 +43,7 @@ const CatalogPreview = ({ catalog, t }) => {
     <Link to={`/catalogs/${catalog._id}`} className={styles.link}>
       <div className={styles.paper}>
         <div className={styles.title}>{catalog.name}</div>
-        <LastHarvestStatus harvest={catalog.service.sync}/>
+        <LastHarvestStatus harvest={catalog.service.sync} />
         <ObsoleteWarning catalog={catalog} />
         {metricsPreview}
       </div>
@@ -65,8 +65,10 @@ CatalogPreview.propTypes = {
 
     service: PropTypes.shape({
       sync: PropTypes.object.isRequired
-    }).isRequired
-  })
+    }).isRequired,
+  }),
+
+  t: PropTypes.func.isRequired
 }
 
 export default translate('Common')(CatalogPreview)

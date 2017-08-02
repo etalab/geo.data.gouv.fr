@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 
 import { publishDataset } from '../../../../fetch/fetch'
@@ -21,7 +23,7 @@ class DatasetsToBePublished extends Component {
 
     if (toPublish.length) {
       this.setState({ publicationsInProgress: [...toPublish] })
-      toPublish.map( dataset => publishDataset(dataset._id, organizationId))
+      toPublish.map(dataset => publishDataset(dataset._id, organizationId))
     }
   }
 
@@ -44,9 +46,9 @@ class DatasetsToBePublished extends Component {
     const { toPublish } = this.state
 
     if (toPublish.length === datasets.length) {
-      this.setState({toPublish: []})
+      this.setState({ toPublish: [] })
     } else {
-      this.setState({toPublish: [...datasets]})
+      this.setState({ toPublish: [...datasets] })
     }
   }
 
@@ -67,9 +69,10 @@ class DatasetsToBePublished extends Component {
             dataset={dataset}
             isSelected={isSelected}
             inProgress={publicationsInProgress.includes(dataset) === true}
-            change={isSelected ? (dataset) => this.removeDatasetToPublish(dataset) : (dataset) => this.addDatasetToPublish(dataset)} />}
+            change={isSelected ? (dataset) => this.removeDatasetToPublish(dataset) : (dataset) => this.addDatasetToPublish(dataset)} />
+        }
         )}
-        { publicationsInProgress.length ? <button className={refresh} onClick={() => update()}>Actualiser les données <i className="refresh icon"></i></button> : null}
+        { publicationsInProgress.length ? <button className={refresh} onClick={() => update()}>Actualiser les données <i className='refresh icon' /></button> : null}
         <div className={buttons}>
           <div className={`${button} ${selection}`} onClick={() => this.selection()}>{label}</div>
           <div className={`${button} ${publishButtonStyle}`} onClick={() => this.publishDatasets()}>{textButton}</div>

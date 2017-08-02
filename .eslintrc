@@ -1,32 +1,51 @@
 {
-    "extends": "react-app",
-
-    "plugins": [
-      "mocha"
-    ],
-
-    "globals": {
-      "__DEV__": false,
-      "__TEST__": false,
-      "__PROD__": false
-    },
-
-    "rules": {
-      "quotes": [
-        "error",
-        "single"
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "standard",
+    "standard-react"
+    // "plugin:jsx-a11y/strict"
+  ],
+  "plugins": [
+    "jsx-a11y"
+  ],
+  "globals": {
+    "__DEV__": false,
+    "__TEST__": false,
+    "__PROD__": false
+  },
+  "rules": {
+    "comma-dangle": "off",
+    "indent": "warn",
+    "jsx-quotes": [2, "prefer-single"],
+    "key-spacing": "off",
+    "no-console": "warn",
+    "no-debugger": "error",
+    "no-irregular-whitespace": "off",
+    "object-curly-spacing": [2, "always"],
+    "react/prop-types": "warn",
+    "space-before-function-paren": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.test.js"
       ],
-      "no-console": "warn",
-      "no-debugger": "error",
-      "mocha/no-exclusive-tests": "error"
-    },
-
-    "overrides": [
-      {
-        "files": [ "*.test.js" ],
-        "rules": {
-          "no-unused-expressions": "off"
-        }
+      "env": {
+        "mocha": true
+      },
+      "globals": {
+        "expect": true
+      },
+      "plugins": [
+        "mocha"
+      ],
+      "rules": {
+        "mocha/no-exclusive-tests": "error",
+        "no-unused-expressions": "off"
       }
-    ]
-  }
+    }
+  ]
+}

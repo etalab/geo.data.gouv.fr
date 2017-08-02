@@ -28,18 +28,18 @@ export const execute = (query, limit = 20) => dispatch => {
       limit
     })}`
   )
-  .then(data => {
-    dispatch({
-      type: SEARCH_EXECUTE_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: SEARCH_EXECUTE_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: SEARCH_EXECUTE_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: SEARCH_EXECUTE_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const update = changes => {

@@ -5,11 +5,10 @@ import { ObsoleteWarning } from '../ObsoleteWarning'
 const translateMock = k => k
 
 function shallowForCatalog(catalog) {
-  return shallow(<ObsoleteWarning catalog={catalog} currentDate={new Date('2016-07-15')} t={translateMock}/>)
+  return shallow(<ObsoleteWarning catalog={catalog} currentDate={new Date('2016-07-15')} t={translateMock} />)
 }
 
 describe('<ObsoleteWarning />', () => {
-
   describe('catalog has no mostRecentRevisionDate metric', () => {
     it('should display nothing', () => {
       const wrapper = shallowForCatalog({})

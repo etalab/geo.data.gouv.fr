@@ -36,6 +36,8 @@ const CatalogHarvestsRow = ({ harvest, previousHarvest, catalogId, t }) => (
 )
 
 CatalogHarvestsRow.propTypes = {
+  catalogId: PropTypes.string.isRequired,
+
   harvest: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,

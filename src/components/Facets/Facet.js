@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Filter from '../Filter/Filter'
+import Filter from '../Filter'
 
 import styles from './Facet.scss'
 

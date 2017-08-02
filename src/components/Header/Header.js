@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { IndexLink, Link } from 'react-router'
 import { translate } from 'react-i18next'
 
@@ -7,7 +8,13 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/compone
 
 import styles from './Header.scss'
 
-class Header extends Component {
+const { PUBLIC_URL } = process.env
+
+class Header extends React.Component {
+  static propTypes = {
+    t: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -26,11 +33,11 @@ class Header extends Component {
   render() {
     const { t } = this.props
     const { user } = this.state
-    const loginRedirect = `${process.env.PUBLIC_URL}/publication`
+    const loginRedirect = `${PUBLIC_URL}/publication`
     const isPublication = window.location.pathname.startsWith('/publication')
-    const logoutRedirect = isPublication ? process.env.PUBLIC_URL : process.env.PUBLIC_URL + window.location.pathname
-    const logInUrl =`https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
-    const logoutUrl =`https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
+    const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + window.location.pathname
+    const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
+    const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={styles.log} href={logInUrl}>{t('Header.login')}</a>
 
     return (
@@ -45,7 +52,7 @@ class Header extends Component {
                 {`${user.first_name} ${user.last_name}`}
               </div>
             </Link>
-            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('Header.logout')}</span><i className='power icon'></i></a>
+            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('Header.logout')}</span><i className='power icon' /></a>
           </div>
         )}
       </nav>

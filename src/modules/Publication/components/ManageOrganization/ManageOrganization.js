@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react'
 import { Link } from 'react-router'
 
@@ -27,7 +29,7 @@ const ManageOrganization = ({ organization, metrics }) => {
       </div>
 
       <div className={styles.previousPage}>
-        <Link to={'/publication'}><i className="arrow left icon"></i> Retour aux organisations</Link>
+        <Link to={'/publication'}><i className='arrow left icon' /> Retour aux organisations</Link>
       </div>
     </div>
   )

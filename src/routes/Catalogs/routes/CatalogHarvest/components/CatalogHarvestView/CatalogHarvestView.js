@@ -15,7 +15,7 @@ const CatalogHarvestView = ({ catalog, harvest, t }) => {
   const successful = harvest.status === 'successful'
 
   return (
-    <DocumentTitle title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`}>
+    <DocumentTitle title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`}>
       <div className={styles.container}>
         <h1>
           <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>

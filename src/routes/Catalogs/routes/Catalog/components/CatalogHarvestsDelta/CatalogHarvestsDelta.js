@@ -5,7 +5,7 @@ const CatalogHarvestDelta = ({ delta }) => {
   if (delta > 0) {
     return (
       <div>
-        <i className="long green arrow up icon"></i> +{delta}
+        <i className='long green arrow up icon' /> +{delta}
       </div>
     )
   }
@@ -13,7 +13,7 @@ const CatalogHarvestDelta = ({ delta }) => {
   if (delta < 0) {
     return (
       <div>
-        <i className="long red arrow down icon"></i> {delta}
+        <i className='long red arrow down icon' /> {delta}
       </div>
     )
   }
@@ -21,7 +21,7 @@ const CatalogHarvestDelta = ({ delta }) => {
   return <div>0</div>
 }
 
-CatalogHarvestDelta.PropTypes = {
+CatalogHarvestDelta.propTypes = {
   delta: PropTypes.number
 }
 

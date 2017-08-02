@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 
 import Button from '../../../../components/Buttons/Button'
@@ -11,11 +13,11 @@ class DiscussionForm extends Component {
   }
 
   onTitleChange(event) {
-    this.setState({title: event.target.value});
+    this.setState({ title: event.target.value })
   }
 
   onCommentChange(event) {
-    this.setState({comment: event.target.value});
+    this.setState({ comment: event.target.value })
   }
 
   onKeyPress(event) {
@@ -48,7 +50,7 @@ class DiscussionForm extends Component {
         {error ? <p>Merci de préciser {!replyMode ? 'le titre et' : ''} le commentaire.</p> : null}
         {!replyMode ? titleInput : null}
         <div className={commentInput}>
-          <img className={avatar} src={user.avatar || '/assets/avatar.png'} alt="avatar"/>
+          <img className={avatar} src={user.avatar || '/assets/avatar.png'} alt='avatar' />
           <textarea
             type='textarea'
             value={comment}

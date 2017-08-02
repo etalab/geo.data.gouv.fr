@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 
 import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
@@ -8,7 +10,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 class Catalog extends Component {
   constructor(props) {
     super(props)
-    this.state = { catalog: null, errors: []}
+    this.state = { catalog: null, errors: [] }
   }
 
   componentWillMount() {

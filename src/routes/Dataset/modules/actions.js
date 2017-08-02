@@ -28,18 +28,18 @@ export const get = id => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/records/${id}`
   )
-  .then(data => {
-    dispatch({
-      type: DATASETS_GET_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: DATASETS_GET_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: DATASETS_GET_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: DATASETS_GET_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const getPublication = id => dispatch => {
@@ -50,18 +50,18 @@ export const getPublication = id => dispatch => {
   return _get(
     `${INSPIRE_API_URL}/records/${id}/publications`
   )
-  .then(data => {
-    dispatch({
-      type: DATASETS_GET_PUBLICATION_SUCCESS,
-      payload: data.find(pub => pub.target === 'dgv')
+    .then(data => {
+      dispatch({
+        type: DATASETS_GET_PUBLICATION_SUCCESS,
+        payload: data.find(pub => pub.target === 'dgv')
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: DATASETS_GET_PUBLICATION_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: DATASETS_GET_PUBLICATION_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const getOnDataGouv = id => dispatch => {
@@ -72,18 +72,18 @@ export const getOnDataGouv = id => dispatch => {
   return _get(
     `${PROXY_API_URL}/datasets/${id}`
   )
-  .then(data => {
-    dispatch({
-      type: DATASETS_DATA_GOUV_GET_SUCCESS,
-      payload: data
+    .then(data => {
+      dispatch({
+        type: DATASETS_DATA_GOUV_GET_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: DATASETS_DATA_GOUV_GET_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: DATASETS_DATA_GOUV_GET_FAILURE,
+        error: err
+      })
     })
-  })
 }
 
 export const fetchGeoJson = url => dispatch => {
@@ -94,20 +94,20 @@ export const fetchGeoJson = url => dispatch => {
   return _get(
     `${url}?format=GeoJSON&projection=WGS84`
   )
-  .then(data => {
-    if (!data.features || !data.features.length) {
-      throw new Error('Les données sont vides')
-    }
+    .then(data => {
+      if (!data.features || !data.features.length) {
+        throw new Error('Les données sont vides')
+      }
 
-    dispatch({
-      type: DATASETS_FETCH_GEOJSON_SUCCESS,
-      payload: data
+      dispatch({
+        type: DATASETS_FETCH_GEOJSON_SUCCESS,
+        payload: data
+      })
     })
-  })
-  .catch(err => {
-    dispatch({
-      type: DATASETS_FETCH_GEOJSON_FAILURE,
-      error: err
+    .catch(err => {
+      dispatch({
+        type: DATASETS_FETCH_GEOJSON_FAILURE,
+        error: err
+      })
     })
-  })
 }

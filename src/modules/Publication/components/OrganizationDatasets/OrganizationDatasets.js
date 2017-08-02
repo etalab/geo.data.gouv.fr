@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react'
 import { Link } from 'react-router'
 
@@ -12,7 +14,7 @@ const OrganizationDatasets = ({ published, notPublishedYet, publishedByOthers, u
       <DatasetsPublication datasets={published} organizationId={organizationId} title={'Données publiées'} status={'success'} />
       <DatasetsPublication datasets={publishedByOthers} organizationId={organizationId} title={'Données publiées par une autre organisation'} status={'warning'} />
       <div className={previousPage}>
-        <Link to={`/publication/${organizationId}`}><i className="arrow left icon"></i> retour</Link>
+        <Link to={`/publication/${organizationId}`}><i className='arrow left icon' /> retour</Link>
       </div>
     </div>
   )

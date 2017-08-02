@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Facets from 'common/components/Facets/Facets'
 
-import SearchResultsCount from  '../SearchResultsCount'
+import SearchResultsCount from '../SearchResultsCount'
 import SearchResult from '../SearchResult'
 import SearchPagination from '../SearchPagination'
 

@@ -12,7 +12,8 @@ class SearchInput extends React.PureComponent {
     hasButton: PropTypes.bool,
     buttonLabel: PropTypes.string,
 
-    onSearch: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -24,9 +25,9 @@ class SearchInput extends React.PureComponent {
   onSubmit = event => {
     const { onSearch } = this.props
 
-    event.preventDefault();
+    event.preventDefault()
 
-    onSearch(event.target.query.value);
+    onSearch(event.target.query.value)
   }
 
   render() {

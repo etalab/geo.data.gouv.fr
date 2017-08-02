@@ -1,17 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Facet from './Facet'
 
 import { isActive, translateFilters } from '../../helpers/manageFilters'
 
 import { container } from './FacetsGroup.scss'
 
-
-
-export default ({ type, facets, filters, addFilter }) => {
-  const activeMap = facets.map(facet => isActive(filters, {name: type, value: facet.value}))
+const FacetsGroup = ({ type, facets, filters, addFilter }) => {
+  const activeMap = facets.map(facet => isActive(filters, { name: type, value: facet.value }))
 
   if (activeMap.indexOf(false) === -1) {
-    return null;
+    return null
   }
 
   return (
@@ -27,3 +27,12 @@ export default ({ type, facets, filters, addFilter }) => {
     </div>
   )
 }
+
+FacetsGroup.propTypes = {
+  type: PropTypes.string,
+  facets: PropTypes.any,
+  filters: PropTypes.any,
+  addFilter: PropTypes.func
+}
+
+export default FacetsGroup

@@ -3,20 +3,24 @@ import PropTypes from 'prop-types'
 
 import styles from './Button.scss'
 
-const Button = ({ text, type, action }) => (
-  <button className={styles.button} onClick={action} type={type}>
+const Button = ({ text, type, action, className }) => (
+  <button className={className || styles.button} onClick={action} type={type}>
     {text}
   </button>
 )
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]).isRequired,
   type: PropTypes.oneOf([
     'button',
     'submit',
     'reset'
   ]),
   action: PropTypes.func.isRequired,
+  className: PropTypes.string
 }
 
 Button.defaultProps = {

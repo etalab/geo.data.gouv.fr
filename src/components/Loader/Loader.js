@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styles from './Loader.scss'
 
-const Loader = ({ loading, label = 'Chargement…',  className = '', error, children }) => (
+const Loader = ({ loading, label = 'Chargement…', className = '', error, children }) => (
   loading ? (
     <div className={`${styles.wrapper} ${className}`}>
       <div className={styles.loader}>

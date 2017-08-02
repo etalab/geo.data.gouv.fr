@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react'
 import { pull } from 'lodash'
 
@@ -8,7 +10,7 @@ import AddButton from '../../../../components/Buttons/AddButton'
 import RemoveButton from '../../../../components/Buttons/RemoveButton'
 import Errors from '../../../../components/Errors/Errors'
 
-import { updateOrganizationAccount  } from '../../../../fetch/fetch'
+import { updateOrganizationAccount } from '../../../../fetch/fetch'
 
 import { catalogsStyle, catalog, buttonStyle, remove } from './SourceCatalogs.scss'
 
@@ -23,7 +25,7 @@ class SourceCatalogs extends Component {
   }
 
   toggleCatalogList() {
-    this.setState({displayCatalogs: !this.state.displayCatalogs})
+    this.setState({ displayCatalogs: !this.state.displayCatalogs })
   }
 
   addCatalog(catalogId) {
@@ -33,7 +35,7 @@ class SourceCatalogs extends Component {
     if (!catalogs.includes(catalogId)) {
       const newCatalogs = [...catalogs, catalogId]
       updateOrganizationAccount(organizationId, { sourceCatalogs: newCatalogs })
-      .then(() => this.setState({catalogs: newCatalogs}))
+        .then(() => this.setState({ catalogs: newCatalogs }))
     }
   }
 
@@ -44,7 +46,7 @@ class SourceCatalogs extends Component {
     if (catalogs.includes(catalogId)) {
       const newCatalogs = pull(catalogs, catalogId)
       updateOrganizationAccount(organizationId, { sourceCatalogs: newCatalogs })
-      .then(() => this.setState({catalogs: newCatalogs}))
+        .then(() => this.setState({ catalogs: newCatalogs }))
     }
   }
 
@@ -61,9 +63,9 @@ class SourceCatalogs extends Component {
           {catalogs.map(id =>
             <div key={id} className={catalog}>
               <Catalog catalogId={id} size={'small'} />
-              <RemoveButton style={remove} action={() => this.removeCatalog(id)} text={'Supprimer'}/>
+              <RemoveButton style={remove} action={() => this.removeCatalog(id)} text={'Supprimer'} />
             </div>
-            )}
+          )}
         </div>
 
         <div className={buttonStyle}>

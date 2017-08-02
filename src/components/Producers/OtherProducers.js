@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import OtherProducersItem from './OtherProducersItem'
 import { getOrganizations } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+
 import style from './OtherProducers.scss'
 
-class OtherProducers extends Component {
+class OtherProducers extends React.Component {
+  static propTypes = {
+    producers: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    })).isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -37,7 +46,7 @@ class OtherProducers extends Component {
             <div className={style.subtitle}>
               <div>Les producteurs de cette liste ne peuvent pas être rattachés à votre compte organisation parce qu'ils sont déjà rattachés à un autre compte.
                  N\'hésitez pas à contacter l'organisation de rattachement si vous estimez que votre propre compte est plus pertinent.</div>
-              <p>En cas de difficulté, contactez <a href="mailto:inspire@data.gouv.fr">notre équipe</a>.</p>
+              <p>En cas de difficulté, contactez <a href='mailto:inspire@data.gouv.fr'>notre équipe</a>.</p>
             </div>
           </div>
           <div>{producers.length}</div>
