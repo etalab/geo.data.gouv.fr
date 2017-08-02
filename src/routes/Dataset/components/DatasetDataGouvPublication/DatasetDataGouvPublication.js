@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate, Interpolate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import { Button } from 'common/components/Buttons'
@@ -25,7 +26,9 @@ class DatasetDataGouvPublication extends React.PureComponent {
 
     publication: PropTypes.shape({
       remoteUrl: PropTypes.string.isRequired
-    })
+    }),
+
+    t: PropTypes.func.isRequired
   }
 
   state = {
@@ -39,7 +42,7 @@ class DatasetDataGouvPublication extends React.PureComponent {
   }
 
   render () {
-    const { dataset, publication } = this.props
+    const { dataset, publication, t } = this.props
     const { expanded } = this.state
 
     const licenseCheck = checkLicense(dataset.metadata.license)
@@ -50,21 +53,25 @@ class DatasetDataGouvPublication extends React.PureComponent {
       if (publication) {
         return (
           <div>
-            <a href={publication.remoteUrl}>Consulter le jeu de données sur data.gouv.fr</a>
+            <a href={publication.remoteUrl}>{t('DatasetDataGouvPublication.dvgLink')}</a>
           </div>
         )
       } else {
         return (
           <div>
-            <div>Ce jeu de données <b>peut</b> être publié sur data.gouv.fr</div>
-            <div className={styles.highlight}>Une action du producteur est nécessaire.</div>
+            <Interpolate i18nKey='DatasetDataGouvPublication.canBePublished'
+              bold={<b>{t('DatasetDataGouvPublication.can')}</b>}
+            />
+            <div className={styles.highlight}>{t('DatasetDataGouvPublication.producerActionNeeded')}</div>
           </div>
         )
       }
     } else {
       return (
         <div className={styles.checklist}>
-          <div>Ce jeu de données <b>ne peut pas</b> être publié sur data.gouv.fr</div>
+          <Interpolate i18nKey='DatasetDataGouvPublication.cantBePublished'
+            bold={<b>{t('DatasetDataGouvPublication.canNot')}</b>}
+          />
           {expanded && (
             <div>
               <CheckLicense license={dataset.metadata.license} valid={licenseCheck} />
@@ -72,11 +79,11 @@ class DatasetDataGouvPublication extends React.PureComponent {
               <CheckDataAvailability distributions={dataset.dataset.distributions} valid={dataAvailabilityCheck} />
             </div>
           )}
-          <Button text={`${expanded ? 'Masquer' : 'Afficher'} le détail`} action={this.toggleDetails} />
+          <Button text={expanded ? t('DatasetDataGouvPublication.hide') : t('DatasetDataGouvPublication.show')} action={this.toggleDetails} />
         </div>
       )
     }
   }
 }
 
-export default DatasetDataGouvPublication
+export default translate('Dataset')(DatasetDataGouvPublication)

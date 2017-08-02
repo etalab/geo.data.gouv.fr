@@ -21,5 +21,16 @@
     "distributionAvailable": "At least one of the distribution is available.",
     "distributionUnavailable": "No distribution found.",
     "title": "Data availability"
+  },
+
+  "DatasetDataGouvPublication": {
+    "dvgLink": "See dataset on data.gouv.fr",
+    "canBePublished": "This dataset {{bold}} be published on data.gouv.fr",
+    "can": "can",
+    "producerActionNeeded": "An action of the producer is necessary.",
+    "cantBePublished": "This dataset {{bold}} be published on data.gouv.fr",
+    "canNot": "can not",
+    "hide": "Hide details",
+    "show": "Show details"
   }
 }

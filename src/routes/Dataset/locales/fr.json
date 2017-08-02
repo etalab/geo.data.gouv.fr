@@ -21,5 +21,16 @@
     "distributionAvailable": "Au moins une des distribution est disponible.",
     "distributionUnavailable": "Aucune distribution n’a été trouvée.",
     "title": "Disponibilité de la donnée"
+  },
+
+  "DatasetDataGouvPublication": {
+    "dvgLink": "Consulter le jeu de données sur data.gouv.fr",
+    "canBePublished": "Ce jeu de données {{bold}} être publié sur data.gouv.fr",
+    "can": "peut",
+    "producerActionNeeded": "Une action du producteur est nécessaire.",
+    "cantBePublished": "Ce jeu de données {{bold}} être publié sur data.gouv.fr",
+    "canNot": "ne peut pas",
+    "hide": "Masquer le détail",
+    "show": "Afficher le détail"
   }
 }
