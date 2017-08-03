@@ -1,27 +1,50 @@
-import Publication from 'common/modules/Publication/pages/Publication/Publication'
-import Organization from 'common/modules/Publication/pages/Organization/Organization'
-import PublishingDatasets from 'common/modules/Publication/pages/PublishingDatasets/PublishingDatasets'
-import OrganizationProducers from 'common/modules/Publication/pages/OrganizationProducers/OrganizationProducers'
-
 export default () => ({
   path: 'publication',
 
   indexRoute: {
-    component: Publication
+    async getComponent(nextState, cb) {
+      const Publication = await import(
+        /* webpackChunkName: 'publication' */
+        'common/modules/Publication/pages/Publication/Publication'
+      )
+
+      cb(null, Publication.default)
+    }
   },
 
   childRoutes: [
     {
       path: ':organizationId',
-      component: Organization
+      async getComponent(nextState, cb) {
+        const Organization = await import(
+          /* webpackChunkName: 'publication' */
+          'common/modules/Publication/pages/Organization/Organization'
+        )
+
+        cb(null, Organization.default)
+      }
     },
     {
       path: ':organizationId/datasets',
-      component: PublishingDatasets
+      async getComponent(nextState, cb) {
+        const PublishingDatasets = await import(
+          /* webpackChunkName: 'publication' */
+          'common/modules/Publication/pages/PublishingDatasets/PublishingDatasets'
+        )
+
+        cb(null, PublishingDatasets.default)
+      }
     },
     {
       path: ':organizationId/producers',
-      component: OrganizationProducers
+      async getComponent(nextState, cb) {
+        const OrganizationProducers = await import(
+          /* webpackChunkName: 'publication' */
+          'common/modules/Publication/pages/OrganizationProducers/OrganizationProducers'
+        )
+
+        cb(null, OrganizationProducers.default)
+      }
     }
   ]
 })
