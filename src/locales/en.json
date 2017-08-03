@@ -6,6 +6,10 @@
     "recordsLabel": "Records"
   },
 
+  "dataTypes": {
+    "dataset": "dataset"
+  },
+
   "DoughnutChart": {
     "noData": "No data",
     "dataset": "dataset",
@@ -73,6 +77,10 @@
   "SearchInput": {
     "placeholder": "Search…",
     "buttonLabel": "Search"
+  },
+
+  "unknownData": {
+    "notSpecified": "Not specified"
   }
 
 }

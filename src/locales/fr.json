@@ -6,6 +6,10 @@
     "recordsLabel": "Enregistrements"
   },
 
+  "dataTypes": {
+    "dataset": "jeu de données"
+  },
+
   "DoughnutChart": {
     "noData": "Aucune donnée",
     "dataset": "jeu de données",
@@ -73,6 +77,11 @@
   "SearchInput": {
     "placeholder": "Rechercher…",
     "buttonLabel": "Rechercher"
+  },
+
+  "unknownData": {
+    "notSpecified": "Non renseigné",
+    "notSpecified_female": "Non renseignée"
   }
 
 }

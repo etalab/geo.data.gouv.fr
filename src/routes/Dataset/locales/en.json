@@ -34,6 +34,15 @@
     "show": "Show details"
   },
 
+  "DatasetHeader": {
+    "unknown": "Unknown",
+    "type": "Type",
+    "license": "License",
+    "lastUpdate": "Last update",
+    "objectif": "Objectif",
+    "dataOrigin": "Origin of data"
+  },
+
   "DatasetView": {
     "obsoleteWarning": "Attention this dataset is considered as {{status}} by its producer",
 

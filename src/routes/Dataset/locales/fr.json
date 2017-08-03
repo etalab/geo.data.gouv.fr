@@ -34,6 +34,15 @@
     "show": "Afficher le détail"
   },
 
+  "DatasetHeader": {
+    "unknown": "inconnu",
+    "type": "Type",
+    "license": "Licence",
+    "lastUpdate": "Dernière mise à jour",
+    "objectif": "Objectif",
+    "dataOrigin": "Origine de la donnée"
+  },
+
   "DatasetView": {
     "obsoleteWarning": "Attention ce jeu de données est considéré comme {{status}} par son producteur",
 
