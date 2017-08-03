@@ -1,20 +1,22 @@
+const { JSDOM } = require('jsdom')
+const moduleAlias = require('module-alias')
+const path = require('path')
+
+require('babel-register')()
+
+moduleAlias.addAlias('common', path.join(__dirname, '../../src'))
+
 // Remove the PUBLIC_URL, if defined
 process.env.PUBLIC_URL = ''
 
 process.env.INSPIRE_API_URL = 'inspire-api-url'
 
-require('babel-register')()
-
-const { jsdom } = require('jsdom')
-const moduleAlias = require('module-alias')
-const path = require('path')
-
-moduleAlias.addAlias('common', path.join(__dirname, '../../src'))
-
+const jsdom = new JSDOM('<!doctype html><html><body></body></html>')
 const exposedProperties = ['window', 'navigator', 'document']
 
-global.document = jsdom('<!doctype html><html><body></body></html>')
-global.window = document.defaultView
+global.window = jsdom.window
+global.document = global.window.document
+
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
     exposedProperties.push(property)
