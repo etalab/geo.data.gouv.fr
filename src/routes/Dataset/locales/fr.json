@@ -43,6 +43,20 @@
     "dataOrigin": "Origine de la donnée"
   },
 
+  "DatasetTechnicalInfo": {
+    "lifeCycleTitle": "Cycle de vie de la donnée (selon producteur)",
+    "frequencyUpdate": "Fréquence de mise à jour",
+    "creationDate": "Date de création",
+    "revisionDate": "Dernière mise à jour",
+    "otherTitle": "Autres informations",
+    "topicCategory": "Catégorie du jeu de données",
+    "type": "Type",
+    "license": "Licence",
+    "status": "État",
+    "scale": "Échelle",
+    "resolution": "Résolution"
+  },
+
   "DatasetView": {
     "obsoleteWarning": "Attention ce jeu de données est considéré comme {{status}} par son producteur",
 

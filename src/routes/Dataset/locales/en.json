@@ -43,6 +43,20 @@
     "dataOrigin": "Origin of data"
   },
 
+  "DatasetTechnicalInfo": {
+    "lifeCycleTitle": "Data life cycle (by producer)",
+    "frequencyUpdate": "Frequency update",
+    "creationDate": "Creation date",
+    "revisionDate": "Last update",
+    "otherTitle": "Other informations",
+    "topicCategory": "Category of the dataset",
+    "type": "Type",
+    "license": "License",
+    "status": "Status",
+    "scale": "Scalle",
+    "resolution": "Resolution"
+  },
+
   "DatasetView": {
     "obsoleteWarning": "Attention this dataset is considered as {{status}} by its producer",
 

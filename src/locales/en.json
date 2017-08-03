@@ -79,7 +79,30 @@
     "buttonLabel": "Search"
   },
 
+  "topicCategories": {
+    "farming": "farming",
+    "biota": "biota",
+    "boundaries": "boundaries",
+    "climatologyMeteorologyAtmosphere": "climatology, meteorology, athmosphere",
+    "economy": "economy",
+    "elevation": "elevation",
+    "environment": "environment",
+    "geoscientificInformation": "geoscientific information",
+    "health": "health",
+    "imageryBaseMapsEarthCover": "imagery, base maps, earth cover",
+    "intelligenceMilitary": "intelligence military",
+    "inlandWaters": "inland waters",
+    "location": "location",
+    "oceans": "oceans",
+    "planningCadastre": "cadastre, planning",
+    "society": "society",
+    "structure": "structure",
+    "transportation": "transportation",
+    "utilitiesCommunication": "utilities, communication"
+  },
+
   "unknownData": {
+    "unknown": "Unknown",
     "notSpecified": "Not specified"
   }
 

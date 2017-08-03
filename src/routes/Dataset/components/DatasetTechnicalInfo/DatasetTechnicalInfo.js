@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
@@ -6,11 +7,10 @@ import { doneSince } from 'common/helpers/doneSince'
 import { getLicense } from 'common/helpers/dataGouvChecks'
 
 import { frequencies } from './frequencies'
-import { topicCategories } from './topics'
 
 import styles from './DatasetTechnicalInfo.scss'
 
-const DatasetTechnicalInfo = ({ dataset, status }) => {
+const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
   const {
     type,
     updateFrequency,
@@ -21,44 +21,50 @@ const DatasetTechnicalInfo = ({ dataset, status }) => {
     spatialResolution
   } = dataset.metadata
 
-  const frequency = updateFrequency ? frequencies[updateFrequency] : 'inconnue'
-  const createDate = creationDate ? moment(creationDate).format('DD/MM/YYYY') : 'inconnue'
+  const frequency = updateFrequency ? frequencies[updateFrequency] : t('Common:unknownData.unknown', { context: 'female' })
+  const createDate = creationDate ? moment(creationDate).format('DD/MM/YYYY') : t('Common:unknownData.unknown', { context: 'female' })
   const license = getLicense(dataset.metadata.license)
+  const dataType = i18n.exists(`Common:dataTypes.${type}`)
+    ? t(`Common:dataTypes.${type}`)
+    : type
+  const topicCat = i18n.exists(`Common:topicCategories.${topicCategory}`)
+    ? t(`Common:topicCategories.${topicCategory}`)
+    : t('Common:unknownData.notSpecified', { context: 'female' })
 
   return (
     <div className={styles.container}>
       <div>
-        <h4>Cycle de vie de la donnée (selon producteur)</h4>
+        <h4>{t('DatasetTechnicalInfo.lifeCycleTitle')}</h4>
 
-        <div>Fréquence de mise à jour : <b>{frequency}</b></div>
-        <div>Date de création : <b>{createDate}</b></div>
-        <div>Dernière mise à jour : <b>{revisionDate ? doneSince(revisionDate) : createDate}</b></div>
+        <div>{t('DatasetTechnicalInfo.frequencyUpdate')} : <b>{frequency}</b></div>
+        <div>{t('DatasetTechnicalInfo.creationDate')} : <b>{createDate}</b></div>
+        <div>{t('DatasetTechnicalInfo.revisionDate')} : <b>{revisionDate ? doneSince(revisionDate) : createDate}</b></div>
       </div>
 
       <div className={styles.other}>
-        <h4>Autres informations</h4>
+        <h4>{t('DatasetTechnicalInfo.otherTitle')}</h4>
 
-        <div>Catégorie du jeu de données : <b>{topicCategories[topicCategory] || 'non renseignée'}</b></div>
-        <div>Type : <b>{type || 'inconnu'}</b></div>
+        <div>{t('DatasetTechnicalInfo.topicCategory')} : <b>{topicCat}</b></div>
+        <div>{t('DatasetTechnicalInfo.type')} : <b>{dataType || t('Common:unknownData.unknown')}</b></div>
 
         <div>
-          Licence : {license.name ? (
+          {t('DatasetTechnicalInfo.license')} : {license.name ? (
             <a href={license.link}>{license.name}</a>
           ) : (
-            <b>license</b>
+            <b>{license}</b>
           )}
         </div>
 
         {status && (
-          <div>État : <b>{status.status}</b></div>
+          <div>{t('DatasetTechnicalInfo.status')} : <b>{status.status}</b></div>
         )}
 
         {equivalentScaleDenominator && (
-          <div>Échelle : <b>1 / {equivalentScaleDenominator}</b></div>
+          <div>{t('DatasetTechnicalInfo.scale')} : <b>1 / {equivalentScaleDenominator}</b></div>
         )}
 
         {spatialResolution && (
-          <div>Résolution : <b>{spatialResolution.value} {spatialResolution.unit}</b></div>
+          <div>{t('DatasetTechnicalInfo.resolution')} : <b>{spatialResolution.value} {spatialResolution.unit}</b></div>
         )}
       </div>
     </div>
@@ -83,7 +89,10 @@ DatasetTechnicalInfo.propTypes = {
 
   status: PropTypes.shape({
     status: PropTypes.string.isRequired
-  })
+  }),
+
+  t: PropTypes.func.isRequired,
+  i18n: PropTypes.func.isRequired
 }
 
-export default DatasetTechnicalInfo
+export default translate('Dataset')(DatasetTechnicalInfo)
