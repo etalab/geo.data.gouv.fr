@@ -12,6 +12,8 @@ defaults:
   filters: &default_filters
     tags:
       only: '/v[0-9]+(\.[0-9]+)*/'
+    branches:
+      ignore: gh-pages
 
   attach_workspace: &attach_workspace
     attach_workspace:
@@ -122,26 +124,22 @@ workflows:
   build_test_deploy:
     jobs:
       - install:
-          filters:
-            <<: *default_filters
+          filters: *default_filters
 
       - lint:
           requires:
             - install
-          filters:
-            <<: *default_filters
+          filters: *default_filters
 
       - test:
           requires:
             - install
-          filters:
-            <<: *default_filters
+          filters: *default_filters
 
       - build:
           requires:
             - install
-          filters:
-            <<: *default_filters
+          filters: *default_filters
 
       - deploy:
           requires:
