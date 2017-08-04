@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
@@ -6,16 +7,16 @@ import Event from '../Event'
 
 import styles from './EventsPage.scss'
 
-const EventsPage = ({ pastEvents }) => (
-  <DocumentTitle title={'Événements'}>
+const EventsPage = ({ pastEvents, t }) => (
+  <DocumentTitle title={t('EventsPage.documentTitle')}>
     <div className={styles.events}>
 
-      <h1>Événements à venir</h1>
+      <h1>{t('EventsPage.nextTitle')}</h1>
       <div className={styles.eventsList}>
-        Aucun événement programmé pour le moment.
+        {t('EventsPage.noEvents')}
       </div>
 
-      <h1>Événements passés</h1>
+      <h1>{t('EventsPage.previousTitle')}</h1>
       <div className={styles.pastEventsList}>
         {pastEvents.map((event, idx) => (
           <Event key={idx} event={event} />
@@ -26,7 +27,8 @@ const EventsPage = ({ pastEvents }) => (
 )
 
 EventsPage.propTypes = {
-  pastEvents: PropTypes.array.isRequired
+  pastEvents: PropTypes.array.isRequired,
+  t: PropTypes.func.isRequired
 }
 
-export default EventsPage
+export default translate('Events')(EventsPage)

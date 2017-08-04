@@ -1,9 +1,10 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import styles from './Event.scss'
 
-const Event = ({ event }) => (
+const Event = ({ event, t }) => (
   <div className={styles.container}>
     <h3 className={styles.title}>
       {event.name}
@@ -14,11 +15,15 @@ const Event = ({ event }) => (
         <div>{event.date}</div>
         {event.link ? (
           <div>
-            <a href={event.link}>Télécharger le compte rendu</a>
+            <a href={event.link}>{t('Event.download')}</a>
           </div>
         ) : (
           <div>
-            {event.linkComingSoon ? 'Compte-rendu bientôt disponible…' : 'Pas de compte-rendu'}</div>
+            {event.linkComingSoon
+              ? t('Event.soonAvailable')
+              : t('Event.noReport')
+            }
+          </div>
         )}
       </div>
     </div>
@@ -31,11 +36,13 @@ Event.propTypes = {
     date: PropTypes.string.isRequired,
     link: PropTypes.string,
     linkComingSoon: PropTypes.bool
-  }).isRequired
+  }).isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
 Event.defaultProps = {
   linkComingSoon: false
 }
 
-export default Event
+export default translate('Events')(Event)
