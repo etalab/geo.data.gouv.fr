@@ -6,7 +6,7 @@ export default (store, i18n) => ({
   path: '*',
 
   getComponent(nextState, cb) {
-    i18n.languages.forEach(lang => {
+    i18n.availableLanguages.forEach(lang => {
       injectLocale(i18n, {
         locale: lang,
         namespace: 'NotFound',
