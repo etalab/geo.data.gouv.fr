@@ -31,13 +31,6 @@ jobs:
     <<: *default_container
     steps:
       - checkout
-
-      - restore_cache:
-          name: Restore yarn global cache
-          keys:
-            - v1-geodatagouv-yarn-{{ .Branch }}
-            - v1-geodatagouv-yarn-
-
       - *restore_node_modules
 
       - run:
@@ -49,12 +42,6 @@ jobs:
           key: v1-geodatagouv-node-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
-
-      - save_cache:
-          name: Save yarn global cache
-          key: v1-geodatagouv-yarn-{{ .Branch }}
-          paths:
-            - ~/.cache/yarn/
 
       - run:
           name: Remove node_modules to cleanup workspace
