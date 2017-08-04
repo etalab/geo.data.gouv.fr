@@ -23,6 +23,21 @@
     "unknown": "Non renseigné"
   },
 
+  "DatasetContactLabel": {
+    "resourceProvider": "Fournisseur",
+    "custodian": "Résponsable",
+    "owner": "Propriétaire",
+    "user": "Utilisateur",
+    "distributor": "Distributeur",
+    "originator": "Initiateur",
+    "pointOfContact": "Point de contact",
+    "processor": "Intervenant technique",
+    "publisher": "Diffuseur",
+    "author": "Auteur",
+    "notDefined": "Inconnu",
+    "other": "Autre"
+  },
+
   "DatasetDataGouvPublication": {
     "dvgLink": "Consulter le jeu de données sur data.gouv.fr",
     "canBePublished": "Ce jeu de données {{bold}} être publié sur data.gouv.fr",

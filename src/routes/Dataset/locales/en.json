@@ -23,6 +23,21 @@
     "unknown": "Unknown"
   },
 
+  "DatasetContactLabel": {
+    "resourceProvider": "Resource provider",
+    "custodian": "Custodian",
+    "owner": "Owner",
+    "user": "User",
+    "distributor": "Distributor",
+    "originator": "Originator",
+    "pointOfContact": "Point of contact",
+    "processor": "Processor",
+    "publisher": "Publisher",
+    "author": "Author",
+    "notDefined": "Unknown",
+    "other": "Other"
+  },
+
   "DatasetDataGouvPublication": {
     "dvgLink": "See dataset on data.gouv.fr",
     "canBePublished": "This dataset {{bold}} be published on data.gouv.fr",
