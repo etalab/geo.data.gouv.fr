@@ -99,6 +99,9 @@ jobs:
           paths:
             - reports/
 
+      - store_artifacts:
+          path: reports/
+
   deploy:
     <<: *defaults
     steps:
