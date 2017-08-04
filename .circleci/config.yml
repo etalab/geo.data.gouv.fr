@@ -1,17 +1,25 @@
 version: 2
 
-defaults: &defaults
-  working_directory: ~/geodatagouv
-  docker:
-    - image: circleci/node:8
+defaults:
+  workspace_root: &workspace_root
+    ~/geodatagouv
 
-default_filters: &default_filters
-  tags:
-    only: '/v[0-9]+(\.[0-9]+)*/'
+  container: &default_container
+    working_directory: *workspace_root
+    docker:
+      - image: circleci/node:8
+
+  filters: &default_filters
+    tags:
+      only: '/v[0-9]+(\.[0-9]+)*/'
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
 
 jobs:
   install:
-    <<: *defaults
+    <<: *default_container
     steps:
       - checkout
 
@@ -43,18 +51,15 @@ jobs:
           paths:
             - ~/.cache/yarn/
 
-      - save_cache:
-          name: Save workflow environment
-          key: v1-geodatagouv-workflow-{{ ".Revision" }}
+      - persist_to_workspace:
+          root: *workspace_root
           paths:
             - ./
 
   lint:
-    <<: *defaults
+    <<: *default_container
     steps:
-      - restore_cache:
-          keys:
-            - v1-geodatagouv-workflow-{{ ".Revision" }}
+      - *attach_workspace
 
       - run:
           name: Lint JavaScipt
@@ -65,22 +70,18 @@ jobs:
           command: yarn lint:styles
 
   test:
-    <<: *defaults
+    <<: *default_container
     steps:
-      - restore_cache:
-          keys:
-            - v1-geodatagouv-workflow-{{ ".Revision" }}
+      - *attach_workspace
 
       - run:
           name: Run tests
           command: yarn test
 
   build:
-    <<: *defaults
+    <<: *default_container
     steps:
-      - restore_cache:
-          keys:
-            - v1-geodatagouv-workflow-{{ ".Revision" }}
+      - *attach_workspace
 
       - restore_cache:
           name: Restore reports cache
@@ -102,11 +103,18 @@ jobs:
       - store_artifacts:
           path: reports/
 
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - dist/
+
   deploy:
-    <<: *defaults
+    <<: *default_container
     steps:
-      - run:
-          command: echo 'TODO, add deploy step'
+      - *attach_workspace
+
+      - deploy:
+          command: yarn deploy
 
 workflows:
   version: 2
