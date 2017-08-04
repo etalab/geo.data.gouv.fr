@@ -1,4 +1,10 @@
 {
+  "CheckDataAvailability": {
+    "distributionAvailable": "At least one of the distribution is available.",
+    "distributionUnavailable": "No distribution found.",
+    "title": "Data availability"
+  },
+
   "CheckLicense": {
     "licensesList": "Recognized licenses are",
     "noLicenses": "No licenses could be found.",
@@ -15,12 +21,6 @@
 
   "DatasetContact": {
     "unknown": "Unknown"
-  },
-
-  "CheckDataAvailability": {
-    "distributionAvailable": "At least one of the distribution is available.",
-    "distributionUnavailable": "No distribution found.",
-    "title": "Data availability"
   },
 
   "DatasetDataGouvPublication": {
@@ -43,6 +43,11 @@
   "DatasetDownloadList": {
     "vectorDataTitle": "Vector data",
     "otherDataTitle": "Other data"
+  },
+
+  "DatasetFilters": {
+    "organizationsTitle": "Organizations",
+    "keywordsTitle": "Keywords"
   },
 
   "DatasetHeader": {
