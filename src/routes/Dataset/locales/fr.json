@@ -34,6 +34,17 @@
     "show": "Afficher le détail"
   },
 
+  "DatasetDownload": {
+    "title": "Télécharger",
+    "unavailable": "Indisponible",
+    "buttonText": "Visualiser"
+  },
+
+  "DatasetDownloadList": {
+    "vectorDataTitle": "Données vectorielles",
+    "otherDataTitle": "Autres Données"
+  },
+
   "DatasetHeader": {
     "unknown": "inconnu",
     "type": "Type",
@@ -41,6 +52,11 @@
     "lastUpdate": "Dernière mise à jour",
     "objectif": "Objectif",
     "dataOrigin": "Origine de la donnée"
+  },
+
+  "DatasetPreview": {
+    "map": "Carte",
+    "table": "Tableau"
   },
 
   "DatasetTechnicalInfo": {

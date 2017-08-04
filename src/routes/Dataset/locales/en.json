@@ -34,6 +34,17 @@
     "show": "Show details"
   },
 
+  "DatasetDownload": {
+    "title": "Download",
+    "unavailable": "Unavailable",
+    "buttonText": "Display"
+  },
+
+  "DatasetDownloadList": {
+    "vectorDataTitle": "Vector data",
+    "otherDataTitle": "Other data"
+  },
+
   "DatasetHeader": {
     "unknown": "Unknown",
     "type": "Type",
@@ -41,6 +52,11 @@
     "lastUpdate": "Last update",
     "objectif": "Objectif",
     "dataOrigin": "Origin of data"
+  },
+
+  "DatasetPreview": {
+    "map": "Map",
+    "table": "Table"
   },
 
   "DatasetTechnicalInfo": {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import strRightBack from 'underscore.string/strRightBack'
 
@@ -14,7 +15,7 @@ const FORMATS = [
   { label: 'CSV', format: 'CSV', projection: 'WGS84' }
 ]
 
-const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview }) => {
+export const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview, t }) => {
   let link, layerName
 
   if (distribution.type === 'file-package') {
@@ -34,10 +35,10 @@ const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview }) 
       <div>
         <div className={styles.container}>
           <div>
-            <div>Télécharger<i className='download icon' /></div>
+            <div>{t('DatasetDownload.title')}<i className='download icon' /></div>
             <div className={styles.formats}>
               {!distribution.available ? (
-                <p>Indisponible</p>
+                <p>{t('DatasetDownload.unavailable')}</p>
               ) : (
                 FORMATS.map((format, idx) => (
                   <a
@@ -48,13 +49,13 @@ const DatasetDownload = ({ distribution, isPreview, setPreview, resetPreview }) 
             </div>
           </div>
           {!distribution.available ? (
-            <button className={styles.viewerButton} disabled>Visualiser</button>
+            <button className={styles.viewerButton} disabled>{t('DatasetDownload.buttonText')}</button>
           ) : (
             <button
               className={styles.viewerButton}
               onClick={isPreview ? resetPreview : () => setPreview({ distribution, link })}
             >
-              Visualiser {isPreview && (
+              {t('DatasetDownload.buttonText')} {isPreview && (
                 <i className='unhide icon' />
               )}
             </button>
@@ -77,11 +78,13 @@ DatasetDownload.propTypes = {
   isPreview: PropTypes.bool,
 
   setPreview: PropTypes.func.isRequired,
-  resetPreview: PropTypes.func.isRequired
+  resetPreview: PropTypes.func.isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
 DatasetDownload.defaultProps = {
   isPreview: false
 }
 
-export default DatasetDownload
+export default translate('Dataset')(DatasetDownload)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import DatasetDownload from '../DatasetDownload'
@@ -13,7 +14,9 @@ class DatasetDownloadList extends React.PureComponent {
       location: PropTypes.string
     })).isRequired,
 
-    fetchGeoJson: PropTypes.func.isRequired
+    fetchGeoJson: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   setPreview = ({ distribution, link }) => {
@@ -36,7 +39,7 @@ class DatasetDownloadList extends React.PureComponent {
   }
 
   render() {
-    const { distributions } = this.props
+    const { distributions, t } = this.props
     const { preview } = this.state
 
     const vectorDistributions = distributions.filter(distribution => !distribution.originalDistribution)
@@ -47,7 +50,7 @@ class DatasetDownloadList extends React.PureComponent {
         <div>
           {vectorDistributions.length > 0 && (
             <div>
-              <h4>Données vectorielles</h4>
+              <h4>{t('DatasetDownloadList.vectorDataTitle')}</h4>
               {vectorDistributions.map(distribution => (
                 <DatasetDownload
                   key={distribution._id}
@@ -61,7 +64,7 @@ class DatasetDownloadList extends React.PureComponent {
           )}
           {otherDistributions.length > 0 && (
             <div>
-              <h4>Autres Données</h4>
+              <h4>{t('DatasetDownloadList.otherDataTitle')}</h4>
               {otherDistributions.map(distribution => distribution.available ? (
                 <a key={distribution._id} href={distribution.location}>
                   {distribution.name}
@@ -86,4 +89,4 @@ class DatasetDownloadList extends React.PureComponent {
   }
 }
 
-export default DatasetDownloadList
+export default translate('Dataset')(DatasetDownloadList)
