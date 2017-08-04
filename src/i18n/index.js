@@ -2,6 +2,11 @@ import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import moment from 'moment'
 
+const availableLanguages = [
+  'en',
+  'fr'
+]
+
 export default () => {
   const i18n = i18next
     .use(LanguageDetector)
@@ -16,8 +21,7 @@ export default () => {
       },
 
       whitelist: [
-        'en',
-        'fr'
+        ...availableLanguages
       ],
 
       fallbackLng: 'en',
@@ -33,6 +37,7 @@ export default () => {
       }
     })
 
+  i18n.availableLanguages = availableLanguages
   moment.locale(i18n.language)
 
   return i18n
