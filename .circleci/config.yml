@@ -1,0 +1,141 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/geodatagouv
+  docker:
+    - image: circleci/node:8
+
+default_filters: &default_filters
+  tags:
+    only: '^v.*'
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore yarn global cache
+          keys:
+            - v1-geodatagouv-yarn-{{ .Branch }}
+            - v1-geodatagouv-yarn-
+
+      - restore_cache:
+          name: Restore node_modules cache
+          keys:
+            - v1-geodatagouv-node-{{ checksum "yarn.lock" }}
+            - v1-geodatagouv-node-
+
+      - run:
+          name: Install dependencies
+          command: yarn
+
+      - save_cache:
+          name: Save node_modules cache
+          key: v1-geodatagouv-node-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+
+      - save_cache:
+          name: Save yarn global cache
+          key: v1-geodatagouv-yarn-{{ .Branch }}
+          paths:
+            - ~/.cache/yarn/
+
+      - save_cache:
+          name: Save workflow environment
+          key: v1-geodatagouv-workflow-{{ ".Revision" }}
+          paths:
+            - ./
+
+  lint:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          keys:
+            - v1-geodatagouv-workflow-{{ ".Revision" }}
+
+      - run:
+          name: Lint JavaScipt
+          command: yarn lint:scripts
+
+      - run:
+          name: Lint Stylesheets
+          command: yarn lint:styles
+
+  test:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          keys:
+            - v1-geodatagouv-workflow-{{ ".Revision" }}
+
+      - run:
+          name: Run tests
+          command: yarn test
+
+  build:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          keys:
+            - v1-geodatagouv-workflow-{{ ".Revision" }}
+
+      - restore_cache:
+          name: Restore reports cache
+          keys:
+            - v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
+            - v1-geodatagouv-reports-{{ .Branch }}-
+            - v1-geodatagouv-reports-
+
+      - run:
+          name: Build output bundles
+          command: yarn build
+
+      - save_cache:
+          name: Save reports cache
+          key: v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - reports/
+
+  deploy:
+    <<: *defaults
+    steps:
+      - run:
+          command: echo 'TODO, add deploy step'
+
+workflows:
+  version: 2
+
+  build_test_deploy:
+    jobs:
+      - install:
+          filters:
+            <<: *default_filters
+
+      - lint:
+          requires:
+            - install
+          filters:
+            <<: *default_filters
+
+      - test:
+          requires:
+            - install
+          filters:
+            <<: *default_filters
+
+      - build:
+          requires:
+            - install
+          filters:
+            <<: *default_filters
+
+      - deploy:
+          requires:
+            - lint
+            - test
+            - build
+          filters:
+            <<: *default_filters
