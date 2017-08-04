@@ -19,6 +19,13 @@ defaults:
     attach_workspace:
       at: *workspace_root
 
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      name: Restore node_modules cache
+      keys:
+        - v1-geodatagouv-node-{{ checksum "yarn.lock" }}
+        - v1-geodatagouv-node-
+
 jobs:
   install:
     <<: *default_container
@@ -31,11 +38,7 @@ jobs:
             - v1-geodatagouv-yarn-{{ .Branch }}
             - v1-geodatagouv-yarn-
 
-      - restore_cache:
-          name: Restore node_modules cache
-          keys:
-            - v1-geodatagouv-node-{{ checksum "yarn.lock" }}
-            - v1-geodatagouv-node-
+      - *restore_node_modules
 
       - run:
           name: Install dependencies
@@ -53,6 +56,10 @@ jobs:
           paths:
             - ~/.cache/yarn/
 
+      - run:
+          name: Remove node_modules to cleanup workspace
+          command: rm -r node_modules/
+
       - persist_to_workspace:
           root: *workspace_root
           paths:
@@ -62,6 +69,7 @@ jobs:
     <<: *default_container
     steps:
       - *attach_workspace
+      - *restore_node_modules
 
       - run:
           name: Lint JavaScipt
@@ -75,6 +83,7 @@ jobs:
     <<: *default_container
     steps:
       - *attach_workspace
+      - *restore_node_modules
 
       - run:
           name: Run tests
@@ -84,6 +93,7 @@ jobs:
     <<: *default_container
     steps:
       - *attach_workspace
+      - *restore_node_modules
 
       - restore_cache:
           name: Restore reports cache
@@ -114,6 +124,7 @@ jobs:
     <<: *default_container
     steps:
       - *attach_workspace
+      - *restore_node_modules
 
       - deploy:
           command: yarn deploy
