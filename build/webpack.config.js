@@ -84,34 +84,33 @@ const config = {
           '**/__mocks__/**',
         ]
       }
-    }),
-
-    new StyleLintPlugin()
+    })
   ]
 }
 
 // JavaScript
 // ------------------------------------
-config.module.rules.push(
-  {
+if (__DEV__) {
+  config.module.rules.push({
     test: /\.(js|jsx)$/,
     include: inProject(project.srcDir),
     loader: 'eslint-loader',
     enforce: 'pre'
-  },
-  {
-    test: /\.(js|jsx)$/,
-    include: inProject(project.srcDir),
-    use: [
-      {
-        loader: 'babel-loader',
-        query: {
-          cacheDirectory: true
-        }
+  })
+}
+
+config.module.rules.push({
+  test: /\.(js|jsx)$/,
+  include: inProject(project.srcDir),
+  use: [
+    {
+      loader: 'babel-loader',
+      query: {
+        cacheDirectory: true
       }
-    ]
-  }
-)
+    }
+  ]
+})
 
 // Styles
 // ------------------------------------
@@ -222,7 +221,8 @@ if (__DEV__) {
   )
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new StyleLintPlugin()
   )
 }
 

@@ -1,0 +1,150 @@
+version: 2
+
+defaults:
+  workspace_root: &workspace_root
+    ~/geodatagouv
+
+  container: &default_container
+    working_directory: *workspace_root
+    docker:
+      - image: circleci/node:8
+
+  filters: &default_filters
+    tags:
+      only: '/v[0-9]+(\.[0-9]+)*/'
+    branches:
+      ignore: gh-pages
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      name: Restore node_modules cache
+      keys:
+        - v1-geodatagouv-node-{{ checksum "yarn.lock" }}
+        - v1-geodatagouv-node-
+
+jobs:
+  install:
+    <<: *default_container
+    steps:
+      - checkout
+      - *restore_node_modules
+
+      - run:
+          name: Install dependencies
+          command: yarn
+
+      - save_cache:
+          name: Save node_modules cache
+          key: v1-geodatagouv-node-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+
+      - run:
+          name: Remove node_modules to cleanup workspace
+          command: rm -r node_modules/
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - ./
+
+  lint:
+    <<: *default_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
+
+      - run:
+          name: Lint JavaScipt
+          command: yarn lint:scripts
+
+      - run:
+          name: Lint Stylesheets
+          command: yarn lint:styles
+
+  test:
+    <<: *default_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
+
+      - run:
+          name: Run tests
+          command: yarn test
+
+  build:
+    <<: *default_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
+
+      - restore_cache:
+          name: Restore reports cache
+          keys:
+            - v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
+            - v1-geodatagouv-reports-{{ .Branch }}-
+            - v1-geodatagouv-reports-
+
+      - run:
+          name: Build output bundles
+          command: yarn build
+
+      - save_cache:
+          name: Save reports cache
+          key: v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - reports/
+
+      - store_artifacts:
+          path: reports/
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - dist/
+
+  deploy:
+    <<: *default_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
+
+      - deploy:
+          command: yarn deploy
+
+workflows:
+  version: 2
+
+  build_test_deploy:
+    jobs:
+      - install:
+          filters: *default_filters
+
+      - lint:
+          requires:
+            - install
+          filters: *default_filters
+
+      - test:
+          requires:
+            - install
+          filters: *default_filters
+
+      - build:
+          requires:
+            - install
+          filters: *default_filters
+
+      - deploy:
+          requires:
+            - lint
+            - test
+            - build
+          filters:
+            <<: *default_filters
+            branches:
+              ignore: '/.*/'
