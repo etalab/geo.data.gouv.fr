@@ -85,9 +85,8 @@ jobs:
       - restore_cache:
           name: Restore reports cache
           keys:
-            - v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
             - v1-geodatagouv-reports-{{ .Branch }}-
-            - v1-geodatagouv-reports-
+            - v1-geodatagouv-reports-master-
 
       - run:
           name: Build output bundles
