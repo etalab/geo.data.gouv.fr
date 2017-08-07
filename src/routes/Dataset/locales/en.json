@@ -40,11 +40,9 @@
 
   "DatasetDataGouvPublication": {
     "dvgLink": "See dataset on data.gouv.fr",
-    "canBePublished": "This dataset {{bold}} be published on data.gouv.fr",
-    "can": "can",
+    "canBePublished": "This dataset <1>can</1> be published on data.gouv.fr",
     "producerActionNeeded": "An action of the producer is necessary.",
-    "cantBePublished": "This dataset {{bold}} be published on data.gouv.fr",
-    "canNot": "can not",
+    "cantBePublished": "This dataset <1>can not</1> be published on data.gouv.fr",
     "hide": "Hide details",
     "show": "Show details"
   },

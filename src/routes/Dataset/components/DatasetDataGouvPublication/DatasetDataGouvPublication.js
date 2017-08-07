@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate, Interpolate } from 'react-i18next'
+import { translate, Trans } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import { Button } from 'common/components/Buttons'
@@ -59,9 +59,9 @@ class DatasetDataGouvPublication extends React.PureComponent {
       } else {
         return (
           <div>
-            <Interpolate i18nKey='DatasetDataGouvPublication.canBePublished'
-              bold={<b>{t('DatasetDataGouvPublication.can')}</b>}
-            />
+            <Trans i18nKey='DatasetDataGouvPublication.canBePublished'>
+              This dataset <b>can</b> be published on data.gouv.fr
+            </Trans>
             <div className={styles.highlight}>{t('DatasetDataGouvPublication.producerActionNeeded')}</div>
           </div>
         )
@@ -69,9 +69,9 @@ class DatasetDataGouvPublication extends React.PureComponent {
     } else {
       return (
         <div className={styles.checklist}>
-          <Interpolate i18nKey='DatasetDataGouvPublication.cantBePublished'
-            bold={<b>{t('DatasetDataGouvPublication.canNot')}</b>}
-          />
+          <Trans i18nKey='DatasetDataGouvPublication.cantBePublished'>
+            This dataset <b>can not</b> be published on data.gouv.fr
+          </Trans>
           {expanded && (
             <div>
               <CheckLicense license={dataset.metadata.license} valid={licenseCheck} />

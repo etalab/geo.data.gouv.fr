@@ -40,11 +40,9 @@
 
   "DatasetDataGouvPublication": {
     "dvgLink": "Consulter le jeu de données sur data.gouv.fr",
-    "canBePublished": "Ce jeu de données {{bold}} être publié sur data.gouv.fr",
-    "can": "peut",
+    "canBePublished": "Ce jeu de données <1>peut</1> être publié sur data.gouv.fr",
     "producerActionNeeded": "Une action du producteur est nécessaire.",
-    "cantBePublished": "Ce jeu de données {{bold}} être publié sur data.gouv.fr",
-    "canNot": "ne peut pas",
+    "cantBePublished": "Ce jeu de données <1>ne peut pas</1> être publié sur data.gouv.fr",
     "hide": "Masquer le détail",
     "show": "Afficher le détail"
   },
