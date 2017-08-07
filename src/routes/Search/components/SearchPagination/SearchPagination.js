@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Paginate from 'react-paginate'
@@ -6,11 +7,12 @@ import Paginate from 'react-paginate'
 import styles from './SearchPagination.scss'
 
 const SearchPagination = ({
+  t,
   page,
   pageCount,
   onPageChange,
-  previousLabel = 'Précédent',
-  nextLabel = 'Suivant',
+  previousLabel = t('SearchPagination.previous'),
+  nextLabel = t('SearchPagination.next'),
   breakLabel = '…'
 }) => {
   const selected = page - 1 || 0
@@ -50,7 +52,9 @@ SearchPagination.propTypes = {
 
   previousLabel: PropTypes.string,
   nextLabel: PropTypes.string,
-  breakLabel: PropTypes.string
+  breakLabel: PropTypes.string,
+
+  t: PropTypes.func.isRequired
 }
 
-export default SearchPagination
+export default translate('Search')(SearchPagination)

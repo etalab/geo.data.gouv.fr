@@ -1,22 +1,19 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
-const SearchResultsCount = ({ count }) => !count ? (
+const SearchResultsCount = ({ count, t }) => (
   <div>
-    Aucun jeu de données trouvé.
-  </div>
-) : count === 1 ? (
-  <div>
-    <strong>{count}</strong> jeu de données trouvé.
-  </div>
-) : (
-  <div>
-    <strong>{count}</strong> jeux de données trouvés.
+    {count
+      ? t('SearchResultsCount.results', { count })
+      : t('SearchResultsCount.noResults')
+    }
   </div>
 )
 
 SearchResultsCount.propTypes = {
-  count: PropTypes.number.isRequired
+  count: PropTypes.number.isRequired,
+  t: PropTypes.func.isRequired
 }
 
-export default SearchResultsCount
+export default translate('Search')(SearchResultsCount)
