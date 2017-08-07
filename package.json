@@ -7,8 +7,8 @@
     "start": "node build/scripts/start",
     "compile": "node build/scripts/compile",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
-    "test": "cross-env NODE_ENV=test mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
-    "test:ci": "cross-env NODE_ENV=test MOCHA_FILE=reports/tests/geodatagouv/results.xml nyc mocha -r build/tests/bootstrap.js -r ignore-styles --reporter mocha-circleci-reporter src/**/*.test.js",
+    "test": "cross-env NODE_ENV=test mocha -r babel-register -r build/tests/bootstrap.js src/**/*.test.js",
+    "test:ci": "cross-env NODE_ENV=test MOCHA_FILE=reports/tests/geodatagouv/results.xml nyc mocha -r build/tests/bootstrap.js --reporter mocha-circleci-reporter src/**/*.test.js",
     "codecov": "codecov",
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:scripts && npm run lint:styles",
@@ -20,6 +20,7 @@
     "babel-core": "^6.14.0",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-istanbul": "^4.1.4",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.8",
     "babel-preset-react-app": "^3.0.1",
@@ -58,6 +59,7 @@
     "http-proxy-middleware": "^0.17.1",
     "ignore-styles": "^5.0.1",
     "jsdom": "^11.1.0",
+    "jsdom-global": "^3.0.2",
     "mkdirp": "^0.5.1",
     "mocha": "^3.5.0",
     "mocha-circleci-reporter": "^0.0.2",
@@ -112,14 +114,13 @@
     "node": "8.x"
   },
   "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src"
+    ],
     "exclude": [
-      "build",
-      "coverage",
-      "dist",
-      "node_modules",
-      "public",
-      "reports",
-      "server",
       "**/__test__/**",
       "**/__mocks__/**"
     ],
@@ -128,6 +129,8 @@
       "text-summary"
     ],
     "all": true,
+    "sourceMap": false,
+    "instrument": false,
     "cache": true
   }
 }
