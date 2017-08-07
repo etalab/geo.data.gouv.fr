@@ -21,6 +21,7 @@ dist
 .yarn-cache
 .npm
 .eslintcache
+.nyc_output
 
 # Node
 node_modules

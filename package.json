@@ -8,6 +8,7 @@
     "compile": "node build/scripts/compile",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
     "test": "cross-env NODE_ENV=test mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
+    "test:cover": "cross-env NODE_ENV=test nyc mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "lint:scripts": "eslint .",
@@ -58,6 +59,7 @@
     "mocha": "^3.5.0",
     "module-alias": "^2.0.1",
     "node-sass": "^4.5.3",
+    "nyc": "^11.1.0",
     "proxyquire": "^1.7.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -104,5 +106,24 @@
   },
   "engines": {
     "node": "8.x"
+  },
+  "nyc": {
+    "exclude": [
+      "build",
+      "coverage",
+      "dist",
+      "node_modules",
+      "public",
+      "reports",
+      "server",
+      "**/__test__/**",
+      "**/__mocks__/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "all": true,
+    "cache": true
   }
 }
