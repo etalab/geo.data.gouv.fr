@@ -80,6 +80,7 @@ jobs:
           path: reports/tests/
 
       - store_artifacts:
+          name: Store coverage artifacts
           path: coverage/
 
       - run:
@@ -109,6 +110,7 @@ jobs:
             - reports/
 
       - store_artifacts:
+          name: Store build report artifacts
           path: reports/
 
       - persist_to_workspace:
