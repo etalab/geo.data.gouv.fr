@@ -8,7 +8,7 @@
     "compile": "node build/scripts/compile",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
     "test": "cross-env NODE_ENV=test mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
-    "test:ci": "cross-env NODE_ENV=test MOCHA_FILE=reports/tests/results.xml nyc mocha -r build/tests/bootstrap.js -r ignore-styles --reporter mocha-circleci-reporter src/**/*.test.js",
+    "test:ci": "cross-env NODE_ENV=test MOCHA_FILE=reports/tests/geodatagouv/results.xml nyc mocha -r build/tests/bootstrap.js -r ignore-styles --reporter mocha-circleci-reporter src/**/*.test.js",
     "codecov": "codecov -f coverage/coverage-final.json",
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:scripts && npm run lint:styles",
