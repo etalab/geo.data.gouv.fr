@@ -17,7 +17,7 @@ export default (store, i18n) => ({
       injectLocale(i18n, {
         locale: lang,
         namespace: 'Dataset',
-        resources: await import(/* webpackMode: 'lazy-once', webpackChunkName: 'catalogs' */ `./locales/${lang}.json`)
+        resources: await import(/* webpackMode: 'lazy-once', webpackChunkName: 'dataset' */ `./locales/${lang}.json`)
       })
     })
 
