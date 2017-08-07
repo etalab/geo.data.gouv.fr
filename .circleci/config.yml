@@ -74,7 +74,18 @@ jobs:
 
       - run:
           name: Run tests
-          command: yarn test
+          command: yarn test:ci
+
+      - store_test_results:
+          path: reports/tests/
+
+      - store_artifacts:
+          name: Store coverage artifacts
+          path: coverage/
+
+      - run:
+          name: 'Upload code coverage to codecov'
+          command: yarn codecov
 
   build:
     <<: *default_container
@@ -99,6 +110,7 @@ jobs:
             - reports/
 
       - store_artifacts:
+          name: Store build report artifacts
           path: reports/
 
       - persist_to_workspace:

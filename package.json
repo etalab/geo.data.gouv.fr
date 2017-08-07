@@ -8,6 +8,8 @@
     "compile": "node build/scripts/compile",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
     "test": "cross-env NODE_ENV=test mocha -r build/tests/bootstrap.js -r ignore-styles src/**/*.test.js",
+    "test:ci": "cross-env NODE_ENV=test MOCHA_FILE=reports/tests/geodatagouv/results.xml nyc mocha -r build/tests/bootstrap.js -r ignore-styles --reporter mocha-circleci-reporter src/**/*.test.js",
+    "codecov": "codecov -f coverage/coverage-final.json",
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "lint:scripts": "eslint .",
@@ -28,6 +30,7 @@
     "chai-enzyme": "^0.8.0",
     "chalk": "^2.0.1",
     "classnames": "^2.2.5",
+    "codecov": "^2.3.0",
     "compression": "^1.7.0",
     "connect-history-api-fallback": "^1.3.0",
     "cross-env": "^5.0.3",
@@ -56,8 +59,10 @@
     "jsdom": "^11.1.0",
     "mkdirp": "^0.5.1",
     "mocha": "^3.5.0",
+    "mocha-circleci-reporter": "^0.0.2",
     "module-alias": "^2.0.1",
     "node-sass": "^4.5.3",
+    "nyc": "^11.1.0",
     "proxyquire": "^1.7.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -104,5 +109,25 @@
   },
   "engines": {
     "node": "8.x"
+  },
+  "nyc": {
+    "exclude": [
+      "build",
+      "coverage",
+      "dist",
+      "node_modules",
+      "public",
+      "reports",
+      "server",
+      "**/__test__/**",
+      "**/__mocks__/**"
+    ],
+    "reporter": [
+      "lcov",
+      "json",
+      "text-summary"
+    ],
+    "all": true,
+    "cache": true
   }
 }
