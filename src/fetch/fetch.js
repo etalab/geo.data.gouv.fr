@@ -1,10 +1,5 @@
 import { _get, _put, _post, _delete } from '../helpers/super'
 
-export function fetchMetrics(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  return _get(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}/metrics`)
-}
-
 export function fetchCatalog(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
   return _get(`https://inspire.data.gouv.fr/api/geogw/catalogs/${catalogId}`)
@@ -12,31 +7,6 @@ export function fetchCatalog(catalogId) {
 
 export function fetchCatalogs() {
   return _get('https://inspire.data.gouv.fr/api/geogw/catalogs')
-}
-
-export function fetchHarvest(catalogId, harvestId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  if (!harvestId) return Promise.reject(new Error('harvestId is required'))
-  return _get(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations/${harvestId}`)
-}
-
-export function fetchHarvests(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  return _get(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/synchronizations`)
-}
-
-export function fetchGlobalMetrics() {
-  return _get('https://inspire.data.gouv.fr/dgv/api/datasets/metrics')
-}
-
-export function fetchDataset(datasetId) {
-  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  return _get(`https://inspire.data.gouv.fr/api/geogw/records/${datasetId}`)
-}
-
-export function fetchGeoJSON(link) {
-  if (!link) return Promise.reject(new Error('link is required'))
-  return _get(link + '?format=GeoJSON&projection=WGS84')
 }
 
 export function getUser() {
@@ -87,15 +57,6 @@ export function updateOrganizationAccount(organizationId, organization = {}) {
   return _put(url, organization)
 }
 
-export function syncCatalog(catalogId) {
-  if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  return _post(`https://inspire.data.gouv.fr/api/geogw/services/${catalogId}/sync`)
-}
-
-export function getProducers() {
-  return _get('https://inspire.data.gouv.fr/dgv/api/producers')
-}
-
 export function getOrganizationProducers(organizationId) {
   if (!organizationId) return Promise.reject(new Error('organizationId is required'))
   return _get(`https://inspire.data.gouv.fr/dgv/api/organizations/${organizationId}/producers`)
@@ -127,22 +88,7 @@ export function getOrganizations(organizationsId) {
   return Promise.all(organizationsId.map(id => getOrganization(id)))
 }
 
-export function getDataGouvPublication(datasetId) {
-  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  const url = `https://inspire.data.gouv.fr/api/geogw/records/${datasetId}/publications`
-
-  return _get(url)
-    .then(p => p.find(pub => pub.target === 'dgv'))
-}
-
 // DATA.GOUV.FR
-export function getDatasetOnDataGouv(datasetId) {
-  if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  const url = `https://inspire.data.gouv.fr/dgv/proxy-api/1/datasets/${datasetId}/`
-
-  return _get(url)
-}
-
 export function getDiscussions(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
   const url = `https://inspire.data.gouv.fr/dgv/proxy-api/1/discussions/?for=${datasetId}`
