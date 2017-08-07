@@ -89,12 +89,10 @@ DatasetTechnicalInfo.propTypes = {
     }).isRequired,
   }).isRequired,
 
-  status: PropTypes.shape({
-    status: PropTypes.string.isRequired
-  }),
+  status: PropTypes.string.isRequired,
 
   t: PropTypes.func.isRequired,
-  i18n: PropTypes.func.isRequired
+  i18n: PropTypes.object.isRequired
 }
 
 export default translate('Dataset')(DatasetTechnicalInfo)
