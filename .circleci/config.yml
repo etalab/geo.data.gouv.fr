@@ -79,6 +79,13 @@ jobs:
       - store_test_results:
           path: reports/tests/
 
+      - store_artifacts:
+          path: coverage/
+
+      - run:
+          name: 'Upload code coverage to codecov'
+          command: yarn codecov
+
   build:
     <<: *default_container
     steps:
