@@ -31,11 +31,24 @@ jobs:
     <<: *default_container
     steps:
       - checkout
+
+      - restore_cache:
+          name: Restore yarn cache
+          keys:
+            - v1-geodatagouv-yarn-{{ checksum "yarn.lock" }}
+            - v1-geodatagouv-yarn-
+
       - *restore_node_modules
 
       - run:
           name: Install dependencies
           command: yarn
+
+      - save_cache:
+          name: Save yarn cache
+          key: v1-geodatagouv-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn/
 
       - save_cache:
           name: Save node_modules cache
