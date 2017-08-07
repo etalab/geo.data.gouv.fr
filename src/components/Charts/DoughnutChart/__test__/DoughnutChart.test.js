@@ -34,7 +34,7 @@ describe('<DoughnutChart />', () => {
 
     it('Should render Percent component when no data', () => {
       const noDataWrapper = shallow(<DoughnutChart data={{}} t={translateMock} />)
-      const noData = <h1>DoughnutChart.noData</h1>
+      const noData = <h1>components.DoughnutChart.noData</h1>
 
       expect(noDataWrapper.contains(noData)).to.deep.equal(true)
     })

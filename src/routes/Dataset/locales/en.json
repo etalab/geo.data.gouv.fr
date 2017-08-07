@@ -1,102 +1,121 @@
 {
-  "CheckDataAvailability": {
-    "distributionAvailable": "At least one of the distribution is available.",
-    "distributionUnavailable": "No distribution found.",
-    "title": "Data availability"
+  "components": {
+    "CheckDataAvailability": {
+      "distributionAvailable": "At least one of the distribution is available.",
+      "distributionUnavailable": "No distribution found.",
+      "title": "Data availability"
+    },
+
+    "CheckLicense": {
+      "licensesList": "Recognized licenses are",
+      "noLicenses": "No licenses could be found.",
+      "validLicense": "The {{ license }} license is valid.",
+      "unrecognizedLicense": "The {{ license }} license is not recognized.",
+      "title": "License"
+    },
+
+    "CheckProducers": {
+      "identifiedProducer": "At least one producer is identified.",
+      "unindentifiedProducer": "The producer has not been identified.",
+      "title": "Producer"
+    },
+
+    "DatasetContactLabel": {
+      "resourceProvider": "Resource provider",
+      "custodian": "Custodian",
+      "owner": "Owner",
+      "user": "User",
+      "distributor": "Distributor",
+      "originator": "Originator",
+      "pointOfContact": "Point of contact",
+      "processor": "Processor",
+      "publisher": "Publisher",
+      "author": "Author",
+      "notDefined": "Unknown",
+      "other": "Other"
+    },
+
+    "DatasetDataGouvPublication": {
+      "dvgLink": "See dataset on data.gouv.fr",
+      "canBePublished": "This dataset <1>can</1> be published on data.gouv.fr",
+      "producerActionNeeded": "An action of the producer is necessary.",
+      "cantBePublished": "This dataset <1>can not</1> be published on data.gouv.fr",
+      "hide": "Hide details",
+      "show": "Show details"
+    },
+
+    "DatasetDownload": {
+      "title": "Download",
+      "unavailable": "Unavailable",
+      "buttonText": "Display"
+    },
+
+    "DatasetDownloadList": {
+      "vectorDataTitle": "Vector data",
+      "otherDataTitle": "Other data"
+    },
+
+    "DatasetFilters": {
+      "organizationsTitle": "Organizations",
+      "keywordsTitle": "Keywords"
+    },
+
+    "DatasetHeader": {
+      "type": "Type",
+      "license": "License",
+      "lastUpdate": "Last update",
+      "objectif": "Objectif",
+      "dataOrigin": "Origin of data"
+    },
+
+    "DatasetPreview": {
+      "map": "Map",
+      "table": "Table"
+    },
+
+    "DatasetTechnicalInfo": {
+      "lifeCycleTitle": "Data life cycle (by producer)",
+      "frequencyUpdate": "Frequency update",
+      "creationDate": "Creation date",
+      "revisionDate": "Last update",
+      "otherTitle": "Other informations",
+      "topicCategory": "Category of the dataset",
+      "type": "Type",
+      "license": "License",
+      "status": "Status",
+      "scale": "Scalle",
+      "resolution": "Resolution"
+    },
+
+    "DatasetView": {
+      "obsoleteWarning": "Attention this dataset is considered as {{status}} by its producer",
+      "noLinks": "No links available.",
+      "noDownloads": "No data is available for download.",
+
+      "consequences": {
+        "obsolete": "Data may be incomplete or out of date",
+        "underDevelopment": "Some data may be inaccurate or will change"
+      },
+
+      "section": {
+        "technicalInformations": "Technical Informations",
+        "downloads": "Downloads",
+        "links": "Links",
+        "discussions": "Discussions",
+        "filters": "Filters",
+        "producers": "Producers",
+        "preview": "Preview data",
+        "spatialExtent": "Spatial Extent",
+        "dgvPublication": "Publication on data.gouv.fr",
+        "contacts": "Contacts",
+        "contributions": "Contributions"
+      },
+
+      "id": "Dataset ID"
+    }
   },
 
-  "CheckLicense": {
-    "licensesList": "Recognized licenses are",
-    "noLicenses": "No licenses could be found.",
-    "validLicense": "The {{ license }} license is valid.",
-    "unrecognizedLicense": "The {{ license }} license is not recognized.",
-    "title": "License"
-  },
-
-  "CheckProducers": {
-    "identifiedProducer": "At least one producer is identified.",
-    "unindentifiedProducer": "The producer has not been identified.",
-    "title": "Producer"
-  },
-
-  "DatasetContact": {
-    "unknown": "Unknown"
-  },
-
-  "DatasetContactLabel": {
-    "resourceProvider": "Resource provider",
-    "custodian": "Custodian",
-    "owner": "Owner",
-    "user": "User",
-    "distributor": "Distributor",
-    "originator": "Originator",
-    "pointOfContact": "Point of contact",
-    "processor": "Processor",
-    "publisher": "Publisher",
-    "author": "Author",
-    "notDefined": "Unknown",
-    "other": "Other"
-  },
-
-  "DatasetDataGouvPublication": {
-    "dvgLink": "See dataset on data.gouv.fr",
-    "canBePublished": "This dataset <1>can</1> be published on data.gouv.fr",
-    "producerActionNeeded": "An action of the producer is necessary.",
-    "cantBePublished": "This dataset <1>can not</1> be published on data.gouv.fr",
-    "hide": "Hide details",
-    "show": "Show details"
-  },
-
-  "DatasetDownload": {
-    "title": "Download",
-    "unavailable": "Unavailable",
-    "buttonText": "Display"
-  },
-
-  "DatasetDownloadList": {
-    "vectorDataTitle": "Vector data",
-    "otherDataTitle": "Other data"
-  },
-
-  "DatasetFilters": {
-    "organizationsTitle": "Organizations",
-    "keywordsTitle": "Keywords"
-  },
-
-  "DatasetHeader": {
-    "unknown": "Unknown",
-    "type": "Type",
-    "license": "License",
-    "lastUpdate": "Last update",
-    "objectif": "Objectif",
-    "dataOrigin": "Origin of data"
-  },
-
-  "DatasetPreview": {
-    "map": "Map",
-    "table": "Table"
-  },
-
-  "DatasetTechnicalInfo": {
-    "lifeCycleTitle": "Data life cycle (by producer)",
-    "frequencyUpdate": "Frequency update",
-    "creationDate": "Creation date",
-    "revisionDate": "Last update",
-    "otherTitle": "Other informations",
-    "topicCategory": "Category of the dataset",
-    "type": "Type",
-    "license": "License",
-    "status": "Status",
-    "scale": "Scalle",
-    "resolution": "Resolution"
-  },
-
-  "DatasetView": {
-    "obsoleteWarning": "Attention this dataset is considered as {{status}} by its producer",
-
-    "noLinks": "No links available.",
-    "noDownloads": "No data is available for download.",
-
+  "enums": {
     "status": {
       "completed": "completed",
       "historicalArchive": "archived",
@@ -105,27 +124,6 @@
       "planned": "planned",
       "required": "update required",
       "underDevelopment": "under development"
-    },
-
-    "consequences": {
-      "obsolete": "Data may be incomplete or out of date",
-      "underDevelopment": "Some data may be inaccurate or will change"
-    },
-
-    "section": {
-      "technicalInformations": "Technical Informations",
-      "downloads": "Downloads",
-      "links": "Links",
-      "discussions": "Discussions",
-      "filters": "Filters",
-      "producers": "Producers",
-      "preview": "Preview data",
-      "spatialExtent": "Spatial Extent",
-      "dgvPublication": "Publication on data.gouv.fr",
-      "contacts": "Contacts",
-      "contributions": "Contributions"
-    },
-
-    "id": "Dataset ID"
+    }
   }
 }

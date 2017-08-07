@@ -16,8 +16,8 @@ const search = filter => browserHistory.push({
 
 const DatasetFilters = ({ organizations, keywords, t }) => {
   const sections = [
-    { name: 'organization', title: t('DatasetFilters.organizationsTitle'), filters: organizations },
-    { name: 'keyword', title: t('DatasetFilters.keywordsTitle'), filters: keywords }
+    { name: 'organization', title: t('components.DatasetFilters.organizationsTitle'), filters: organizations },
+    { name: 'keyword', title: t('components.DatasetFilters.keywordsTitle'), filters: keywords }
   ]
 
   return (

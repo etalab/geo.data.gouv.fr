@@ -13,7 +13,7 @@ export class CheckLicense extends React.PureComponent {
     let msg
     let content = (
       <div>
-        {t('CheckLicense.licensesList')} :
+        {t('components.CheckLicense.licensesList')} :
         <ul>
           {Object.entries(ACCEPTED_LICENSES).map(([key, li]) => (
             <li key={key}>
@@ -25,12 +25,12 @@ export class CheckLicense extends React.PureComponent {
     )
 
     if (!license) {
-      msg = t('CheckLicense.noLicenses')
+      msg = t('components.CheckLicense.noLicenses')
     } else if (ACCEPTED_LICENSES[license]) {
-      msg = t('CheckLicense.validLicense')
+      msg = t('components.CheckLicense.validLicense')
       content = undefined
     } else {
-      msg = t('CheckLicense.unrecognizedLicense')
+      msg = t('components.CheckLicense.unrecognizedLicense')
     }
 
     return { msg, content }
@@ -41,7 +41,7 @@ export class CheckLicense extends React.PureComponent {
     const { msg, content } = this.check()
 
     return (
-      <Check title={t('CheckLicense.title')} isValid={valid} msg={msg}>
+      <Check title={t('components.CheckLicense.title')} isValid={valid} msg={msg}>
         {content}
       </Check>
     )

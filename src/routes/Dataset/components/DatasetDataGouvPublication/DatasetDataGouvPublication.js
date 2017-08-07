@@ -53,7 +53,7 @@ class DatasetDataGouvPublication extends React.PureComponent {
       if (publication) {
         return (
           <div>
-            <a href={publication.remoteUrl}>{t('DatasetDataGouvPublication.dvgLink')}</a>
+            <a href={publication.remoteUrl}>{t('components.DatasetDataGouvPublication.dvgLink')}</a>
           </div>
         )
       } else {
@@ -62,7 +62,7 @@ class DatasetDataGouvPublication extends React.PureComponent {
             <Trans i18nKey='DatasetDataGouvPublication.canBePublished'>
               This dataset <b>can</b> be published on data.gouv.fr
             </Trans>
-            <div className={styles.highlight}>{t('DatasetDataGouvPublication.producerActionNeeded')}</div>
+            <div className={styles.highlight}>{t('components.DatasetDataGouvPublication.producerActionNeeded')}</div>
           </div>
         )
       }
@@ -79,7 +79,7 @@ class DatasetDataGouvPublication extends React.PureComponent {
               <CheckDataAvailability distributions={dataset.dataset.distributions} valid={dataAvailabilityCheck} />
             </div>
           )}
-          <Button text={expanded ? t('DatasetDataGouvPublication.hide') : t('DatasetDataGouvPublication.show')} action={this.toggleDetails} />
+          <Button text={expanded ? t('components.DatasetDataGouvPublication.hide') : t('components.DatasetDataGouvPublication.show')} action={this.toggleDetails} />
         </div>
       )
     }

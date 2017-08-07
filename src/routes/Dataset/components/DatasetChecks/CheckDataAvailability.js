@@ -7,11 +7,11 @@ import CheckItem from './CheckItem'
 
 export const CheckDataAvailability = ({ valid, distributions, t }) => {
   const msg = valid
-    ? t('CheckDataAvailability.distributionAvailable')
-    : t('CheckDataAvailability.distributionUnavailable')
+    ? t('components.CheckDataAvailability.distributionAvailable')
+    : t('components.CheckDataAvailability.distributionUnavailable')
 
   return (
-    <Check title={t('CheckDataAvailability.title')} isValid={valid} msg={msg}>
+    <Check title={t('components.CheckDataAvailability.title')} isValid={valid} msg={msg}>
       {valid && distributions.map(distribution => (
         <CheckItem
           key={distribution._id}

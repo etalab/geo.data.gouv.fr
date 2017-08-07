@@ -35,10 +35,10 @@ export const DatasetDownload = ({ distribution, isPreview, setPreview, resetPrev
       <div>
         <div className={styles.container}>
           <div>
-            <div>{t('DatasetDownload.title')}<i className='download icon' /></div>
+            <div>{t('components.DatasetDownload.title')}<i className='download icon' /></div>
             <div className={styles.formats}>
               {!distribution.available ? (
-                <p>{t('DatasetDownload.unavailable')}</p>
+                <p>{t('components.DatasetDownload.unavailable')}</p>
               ) : (
                 FORMATS.map((format, idx) => (
                   <a
@@ -49,13 +49,13 @@ export const DatasetDownload = ({ distribution, isPreview, setPreview, resetPrev
             </div>
           </div>
           {!distribution.available ? (
-            <button className={styles.viewerButton} disabled>{t('DatasetDownload.buttonText')}</button>
+            <button className={styles.viewerButton} disabled>{t('components.DatasetDownload.buttonText')}</button>
           ) : (
             <button
               className={styles.viewerButton}
               onClick={isPreview ? resetPreview : () => setPreview({ distribution, link })}
             >
-              {t('DatasetDownload.buttonText')} {isPreview && (
+              {t('components.DatasetDownload.buttonText')} {isPreview && (
                 <i className='unhide icon' />
               )}
             </button>

@@ -16,7 +16,7 @@ const Footer = ({ i18n }) => (
 
       <div className={styles.info}>
         <Interpolate
-          i18nKey='Footer.madeBy'
+          i18nKey='components.Footer.madeBy'
           heart={<span style={{ color: 'white' }}>♥</span>}
           link={<a style={{ color: 'white' }} href='https://www.etalab.gouv.fr/'>Etalab</a>}
         />

@@ -10,7 +10,7 @@ const DatasetContact = ({ contact, t }) => (
   <div className={styles.container}>
     <div className={styles.header}>
       <div className={styles.name}>
-        {contact.organizationName || t('DatasetContact.unknown')}
+        {contact.organizationName || t('Common:enums.unknownData.notSpecified')}
       </div>
 
       <DatasetContactLabel role={contact.role} />
@@ -24,13 +24,13 @@ const DatasetContact = ({ contact, t }) => (
 
     <div className={styles.contact}>
       <div>
-        <i className='call icon' /> {contact.phoneNumber || t('DatasetContact.unknown')}
+        <i className='call icon' /> {contact.phoneNumber || t('Common:enums.unknownData.notSpecified')}
       </div>
 
       <div>
         <i className='mail outline icon' /> {contact.email ? (
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        ) : t('DatasetContact.unknown')}
+        ) : t('Common:enums.unknownData.notSpecified', { context: 'female' })}
       </div>
     </div>
   </div>

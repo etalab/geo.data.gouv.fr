@@ -51,13 +51,13 @@ class DatasetPreview extends React.PureComponent {
             onClick={this.setMode('map')}
             className={mode === 'map' && styles.active}
           >
-            {t('DatasetPreview.map')}
+            {t('components.DatasetPreview.map')}
           </button>
           <button
             onClick={this.setMode('table')}
             className={mode === 'table' && styles.active}
           >
-            {t('DatasetPreview.table')}
+            {t('components.DatasetPreview.table')}
           </button>
           <button className={styles.closeButton} onClick={closePreview}>X</button>
         </div>

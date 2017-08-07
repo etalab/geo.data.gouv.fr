@@ -10,7 +10,7 @@ export function formatData(data, t) {
     'labels': Object.keys(data).map(item => item),
     'datasets': [
       {
-        label: t('Histogram.label'),
+        label: t('components.Histogram.label'),
         lineTension: 0.2,
         backgroundColor: colors[0],
         data: Object.keys(data).map(item => data[item])

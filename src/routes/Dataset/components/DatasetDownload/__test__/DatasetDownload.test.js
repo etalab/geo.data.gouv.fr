@@ -55,7 +55,7 @@ describe('<DatasetDownload />', () => {
       }
 
       const wrapper = shallow(<DatasetDownload distribution={distribution} preview={previewMock} t={mocktranslate} />)
-      expect(wrapper).to.contain(<p>DatasetDownload.unavailable</p>)
+      expect(wrapper).to.contain(<p>components.DatasetDownload.unavailable</p>)
     })
   })
 })

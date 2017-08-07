@@ -6,11 +6,11 @@ import Check from './Check'
 
 export const CheckProducers = ({ valid, organizations, t }) => {
   const msg = valid
-    ? t('CheckProducers.identifiedProducer')
-    : t('CheckProducers.unindentifiedProducer')
+    ? t('components.CheckProducers.identifiedProducer')
+    : t('components.CheckProducers.unindentifiedProducer')
 
   return (
-    <Check title={t('CheckProducers.title')} isValid={valid} msg={msg}>
+    <Check title={t('components.CheckProducers.title')} isValid={valid} msg={msg}>
       {organizations || null }
     </Check>
   )

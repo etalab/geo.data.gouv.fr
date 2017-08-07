@@ -15,7 +15,7 @@ export function formatData(data, t) {
     })
 
   return {
-    labels: labels.map(label => t(`DoughnutChart.${label}`)),
+    labels: labels.map(label => t(`components.DoughnutChart.${label}`)),
     datasets: [
       {
         data: labels.map(label => data[label]),
@@ -29,7 +29,7 @@ export const DoughnutChart = ({ data, t }) => {
   const formatedData = formatData(data || {}, t)
 
   if (formatedData.labels.length === 0) {
-    return <h1>{t('DoughnutChart.noData')}</h1>
+    return <h1>{t('components.DoughnutChart.noData')}</h1>
   }
 
   if (formatedData.labels.length === 1) {

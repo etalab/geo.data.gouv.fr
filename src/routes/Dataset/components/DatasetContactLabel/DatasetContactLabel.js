@@ -6,7 +6,7 @@ import styles from './DatasetContactLabel.scss'
 
 const DatasetContactLabel = ({ role, t }) => (
   <div className={`${styles.label} ${styles[role]}`}>
-    {t(`DatasetContactLabel.${role}`)}
+    {t(`components.DatasetContactLabel.${role}`)}
   </div>
 )
 

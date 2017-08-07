@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import styles from './Filter.scss'
 
 const Filter = ({ detail, remove, filter, style, onClick, t, i18n }) => {
-  const title = t(`Filter.${filter.name}`)
-  const value = i18n.exists(`Filter.${filter.value}`)
-    ? t(`Filter.${filter.value}`)
+  const title = t(`components.Filter.${filter.name}`)
+  const value = i18n.exists(`components.Filter.${filter.value}`)
+    ? t(`components.Filter.${filter.value}`)
     : filter.value
 
   return (

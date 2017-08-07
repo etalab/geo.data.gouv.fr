@@ -50,7 +50,7 @@ class DatasetDownloadList extends React.PureComponent {
         <div>
           {vectorDistributions.length > 0 && (
             <div>
-              <h4>{t('DatasetDownloadList.vectorDataTitle')}</h4>
+              <h4>{t('components.DatasetDownloadList.vectorDataTitle')}</h4>
               {vectorDistributions.map(distribution => (
                 <DatasetDownload
                   key={distribution._id}
@@ -64,7 +64,7 @@ class DatasetDownloadList extends React.PureComponent {
           )}
           {otherDistributions.length > 0 && (
             <div>
-              <h4>{t('DatasetDownloadList.otherDataTitle')}</h4>
+              <h4>{t('components.DatasetDownloadList.otherDataTitle')}</h4>
               {otherDistributions.map(distribution => distribution.available ? (
                 <a key={distribution._id} href={distribution.location}>
                   {distribution.name}

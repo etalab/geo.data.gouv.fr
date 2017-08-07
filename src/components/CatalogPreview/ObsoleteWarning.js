@@ -12,7 +12,7 @@ export const ObsoleteWarning = ({ catalog, currentDate, t }) => {
 
   return (
     <div className={styles.container}>
-      <i className='icon warning' /> {t('ObsoleteWarning.obsoleteCatalog')}
+      <i className='icon warning' /> {t('components.ObsoleteWarning.obsoleteCatalog')}
     </div>
   )
 }

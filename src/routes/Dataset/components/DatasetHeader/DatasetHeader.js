@@ -14,8 +14,8 @@ const DatasetHeader = ({ dataset, t, i18n }) => {
 
   const revisionDate = doneSince(dataset.revisionDate)
   const license = getLicense(dataset.metadata.license)
-  const dataType = i18n.exists(`Common:dataTypes.${type}`)
-    ? t(`Common:dataTypes.${type}`)
+  const dataType = i18n.exists(`Common:enums.dataTypes.${type}`)
+    ? t(`Common:enums.dataTypes.${type}`)
     : type
 
   return (
@@ -26,15 +26,15 @@ const DatasetHeader = ({ dataset, t, i18n }) => {
 
           <div className={styles.infos}>
             <div>
-              {t('DatasetHeader.type')} : <span>{dataType || t('DatasetHeader.unknown')}</span>
+              {t('components.DatasetHeader.type')} : <span>{dataType || t('Common:enums.unknownData.unknown')}</span>
             </div>
             <div>
-              {t('DatasetHeader.license')} : <span>{license.name ? (
+              {t('components.DatasetHeader.license')} : <span>{license.name ? (
                 <a href={license.link} target='_blank'>{license.name}</a>
               ) : license}</span>
             </div>
             <div>
-              {t('DatasetHeader.lastUpdate')} : <span>{revisionDate}</span>
+              {t('components.DatasetHeader.lastUpdate')} : <span>{revisionDate}</span>
             </div>
           </div>
         </div>
@@ -57,10 +57,10 @@ const DatasetHeader = ({ dataset, t, i18n }) => {
             <MarkdownPreview markdown={description} />
           )}
           <p>
-            <b>{t('DatasetHeader.objectif')} :</b> {purpose || t('Common:unknownData.notSpecified')}
+            <b>{t('components.DatasetHeader.objectif')} :</b> {purpose || t('Common:enums.unknownData.notSpecified')}
           </p>
           <p>
-            <b>{t('DatasetHeader.dataOrigin')} :</b> {lineage || t('Common:unknownData.notSpecified', { context: 'female' })}
+            <b>{t('components.DatasetHeader.dataOrigin')} :</b> {lineage || t('Common:enums.unknownData.notSpecified', { context: 'female' })}
           </p>
         </div>
       </div>
