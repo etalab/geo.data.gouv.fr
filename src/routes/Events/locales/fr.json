@@ -1,0 +1,14 @@
+{
+  "Event": {
+    "download": "Télécharger le compte rendu",
+    "soonAvailable": "Compte-rendu bientôt disponible…",
+    "noReport": "Pas de compte-rendu"
+  },
+
+  "EventsPage": {
+    "documentTitle": "Événements",
+    "nextTitle": "Événements à venir",
+    "noEvents": "Aucun événement programmé pour le moment.",
+    "previousTitle": "Événements passés"
+  }
+}
