@@ -1,16 +1,17 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Check from './Check'
 import CheckItem from './CheckItem'
 
-const CheckDataAvailability = ({ valid, distributions }) => {
+export const CheckDataAvailability = ({ valid, distributions, t }) => {
   const msg = valid
-    ? 'Au moins une des distribution est disponible.'
-    : 'Aucune distribution n’a été trouvée.'
+    ? t('components.CheckDataAvailability.distributionAvailable')
+    : t('components.CheckDataAvailability.distributionUnavailable')
 
   return (
-    <Check title='Disponibilité de la donnée' isValid={valid} msg={msg}>
+    <Check title={t('components.CheckDataAvailability.title')} isValid={valid} msg={msg}>
       {valid && distributions.map(distribution => (
         <CheckItem
           key={distribution._id}
@@ -30,11 +31,13 @@ CheckDataAvailability.propTypes = {
     typeName: PropTypes.string,
     layer: PropTypes.string,
     name: PropTypes.string
-  })).isRequired
+  })).isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
 CheckDataAvailability.defaultProps = {
   valid: false
 }
 
-export default CheckDataAvailability
+export default translate('Dataset')(CheckDataAvailability)

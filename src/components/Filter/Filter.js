@@ -1,13 +1,14 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-
-import { translateFilters } from '../../helpers/manageFilters'
 
 import styles from './Filter.scss'
 
-const Filter = ({ detail, remove, filter, style, onClick }) => {
-  const title = translateFilters(filter.name)
-  const value = translateFilters(filter.value)
+const Filter = ({ detail, remove, filter, style, onClick, t, i18n }) => {
+  const title = t(`components.Filter.${filter.name}`)
+  const value = i18n.exists(`components.Filter.${filter.value}`)
+    ? t(`components.Filter.${filter.value}`)
+    : filter.value
 
   return (
     <button
@@ -32,7 +33,10 @@ Filter.propTypes = {
     value: PropTypes.string.isRequired
   }).isRequired,
   style: PropTypes.object,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+
+  t: PropTypes.func.isRequired,
+  i18n: PropTypes.object.isRequired
 }
 
 Filter.defaultProps = {
@@ -40,4 +44,4 @@ Filter.defaultProps = {
   remove: false
 }
 
-export default Filter
+export default translate('Common')(Filter)

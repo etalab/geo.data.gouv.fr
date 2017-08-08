@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import MarkdownPreview from 'common/components/MarkdownPreview'
@@ -8,11 +9,14 @@ import { getLicense } from 'common/helpers/dataGouvChecks'
 
 import styles from './DatasetHeader.scss'
 
-const DatasetHeader = ({ dataset }) => {
+const DatasetHeader = ({ dataset, t, i18n }) => {
   const { title, description, type, purpose, lineage, inspireTheme } = dataset.metadata
 
   const revisionDate = doneSince(dataset.revisionDate)
   const license = getLicense(dataset.metadata.license)
+  const dataType = i18n.exists(`Common:enums.dataTypes.${type}`)
+    ? t(`Common:enums.dataTypes.${type}`)
+    : type
 
   return (
     <div className={styles.container}>
@@ -22,15 +26,15 @@ const DatasetHeader = ({ dataset }) => {
 
           <div className={styles.infos}>
             <div>
-              Type : <span>{type || 'inconnu'}</span>
+              {t('components.DatasetHeader.type')} : <span>{dataType || t('Common:enums.unknownData.unknown')}</span>
             </div>
             <div>
-              Licence : <span>{license.name ? (
+              {t('components.DatasetHeader.license')} : <span>{license.name ? (
                 <a href={license.link} target='_blank'>{license.name}</a>
               ) : license}</span>
             </div>
             <div>
-              Dernière mise à jour : <span>{revisionDate}</span>
+              {t('components.DatasetHeader.lastUpdate')} : <span>{revisionDate}</span>
             </div>
           </div>
         </div>
@@ -53,10 +57,10 @@ const DatasetHeader = ({ dataset }) => {
             <MarkdownPreview markdown={description} />
           )}
           <p>
-            <b>Objectif :</b> {purpose || 'Non renseigné'}
+            <b>{t('components.DatasetHeader.purpose')} :</b> {purpose || t('Common:enums.unknownData.notSpecified')}
           </p>
           <p>
-            <b>Origine de la donnée :</b> {lineage || 'Non renseignée'}
+            <b>{t('components.DatasetHeader.dataOrigin')} :</b> {lineage || t('Common:enums.unknownData.notSpecified', { context: 'female' })}
           </p>
         </div>
       </div>
@@ -79,7 +83,10 @@ DatasetHeader.propTypes = {
         }).isRequired
       })
     }).isRequired
-  }).isRequired
+  }).isRequired,
+
+  t: PropTypes.func.isRequired,
+  i18n: PropTypes.object.isRequired
 }
 
-export default DatasetHeader
+export default translate('Dataset')(DatasetHeader)

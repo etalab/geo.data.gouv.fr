@@ -1,15 +1,16 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Check from './Check'
 
-const CheckProducers = ({ valid, organizations }) => {
+export const CheckProducers = ({ valid, organizations, t }) => {
   const msg = valid
-    ? 'Au moins un producteur est identifié.'
-    : 'Le producteur n’a pas été identifié.'
+    ? t('components.CheckProducers.identifiedProducer')
+    : t('components.CheckProducers.unindentifiedProducer')
 
   return (
-    <Check title='Producteur' isValid={valid} msg={msg}>
+    <Check title={t('components.CheckProducers.title')} isValid={valid} msg={msg}>
       {organizations || null }
     </Check>
   )
@@ -24,4 +25,11 @@ CheckProducers.defaultProps = {
   valid: false
 }
 
-export default CheckProducers
+CheckProducers.propTypes = {
+  valid: PropTypes.bool.isRequired,
+  organizations: PropTypes.array.isRequired,
+
+  t: PropTypes.func.isRequired
+}
+
+export default translate('Dataset')(CheckProducers)

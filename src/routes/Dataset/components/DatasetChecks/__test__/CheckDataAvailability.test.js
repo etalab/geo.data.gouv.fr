@@ -1,33 +1,35 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import DatasetDataAvailability from '../CheckDataAvailability'
+import { CheckDataAvailability } from '../CheckDataAvailability'
 
-describe('<DatasetDataAvailability />', () => {
+const mockTranslation = k => k
+
+describe('<CheckDataAvailability />', () => {
   it('should return true when the array contains at least one element whith available at true', () => {
     const distributions = [{ available: true }, { available: false }]
-    const wrapper = shallow(<DatasetDataAvailability distributions={distributions} valid />)
+    const wrapper = shallow(<CheckDataAvailability distributions={distributions} valid t={mockTranslation} />)
 
-    expect(wrapper.html()).to.contain('Au moins une des distribution est disponible.')
+    expect(wrapper.html()).to.contain('distributionAvailable')
   })
 
   it('should return false when the array contains no elements whith available at true', () => {
     const distributions = [{ available: false }, { available: false }]
-    const wrapper = shallow(<DatasetDataAvailability distributions={distributions} valid={false} />)
+    const wrapper = shallow(<CheckDataAvailability distributions={distributions} valid={false} t={mockTranslation} />)
 
-    expect(wrapper.html()).to.contain('Aucune distribution n’a été trouvée.')
+    expect(wrapper.html()).to.contain('distributionUnavailable')
   })
 
   it('should return false when the array is empty', () => {
     const distributions = []
-    const wrapper = shallow(<DatasetDataAvailability distributions={distributions} valid={false} />)
+    const wrapper = shallow(<CheckDataAvailability distributions={distributions} valid={false} t={mockTranslation} />)
 
-    expect(wrapper.html()).to.contain('Aucune distribution n’a été trouvée.')
+    expect(wrapper.html()).to.contain('distributionUnavailable')
   })
 
   it('should return false when the array is undefined', () => {
-    const wrapper = shallow(<DatasetDataAvailability valid={false} />)
+    const wrapper = shallow(<CheckDataAvailability valid={false} t={mockTranslation} />)
 
-    expect(wrapper.html()).to.contain('Aucune distribution n’a été trouvée.')
+    expect(wrapper.html()).to.contain('distributionUnavailable')
   })
 })

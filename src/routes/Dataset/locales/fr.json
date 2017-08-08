@@ -1,0 +1,130 @@
+{
+  "components": {
+    "CheckDataAvailability": {
+      "distributionAvailable": "Au moins une des distribution est disponible.",
+      "distributionUnavailable": "Aucune distribution n’a été trouvée.",
+      "title": "Disponibilité de la donnée"
+    },
+
+    "CheckLicense": {
+      "licensesList": "Les licenses reconnue sont",
+      "noLicenses": "Aucune licence n’a pu être trouvée.",
+      "validLicense": "La licence {{ license }} est valide.",
+      "unrecognizedLicense": "La licence {{ license }} n’est pas reconnue.",
+      "title": "Licence"
+    },
+
+    "CheckProducers": {
+      "identifiedProducer": "Au moins un producteur est identifié.",
+      "unindentifiedProducer": "Le producteur n’a pas été identifié.",
+      "title": "Producteur"
+    },
+
+    "DatasetContactLabel": {
+      "resourceProvider": "Fournisseur",
+      "custodian": "Résponsable",
+      "owner": "Propriétaire",
+      "user": "Utilisateur",
+      "distributor": "Distributeur",
+      "originator": "Initiateur",
+      "pointOfContact": "Point de contact",
+      "processor": "Intervenant technique",
+      "publisher": "Diffuseur",
+      "author": "Auteur",
+      "notDefined": "Inconnu",
+      "other": "Autre"
+    },
+
+    "DatasetDataGouvPublication": {
+      "dvgLink": "Consulter le jeu de données sur data.gouv.fr",
+      "canBePublished": "Ce jeu de données <1>peut</1> être publié sur data.gouv.fr",
+      "producerActionNeeded": "Une action du producteur est nécessaire.",
+      "cantBePublished": "Ce jeu de données <1>ne peut pas</1> être publié sur data.gouv.fr",
+      "hide": "Masquer le détail",
+      "show": "Afficher le détail"
+    },
+
+    "DatasetDownload": {
+      "title": "Télécharger",
+      "unavailable": "Indisponible",
+      "buttonText": "Visualiser"
+    },
+
+    "DatasetDownloadList": {
+      "vectorDataTitle": "Données vectorielles",
+      "otherDataTitle": "Autres Données"
+    },
+
+    "DatasetFilters": {
+      "organizationsTitle": "Organisations",
+      "keywordsTitle": "Mots-clés"
+    },
+
+    "DatasetHeader": {
+      "type": "Type",
+      "license": "Licence",
+      "lastUpdate": "Dernière mise à jour",
+      "purpose": "Objectif",
+      "dataOrigin": "Origine de la donnée"
+    },
+
+    "DatasetPreview": {
+      "map": "Carte",
+      "table": "Tableau"
+    },
+
+    "DatasetTechnicalInfo": {
+      "lifeCycleTitle": "Cycle de vie de la donnée (selon producteur)",
+      "updateFrequency": "Fréquence de mise à jour",
+      "creationDate": "Date de création",
+      "revisionDate": "Dernière mise à jour",
+      "otherTitle": "Autres informations",
+      "topicCategory": "Catégorie du jeu de données",
+      "type": "Type",
+      "license": "Licence",
+      "status": "État",
+      "scale": "Échelle",
+      "resolution": "Résolution"
+    },
+
+    "DatasetView": {
+      "obsoleteWarning": "Attention ce jeu de données est considéré comme {{status}} par son producteur",
+
+      "noLinks": "Aucun lien disponible.",
+      "noDownloads": "Aucune donnée n’est téléchargeable.",
+
+      "consequences": {
+        "obsolete": "Les données peuvent être incomplètes ou ne plus être à jour",
+        "underDevelopment": "Certaines données peuvent être erronées ou vont subir des changements"
+      },
+
+      "section": {
+        "technicalInformation": "Informations techniques",
+        "downloads": "Téléchargements",
+        "links": "Liens",
+        "discussions": "Discussions",
+        "filters": "Filtres",
+        "producer": "Producteur",
+        "preview": "Aperçu des données",
+        "spatialExtent": "Étendue spatiale",
+        "dgvPublication": "Publication sur data.gouv.fr",
+        "contacts": "Contacts",
+        "contributions": "Contributions",
+
+        "id": "Identifiant du jeu de données"
+      }
+    }
+  },
+
+  "enums": {
+    "status": {
+      "completed": "terminée",
+      "historicalArchive": "archivée",
+      "obsolete": "obsolète",
+      "onGoing": "en cours",
+      "planned": "planifiée",
+      "required": "mise à jour requise",
+      "underDevelopment": "en construction"
+    }
+  }
+}

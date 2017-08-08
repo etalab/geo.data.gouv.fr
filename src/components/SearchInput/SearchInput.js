@@ -40,12 +40,12 @@ class SearchInput extends React.PureComponent {
           name='query'
           defaultValue={defaultValue}
           className={styles.input}
-          placeholder={placeholder || t('SearchInput.placeholder')}
+          placeholder={placeholder || t('components.SearchInput.placeholder')}
         />
 
         {hasButton && (
           <button type='submit' className={styles.button}>
-            {buttonLabel || t('SearchInput.buttonLabel')}
+            {buttonLabel || t('components.SearchInput.buttonLabel')}
           </button>
         )}
       </form>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { browserHistory } from 'react-router'
 
@@ -13,10 +14,10 @@ const search = filter => browserHistory.push({
   }
 })
 
-const DatasetFilters = ({ organizations, keywords }) => {
+const DatasetFilters = ({ organizations, keywords, t }) => {
   const sections = [
-    { name: 'organization', title: 'Organisations', filters: organizations },
-    { name: 'keyword', title: 'Mots-clés', filters: keywords }
+    { name: 'organization', title: t('components.DatasetFilters.organizationsTitle'), filters: organizations },
+    { name: 'keyword', title: t('components.DatasetFilters.keywordsTitle'), filters: keywords }
   ]
 
   return (
@@ -37,7 +38,8 @@ const DatasetFilters = ({ organizations, keywords }) => {
 
 DatasetFilters.propTypes = {
   organizations: PropTypes.array.isRequired,
-  keywords: PropTypes.array.isRequired
+  keywords: PropTypes.array.isRequired,
+  t: PropTypes.func.isRequired
 }
 
-export default DatasetFilters
+export default translate('Dataset')(DatasetFilters)

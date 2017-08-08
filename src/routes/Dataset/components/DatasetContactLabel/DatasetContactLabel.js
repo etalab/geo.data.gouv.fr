@@ -1,18 +1,18 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-
-import { translateRole } from './roles'
 
 import styles from './DatasetContactLabel.scss'
 
-const DatasetContactLabel = ({ role }) => (
+const DatasetContactLabel = ({ role, t }) => (
   <div className={`${styles.label} ${styles[role]}`}>
-    {translateRole(role)}
+    {t(`components.DatasetContactLabel.${role}`)}
   </div>
 )
 
 DatasetContactLabel.propTypes = {
-  role: PropTypes.string.isRequired
+  role: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired
 }
 
-export default DatasetContactLabel
+export default translate('Dataset')(DatasetContactLabel)

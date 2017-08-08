@@ -11,9 +11,9 @@ const LastHarvestStatus = ({ harvest, t }) => {
   let status
 
   if (harvest.status === 'successful') {
-    status = t('LastHarvestStatus.success')
+    status = t('components.LastHarvestStatus.success')
   } else {
-    status = t('LastHarvestStatus.fail')
+    status = t('components.LastHarvestStatus.fail')
   }
 
   return (

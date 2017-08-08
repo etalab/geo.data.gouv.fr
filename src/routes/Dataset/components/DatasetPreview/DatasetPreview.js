@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { Table } from 'reactable'
 
@@ -20,7 +21,9 @@ class DatasetPreview extends React.PureComponent {
       ]).isRequired,
     }),
 
-    closePreview: PropTypes.func.isRequired
+    closePreview: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   state = {
@@ -38,7 +41,7 @@ class DatasetPreview extends React.PureComponent {
   })
 
   render() {
-    const { geoJson, closePreview } = this.props
+    const { geoJson, closePreview, t } = this.props
     const { mode } = this.state
 
     return (
@@ -48,13 +51,13 @@ class DatasetPreview extends React.PureComponent {
             onClick={this.setMode('map')}
             className={mode === 'map' && styles.active}
           >
-            Carte
+            {t('components.DatasetPreview.map')}
           </button>
           <button
             onClick={this.setMode('table')}
             className={mode === 'table' && styles.active}
           >
-            Tableau
+            {t('components.DatasetPreview.table')}
           </button>
           <button className={styles.closeButton} onClick={closePreview}>X</button>
         </div>
@@ -85,4 +88,4 @@ class DatasetPreview extends React.PureComponent {
   }
 }
 
-export default DatasetPreview
+export default translate('Dataset')(DatasetPreview)
