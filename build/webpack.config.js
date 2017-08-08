@@ -129,6 +129,7 @@ config.module.rules.push({
         loader: 'css-loader',
         options: {
           modules: true,
+          localIdentName: '[name]-[hash:base64:8]',
           camelCase: 'only',
           sourceMap: project.sourcemaps,
           minimize: {
