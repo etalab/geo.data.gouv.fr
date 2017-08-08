@@ -13,7 +13,7 @@ export default (store, i18n) => ({
       reducer: dataset.reducer
     })
 
-    i18n.languages.forEach(async lang => {
+    i18n.availableLanguages.forEach(async lang => {
       injectLocale(i18n, {
         locale: lang,
         namespace: 'Dataset',

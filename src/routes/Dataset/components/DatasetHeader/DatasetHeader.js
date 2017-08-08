@@ -57,7 +57,7 @@ const DatasetHeader = ({ dataset, t, i18n }) => {
             <MarkdownPreview markdown={description} />
           )}
           <p>
-            <b>{t('components.DatasetHeader.objectif')} :</b> {purpose || t('Common:enums.unknownData.notSpecified')}
+            <b>{t('components.DatasetHeader.purpose')} :</b> {purpose || t('Common:enums.unknownData.notSpecified')}
           </p>
           <p>
             <b>{t('components.DatasetHeader.dataOrigin')} :</b> {lineage || t('Common:enums.unknownData.notSpecified', { context: 'female' })}

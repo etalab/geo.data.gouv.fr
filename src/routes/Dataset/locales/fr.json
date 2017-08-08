@@ -64,7 +64,7 @@
       "type": "Type",
       "license": "Licence",
       "lastUpdate": "Dernière mise à jour",
-      "objectif": "Objectif",
+      "purpose": "Objectif",
       "dataOrigin": "Origine de la donnée"
     },
 
@@ -75,7 +75,7 @@
 
     "DatasetTechnicalInfo": {
       "lifeCycleTitle": "Cycle de vie de la donnée (selon producteur)",
-      "frequencyUpdate": "Fréquence de mise à jour",
+      "updateFrequency": "Fréquence de mise à jour",
       "creationDate": "Date de création",
       "revisionDate": "Dernière mise à jour",
       "otherTitle": "Autres informations",
@@ -99,7 +99,7 @@
       },
 
       "section": {
-        "technicalInformations": "Informations techniques",
+        "technicalInformation": "Informations techniques",
         "downloads": "Téléchargements",
         "links": "Liens",
         "discussions": "Discussions",

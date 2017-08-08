@@ -1,7 +1,7 @@
 {
   "components": {
     "CheckDataAvailability": {
-      "distributionAvailable": "At least one of the distribution is available.",
+      "distributionAvailable": "At least one of the distributions is available.",
       "distributionUnavailable": "No distribution found.",
       "title": "Data availability"
     },
@@ -10,7 +10,7 @@
       "licensesList": "Recognized licenses are",
       "noLicenses": "No licenses could be found.",
       "validLicense": "The {{ license }} license is valid.",
-      "unrecognizedLicense": "The {{ license }} license is not recognized.",
+      "unrecognizedLicense": "The {{ license }} license was not recognized.",
       "title": "License"
     },
 
@@ -64,8 +64,8 @@
       "type": "Type",
       "license": "License",
       "lastUpdate": "Last update",
-      "objectif": "Objectif",
-      "dataOrigin": "Origin of data"
+      "purpose": "Purpose",
+      "dataOrigin": "Data origin"
     },
 
     "DatasetPreview": {
@@ -74,21 +74,21 @@
     },
 
     "DatasetTechnicalInfo": {
-      "lifeCycleTitle": "Data life cycle (by producer)",
-      "frequencyUpdate": "Frequency update",
+      "lifeCycleTitle": "Data life cycle (according to producer)",
+      "updateFrequency": "Update frequency",
       "creationDate": "Creation date",
       "revisionDate": "Last update",
-      "otherTitle": "Other informations",
-      "topicCategory": "Category of the dataset",
+      "otherTitle": "Other information",
+      "topicCategory": "Dataset category",
       "type": "Type",
       "license": "License",
       "status": "Status",
-      "scale": "Scalle",
+      "scale": "Scale",
       "resolution": "Resolution"
     },
 
     "DatasetView": {
-      "obsoleteWarning": "Attention this dataset is considered as {{status}} by its producer",
+      "obsoleteWarning": "This dataset is considered {{status}} by its producer",
       "noLinks": "No links available.",
       "noDownloads": "No data is available for download.",
 
@@ -98,13 +98,13 @@
       },
 
       "section": {
-        "technicalInformations": "Technical Informations",
+        "technicalInformation": "Technical Information",
         "downloads": "Downloads",
         "links": "Links",
         "discussions": "Discussions",
         "filters": "Filters",
         "producer": "Producer",
-        "preview": "Preview data",
+        "preview": "Data preview",
         "spatialExtent": "Spatial Extent",
         "dgvPublication": "Publication on data.gouv.fr",
         "contacts": "Contacts",

@@ -86,7 +86,7 @@ class DatasetView extends React.PureComponent {
               <div className={styles.main}>
                 <DatasetHeader dataset={dataset} />
 
-                <DatasetBlock title={t('components.DatasetView.section.technicalInformations')}>
+                <DatasetBlock title={t('components.DatasetView.section.technicalInformation')}>
                   <DatasetTechnicalInfo dataset={dataset} status={status} />
                 </DatasetBlock>
 

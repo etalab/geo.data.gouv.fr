@@ -38,7 +38,7 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
       <div>
         <h4>{t('components.DatasetTechnicalInfo.lifeCycleTitle')}</h4>
 
-        <div>{t('components.DatasetTechnicalInfo.frequencyUpdate')} : <b>{frequency}</b></div>
+        <div>{t('components.DatasetTechnicalInfo.updateFrequency')} : <b>{frequency}</b></div>
         <div>{t('components.DatasetTechnicalInfo.creationDate')} : <b>{createDate}</b></div>
         <div>{t('components.DatasetTechnicalInfo.revisionDate')} : <b>{revisionDate ? doneSince(revisionDate) : createDate}</b></div>
       </div>
