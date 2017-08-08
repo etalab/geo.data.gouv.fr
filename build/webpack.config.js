@@ -139,7 +139,7 @@ config.module.rules.push({
               browsers: ['last 2 versions']
             },
             discardComments: {
-              removeAll : true
+              removeAll: true
             },
             discardUnused: false,
             mergeIdents: false,
