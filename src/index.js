@@ -12,12 +12,18 @@ const store = createStore(window.__INITIAL_STATE__)
 // Piwik
 // ------------------------------------
 const { PIWIK_URL, PIWIK_SITE_ID } = process.env
-
 if (PIWIK_URL && PIWIK_SITE_ID) {
-  createPiwikConnector({
+  const piwik = createPiwikConnector({
     url: PIWIK_URL,
-    siteId: PIWIK_SITE_ID
-  }).connectToHistory(browserHistory)
+    siteId: PIWIK_SITE_ID,
+    ignoreInitialVisit: true
+  })
+
+  // Initial visit are not reported when using browserHistory.
+  // Here we’re tracking the initial page manually.
+  piwik.track(browserHistory.getCurrentLocation())
+
+  piwik.connectToHistory(browserHistory)
 }
 
 // Render Setup

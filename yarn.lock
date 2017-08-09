@@ -4721,9 +4721,9 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-piwik-react-router@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/piwik-react-router/-/piwik-react-router-0.6.0.tgz#52e0ae771eec058f636500c2cc5089130b0e3c1d"
+piwik-react-router@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/piwik-react-router/-/piwik-react-router-0.9.0.tgz#4b7f4cbeca94ca1ec5998cfa57c650214b1f603f"
   dependencies:
     url-join "^1.1.0"
     warning "^3.0.0"
