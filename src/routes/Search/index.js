@@ -1,6 +1,7 @@
 import { injectReducer } from '../../store/reducers'
+import { injectLocale } from 'common/i18n/helpers'
 
-export default store => ({
+export default (store, i18n) => ({
   path: 'search',
 
   async getComponent(nextState, cb) {
@@ -10,6 +11,14 @@ export default store => ({
     injectReducer(store, {
       key: 'search',
       reducer: search.reducer
+    })
+
+    i18n.availableLanguages.forEach(async lang => {
+      injectLocale(i18n, {
+        locale: lang,
+        namespace: 'Search',
+        resources: await import(/* webpackMode: 'lazy-once', webpackChunkName: 'search' */ `./locales/${lang}.json`)
+      })
     })
 
     cb(null, SearchContainer.default)

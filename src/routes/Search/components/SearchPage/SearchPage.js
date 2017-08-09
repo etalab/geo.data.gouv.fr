@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
 
@@ -31,7 +32,9 @@ class SearchPage extends React.PureComponent {
       facets: PropTypes.object.isRequired
     }).isRequired,
 
-    update: PropTypes.func.isRequired
+    update: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   addFilter = filter => {
@@ -74,10 +77,10 @@ class SearchPage extends React.PureComponent {
   }
 
   render() {
-    const { query, search } = this.props
+    const { query, search, t } = this.props
 
     return (
-      <DocumentTitle title={'Recherche jeu de données'}>
+      <DocumentTitle title={t('SearchPage.documentTitle')}>
         <div className={styles.container}>
           <div className={styles.search}>
             <SearchInput
@@ -108,4 +111,4 @@ class SearchPage extends React.PureComponent {
   }
 }
 
-export default SearchPage
+export default translate('Search')(SearchPage)

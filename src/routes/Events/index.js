@@ -6,7 +6,7 @@ export default (store, i18n) => ({
   async getComponent(nextState, cb) {
     const EventsContainer = await import(/* webpackChunkName: 'events' */ './containers/EventsContainer')
 
-    i18n.languages.forEach(async lang => {
+    i18n.availableLanguages.forEach(async lang => {
       injectLocale(i18n, {
         locale: lang,
         namespace: 'Events',
