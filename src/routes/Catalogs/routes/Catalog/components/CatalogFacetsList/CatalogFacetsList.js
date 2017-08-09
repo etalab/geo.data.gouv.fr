@@ -4,15 +4,15 @@ import { translate } from 'react-i18next'
 
 import CatalogFacets from '../CatalogFacets'
 
-const CatalogFacetsList = ({ catalog, metrics, search, t }) => {
+const CatalogFacetsList = ({ catalog, metrics, onSearch, t }) => {
   const { organizations, keywords } = metrics.records.counts
 
-  const onOrganizationSearch = facet => search({
+  const onOrganizationSearch = facet => onSearch({
     organization: facet.value,
     catalog: catalog.name
   })
 
-  const onKeywordSearch = facet => search({
+  const onKeywordSearch = facet => onSearch({
     keyword: facet.value,
     catalog: catalog.name
   })
@@ -22,12 +22,12 @@ const CatalogFacetsList = ({ catalog, metrics, search, t }) => {
       <CatalogFacets
         title={t('CatalogFacetsList.organizationsTitle')}
         filters={organizations}
-        search={onOrganizationSearch}
+        onSearch={onOrganizationSearch}
       />
       <CatalogFacets
         title={t('CatalogFacetsList.keywordsTitle')}
         filters={keywords}
-        search={onKeywordSearch}
+        onSearch={onKeywordSearch}
       />
     </div>
   )
@@ -47,7 +47,7 @@ CatalogFacetsList.propTypes = {
     }).isRequired
   }).isRequired,
 
-  search: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
 
   t: PropTypes.func.isRequired
 }

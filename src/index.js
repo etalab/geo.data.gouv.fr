@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { browserHistory } from 'react-router'
-import createPiwikConnector from 'piwik-react-router'
+// import { browserHistory } from 'react-router'
+// import createPiwikConnector from 'piwik-react-router'
 
 import createStore from './store/createStore'
 
@@ -11,14 +11,14 @@ const store = createStore(window.__INITIAL_STATE__)
 
 // Piwik
 // ------------------------------------
-const { PIWIK_URL, PIWIK_SITE_ID } = process.env
+// const { PIWIK_URL, PIWIK_SITE_ID } = process.env
 
-if (PIWIK_URL && PIWIK_SITE_ID) {
-  createPiwikConnector({
-    url: PIWIK_URL,
-    siteId: PIWIK_SITE_ID
-  }).connectToHistory(browserHistory)
-}
+// if (PIWIK_URL && PIWIK_SITE_ID) {
+//   createPiwikConnector({
+//     url: PIWIK_URL,
+//     siteId: PIWIK_SITE_ID
+//   }).connectToHistory(browserHistory)
+// }
 
 // Render Setup
 // ------------------------------------
@@ -27,10 +27,9 @@ const MOUNT_NODE = document.getElementById('root')
 let render = () => {
   const App = require('./components/App').default
   const i18n = require('./i18n').default()
-  const routes = require('./routes').default(store, i18n)
 
   ReactDOM.render(
-    <App store={store} routes={routes} i18n={i18n} />,
+    <App store={store} i18n={i18n} />,
     MOUNT_NODE
   )
 }
@@ -59,8 +58,7 @@ if (__DEV__) {
     // Setup hot module replacement
     module.hot.accept([
       './components/App',
-      './i18n/index',
-      './routes/index'
+      './i18n/index'
     ], () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)

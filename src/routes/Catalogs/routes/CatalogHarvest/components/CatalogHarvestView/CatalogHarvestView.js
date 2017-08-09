@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import DocumentTitle from 'react-document-title'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import LastHarvestStatus from 'common/components/LastHarvestStatus'
 

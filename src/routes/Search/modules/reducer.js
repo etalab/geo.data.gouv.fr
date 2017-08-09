@@ -7,12 +7,18 @@ import {
 const initialState = {
   pending: false,
   error: false,
-  facets: {},
-  query: {
-    facets: []
+  parsedQuery: {
+    filters: [],
+    page: 1
   },
-  results: [],
-  count: 0
+  search: {
+    facets: {},
+    query: {
+      facets: []
+    },
+    results: [],
+    count: 0
+  }
 }
 
 const handlers = {
@@ -20,17 +26,15 @@ const handlers = {
     ...state,
 
     pending: true,
-    error: false
+    error: false,
+    parsedQuery: action.parsedQuery
   }),
 
   [SEARCH_EXECUTE_SUCCESS]: (state, action) => ({
     ...state,
 
     pending: false,
-    facets: action.payload.facets,
-    results: action.payload.results,
-    count: action.payload.count,
-    query: action.payload.query,
+    search: action.payload,
     error: false
   }),
 

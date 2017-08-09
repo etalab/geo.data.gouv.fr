@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 
-import { getCatalogOrderByScore } from 'common/helpers/catalogs'
+import { list } from '../modules/actions'
 
 import CatalogsListPage from '../components/CatalogsListPage'
 
-export default connect(state => ({
-  catalogs: getCatalogOrderByScore(state.catalogs.catalogs),
-  pending: state.catalogs.pending,
-  error: state.catalogs.error
-}))(CatalogsListPage)
+export default connect(({ catalogs }) => ({
+  catalogs
+}), {
+  fetchCatalogs: list
+})(CatalogsListPage)

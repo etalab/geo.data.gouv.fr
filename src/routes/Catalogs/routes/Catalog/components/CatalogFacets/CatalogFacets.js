@@ -5,7 +5,7 @@ import Facet from 'common/components/Facets/Facet'
 
 import styles from './CatalogFacets.scss'
 
-const CatalogFacets = ({ title, filters, search }) => (
+const CatalogFacets = ({ title, filters, onSearch }) => (
   <div className={styles.container}>
     <h2>{title}</h2>
 
@@ -15,7 +15,7 @@ const CatalogFacets = ({ title, filters, search }) => (
           name={title}
           value={key}
           count={filter}
-          addFilter={search}
+          addFilter={onSearch}
         />
       </div>
     ))}
@@ -27,7 +27,7 @@ CatalogFacets.propTypes = {
 
   filters: PropTypes.object.isRequired,
 
-  search: PropTypes.func.isRequired
+  onSearch: PropTypes.func.isRequired
 }
 
 export default CatalogFacets

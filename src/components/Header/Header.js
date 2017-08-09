@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IndexLink, Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { translate } from 'react-i18next'
 
 import { getUser } from '../../fetch/fetch'
@@ -42,7 +42,7 @@ class Header extends React.Component {
 
     return (
       <nav className={styles.nav}>
-        <IndexLink to='/' className={styles.home}>inspire.data.gouv.fr</IndexLink>
+        <Link to='/' className={styles.home}>inspire.data.gouv.fr</Link>
 
         {!user ? login : (
           <div className={styles.authentification}>

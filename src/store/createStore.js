@@ -1,9 +1,7 @@
 import { applyMiddleware, compose, createStore as createReduxStore } from 'redux'
 import thunk from 'redux-thunk'
-import { browserHistory } from 'react-router'
 
 import makeRootReducer from './reducers'
-import { updateLocation } from './location'
 
 const createStore = (initialState = {}) => {
   // Store enhancers
@@ -26,9 +24,6 @@ const createStore = (initialState = {}) => {
     )
   )
   store.asyncReducers = {}
-
-  // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
-  store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
 
   // HMR Setup
   // ------------------------------------

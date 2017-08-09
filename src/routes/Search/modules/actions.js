@@ -1,9 +1,8 @@
 import qs from 'querystring'
-import { browserHistory } from 'react-router'
 
 import { _get } from 'common/helpers/super'
 
-import { flattenFilters } from './query'
+import { parse, flattenFilters } from './query'
 
 import {
   SEARCH_EXECUTE_PENDING,
@@ -14,17 +13,20 @@ import {
 const { INSPIRE_API_URL } = process.env
 
 export const execute = (query, limit = 20) => dispatch => {
+  const parsedQuery = parse(query)
+
   dispatch({
-    type: SEARCH_EXECUTE_PENDING
+    type: SEARCH_EXECUTE_PENDING,
+    parsedQuery
   })
 
-  const filters = flattenFilters(query.filters)
+  const filters = flattenFilters(parsedQuery.filters)
 
   return _get(
     `${INSPIRE_API_URL}/records?${qs.stringify({
       ...filters,
-      q: query.textInput,
-      offset: (query.page - 1) * limit,
+      q: parsedQuery.textInput,
+      offset: (parsedQuery.page - 1) * limit,
       limit
     })}`
   )
@@ -40,27 +42,4 @@ export const execute = (query, limit = 20) => dispatch => {
         error: err
       })
     })
-}
-
-export const update = changes => {
-  return (dispatch, getState) => {
-    const location = { ...getState().location }
-    const { q: iq, page: ipages, ...filters } = location.query
-
-    const q = changes.q === undefined ? iq : changes.q
-    const page = changes.page || ipages
-
-    const query = {
-      ...(q ? { q } : {}),
-
-      ...(page && page > 1 ? { page } : {}),
-
-      ...(changes.filters ? flattenFilters(changes.filters) : filters)
-    }
-
-    location.pathname = '/search'
-    location.query = query
-
-    browserHistory.push(location)
-  }
 }

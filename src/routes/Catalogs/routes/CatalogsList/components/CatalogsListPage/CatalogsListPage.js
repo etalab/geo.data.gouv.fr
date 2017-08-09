@@ -8,35 +8,50 @@ import CatalogPreview from 'common/components/CatalogPreview'
 
 import styles from './CatalogsListPage.scss'
 
-const CatalogsListPage = ({ catalogs, pending, error, t }) => (
-  <DocumentTitle title={t('CatalogsListPage.documentTitle')}>
-    <div className={styles.container}>
-      <Loader loading={pending} error={error}>
-        <div>
-          {catalogs.map(catalog => (
-            <div key={catalog._id} className={styles.catalog} >
-              <CatalogPreview catalog={catalog} />
+class CatalogsListPage extends React.PureComponent {
+  static propTypes = {
+    catalogs: PropTypes.shape({
+      catalogs: PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.string.isRequired
+      })).isRequired,
+
+      pending: PropTypes.bool.isRequired,
+
+      error: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.object
+      ]).isRequired
+    }).isRequired,
+
+    fetchCatalogs: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired
+  }
+
+  componentDidMount() {
+    const { fetchCatalogs } = this.props
+
+    fetchCatalogs()
+  }
+
+  render () {
+    const { catalogs, t } = this.props
+
+    return (
+      <DocumentTitle title={t('CatalogsListPage.documentTitle')}>
+        <div className={styles.container}>
+          <Loader loading={catalogs.pending} error={catalogs.error}>
+            <div>
+              {catalogs.catalogs.map(catalog => (
+                <div key={catalog._id} className={styles.catalog} >
+                  <CatalogPreview catalog={catalog} />
+                </div>
+              ))}
             </div>
-          ))}
+          </Loader>
         </div>
-      </Loader>
-    </div>
-  </DocumentTitle>
-)
-
-CatalogsListPage.propTypes = {
-  catalogs: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string.isRequired
-  })).isRequired,
-
-  pending: PropTypes.bool.isRequired,
-
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.object
-  ]).isRequired,
-
-  t: PropTypes.func.isRequired
+      </DocumentTitle>
+    )
+  }
 }
 
 export default translate('Catalogs.CatalogsList')(CatalogsListPage)

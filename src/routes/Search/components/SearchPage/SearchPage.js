@@ -1,7 +1,8 @@
 import React from 'react'
-import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import DocumentTitle from 'react-document-title'
+import qs from 'querystring'
 
 import { unionWith, isEqual } from 'lodash'
 
@@ -15,92 +16,126 @@ import styles from './SearchPage.scss'
 
 class SearchPage extends React.PureComponent {
   static propTypes = {
-    query: PropTypes.shape({
-      textInput: PropTypes.string,
-      page: PropTypes.number.isRequired,
-      filters: PropTypes.array.isRequired
-    }).isRequired,
-
     search: PropTypes.shape({
       pending: PropTypes.bool.isRequired,
       error: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.bool
       ]).isRequired,
-      query: PropTypes.object.isRequired,
-      results: PropTypes.array.isRequired,
-      facets: PropTypes.object.isRequired
+
+      search: PropTypes.shape({
+        query: PropTypes.object.isRequired,
+        results: PropTypes.array.isRequired,
+        facets: PropTypes.object.isRequired
+      }).isRequired,
     }).isRequired,
 
-    update: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }).isRequired,
+
+    location: PropTypes.shape({
+      search: PropTypes.string.isRequired
+    }),
+
+    updateQuery: PropTypes.func.isRequired,
+    execute: PropTypes.func.isRequired,
 
     t: PropTypes.func.isRequired
   }
 
-  addFilter = filter => {
-    const { update, query } = this.props
+  componentDidMount() {
+    const { location, execute } = this.props
 
-    update({
-      filters: unionWith(query.filters, [filter], isEqual),
-      page: 1
+    execute(location.search)
+  }
+
+  componentWillReceiveProps({ location }) {
+    const { execute } = this.props
+
+    if (location !== this.props.location) {
+      execute(location.search)
+    }
+  }
+
+  redirectToQuery = query => {
+    const { history } = this.props
+
+    history.push({
+      pathname: '/search',
+      search: qs.stringify(query)
     })
+  }
+
+  addFilter = filter => {
+    const { location, updateQuery, search } = this.props
+
+    this.redirectToQuery(
+      updateQuery(location.search, {
+        filters: unionWith(search.parsedQuery.filters, [filter], isEqual)
+      })
+    )
   }
 
   removeFilter = filter => {
-    const { update, query } = this.props
+    const { location, updateQuery, search } = this.props
 
-    update({
-      filters: query.filters.filter(f => f.name !== filter.name || f.value !== filter.value),
-      page: 1
-    })
+    this.redirectToQuery(
+      updateQuery(location.search, {
+        filters: search.parsedQuery.filters.filter(f => f.name !== filter.name || f.value !== filter.value)
+      })
+    )
   }
 
   updateQuery = query => {
-    const { update } = this.props
+    const { location, updateQuery } = this.props
 
-    update({
-      q: query,
-      page: 1
-    })
+    this.redirectToQuery(
+      updateQuery(location.search, {
+        q: query
+      })
+    )
   }
 
   changePage = ({ selected }) => {
-    const { update, query } = this.props
+    const { location, updateQuery, search } = this.props
 
     const page = selected + 1
 
-    if (query.page !== page) {
-      update({
-        page: page
-      })
+    if (search.parsedQuery.page !== page) {
+      this.redirectToQuery(
+        updateQuery(location.search, {
+          page: page
+        })
+      )
     }
   }
 
   render() {
-    const { query, search, t } = this.props
+    const { search, t } = this.props
 
     return (
       <DocumentTitle title={t('SearchPage.documentTitle')}>
         <div className={styles.container}>
           <div className={styles.search}>
             <SearchInput
-              defaultValue={query.textInput}
+              defaultValue={search.parsedQuery.textInput}
               onSearch={this.updateQuery}
               hasButton
             />
             <FiltersSummary
-              filters={query.filters}
+              filters={search.parsedQuery.filters}
               removeFilter={this.removeFilter}
             />
           </div>
 
           <Loader loading={search.pending} error={search.error}>
             <SearchResults
-              page={query.page}
-              query={search.query}
-              count={search.count}
-              results={search.results}
-              facets={search.facets}
+              page={search.parsedQuery.page}
+              query={search.search.query}
+              count={search.search.count}
+              results={search.search.results}
+              facets={search.search.facets}
               addFilter={this.addFilter}
               changePage={this.changePage}
             />

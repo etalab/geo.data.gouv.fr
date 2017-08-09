@@ -4,6 +4,8 @@ import {
   CATALOGS_LIST_FAILURE
 } from './constants'
 
+import { getCatalogOrderByScore } from 'common/helpers/catalogs'
+
 const initialState = {
   pending: false,
   error: false,
@@ -22,7 +24,7 @@ const handlers = {
     ...state,
 
     pending: false,
-    catalogs: action.payload,
+    catalogs: getCatalogOrderByScore(action.payload),
     error: false
   }),
 

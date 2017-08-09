@@ -1,3 +1,5 @@
+import qs from 'querystring'
+
 export const DISABLED_FILTERS = [
   'q',
   'page',
@@ -5,8 +7,17 @@ export const DISABLED_FILTERS = [
   'limit'
 ]
 
-export const parse = (query = {}) => {
+const parseQueryString = (search = '') => {
+  if (search.startsWith('?')) {
+    search = search.substring(1)
+  }
+
+  return qs.parse(search)
+}
+
+export const parse = (search = '') => {
   const filters = []
+  const query = parseQueryString(search)
 
   Object.entries(query).forEach(([name, value]) => {
     if (DISABLED_FILTERS.includes(name)) {
@@ -37,25 +48,25 @@ export const flattenFilters = filters => filters.reduce((acc, filter) => {
   return acc
 }, {})
 
-export const update = (initial, changes) => {
-  const location = { ...initial }
-  const { q: iq, page: ipages, ...filters } = location.query
+export const update = (search = '', changes) => {
+  const {
+    q: iq,
+    page: ipage,
+    ...filters
+  } = parseQueryString(search)
 
   const q = changes.q || iq
-  const page = changes.page || ipages
 
-  const query = {
+  // Either we specify a page number, or we go back to the first page.
+  const page = changes.page || 1
+
+  return {
     ...(q ? { q } : {}),
 
     ...(page && page > 1 ? { page } : {}),
 
     ...(changes.filters ? flattenFilters(changes.filters) : filters)
   }
-
-  location.pathname = '/search'
-  location.query = query
-
-  return location
 }
 
 export default {

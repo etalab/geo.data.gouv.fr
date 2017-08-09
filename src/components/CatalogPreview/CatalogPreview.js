@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { get } from 'lodash'
 
 import LastHarvestStatus from '../LastHarvestStatus/LastHarvestStatus'
