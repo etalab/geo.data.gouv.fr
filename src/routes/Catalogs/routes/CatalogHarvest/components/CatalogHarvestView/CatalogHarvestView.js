@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
 import LastHarvestStatus from 'common/components/LastHarvestStatus'
@@ -15,7 +15,8 @@ const CatalogHarvestView = ({ catalog, harvest, t }) => {
   const successful = harvest.status === 'successful'
 
   return (
-    <DocumentTitle title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`}>
+    <div>
+      <Helmet title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`} />
       <div className={styles.container}>
         <h1>
           <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>
@@ -33,7 +34,7 @@ const CatalogHarvestView = ({ catalog, harvest, t }) => {
           )}
         </div>
       </div>
-    </DocumentTitle>
+    </div>
   )
 }
 

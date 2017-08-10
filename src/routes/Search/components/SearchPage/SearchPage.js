@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 import qs from 'querystring'
 
 import { unionWith, isEqual } from 'lodash'
@@ -115,7 +115,8 @@ class SearchPage extends React.PureComponent {
     const { search, t } = this.props
 
     return (
-      <DocumentTitle title={t('SearchPage.documentTitle')}>
+      <div>
+        <Helmet title={t('SearchPage.documentTitle')} />
         <div className={styles.container}>
           <div className={styles.search}>
             <SearchInput
@@ -141,7 +142,7 @@ class SearchPage extends React.PureComponent {
             />
           </Loader>
         </div>
-      </DocumentTitle>
+      </div>
     )
   }
 }

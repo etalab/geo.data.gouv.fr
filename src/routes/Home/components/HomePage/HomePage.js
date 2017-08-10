@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'querystring'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 import { Link, withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
 
@@ -39,7 +39,8 @@ class HomePage extends React.PureComponent {
     const { catalogs, t } = this.props
 
     return (
-      <DocumentTitle title={t('HomePage.home')}>
+      <div>
+        <Helmet title={t('HomePage.home')} />
         <div>
           <div className={styles.masthead}>
             <h1>
@@ -72,7 +73,7 @@ class HomePage extends React.PureComponent {
             </div>
           </div>
         </div>
-      </DocumentTitle>
+      </div>
     )
   }
 }

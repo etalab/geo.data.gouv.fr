@@ -1,14 +1,15 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import Event from '../Event'
 
 import styles from './EventsPage.scss'
 
 const EventsPage = ({ pastEvents, t }) => (
-  <DocumentTitle title={t('EventsPage.documentTitle')}>
+  <div>
+    <Helmet title={t('EventsPage.documentTitle')} />
     <div className={styles.events}>
 
       <h1>{t('EventsPage.nextTitle')}</h1>
@@ -23,7 +24,7 @@ const EventsPage = ({ pastEvents, t }) => (
         ))}
       </div>
     </div>
-  </DocumentTitle>
+  </div>
 )
 
 EventsPage.propTypes = {

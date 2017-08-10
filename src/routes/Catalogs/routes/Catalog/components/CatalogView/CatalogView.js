@@ -1,7 +1,7 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import SearchInput from 'common/components/SearchInput'
 
@@ -50,7 +50,8 @@ class CatalogView extends React.PureComponent {
     const { catalog, metrics, harvests, onSearch, syncCatalog, t } = this.props
 
     return (
-      <DocumentTitle title={catalog.name}>
+      <div>
+        <Helmet title={catalog.name} />
         <div>
           <div className={styles.header}>
             <h1>{catalog.name}</h1>
@@ -81,7 +82,7 @@ class CatalogView extends React.PureComponent {
             <SearchInput onSearch={this.onSearch} hasButton />
           </div>
         </div>
-      </DocumentTitle>
+      </div>
     )
   }
 }

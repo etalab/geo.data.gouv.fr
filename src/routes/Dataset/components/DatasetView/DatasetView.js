@@ -1,7 +1,7 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import Warning from 'common/components/Warning'
 import Loader from 'common/components/Loader'
@@ -74,7 +74,15 @@ class DatasetView extends React.PureComponent {
     const status = dataset.metadata.status
 
     return (
-      <DocumentTitle title={dataset.metadata.title}>
+      <div>
+        <Helmet title={dataset.metadata.title}>
+          <meta name='twitter:title' content={dataset.metadata.title} />
+          <meta name='twitter:description' content={dataset.metadata.description} />
+          <meta name='twitter:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />
+          <meta property='og:title' content={dataset.metadata.title} />
+          <meta property='og:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />
+          <meta property='og:description' content={dataset.metadata.description} />
+        </Helmet>
         <div>
           {i18n.exists(`Dataset:components.DatasetView.consequences.${status}`) && (
             <Warning title={t('components.DatasetView.obsoleteWarning', { status: t(`components.DatasetView.status.${status}`) })}>
@@ -168,7 +176,7 @@ class DatasetView extends React.PureComponent {
             </div>
           </div>
         </div>
-      </DocumentTitle>
+      </div>
     )
   }
 }

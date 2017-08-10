@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import User from '../../../../components/User/User'
 
@@ -13,7 +13,8 @@ function Layout({ user, organization, pageTitle, title, children }) {
   const organizationLogo = organization && organization.logo ? organization.logo : '/assets/no-img.png'
 
   return (
-    <DocumentTitle title={pageTitle}>
+    <div>
+      <Helmet title={pageTitle} />
       <div className={styles.publishing}>
         <User user={user} />
         {organization
@@ -27,7 +28,7 @@ function Layout({ user, organization, pageTitle, title, children }) {
           {children}
         </div>
       </div>
-    </DocumentTitle>
+    </div>
   )
 }
 

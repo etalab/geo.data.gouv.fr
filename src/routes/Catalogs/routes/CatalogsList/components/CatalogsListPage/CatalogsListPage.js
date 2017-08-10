@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import Loader from 'common/components/Loader'
 import CatalogPreview from 'common/components/CatalogPreview'
@@ -37,7 +37,7 @@ class CatalogsListPage extends React.PureComponent {
     const { catalogs, t } = this.props
 
     return (
-      <DocumentTitle title={t('CatalogsListPage.documentTitle')}>
+      <Helmet title={t('CatalogsListPage.documentTitle')}>
         <div className={styles.container}>
           <Loader isLoading={catalogs.pending} error={catalogs.error}>
             <div>
@@ -49,7 +49,7 @@ class CatalogsListPage extends React.PureComponent {
             </div>
           </Loader>
         </div>
-      </DocumentTitle>
+      </Helmet>
     )
   }
 }
