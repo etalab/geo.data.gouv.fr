@@ -12,7 +12,7 @@ import ObsoleteWarning from './ObsoleteWarning'
 
 import styles from './CatalogPreview.scss'
 
-const CatalogPreview = ({ catalog, t }) => {
+export const CatalogPreview = ({ catalog, t }) => {
   let metrics = catalog.metrics
   let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
