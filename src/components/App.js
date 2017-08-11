@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
 
 import PageLayout from './PageLayout'
+import ScrollToTop from './ScrollToTop'
 
 import HomeRoute from '../routes/Home'
 import SearchRoute from '../routes/Search'
@@ -34,6 +35,7 @@ class App extends React.Component {
         <I18nextProvider i18n={i18n}>
           <BrowserRouter>
             <PageLayout>
+              <ScrollToTop />
 
               <Switch>
                 <Route exact path='/' component={HomeRoute(store, i18n)} />
