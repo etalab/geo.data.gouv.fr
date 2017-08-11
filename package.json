@@ -69,6 +69,7 @@
     "proxyquire": "^1.7.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-router-test-context": "^0.1.0",
     "react-test-renderer": "^15.6.1",
     "redbox-react": "^1.5.0",
     "rimraf": "^2.6.1",
