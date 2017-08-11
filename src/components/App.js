@@ -7,6 +7,7 @@ import { I18nextProvider } from 'react-i18next'
 
 import PageLayout from './PageLayout'
 import ScrollToTop from './ScrollToTop'
+import TrackPageViews from './TrackPageViews'
 
 import HomeRoute from '../routes/Home'
 import SearchRoute from '../routes/Search'
@@ -36,6 +37,7 @@ class App extends React.Component {
           <BrowserRouter>
             <PageLayout>
               <ScrollToTop />
+              <TrackPageViews />
 
               <Switch>
                 <Route exact path='/' component={HomeRoute(store, i18n)} />
