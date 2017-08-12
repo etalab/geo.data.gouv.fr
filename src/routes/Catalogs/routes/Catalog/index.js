@@ -10,7 +10,7 @@ export default (store, i18n) => {
     reducer
   })
 
-  i18n.availableLanguages.forEach(async lang => {
+  i18n.availableLanguages.forEach(lang => {
     injectLocale(i18n, {
       locale: lang,
       namespace: 'Catalogs.Catalog',
