@@ -1,13 +1,7 @@
-import CatalogsListRoute from './routes/CatalogsList'
-import CatalogRoute from './routes/Catalog'
-import CatalogHarvestRoute from './routes/CatalogHarvest'
+import asyncRoute from '../asyncRoute'
 
-export default (store, i18n) => ({
-  path: 'catalogs',
+export default (store, i18n) => asyncRoute(async () => {
+  const CatalogsRouter = await import(/* webpackChunkName: 'catalogs' */ './components/CatalogsRouter')
 
-  indexRoute: CatalogsListRoute(store, i18n),
-  childRoutes: [
-    CatalogRoute(store, i18n),
-    CatalogHarvestRoute(store, i18n)
-  ]
+  return CatalogsRouter.default(store, i18n)
 })

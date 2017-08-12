@@ -1,45 +1,59 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import { browserHistory } from 'react-router'
+import { withRouter } from 'react-router-dom'
+import qs from 'querystring'
 
 import Facet from 'common/components/Facets/Facet'
 
 import styles from './DatasetFilters.scss'
 
-const search = filter => browserHistory.push({
-  pathname: '/search',
-  query: {
-    [filter.name]: filter.value
+class DatasetFilters extends React.PureComponent {
+  static propTypes = {
+    organizations: PropTypes.array.isRequired,
+    keywords: PropTypes.array.isRequired,
+
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }).isRequired,
+
+    t: PropTypes.func.isRequired
   }
-})
 
-const DatasetFilters = ({ organizations, keywords, t }) => {
-  const sections = [
-    { name: 'organization', title: t('components.DatasetFilters.organizationsTitle'), filters: organizations },
-    { name: 'keyword', title: t('components.DatasetFilters.keywordsTitle'), filters: keywords }
-  ]
+  onSearch = filter => {
+    const { history } = this.props
 
-  return (
-    <div>
-      {sections.map(section => section.filters.length > 0 && (
-        <div key={section.title} className={styles.group}>
-          <h4>{section.title}</h4>
-          <div className={styles.facets}>
-            {section.filters.map((filter, idx) => (
-              <Facet key={idx} name={section.name} value={filter} addFilter={search} />
-            ))}
+    history.push({
+      pathname: '/search',
+      search: qs.stringify({
+        [filter.name]: filter.value
+      })
+    })
+  }
+
+  render() {
+    const { organizations, keywords, t } = this.props
+
+    const sections = [
+      { name: 'organization', title: t('components.DatasetFilters.organizationsTitle'), filters: organizations },
+      { name: 'keyword', title: t('components.DatasetFilters.keywordsTitle'), filters: keywords }
+    ]
+
+    return (
+      <div>
+        {sections.map(section => section.filters.length > 0 && (
+          <div key={section.title} className={styles.group}>
+            <h4>{section.title}</h4>
+            <div className={styles.facets}>
+              {section.filters.map((filter, idx) => (
+                <Facet key={idx} name={section.name} value={filter} addFilter={this.onSearch} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  )
+        ))}
+      </div>
+    )
+  }
 }
 
-DatasetFilters.propTypes = {
-  organizations: PropTypes.array.isRequired,
-  keywords: PropTypes.array.isRequired,
-  t: PropTypes.func.isRequired
-}
-
-export default translate('Dataset')(DatasetFilters)
+export default withRouter(translate('Dataset')(DatasetFilters))

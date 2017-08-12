@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import qs from 'querystring'
 
 import Loader from 'common/components/Loader'
 
@@ -31,26 +32,43 @@ class CatalogPage extends React.PureComponent {
       ]).isRequired
     }).isRequired,
 
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        catalogId: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired,
+
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }),
+
     harvests: PropTypes.object.isRequired,
 
-    catalogId: PropTypes.string.isRequired,
     getCatalog: PropTypes.func.isRequired,
     getMetrics: PropTypes.func.isRequired,
 
-    search: PropTypes.func.isRequired,
     getHarvests: PropTypes.func.isRequired,
     syncCatalog: PropTypes.func.isRequired
   }
 
-  componentDidMount() {
-    const { catalogId, getCatalog, getMetrics } = this.props
+  onSearch = query => {
+    const { history } = this.props
 
-    getCatalog(catalogId)
-    getMetrics(catalogId)
+    history.push({
+      pathname: '/search',
+      search: qs.stringify(query)
+    })
+  }
+
+  componentDidMount() {
+    const { match, getCatalog, getMetrics } = this.props
+
+    getCatalog(match.params.catalogId)
+    getMetrics(match.params.catalogId)
   }
 
   render() {
-    const { catalog, metrics, harvests, search, getHarvests, syncCatalog } = this.props
+    const { catalog, metrics, harvests, getHarvests, syncCatalog } = this.props
 
     return (
       <div className={styles.container}>
@@ -59,7 +77,7 @@ class CatalogPage extends React.PureComponent {
             catalog={catalog.catalog}
             metrics={metrics.metrics}
             harvests={harvests}
-            search={search}
+            onSearch={this.onSearch}
             getHarvests={getHarvests}
             syncCatalog={syncCatalog}
           />

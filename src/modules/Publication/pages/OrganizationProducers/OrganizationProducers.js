@@ -12,7 +12,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/c
 class PublishingDatasets extends Component {
   constructor(props) {
     super(props)
-    const { params: { organizationId } } = props
+    const organizationId = props.match.params.organizationId
     this.state = { errors: [], organizationId }
   }
 

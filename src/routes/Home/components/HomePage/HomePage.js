@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import qs from 'querystring'
 import DocumentTitle from 'react-document-title'
-import { browserHistory, Link } from 'react-router'
+import { Link, withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
 
 import SearchInput from 'common/components/SearchInput'
@@ -15,16 +16,22 @@ class HomePage extends React.PureComponent {
       _id: PropTypes.string.isRequired
     })).isRequired,
 
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }).isRequired,
+
     t: PropTypes.func.isRequired
   }
 
-  search = value => {
-    browserHistory.push({
+  onSearch = value => {
+    const { history } = this.props
+
+    history.push({
       pathname: '/search',
-      query: {
+      search: qs.stringify({
         q: value,
         availability: 'yes'
-      }
+      })
     })
   }
 
@@ -40,7 +47,7 @@ class HomePage extends React.PureComponent {
             </h1>
             <SearchInput
               placeholder={t('HomePage.SearchInputPlaceholder')}
-              onSearch={this.search}
+              onSearch={this.onSearch}
               hasButton
             />
             <Link className={styles.datasetLinks} to='/search?availability=yes'>{t('HomePage.datasetsLink')}</Link>
@@ -70,4 +77,4 @@ class HomePage extends React.PureComponent {
   }
 }
 
-export default translate('Home')(HomePage)
+export default withRouter(translate('Home')(HomePage))

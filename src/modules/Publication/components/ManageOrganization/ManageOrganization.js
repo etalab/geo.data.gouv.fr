@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import OrganizationProducersPreview from '../OrganizationProducersPreview/OrganizationProducersPreview'
 import OrganizationMetrics from '../OrganizationMetrics/OrganizationMetrics'

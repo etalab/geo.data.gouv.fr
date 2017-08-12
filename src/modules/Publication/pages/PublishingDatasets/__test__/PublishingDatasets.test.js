@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import createRouterContext from 'react-router-test-context'
 import { mount } from 'enzyme'
 
 import Errors from '../../../../../components/Errors/Errors'
@@ -13,7 +15,14 @@ const PublishingDatasets = require('proxyquire')('../PublishingDatasets', {
 describe('<PublishingDatasets />', () => {
   describe('When all goes well', () => {
     it('should assign metrics, organizationDetail and catalog to this.state', () => {
-      const wrapper = mount(<PublishingDatasets params={{ organizationId: '1' }} />)
+      const wrapper = mount(
+        <PublishingDatasets match={{ params: { organizationId: '1' } }} />, {
+          context: createRouterContext(),
+          childContextTypes: {
+            router: PropTypes.object
+          }
+        }
+      )
 
       return wrapper.instance()
         .componentWillMount()
@@ -26,7 +35,14 @@ describe('<PublishingDatasets />', () => {
     })
 
     it('should render a OrganizationDatasets component', () => {
-      const wrapper = mount(<PublishingDatasets params={{ organizationId: '1' }} />)
+      const wrapper = mount(
+        <PublishingDatasets match={{ params: { organizationId: '1' } }} />, {
+          context: createRouterContext(),
+          childContextTypes: {
+            router: PropTypes.object
+          }
+        }
+      )
 
       return wrapper.instance()
         .componentWillMount()
@@ -42,7 +58,7 @@ describe('<PublishingDatasets />', () => {
     it('should display all errors', () => {
       const errors = ['organizationId is required']
       const err = <Errors errors={errors} />
-      const wrapper = mount(<PublishingDatasets params={{ organizationId: null }} />)
+      const wrapper = mount(<PublishingDatasets match={{ params: { organizationId: null } }} />)
 
       return wrapper.instance()
         .componentWillMount()

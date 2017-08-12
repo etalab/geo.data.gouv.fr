@@ -1,4 +1,5 @@
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import { shallow } from 'enzyme'
 
 import OrganizationPreview from '../OrganizationPreview'
@@ -12,14 +13,23 @@ describe('<OrganizationPreview />', () => {
 
   describe('Logo', () => {
     it('should display organization logo', () => {
-      const wrapper = shallow(<OrganizationPreview organization={user.organizations[0]} metrics={metrics} sourceCatalog={sourceCatalog} producers={producers} errors={[]} />)
+      const wrapper = shallow(
+        <MemoryRouter>
+          <OrganizationPreview organization={user.organizations[0]} metrics={metrics} sourceCatalog={sourceCatalog} producers={producers} errors={[]} />
+        </MemoryRouter>
+      )
 
       expect(wrapper).to.have.html().match(/inspire-logo-100.png/)
     })
 
     it('should display default logo when organization logo is undefined', () => {
       user.organizations[0].logo = null
-      const wrapper = shallow(<OrganizationPreview organization={user.organizations[0]} metrics={metrics} sourceCatalog={sourceCatalog} producers={producers} errors={[]} />)
+
+      const wrapper = shallow(
+        <MemoryRouter>
+          <OrganizationPreview organization={user.organizations[0]} metrics={metrics} sourceCatalog={sourceCatalog} producers={producers} errors={[]} />
+        </MemoryRouter>
+      )
 
       expect(wrapper).to.have.html().match(/no-img.png/)
     })

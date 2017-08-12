@@ -1,5 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import PropTypes from 'prop-types'
+import createRouterContext from 'react-router-test-context'
+import { shallow, mount } from 'enzyme'
 
 const DatasetsToBePublished = require('proxyquire')('../DatasetsToBePublished', {
   '../../../../fetch/fetch': require('../../../../../fetch/__mocks__/fetch')
@@ -16,7 +18,15 @@ describe('<DatasetsToBePublished />', () => {
     it('should display only one dataset in progress', () => {
       const dataset1 = datasets[0]
       const dataset2 = datasets[1]
-      const wrapper = shallow(<DatasetsToBePublished organizationId='1' datasets={datasets} title={''} status={''} />)
+
+      const wrapper = mount(
+        <DatasetsToBePublished organizationId='1' datasets={datasets} title={''} status={''} />, {
+          context: createRouterContext(),
+          childContextTypes: {
+            router: PropTypes.object
+          }
+        }
+      )
 
       wrapper.instance().addDatasetToPublish(dataset1)
       wrapper.instance().publishDatasets()
@@ -24,8 +34,9 @@ describe('<DatasetsToBePublished />', () => {
 
       expect(wrapper.state().publicationsInProgress.includes(dataset1)).to.be.true
       expect(wrapper.state().publicationsInProgress.includes(dataset2)).to.be.false
-      expect(wrapper.html()).to.contain('<div><a>dataset1</a><div>Publication en cours...</div></div>')
-      expect(wrapper.html()).to.contain('<div><a>dataset2</a><input type="checkbox" checked=""/>')
+
+      expect(wrapper.html()).to.contain('<div><a href="/datasets/1">dataset1</a><div>Publication en cours...</div></div>')
+      expect(wrapper.html()).to.contain('<div><a href="/datasets/2">dataset2</a><input type="checkbox"></div>')
     })
   })
 

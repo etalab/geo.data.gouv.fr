@@ -4,18 +4,14 @@ import { get, getPublication, getOnDataGouv, fetchGeoJson } from '../modules/act
 
 import DatasetPage from '../components/DatasetPage'
 
-export default connect(
-  (state, ownProps) => ({
-    datasetId: ownProps.params.datasetId,
-    dataset: state.dataset.dataset,
-    publication: state.dataset.publication,
-    dataGouvDataset: state.dataset.dataGouvDataset
-  }),
-
-  {
-    getDataset: get,
-    getPublication,
-    getDataGouvDataset: getOnDataGouv,
-    fetchGeoJson
-  }
-)(DatasetPage)
+export default connect(({ dataset }, { match }) => ({
+  datasetId: match.params.datasetId,
+  dataset: dataset.dataset,
+  publication: dataset.publication,
+  dataGouvDataset: dataset.dataGouvDataset
+}), {
+  getDataset: get,
+  getPublication,
+  getDataGouvDataset: getOnDataGouv,
+  fetchGeoJson
+})(DatasetPage)

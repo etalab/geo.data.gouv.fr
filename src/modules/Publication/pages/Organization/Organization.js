@@ -15,7 +15,7 @@ class Organization extends Component {
   }
 
   getDependencies() {
-    const { params: { organizationId } } = this.props
+    const organizationId = this.props.match.params.organizationId
 
     return {
       user: getUser(),

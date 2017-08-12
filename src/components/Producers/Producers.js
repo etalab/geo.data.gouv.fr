@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { pull } from 'lodash'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import Errors from '../Errors/Errors'
 import RelatedProducers from './RelatedProducers'
