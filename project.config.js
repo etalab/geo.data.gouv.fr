@@ -69,7 +69,7 @@ module.exports = {
     'react-chartjs-2',
     'react-document-title',
     'react-i18next',
-    'react-leaflet',
+    'react-loadable',
     'react-paginate',
     'react-redux',
     'react-router-dom',
