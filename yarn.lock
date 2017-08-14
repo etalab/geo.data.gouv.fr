@@ -895,7 +895,7 @@ babel-register@^6.24.1:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0:
+babel-runtime@^6.18.0, babel-runtime@^6.22.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
   dependencies:
@@ -3755,9 +3755,9 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-leaflet@^1.0.2:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.1.0.tgz#63246715cfc783dca6798b843a250e8e6fd84918"
+leaflet@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.2.0.tgz#fd5d93d9cb00091f5f8a69206d0d6744c1c82697"
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
@@ -5274,11 +5274,11 @@ react-i18next@^4.8.0:
   dependencies:
     hoist-non-react-statics "1.2.0"
 
-react-leaflet@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.4.1.tgz#5cc502a34c1e710809fe33fc520483a03d5e3482"
+react-leaflet@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.5.0.tgz#d7a77e2f439fabddff745749a41df3ac57d873e7"
   dependencies:
-    babel-runtime "^6.23.0"
+    babel-runtime "^6.25.0"
     lodash "^4.0.0"
     warning "^3.0.0"
 
