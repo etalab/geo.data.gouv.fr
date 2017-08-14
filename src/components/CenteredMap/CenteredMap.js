@@ -2,6 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Map, TileLayer, GeoJSON } from 'react-leaflet'
 
+import 'leaflet/dist/leaflet.css'
+
+// Fix icon issues when importing images with webpack
+// https://github.com/PaulLeCam/react-leaflet/issues/255
+import L from 'leaflet'
+delete L.Icon.Default.prototype._getIconUrl
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+})
+
 class CenteredMap extends React.PureComponent {
   static propTypes = {
     vectors: PropTypes.object.isRequired,
