@@ -70,6 +70,7 @@ module.exports = {
     'react-document-title',
     'react-i18next',
     'react-loadable',
+    'react-loadable-visibility',
     'react-paginate',
     'react-redux',
     'react-router-dom',
