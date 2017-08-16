@@ -5282,6 +5282,10 @@ react-leaflet@^1.5.0:
     lodash "^4.0.0"
     warning "^3.0.0"
 
+react-loadable-visibility@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-loadable-visibility/-/react-loadable-visibility-2.3.0.tgz#2c39cc7e14f17969a130d1c4cd4bcf574d84f15e"
+
 react-loadable@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-4.0.4.tgz#ae96837729eeb7fd0d3bb1dc01dc0053ac147874"

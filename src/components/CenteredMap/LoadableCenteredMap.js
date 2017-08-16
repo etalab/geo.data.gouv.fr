@@ -1,9 +1,9 @@
 import React from 'react'
-import Loadable from 'react-loadable'
+import LoadableVisibility from 'react-loadable-visibility/react-loadable'
 
 import Loader from 'common/components/Loader'
 
-const LoadableCenteredMap = Loadable({
+const LoadableCenteredMap = LoadableVisibility({
   loader: () => import(/* webpackChunkName: 'components/map' */ './CenteredMap'),
   loading: () => <Loader loading />
 })
