@@ -34,7 +34,7 @@ const config = {
   resolve: {
     modules: [
       inProject(project.srcDir),
-      'node_modules',
+      inProject('node_modules')
     ],
     extensions: [
       '.js',
@@ -112,9 +112,9 @@ config.module.rules.push({
   ]
 })
 
-// Styles
+// Local Styles
 // ------------------------------------
-const extractStyles = new ExtractTextPlugin({
+const localStyles = new ExtractTextPlugin({
   filename: 'styles/[name].[contenthash].css',
   allChunks: true,
   disable: !__PROD__
@@ -122,7 +122,10 @@ const extractStyles = new ExtractTextPlugin({
 
 config.module.rules.push({
   test: /\.(sass|scss)$/,
-  loader: extractStyles.extract({
+  exclude: [
+    inProject('node_modules')
+  ],
+  loader: localStyles.extract({
     fallback: 'style-loader',
     use: [
       {
@@ -162,7 +165,45 @@ config.module.rules.push({
   })
 })
 
-config.plugins.push(extractStyles)
+config.plugins.push(localStyles)
+
+// Vendor Styles
+// ------------------------------------
+config.module.rules.push({
+  test: /\.css$/,
+  include: [
+    inProject('node_modules')
+  ],
+  use: [
+    {
+      loader: 'style-loader',
+      options: {
+        sourceMap: __DEV__
+      }
+    },
+    {
+      loader: 'css-loader',
+      options: {
+        sourceMap: __DEV__,
+        minimize: {
+          autoprefixer: {
+            add: true,
+            remove: true,
+            browsers: ['last 2 versions']
+          },
+          discardComments: {
+            removeAll: true
+          },
+          discardUnused: false,
+          mergeIdents: false,
+          reduceIdents: false,
+          safe: true,
+          sourcemap: __DEV__
+        }
+      }
+    }
+  ]
+})
 
 // Images
 // ------------------------------------
@@ -170,7 +211,8 @@ config.module.rules.push({
   test: /\.(png|jpg|gif)$/,
   loader: 'url-loader',
   options: {
-    limit: 8192
+    limit: 8192,
+    name: __DEV__ ? 'images/[name].js' : 'images/[name].[chunkhash].js'
   }
 })
 
