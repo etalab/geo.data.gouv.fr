@@ -92,7 +92,7 @@
     "i18next": "^8.4.3",
     "i18next-browser-languagedetector": "^2.0.0",
     "leaflet": "^1.2.0",
-    "lodash": "^4.17.4",
+    "lodash-es": "^4.17.4",
     "marked": "^0.3.6",
     "moment": "^2.14.1",
     "piwik-react-router": "^0.9.0",

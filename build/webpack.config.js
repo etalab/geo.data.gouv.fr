@@ -44,10 +44,11 @@ const config = {
     alias: {
       'common': inProject(project.srcDir),
 
-      // Aliasing lodash.isequal to lodash/isEqual for perf purposes:
-      // lodash.isequal embeds a lot of lodash that is already in the bundle.
-      // This allows us to save about 4KB gzipped.
-      'lodash.isequal': 'lodash/isEqual',
+      // We’re aliasing lodash to lodash-es here. We need to make sure
+      // that all the versions of lodash used here are compatible.
+      // Run `npm ls lodash` and `npm ls lodash-es` to make sure.
+      'lodash': 'lodash-es',
+      'lodash.isequal': 'lodash-es/isEqual', // Used in react-chartjs-2
 
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
