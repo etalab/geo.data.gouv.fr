@@ -18,7 +18,7 @@ import {
   DATASETS_FETCH_GEOJSON_FAILURE
 } from './constants'
 
-const { INSPIRE_API_URL, PROXY_API_URL } = process.env
+const { INSPIRE_API_URL, DATAGOUV_API_URL } = process.env
 
 export const get = id => dispatch => {
   dispatch({
@@ -70,7 +70,7 @@ export const getOnDataGouv = id => dispatch => {
   })
 
   return _get(
-    `${PROXY_API_URL}/datasets/${id}`
+    `${DATAGOUV_API_URL}/datasets/${id}/`
   )
     .then(data => {
       dispatch({
