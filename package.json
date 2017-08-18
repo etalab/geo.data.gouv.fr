@@ -96,7 +96,7 @@
     "moment": "^2.14.1",
     "piwik-react-router": "^0.9.0",
     "preact": "^8.2.1",
-    "preact-compat": "^3.9.4",
+    "preact-compat": "^3.17.0",
     "react-addons-create-fragment": "^15.4.0",
     "react-chartjs-2": "^2.0.0",
     "react-document-title": "^2.0.2",
