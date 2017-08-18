@@ -1,6 +1,6 @@
 import { _get, _put, _post, _delete } from '../helpers/super'
 
-const { PUBLICATION_API_URL, INSPIRE_API_URL, PROXY_API_URL } = process.env
+const { PUBLICATION_API_URL, INSPIRE_API_URL, DATAGOUV_API_URL } = process.env
 
 export function fetchCatalog(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
@@ -93,19 +93,19 @@ export function getOrganizations(organizationsId) {
 // DATA.GOUV.FR
 export function getDiscussions(datasetId) {
   if (!datasetId) return Promise.reject(new Error('datasetId is required'))
-  const url = `${PROXY_API_URL}/discussions/?for=${datasetId}`
+  const url = `${DATAGOUV_API_URL}/discussions/?for=${datasetId}`
 
   return _get(url)
 }
 
 export function createNewDiscussion(discussion) {
-  const url = `${PROXY_API_URL}/discussions/`
+  const url = `${DATAGOUV_API_URL}/discussions/`
 
   return _post(url, discussion)
 }
 
 export function createNewReply(content, discussionId) {
-  const url = `${PROXY_API_URL}/discussions/${discussionId}/`
+  const url = `${DATAGOUV_API_URL}/discussions/${discussionId}/`
 
   return _post(url, content)
 }
