@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import Loader from 'common/components/Loader'
-import Chart from 'common/components/Charts/Chart'
-import Histogram from 'common/components/Charts/Histogram/Histogram'
 
+import { Histogram } from '../CatalogCharts'
 import CatalogHarvestsTable from '../CatalogHarvestsTable'
 
 import styles from './CatalogHarvestsView.scss'
@@ -83,12 +82,9 @@ class CatalogHarvestsView extends React.PureComponent {
               </button>
             </div>
             <div className={styles.stats}>
-              <Chart
+              <Histogram
                 title={t('CatalogHarvestsView.chartTitle')}
-                description={t('CatalogHarvestsView.chartDescription')}
-                chart={
-                  <Histogram data={this.getGraphData()} />
-                }
+                data={this.getGraphData()}
               />
             </div>
           </div>

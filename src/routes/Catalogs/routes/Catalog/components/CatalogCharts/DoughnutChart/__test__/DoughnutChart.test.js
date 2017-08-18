@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Percent from '../../../Statistics/Percent/Percent'
+import Percent from 'common/components/Statistics/Percent/Percent'
 import { DoughnutChart, formatData } from '../DoughnutChart'
 import data from './data.json'
 import formatedData from './formated-data.json'

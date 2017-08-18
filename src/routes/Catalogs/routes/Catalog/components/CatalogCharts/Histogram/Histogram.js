@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { Line } from 'react-chartjs-2'
 
-import { colors } from '../../../tools.js'
+import withContainer from '../withContainer'
+
+import colors from '../colors'
 
 export function formatData(data, t) {
   return {
@@ -31,7 +33,14 @@ export const Histogram = ({ data, width, height, t }) => {
     }
   }
 
-  return <Line data={formatedData} width={width} height={height} options={options} />
+  return (
+    <Line
+      data={formatedData}
+      width={width}
+      height={height}
+      options={options}
+    />
+  )
 }
 
 Histogram.propTypes = {
@@ -41,4 +50,4 @@ Histogram.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('Common')(Histogram)
+export default withContainer(translate('Common')(Histogram))
