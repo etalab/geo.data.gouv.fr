@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import { Doughnut } from 'react-chartjs-2'
 
+import Chart from 'common/components/Chart'
 import Percent from 'common/components/Statistics/Percent/Percent'
 
 import withContainer from '../withContainer'
@@ -47,7 +47,12 @@ export const DoughnutChart = ({ data, t }) => {
 
   return (
     <div className={styles.container}>
-      <Doughnut className='doughnut computer' data={formatedData} width={360} />
+      <Chart
+        chartType='Doughnut'
+        className='doughnut computer'
+        data={formatedData}
+        width={360}
+      />
     </div>
   )
 }

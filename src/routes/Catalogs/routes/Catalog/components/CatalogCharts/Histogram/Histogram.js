@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import { Line } from 'react-chartjs-2'
+
+import Chart from 'common/components/Chart'
 
 import withContainer from '../withContainer'
 
@@ -34,7 +35,8 @@ export const Histogram = ({ data, width, height, t }) => {
   }
 
   return (
-    <Line
+    <Chart
+      chartType='Line'
       data={formatedData}
       width={width}
       height={height}
