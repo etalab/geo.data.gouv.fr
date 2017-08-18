@@ -48,7 +48,6 @@ const config = {
       // that all the versions of lodash used here are compatible.
       // Run `npm ls lodash` and `npm ls lodash-es` to make sure.
       'lodash': 'lodash-es',
-      'lodash.isequal': 'lodash-es/isEqual', // Used in react-chartjs-2
 
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
