@@ -67,7 +67,6 @@ module.exports = {
     'piwik-react-router',
     'preact',
     'preact-compat',
-    'react-chartjs-2',
     'react-i18next',
     'react-loadable',
     'react-loadable-visibility',

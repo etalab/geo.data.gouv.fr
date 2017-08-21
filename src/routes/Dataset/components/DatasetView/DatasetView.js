@@ -90,7 +90,7 @@ class DatasetView extends React.PureComponent {
         </Helmet>
         <div>
           {i18n.exists(`Dataset:components.DatasetView.consequences.${status}`) && (
-            <Warning title={t('components.DatasetView.obsoleteWarning', { status: t(`components.DatasetView.status.${status}`) })}>
+            <Warning title={t('components.DatasetView.obsoleteWarning', { status: t(`enums.status.${status}`) })}>
               {t(`Dataset:components.DatasetView.consequences.${status}`)}
             </Warning>
           )}
