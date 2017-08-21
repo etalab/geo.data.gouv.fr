@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { get } from 'lodash'
 
-import Chart from 'common/components/Charts/Chart'
-import DoughnutChart from 'common/components/Charts/DoughnutChart/DoughnutChart'
 import Counter from 'common/components/Statistics/Counter/Counter'
 import Percent from 'common/components/Statistics/Percent/Percent'
+
+import { DoughnutChart } from '../CatalogCharts'
 
 import styles from './CatalogStatistics.scss'
 
@@ -28,16 +28,16 @@ const CatalogStatistics = ({ metrics, t }) => {
         </div>
 
         <div className={styles.chart}>
-          <Chart
-            description={t('CatalogStatistics.recordsChartDescription')}
-            chart={<DoughnutChart data={metrics.records.partitions.recordType} />}
+          <DoughnutChart
+            title={t('CatalogStatistics.recordsChartTitle')}
+            data={metrics.records.partitions.recordType}
           />
         </div>
 
         <div className={styles.chart}>
-          <Chart
-            description={t('CatalogStatistics.metadataChartDescritpion')}
-            chart={<DoughnutChart data={metrics.records.partitions.metadataType} />}
+          <DoughnutChart
+            title={t('CatalogStatistics.metadataChartTitle')}
+            data={metrics.records.partitions.metadataType}
           />
         </div>
       </div>
@@ -65,9 +65,10 @@ const CatalogStatistics = ({ metrics, t }) => {
         </div>
 
         <div className={styles.chart}>
-          <Chart
-            description={t('CatalogStatistics.dataTypeChartDescription')}
-            chart={<DoughnutChart data={metrics.datasets.partitions.dataType} />} />
+          <DoughnutChart
+            title={t('CatalogStatistics.dataTypeChartTitle')}
+            data={metrics.datasets.partitions.dataType}
+          />
         </div>
       </div>
     </div>

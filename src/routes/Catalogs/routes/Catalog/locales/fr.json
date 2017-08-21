@@ -22,19 +22,18 @@
   "CatalogHarvestsView": {
     "title": "Moissonnage du catalogue",
     "buttonText": "Synchroniser",
-    "chartTitle": "Évolution des Enregistrements",
-    "chartDescription": "Évolution du nombre d’enregistrements par moissonnage"
+    "chartTitle": "Évolution du nombre d’enregistrements par moissonnage"
   },
 
   "CatalogStatistics": {
     "catalogIndicatorTitle": "Indicateurs concernant la totalité du catalogue",
     "recordsCounterTitle": "Enregistrements",
-    "recordsChartDescription": "Répartition des types d‘enregistrements",
-    "metadataChartDescritpion": "Répartition des types de meta donnée",
+    "recordsChartTitle": "Répartition des types d‘enregistrements",
+    "metadataChartTitle": "Répartition des types de meta donnée",
     "datasetsIndicatorTitle": "Indicateurs concernant les jeux de données",
     "openDataPercentTitle": "Pourcentage de données ouvertes",
     "downloadablePercentTitle": "Pourcentage de jeu de données téléchargeable",
-    "dataTypeChartDescription": "Répartition des types de donnée"
+    "dataTypeChartTitle": "Répartition des types de donnée"
   },
 
   "CatalogView": {
