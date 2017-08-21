@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import styles from './Loader.scss'
 
-const Loader = ({ loading, label = 'Chargement…', className = '', error, children }) => (
-  loading ? (
+const Loader = ({ isLoading, label, className, error, children }) => (
+  isLoading ? (
     <div className={`${styles.wrapper} ${className}`}>
       <div className={styles.loader}>
         {label}
@@ -18,7 +18,7 @@ const Loader = ({ loading, label = 'Chargement…', className = '', error, child
 )
 
 Loader.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
   label: PropTypes.string,
 
   className: PropTypes.string,
@@ -31,6 +31,12 @@ Loader.propTypes = {
   ]),
 
   children: PropTypes.node
+}
+
+Loader.defaultProps = {
+  isLoading: false,
+  label: 'Chargement…',
+  className: ''
 }
 
 export default Loader

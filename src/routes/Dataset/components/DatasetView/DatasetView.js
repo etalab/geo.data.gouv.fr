@@ -123,7 +123,7 @@ class DatasetView extends React.PureComponent {
               <div className={styles.aside}>
                 {publication && publication.remoteId && (
                   <DatasetBlock title={t('components.DatasetView.section.producer')}>
-                    <Loader loading={dataGouvDataset.pending}>
+                    <Loader isLoading={dataGouvDataset.pending}>
                       {dataGouvDataset.dataset && (
                         <DatasetProducer organization={dataGouvDataset.dataset.organization} />
                       )}

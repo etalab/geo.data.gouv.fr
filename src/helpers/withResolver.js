@@ -33,7 +33,7 @@ export default function withResolver(WrappedComponent, dependencies) {
       }
 
       if (!dependenciesReady) {
-        return <Loader loading />
+        return <Loader isLoading />
       }
 
       return <WrappedComponent {...this.state} {...this.props} />

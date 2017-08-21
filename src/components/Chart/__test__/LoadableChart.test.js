@@ -1,13 +1,13 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import Loader from 'common/components/Loader'
 import LoadableChart from '../LoadableChart'
 
 describe('<LoadableChart />', () => {
   it('should be loading by default', () => {
-    const wrapper = mount(<LoadableChart chartType='Line' />)
+    const wrapper = shallow(<LoadableChart chartType='Line' data={{}} />)
 
-    expect(wrapper).to.contain(<Loader loading />)
+    expect(wrapper).to.containMatchingElement(<Loader isLoading />)
   })
 })
