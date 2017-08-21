@@ -129,7 +129,7 @@ class SearchPage extends React.PureComponent {
             />
           </div>
 
-          <Loader loading={search.pending} error={search.error}>
+          <Loader isLoading={search.pending} error={search.error}>
             <SearchResults
               page={search.parsedQuery.page}
               query={search.search.query}

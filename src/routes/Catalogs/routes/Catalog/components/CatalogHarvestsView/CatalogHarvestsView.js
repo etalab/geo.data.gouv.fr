@@ -64,7 +64,7 @@ class CatalogHarvestsView extends React.PureComponent {
       <div>
         <h2>{t('CatalogHarvestsView.title')}</h2>
 
-        <Loader loading={harvests.pending} error={harvests.error}>
+        <Loader isLoading={harvests.pending} error={harvests.error}>
           <div className={styles.container}>
             <div className={styles.table}>
               <CatalogHarvestsTable

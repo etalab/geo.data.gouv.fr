@@ -39,7 +39,7 @@ class CatalogsListPage extends React.PureComponent {
     return (
       <DocumentTitle title={t('CatalogsListPage.documentTitle')}>
         <div className={styles.container}>
-          <Loader loading={catalogs.pending} error={catalogs.error}>
+          <Loader isLoading={catalogs.pending} error={catalogs.error}>
             <div>
               {catalogs.catalogs.map(catalog => (
                 <div key={catalog._id} className={styles.catalog} >

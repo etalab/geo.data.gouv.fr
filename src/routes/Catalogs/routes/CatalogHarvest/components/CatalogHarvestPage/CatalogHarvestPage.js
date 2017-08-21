@@ -54,7 +54,7 @@ class CatalogHarvestPage extends React.PureComponent {
 
     return (
       <div className={styles.container}>
-        <Loader loading={catalog.pending || harvest.pending} error={catalog.error || harvest.error}>
+        <Loader isLoading={catalog.pending || harvest.pending} error={catalog.error || harvest.error}>
           <CatalogHarvestView
             catalog={catalog.catalog}
             harvest={harvest.harvest}

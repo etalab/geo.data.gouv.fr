@@ -29,7 +29,7 @@ class AddCatalogs extends Component {
   render() {
     const { catalogs } = this.state
     const { sourceCatalogs, addCatalog } = this.props
-    if (!this.state.catalogs) return <Loader loading className={loader} />
+    if (!this.state.catalogs) return <Loader isLoading className={loader} />
 
     const candidateCatalogs = getCandidateCatalogs(catalogs, sourceCatalogs)
     const sortedCatalogs = getCatalogOrderByScore(candidateCatalogs)

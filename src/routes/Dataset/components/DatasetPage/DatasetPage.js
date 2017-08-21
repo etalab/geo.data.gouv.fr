@@ -54,7 +54,7 @@ class DatasetPage extends React.PureComponent {
     return (
       <div>
         <Loader
-          loading={dataset.pending || !dataset.dataset || publication.pending}
+          isLoading={dataset.pending || !dataset.dataset || publication.pending}
           error={dataset.error}
           className={styles.loader}
         >

@@ -72,7 +72,7 @@ class CatalogPage extends React.PureComponent {
 
     return (
       <div className={styles.container}>
-        <Loader loading={catalog.pending || metrics.pending} error={catalog.error || metrics.error}>
+        <Loader isLoading={catalog.pending || metrics.pending} error={catalog.error || metrics.error}>
           <CatalogView
             catalog={catalog.catalog}
             metrics={metrics.metrics}

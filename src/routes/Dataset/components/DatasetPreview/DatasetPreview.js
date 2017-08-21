@@ -62,7 +62,7 @@ class DatasetPreview extends React.PureComponent {
           <button className={styles.closeButton} onClick={closePreview}>X</button>
         </div>
 
-        <Loader loading={geoJson.pending} error={geoJson.error} className={styles.loader}>
+        <Loader isLoading={geoJson.pending} error={geoJson.error} className={styles.loader}>
           <div className={styles.wrapper}>
             {mode === 'map' ? (
               <CenteredMap
