@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+
 import Loader from '../Loader'
 
 describe('Loader', () => {
@@ -20,6 +21,18 @@ describe('Loader', () => {
     const wrapper = shallow(<Loader isLoading={false} error={error} />)
 
     expect(wrapper).to.containMatchingElement(<div>Une erreur est survenue : Sorry….</div>)
+  })
+
+  it('should not display a loader when delay is not over', () => {
+    const wrapper = shallow(<Loader isLoading label='Hello' pastDelay={false} />)
+
+    expect(wrapper).to.be.empty
+  })
+
+  it('should display an error when the loading timed out', () => {
+    const wrapper = shallow(<Loader isLoading label='Hello' timedOut />)
+
+    expect(wrapper).to.containMatchingElement(<div>Le chargement a pris trop de temps, veuillez réessayer plus tard.</div>)
   })
 
   it('should display the underlying component when everything is ok', () => {

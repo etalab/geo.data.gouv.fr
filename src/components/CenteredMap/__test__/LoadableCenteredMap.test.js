@@ -8,6 +8,6 @@ describe('<LoadableCenteredMap />', () => {
   it('should be loading by default', () => {
     const wrapper = shallow(<LoadableCenteredMap vectors={{}} />)
 
-    expect(wrapper).to.containMatchingElement(<Loader isLoading />)
+    expect(wrapper).to.containMatchingElement(<Loader isLoading pastDelay={false} />)
   })
 })

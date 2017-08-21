@@ -8,6 +8,6 @@ describe('<LoadableChart />', () => {
   it('should be loading by default', () => {
     const wrapper = shallow(<LoadableChart chartType='Line' data={{}} />)
 
-    expect(wrapper).to.containMatchingElement(<Loader isLoading />)
+    expect(wrapper).to.containMatchingElement(<Loader isLoading pastDelay={false} />)
   })
 })
