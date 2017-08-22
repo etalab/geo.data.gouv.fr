@@ -208,12 +208,30 @@ config.module.rules.push({
 // Images
 // ------------------------------------
 config.module.rules.push({
-  test: /\.(png|jpg|gif)$/,
-  loader: 'url-loader',
-  options: {
-    limit: 8192,
-    name: __DEV__ ? 'images/[name].js' : 'images/[name].[chunkhash].js'
-  }
+  test: /\.(png|jpg|gif|svg)$/,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 8192,
+        name: __DEV__ ? 'images/[name].js' : 'images/[name].[chunkhash].js'
+      }
+    },
+    {
+      loader: 'imagemin-loader',
+      options: {
+        enabled: __PROD__,
+        plugins: [
+          {
+            use: 'imagemin-pngquant'
+          },
+          {
+            use: 'imagemin-svgo'
+          }
+        ]
+      }
+    }
+  ]
 })
 
 // Fonts
@@ -223,8 +241,7 @@ config.module.rules.push({
   ['woff2', 'application/font-woff2'],
   ['otf', 'font/opentype'],
   ['ttf', 'application/octet-stream'],
-  ['eot', 'application/vnd.ms-fontobject'],
-  ['svg', 'image/svg+xml'],
+  ['eot', 'application/vnd.ms-fontobject']
 ].forEach(([ extension, mimetype ]) => {
   config.module.rules.push({
     test: new RegExp(`\\.${extension}$`),
