@@ -19,6 +19,8 @@ class DatasetDownloadList extends React.PureComponent {
     t: PropTypes.func.isRequired
   }
 
+  state = {}
+
   setPreview = ({ distribution, link }) => {
     const { fetchGeoJson } = this.props
 
