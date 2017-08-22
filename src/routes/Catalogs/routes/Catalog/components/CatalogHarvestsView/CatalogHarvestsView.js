@@ -29,10 +29,17 @@ class CatalogHarvestsView extends React.PureComponent {
       }).isRequired
     }).isRequired,
 
+    getHarvests: PropTypes.func.isRequired,
     syncCatalog: PropTypes.func.isRequired,
 
     t: PropTypes.func.isRequired,
     i18n: PropTypes.object.isRequired
+  }
+
+  componentDidMount() {
+    const { getHarvests, catalog } = this.props
+
+    getHarvests(catalog._id)
   }
 
   onSync = event => {
