@@ -6,6 +6,8 @@ import { translate } from 'react-i18next'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
+import logoMarianne from './img/logo_marianne.svg'
+
 import styles from './Header.scss'
 
 const { PUBLIC_URL } = process.env
@@ -41,21 +43,29 @@ class Header extends React.Component {
     const login = <a className={styles.log} href={logInUrl}>{t('components.Header.login')}</a>
 
     return (
-      <nav className={styles.nav}>
-        <Link to='/' className={styles.home}>inspire.data.gouv.fr</Link>
+      <div>
+        <nav className={styles.nav}>
+          <Link to='/' className={styles.home}>
+            <div><img className={styles.marianne} src={logoMarianne} alt='Logo de la République française (1999)' /></div>
+            <div>geo.data.gouv</div><i>.fr</i>
+          </Link>
 
-        {!user ? login : (
-          <div className={styles.authentification}>
-            <Link to={'/publication'}>
-              <div className={styles.account}>
-                <img alt='avatar' className={styles.avatar} src={user.avatar} />
-                {`${user.first_name} ${user.last_name}`}
-              </div>
-            </Link>
-            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('components.Header.logout')}</span><i className='power icon' /></a>
-          </div>
-        )}
-      </nav>
+          {!user ? login : (
+            <div className={styles.authentification}>
+              <Link to={'/publication'}>
+                <div className={styles.account}>
+                  <img alt='avatar' className={styles.avatar} src={user.avatar} />
+                  {`${user.first_name} ${user.last_name}`}
+                </div>
+              </Link>
+              <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('components.Header.logout')}</span><i className='power icon' /></a>
+            </div>
+          )}
+        </nav>
+
+        <div className={styles.divider} />
+      </div>
+
     )
   }
 }
