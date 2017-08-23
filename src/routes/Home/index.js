@@ -1,3 +1,8 @@
-import HomeRoute from './components/HomeRoute'
+import withLocales from 'common/i18n/withLocales'
 
-export default HomeRoute
+import HomeContainer from './containers/HomeContainer'
+
+export default withLocales(
+  'Home',
+  locale => require(`./locales/${locale}.json`)
+)(HomeContainer)
