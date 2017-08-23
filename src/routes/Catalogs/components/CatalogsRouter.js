@@ -6,23 +6,22 @@ import CatalogsListRoute from '../routes/CatalogsList'
 import CatalogHarvestRoute from '../routes/CatalogHarvest'
 import CatalogRoute from '../routes/Catalog'
 
-const CatalogsRouter = ({ store, i18n }) => (
+const CatalogsRouter = ({ store }) => (
   <Switch>
     <Route exact path='/catalogs' render={props => (
-      <CatalogsListRoute store={store} i18n={i18n} {...props} />
+      <CatalogsListRoute store={store} {...props} />
     )} />
     <Route path='/catalogs/:catalogId/harvest/:harvestId' render={props => (
-      <CatalogHarvestRoute store={store} i18n={i18n} {...props} />
+      <CatalogHarvestRoute store={store} {...props} />
     )} />
     <Route path='/catalogs/:catalogId' render={props => (
-      <CatalogRoute store={store} i18n={i18n} {...props} />
+      <CatalogRoute store={store} {...props} />
     )} />
   </Switch>
 )
 
 CatalogsRouter.propTypes = {
-  store: PropTypes.object.isRequired,
-  i18n: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 }
 
 export default CatalogsRouter

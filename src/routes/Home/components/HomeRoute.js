@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import { injectLocale } from 'common/i18n/helpers'
 
@@ -33,4 +34,4 @@ class HomeRoute extends React.Component {
   }
 }
 
-export default HomeRoute
+export default translate()(HomeRoute)

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import { injectReducer } from 'common/store/reducers'
 import { injectLocale } from 'common/i18n/helpers'
@@ -41,4 +42,4 @@ class CatalogRoute extends React.Component {
   }
 }
 
-export default CatalogRoute
+export default translate()(CatalogRoute)
