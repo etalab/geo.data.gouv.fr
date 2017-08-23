@@ -1,15 +1,8 @@
-import { injectLocale } from 'common/i18n/helpers'
+import Loadable from 'react-loadable'
 
-import asyncRoute from '../asyncRoute'
+import Loader from 'common/components/Loader'
 
-export default (store, i18n) => asyncRoute(async () => {
-  i18n.availableLanguages.forEach(async lang => {
-    injectLocale(i18n, {
-      locale: lang,
-      namespace: 'Events',
-      resources: await import(/* webpackMode: 'lazy-once', webpackChunkName: 'events' */ `./locales/${lang}.json`)
-    })
-  })
-
-  return import(/* webpackChunkName: 'events' */ './containers/EventsContainer')
+export default Loadable({
+  loader: () => import(/* webpackChunkName: 'events' */ './components/EventsRoute'),
+  loading: Loader
 })

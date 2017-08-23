@@ -1,5 +1,8 @@
-import asyncRoute from '../asyncRoute'
+import Loadable from 'react-loadable'
 
-export default () => asyncRoute(async () => {
-  return import(/* webpackChunkName: 'publication' */ './components/PublicationRouter')
+import Loader from 'common/components/Loader'
+
+export default Loadable({
+  loader: () => import(/* webpackChunkName: 'publication' */ './components/PublicationRouter'),
+  loading: Loader
 })

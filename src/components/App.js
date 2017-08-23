@@ -42,14 +42,31 @@ class App extends React.Component {
               <TrackPageViews />
 
               <Switch>
-                <Route exact path='/' component={HomeRoute(store, i18n)} />
-                <Route path='/search' component={SearchRoute(store, i18n)} />
-                <Route path='/datasets/:datasetId' component={DatasetRoute(store, i18n)} />
-                <Route path='/catalogs' component={CatalogRoute(store, i18n)} />
-                <Route path='/events' component={EventsRoute(store, i18n)} />
-                <Route path='/publication' component={PublicationRoute(store, i18n)} />
+                <Route exact path='/' render={props => (
+                  <HomeRoute i18n={i18n} {...props} />
+                )} />
 
-                <Route component={NotFoundRoute(store, i18n)} />
+                <Route path='/search' render={props => (
+                  <SearchRoute store={store} i18n={i18n} {...props} />
+                )} />
+
+                <Route path='/datasets/:datasetId' render={props => (
+                  <DatasetRoute store={store} i18n={i18n} {...props} />
+                )} />
+
+                <Route path='/catalogs' render={props => (
+                  <CatalogRoute store={store} i18n={i18n} {...props} />
+                )} />
+
+                <Route path='/events' render={props => (
+                  <EventsRoute i18n={i18n} {...props} />
+                )} />
+
+                <Route path='/publication' component={PublicationRoute} />
+
+                <Route render={props => (
+                  <NotFoundRoute i18n={i18n} {...props} />
+                )} />
               </Switch>
             </PageLayout>
           </BrowserRouter>
