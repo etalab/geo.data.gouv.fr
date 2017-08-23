@@ -35,6 +35,8 @@ module.exports = {
   /** Whether to generate sourcemaps */
   sourcemaps: true,
 
+  usePreact: !('USE_REACT' in process.env),
+
   /** A hash map of keys that the compiler should treat as external to the project */
   externals: {},
 
