@@ -6,6 +6,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
+const logger = require('./lib/logger')
 const project = require('../project.config')
 
 const inProject = path.resolve.bind(path, project.basePath)
@@ -47,10 +48,7 @@ const config = {
       // We’re aliasing lodash to lodash-es here. We need to make sure
       // that all the versions of lodash used here are compatible.
       // Run `npm ls lodash` and `npm ls lodash-es` to make sure.
-      'lodash': 'lodash-es',
-
-      'react': 'preact-compat',
-      'react-dom': 'preact-compat'
+      'lodash': 'lodash-es'
     }
   },
 
@@ -86,6 +84,21 @@ const config = {
       }
     })
   ]
+}
+
+// preact & preact-compat
+// ------------------------------------
+if (project.usePreact) {
+  logger.info('Compiling with preact')
+
+  config.resolve.alias = {
+    ...config.resolve.alias,
+
+    'react': 'preact-compat',
+    'react-dom': 'preact-compat'
+  }
+} else {
+  logger.info('Compiling with react')
 }
 
 // JavaScript
