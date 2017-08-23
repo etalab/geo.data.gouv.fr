@@ -2,15 +2,49 @@
 
 .container {
   margin-bottom: 3em;
-  padding: 1em;
   background-color: #fff;
   box-shadow: $box-shadow;
   margin-right: 2em;
+
+  h4 {
+    background-color: $blue;
+    padding: 1em;
+
+    font-family: 'Century Gothic', 'Gilles Sans', 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+
+    a {
+      color: $white;
+
+      &:focus,
+      &:hover {
+        color: $white;
+      }
+    }
+  }
 
   @media (max-width: 768px) {
     margin: 0;
     margin-bottom: 1em;
   }
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+
+  border-bottom: 1px solid $grey;
+}
+
+.thumbnail {
+  margin: 2em;
+  width: 220px;
+}
+
+.details {
+  padding: 1em;
 }
 
 .list {
