@@ -43,21 +43,12 @@ class App extends React.Component {
 
               <Switch>
                 <Route exact path='/' component={HomeRoute} />
-
-                <Route path='/search' render={props => (
-                  <SearchRoute store={store} {...props} />
-                )} />
-
-                <Route path='/datasets/:datasetId' render={props => (
-                  <DatasetRoute store={store} {...props} />
-                )} />
-
-                <Route path='/catalogs' render={props => (
-                  <CatalogRoute store={store} {...props} />
-                )} />
-
+                <Route path='/search' component={SearchRoute} />
+                <Route path='/datasets/:datasetId' component={DatasetRoute} />
+                <Route path='/catalogs' component={CatalogRoute} />
                 <Route path='/events' component={EventsRoute} />
                 <Route path='/publication' component={PublicationRoute} />
+
                 <Route component={NotFoundRoute} />
               </Switch>
             </PageLayout>

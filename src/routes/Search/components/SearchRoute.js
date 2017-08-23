@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
-import { injectReducer } from 'common/store/reducers'
+import withReducer from 'common/store/withReducer'
 import { injectLocale } from 'common/i18n/helpers'
 
 import SearchContainer from '../containers/SearchContainer'
@@ -10,19 +10,13 @@ import reducer from '../modules/reducer'
 
 class SearchRoute extends React.Component {
   static propTypes = {
-    store: PropTypes.object.isRequired,
     i18n: PropTypes.shape({
       availableLanguages: PropTypes.arrayOf(PropTypes.string).isRequired
     }).isRequired
   }
 
   componentWillMount() {
-    const { store, i18n } = this.props
-
-    injectReducer(store, {
-      key: 'search',
-      reducer
-    })
+    const { i18n } = this.props
 
     i18n.availableLanguages.forEach(lang => {
       injectLocale(i18n, {
@@ -34,7 +28,7 @@ class SearchRoute extends React.Component {
   }
 
   render() {
-    const { store, i18n, ...otherProps } = this.props
+    const { i18n, ...otherProps } = this.props
 
     return (
       <SearchContainer {...otherProps} />
@@ -42,4 +36,6 @@ class SearchRoute extends React.Component {
   }
 }
 
-export default translate()(SearchRoute)
+export default withReducer('search', reducer)(
+  translate()(SearchRoute)
+)
