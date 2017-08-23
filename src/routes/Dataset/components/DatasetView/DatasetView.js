@@ -72,20 +72,16 @@ class DatasetView extends React.PureComponent {
   render() {
     const { dataset, publication, dataGouvDataset, fetchGeoJson, t, i18n } = this.props
     const status = dataset.metadata.status
-    let thumbnailUrl
-
-    if (dataset.metadata.thumbnails && dataset.metadata.thumbnails.length) {
-      thumbnailUrl = `https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`
-    }
+    const hasThumbnails = dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0
 
     return (
       <div>
         <Helmet title={dataset.metadata.title}>
           <meta name='twitter:title' content={dataset.metadata.title} />
           <meta name='twitter:description' content={dataset.metadata.description} />
-          { thumbnailUrl && <meta name='twitter:image' content={thumbnailUrl} />}
+          { hasThumbnails && <meta name='twitter:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />}
           <meta property='og:title' content={dataset.metadata.title} />
-          { thumbnailUrl && <meta name='og:image' content={thumbnailUrl} />}
+          { hasThumbnails && <meta name='og:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />}
           <meta property='og:description' content={dataset.metadata.description} />
         </Helmet>
         <div>
@@ -144,7 +140,7 @@ class DatasetView extends React.PureComponent {
                   </DatasetBlock>
                 )}
 
-                {thumbnailUrl && (
+                {hasThumbnails && (
                   <DatasetBlock title={t('components.DatasetView.section.preview')}>
                     <DatasetThumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
                   </DatasetBlock>
