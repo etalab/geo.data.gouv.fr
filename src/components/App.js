@@ -1,5 +1,4 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -37,7 +36,6 @@ class App extends React.Component {
         <I18nextProvider i18n={i18n}>
           <BrowserRouter>
             <PageLayout>
-              <Helmet titleTemplate='%s | inspire.data.gouv.fr' defaultTitle='inspire.data.gouv.fr' />
               <ScrollToTop />
               <TrackPageViews />
 
