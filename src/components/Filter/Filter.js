@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 
 import styles from './Filter.scss'
 
-const Filter = ({ detail, remove, filter, style, onClick, t, i18n }) => {
-  const title = t(`components.Filter.types.${filter.name}`)
-  const value = i18n.exists(`components.Filter.values.${filter.value}`)
-    ? t(`components.Filter.values.${filter.value}`)
-    : filter.value
+const Filter = ({ detail, remove, filter, style, onClick, t }) => {
+  const title = t(`components.Filter.${filter.name}`)
+  const value = t([`components.Filter.${filter.value}`, filter.value])
 
   return (
     <button
@@ -47,7 +45,6 @@ Filter.propTypes = {
   onClick: PropTypes.func,
 
   t: PropTypes.func.isRequired,
-  i18n: PropTypes.object.isRequired
 }
 
 Filter.defaultProps = {
