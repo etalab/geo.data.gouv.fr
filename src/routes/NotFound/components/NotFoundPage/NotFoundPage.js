@@ -7,12 +7,10 @@ import { Helmet } from 'react-helmet'
 import styles from './NotFoundPage.scss'
 
 const NotFoundPage = ({ t }) => (
-  <div>
+  <div className={styles.notFound}>
     <Helmet title={t('NotFoundPage.error')} />
-    <div className={styles.notFound}>
-      <h1>404</h1>
-      <p>{t('NotFoundPage.notFound')}</p>
-    </div>
+    <h1>404</h1>
+    <p>{t('NotFoundPage.notFound')}</p>
   </div>
 )
 

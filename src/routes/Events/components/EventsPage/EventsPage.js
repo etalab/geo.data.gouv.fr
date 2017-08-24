@@ -8,21 +8,19 @@ import Event from '../Event'
 import styles from './EventsPage.scss'
 
 const EventsPage = ({ pastEvents, t }) => (
-  <div>
+  <div className={styles.events}>
     <Helmet title={t('EventsPage.documentTitle')} />
-    <div className={styles.events}>
 
-      <h1>{t('EventsPage.nextTitle')}</h1>
-      <div className={styles.eventsList}>
-        {t('EventsPage.noEvents')}
-      </div>
+    <h1>{t('EventsPage.nextTitle')}</h1>
+    <div className={styles.eventsList}>
+      {t('EventsPage.noEvents')}
+    </div>
 
-      <h1>{t('EventsPage.previousTitle')}</h1>
-      <div className={styles.pastEventsList}>
-        {pastEvents.map((event, idx) => (
-          <Event key={idx} event={event} />
-        ))}
-      </div>
+    <h1>{t('EventsPage.previousTitle')}</h1>
+    <div className={styles.pastEventsList}>
+      {pastEvents.map((event, idx) => (
+        <Event key={idx} event={event} />
+      ))}
     </div>
   </div>
 )

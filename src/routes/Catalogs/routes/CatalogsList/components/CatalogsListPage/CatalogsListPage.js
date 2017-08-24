@@ -37,19 +37,18 @@ class CatalogsListPage extends React.PureComponent {
     const { catalogs, t } = this.props
 
     return (
-      <Helmet title={t('CatalogsListPage.documentTitle')}>
-        <div className={styles.container}>
-          <Loader isLoading={catalogs.pending} error={catalogs.error}>
-            <div>
-              {catalogs.catalogs.map(catalog => (
-                <div key={catalog._id} className={styles.catalog} >
-                  <CatalogPreview catalog={catalog} />
-                </div>
-              ))}
-            </div>
-          </Loader>
-        </div>
-      </Helmet>
+      <div className={styles.container}>
+        <Helmet title={t('CatalogsListPage.documentTitle')} />
+        <Loader isLoading={catalogs.pending} error={catalogs.error}>
+          <div>
+            {catalogs.catalogs.map(catalog => (
+              <div key={catalog._id} className={styles.catalog} >
+                <CatalogPreview catalog={catalog} />
+              </div>
+            ))}
+          </div>
+        </Loader>
+      </div>
     )
   }
 }

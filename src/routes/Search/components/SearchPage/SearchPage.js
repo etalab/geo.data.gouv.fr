@@ -115,33 +115,31 @@ class SearchPage extends React.PureComponent {
     const { search, t } = this.props
 
     return (
-      <div>
+      <div className={styles.container}>
         <Helmet title={t('SearchPage.documentTitle')} />
-        <div className={styles.container}>
-          <div className={styles.search}>
-            <SearchInput
-              defaultValue={search.parsedQuery.textInput}
-              onSearch={this.updateQuery}
-              hasButton
-            />
-            <FiltersSummary
-              filters={search.parsedQuery.filters}
-              removeFilter={this.removeFilter}
-            />
-          </div>
-
-          <Loader isLoading={search.pending} error={search.error}>
-            <SearchResults
-              page={search.parsedQuery.page}
-              query={search.search.query}
-              count={search.search.count}
-              results={search.search.results}
-              facets={search.search.facets}
-              addFilter={this.addFilter}
-              changePage={this.changePage}
-            />
-          </Loader>
+        <div className={styles.search}>
+          <SearchInput
+            defaultValue={search.parsedQuery.textInput}
+            onSearch={this.updateQuery}
+            hasButton
+          />
+          <FiltersSummary
+            filters={search.parsedQuery.filters}
+            removeFilter={this.removeFilter}
+          />
         </div>
+
+        <Loader isLoading={search.pending} error={search.error}>
+          <SearchResults
+            page={search.parsedQuery.page}
+            query={search.search.query}
+            count={search.search.count}
+            results={search.search.results}
+            facets={search.search.facets}
+            addFilter={this.addFilter}
+            changePage={this.changePage}
+          />
+        </Loader>
       </div>
     )
   }

@@ -13,20 +13,18 @@ function Layout({ user, organization, pageTitle, title, children }) {
   const organizationLogo = organization && organization.logo ? organization.logo : '/assets/no-img.png'
 
   return (
-    <div>
+    <div className={styles.publishing}>
       <Helmet title={pageTitle} />
-      <div className={styles.publishing}>
-        <User user={user} />
-        {organization
-          ? <Link to={`/publication/${organization.id}`}>
-            <img className={styles.organizationLogo} alt='organization logo' src={organizationLogo} />
-          </Link>
-          : null
-        }
-        <div className={styles.container}>
-          <h3>{title}</h3>
-          {children}
-        </div>
+      <User user={user} />
+      {organization
+        ? <Link to={`/publication/${organization.id}`}>
+          <img className={styles.organizationLogo} alt='organization logo' src={organizationLogo} />
+        </Link>
+        : null
+      }
+      <div className={styles.container}>
+        <h3>{title}</h3>
+        {children}
       </div>
     </div>
   )

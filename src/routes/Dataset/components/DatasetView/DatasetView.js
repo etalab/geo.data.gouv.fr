@@ -84,97 +84,95 @@ class DatasetView extends React.PureComponent {
           { hasThumbnails && <meta name='og:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />}
           <meta property='og:description' content={dataset.metadata.description} />
         </Helmet>
-        <div>
-          {i18n.exists(`Dataset:components.DatasetView.consequences.${status}`) && (
-            <Warning title={t('components.DatasetView.obsoleteWarning', { status: t(`enums.status.${status}`) })}>
-              {t(`Dataset:components.DatasetView.consequences.${status}`)}
-            </Warning>
-          )}
-          <div className={styles.container}>
-            <div className={styles.inner}>
-              <div className={styles.main}>
-                <DatasetHeader dataset={dataset} />
+        {i18n.exists(`Dataset:components.DatasetView.consequences.${status}`) && (
+          <Warning title={t('components.DatasetView.obsoleteWarning', { status: t(`enums.status.${status}`) })}>
+            {t(`Dataset:components.DatasetView.consequences.${status}`)}
+          </Warning>
+        )}
+        <div className={styles.container}>
+          <div className={styles.inner}>
+            <div className={styles.main}>
+              <DatasetHeader dataset={dataset} />
 
-                <DatasetBlock title={t('components.DatasetView.section.technicalInformation')}>
-                  <DatasetTechnicalInfo dataset={dataset} status={status} />
+              <DatasetBlock title={t('components.DatasetView.section.technicalInformation')}>
+                <DatasetTechnicalInfo dataset={dataset} status={status} />
+              </DatasetBlock>
+
+              <DatasetBlock title={t('components.DatasetView.section.downloads')}>
+                {dataset.dataset.distributions.length > 0 ? (
+                  <DatasetDownloadList distributions={dataset.dataset.distributions} fetchGeoJson={fetchGeoJson} />
+                ) : (
+                  <div>{t('noDownloads')}</div>
+                )}
+              </DatasetBlock>
+
+              {dataset.metadata.links.length > 0 && (
+                <DatasetBlock title={t('components.DatasetView.section.links')}>
+                  <DatasetLinks links={dataset.metadata.links} />
                 </DatasetBlock>
+              )}
 
-                <DatasetBlock title={t('components.DatasetView.section.downloads')}>
-                  {dataset.dataset.distributions.length > 0 ? (
-                    <DatasetDownloadList distributions={dataset.dataset.distributions} fetchGeoJson={fetchGeoJson} />
-                  ) : (
-                    <div>{t('noDownloads')}</div>
-                  )}
+              {publication && publication.remoteId && (
+                <DatasetBlock title={t('components.DatasetView.section.discussions')}>
+                  <Discussions remoteId={publication.remoteId} />
                 </DatasetBlock>
+              )}
 
-                {dataset.metadata.links.length > 0 && (
-                  <DatasetBlock title={t('components.DatasetView.section.links')}>
-                    <DatasetLinks links={dataset.metadata.links} />
-                  </DatasetBlock>
-                )}
-
-                {publication && publication.remoteId && (
-                  <DatasetBlock title={t('components.DatasetView.section.discussions')}>
-                    <Discussions remoteId={publication.remoteId} />
-                  </DatasetBlock>
-                )}
-
-                {(dataset.metadata.keywords.length > 0 || dataset.organizations.length > 0) && (
-                  <DatasetBlock title={t('components.DatasetView.section.filters')}>
-                    <DatasetFilters
-                      keywords={dataset.metadata.keywords}
-                      organizations={dataset.organizations}
-                    />
-                  </DatasetBlock>
-                )}
-              </div>
-
-              <div className={styles.aside}>
-                {publication && publication.remoteId && (
-                  <DatasetBlock title={t('components.DatasetView.section.producer')}>
-                    <Loader isLoading={dataGouvDataset.pending}>
-                      {dataGouvDataset.dataset && (
-                        <DatasetProducer organization={dataGouvDataset.dataset.organization} />
-                      )}
-                    </Loader>
-                  </DatasetBlock>
-                )}
-
-                {hasThumbnails && (
-                  <DatasetBlock title={t('components.DatasetView.section.preview')}>
-                    <DatasetThumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
-                  </DatasetBlock>
-                )}
-
-                {dataset.metadata.spatialExtent && (
-                  <DatasetBlock title={t('components.DatasetView.section.spatialExtent')}>
-                    <DatasetSpatialExtent extent={dataset.metadata.spatialExtent} />
-                  </DatasetBlock>
-                )}
-
-                <DatasetBlock title={t('components.DatasetView.section.dgvPublication')}>
-                  <DatasetDataGouvPublication dataset={dataset} publication={publication} />
+              {(dataset.metadata.keywords.length > 0 || dataset.organizations.length > 0) && (
+                <DatasetBlock title={t('components.DatasetView.section.filters')}>
+                  <DatasetFilters
+                    keywords={dataset.metadata.keywords}
+                    organizations={dataset.organizations}
+                  />
                 </DatasetBlock>
-
-                {dataset.metadata.contacts.length > 0 && (
-                  <DatasetBlock title={t('components.DatasetView.section.contacts')}>
-                    <DatasetContactList contacts={dataset.metadata.contacts} />
-                  </DatasetBlock>
-                )}
-
-                {dataset.metadata.credit && (
-                  <DatasetBlock title={t('components.DatasetView.section.contributions')}>
-                    <div>
-                      {dataset.metadata.credit}
-                    </div>
-                  </DatasetBlock>
-                )}
-              </div>
+              )}
             </div>
 
-            <div className={styles.footer}>
-              <div>{t('components.DatasetView.id')} : <b>{dataset.metadata.id}</b></div>
+            <div className={styles.aside}>
+              {publication && publication.remoteId && (
+                <DatasetBlock title={t('components.DatasetView.section.producer')}>
+                  <Loader isLoading={dataGouvDataset.pending}>
+                    {dataGouvDataset.dataset && (
+                      <DatasetProducer organization={dataGouvDataset.dataset.organization} />
+                    )}
+                  </Loader>
+                </DatasetBlock>
+              )}
+
+              {hasThumbnails && (
+                <DatasetBlock title={t('components.DatasetView.section.preview')}>
+                  <DatasetThumbnails recordId={dataset.recordId} thumbnails={dataset.metadata.thumbnails} />
+                </DatasetBlock>
+              )}
+
+              {dataset.metadata.spatialExtent && (
+                <DatasetBlock title={t('components.DatasetView.section.spatialExtent')}>
+                  <DatasetSpatialExtent extent={dataset.metadata.spatialExtent} />
+                </DatasetBlock>
+              )}
+
+              <DatasetBlock title={t('components.DatasetView.section.dgvPublication')}>
+                <DatasetDataGouvPublication dataset={dataset} publication={publication} />
+              </DatasetBlock>
+
+              {dataset.metadata.contacts.length > 0 && (
+                <DatasetBlock title={t('components.DatasetView.section.contacts')}>
+                  <DatasetContactList contacts={dataset.metadata.contacts} />
+                </DatasetBlock>
+              )}
+
+              {dataset.metadata.credit && (
+                <DatasetBlock title={t('components.DatasetView.section.contributions')}>
+                  <div>
+                    {dataset.metadata.credit}
+                  </div>
+                </DatasetBlock>
+              )}
             </div>
+          </div>
+
+          <div className={styles.footer}>
+            <div>{t('components.DatasetView.id')} : <b>{dataset.metadata.id}</b></div>
           </div>
         </div>
       </div>

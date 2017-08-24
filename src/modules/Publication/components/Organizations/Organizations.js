@@ -9,11 +9,9 @@ import { container } from './Organizations.scss'
 
 const Organizations = ({ organizations }) => {
   return (
-    <div>
+    <div className={container}>
       <Helmet title={'Vos organisations'} />
-      <div className={container}>
-        {organizations.map((organization, idx) => <OrganizationPreview key={idx} organization={organization} />)}
-      </div>
+      {organizations.map((organization, idx) => <OrganizationPreview key={idx} organization={organization} />)}
     </div>
   )
 }
