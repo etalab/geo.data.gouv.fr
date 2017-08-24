@@ -115,6 +115,7 @@
     "reactable": "^0.14.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "2.2.10",
     "underscore.string": "^3.3.4"
   },
   "engines": {

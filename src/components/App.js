@@ -18,6 +18,8 @@ import PublicationRoute from '../routes/Publication'
 
 import NotFoundRoute from '../routes/NotFound'
 
+import '../styles/global.scss'
+
 class App extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
