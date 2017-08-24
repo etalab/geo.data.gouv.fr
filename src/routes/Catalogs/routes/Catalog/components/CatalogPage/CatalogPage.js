@@ -42,13 +42,8 @@ class CatalogPage extends React.PureComponent {
       push: PropTypes.func.isRequired
     }),
 
-    harvests: PropTypes.object.isRequired,
-
     getCatalog: PropTypes.func.isRequired,
-    getMetrics: PropTypes.func.isRequired,
-
-    getHarvests: PropTypes.func.isRequired,
-    syncCatalog: PropTypes.func.isRequired
+    getMetrics: PropTypes.func.isRequired
   }
 
   onSearch = query => {
@@ -68,7 +63,7 @@ class CatalogPage extends React.PureComponent {
   }
 
   render() {
-    const { catalog, metrics, harvests, getHarvests, syncCatalog } = this.props
+    const { catalog, metrics } = this.props
 
     return (
       <div className={styles.container}>
@@ -76,10 +71,7 @@ class CatalogPage extends React.PureComponent {
           <CatalogView
             catalog={catalog.catalog}
             metrics={metrics.metrics}
-            harvests={harvests}
             onSearch={this.onSearch}
-            getHarvests={getHarvests}
-            syncCatalog={syncCatalog}
           />
         </Loader>
       </div>

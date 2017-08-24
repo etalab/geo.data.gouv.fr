@@ -5,9 +5,10 @@ import { Helmet } from 'react-helmet'
 
 import SearchInput from 'common/components/SearchInput'
 
+import CatalogHarvestsContainer from '../../containers/CatalogHarvestsContainer'
+
 import CatalogStatistics from '../CatalogStatistics'
 import CatalogFacetsList from '../CatalogFacetsList'
-import CatalogHarvestsView from '../CatalogHarvestsView'
 
 import styles from './CatalogView.scss'
 
@@ -22,19 +23,10 @@ class CatalogView extends React.PureComponent {
     }).isRequired,
 
     metrics: PropTypes.object.isRequired,
-    harvests: PropTypes.object.isRequired,
 
     onSearch: PropTypes.func.isRequired,
-    getHarvests: PropTypes.func.isRequired,
-    syncCatalog: PropTypes.func.isRequired,
 
     t: PropTypes.func.isRequired
-  }
-
-  componentDidMount() {
-    const { getHarvests, catalog } = this.props
-
-    getHarvests(catalog._id)
   }
 
   onSearch = query => {
@@ -47,7 +39,7 @@ class CatalogView extends React.PureComponent {
   }
 
   render() {
-    const { catalog, metrics, harvests, onSearch, syncCatalog, t } = this.props
+    const { catalog, metrics, onSearch, t } = this.props
 
     return (
       <div>
@@ -69,11 +61,7 @@ class CatalogView extends React.PureComponent {
         </div>
 
         <div className={styles.section}>
-          <CatalogHarvestsView
-            catalog={catalog}
-            harvests={harvests}
-            syncCatalog={syncCatalog}
-          />
+          <CatalogHarvestsContainer catalog={catalog} />
         </div>
 
         <div className={styles.section}>

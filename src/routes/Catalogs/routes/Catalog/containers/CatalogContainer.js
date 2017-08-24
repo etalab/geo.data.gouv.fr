@@ -1,16 +1,13 @@
 import { connect } from 'react-redux'
 
-import { get, getMetrics, getHarvests, syncCatalog } from '../modules/actions'
+import { get, getMetrics } from '../modules/actions'
 
 import CatalogPage from '../components/CatalogPage'
 
 export default connect(({ catalog }) => ({
   catalog: catalog.catalog,
-  metrics: catalog.metrics,
-  harvests: catalog.harvests,
+  metrics: catalog.metrics
 }), {
   getCatalog: get,
-  getMetrics,
-  getHarvests,
-  syncCatalog
+  getMetrics
 })(CatalogPage)
