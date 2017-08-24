@@ -110,7 +110,7 @@
     "react-loadable-visibility": "^2.3.0",
     "react-paginate": "^4.1.1",
     "react-redux": "^5.0.6",
-    "react-router-dom": "^4.1.2",
+    "react-router-dom": "^4.2.0",
     "react-sticky": "^5.0.5",
     "reactable": "^0.14.1",
     "redux": "^3.7.2",
