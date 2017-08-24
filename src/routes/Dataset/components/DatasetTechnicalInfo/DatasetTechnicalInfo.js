@@ -89,7 +89,7 @@ DatasetTechnicalInfo.propTypes = {
     }).isRequired,
   }).isRequired,
 
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
 
   t: PropTypes.func.isRequired,
   i18n: PropTypes.object.isRequired
