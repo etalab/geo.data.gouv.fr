@@ -1,7 +1,7 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import SearchInput from 'common/components/SearchInput'
 
@@ -50,38 +50,37 @@ class CatalogView extends React.PureComponent {
     const { catalog, metrics, harvests, onSearch, syncCatalog, t } = this.props
 
     return (
-      <DocumentTitle title={catalog.name}>
-        <div>
-          <div className={styles.header}>
-            <h1>{catalog.name}</h1>
+      <div>
+        <Helmet title={catalog.name} />
+        <div className={styles.header}>
+          <h1>{catalog.name}</h1>
 
-            <a href={catalog.service.location} target='_blank'>
-              {t('CatalogView.catalogService')}
-            </a>
-          </div>
-
-          <div className={styles.section}>
-            <CatalogStatistics metrics={metrics} />
-          </div>
-
-          <div className={styles.section}>
-            <CatalogFacetsList catalog={catalog} metrics={metrics} onSearch={onSearch} />
-          </div>
-
-          <div className={styles.section}>
-            <CatalogHarvestsView
-              catalog={catalog}
-              harvests={harvests}
-              syncCatalog={syncCatalog}
-            />
-          </div>
-
-          <div className={styles.section}>
-            <h2>{t('CatalogView.catalogSearchTitle')}</h2>
-            <SearchInput onSearch={this.onSearch} hasButton />
-          </div>
+          <a href={catalog.service.location} target='_blank'>
+            {t('CatalogView.catalogService')}
+          </a>
         </div>
-      </DocumentTitle>
+
+        <div className={styles.section}>
+          <CatalogStatistics metrics={metrics} />
+        </div>
+
+        <div className={styles.section}>
+          <CatalogFacetsList catalog={catalog} metrics={metrics} onSearch={onSearch} />
+        </div>
+
+        <div className={styles.section}>
+          <CatalogHarvestsView
+            catalog={catalog}
+            harvests={harvests}
+            syncCatalog={syncCatalog}
+          />
+        </div>
+
+        <div className={styles.section}>
+          <h2>{t('CatalogView.catalogSearchTitle')}</h2>
+          <SearchInput onSearch={this.onSearch} hasButton />
+        </div>
+      </div>
     )
   }
 }

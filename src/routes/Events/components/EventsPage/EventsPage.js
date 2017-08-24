@@ -1,29 +1,28 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 
 import Event from '../Event'
 
 import styles from './EventsPage.scss'
 
 const EventsPage = ({ pastEvents, t }) => (
-  <DocumentTitle title={t('EventsPage.documentTitle')}>
-    <div className={styles.events}>
+  <div className={styles.events}>
+    <Helmet title={t('EventsPage.documentTitle')} />
 
-      <h1>{t('EventsPage.nextTitle')}</h1>
-      <div className={styles.eventsList}>
-        {t('EventsPage.noEvents')}
-      </div>
-
-      <h1>{t('EventsPage.previousTitle')}</h1>
-      <div className={styles.pastEventsList}>
-        {pastEvents.map((event, idx) => (
-          <Event key={idx} event={event} />
-        ))}
-      </div>
+    <h1>{t('EventsPage.nextTitle')}</h1>
+    <div className={styles.eventsList}>
+      {t('EventsPage.noEvents')}
     </div>
-  </DocumentTitle>
+
+    <h1>{t('EventsPage.previousTitle')}</h1>
+    <div className={styles.pastEventsList}>
+      {pastEvents.map((event, idx) => (
+        <Event key={idx} event={event} />
+      ))}
+    </div>
+  </div>
 )
 
 EventsPage.propTypes = {

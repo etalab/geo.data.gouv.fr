@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import DocumentTitle from 'react-document-title'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
 import LastHarvestStatus from 'common/components/LastHarvestStatus'
@@ -15,25 +15,24 @@ const CatalogHarvestView = ({ catalog, harvest, t }) => {
   const successful = harvest.status === 'successful'
 
   return (
-    <DocumentTitle title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`}>
-      <div className={styles.container}>
-        <h1>
-          <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>
-        </h1>
+    <div className={styles.container}>
+      <Helmet title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`} />
+      <h1>
+        <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>
+      </h1>
 
-        <p>{t('CatalogHarvestView.harvestId')}: <code>{harvest._id}</code></p>
-        <LastHarvestStatus harvest={harvest} />
+      <p>{t('CatalogHarvestView.harvestId')}: <code>{harvest._id}</code></p>
+      <LastHarvestStatus harvest={harvest} />
 
-        <div className={styles.results}>
-          <h2>{successful ? t('CatalogHarvestView.results') : t('CatalogHarvestView.logs')}</h2>
-          {successful ? (
-            <CatalogHarvestResults logs={harvest.log} />
-          ) : (
-            <CatalogHarvestLogs logs={harvest.log} />
-          )}
-        </div>
+      <div className={styles.results}>
+        <h2>{successful ? t('CatalogHarvestView.results') : t('CatalogHarvestView.logs')}</h2>
+        {successful ? (
+          <CatalogHarvestResults logs={harvest.log} />
+        ) : (
+          <CatalogHarvestLogs logs={harvest.log} />
+        )}
       </div>
-    </DocumentTitle>
+    </div>
   )
 }
 
