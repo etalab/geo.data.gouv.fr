@@ -1,12 +1,12 @@
 import withReducer from 'common/store/withReducer'
 import withLocales from 'common/i18n/withLocales'
 
-import CatalogContainer from './containers/CatalogContainer'
+import DatasetContainer from './containers/DatasetContainer'
 import reducer from './modules/reducer'
 
-export default withReducer('catalog', reducer)(
+export default withReducer('dataset', reducer)(
   withLocales(
-    'Catalogs.Catalog',
+    'Dataset',
     locale => require(`./locales/${locale}.json`)
-  )(CatalogContainer)
+  )(DatasetContainer)
 )

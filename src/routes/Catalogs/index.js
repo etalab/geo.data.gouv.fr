@@ -1,7 +1,8 @@
-import asyncRoute from '../asyncRoute'
+import Loadable from 'react-loadable'
 
-export default (store, i18n) => asyncRoute(async () => {
-  const CatalogsRouter = await import(/* webpackChunkName: 'catalogs' */ './components/CatalogsRouter')
+import Loader from 'common/components/Loader'
 
-  return CatalogsRouter.default(store, i18n)
+export default Loadable({
+  loader: () => import(/* webpackChunkName: 'catalogs' */ './components/CatalogsRouter'),
+  loading: Loader
 })

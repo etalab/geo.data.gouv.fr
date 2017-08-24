@@ -1,12 +1,12 @@
 import withReducer from 'common/store/withReducer'
 import withLocales from 'common/i18n/withLocales'
 
-import CatalogContainer from './containers/CatalogContainer'
+import SearchContainer from './containers/SearchContainer'
 import reducer from './modules/reducer'
 
-export default withReducer('catalog', reducer)(
+export default withReducer('search', reducer)(
   withLocales(
-    'Catalogs.Catalog',
+    'Search',
     locale => require(`./locales/${locale}.json`)
-  )(CatalogContainer)
+  )(SearchContainer)
 )

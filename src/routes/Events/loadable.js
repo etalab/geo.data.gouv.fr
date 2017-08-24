@@ -1,8 +1,8 @@
 import withLocales from 'common/i18n/withLocales'
 
-import HomeContainer from './containers/HomeContainer'
+import EventsContainer from './containers/EventsContainer'
 
 export default withLocales(
-  'Home',
+  'Events',
   locale => require(`./locales/${locale}.json`)
-)(HomeContainer)
+)(EventsContainer)

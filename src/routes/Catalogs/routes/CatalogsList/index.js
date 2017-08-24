@@ -1,22 +1,12 @@
-import { injectReducer } from 'common/store/reducers'
-import { injectLocale } from 'common/i18n/helpers'
+import withReducer from 'common/store/withReducer'
+import withLocales from 'common/i18n/withLocales'
 
-import CatalogsListContainer from './containers/CatalogsListContainer'
+import CatalogContainer from './containers/CatalogsListContainer'
 import reducer from './modules/reducer'
 
-export default (store, i18n) => {
-  injectReducer(store, {
-    key: 'catalogs',
-    reducer
-  })
-
-  i18n.availableLanguages.forEach(lang => {
-    injectLocale(i18n, {
-      locale: lang,
-      namespace: 'Catalogs.CatalogsList',
-      resources: require(`./locales/${lang}.json`)
-    })
-  })
-
-  return CatalogsListContainer
-}
+export default withReducer('catalogs', reducer)(
+  withLocales(
+    'Catalogs.CatalogsList',
+    locale => require(`./locales/${locale}.json`)
+  )(CatalogContainer)
+)

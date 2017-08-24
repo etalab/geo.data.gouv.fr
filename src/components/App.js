@@ -42,14 +42,14 @@ class App extends React.Component {
               <TrackPageViews />
 
               <Switch>
-                <Route exact path='/' component={HomeRoute(store, i18n)} />
-                <Route path='/search' component={SearchRoute(store, i18n)} />
-                <Route path='/datasets/:datasetId' component={DatasetRoute(store, i18n)} />
-                <Route path='/catalogs' component={CatalogRoute(store, i18n)} />
-                <Route path='/events' component={EventsRoute(store, i18n)} />
-                <Route path='/publication' component={PublicationRoute(store, i18n)} />
+                <Route exact path='/' component={HomeRoute} />
+                <Route path='/search' component={SearchRoute} />
+                <Route path='/datasets/:datasetId' component={DatasetRoute} />
+                <Route path='/catalogs' component={CatalogRoute} />
+                <Route path='/events' component={EventsRoute} />
+                <Route path='/publication' component={PublicationRoute} />
 
-                <Route component={NotFoundRoute(store, i18n)} />
+                <Route component={NotFoundRoute} />
               </Switch>
             </PageLayout>
           </BrowserRouter>
