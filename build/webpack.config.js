@@ -227,7 +227,7 @@ config.module.rules.push({
       loader: 'url-loader',
       options: {
         limit: 8192,
-        name: __DEV__ ? 'images/[name].js' : 'images/[name].[chunkhash].js'
+        name: __DEV__ ? 'images/[name].[ext]' : 'images/[name].[hash].[ext]'
       }
     },
     {
