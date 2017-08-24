@@ -22,6 +22,8 @@ import DatasetContactList from '../DatasetContactList'
 
 import styles from './DatasetView.scss'
 
+const { INSPIRE_API_URL } = process.env
+
 class DatasetView extends React.PureComponent {
   static propTypes = {
     dataset: PropTypes.shape({
@@ -79,9 +81,13 @@ class DatasetView extends React.PureComponent {
         <Helmet title={dataset.metadata.title}>
           <meta name='twitter:title' content={dataset.metadata.title} />
           <meta name='twitter:description' content={dataset.metadata.description} />
-          { hasThumbnails && <meta name='twitter:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />}
+          {hasThumbnails && (
+            <meta name='twitter:image' content={`${INSPIRE_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />
+          )}
           <meta property='og:title' content={dataset.metadata.title} />
-          { hasThumbnails && <meta name='og:image' content={`https://inspire.data.gouv.fr/api/geogw/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />}
+          {hasThumbnails && (
+            <meta name='og:image' content={`${INSPIRE_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />
+          )}
           <meta property='og:description' content={dataset.metadata.description} />
         </Helmet>
         {i18n.exists(`Dataset:components.DatasetView.consequences.${status}`) && (
