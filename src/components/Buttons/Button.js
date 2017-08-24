@@ -19,7 +19,7 @@ Button.propTypes = {
     'submit',
     'reset'
   ]),
-  action: PropTypes.func.isRequired,
+  action: PropTypes.func,
   className: PropTypes.string
 }
 
