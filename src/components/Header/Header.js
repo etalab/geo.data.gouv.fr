@@ -6,7 +6,7 @@ import { translate } from 'react-i18next'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-import logoMarianne from './img/logo_marianne.svg'
+import marianne from './images/marianne.svg'
 
 import styles from './Header.scss'
 
@@ -46,7 +46,7 @@ class Header extends React.Component {
       <div>
         <nav className={styles.nav}>
           <Link to='/' className={styles.home}>
-            <div><img className={styles.marianne} src={logoMarianne} alt='Logo de la République française (1999)' /></div>
+            <div><img className={styles.marianne} src={marianne} alt='Logo de la République française (1999)' /></div>
             <div>geo.data.gouv</div><i>.fr</i>
           </Link>
 

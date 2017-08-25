@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
-import searchIcon from './img/search_icon.svg'
+import searchIcon from './images/search_icon.svg'
 
 import styles from './SearchInput.scss'
 
