@@ -7,8 +7,7 @@
   white-space: nowrap;
   text-decoration: none;
   text-align: center;
-  color: $blue;
-  background-color: $lightestblue;
+  color: $white;
   font-size: 12px;
   overflow: hidden;
   border: 0;
@@ -26,6 +25,44 @@
       text-transform: uppercase;
     }
   }
+}
+
+.catalog {
+  background-color: #1565c0;
+}
+
+.dgv-publication {
+  background-color: #3f469c;
+}
+
+.distribution-format {
+  background-color: #546cb3;
+}
+
+.keyword {
+  background-color: #35a2e8;
+}
+
+.metadata-type {
+  background-color: #2eb6ae;
+}
+
+.opendata {
+  color: $black;
+  background-color: #86d0ca;
+}
+
+.organization {
+  color: $black;
+  background-color: #d3d3d3;
+}
+
+.representation-type {
+  background-color: #4a4a4a;
+}
+
+.type {
+  background-color: #000;
 }
 
 .filter-value {
