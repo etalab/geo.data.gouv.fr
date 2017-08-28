@@ -313,8 +313,8 @@ config.module.rules.push({
     test: new RegExp(`\\.${extension}$`),
     loader: 'url-loader',
     options: {
-      name: 'fonts/[name].[ext]',
-      limit: 10000,
+      name: __DEV__ ? 'fonts/[name].[ext]' : 'fonts/[name].[hash].[ext]',
+      limit: 8192,
       mimetype
     }
   })
