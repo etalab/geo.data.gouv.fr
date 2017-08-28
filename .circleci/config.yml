@@ -140,6 +140,14 @@ jobs:
           name: Setup SSH to GitHub
           command: mkdir ~/.ssh && ssh-keyscan github.com > ~/.ssh/known_hosts
 
+      - run:
+          name: Set SSH user email
+          command: git config --global user.email "infra@beta.gouv.fr"
+
+      - run:
+          name: Set SSH user name
+          command: git config --global user.name "Deployment Bot"
+
       - deploy:
           name: Deploy to gh-pages branch on GitHub
           command: yarn deploy
