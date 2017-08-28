@@ -21,22 +21,26 @@
     },
 
     "Filter": {
-      "availability": "téléchargeable",
-      "dgvPublication": "publié sur data.gouv.fr",
-      "distributionFormat": "format de distribution",
-      "keyword": "mot-clé",
-      "metadataType": "type de metadonnée",
-      "opendata": "donnée ouverte",
-      "organization": "organisation",
-      "representationType": "type géographique",
-      "type": "type",
-      "catalog": "catalogue",
-      "yes": "oui",
-      "no": "non",
-      "not-determined": "non déterminé",
-      "other": "autre",
-      "unknown": "inconnu",
-      "none": "aucun"
+      "types": {
+        "availability": "téléchargeable",
+        "dgvPublication": "publié sur data.gouv.fr",
+        "distributionFormat": "format de distribution",
+        "keyword": "mot-clé",
+        "metadataType": "type de metadonnée",
+        "opendata": "donnée ouverte",
+        "organization": "organisation",
+        "representationType": "type géographique",
+        "type": "type",
+        "catalog": "catalogue"
+      },
+      "values": {
+        "yes": "oui",
+        "no": "non",
+        "not-determined": "non déterminé",
+        "other": "autre",
+        "unknown": "inconnu",
+        "none": "aucun"
+      }
     },
 
     "Footer": {

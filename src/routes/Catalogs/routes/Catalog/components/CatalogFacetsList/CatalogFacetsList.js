@@ -21,11 +21,13 @@ const CatalogFacetsList = ({ catalog, metrics, onSearch, t }) => {
     <div>
       <CatalogFacets
         title={t('CatalogFacetsList.organizationsTitle')}
+        type='organization'
         filters={organizations}
         onSearch={onOrganizationSearch}
       />
       <CatalogFacets
         title={t('CatalogFacetsList.keywordsTitle')}
+        type='keyword'
         filters={keywords}
         onSearch={onKeywordSearch}
       />
