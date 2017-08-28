@@ -142,7 +142,7 @@ jobs:
 
       - run:
           name: Setup SSH to GitHub
-          command: mkdir ~/.ssh && ssh-keyscan github.com > ~/.ssh/known_hosts
+          command: ssh-keyscan github.com > ~/.ssh/known_hosts
 
       - run:
           name: Set SSH user email
