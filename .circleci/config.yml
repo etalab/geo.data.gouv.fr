@@ -136,6 +136,9 @@ jobs:
       - *attach_workspace
       - *restore_node_modules
 
+      - run:
+          command: ssh-keyscan github.com > ~/.ssh/known_hosts
+
       - deploy:
           command: yarn deploy
 
