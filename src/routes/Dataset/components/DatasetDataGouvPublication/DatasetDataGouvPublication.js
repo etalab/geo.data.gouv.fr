@@ -69,7 +69,7 @@ class DatasetDataGouvPublication extends React.PureComponent {
     } else {
       return (
         <div className={styles.checklist}>
-          <Trans i18nKey='DatasetDataGouvPublication.cantBePublished'>
+          <Trans i18nKey='components.DatasetDataGouvPublication.cantBePublished'>
             This dataset <b>can not</b> be published on data.gouv.fr
           </Trans>
           {expanded && (
