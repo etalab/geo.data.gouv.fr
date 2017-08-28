@@ -136,6 +136,10 @@ jobs:
       - *attach_workspace
       - *restore_node_modules
 
+      - add_ssh_keys:
+          fingerprints:
+            - 15:6e:be:9c:af:66:a8:b4:2b:be:9a:cd:03:d4:f3:87
+
       - run:
           name: Setup SSH to GitHub
           command: mkdir ~/.ssh && ssh-keyscan github.com > ~/.ssh/known_hosts
