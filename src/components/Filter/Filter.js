@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import styles from './Filter.scss'
 
 const Filter = ({ detail, remove, filter, style, onClick, t, i18n }) => {
-  const title = t(`components.Filter.${filter.name}`)
-  const value = i18n.exists(`components.Filter.${filter.value}`)
-    ? t(`components.Filter.${filter.value}`)
+  const title = t(`components.Filter.types.${filter.name}`)
+  const value = i18n.exists(`components.Filter.values.${filter.value}`)
+    ? t(`components.Filter.values.${filter.value}`)
     : filter.value
 
   return (
@@ -29,7 +29,18 @@ Filter.propTypes = {
   detail: PropTypes.bool,
   remove: PropTypes.bool,
   filter: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.oneOf([
+      'availability',
+      'dgvPublication',
+      'distributionFormat',
+      'keyword',
+      'metadataType',
+      'opendata',
+      'organization',
+      'representationType',
+      'type',
+      'catalog'
+    ]).isRequired,
     value: PropTypes.string.isRequired
   }).isRequired,
   style: PropTypes.object,
