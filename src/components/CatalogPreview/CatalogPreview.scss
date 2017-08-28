@@ -3,8 +3,9 @@
 .link {
   cursor: pointer;
   display: inline-block;
-  width: 300px;
+  width: 340px;
   position: relative;
+  color: $darkblue;
 }
 
 .title {
@@ -12,14 +13,28 @@
 }
 
 .paper {
-  background-color: #fff;
+  border-radius: 5px;
   padding: 2em 20px;
   box-shadow: $box-shadow;
+  background: $white;  /* fallback for old browsers */
+  background: linear-gradient(to bottom, $white, $whitesmoke); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.logo {
+  text-align: center;
+  border-bottom: 1px solid $darkblue;
+  margin-bottom: 10px;
+
+  img {
+    max-height: 60px;
+    margin-bottom: 10px;
+  }
 }
 
 .container {
   display: flex;
   justify-content: space-between;
-  margin-top: 1em;
+  align-items: center;
+  margin-top: 3em;
   font-size: 11px;
 }
