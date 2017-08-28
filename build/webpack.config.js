@@ -125,8 +125,25 @@ config.module.rules.push({
   ]
 })
 
-// Global Styles
+// Styles
 // ------------------------------------
+const cssMinimizeOptions = {
+  autoprefixer: {
+    add: true,
+    remove: true,
+    browsers: ['last 2 versions']
+  },
+  discardComments: {
+    removeAll: true
+  },
+  discardUnused: false,
+  mergeIdents: false,
+  reduceIdents: false,
+  safe: true,
+  sourcemap: project.sourcemaps
+}
+
+// Global styles
 const globalStyles = new ExtractTextPlugin({
   filename: 'styles/global.[contenthash].css',
   allChunks: true,
@@ -145,21 +162,7 @@ config.module.rules.push({
         loader: 'css-loader',
         options: {
           sourceMap: project.sourcemaps,
-          minimize: {
-            autoprefixer: {
-              add: true,
-              remove: true,
-              browsers: ['last 2 versions']
-            },
-            discardComments: {
-              removeAll: true
-            },
-            discardUnused: false,
-            mergeIdents: false,
-            reduceIdents: false,
-            safe: true,
-            sourcemap: project.sourcemaps
-          }
+          minimize: cssMinimizeOptions
         }
       },
       {
@@ -178,7 +181,6 @@ config.module.rules.push({
 config.plugins.push(globalStyles)
 
 // Local Styles
-// ------------------------------------
 const localStyles = new ExtractTextPlugin({
   filename: 'styles/[name].[contenthash].css',
   allChunks: true,
@@ -201,21 +203,7 @@ config.module.rules.push({
           localIdentName: '[name]-[hash:base64:8]',
           camelCase: 'only',
           sourceMap: project.sourcemaps,
-          minimize: {
-            autoprefixer: {
-              add: true,
-              remove: true,
-              browsers: ['last 2 versions']
-            },
-            discardComments: {
-              removeAll: true
-            },
-            discardUnused: false,
-            mergeIdents: false,
-            reduceIdents: false,
-            safe: true,
-            sourcemap: project.sourcemaps
-          }
+          minimize: cssMinimizeOptions
         }
       },
       {
@@ -234,7 +222,6 @@ config.module.rules.push({
 config.plugins.push(localStyles)
 
 // Vendor Styles
-// ------------------------------------
 config.module.rules.push({
   test: /\.css$/,
   include: [
@@ -251,21 +238,7 @@ config.module.rules.push({
       loader: 'css-loader',
       options: {
         sourceMap: __DEV__,
-        minimize: {
-          autoprefixer: {
-            add: true,
-            remove: true,
-            browsers: ['last 2 versions']
-          },
-          discardComments: {
-            removeAll: true
-          },
-          discardUnused: false,
-          mergeIdents: false,
-          reduceIdents: false,
-          safe: true,
-          sourcemap: __DEV__
-        }
+        minimize: cssMinimizeOptions
       }
     }
   ]
