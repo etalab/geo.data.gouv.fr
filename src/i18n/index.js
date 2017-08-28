@@ -2,31 +2,27 @@ import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import moment from 'moment'
 
+import { injectLocale } from './helpers'
+
+const defaultNamespace = 'Common'
 const availableLanguages = [
-  'en',
-  'fr'
+  'fr',
+  'en'
 ]
 
 export default () => {
   const i18n = i18next
     .use(LanguageDetector)
     .init({
-      resources: {
-        en: {
-          Common: require('../locales/en.json')
-        },
-        fr: {
-          Common: require('../locales/fr.json')
-        }
-      },
-
       whitelist: [
         ...availableLanguages
       ],
 
-      fallbackLng: 'en',
+      load: 'languageOnly',
+      lng: 'fr',
+      fallbackLng: 'fr',
 
-      defaultNS: 'Common',
+      defaultNS: defaultNamespace,
 
       interpolation: {
         formatSeparator: ','
@@ -36,6 +32,14 @@ export default () => {
         wait: true
       }
     })
+
+  availableLanguages.forEach(locale => {
+    injectLocale(i18n, {
+      locale,
+      namespace: defaultNamespace,
+      resources: require(`../locales/${locale}.json`)
+    })
+  })
 
   i18n.availableLanguages = availableLanguages
   moment.locale(i18n.language)
