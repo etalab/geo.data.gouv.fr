@@ -109,10 +109,10 @@
         "spatialExtent": "Étendue spatiale",
         "dgvPublication": "Publication sur data.gouv.fr",
         "contacts": "Contacts",
-        "contributions": "Contributions",
+        "contributions": "Contributions"
+      },
 
-        "id": "Identifiant du jeu de données"
-      }
+      "id": "Identifiant du jeu de données"
     }
   },
 

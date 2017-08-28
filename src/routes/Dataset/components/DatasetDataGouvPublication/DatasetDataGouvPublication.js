@@ -59,7 +59,7 @@ class DatasetDataGouvPublication extends React.PureComponent {
       } else {
         return (
           <div>
-            <Trans i18nKey='DatasetDataGouvPublication.canBePublished'>
+            <Trans i18nKey='components.DatasetDataGouvPublication.canBePublished'>
               This dataset <b>can</b> be published on data.gouv.fr
             </Trans>
             <div className={styles.highlight}>{t('components.DatasetDataGouvPublication.producerActionNeeded')}</div>

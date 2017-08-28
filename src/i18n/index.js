@@ -14,11 +14,15 @@ export default () => {
   const i18n = i18next
     .use(LanguageDetector)
     .init({
+      resources: availableLanguages.reduce((resources, lang) => ({
+        ...resources,
+        [lang]: {}
+      }), {}),
+
       whitelist: [
         ...availableLanguages
       ],
 
-      load: 'languageOnly',
       lng: 'fr',
       fallbackLng: 'fr',
 
