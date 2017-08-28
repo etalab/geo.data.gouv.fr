@@ -43,7 +43,7 @@ class Header extends React.Component {
     const login = <a className={styles.log} href={logInUrl}>{t('components.Header.login')}</a>
 
     return (
-      <div>
+      <div className={styles.container}>
         <nav className={styles.nav}>
           <Link to='/' className={styles.home}>
             <div><img className={styles.marianne} src={marianne} alt='Logo de la République française (1999)' /></div>
