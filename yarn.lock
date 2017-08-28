@@ -3663,9 +3663,9 @@ i18next-browser-languagedetector@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-2.0.0.tgz#4d9df2bd1a5deda3c8c0a6d3db62d50388b9eedd"
 
-i18next@^8.4.3:
-  version "8.4.3"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-8.4.3.tgz#36b6ff516c4f992010eedcce24a36c4609e8c7dc"
+i18next@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-9.0.0.tgz#a89ab0481b5b6b3964f55b12f03de9063d8f4500"
 
 iconv-lite@0.4.13:
   version "0.4.13"
@@ -6026,9 +6026,9 @@ react-helmet@^5.1.3:
     prop-types "^15.5.4"
     react-side-effect "^1.1.0"
 
-react-i18next@^4.8.0:
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-4.8.0.tgz#92f0d281c5f39ac8f3c3f381562d523e9d830254"
+react-i18next@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-5.2.0.tgz#cfedc349b36860e261077cca7af4794907b0a12f"
   dependencies:
     hoist-non-react-statics "1.2.0"
 
