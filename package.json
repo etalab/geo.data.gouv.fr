@@ -80,7 +80,7 @@
     "style-loader": "^0.18.2",
     "stylelint": "^8.0.0",
     "stylelint-config-recommended": "^1.0.0",
-    "stylelint-scss": "^2.0.1",
+    "stylelint-scss": "^2.1.0",
     "stylelint-webpack-plugin": "^0.9.0",
     "unused-files-webpack-plugin": "^3.0.2",
     "url-loader": "^0.5.9",
