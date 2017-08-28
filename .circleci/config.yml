@@ -146,7 +146,7 @@ jobs:
 
       - run:
           name: Set SSH user name
-          command: git config --global user.name "Deployment Bot"
+          command: git config --global user.name "CircleCI"
 
       - deploy:
           name: Deploy to gh-pages branch on GitHub
