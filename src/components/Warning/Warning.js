@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Sticky } from 'react-sticky'
 
 import styles from './Warning.scss'
 
@@ -34,7 +33,7 @@ class Warning extends React.PureComponent {
     const color = error ? styles.errorStyle : styles.warning
 
     return (
-      <Sticky className={`${styles.sticky} ${color}`}>
+      <div className={`${styles.container} ${color}`}>
         <div className={styles.content}>
           <div className={styles.bold}>{title}</div>
           {children}
@@ -42,7 +41,7 @@ class Warning extends React.PureComponent {
         <div className={styles.closeIcon} onClick={this.closeWarning}>
           <i className='big remove icon' />
         </div>
-      </Sticky>
+      </div>
     )
   }
 }

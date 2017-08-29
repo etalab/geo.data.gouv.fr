@@ -74,7 +74,6 @@ module.exports = {
     'react-paginate',
     'react-redux',
     'react-router-dom',
-    'react-sticky',
     'reactable',
     'redux',
     'redux-thunk'
