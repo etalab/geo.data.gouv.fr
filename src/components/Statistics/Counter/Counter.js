@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 
 import styles from './Counter.scss'
 
-const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', title = '' }) => (
+const Counter = ({ value, label, unit = '', size = '', color = '', title = '' }) => (
   <div className={styles.container}>
     { title && <h3>{title}</h3> }
     <div className={`${styles.value} ${styles[color]} ${styles[size]}`}>
       {value || '0'} <div className={styles.unit}>{unit}</div>
     </div>
     <div className={styles.label}>
-      { label && <div className={`${styles[size]}`}>{label} </div> }{icon && <i className={`${icon} icon`} />}
+      { label && <div className={`${styles[size]}`}>{label} </div> }
     </div>
   </div>
 )
@@ -21,7 +21,6 @@ Counter.propTypes = {
   unit: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
-  icon: PropTypes.string,
   title: PropTypes.string
 }
 
