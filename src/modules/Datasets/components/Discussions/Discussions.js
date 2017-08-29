@@ -20,7 +20,7 @@ class Discussions extends Component {
   componentWillMount() {
     return Promise.all([
       this.updateDiscussions(),
-      this.updateUser(),
+      this.updateUser()
     ])
   }
 

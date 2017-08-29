@@ -52,7 +52,7 @@ SearchResult.propTypes = {
       keywords: PropTypes.array.isRequired
     }).isRequired,
 
-    organizations: PropTypes.array.isRequired,
+    organizations: PropTypes.array.isRequired
   }).isRequired,
 
   addFilter: PropTypes.func.isRequired,

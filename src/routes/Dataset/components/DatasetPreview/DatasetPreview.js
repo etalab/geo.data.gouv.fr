@@ -18,7 +18,7 @@ class DatasetPreview extends React.PureComponent {
       error: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.object
-      ]).isRequired,
+      ]).isRequired
     }),
 
     closePreview: PropTypes.func.isRequired,

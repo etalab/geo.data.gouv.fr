@@ -17,7 +17,7 @@ class NewsletterForm extends React.Component {
     this.state = {
       user: null,
       value: '',
-      errors: [],
+      errors: []
     }
   }
 

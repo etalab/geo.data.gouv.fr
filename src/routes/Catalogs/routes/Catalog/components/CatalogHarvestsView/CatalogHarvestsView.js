@@ -17,7 +17,7 @@ class CatalogHarvestsView extends React.PureComponent {
       error: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.object
-      ]).isRequired,
+      ]).isRequired
     }).isRequired,
 
     catalog: PropTypes.shape({

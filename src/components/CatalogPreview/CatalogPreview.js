@@ -65,7 +65,7 @@ CatalogPreview.propTypes = {
 
     service: PropTypes.shape({
       sync: PropTypes.object.isRequired
-    }).isRequired,
+    }).isRequired
   }),
 
   t: PropTypes.func.isRequired

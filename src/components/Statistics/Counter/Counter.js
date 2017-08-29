@@ -7,13 +7,13 @@ import styles from './Counter.scss'
 const Counter = ({ value, label, unit = '', size = '', color = '', icon = '', title = '' }) => {
   const labelSize = cx(styles.medium, {
     [styles.large]: size === 'large',
-    [styles.small]: size === 'small',
+    [styles.small]: size === 'small'
   })
 
   const labelColor = cx(styles.medium, {
     [styles.success]: color === 'success',
     [styles.warning]: color === 'warning',
-    [styles.error]: color === 'error',
+    [styles.error]: color === 'error'
   })
 
   const labelStyle = size === 'small' ? styles.small : styles.defaultLabel

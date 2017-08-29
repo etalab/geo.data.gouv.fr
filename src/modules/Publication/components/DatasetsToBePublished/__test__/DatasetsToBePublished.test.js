@@ -10,7 +10,7 @@ const DatasetsToBePublished = require('proxyquire')('../DatasetsToBePublished', 
 const datasets = [
   { _id: 1, title: 'dataset1' },
   { _id: 2, title: 'dataset2' },
-  { _id: 3, title: 'dataset3' },
+  { _id: 3, title: 'dataset3' }
 ]
 
 describe('<DatasetsToBePublished />', () => {
@@ -129,7 +129,7 @@ describe('<DatasetsToBePublished />', () => {
 
         expect(wrapper.state('toPublish')).to.eql([
           { _id: 2, title: 'dataset2' },
-          { _id: 3, title: 'dataset3' },
+          { _id: 3, title: 'dataset3' }
         ])
       })
     })

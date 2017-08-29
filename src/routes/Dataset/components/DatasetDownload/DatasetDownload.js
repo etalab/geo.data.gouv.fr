@@ -72,7 +72,7 @@ DatasetDownload.propTypes = {
     available: PropTypes.bool.isRequired,
     hashedLocation: PropTypes.string,
     service: PropTypes.string,
-    typeName: PropTypes.string,
+    typeName: PropTypes.string
   }).isRequired,
 
   isPreview: PropTypes.bool,

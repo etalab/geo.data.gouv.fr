@@ -31,7 +31,7 @@ if (project.env === 'development') {
       colors: true,
       modules: false,
       source: false
-    },
+    }
   }))
 
   app.use(require('webpack-hot-middleware')(compiler, {

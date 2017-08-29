@@ -16,7 +16,7 @@ export const filterTradTable = {
   'not-determined': 'non déterminé',
   other: 'autre',
   unknown: 'inconnu',
-  none: 'aucun',
+  none: 'aucun'
 }
 
 export function translateFilters(filter) {

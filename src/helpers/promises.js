@@ -13,7 +13,7 @@ export function makeCancelable(promise) {
     promise: wrappedPromise,
     cancel() {
       hasCanceled_ = true
-    },
+    }
   }
 }
 

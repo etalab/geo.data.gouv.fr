@@ -20,7 +20,7 @@ export const formatData = (data, t) => {
     datasets: [
       {
         data: labels.map(label => data[label]),
-        backgroundColor: colors.slice(0, labels.length),
+        backgroundColor: colors.slice(0, labels.length)
       }
     ]
   }

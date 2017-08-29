@@ -18,7 +18,7 @@ class OtherProducers extends React.Component {
     super(props)
     this.state = {
       errors: [],
-      organizationProducers: [],
+      organizationProducers: []
     }
   }
 

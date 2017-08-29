@@ -77,8 +77,8 @@ const catalogsMock = [
       'location': 'http://catalogue.adour-garonne.eaufrance.fr/catalog/srv/fre/csw-sie-seul',
       'sync': {
         'status': 'successful',
-        'finishedAt': '2017-01-23T01:05:21.864Z',
-      },
+        'finishedAt': '2017-01-23T01:05:21.864Z'
+      }
     },
     'metrics': {
       'datasets': {

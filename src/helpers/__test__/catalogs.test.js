@@ -157,7 +157,7 @@ describe('catalogs', function () {
             totalCount: 1,
             partitions: {
               openness: { yes: 1 },
-              download: { yes: 1 },
+              download: { yes: 1 }
             }
           },
           mostRecentRevisionDate: new Date('2000-01-01')
@@ -175,7 +175,7 @@ describe('catalogs', function () {
             totalCount: 100,
             partitions: {
               openness: { yes: 11 },
-              download: { yes: 12 },
+              download: { yes: 12 }
             }
           },
           mostRecentRevisionDate: new Date('2016-05-01')

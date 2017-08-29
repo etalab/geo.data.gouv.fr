@@ -55,7 +55,7 @@ const config = {
   externals: project.externals,
 
   module: {
-    rules: [],
+    rules: []
   },
 
   plugins: [
@@ -79,7 +79,7 @@ const config = {
       globOptions: {
         ignore: [
           '**/__test__/**',
-          '**/__mocks__/**',
+          '**/__mocks__/**'
         ]
       }
     })
@@ -351,7 +351,7 @@ if (__PROD__) {
 
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false,
+      debug: false
     }),
 
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fr/),
@@ -369,7 +369,7 @@ if (__PROD__) {
         dead_code: true,
         evaluate: true,
         if_return: true,
-        join_vars: true,
+        join_vars: true
       },
       mangle: {
         screw_ie8: true

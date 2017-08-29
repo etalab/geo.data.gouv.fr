@@ -17,7 +17,7 @@
     "__PROD__": false
   },
   "rules": {
-    "comma-dangle": "off",
+    "comma-dangle": ["warn", "never"],
     "indent": "warn",
     "jsx-quotes": [2, "prefer-single"],
     "key-spacing": "off",

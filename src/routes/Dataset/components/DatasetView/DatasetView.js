@@ -53,7 +53,7 @@ class DatasetView extends React.PureComponent {
       error: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.object
-      ]).isRequired,
+      ]).isRequired
     }).isRequired,
 
     getDataGouvDataset: PropTypes.func.isRequired,
