@@ -41,7 +41,6 @@ export const DoughnutChart = ({ data, t }) => {
         value={100}
         total={100}
         label={formatedData.labels[0]}
-        icon='database icon'
         size='large'
       />
     )

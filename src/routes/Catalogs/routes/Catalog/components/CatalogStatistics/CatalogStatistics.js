@@ -49,7 +49,6 @@ const CatalogStatistics = ({ metrics, t }) => {
             value={openness}
             total={metrics.datasets.totalCount}
             size='large'
-            icon='unlock alternate icon'
             title={t('CatalogStatistics.openDataPercentTitle')}
           />
         </div>
@@ -59,7 +58,6 @@ const CatalogStatistics = ({ metrics, t }) => {
             value={download}
             total={metrics.datasets.totalCount}
             size='large'
-            icon='download'
             title={t('CatalogStatistics.downloadablePercentTitle')}
           />
         </div>

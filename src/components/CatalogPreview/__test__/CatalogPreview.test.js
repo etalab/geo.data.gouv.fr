@@ -23,13 +23,13 @@ describe('<CatalogPreview />', () => {
     })
 
     it('should display the openness percent', () => {
-      const open = <Percent value={catalog.metrics.datasets.partitions['openness'].yes} size='small' label='components.CatalogPreview.openDataLabel' total={catalog.metrics.datasets.totalCount} icon='unlock alternate icon' />
+      const open = <Percent value={catalog.metrics.datasets.partitions['openness'].yes} size='small' label='components.CatalogPreview.openDataLabel' total={catalog.metrics.datasets.totalCount} />
 
       expect(wrapper.contains(open)).to.be.true
     })
 
     it('should display the downloadable percent', () => {
-      const download = <Percent value={catalog.metrics.datasets.partitions['download'].yes} size='small' label='components.CatalogPreview.downloadableLabel' total={catalog.metrics.datasets.totalCount} icon='download' />
+      const download = <Percent value={catalog.metrics.datasets.partitions['download'].yes} size='small' label='components.CatalogPreview.downloadableLabel' total={catalog.metrics.datasets.totalCount} />
 
       expect(wrapper.contains(download)).to.be.true
     })
