@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import styles from './DatasetContactLabel.scss'
 
 const DatasetContactLabel = ({ role, t }) => (
-  <div className={`${styles.label} ${styles[role]}`}>
-    {t(`components.DatasetContactLabel.${role}`)}
+  <div className={`${styles.label} ${styles[role] || styles.notDefined}`}>
+    {t([`components.DatasetContactLabel.${role}`, 'components.DatasetContactLabel.notDefined'])}
   </div>
 )
 

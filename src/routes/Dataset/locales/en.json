@@ -32,7 +32,9 @@
       "publisher": "Publisher",
       "author": "Author",
       "notDefined": "Unknown",
-      "other": "Other"
+      "other": "Other",
+      "principalInvestigator": "Principal investigator",
+      "sponsor": "Sponsor"
     },
 
     "DatasetDataGouvPublication": {

@@ -32,7 +32,9 @@
       "publisher": "Diffuseur",
       "author": "Auteur",
       "notDefined": "Inconnu",
-      "other": "Autre"
+      "other": "Autre",
+      "principalInvestigator": "Directeur de recherche",
+      "sponsor": "Financeur"
     },
 
     "DatasetDataGouvPublication": {
