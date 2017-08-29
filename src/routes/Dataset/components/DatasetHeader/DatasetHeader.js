@@ -9,14 +9,14 @@ import { getLicense } from 'common/helpers/dataGouvChecks'
 
 import styles from './DatasetHeader.scss'
 
-const DatasetHeader = ({ dataset, t, i18n }) => {
+const DatasetHeader = ({ dataset, t }) => {
   const { title, description, type, purpose, lineage, inspireTheme } = dataset.metadata
 
   const revisionDate = doneSince(dataset.revisionDate)
   const license = getLicense(dataset.metadata.license)
-  const dataType = i18n.exists(`Common:enums.dataTypes.${type}`)
-    ? t(`Common:enums.dataTypes.${type}`)
-    : type
+  const dataType = t(`Common:enums.dataTypes.${type}`, {
+    defaultValue: type
+  })
 
   return (
     <div className={styles.container}>
@@ -85,8 +85,7 @@ DatasetHeader.propTypes = {
     }).isRequired
   }).isRequired,
 
-  t: PropTypes.func.isRequired,
-  i18n: PropTypes.object.isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default translate('Dataset')(DatasetHeader)

@@ -26,12 +26,10 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
   const createDate = creationDate
     ? moment(creationDate).format('DD/MM/YYYY')
     : t('Common:enums.unknownData.unknown', { context: 'female' })
-  const dataType = i18n.exists(`Common:enums.dataTypes.${type}`)
-    ? t(`Common:enums.dataTypes.${type}`)
-    : type
-  const topicCat = i18n.exists(`Common:enums.topicCategories.${topicCategory}`)
-    ? t(`Common:enums.topicCategories.${topicCategory}`)
-    : t('Common:enums.unknownData.notSpecified', { context: 'female' })
+  const dataType = t(`Common:enums.dataTypes.${type}`, {
+    defaultValue: type
+  })
+  const topicCat = t([`Common:enums.topicCategories.${topicCategory}`, 'Common:enums.unknownData.notSpecified'], { context: 'female' })
 
   return (
     <div className={styles.container}>
