@@ -42,7 +42,7 @@ class CatalogView extends React.PureComponent {
     const { catalog, metrics, onSearch, t } = this.props
 
     return (
-      <div>
+      <div className={styles.container}>
         <Helmet title={catalog.name} />
         <div className={styles.header}>
           <h1>{catalog.name}</h1>

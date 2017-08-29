@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styles from './Counter.scss'
 
-const Counter = ({ value, label, unit = '', size = '', color = '', title = '' }) => (
+const Counter = ({ value, label, unit = '', size = 'default-label', color = '', title = '' }) => (
   <div className={styles.container}>
     { title && <h3>{title}</h3> }
     <div className={`${styles.value} ${styles[color]} ${styles[size]}`}>
