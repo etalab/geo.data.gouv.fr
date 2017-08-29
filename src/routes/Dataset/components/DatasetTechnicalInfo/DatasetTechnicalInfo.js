@@ -20,16 +20,20 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
   } = dataset.metadata
 
   const license = getLicense(dataset.metadata.license)
-  const frequency = updateFrequency
-    ? t(`Common:enums.frequencies.${updateFrequency}`)
-    : t('Common:enums.unknownData.unknown', { context: 'female' })
-  const createDate = creationDate
-    ? moment(creationDate).format('DD/MM/YYYY')
-    : t('Common:enums.unknownData.unknown', { context: 'female' })
+
+  const frequency = t([`Common:enums.frequencies.${updateFrequency}`, 'Common:enums.unknownData.unknown'], {
+    context: 'female'
+  })
+  const topicCat = t([`Common:enums.topicCategories.${topicCategory}`, 'Common:enums.unknownData.notSpecified'], {
+    context: 'female'
+  })
   const dataType = t(`Common:enums.dataTypes.${type}`, {
     defaultValue: type
   })
-  const topicCat = t([`Common:enums.topicCategories.${topicCategory}`, 'Common:enums.unknownData.notSpecified'], { context: 'female' })
+
+  const createDate = creationDate
+    ? moment(creationDate).format('DD/MM/YYYY')
+    : t('Common:enums.unknownData.unknown', { context: 'female' })
 
   return (
     <div className={styles.container}>
