@@ -19,7 +19,7 @@ class PublishingDatasets extends Component {
   componentWillMount() {
     return Promise.all([
       this.updateUser(),
-      this.updateOrganization(),
+      this.updateOrganization()
     ])
   }
 

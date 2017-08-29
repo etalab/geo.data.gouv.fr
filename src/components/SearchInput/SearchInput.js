@@ -19,7 +19,7 @@ class SearchInput extends React.PureComponent {
   static defaultProps = {
     defaultValue: '',
 
-    hasButton: false,
+    hasButton: false
   }
 
   onSubmit = event => {

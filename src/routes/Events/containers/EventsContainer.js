@@ -8,7 +8,7 @@ const pastEvents = [
   { name: 'Atelier #3', date: '09/02/2017', link: '/assets/ateliers/synthese_atelier_3.pdf' },
   { name: 'Atelier #4', date: '09/03/2017', link: '/assets/ateliers/synthese_atelier_4.pdf' },
   { name: 'Atelier #5', date: '18/04/2017', link: '/assets/ateliers/synthese_atelier_5.pdf' },
-  { name: 'Atelier #6', date: '18/05/2017', linkComingSoon: true },
+  { name: 'Atelier #6', date: '18/05/2017', linkComingSoon: true }
 ]
 
 export default () => (

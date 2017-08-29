@@ -24,7 +24,7 @@ const initialState = {
   catalog: {
     pending: false,
     error: false,
-    catalog: null,
+    catalog: null
   },
 
   metrics: {

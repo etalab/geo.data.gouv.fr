@@ -19,7 +19,7 @@ class DatasetPage extends React.PureComponent {
       error: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.object
-      ]).isRequired,
+      ]).isRequired
     }).isRequired,
 
     publication: PropTypes.shape({
@@ -30,7 +30,7 @@ class DatasetPage extends React.PureComponent {
       error: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.object
-      ]).isRequired,
+      ]).isRequired
     }).isRequired,
 
     dataGouvDataset: PropTypes.object.isRequired,

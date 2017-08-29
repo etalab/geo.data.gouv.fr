@@ -22,7 +22,7 @@ class PublishingDatasets extends Component {
       this.updateUser(),
       this.updatePublished(),
       this.updatePublishedByOthers(),
-      this.updateNotPublishedYet(),
+      this.updateNotPublishedYet()
     ])
   }
 
@@ -49,7 +49,7 @@ class PublishingDatasets extends Component {
   updateDatasets() {
     return Promise.all([
       this.updatePublished(),
-      this.updateNotPublishedYet(),
+      this.updateNotPublishedYet()
     ])
   }
 

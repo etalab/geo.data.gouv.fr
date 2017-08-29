@@ -84,7 +84,7 @@ DatasetTechnicalInfo.propTypes = {
         value: PropTypes.number.isRequired,
         unit: PropTypes.string.isRequired
       })
-    }).isRequired,
+    }).isRequired
   }).isRequired,
 
   status: PropTypes.string,

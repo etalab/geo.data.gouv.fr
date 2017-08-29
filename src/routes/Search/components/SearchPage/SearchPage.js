@@ -27,7 +27,7 @@ class SearchPage extends React.PureComponent {
         query: PropTypes.object.isRequired,
         results: PropTypes.array.isRequired,
         facets: PropTypes.object.isRequired
-      }).isRequired,
+      }).isRequired
     }).isRequired,
 
     history: PropTypes.shape({

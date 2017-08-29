@@ -34,7 +34,7 @@ class CatalogView extends React.PureComponent {
 
     onSearch({
       q: query,
-      catalog: catalog.name,
+      catalog: catalog.name
     })
   }
 

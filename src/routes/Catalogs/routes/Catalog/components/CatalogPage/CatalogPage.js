@@ -18,7 +18,7 @@ class CatalogPage extends React.PureComponent {
       error: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.object
-      ]).isRequired,
+      ]).isRequired
     }).isRequired,
 
     metrics: PropTypes.shape({

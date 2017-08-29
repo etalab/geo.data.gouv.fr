@@ -15,7 +15,7 @@ class DatasetsPublication extends Component {
     const headerStyle = cx(header, {
       [success]: status === 'success',
       [warning]: status === 'warning',
-      [error]: status === 'error',
+      [error]: status === 'error'
     })
 
     return (

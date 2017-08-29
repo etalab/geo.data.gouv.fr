@@ -6,7 +6,7 @@ import CatalogHarvestsView from '../components/CatalogHarvestsView'
 
 export default connect((state, { catalog }) => ({
   catalog,
-  harvests: state.catalog.harvests,
+  harvests: state.catalog.harvests
 }), {
   getHarvests,
   syncCatalog

@@ -14,7 +14,7 @@ class Admin extends Component {
     super(props)
     this.state = {
       user: null,
-      errors: [],
+      errors: []
     }
   }
 

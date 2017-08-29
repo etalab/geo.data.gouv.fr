@@ -18,7 +18,7 @@ export function formatData(data, t) {
         backgroundColor: colors[0],
         data: Object.keys(data).map(item => data[item])
       }
-    ],
+    ]
   }
 }
 
@@ -28,7 +28,7 @@ export const Histogram = ({ data, width, height, t }) => {
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero: true,
+          beginAtZero: true
         }
       }]
     }

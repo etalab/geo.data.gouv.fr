@@ -13,7 +13,7 @@ class DatasetsToBePublished extends Component {
     super(props)
     this.state = {
       toPublish: [],
-      publicationsInProgress: [],
+      publicationsInProgress: []
     }
   }
 

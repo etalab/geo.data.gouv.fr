@@ -22,11 +22,11 @@ describe('manageFilters', () => {
       const filters = [
         { name: 'keywords', value: 'keyword1' },
         { name: 'keywords', value: 'keyword2' },
-        { name: 'organizations', value: 'foo' },
+        { name: 'organizations', value: 'foo' }
       ]
       const convertedFilters = {
         keywords: ['keyword1', 'keyword2'],
-        organizations: ['foo'],
+        organizations: ['foo']
       }
       const result = convertFilters(filters)
 

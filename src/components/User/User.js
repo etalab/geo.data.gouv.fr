@@ -30,7 +30,7 @@ User.propTypes = {
     avatar: PropTypes.string,
     slug: PropTypes.string,
     first_name: PropTypes.string,
-    last_name: PropTypes.string,
+    last_name: PropTypes.string
   }).isRequired
 }
 

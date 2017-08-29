@@ -25,13 +25,13 @@ class Producers extends React.Component {
     super(props)
     this.state = {
       errors: [],
-      organizationProducers: [],
+      organizationProducers: []
     }
   }
 
   componentDidMount() {
     return Promise.all([
-      this.updateProducersToAssociate(),
+      this.updateProducersToAssociate()
     ])
   }
 

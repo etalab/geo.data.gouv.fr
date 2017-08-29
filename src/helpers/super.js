@@ -3,7 +3,7 @@ const { DATAGOUV_API_URL, DATAGOUV_API_KEY, PUBLICATION_API_URL } = process.env
 export function _fetch(url, method, data) {
   const options = {
     headers: {
-      'Accept': 'application/json',
+      'Accept': 'application/json'
     },
     mode: 'cors',
     method: method || 'GET'
