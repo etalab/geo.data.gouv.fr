@@ -5825,9 +5825,9 @@ preact-transition-group@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/preact-transition-group/-/preact-transition-group-1.1.1.tgz#f0a49327ea515ece34ea2be864c4a7d29e5d6e10"
 
-preact@^8.2.4:
-  version "8.2.4"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-8.2.4.tgz#144ea50cb57b7659ac5f631191b9418bdec7ed0a"
+preact@^8.2.5:
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.2.5.tgz#cbfa3962a8012768159f6d01d46f9c1eb3213c0a"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -6048,9 +6048,9 @@ react-loadable-visibility@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/react-loadable-visibility/-/react-loadable-visibility-2.3.0.tgz#2c39cc7e14f17969a130d1c4cd4bcf574d84f15e"
 
-react-loadable@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-4.0.4.tgz#ae96837729eeb7fd0d3bb1dc01dc0053ac147874"
+react-loadable@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-4.0.5.tgz#225eba40a0e67cc5698bcb5db6e783f0d3a9e729"
   dependencies:
     import-inspector "^2.0.0"
     is-webpack-bundle "^1.0.0"
