@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import styles from './Filter.scss'
 
 const Filter = ({ detail, remove, filter, style, onClick, t }) => {
-  const title = t(`components.Filter.${filter.name}`)
-  const value = t(`components.Filter.${filter.value}`, {
+  const title = t(`components.Filter.types.${filter.name}`)
+  const value = t(`components.Filter.values.${filter.value}`, {
     defaultValue: filter.value
   })
 
