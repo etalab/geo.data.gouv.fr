@@ -14,7 +14,9 @@ const DatasetHeader = ({ dataset, t }) => {
 
   const revisionDate = doneSince(dataset.revisionDate)
   const license = getLicense(dataset.metadata.license)
-  const dataType = t([`Common:enums.dataTypes.${type}`, type])
+  const dataType = t(`Common:enums.dataTypes.${type}`, {
+    defaultValue: type
+  })
 
   return (
     <div className={styles.container}>

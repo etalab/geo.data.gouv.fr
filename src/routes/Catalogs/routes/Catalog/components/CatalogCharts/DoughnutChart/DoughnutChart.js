@@ -14,7 +14,9 @@ export const formatData = (data, t) => {
   const labels = Object.keys(data).sort((a, b) => data[a] < data[b])
 
   return {
-    labels: labels.map(label => t([`components.DoughnutChart.${label}`, label])),
+    labels: labels.map(label => t(`components.DoughnutChart.${label}`, {
+      defaultValue: label
+    })),
     datasets: [
       {
         data: labels.map(label => data[label]),
