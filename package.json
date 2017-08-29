@@ -111,7 +111,6 @@
     "react-paginate": "^4.1.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-sticky": "^5.0.5",
     "reactable": "^0.14.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
