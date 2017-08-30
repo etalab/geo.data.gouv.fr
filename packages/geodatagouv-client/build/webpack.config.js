@@ -16,6 +16,11 @@ const __DEV__ = project.env === 'development'
 const __TEST__ = project.env === 'test'
 const __PROD__ = project.env === 'production'
 
+const nodeModules = [
+  inProject('node_modules'),
+  inProject('../../node_modules')
+]
+
 const config = {
   entry: {
     app: [
@@ -188,7 +193,7 @@ const localStyles = new ExtractTextPlugin({
 config.module.rules.push({
   test: /\.(sass|scss)$/,
   exclude: [
-    inProject('node_module'),
+    ...nodeModules,
     inProjectSrc('styles')
   ],
   loader: localStyles.extract({
@@ -222,9 +227,7 @@ config.plugins.push(localStyles)
 // Vendor Styles
 config.module.rules.push({
   test: /\.css$/,
-  include: [
-    inProject('node_modules')
-  ],
+  include: nodeModules,
   use: [
     {
       loader: 'style-loader',
