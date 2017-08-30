@@ -23,7 +23,9 @@ const config = {
     ]
   },
 
-  devtool: project.sourcemaps ? 'source-map' : false,
+  devtool: project.sourcemaps
+    ? __PROD__ ? 'source-map' : 'cheap-module-eval-source-map'
+    : false,
 
   output: {
     path: inProject(project.outDir),
