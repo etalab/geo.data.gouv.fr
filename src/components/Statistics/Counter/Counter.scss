@@ -7,7 +7,7 @@
 
 .small {
   font-size: 0.8rem;
-  line-height: 0.8rem;
+  line-height: 1rem;
 }
 
 .medium {
@@ -18,6 +18,23 @@
   font-size: 2rem;
   line-height: 2rem;
   font-weight: 300;
+}
+
+.value {
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+  align-items: baseline;
+}
+
+.unit {
+  font-size: 14px;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .container {

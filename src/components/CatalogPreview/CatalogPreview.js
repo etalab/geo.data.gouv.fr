@@ -26,14 +26,12 @@ export const CatalogPreview = ({ catalog, t }) => {
         total={metrics.datasets.totalCount}
         size='small'
         label={t('components.CatalogPreview.openDataLabel')}
-        icon='unlock alternate icon'
       />
       <Percent
         value={download}
         total={metrics.datasets.totalCount}
         size='small'
         label={t('components.CatalogPreview.downloadableLabel')}
-        icon='download'
       />
       <Counter value={metrics.records.totalCount} size='small' label={t('components.CatalogPreview.recordsLabel')} />
     </div>
@@ -42,6 +40,9 @@ export const CatalogPreview = ({ catalog, t }) => {
   return (
     <Link to={`/catalogs/${catalog._id}`} className={styles.link}>
       <div className={styles.paper}>
+        <div className={styles.logo}>
+          <img src={`/img/catalogues/${catalog.name}.png`} alt={`${catalog.name} logo`} />
+        </div>
         <div className={styles.title}>{catalog.name}</div>
         <LastHarvestStatus harvest={catalog.service.sync} />
         <ObsoleteWarning catalog={catalog} />

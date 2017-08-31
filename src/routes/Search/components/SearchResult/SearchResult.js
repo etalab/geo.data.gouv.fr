@@ -14,30 +14,37 @@ const SearchResult = ({ dataset, addFilter, t }) => (
       <Link to={`/datasets/${dataset.recordId}`}>{dataset.metadata.title}</Link>
     </h4>
 
-    { dataset.metadata.description && (
-      <MarkdownPreview markdown={dataset.metadata.description} />
-    )}
+    <div className={styles.details}>
+      <div className={styles.description}>
+        { dataset.metadata.description && (
+          <MarkdownPreview markdown={dataset.metadata.description} />
+        )}
+        {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0 && (
+          <img className={styles.thumbnail} src={dataset.metadata.thumbnails[0].originalUrl} alt={dataset.metadata.thumbnails[0].description} />
+        )}
+      </div>
 
-    <h5>{t('SearchResult.keywords', { context: dataset.metadata.keywords.length })}</h5>
-    <div className={styles.list}>
-      {dataset.metadata.keywords.map((keyword, idx) => (
-        <Filter
-          key={idx}
-          onClick={addFilter}
-          filter={{ value: keyword, name: 'keyword' }}
-        />
-      ))}
-    </div>
+      <h5>{t('SearchResult.keywords', { context: dataset.metadata.keywords.length })}</h5>
+      <div className={styles.list}>
+        {dataset.metadata.keywords.map((keyword, idx) => (
+          <Filter
+            key={idx}
+            onClick={addFilter}
+            filter={{ value: keyword, name: 'keyword' }}
+          />
+        ))}
+      </div>
 
-    <h5>{t('SearchResult.organizations', { context: dataset.organizations.length })}</h5>
-    <div className={styles.list}>
-      {dataset.organizations.map((organization, idx) => (
-        <Filter
-          key={idx}
-          onClick={addFilter}
-          filter={{ value: organization, name: 'organization' }}
-        />
-      ))}
+      <h5>{t('SearchResult.organizations', { context: dataset.organizations.length })}</h5>
+      <div className={styles.list}>
+        {dataset.organizations.map((organization, idx) => (
+          <Filter
+            key={idx}
+            onClick={addFilter}
+            filter={{ value: organization, name: 'organization' }}
+          />
+        ))}
+      </div>
     </div>
   </div>
 )

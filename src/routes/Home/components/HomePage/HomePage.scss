@@ -1,16 +1,19 @@
 @import 'variables';
 
 .masthead {
-  padding: 20vh 8%;
+  padding: 0 10% 10vh;
   text-align: center;
+  font-family: 'Century Gothic', 'Gilles Sans', 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
 
   span {
     line-height: 4em;
   }
 
   h1 {
-    font-size: 1.4em;
-    margin-bottom: 2em;
+    color: $darkgrey;
+    font-weight: 100;
+    font-size: 2em;
+    padding: 2vh 20%;
   }
 
   @media (max-width: 768px) {
@@ -30,13 +33,13 @@
   button {
     margin: 40px 20px 10px;
     padding: 15px 20px;
-    background-color: #fff;
+    background-color: $white;
     border: 1px solid $blue;
   }
 
   .inverted {
     background-color: $blue;
-    color: #fff;
+    color: $white;
   }
 
   @media (max-width: 768px) {
@@ -76,18 +79,20 @@
   padding: 40px;
 
   h2 {
-    color: #fff;
+    color: $white;
+    font-weight: 100;
+
     text-transform: uppercase;
   }
 }
 
 .link {
   margin-top: 2em;
-  color: #fff;
+  color: $white;
 
   &:focus,
   &:hover {
-    color: #fff;
+    color: $white;
     text-decoration: underline;
   }
 }

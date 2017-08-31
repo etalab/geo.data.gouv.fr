@@ -1,41 +1,68 @@
 @import 'variables';
 
+.container {
+  margin-bottom: 2em;
+}
+
 .nav {
-  background-color: $blue;
   padding: 2em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $white;
+  color: $darkblue;
   z-index: 1;
 
   a {
-    color: $white;
+    color: $darkblue;
 
     &:focus,
     &:hover {
-      color: #fff;
+      color: $black;
     }
+  }
+
+  .log {
+    color: $white;
+  }
+
+  @media (max-width: 551px) {
+    font-size: 0.75em;
+  }
+}
+
+.marianne {
+  max-width: 100px;
+  margin-right: 25px;
+
+  @media (max-width: 551px) {
+    max-width: 60px;
   }
 }
 
 .home {
-  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.5em;
   font-weight: bold;
 
+  i {
+    font-weight: lighter;
+    font-family: -webkit-pictograph;
+    font-size: larger;
+  }
+
   @media (max-width: 551px) {
-    font-size: 1em;
     font-weight: bold;
   }
 }
 
 .log {
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: $blue;
   font-size: 1em;
-
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .authentification {
@@ -76,4 +103,10 @@
   @media (max-width: 551px) {
     display: none;
   }
+}
+
+.divider {
+  border-bottom: 1px solid $grey;
+  width: 80%;
+  margin: 1em auto;
 }

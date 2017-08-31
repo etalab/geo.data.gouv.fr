@@ -12,7 +12,7 @@ const Filter = ({ detail, remove, filter, style, onClick, t }) => {
 
   return (
     <button
-      className={styles.link}
+      className={`${styles.link} ${styles[filter.name]}`}
       title={`${title}: ${value}`}
       style={style}
       onClick={onClick && (() => onClick(filter))}
