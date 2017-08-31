@@ -7,7 +7,7 @@ export const DISABLED_FILTERS = [
   'limit'
 ]
 
-const parseQueryString = (search = '') => {
+export const parseQueryString = (search = '') => {
   if (search.startsWith('?')) {
     search = search.substring(1)
   }
