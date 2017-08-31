@@ -48,7 +48,7 @@ export const flattenFilters = filters => filters.reduce((acc, filter) => {
   return acc
 }, {})
 
-export const update = (search = '', changes) => {
+export const update = (search = '', changes = {}) => {
   const {
     q: iq,
     page: ipage,

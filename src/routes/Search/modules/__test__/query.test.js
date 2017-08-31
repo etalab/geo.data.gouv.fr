@@ -32,6 +32,14 @@ describe('Search.modules.query', () => {
   })
 
   describe('update', () => {
+    it('should not fail when not specifying changes', () => {
+      expect(update('')).to.be.ok
+    })
+
+    it('should not fail when not specifying a query', () => {
+      expect(update()).to.be.ok
+    })
+
     it('should set q when specifying it', () => {
       const newQuery = update('', { q: 'foo' })
 
@@ -54,6 +62,33 @@ describe('Search.modules.query', () => {
       const newQuery = update('?q=foo', { q: 'bar' })
 
       expect(newQuery.q).to.equal('bar')
+    })
+
+    it('should set the page when specified', () => {
+      const newQuery = update('?q=foo', { page: 42 })
+
+      expect(newQuery).to.deep.equal({
+        q: 'foo',
+        page: 42
+      })
+    })
+
+    it('should strip the page when lower than 2', () => {
+      [-42, -1, 0, 1].map(page => {
+        const newQuery = update('?q=foo', { page })
+
+        expect(newQuery).to.deep.equal({
+          q: 'foo'
+        })
+      })
+    })
+
+    it('should strip the page when not specified', () => {
+      const newQuery = update('?q=foo&page=15')
+
+      expect(newQuery).to.deep.equal({
+        q: 'foo'
+      })
     })
   })
 })
