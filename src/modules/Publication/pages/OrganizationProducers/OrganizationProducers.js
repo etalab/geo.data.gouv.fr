@@ -32,7 +32,7 @@ class PublishingDatasets extends Component {
   }
 
   updateOrganization() {
-    return waitForDataAndSetState(getOrganization(this.props.params.organizationId), this, 'organization')
+    return waitForDataAndSetState(getOrganization(this.state.organizationId), this, 'organization')
   }
 
   render() {

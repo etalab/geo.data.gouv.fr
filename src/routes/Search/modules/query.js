@@ -7,7 +7,7 @@ export const DISABLED_FILTERS = [
   'limit'
 ]
 
-const parseQueryString = (search = '') => {
+export const parseQueryString = (search = '') => {
   if (search.startsWith('?')) {
     search = search.substring(1)
   }
@@ -48,14 +48,14 @@ export const flattenFilters = filters => filters.reduce((acc, filter) => {
   return acc
 }, {})
 
-export const update = (search = '', changes) => {
+export const update = (search = '', changes = {}) => {
   const {
     q: iq,
     page: ipage,
     ...filters
   } = parseQueryString(search)
 
-  const q = changes.q || iq
+  const q = 'q' in changes ? changes.q : iq
 
   // Either we specify a page number, or we go back to the first page.
   const page = changes.page || 1
