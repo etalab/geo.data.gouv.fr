@@ -55,7 +55,7 @@ export const update = (search = '', changes) => {
     ...filters
   } = parseQueryString(search)
 
-  const q = changes.q || iq
+  const q = 'q' in changes ? changes.q : iq
 
   // Either we specify a page number, or we go back to the first page.
   const page = changes.page || 1
