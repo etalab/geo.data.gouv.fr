@@ -71,6 +71,8 @@
     "imagemin-svgo": "^5.2.2",
     "jsdom": "^11.2.0",
     "jsdom-global": "^3.0.2",
+    "lerna": "^2.1.2",
+    "lerna-changelog": "^0.6.0",
     "mkdirp": "^0.5.1",
     "mocha": "^3.5.0",
     "mocha-circleci-reporter": "^0.0.2",
