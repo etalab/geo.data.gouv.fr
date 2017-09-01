@@ -35,10 +35,6 @@ const config = {
   },
 
   resolve: {
-    modules: [
-      inProject(project.srcDir),
-      inProject('node_modules')
-    ],
     extensions: [
       '.js',
       '.jsx',
