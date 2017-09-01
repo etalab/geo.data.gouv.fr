@@ -71,7 +71,8 @@ const config = {
         env[key] = JSON.stringify(value)
         return env
       }, {
-        NODE_ENV: JSON.stringify(project.env)
+        NODE_ENV: JSON.stringify(project.env),
+        BROWSER: JSON.stringify(true)
       }),
 
       __DEV__,

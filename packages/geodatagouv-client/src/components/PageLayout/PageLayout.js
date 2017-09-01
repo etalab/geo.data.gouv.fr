@@ -8,7 +8,9 @@ import Footer from '../../components/Footer'
 
 import styles from './PageLayout.scss'
 
-export const PageLayout = ({ children, i18n }) => (
+export const PageLayout = ({ children, i18n }) => {
+  console.log('page layout')
+  return (
   <div className={styles.content}>
     <Helmet
       titleTemplate='%s | inspire.data.gouv.fr'
@@ -21,7 +23,7 @@ export const PageLayout = ({ children, i18n }) => (
     </div>
     <Footer />
   </div>
-)
+)}
 
 PageLayout.propTypes = {
   children: PropTypes.node,

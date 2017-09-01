@@ -35,6 +35,7 @@ class HomePage extends React.PureComponent {
   }
 
   render() {
+    console.log('rendering home page')
     const { catalogs, t } = this.props
 
     return (
@@ -74,4 +75,4 @@ class HomePage extends React.PureComponent {
   }
 }
 
-export default withRouter(translate('Home')(HomePage))
+export default translate('Home')(HomePage)
