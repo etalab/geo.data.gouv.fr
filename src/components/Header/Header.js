@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
 
 import { getUser } from '../../fetch/fetch'
@@ -12,7 +12,10 @@ const { PUBLIC_URL } = process.env
 
 class Header extends React.Component {
   static propTypes = {
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired
+    }).isRequired
   }
 
   constructor(props) {
@@ -31,11 +34,13 @@ class Header extends React.Component {
   }
 
   render() {
-    const { t } = this.props
+    const { t, location } = this.props
     const { user } = this.state
+
     const loginRedirect = `${PUBLIC_URL}/publication`
-    const isPublication = window.location.pathname.startsWith('/publication')
-    const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + window.location.pathname
+    const isPublication = location.pathname.startsWith('/publication')
+    const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + location.pathname
+
     const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
     const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={styles.log} href={logInUrl}>{t('components.Header.login')}</a>
@@ -60,4 +65,4 @@ class Header extends React.Component {
   }
 }
 
-export default translate('Common')(Header)
+export default withRouter(translate('Common')(Header))
