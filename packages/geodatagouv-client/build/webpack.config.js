@@ -22,6 +22,8 @@ const nodeModules = [
 ]
 
 const config = {
+  name: 'client',
+
   entry: {
     app: [
       inProjectSrc(project.main)
@@ -97,8 +99,8 @@ if (project.usePreact) {
   config.resolve.alias = {
     ...config.resolve.alias,
 
-    'react': 'preact-compat',
-    'react-dom': 'preact-compat'
+    // 'react': 'preact-compat',
+    // 'react-dom': 'preact-compat'
   }
 } else {
   logger.info('Compiling with react')
@@ -296,22 +298,22 @@ config.module.rules.push({
 
 // HTML Template
 // ------------------------------------
-config.plugins.push(new HtmlWebpackPlugin({
-  template: inProjectSrc('index.html'),
-  inject: true,
-  minify: {
-    removeComments: true,
-    collapseWhitespace: true,
-    removeRedundantAttributes: true,
-    useShortDoctype: true,
-    removeEmptyAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    keepClosingSlash: true,
-    minifyJS: true,
-    minifyCSS: true,
-    minifyURLs: true
-  }
-}))
+// config.plugins.push(new HtmlWebpackPlugin({
+//   template: inProjectSrc('index.html'),
+//   inject: true,
+//   minify: {
+//     removeComments: true,
+//     collapseWhitespace: true,
+//     removeRedundantAttributes: true,
+//     useShortDoctype: true,
+//     removeEmptyAttributes: true,
+//     removeStyleLinkTypeAttributes: true,
+//     keepClosingSlash: true,
+//     minifyJS: true,
+//     minifyCSS: true,
+//     minifyURLs: true
+//   }
+// }))
 
 // Development Tools
 // ------------------------------------
