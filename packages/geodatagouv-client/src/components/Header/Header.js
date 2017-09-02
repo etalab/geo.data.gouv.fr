@@ -25,9 +25,9 @@ class Header extends React.Component {
     }
   }
 
-  // componentWillMount() {
-  //   return waitForDataAndSetState(getUser(), this, 'user')
-  // }
+  componentWillMount() {
+    return waitForDataAndSetState(getUser(), this, 'user')
+  }
 
   componentWillUnmount() {
     return cancelAllPromises(this)

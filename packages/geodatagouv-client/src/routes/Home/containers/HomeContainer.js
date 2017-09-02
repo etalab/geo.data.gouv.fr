@@ -116,9 +116,6 @@ const catalogsMock = [
   }
 ]
 
-export default () => {
-  console.log('in container')
-  return (
-  <HomePage catalogs={catalogsMock} t={a => a} />
+export default () => (
+  <HomePage catalogs={catalogsMock} />
 )
-}

@@ -75,4 +75,4 @@ class HomePage extends React.PureComponent {
   }
 }
 
-export default translate('Home')(HomePage)
+export default withRouter(translate('Home')(HomePage))
