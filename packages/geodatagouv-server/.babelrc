@@ -1,0 +1,26 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      },
+      "loose": true,
+      "modules": false
+    }]
+  ],
+
+  "plugins":[
+    "transform-class-properties",
+    ["transform-object-rest-spread", {
+      "useBuiltIns": true
+    }],
+    ["transform-react-jsx", {
+      "useBuiltIns": true
+    }],
+    "transform-react-display-name",
+    "lodash",
+    ["import-inspector", {
+      "serverSideRequirePath": true
+    }]
+  ]
+}
