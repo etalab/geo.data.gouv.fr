@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
@@ -17,8 +18,10 @@ const __TEST__ = project.env === 'test'
 const __PROD__ = project.env === 'production'
 
 const config = {
+  name: 'client',
+
   entry: {
-    app: [
+    main: [
       inProjectSrc(project.main)
     ]
   },
@@ -72,15 +75,15 @@ const config = {
       __PROD__
     }, project.globals)),
 
-    new UnusedFilesWebpackPlugin({
-      pattern: `${project.srcDir}/**/*.*`,
-      globOptions: {
-        ignore: [
-          '**/__test__/**',
-          '**/__mocks__/**'
-        ]
-      }
-    })
+    // new UnusedFilesWebpackPlugin({
+    //   pattern: `${project.srcDir}/**/*.*`,
+    //   globOptions: {
+    //     ignore: [
+    //       '**/__test__/**',
+    //       '**/__mocks__/**'
+    //     ]
+    //   }
+    // })
   ]
 }
 
@@ -116,7 +119,7 @@ config.module.rules.push({
   use: [
     {
       loader: 'babel-loader',
-      query: {
+      options: {
         cacheDirectory: true
       }
     }
@@ -142,10 +145,8 @@ const cssMinimizeOptions = {
 }
 
 // Global styles
-const globalStyles = new ExtractTextPlugin({
-  filename: 'styles/global.[contenthash].css',
-  allChunks: true,
-  disable: !__PROD__
+const globalStyles = new ExtractCssChunks({
+  filename: __DEV__ ? 'styles/global.css' : 'styles/global.[contenthash].css'
 })
 
 config.module.rules.push({
@@ -179,10 +180,8 @@ config.module.rules.push({
 config.plugins.push(globalStyles)
 
 // Local Styles
-const localStyles = new ExtractTextPlugin({
-  filename: 'styles/[name].[contenthash].css',
-  allChunks: true,
-  disable: !__PROD__
+const localStyles = new ExtractCssChunks({
+  filename: __DEV__ ? 'styles/[name].css' : 'styles/[name].[contenthash].css'
 })
 
 config.module.rules.push({
@@ -293,27 +292,27 @@ config.module.rules.push({
 
 // HTML Template
 // ------------------------------------
-config.plugins.push(new HtmlWebpackPlugin({
-  template: inProjectSrc('index.html'),
-  inject: true,
-  minify: {
-    removeComments: true,
-    collapseWhitespace: true,
-    removeRedundantAttributes: true,
-    useShortDoctype: true,
-    removeEmptyAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    keepClosingSlash: true,
-    minifyJS: true,
-    minifyCSS: true,
-    minifyURLs: true
-  }
-}))
+// config.plugins.push(new HtmlWebpackPlugin({
+//   template: inProjectSrc('index.html'),
+//   inject: true,
+//   minify: {
+//     removeComments: true,
+//     collapseWhitespace: true,
+//     removeRedundantAttributes: true,
+//     useShortDoctype: true,
+//     removeEmptyAttributes: true,
+//     removeStyleLinkTypeAttributes: true,
+//     keepClosingSlash: true,
+//     minifyJS: true,
+//     minifyCSS: true,
+//     minifyURLs: true
+//   }
+// }))
 
 // Development Tools
 // ------------------------------------
 if (__DEV__) {
-  config.entry.app.push(
+  config.entry.main.push(
     `webpack-hot-middleware/client.js?path=${config.output.publicPath}__webpack_hmr`
   )
   config.plugins.push(
@@ -326,7 +325,7 @@ if (__DEV__) {
 // Bundle Splitting
 // ------------------------------------
 if (!__TEST__) {
-  const bundles = ['manifest']
+  const bundles = ['bootstrap']
 
   if (project.vendors && project.vendors.length) {
     bundles.unshift('vendor')

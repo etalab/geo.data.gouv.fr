@@ -6,6 +6,8 @@ if (!process.env.NODE_ENV) {
 }
 
 logger.info('Starting server…')
-require('../../server').listen(port, () => {
-  logger.success(`Server is listening on port ${port}`)
-})
+require('../../server')
+
+// .listen(port, () => {
+//   logger.success(`Server is listening on port ${port}`)
+// })

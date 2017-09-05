@@ -33,7 +33,7 @@ export default () => {
       },
 
       react: {
-        wait: true
+        wait: false
       }
     })
 

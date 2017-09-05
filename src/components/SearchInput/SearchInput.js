@@ -34,7 +34,7 @@ class SearchInput extends React.PureComponent {
     const { placeholder, defaultValue, hasButton, buttonLabel, t } = this.props
 
     return (
-      <form onSubmit={this.onSubmit} className={styles.container}>
+      <form onSubmit={this.onSubmit} className={styles.container} action='/search'>
         <input
           type='text'
           name='query'
