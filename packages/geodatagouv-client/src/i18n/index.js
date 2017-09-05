@@ -33,7 +33,7 @@ export default () => {
       },
 
       react: {
-        wait: true
+        wait: process.env.BROWSER === true
       }
     })
 

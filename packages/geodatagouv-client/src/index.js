@@ -6,17 +6,18 @@ import createStore from './store/createStore'
 // Store Initialization
 // ------------------------------------
 const store = createStore(window.__INITIAL_STATE__)
+delete window.__INITIAL_STATE__
 
 // Render Setup
 // ------------------------------------
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  const App = require('./components/App').default
+  const Client = require('./components/Client').default
   const i18n = require('./i18n').default()
 
   ReactDOM.render(
-    <App store={store} i18n={i18n} />,
+    <Client store={store} i18n={i18n} />,
     MOUNT_NODE
   )
 }
@@ -44,7 +45,7 @@ if (__DEV__) {
 
     // Setup hot module replacement
     module.hot.accept([
-      './components/App',
+      './components/Client',
       './i18n/index'
     ], () =>
       setImmediate(() => {

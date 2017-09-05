@@ -14,18 +14,10 @@ npm-debug.log*
 .AppleDouble
 .LSOverride
 
-# Build
-dist
-
 # Cache
 .yarn-cache
 .npm
 .eslintcache
-.nyc_output
 
 # Node
 node_modules
-
-# Reports
-coverage
-reports

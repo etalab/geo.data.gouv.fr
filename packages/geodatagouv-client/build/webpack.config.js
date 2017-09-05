@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
@@ -17,8 +18,10 @@ const __TEST__ = project.env === 'test'
 const __PROD__ = project.env === 'production'
 
 const config = {
+  name: 'client',
+
   entry: {
-    app: [
+    main: [
       inProjectSrc(project.main)
     ]
   },
@@ -64,7 +67,8 @@ const config = {
         env[key] = JSON.stringify(value)
         return env
       }, {
-        NODE_ENV: JSON.stringify(project.env)
+        NODE_ENV: JSON.stringify(project.env),
+        BROWSER: JSON.stringify(true)
       }),
 
       __DEV__,
@@ -92,8 +96,8 @@ if (project.usePreact) {
   config.resolve.alias = {
     ...config.resolve.alias,
 
-    'react': 'preact-compat',
-    'react-dom': 'preact-compat'
+    // 'react': 'preact-compat',
+    // 'react-dom': 'preact-compat'
   }
 } else {
   logger.info('Compiling with react')
@@ -179,18 +183,13 @@ config.module.rules.push({
 config.plugins.push(globalStyles)
 
 // Local Styles
-const localStyles = new ExtractTextPlugin({
-  filename: 'styles/[name].[contenthash].css',
-  allChunks: true,
-  disable: !__PROD__
+const localStyles = new ExtractCssChunks({
+  filename: __DEV__ ? 'styles/[name].css' : 'scripts/[name].[contenthash].css'
 })
 
 config.module.rules.push({
   test: /\.(sass|scss)$/,
-  exclude: [
-    inProject('node_module'),
-    inProjectSrc('styles')
-  ],
+  include: inProject(project.srcDir),
   loader: localStyles.extract({
     fallback: 'style-loader',
     use: [
@@ -220,11 +219,13 @@ config.module.rules.push({
 config.plugins.push(localStyles)
 
 // Vendor Styles
+const vendorStyle = new ExtractCssChunks({
+  filename: __DEV__ ? 'styles/[name].css' : 'scripts/[name].[contenthash].css'
+})
+
 config.module.rules.push({
   test: /\.css$/,
-  include: [
-    inProject('node_modules')
-  ],
+  include: /node_modules/,
   use: [
     {
       loader: 'style-loader',
@@ -241,6 +242,8 @@ config.module.rules.push({
     }
   ]
 })
+
+config.plugins.push(vendorStyle)
 
 // Images
 // ------------------------------------
@@ -293,27 +296,27 @@ config.module.rules.push({
 
 // HTML Template
 // ------------------------------------
-config.plugins.push(new HtmlWebpackPlugin({
-  template: inProjectSrc('index.html'),
-  inject: true,
-  minify: {
-    removeComments: true,
-    collapseWhitespace: true,
-    removeRedundantAttributes: true,
-    useShortDoctype: true,
-    removeEmptyAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    keepClosingSlash: true,
-    minifyJS: true,
-    minifyCSS: true,
-    minifyURLs: true
-  }
-}))
+// config.plugins.push(new HtmlWebpackPlugin({
+//   template: inProjectSrc('index.html'),
+//   inject: true,
+//   minify: {
+//     removeComments: true,
+//     collapseWhitespace: true,
+//     removeRedundantAttributes: true,
+//     useShortDoctype: true,
+//     removeEmptyAttributes: true,
+//     removeStyleLinkTypeAttributes: true,
+//     keepClosingSlash: true,
+//     minifyJS: true,
+//     minifyCSS: true,
+//     minifyURLs: true
+//   }
+// }))
 
 // Development Tools
 // ------------------------------------
 if (__DEV__) {
-  config.entry.app.push(
+  config.entry.main.push(
     `webpack-hot-middleware/client.js?path=${config.output.publicPath}__webpack_hmr`
   )
   config.plugins.push(
@@ -326,7 +329,7 @@ if (__DEV__) {
 // Bundle Splitting
 // ------------------------------------
 if (!__TEST__) {
-  const bundles = ['manifest']
+  const bundles = ['bootstrap']
 
   if (project.vendors && project.vendors.length) {
     bundles.unshift('vendor')

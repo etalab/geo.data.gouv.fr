@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
 
-import { getUser } from '../../fetch/fetch'
-import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+// import { getUser } from '../../fetch/fetch'
+// import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
 import styles from './Header.scss'
 
@@ -25,13 +25,13 @@ class Header extends React.Component {
     }
   }
 
-  componentWillMount() {
-    return waitForDataAndSetState(getUser(), this, 'user')
-  }
+  // componentWillMount() {
+  //   return waitForDataAndSetState(getUser(), this, 'user')
+  // }
 
-  componentWillUnmount() {
-    return cancelAllPromises(this)
-  }
+  // componentWillUnmount() {
+  //   return cancelAllPromises(this)
+  // }
 
   render() {
     const { t, location } = this.props

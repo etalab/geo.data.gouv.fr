@@ -1,0 +1,9 @@
+# Build
+dist
+
+# Cache
+.nyc_output
+
+# Reports
+coverage
+reports
