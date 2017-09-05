@@ -17,6 +17,7 @@
     "heroku-postbuild": "yarn install --production=false && npm run build"
   },
   "devDependencies": {
+    "babel-plugin-universal-import": "^1.2.7",
     "bluebird": "^3.5.0",
     "chai": "^4.1.1",
     "chai-enzyme": "^0.8.0",
@@ -32,6 +33,7 @@
     "eslint": "^4.5.0",
     "expect": "^1.20.2",
     "express": "^4.15.4",
+    "extract-css-chunks-webpack-plugin": "^2.0.17",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "fs-extra": "^4.0.1",
@@ -94,6 +96,7 @@
     "react-paginate": "^4.1.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-universal-component": "^2.5.2",
     "reactable": "^0.14.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",

@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const WriteFilePlugin = require('write-file-webpack-plugin')
 
 // const logger = require('./lib/logger')
 const project = require('./project.config')
@@ -45,7 +46,6 @@ const config = {
     ],
     alias: {
       'common': 'geodatagouv-client/src',
-      'is-webpack-bundle': inProjectSrc('tools/isWebpackBundle.js'),
 
       // We’re aliasing lodash to lodash-es here. We need to make sure
       // that all the versions of lodash used here are compatible.
@@ -61,6 +61,12 @@ const config = {
   },
 
   plugins: [
+    new WriteFilePlugin(),
+
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    }),
+
     new webpack.DefinePlugin(Object.assign({
       'process.env': Object.entries(project.environment).reduce((env, entry) => {
         const key = entry[0]
@@ -132,9 +138,34 @@ config.module.rules.push({
 
 // Styles
 // ------------------------------------
+// Local Styles
 config.module.rules.push({
-  test: /\.(sass|scss|css)$/,
-  loader: 'ignore-loader'
+  test: /\.(sass|scss)$/,
+  include: /geodatagouv-client\/src/,
+  use: [
+    {
+      loader: 'css-loader/locals',
+      options: {
+        modules: true,
+        localIdentName: '[name]-[hash:base64:8]',
+        camelCase: 'only'
+      }
+    },
+    {
+      loader: 'sass-loader',
+      options: {
+        includePaths: [
+          'node_modules/geodatagouv-client/src/styles',
+        ]
+      }
+    }
+  ]
+})
+
+// Vendor Styles
+config.module.rules.push({
+  test: /\.css$/,
+  loader: 'css-loader/locals'
 })
 
 // Images

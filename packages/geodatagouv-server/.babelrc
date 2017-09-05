@@ -19,8 +19,10 @@
     }],
     "transform-react-display-name",
     "lodash",
+    "dynamic-import-node",
     ["import-inspector", {
-      "serverSideRequirePath": true
+      "serverSideRequirePath": true,
+      "webpackRequireWeakId": true
     }]
   ]
 }

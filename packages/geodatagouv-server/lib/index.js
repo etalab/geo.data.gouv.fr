@@ -31,25 +31,24 @@ if (!__PROD__) {
   const clientCompiler = compiler.compilers[0]
 
   app.use(webpackDevMiddleware(compiler, {
-    publicPath,
-    stats: { colors: true }
+    stats: { colors: true },
+    serverSideRender: true
   }))
+
   app.use(webpackHotMiddleware(clientCompiler))
   app.use(webpackHotServerMiddleware(compiler, {
-    serverSideRender: true,
     chunkName: 'server'
   }))
 
   compiler.plugin('done', done)
 } else {
   webpack([clientConfig, serverConfig]).run((err, stats) => {
-    console.log(err)
+    if (err) {
+      console.log(err)
+    }
 
     const clientStats = stats.toJson().children[0]
-    console.log(clientStats.assetsByChunkName)
-
     const serverRender = require('../dist/server.js').default
-    console.log(serverRender)
 
     app.use(publicPath, express.static(outputPath))
     app.use(serverRender({ clientStats }))

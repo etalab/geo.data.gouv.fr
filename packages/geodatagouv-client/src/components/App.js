@@ -7,6 +7,7 @@ import PageLayout from './PageLayout'
 import HomeRoute from '../routes/Home'
 import SearchRoute from '../routes/Search'
 import DatasetRoute from '../routes/Dataset'
+import CatalogRoute from '../routes/Catalogs'
 import EventsRoute from '../routes/Events'
 import PublicationRoute from '../routes/Publication'
 
@@ -26,6 +27,7 @@ class App extends React.Component {
           <Route exact path='/' component={HomeRoute} />
           <Route path='/search' component={SearchRoute} />
           <Route path='/datasets/:datasetId' component={DatasetRoute} />
+          <Route path='/catalogs' component={CatalogRoute} />
           <Route path='/events' component={EventsRoute} />
           <Route path='/publication' component={PublicationRoute} />
 

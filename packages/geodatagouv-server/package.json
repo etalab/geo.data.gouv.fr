@@ -12,13 +12,15 @@
   "dependencies": {
     "compression": "^1.7.0",
     "express": "^4.15.4",
-    "node-fetch": "^1.7.2"
+    "node-fetch": "^1.7.2",
+    "webpack-flush-chunks": "^1.1.23"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-import-inspector": "^2.0.0",
+    "babel-plugin-import-inspector": "git+https://github.com/unfold/babel-plugin-import-inspector.git#use-call-expression",
     "eslint": "^4.5.0",
     "ignore-loader": "^0.1.2",
-    "webpack-hot-server-middleware": "^0.1.0"
+    "webpack-hot-server-middleware": "^0.1.0",
+    "write-file-webpack-plugin": "^4.1.0"
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-const Html = ({ assets = {}, content }) => {
+const Html = ({ assets = {}, content, preloadedState }) => {
+  // const { scripts, stylesheets, cssHashRaw, publicPath } = assets
+
   const head = Helmet.rewind()
 
   return (
@@ -12,14 +14,32 @@ const Html = ({ assets = {}, content }) => {
         {head.meta.toComponent()}
         {head.link.toComponent()}
         {head.script.toComponent()}
+        {/*
+        {stylesheets.map((file, key) => (
+          <link rel='stylesheet' href={`${publicPath}/${file}`} key={key} />
+        ))}
+        */}
       </head>
       <body>
         <div id='root' dangerouslySetInnerHTML={{
           __html: content
         }} />
-        <script charSet='UTF-8' src={`/scripts/manifest.js`} />
-        <script charSet='UTF-8' src={`/scripts/vendor.js`} />
-        <script charSet='UTF-8' src={`/scripts/app.js`} />
+        <script type='text/javascript'
+          dangerouslySetInnerHTML={{
+            __html: `window.__INITIAL_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}`
+          }}
+        />
+        {/*
+        <script
+          type='text/javascript'
+          dangerouslySetInnerHTML={{
+            __html: `window.__CSS_CHUNKS__ = ${JSON.stringify(cssHashRaw)}`
+          }}
+        />
+        {scripts.map((file, key) => (
+          <script type='text/javascript' src={`${publicPath}/${file}`} key={key} />
+        ))}
+        */}
       </body>
     </html>
   )

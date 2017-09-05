@@ -6,6 +6,7 @@ import createStore from './store/createStore'
 // Store Initialization
 // ------------------------------------
 const store = createStore(window.__INITIAL_STATE__)
+delete window.__INITIAL_STATE__
 
 // Render Setup
 // ------------------------------------
