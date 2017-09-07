@@ -1,40 +1,52 @@
 @import 'variables';
 
 .nav {
-  background-color: $blue;
   padding: 2em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $white;
+  color: $darkblue;
   z-index: 1;
 
   a {
-    color: $white;
+    color: $darkblue;
 
     &:focus,
     &:hover {
-      color: #fff;
+      color: #000;
+    }
+  }
+
+  .log {
+    color: $white;
+  }
+
+  @media (max-width: 551px) {
+    font-size: 0.75em;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 260px;
+
+    @media (max-width: 551px) {
+      width: 160px;
     }
   }
 }
 
-.home {
-  font-size: 2em;
-  font-weight: bold;
-
-  @media (max-width: 551px) {
-    font-size: 1em;
-    font-weight: bold;
-  }
-}
-
 .log {
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: $blue;
   font-size: 1em;
 
-  &:focus,
-  &:hover {
-    text-decoration: underline;
+  @media (max-width: 551px) {
+    padding: 0 5px;
   }
 }
 
@@ -58,17 +70,11 @@
   @media (max-width: 551px) {
     margin-right: 0.4em;
   }
-}
 
-.avatar {
-  width: 30px;
-  margin-right: 0.3em;
-  border-radius: 60px;
-
-  @media (max-width: 551px) {
-    width: 25px;
-    margin-left: 0;
-    margin-right: 0.1em;
+  .avatar {
+    width: 30px;
+    margin-right: .3em;
+    border-radius: 60px;
   }
 }
 
