@@ -7,7 +7,7 @@ import {
 import { getCatalogOrderByScore } from 'common/helpers/catalogs'
 
 const initialState = {
-  pending: false,
+  pending: null,
   error: false,
   catalogs: []
 }

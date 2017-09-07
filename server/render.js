@@ -31,39 +31,43 @@ export default ({ clientStats }) => (req, res) => {
     </Provider>
   )
 
-  const helmet = Helmet.renderStatic()
-  const preloadedState = store.getState()
-  const chunkNames = flushChunkNames()
+  Promise
+    .all(store.thunks)
+    .then(() => {
+      const helmet = Helmet.renderStatic()
+      const preloadedState = store.getState()
+      const chunkNames = flushChunkNames()
 
-  const {
-    js,
-    styles,
-    cssHash,
-    // scripts,
-    // stylesheets
-  } = flushChunks(clientStats, { chunkNames })
+      const {
+        js,
+        styles,
+        cssHash,
+        // scripts,
+        // stylesheets
+      } = flushChunks(clientStats, { chunkNames })
 
-  console.log('URL', req.url)
-  console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames)
-  // console.log('SCRIPTS SERVED', scripts)
-  // console.log('STYLESHEETS SERVED', stylesheets)
+      console.log('URL', req.url)
+      console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames)
+      // console.log('SCRIPTS SERVED', scripts)
+      // console.log('STYLESHEETS SERVED', stylesheets)
 
-  res.send(
-    `<!doctype html>
-      <html ${helmet.htmlAttributes.toString()}>
-        <head>
-          <meta charset="utf-8">
-          ${helmet.title.toString()}
-          ${helmet.meta.toString()}
-          ${helmet.link.toString()}
-          ${styles}
-        </head>
-        <body ${helmet.bodyAttributes.toString()}>
-          <div id="root">${app}</div>
-          <script type='text/javascript'>window.__INITIAL_STATE__ = ${JSON.stringify(preloadedState)}</script>
-          ${cssHash}
-          ${js}
-        </body>
-      </html>`
-  )
+      res.send(
+        `<!doctype html>
+          <html ${helmet.htmlAttributes.toString()}>
+            <head>
+              <meta charset="utf-8">
+              ${helmet.title.toString()}
+              ${helmet.meta.toString()}
+              ${helmet.link.toString()}
+              ${styles}
+            </head>
+            <body ${helmet.bodyAttributes.toString()}>
+              <div id="root">${app}</div>
+              <script type='text/javascript'>window.__INITIAL_STATE__ = ${JSON.stringify(preloadedState)}</script>
+              ${cssHash}
+              ${js}
+            </body>
+          </html>`
+      )
+    })
 }
