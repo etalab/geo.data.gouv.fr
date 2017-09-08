@@ -1,5 +1,19 @@
 @import 'variables';
 
+.container {
+  color: #fff;
+  padding-bottom: 10%;
+
+  a {
+    color: $darkblue;
+
+    &:focus,
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
 .masthead {
   padding: 20vh 8%;
   text-align: center;
@@ -9,19 +23,20 @@
   }
 
   h1 {
-    font-size: 1.4em;
+    font-size: xx-large;
+    font-weight: 100;
     margin-bottom: 2em;
   }
 
   @media (max-width: 768px) {
     padding: 0;
-    margin-bottom: 3em;
   }
 
   @media (max-width: 551px) {
     h1 {
-      font-size: 1em;
-      margin: 1.4em;
+      font-size: larger;
+      margin: 2em;
+      padding-top: 2em;
     }
   }
 }
@@ -71,8 +86,6 @@
 }
 
 .datagouv {
-  background-color: $blue;
-  border: 1px solid $darkblue;
   padding: 40px;
 
   h2 {

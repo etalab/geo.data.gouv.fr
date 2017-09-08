@@ -7,6 +7,7 @@ import { translate } from 'react-i18next'
 import SearchInput from 'common/components/SearchInput'
 import CatalogPreview from 'common/components/CatalogPreview'
 
+import clouds from './images/clouds.svg'
 import styles from './HomePage.scss'
 
 class HomePage extends React.PureComponent {
@@ -38,7 +39,7 @@ class HomePage extends React.PureComponent {
     const { catalogs, t } = this.props
 
     return (
-      <div>
+      <div className={styles.container} style={`background: url(${clouds}) bottom / 100% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
         <div className={styles.masthead}>
           <h1>
             {t('HomePage.tagline')}
