@@ -5,8 +5,14 @@
   display: flex;
   flex-direction: row;
 
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+  border-radius: 5px;
+
   @media (max-width: 768px) {
-    flex-direction: column;
+    border-radius: 0;
   }
 }
 
@@ -17,9 +23,7 @@
   line-height: 2em;
   font-size: 1.5em;
   padding: 0.59em 1em;
-  background: #fff;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  border: 0;
 
   &:focus,
   &:active {
@@ -29,21 +33,16 @@
 
 .button {
   cursor: pointer;
+  margin: 1em;
   display: inline-block;
   min-height: 1em;
   outline: 0;
   border: 0;
   vertical-align: baseline;
   padding: 0.8em 1.5em;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  background-color: $blue;
-  color: #fff;
 
   &:hover {
     border-radius: 0;
-    background-color: $highlight-blue;
     color: #fff;
   }
 }

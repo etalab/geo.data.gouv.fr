@@ -7,8 +7,8 @@ import { translate } from 'react-i18next'
 import SearchInput from 'common/components/SearchInput'
 import CatalogPreview from 'common/components/CatalogPreview'
 
-import clouds from './images/clouds.svg'
 import styles from './HomePage.scss'
+import clouds from './images/clouds.svg'
 
 class HomePage extends React.PureComponent {
   static propTypes = {
