@@ -3,10 +3,11 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import styles from './Filter.scss'
+import closeIcon from './images/close-icon.svg'
 
-const Filter = ({ detail, remove, filter, style, onClick, t }) => {
-  const title = t(`components.Filter.types.${filter.name}`)
-  const value = t(`components.Filter.values.${filter.value}`, {
+const Filter = ({ detail, remove, filter, number, style, onClick, t }) => {
+  const title = t(`components.Filter.${filter.name}`)
+  const value = t(`components.Filter.${filter.value}`, {
     defaultValue: filter.value
   })
 
@@ -17,10 +18,11 @@ const Filter = ({ detail, remove, filter, style, onClick, t }) => {
       style={style}
       onClick={onClick && (() => onClick(filter))}
     >
-      <span>{detail && `${title}:`}</span><span className={styles.filterValue}>{value}</span>
-      {remove && (
-        <span> <i className='remove icon' /></span>
-      )}
+      <div className={styles.filter}>
+        {remove && <img src={closeIcon} />}
+        <div>{detail && `${title}:`}</div><span className={styles.filterValue}>{value}</span>
+      </div>
+      {number && <div> {number}</div>}
     </button>
   )
 }
@@ -43,6 +45,7 @@ Filter.propTypes = {
     ]).isRequired,
     value: PropTypes.string.isRequired
   }).isRequired,
+  number: PropTypes.number,
   style: PropTypes.object,
   onClick: PropTypes.func,
 
