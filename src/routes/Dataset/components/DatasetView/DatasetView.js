@@ -1,7 +1,6 @@
 import React from 'react'
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 
 import Warning from 'common/components/Warning'
 import Loader from 'common/components/Loader'
@@ -10,6 +9,7 @@ import Discussions from '../../../../modules/Datasets/components/Discussions/Dis
 
 import DatasetBlock from '../DatasetBlock'
 import DatasetHeader from '../DatasetHeader'
+import DatasetHelmet from '../DatasetHelmet'
 import DatasetTechnicalInfo from '../DatasetTechnicalInfo'
 import DatasetDownloadList from '../DatasetDownloadList'
 import DatasetLinks from '../DatasetLinks'
@@ -22,11 +22,10 @@ import DatasetContactList from '../DatasetContactList'
 
 import styles from './DatasetView.scss'
 
-const { INSPIRE_API_URL } = process.env
-
 class DatasetView extends React.PureComponent {
   static propTypes = {
     dataset: PropTypes.shape({
+      recordId: PropTypes.string,
       metadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
         status: PropTypes.string,
@@ -78,18 +77,7 @@ class DatasetView extends React.PureComponent {
 
     return (
       <div>
-        <Helmet title={dataset.metadata.title}>
-          <meta name='twitter:title' content={dataset.metadata.title} />
-          <meta name='twitter:description' content={dataset.metadata.description} />
-          {hasThumbnails && (
-            <meta name='twitter:image' content={`${INSPIRE_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />
-          )}
-          <meta property='og:title' content={dataset.metadata.title} />
-          {hasThumbnails && (
-            <meta name='og:image' content={`${INSPIRE_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} />
-          )}
-          <meta property='og:description' content={dataset.metadata.description} />
-        </Helmet>
+        <DatasetHelmet dataset={dataset} hasThumbnails={hasThumbnails} />
         {i18n.exists(`Dataset:components.DatasetView.consequences.${status}`) && (
           <Warning title={t('components.DatasetView.obsoleteWarning', { status: t(`enums.status.${status}`) })}>
             {t(`Dataset:components.DatasetView.consequences.${status}`)}
