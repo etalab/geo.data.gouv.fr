@@ -18,11 +18,11 @@ const Filter = ({ detail, remove, filter, number, style, onClick, t }) => {
       style={style}
       onClick={onClick && (() => onClick(filter))}
     >
-      <div className={styles.filter}>
+      <div className={`${styles.filter} ${number && styles.countedFilter}`}>
         {remove && <img src={closeIcon} />}
         <div>{detail && `${title}:`}</div><span className={styles.filterValue}>{value}</span>
       </div>
-      {number && <div> {number}</div>}
+      {number && <div className={styles.count}> {number}</div>}
     </button>
   )
 }

@@ -41,6 +41,15 @@
   display: inline-flex;
 }
 
+.counted-filter {
+  width: 80%;
+}
+
+.count {
+  width: 20%;
+  margin-left: 1em;
+}
+
 .filter-value {
   padding-left: 5px;
   text-overflow: ellipsis;
