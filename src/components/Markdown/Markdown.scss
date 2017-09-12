@@ -1,3 +1,8 @@
 .wrapper pre {
   white-space: pre-wrap;
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
