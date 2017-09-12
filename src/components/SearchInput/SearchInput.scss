@@ -45,4 +45,8 @@
     border-radius: 0;
     color: #fff;
   }
+
+  @media (max-width: 551px) {
+    margin: 0 0 0 -2em;
+  }
 }

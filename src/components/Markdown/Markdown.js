@@ -16,7 +16,7 @@ const Markdown = ({ markdown, ellipsis }) => {
 
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
-  ellipsis: PropTypes.boolean
+  ellipsis: PropTypes.bool
 }
 
 export default Markdown

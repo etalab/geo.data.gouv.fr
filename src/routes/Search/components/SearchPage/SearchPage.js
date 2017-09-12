@@ -13,6 +13,7 @@ import FiltersSummary from '../FiltersSummary'
 import SearchResults from '../SearchResults'
 
 import styles from './SearchPage.scss'
+import clouds from '../../../../components/PageLayout/images/clouds.svg'
 
 class SearchPage extends React.PureComponent {
   static propTypes = {
@@ -117,29 +118,33 @@ class SearchPage extends React.PureComponent {
     return (
       <div className={styles.container}>
         <Helmet title={t('SearchPage.documentTitle')} />
-        <div className={styles.search}>
-          <SearchInput
-            defaultValue={search.parsedQuery.textInput}
-            onSearch={this.updateQuery}
-            hasButton
-          />
-          <FiltersSummary
-            filters={search.parsedQuery.filters}
-            removeFilter={this.removeFilter}
-          />
+        <div className={styles.header} style={`background: url(${clouds}) bottom / 100% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+          <div className={styles.search}>
+            <SearchInput
+              defaultValue={search.parsedQuery.textInput}
+              onSearch={this.updateQuery}
+              hasButton
+            />
+            <FiltersSummary
+              filters={search.parsedQuery.filters}
+              removeFilter={this.removeFilter}
+            />
+          </div>
         </div>
 
-        <Loader isLoading={search.pending} error={search.error}>
-          <SearchResults
-            page={search.parsedQuery.page}
-            query={search.search.query}
-            count={search.search.count}
-            results={search.search.results}
-            facets={search.search.facets}
-            addFilter={this.addFilter}
-            changePage={this.changePage}
-          />
-        </Loader>
+        <div className={styles.results}>
+          <Loader isLoading={search.pending} error={search.error}>
+            <SearchResults
+              page={search.parsedQuery.page}
+              query={search.search.query}
+              count={search.search.count}
+              results={search.search.results}
+              facets={search.search.facets}
+              addFilter={this.addFilter}
+              changePage={this.changePage}
+            />
+          </Loader>
+        </div>
       </div>
     )
   }

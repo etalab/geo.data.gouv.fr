@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="260px" height="260px" viewBox="0 0 260 260" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F0F0F0;">
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="no-image">
+            <path d="M-31,205.639891 C32.0068935,152.132049 75.8172166,127.01289 100.43097,130.282413 C129.863223,134.191994 172.932272,169.824444 182.32645,173.081485 C191.539462,176.275714 198.776619,159.93933 233.226845,155.928648 C241.59161,154.954825 252.849328,160.672437 267,173.081485 L267,252.90049 L-31,260 L-31,205.639891 Z" id="Path-2" stroke="#FFFFFF" stroke-width="9" fill="#D8D8D8"></path>
+            <path d="M-45.2203523,251.883859 C3.24689556,204.576404 35.2337662,182.638798 50.7402597,186.071042 C66.2467532,189.503285 118.290673,217.179161 206.872018,269.098669 L-45.2203523,251.883859 Z" id="Path-5" stroke="#FFFFFF" stroke-width="9" fill="#D8D8D8"></path>
+            <g id="field" transform="translate(0.000000, 184.000000)" stroke="#FFFFFF" stroke-width="9">
+                <path d="M0,77.2503644 C103.39682,24.8212209 162.027428,-0.920523352 175.891824,0.0251316168 C189.75622,0.970786586 226.765717,26.7125308 286.920315,77.2503644" id="Path-4" fill="#D8D8D8"></path>
+                <path d="M65.5,47.5 L47.5,74.5" id="Line" stroke-linecap="square"></path>
+                <path d="M114.5,24.5 C104.76493,36.1513761 98.1145201,44.6513761 94.5487708,50 C90.9830215,55.3486239 86.3000979,63.8486239 80.5,75.5" id="Line" stroke-linecap="square"></path>
+                <path d="M171,2 C155.252092,19.5912933 144.494077,32.4246266 138.725953,40.5 C132.957829,48.5753734 125.382511,61.4087067 116,79" id="Line" stroke-linecap="square"></path>
+                <path d="M207,17 C191.252092,32.0782514 180.494077,43.0782514 174.725953,50 C168.957829,56.9217486 161.382511,67.9217486 152,83" id="Line" stroke-linecap="square"></path>
+                <path d="M239,39 C229.26493,50.6513761 222.61452,59.1513761 219.048771,64.5 C215.483022,69.8486239 210.800098,78.3486239 205,90" id="Line" stroke-linecap="square"></path>
+            </g>
+            <circle id="Oval-7" stroke="#FFFFFF" stroke-width="9" fill="#D8D8D8" cx="180" cy="69" r="45"></circle>
+            <path d="M279,-18 L-0.5,260.5" id="Line-2" stroke-opacity="0.308763587" stroke="#979797" stroke-width="10" stroke-linecap="square"></path>
+        </g>
+    </g>
+</svg>

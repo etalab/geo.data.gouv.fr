@@ -1,16 +1,119 @@
 @import 'variables';
 
 .container {
-  margin-bottom: 3em;
-  padding: 1em;
+  margin-bottom: 2em;
+
+  @media (max-width: 551px) {
+    margin-bottom: 1em;
+  }
+
+  a {
+    color: #000;
+
+    &:focus,
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.dataset {
+  display: flex;
+  margin-bottom: 1em;
   background-color: #fff;
-  box-shadow: $box-shadow;
+  box-shadow: $box-dark-shadow;
   margin-right: 2em;
+
+  height: 220px;
 
   @media (max-width: 768px) {
     margin: 0;
     margin-bottom: 1em;
+
+    height: 110px;
   }
+
+  @media (max-width: 551px) {
+    margin: 0;
+    margin-bottom: 1em;
+
+    height: 80px;
+  }
+}
+
+.thumbnail {
+  img {
+    width: 220px;
+    height: 220px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 110px;
+      height: 110px;
+    }
+  }
+
+  @media (max-width: 551px) {
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1em;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 551px) {
+    div {
+      display: none;
+    }
+  }
+}
+
+.metadata {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  img {
+    width: 80px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 40px;
+    }
+  }
+
+  @media (max-width: 551px) {
+    display: none;
+  }
+}
+
+.filters {
+  h5 {
+    margin-right: 1em;
+  }
+
+  @media (max-width: 551px) {
+    display: none;
+  }
+}
+
+.facet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .list {

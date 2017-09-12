@@ -1,7 +1,29 @@
 .container {
-  padding: 4em;
+  background-color: #fff;
+}
+
+.header {
+  height: 240px;
+
+  @media (max-width: 551px) {
+    height: 110px;
+  }
 }
 
 .search {
-  margin-bottom: 4em;
+  padding: 4em 0 0 2em;
+  width: 80%;
+
+  @media (max-width: 551px) {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.results {
+  padding: 0 2em;
+
+  @media (max-width: 551px) {
+    padding: 0 1em;
+  }
 }
