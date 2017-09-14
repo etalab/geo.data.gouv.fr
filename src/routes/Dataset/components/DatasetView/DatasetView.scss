@@ -8,7 +8,7 @@
     flex-flow: wrap;
 
     > :nth-child(1) {
-      width: 100%;
+      max-width: 100%;
       order: 3;
 
       display: flex;
@@ -28,12 +28,16 @@
   @media (max-width: 551px) {
     flex-direction: column;
 
+    > :nth-child(1) {
+      max-width: 100%;
+    }
+
     > :nth-child(2) {
       width: 100%;
     }
 
     > :nth-child(3) {
-      width: 100%;
+      max-width: 100%;
     }
   }
 }
@@ -52,10 +56,11 @@
   display: flex;
   flex-direction: column;
 
+  max-width: 25%;
+
   margin: 0 2em 2em;
 
   @media (max-width: 768px) {
-    width: 26%;
     margin: 0 1em 1em;
   }
 }

@@ -20,7 +20,7 @@ const DatasetHeader = ({ dataset, t }) => {
 
   return (
     <div className={styles.container}>
-      <div className={inspireTheme && styles.inspireThemeHead}>
+      <div className={styles.inspireThemeHead}>
         <div className={styles.resume}>
           <h1 className={styles.title}>{title}</h1>
 
