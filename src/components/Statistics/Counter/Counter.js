@@ -10,7 +10,7 @@ const Counter = ({ value, label, unit = '', size = '', color = '', title = '' })
       {value || '0'} <div className={styles.unit}>{unit}</div>
     </div>
     <div className={styles.label}>
-      { label && <div className={`${styles[size]}`}>{label} </div> }
+      { label && <div className={`${styles[size]}`}>{label}</div> }
     </div>
   </div>
 )

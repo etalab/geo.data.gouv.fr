@@ -7,7 +7,6 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
 import styles from './PageLayout.scss'
-import clouds from './images/clouds.svg'
 
 export const PageLayout = ({ children, i18n }) => (
   <div className={styles.content}>
@@ -17,7 +16,7 @@ export const PageLayout = ({ children, i18n }) => (
       htmlAttributes={{ lang: i18n.language }}
     />
     <Header />
-    <div className={styles.body} style={`background: url(${clouds}) bottom / 100% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+    <div className={styles.body}>
       {children}
     </div>
     <Footer />

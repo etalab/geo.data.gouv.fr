@@ -7,15 +7,27 @@
 
 .image {
   display: flex;
-  width: 280px;
-  height: 190px;
   justify-content: center;
   align-items: center;
   margin: auto;
 
   img {
     max-width: 280px;
-    max-height: 190px;
+    max-height: 280px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      max-width: 140px;
+      max-height: 140px;
+    }
+  }
+
+  @media (max-width: 551px) {
+    img {
+      max-width: 280px;
+      max-height: 280px;
+    }
   }
 }
 

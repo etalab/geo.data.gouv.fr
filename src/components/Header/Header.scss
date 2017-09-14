@@ -5,11 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $darkblue;
+  color: $darkgrey;
   z-index: 1;
 
   a {
-    color: $darkblue;
+    color: $darkgrey;
 
     &:focus,
     &:hover {

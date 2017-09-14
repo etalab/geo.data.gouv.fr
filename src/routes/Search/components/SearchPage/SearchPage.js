@@ -118,7 +118,7 @@ class SearchPage extends React.PureComponent {
     return (
       <div className={styles.container}>
         <Helmet title={t('SearchPage.documentTitle')} />
-        <div className={styles.header} style={`background: url(${clouds}) bottom / 100% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+        <div className={styles.header} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
           <div className={styles.search}>
             <SearchInput
               defaultValue={search.parsedQuery.textInput}

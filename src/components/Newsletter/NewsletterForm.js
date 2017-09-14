@@ -48,8 +48,10 @@ class NewsletterForm extends React.Component {
             <h2 className={style.title}>{t('components.NewsletterForm.newsletterSignUp')} :</h2>
             <div className={style.form}>
               <label htmlFor='mce-EMAIL'>{t('components.NewsletterForm.label')}</label>
-              <input className={style.input} type='email' value={value} onChange={this.handleChange} name='EMAIL' id='mce-EMAIL' />
-              <input type='submit' value={t('components.NewsletterForm.inputValue')} name='subscribe' id='mc-embedded-subscribe' className={style.button} />
+              <span>
+                <input className={style.input} type='email' value={value} onChange={this.handleChange} name='EMAIL' id='mce-EMAIL' />
+                <input type='submit' value={t('components.NewsletterForm.inputValue')} name='subscribe' id='mc-embedded-subscribe' className={style.button} />
+              </span>
             </div>
 
             <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden='true'>

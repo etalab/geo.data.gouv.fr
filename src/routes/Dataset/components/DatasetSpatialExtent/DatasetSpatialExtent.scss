@@ -6,4 +6,13 @@
 .map {
   margin-top: 15px;
   height: 280px;
+
+  @media (max-width: 768px) {
+    height: 140px;
+  }
+
+  @media (max-width: 551px) {
+    height: 200px;
+    max-width: 90%;
+  }
 }

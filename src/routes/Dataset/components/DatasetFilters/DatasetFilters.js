@@ -46,7 +46,7 @@ class DatasetFilters extends React.PureComponent {
             <h4>{section.title}</h4>
             <div className={styles.facets}>
               {section.filters.map((filter, idx) => (
-                <Facet key={idx} name={section.name} value={filter} addFilter={this.onSearch} />
+                <Facet style={{ 'margin-right': '5px' }} key={idx} name={section.name} value={filter} addFilter={this.onSearch} />
               ))}
             </div>
           </div>

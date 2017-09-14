@@ -47,7 +47,6 @@
     },
 
     "DatasetDownload": {
-      "title": "Télécharger",
       "unavailable": "Indisponible",
       "buttonText": "Visualiser"
     },
@@ -106,7 +105,6 @@
         "links": "Liens",
         "discussions": "Discussions",
         "filters": "Filtres",
-        "producer": "Producteur",
         "preview": "Aperçu des données",
         "spatialExtent": "Étendue spatiale",
         "dgvPublication": "Publication sur data.gouv.fr",

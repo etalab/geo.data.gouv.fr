@@ -1,9 +1,11 @@
+@import 'variables';
+
 .container {
   display: flex;
-  flex-flow: wrap;
+  flex-flow: column;
 
-  @media (max-width: 551px) {
-    flex-flow: column;
+  b {
+    color: $blue;
   }
 
   div {
@@ -20,6 +22,7 @@
 }
 
 .other {
+  margin-top: 2em;
   @media (max-width: 551px) {
     margin-top: 1.4rem;
   }
