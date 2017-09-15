@@ -8,5 +8,10 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
+}
+
+.chart {
+  min-width: 30%;
+  margin: 2em 0;
 }

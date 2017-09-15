@@ -17,7 +17,7 @@
   padding: 2em 20px;
   box-shadow: $box-shadow;
   background: $white;  /* fallback for old browsers */
-  background: linear-gradient(to bottom, $white, $whitesmoke); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(180deg, #fdfdf8, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .container {

@@ -24,8 +24,7 @@ class Catalog extends Component {
   render() {
     const { catalog } = this.state
 
-    if (catalog) return <CatalogPreview catalog={catalog} />
-    return null
+    return catalog && <CatalogPreview catalog={catalog} />
   }
 }
 

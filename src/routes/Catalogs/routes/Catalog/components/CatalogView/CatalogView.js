@@ -11,6 +11,7 @@ import CatalogStatistics from '../CatalogStatistics'
 import CatalogFacetsList from '../CatalogFacetsList'
 
 import styles from './CatalogView.scss'
+import clouds from '../../../../../../components/PageLayout/images/clouds.svg'
 
 class CatalogView extends React.PureComponent {
   static propTypes = {
@@ -44,7 +45,7 @@ class CatalogView extends React.PureComponent {
     return (
       <div>
         <Helmet title={catalog.name} />
-        <div className={styles.header}>
+        <div className={styles.header} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
           <h1>{catalog.name}</h1>
 
           <a href={catalog.service.location} target='_blank'>
@@ -57,16 +58,16 @@ class CatalogView extends React.PureComponent {
         </div>
 
         <div className={styles.section}>
-          <CatalogFacetsList catalog={catalog} metrics={metrics} onSearch={onSearch} />
-        </div>
-
-        <div className={styles.section}>
           <CatalogHarvestsContainer catalog={catalog} />
         </div>
 
         <div className={styles.section}>
           <h2>{t('CatalogView.catalogSearchTitle')}</h2>
           <SearchInput onSearch={this.onSearch} hasButton />
+        </div>
+
+        <div className={styles.section}>
+          <CatalogFacetsList catalog={catalog} metrics={metrics} onSearch={onSearch} />
         </div>
       </div>
     )
