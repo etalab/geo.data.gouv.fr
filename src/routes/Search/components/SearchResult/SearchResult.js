@@ -23,7 +23,7 @@ const SearchResult = ({ dataset, addFilter, t }) => (
 
       <div className={styles.content}>
         <div className={styles.description}>
-          <h4>{dataset.metadata.title}</h4>
+          <h3>{dataset.metadata.title}</h3>
 
           { dataset.metadata.description && (
             <Markdown markdown={dataset.metadata.description} ellipsis />
