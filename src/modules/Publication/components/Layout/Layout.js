@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet'
 import User from '../../../../components/User/User'
 
 import styles from './Layout.scss'
+import clouds from '../../../../components/PageLayout/images/clouds.svg'
 
 function Layout({ user, organization, pageTitle, title, children }) {
   if (!user) return null
@@ -15,13 +16,12 @@ function Layout({ user, organization, pageTitle, title, children }) {
   return (
     <div className={styles.publishing}>
       <Helmet title={pageTitle} />
-      <User user={user} />
-      {organization
-        ? <Link to={`/publication/${organization.id}`}>
-          <img className={styles.organizationLogo} alt='organization logo' src={organizationLogo} />
-        </Link>
-        : null
-      }
+      <div className={styles.header} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+        <User user={user} />
+      </div>
+      {organization && (
+        <Link className={styles.organizationLogo} to={`/publication/${organization.id}`} style={{ 'background-image': `url(${organizationLogo})` }} />
+      )}
       <div className={styles.container}>
         <h3>{title}</h3>
         {children}

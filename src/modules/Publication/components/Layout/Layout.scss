@@ -1,35 +1,50 @@
 @import 'variables';
 
-.publishing {
-  padding: 60px 40px;
-  display: block;
+.header {
+  height: 240px;
 
-  @media (max-width: 768px) {
-    padding: 0;
-    padding-top: 60px;
+  @media (max-width: 551px) {
+    height: 110px;
   }
+}
+
+.publishing {
+  display: block;
 }
 
 .organization-logo {
   box-shadow: $box-shadow;
   background-color: #fff;
+
   position: absolute;
-  top: 100px;
-  max-width: 50px;
-  border-radius: 60px;
+  top: 125px;
   left: 52%;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  float: left;
+  background-clip: padding-box;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 
   @media (max-width: 768px) {
     left: 56%;
   }
+
+  @media (max-width: 551px) {
+    top: 100px;
+    left: 56%;
+
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .container {
-  padding-top: 100px;
-  padding-bottom: 2em;
-  background-color: #fff;
-  margin-bottom: 2em;
-  box-shadow: $box-shadow;
+  padding: 2em;
 
   h3 {
     padding: 0 1em;
