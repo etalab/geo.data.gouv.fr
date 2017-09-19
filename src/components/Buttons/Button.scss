@@ -5,4 +5,10 @@
   color: #fff;
   background-color: $blue;
   border: 1px solid #fff;
+
+  &:hover {
+    color: $blue;
+    background-color: #fff;
+    border-color: $blue;
+  }
 }
