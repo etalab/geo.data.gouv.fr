@@ -1,27 +1,41 @@
+@import 'variables';
+
 .catalogs-style {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: flex-start;
   padding-bottom: 2em;
   margin-bottom: 2em;
-  border-bottom: 1px solid #d0d0d0;
 
   a {
     margin: 0.5em;
+  }
+
+  @media (max-width: 768px) {
+    align-items: center;
   }
 }
 
 .catalog {
   display: flex;
   flex-direction: column;
+  width: fit-content;
 }
 
 .remove {
-  width: 300px;
-  margin: 0 7px;
   padding: 0.5em;
+  color: #fff;
+  background-color: $red;
+  border: 1px solid #fff;
+
+  &:hover {
+    color: $red;
+    background-color: #fff;
+    border-color: $red;
+  }
 }
 
 .button-style {
-  margin: 0.5em;
+  width: 100%;
+  margin: 0.5em 0;
 }

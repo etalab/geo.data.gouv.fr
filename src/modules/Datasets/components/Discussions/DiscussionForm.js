@@ -59,7 +59,11 @@ class DiscussionForm extends Component {
             placeholder='Commentaire' />
         </div>
 
-        <Button action={() => this.search()} text={replyMode ? 'Répondre' : 'Démarrer une discussion'} />
+        <Button
+          action={() => this.search()}
+          text={replyMode ? 'Répondre' : 'Démarrer une discussion'}
+          icon={replyMode ? 'reply' : 'comments'}
+        />
       </div>
     )
   }

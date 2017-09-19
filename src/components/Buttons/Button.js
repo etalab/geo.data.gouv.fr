@@ -21,7 +21,7 @@ Button.propTypes = {
   ]),
   action: PropTypes.func,
   icon: PropTypes.string,
-  className: PropTypes.object,
+  className: PropTypes.string,
   style: PropTypes.object
 }
 

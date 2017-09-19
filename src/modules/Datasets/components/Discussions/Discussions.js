@@ -100,7 +100,7 @@ class Discussions extends Component {
               error={formError}
               returForm={(title, comment, discussionId) => this.createDiscussion(title, comment, discussionId)} />
           </AuthentificationNeeded>
-          : <Button text={'Démarrer une nouvelle discussion'} action={() => this.showDiscussionForm()} />
+          : <Button text={'Démarrer une nouvelle discussion'} action={() => this.showDiscussionForm()} icon='comments' />
         }
       </div>
     )
