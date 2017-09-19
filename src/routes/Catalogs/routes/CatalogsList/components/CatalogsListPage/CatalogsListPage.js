@@ -38,7 +38,7 @@ class CatalogsListPage extends React.PureComponent {
     const { catalogs, t } = this.props
 
     return (
-      <div className={styles.container} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+      <div className={styles.container} style={{ background: `url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)` }}>
         <Helmet title={t('CatalogsListPage.documentTitle')} />
         <Loader isLoading={catalogs.pending} error={catalogs.error}>
           <div>

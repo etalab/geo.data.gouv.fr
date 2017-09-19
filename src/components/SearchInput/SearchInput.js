@@ -44,7 +44,7 @@ class SearchInput extends React.PureComponent {
         />
 
         {hasButton && (
-          <button type='submit' className={styles.button} style={`background: url(${search}) center left no-repeat`} />
+          <button type='submit' className={styles.button} style={{ background: `url(${search}) center left no-repeat` }} />
         )}
       </form>
     )

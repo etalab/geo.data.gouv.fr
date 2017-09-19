@@ -39,7 +39,7 @@ class HomePage extends React.PureComponent {
     const { catalogs, t } = this.props
 
     return (
-      <div className={styles.container} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+      <div className={styles.container} style={{ background: `url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)` }}>
         <div className={styles.masthead}>
           <h1>
             {t('HomePage.tagline')}
