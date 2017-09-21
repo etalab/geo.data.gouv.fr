@@ -11,6 +11,7 @@
   }
 
   @media (max-width: 768px) {
+    justify-content: center;
     padding-top: 0;
 
     > a {
@@ -28,10 +29,6 @@
 .loader {
   text-align: center;
   margin-top: 5em;
-}
-
-.add {
-  margin-top: 5px;
 }
 
 .warning-msg {

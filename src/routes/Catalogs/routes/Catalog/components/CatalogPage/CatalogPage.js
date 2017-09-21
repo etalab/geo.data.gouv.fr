@@ -6,8 +6,6 @@ import Loader from 'common/components/Loader'
 
 import CatalogView from '../CatalogView'
 
-import styles from './CatalogPage.scss'
-
 class CatalogPage extends React.PureComponent {
   static propTypes = {
     catalog: PropTypes.shape({
@@ -66,15 +64,13 @@ class CatalogPage extends React.PureComponent {
     const { catalog, metrics } = this.props
 
     return (
-      <div className={styles.container}>
-        <Loader isLoading={catalog.pending || metrics.pending} error={catalog.error || metrics.error}>
-          <CatalogView
-            catalog={catalog.catalog}
-            metrics={metrics.metrics}
-            onSearch={this.onSearch}
-          />
-        </Loader>
-      </div>
+      <Loader isLoading={catalog.pending || metrics.pending} error={catalog.error || metrics.error}>
+        <CatalogView
+          catalog={catalog.catalog}
+          metrics={metrics.metrics}
+          onSearch={this.onSearch}
+        />
+      </Loader>
     )
   }
 }

@@ -26,14 +26,12 @@ export const CatalogPreview = ({ catalog, t }) => {
         total={metrics.datasets.totalCount}
         size='small'
         label={t('components.CatalogPreview.openDataLabel')}
-        icon='unlock alternate icon'
       />
       <Percent
         value={download}
         total={metrics.datasets.totalCount}
         size='small'
         label={t('components.CatalogPreview.downloadableLabel')}
-        icon='download'
       />
       <Counter value={metrics.records.totalCount} size='small' label={t('components.CatalogPreview.recordsLabel')} />
     </div>

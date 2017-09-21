@@ -3,14 +3,14 @@
 import React, { Component } from 'react'
 
 import Loader from '../../../../components/Loader'
-import AddButton from '../../../../components/Buttons/AddButton'
+import Button from '../../../../components/Buttons/Button'
 import CatalogPreview from '../../../../components/CatalogPreview/CatalogPreview'
 
 import { fetchCatalogs } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 import { getCatalogOrderByScore, getCandidateCatalogs } from '../../../../helpers/catalogs'
 
-import { container, card, add, loader, warningMsg } from './AddCatalogs.scss'
+import styles from './AddCatalogs.scss'
 
 class AddCatalogs extends Component {
   constructor(props) {
@@ -29,20 +29,20 @@ class AddCatalogs extends Component {
   render() {
     const { catalogs } = this.state
     const { sourceCatalogs, addCatalog } = this.props
-    if (!this.state.catalogs) return <Loader isLoading className={loader} />
+    if (!this.state.catalogs) return <Loader isLoading className={styles.loader} />
 
     const candidateCatalogs = getCandidateCatalogs(catalogs, sourceCatalogs)
     const sortedCatalogs = getCatalogOrderByScore(candidateCatalogs)
 
     return (
-      <div className={container}>
+      <div className={styles.container}>
         {sortedCatalogs.map((catalog, idx) =>
-          <div key={idx} className={card}>
+          <div key={idx} className={styles.card}>
             <CatalogPreview catalog={catalog} />
-            <AddButton style={add} action={() => addCatalog(catalog.id)} text={'Ajouter'} />
+            <Button action={() => addCatalog(catalog.id)} text={'Ajouter'} icon='plus' />
           </div>
         )}
-        <div className={warningMsg}><i className='warning icon' />Seuls les catalogues disposant de données ouvertes et téléchargeables sont disponible ici.</div>
+        <div className={styles.warningMsg}><i className='styles.warning icon' />Seuls les catalogues disposant de données ouvertes et téléchargeables sont disponible ici.</div>
       </div>
     )
   }

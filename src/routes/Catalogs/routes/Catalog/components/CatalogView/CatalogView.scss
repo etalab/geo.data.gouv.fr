@@ -1,12 +1,29 @@
 @import 'variables';
 
 .header {
-  padding: 2em;
-  background-color: $blue;
-  color: #fff;
+  text-align: center;
+  color: $darkgrey;
+
+  height: 240px;
+  padding-top: 3em;
 
   a {
-    color: #fff;
+    color: $darkgrey;
+
+    &:focus,
+    &:hover {
+      color: #000;
+    }
+  }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: -webkit-xxx-large;
+    }
+  }
+
+  @media (max-width: 551px) {
+    height: 110px;
+    padding-top: 1em;
   }
 }
 
@@ -14,7 +31,6 @@
   background-color: #fff;
   padding: 2em;
   margin-bottom: 2em;
-  box-shadow: $box-shadow;
 
   h2 {
     font-size: 1.2em;

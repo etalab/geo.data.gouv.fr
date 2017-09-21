@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 
 import Filter from '../Filter'
 
-import styles from './Facet.scss'
-
 class Facet extends React.PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -31,14 +29,13 @@ class Facet extends React.PureComponent {
     }
 
     return (
-      <div style={style} className={styles.container}>
+      <div style={style}>
         <Filter
           filter={{ name, value }}
           onClick={this.onClick}
+          number={count}
+          style={{ 'width': '100%' }}
         />
-        {count && (
-          <span className={styles.count}>x {count}</span>
-        )}
       </div>
     )
   }

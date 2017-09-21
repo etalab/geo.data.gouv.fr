@@ -20,7 +20,7 @@ const DatasetHeader = ({ dataset, t }) => {
 
   return (
     <div className={styles.container}>
-      <div className={inspireTheme ? styles.inspireThemeHead : styles.head}>
+      <div className={styles.inspireThemeHead}>
         <div className={styles.resume}>
           <h1 className={styles.title}>{title}</h1>
 
@@ -51,7 +51,7 @@ const DatasetHeader = ({ dataset, t }) => {
         )}
       </div>
 
-      <div className={styles.section}>
+      <div>
         <div>
           {description && (
             <MarkdownPreview markdown={description} />

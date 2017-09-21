@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import styles from './SearchInput.scss'
+import search from './images/search-icon.svg'
 
 class SearchInput extends React.PureComponent {
   static propTypes = {
@@ -10,7 +11,6 @@ class SearchInput extends React.PureComponent {
     defaultValue: PropTypes.string,
 
     hasButton: PropTypes.bool,
-    buttonLabel: PropTypes.string,
 
     onSearch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired
@@ -31,7 +31,7 @@ class SearchInput extends React.PureComponent {
   }
 
   render() {
-    const { placeholder, defaultValue, hasButton, buttonLabel, t } = this.props
+    const { placeholder, defaultValue, hasButton, t } = this.props
 
     return (
       <form onSubmit={this.onSubmit} className={styles.container}>
@@ -44,9 +44,7 @@ class SearchInput extends React.PureComponent {
         />
 
         {hasButton && (
-          <button type='submit' className={styles.button}>
-            {buttonLabel || t('components.SearchInput.buttonLabel')}
-          </button>
+          <button type='submit' className={styles.button} style={{ background: `url(${search}) center left no-repeat` }} />
         )}
       </form>
     )

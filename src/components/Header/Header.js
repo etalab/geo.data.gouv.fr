@@ -7,6 +7,7 @@ import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
 import styles from './Header.scss'
+import logo from './images/logo-geo.svg'
 
 const { PUBLIC_URL } = process.env
 
@@ -47,7 +48,9 @@ class Header extends React.Component {
 
     return (
       <nav className={styles.nav}>
-        <Link to='/' className={styles.home}>inspire.data.gouv.fr</Link>
+        <Link to='/' className={styles.logo}>
+          <img src={logo} alt='Logo de la République française (1999)' />
+        </Link>
 
         {!user ? login : (
           <div className={styles.authentification}>

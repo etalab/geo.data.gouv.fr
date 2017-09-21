@@ -76,8 +76,7 @@
     },
 
     "SearchInput": {
-      "placeholder": "Search…",
-      "buttonLabel": "Search"
+      "placeholder": "Search…"
     }
   },
 

@@ -7,8 +7,12 @@
   padding: 2em;
 
   h4 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+
+    background-color: $darkblue;
+    color: #fff;
+    width: 100%;
   }
 
   @media (max-width: 768px) {
@@ -16,12 +20,19 @@
   }
 }
 
-section > div {
-  background-color: $white;
-  padding: 1em;
+.sections {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
 
-  p {
-    margin-bottom: 4px;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.section {
+  @media (max-width: 768px) {
+    flex-grow: 1;
   }
 }
 

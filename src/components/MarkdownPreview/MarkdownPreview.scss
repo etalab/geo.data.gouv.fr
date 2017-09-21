@@ -2,10 +2,9 @@
 
 .container {
   flex-direction: column;
-  margin-bottom: 4em;
   display: block;
   white-space: pre-wrap;
-  width: 60vw;
+  max-width: 60vw;
 }
 
 .button {

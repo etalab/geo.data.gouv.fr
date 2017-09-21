@@ -12,16 +12,6 @@
   margin-top: 10px;
   align-items: center;
   justify-content: space-between;
-
-  a {
-    padding: 5px;
-
-    &:hover {
-      color: #fff;
-      cursor: pointer;
-      background-color: $blue;
-    }
-  }
 }
 
 .title {
@@ -30,7 +20,35 @@
 }
 
 .formats {
-  margin: 5px;
+  margin-right: 5px;
+  font-weight: 500;
+
+  a {
+    color: #fff;
+    background-color: $highlight-blue;
+
+    display: inline-flex;
+    align-items: inherit;
+
+    padding: 3px 5px;
+    margin-right: 5px;
+    border-radius: 4px;
+
+    img {
+      width: 25px;
+      margin-right: 0.5em;
+    }
+
+    &:hover {
+
+      cursor: pointer;
+      background-color: $blue;
+    }
+  }
+}
+
+button {
+  border-radius: 2px;
 }
 
 .viewer-button {

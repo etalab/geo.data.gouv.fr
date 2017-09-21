@@ -6,13 +6,12 @@ import { pull } from 'lodash'
 import AddCatalogs from '../../components/AddCatalogs/AddCatalogs'
 import Catalog from '../../components/Catalog/Catalog'
 
-import AddButton from '../../../../components/Buttons/AddButton'
-import RemoveButton from '../../../../components/Buttons/RemoveButton'
+import Button from '../../../../components/Buttons/Button'
 import Errors from '../../../../components/Errors/Errors'
 
 import { updateOrganizationAccount } from '../../../../fetch/fetch'
 
-import { catalogsStyle, catalog, buttonStyle, remove } from './SourceCatalogs.scss'
+import styles from './SourceCatalogs.scss'
 
 class SourceCatalogs extends Component {
   constructor(props) {
@@ -54,22 +53,21 @@ class SourceCatalogs extends Component {
     const { displayCatalogs, catalogs, errors } = this.state
 
     if (errors.length) return <Errors errors={errors} />
-    const displayCatalogsButton = <AddButton action={() => this.toggleCatalogList()} text={'Ajouter des catalogues'} />
-    const moreCatalogs = <AddCatalogs sourceCatalogs={catalogs} addCatalog={(catalogId) => this.addCatalog(catalogId)} />
 
     return (
       <div>
-        <div className={catalogsStyle}>
+        <div className={styles.catalogsStyle}>
           {catalogs.map(id =>
-            <div key={id} className={catalog}>
+            <div key={id} className={styles.catalog}>
               <Catalog catalogId={id} size={'small'} />
-              <RemoveButton style={remove} action={() => this.removeCatalog(id)} text={'Supprimer'} />
+              <Button className={styles.remove} action={() => this.removeCatalog(id)} text={'Supprimer'} icon='trash' />
+              {displayCatalogs
+                ? <Button action={() => this.toggleCatalogList()} text={'Réduire'} icon='minus' />
+                : <Button action={() => this.toggleCatalogList()} text={'Ajouter des catalogues'} icon='plus' />
+              }
             </div>
           )}
-        </div>
-
-        <div className={buttonStyle}>
-          {!displayCatalogs ? displayCatalogsButton : moreCatalogs}
+          {displayCatalogs && <AddCatalogs sourceCatalogs={catalogs} addCatalog={(catalogId) => this.addCatalog(catalogId)} />}
         </div>
       </div>
     )

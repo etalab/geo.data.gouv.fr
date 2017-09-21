@@ -5,8 +5,6 @@ import Loader from 'common/components/Loader'
 
 import CatalogHarvestView from '../CatalogHarvestView'
 
-import styles from './CatalogHarvestPage.scss'
-
 class CatalogHarvestPage extends React.PureComponent {
   static propTypes = {
     catalog: PropTypes.shape({
@@ -53,7 +51,7 @@ class CatalogHarvestPage extends React.PureComponent {
     const { catalog, harvest } = this.props
 
     return (
-      <div className={styles.container}>
+      <div>
         <Loader isLoading={catalog.pending || harvest.pending} error={catalog.error || harvest.error}>
           <CatalogHarvestView
             catalog={catalog.catalog}

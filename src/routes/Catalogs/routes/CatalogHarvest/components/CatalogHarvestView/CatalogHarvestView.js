@@ -10,6 +10,7 @@ import CatalogHarvestLogs from '../CatalogHarvestLogs'
 import CatalogHarvestResults from '../CatalogHarvestResults'
 
 import styles from './CatalogHarvestView.scss'
+import clouds from '../../../../../../components/PageLayout/images/clouds.svg'
 
 const CatalogHarvestView = ({ catalog, harvest, t }) => {
   const successful = harvest.status === 'successful'
@@ -17,21 +18,26 @@ const CatalogHarvestView = ({ catalog, harvest, t }) => {
   return (
     <div className={styles.container}>
       <Helmet title={`${t('CatalogHarvestView.documentTitle')} : ${harvest._id}`} />
-      <h1>
-        <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>
-      </h1>
-
-      <p>{t('CatalogHarvestView.harvestId')}: <code>{harvest._id}</code></p>
-      <LastHarvestStatus harvest={harvest} />
-
-      <div className={styles.results}>
-        <h2>{successful ? t('CatalogHarvestView.results') : t('CatalogHarvestView.logs')}</h2>
-        {successful ? (
-          <CatalogHarvestResults logs={harvest.log} />
-        ) : (
-          <CatalogHarvestLogs logs={harvest.log} />
-        )}
+      <div className={styles.header} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
+        <h1>
+          <Link to={`/catalogs/${catalog._id}`}>{catalog.name}</Link>
+        </h1>
       </div>
+
+      <div className={styles.content}>
+        <p>{t('CatalogHarvestView.harvestId')}: <b><code>{harvest._id}</code></b></p>
+        <LastHarvestStatus harvest={harvest} />
+
+        <div className={styles.results}>
+          <h2>{successful ? t('CatalogHarvestView.results') : t('CatalogHarvestView.logs')}</h2>
+          {successful ? (
+            <CatalogHarvestResults logs={harvest.log} />
+          ) : (
+            <CatalogHarvestLogs logs={harvest.log} />
+          )}
+        </div>
+      </div>
+
     </div>
   )
 }

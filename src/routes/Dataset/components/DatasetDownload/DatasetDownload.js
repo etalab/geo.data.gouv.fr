@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import strRightBack from 'underscore.string/strRightBack'
 
 import styles from './DatasetDownload.scss'
+import downloadIcon from './images/download-icon.svg'
 
 const { INSPIRE_API_URL } = process.env
 
@@ -35,7 +36,6 @@ export const DatasetDownload = ({ distribution, isPreview, setPreview, resetPrev
       <div>
         <div className={styles.container}>
           <div>
-            <div>{t('components.DatasetDownload.title')}<i className='download icon' /></div>
             <div className={styles.formats}>
               {!distribution.available ? (
                 <p>{t('components.DatasetDownload.unavailable')}</p>
@@ -43,7 +43,10 @@ export const DatasetDownload = ({ distribution, isPreview, setPreview, resetPrev
                 FORMATS.map((format, idx) => (
                   <a
                     key={idx}
-                    href={`${link}?format=${format.format}&projection=${format.projection}`}>{format.label}</a>
+                    href={`${link}?format=${format.format}&projection=${format.projection}`}>
+                    <img src={downloadIcon} alt='download icon' />
+                    {format.label}
+                  </a>
                 ))
               )}
             </div>
