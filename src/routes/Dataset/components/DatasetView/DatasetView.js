@@ -123,7 +123,7 @@ class DatasetView extends React.PureComponent {
               {dataset.dataset.distributions.length > 0 ? (
                 <DatasetDownloadList distributions={dataset.dataset.distributions} fetchGeoJson={fetchGeoJson} />
               ) : (
-                <div>{t('noDownloads')}</div>
+                <div>{t('components.DatasetView.noDownloads')}</div>
               )}
             </DatasetBlock>
             {publication && publication.remoteId && (

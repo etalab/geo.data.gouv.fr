@@ -6,8 +6,8 @@ import styles from './Filter.scss'
 import closeIcon from './images/close-icon.svg'
 
 const Filter = ({ detail, remove, filter, number, style, onClick, t }) => {
-  const title = t(`components.Filter.${filter.name}`)
-  const value = t(`components.Filter.${filter.value}`, {
+  const title = t(`components.Filter.types.${filter.name}`)
+  const value = t(`components.Filter.values.${filter.value}`, {
     defaultValue: filter.value
   })
 
