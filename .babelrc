@@ -1,58 +1,13 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "ie": 9
-      },
-      "useBuiltIns": false,
-      "modules": false,
-      "loose": true
-    }]
+    "next/babel"
   ],
-
-  "plugins":[
-    "transform-class-properties",
-    ["transform-object-rest-spread", {
-      "useBuiltIns": true
-    }],
-    ["transform-react-jsx", {
-      "useBuiltIns": true
-    }],
-    "transform-react-display-name",
-    "lodash"
-  ],
-
   "env": {
     "development": {
-      "plugins": [
-        "transform-react-jsx-source",
-        "transform-react-jsx-self",
-        "syntax-dynamic-import"
-      ]
+      "plugins": ["inline-dotenv"]
     },
-
     "production": {
-      "plugins": [
-        "syntax-dynamic-import",
-        "transform-react-remove-prop-types"
-      ]
-    },
-
-    "test": {
-      "presets": [
-        ["env", {
-          "targets": {
-            "node": "current"
-          },
-          "loose": true
-        }]
-      ],
-      "plugins": [
-        "transform-react-jsx-source",
-        "transform-react-jsx-self",
-        "dynamic-import-node",
-        "istanbul"
-      ]
+      "plugins": ["transform-inline-environment-variables"]
     }
   }
 }

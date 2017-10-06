@@ -16,6 +16,7 @@ CHANGELOG.md
 .LSOverride
 
 # Build
+.next
 dist
 
 # Cache
