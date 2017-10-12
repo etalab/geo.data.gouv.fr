@@ -9,6 +9,8 @@ import Errors from '../../../../components/Errors/Errors'
 import { getUser } from '../../../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
 
+const { PUBLICATION_BASE_URL, PUBLIC_URL } = process.env
+
 class Admin extends Component {
   constructor(props) {
     super(props)
@@ -22,8 +24,8 @@ class Admin extends Component {
     return waitForDataAndSetState(getUser(), this, 'user')
       .then(() => {
         if (!this.state.user) {
-          const redirect = encodeURI(`${process.env.PUBLIC_URL}/publication`)
-          const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${redirect}`
+          const redirect = encodeURI(`${PUBLIC_URL}/publication`)
+          const logInUrl = `${PUBLICATION_BASE_URL}/login?redirect=${redirect}`
 
           document.location.replace(logInUrl)
         }

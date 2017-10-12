@@ -51,7 +51,7 @@ module.exports = {
     DATAGOUV_API_URL: 'https://geo.data.gouv.fr/dgv/proxy-api/1',
     DATAGOUV_API_KEY: null,
 
-    PUBLICATION_API_URL: 'https://geo.data.gouv.fr/dgv/api',
+    PUBLICATION_BASE_URL: 'https://geo.data.gouv.fr/dgv',
     GEODATA_API_URL: 'https://geo.data.gouv.fr/api/geogw',
 
     PIWIK_URL: null,

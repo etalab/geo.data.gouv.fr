@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import styles from './DatasetThumbnails.scss'
 
+const { GEODATA_API_URL } = process.env
+
 class DatasetThumbnails extends React.PureComponent {
   static propTypes = {
     recordId: PropTypes.string.isRequired,
@@ -36,7 +38,7 @@ class DatasetThumbnails extends React.PureComponent {
       <div className={styles.container}>
         <div className={styles.image}>
           <img
-            src={`https://inspire.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
+            src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
             alt=''
           />
         </div>
@@ -45,7 +47,7 @@ class DatasetThumbnails extends React.PureComponent {
             {thumbnails.map(thumbnail => (
               <div key={thumbnail.originalUrlHash} className={styles.thumbContainer}>
                 <img
-                  src={`https://inspire.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
+                  src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
                   className={thumbnail === selected && styles.selected}
                   alt={thumbnail.description}
                   onClick={this.selectThumbnail(thumbnail)}
