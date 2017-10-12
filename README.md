@@ -1,8 +1,8 @@
-# inspire.data.gouv.fr [![CircleCI](https://circleci.com/gh/etalab/inspire/tree/master.svg?style=svg)](https://circleci.com/gh/etalab/inspire/tree/master)
+# inspire.data.gouv.fr [![CircleCI](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master.svg?style=svg)](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master)
 
 Trouvez facilement les données géographiques dont vous avez besoin
 
-[![codecov](https://codecov.io/gh/etalab/inspire/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/inspire)
+[![codecov](https://codecov.io/gh/etalab/geo.data.gouv.fr/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
 
 ## Présentation
 
