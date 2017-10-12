@@ -46,7 +46,7 @@ class OtherProducers extends React.Component {
             <div className={style.subtitle}>
               <div>Les producteurs de cette liste ne peuvent pas être rattachés à votre compte organisation parce qu'ils sont déjà rattachés à un autre compte.
                  N\'hésitez pas à contacter l'organisation de rattachement si vous estimez que votre propre compte est plus pertinent.</div>
-              <p>En cas de difficulté, contactez <a href='mailto:inspire@data.gouv.fr'>notre équipe</a>.</p>
+              <p>En cas de difficulté, contactez <a href='mailto:geo@data.gouv.fr'>notre équipe</a>.</p>
             </div>
           </div>
           <div>{producers.length}</div>

@@ -9,14 +9,14 @@ import Markdown from 'common/components/Markdown'
 import styles from './SearchResult.scss'
 import noThumbnail from './images/no-thumbnail.svg'
 
-const { INSPIRE_API_URL } = process.env
+const { GEODATA_API_URL } = process.env
 
 const SearchResult = ({ dataset, addFilter, t }) => (
   <div className={styles.container}>
     <Link to={`/datasets/${dataset.recordId}`} className={styles.dataset}>
       <div className={styles.thumbnail}>
         {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length
-          ? <img src={`${INSPIRE_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} alt='thumbnail' />
+          ? <img src={`${GEODATA_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} alt='thumbnail' />
           : <img src={noThumbnail} alt='no image available' />
         }
       </div>

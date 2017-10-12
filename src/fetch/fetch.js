@@ -1,14 +1,14 @@
 import { _get, _put, _post, _delete } from '../helpers/super'
 
-const { PUBLICATION_API_URL, INSPIRE_API_URL, DATAGOUV_API_URL } = process.env
+const { PUBLICATION_API_URL, GEODATA_API_URL, DATAGOUV_API_URL } = process.env
 
 export function fetchCatalog(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  return _get(`${INSPIRE_API_URL}/catalogs/${catalogId}`)
+  return _get(`${GEODATA_API_URL}/catalogs/${catalogId}`)
 }
 
 export function fetchCatalogs() {
-  return _get(`${INSPIRE_API_URL}/catalogs`)
+  return _get(`${GEODATA_API_URL}/catalogs`)
 }
 
 export function getUser() {
@@ -81,7 +81,7 @@ export function associateProducer(producerId, organizationId) {
 
 export function getProducersToAssociate(catalogId) {
   if (!catalogId) return Promise.reject(new Error('catalogId is required'))
-  const url = `${INSPIRE_API_URL}/services/${catalogId}/records?resultParts=facets&opendata=yes&availability=yes&facets[keyword]=0`
+  const url = `${GEODATA_API_URL}/services/${catalogId}/records?resultParts=facets&opendata=yes&availability=yes&facets[keyword]=0`
 
   return _get(url)
 }

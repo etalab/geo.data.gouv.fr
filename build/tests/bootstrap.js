@@ -10,7 +10,7 @@ import chaiEnzyme from 'chai-enzyme'
 moduleAlias.addAlias('common', path.join(__dirname, '../../src'))
 
 process.env.PUBLIC_URL = ''
-process.env.INSPIRE_API_URL = 'inspire-api-url'
+process.env.GEODATA_API_URL = 'geodata-api-url'
 
 global.expect = chai.expect
 chai.use(chaiEnzyme())
