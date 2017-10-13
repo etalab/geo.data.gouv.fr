@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Header from '../../components/Header'
+import NewsletterForm from '../Newsletter/NewsletterForm'
 import Footer from '../../components/Footer'
 
 import styles from './PageLayout.scss'
@@ -19,6 +20,7 @@ export const PageLayout = ({ children, i18n }) => (
     <div className={styles.body}>
       {children}
     </div>
+    <NewsletterForm />
     <Footer />
   </div>
 )

@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
+import Button from '../Buttons/Button'
 
 import style from './NewsletterForm.scss'
 
@@ -42,23 +43,19 @@ class NewsletterForm extends React.Component {
     const { value } = this.state
 
     return (
-      <div id='mc_embed_signup' className={style.container}>
-        <form action='//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' className='validate' target='_blank' noValidate>
-          <div id='mc_embed_signup_scroll'>
-            <h2 className={style.title}>{t('components.NewsletterForm.newsletterSignUp')} :</h2>
-            <div className={style.form}>
-              <label htmlFor='mce-EMAIL'>{t('components.NewsletterForm.label')}</label>
-              <span>
-                <input className={style.input} type='email' value={value} onChange={this.handleChange} name='EMAIL' id='mce-EMAIL' />
-                <input type='submit' value={t('components.NewsletterForm.inputValue')} name='subscribe' id='mc-embedded-subscribe' className={style.button} />
-              </span>
-            </div>
+      <div className={style.container}>
+        <form action='//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d' method='post'name='mc-embedded-subscribe-form' target='_blank' noValidate>
+          <h2>{t('components.NewsletterForm.newsletterSignUp')}</h2>
+          <input type='email' name='EMAIL' placeholder={t('components.NewsletterForm.label')} value={value} />
 
-            <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden='true'>
-              <input type='text' name='b_f4e80584578b65fde5aadffb6_a9e2a3104d' tabIndex='-1' value='' />
-            </div>
-
-          </div>
+          <Button type='submit' text={t('components.NewsletterForm.inputValue')} name='subscribe' style={{
+            padding: '0.85em 3em',
+            marginTop: '1em',
+            width: '100%',
+            textTransform: 'uppercase',
+            fontSize: '1.2em',
+            fontWeight: 'bold'
+          }} />
         </form>
       </div>
     )
