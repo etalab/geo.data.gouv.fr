@@ -21,7 +21,7 @@ const filePackage = {
   '_id': '582bb403b631a32a2b33c376'
 }
 
-const { INSPIRE_API_URL } = process.env
+const { GEODATA_API_URL } = process.env
 const previewMock = () => {}
 
 const mocktranslate = k => k
@@ -30,7 +30,7 @@ describe('<DatasetDownload />', () => {
   describe('Available dataset', () => {
     describe('featureType', () => {
       it('should create a link to download wfs-featureType dataset type', () => {
-        const link = `${INSPIRE_API_URL}/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&projection=WGS84`
+        const link = `${GEODATA_API_URL}/services/556c6066330f1fcd48338831/feature-types/drac:bretagne_immeuble_mh/download?format=GeoJSON&projection=WGS84`
         const wrapper = mount(<DatasetDownload distribution={featureType} preview={previewMock} t={mocktranslate} />)
 
         expect(wrapper.find('a').get(0).getAttribute('href')).to.equal(link)
@@ -39,7 +39,7 @@ describe('<DatasetDownload />', () => {
 
     describe('file-package', () => {
       it('should create a link to download file-package dataset type', () => {
-        const link = `${INSPIRE_API_URL}/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download?format=GeoJSON&projection=WGS84`
+        const link = `${GEODATA_API_URL}/file-packages/e2880991300be9f2f4aa9f8bbcd629ea94501a72/N_AC1_GENERATEUR_SUP_S_032.TAB/download?format=GeoJSON&projection=WGS84`
         const wrapper = mount(<DatasetDownload distribution={filePackage} preview={previewMock} t={mocktranslate} />)
 
         expect(wrapper.find('a').get(0).getAttribute('href')).to.equal(link)

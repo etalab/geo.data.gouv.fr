@@ -6,7 +6,7 @@ import strRightBack from 'underscore.string/strRightBack'
 import styles from './DatasetDownload.scss'
 import downloadIcon from './images/download-icon.svg'
 
-const { INSPIRE_API_URL } = process.env
+const { GEODATA_API_URL } = process.env
 
 const FORMATS = [
   { label: 'GeoJSON', format: 'GeoJSON', projection: 'WGS84' },
@@ -21,11 +21,11 @@ export const DatasetDownload = ({ distribution, isPreview, setPreview, resetPrev
 
   if (distribution.type === 'file-package') {
     layerName = strRightBack(distribution.layer, '/')
-    link = `${INSPIRE_API_URL}/file-packages/${distribution.hashedLocation}/${layerName}/download`
+    link = `${GEODATA_API_URL}/file-packages/${distribution.hashedLocation}/${layerName}/download`
   }
 
   if (distribution.type === 'wfs-featureType') {
-    link = `${INSPIRE_API_URL}/services/${distribution.service}/feature-types/${distribution.typeName}/download`
+    link = `${GEODATA_API_URL}/services/${distribution.service}/feature-types/${distribution.typeName}/download`
   }
 
   const name = layerName || distribution.typeName

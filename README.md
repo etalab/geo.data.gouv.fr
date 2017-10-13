@@ -1,12 +1,12 @@
-# inspire.data.gouv.fr [![CircleCI](https://circleci.com/gh/etalab/inspire/tree/master.svg?style=svg)](https://circleci.com/gh/etalab/inspire/tree/master)
+# geo.data.gouv.fr [![CircleCI](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master.svg?style=svg)](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master)
 
 Trouvez facilement les données géographiques dont vous avez besoin
 
-[![codecov](https://codecov.io/gh/etalab/inspire/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/inspire)
+[![codecov](https://codecov.io/gh/etalab/geo.data.gouv.fr/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
 
 ## Présentation
 
-Interface du site [inspire.data.gouv.fr](https://inspire.data.gouv.fr) basée sur les API de la [plateforme Inspire](https://github.com/inspireteam) et développée par la mission [Etalab](https://github.com/etalab).
+Interface du site [geo.data.gouv.fr](https://geo.data.gouv.fr) basée sur les API de la [plateforme Inspire](https://github.com/inspireteam) et développée par la mission [Etalab](https://github.com/etalab).
 
 Ce projet _front_ utilise [React](https://facebook.github.io/react/) et [Webpack](https://webpack.js.org/).
 

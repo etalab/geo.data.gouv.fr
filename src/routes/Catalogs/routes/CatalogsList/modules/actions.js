@@ -6,7 +6,7 @@ import {
   CATALOGS_LIST_FAILURE
 } from './constants'
 
-const { INSPIRE_API_URL } = process.env
+const { GEODATA_API_URL } = process.env
 
 export const list = () => dispatch => {
   dispatch({
@@ -14,7 +14,7 @@ export const list = () => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/catalogs`
+    `${GEODATA_API_URL}/catalogs`
   )
     .then(data => {
       dispatch({

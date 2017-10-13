@@ -10,7 +10,7 @@ import {
   SEARCH_EXECUTE_FAILURE
 } from './constants'
 
-const { INSPIRE_API_URL } = process.env
+const { GEODATA_API_URL } = process.env
 
 export const execute = (query, limit = 20) => dispatch => {
   const parsedQuery = parse(query)
@@ -23,7 +23,7 @@ export const execute = (query, limit = 20) => dispatch => {
   const filters = flattenFilters(parsedQuery.filters)
 
   return _get(
-    `${INSPIRE_API_URL}/records?${qs.stringify({
+    `${GEODATA_API_URL}/records?${qs.stringify({
       ...filters,
       q: parsedQuery.textInput,
       offset: (parsedQuery.page - 1) * limit,

@@ -4,11 +4,11 @@ import { withRouter } from 'react-router-dom'
 
 import { Button } from '../Buttons'
 
-const { PUBLIC_URL } = process.env
+const { PUBLIC_URL, PUBLICATION_BASE_URL } = process.env
 
 const AuthentificationNeeded = ({ user, children, location }) => {
   const currentUrl = PUBLIC_URL + location.pathname
-  const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(currentUrl)}`
+  const logInUrl = `${PUBLICATION_BASE_URL}/login?redirect=${encodeURIComponent(currentUrl)}`
 
   if (user) {
     return (

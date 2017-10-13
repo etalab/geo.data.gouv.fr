@@ -22,7 +22,7 @@ import {
   HARVESTS_GET_FAILURE
 } from './constants'
 
-const { INSPIRE_API_URL } = process.env
+const { GEODATA_API_URL } = process.env
 
 export const get = id => dispatch => {
   dispatch({
@@ -30,7 +30,7 @@ export const get = id => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/catalogs/${id}`
+    `${GEODATA_API_URL}/catalogs/${id}`
   )
     .then(data => {
       dispatch({
@@ -52,7 +52,7 @@ export const getMetrics = id => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/catalogs/${id}/metrics`
+    `${GEODATA_API_URL}/catalogs/${id}/metrics`
   )
     .then(data => {
       dispatch({
@@ -74,7 +74,7 @@ export const getHarvests = id => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/services/${id}/synchronizations`
+    `${GEODATA_API_URL}/services/${id}/synchronizations`
   )
     .then(data => {
       dispatch({
@@ -96,7 +96,7 @@ export const syncCatalog = id => dispatch => {
   })
 
   return _post(
-    `${INSPIRE_API_URL}/services/${id}/sync`
+    `${GEODATA_API_URL}/services/${id}/sync`
   )
     .then(data => {
       dispatch({
@@ -118,7 +118,7 @@ export const getHarvest = (catalogId, harvestId) => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/services/${catalogId}/synchronizations/${harvestId}`
+    `${GEODATA_API_URL}/services/${catalogId}/synchronizations/${harvestId}`
   )
     .then(data => {
       dispatch({

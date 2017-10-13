@@ -9,7 +9,7 @@ import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/compone
 import styles from './Header.scss'
 import logo from './images/logo-geo.svg'
 
-const { PUBLIC_URL } = process.env
+const { PUBLIC_URL, PUBLICATION_BASE_URL } = process.env
 
 class Header extends React.Component {
   static propTypes = {
@@ -42,8 +42,8 @@ class Header extends React.Component {
     const isPublication = location.pathname.startsWith('/publication')
     const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + location.pathname
 
-    const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
-    const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
+    const logInUrl = `${PUBLICATION_BASE_URL}/login?redirect=${encodeURIComponent(loginRedirect)}`
+    const logoutUrl = `${PUBLICATION_BASE_URL}/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={styles.log} href={logInUrl}>{t('components.Header.login')}</a>
 
     return (

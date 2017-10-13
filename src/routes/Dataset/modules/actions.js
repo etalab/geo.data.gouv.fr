@@ -18,7 +18,7 @@ import {
   DATASETS_FETCH_GEOJSON_FAILURE
 } from './constants'
 
-const { INSPIRE_API_URL, DATAGOUV_API_URL } = process.env
+const { GEODATA_API_URL, DATAGOUV_API_URL } = process.env
 
 export const get = id => dispatch => {
   dispatch({
@@ -26,7 +26,7 @@ export const get = id => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/records/${id}`
+    `${GEODATA_API_URL}/records/${id}`
   )
     .then(data => {
       dispatch({
@@ -48,7 +48,7 @@ export const getPublication = id => dispatch => {
   })
 
   return _get(
-    `${INSPIRE_API_URL}/records/${id}/publications`
+    `${GEODATA_API_URL}/records/${id}/publications`
   )
     .then(data => {
       dispatch({

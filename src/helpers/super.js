@@ -1,4 +1,4 @@
-const { DATAGOUV_API_URL, DATAGOUV_API_KEY, PUBLICATION_API_URL } = process.env
+const { DATAGOUV_API_URL, DATAGOUV_API_KEY, PUBLICATION_BASE_URL } = process.env
 
 export function _fetch(url, method, data) {
   const options = {
@@ -9,7 +9,7 @@ export function _fetch(url, method, data) {
     method: method || 'GET'
   }
 
-  if (url.includes(PUBLICATION_API_URL)) {
+  if (url.includes(PUBLICATION_BASE_URL + '/api')) {
     options.credentials = 'include'
   }
 
