@@ -22,7 +22,7 @@
 
     "DatasetContactLabel": {
       "resourceProvider": "Fournisseur",
-      "custodian": "Résponsable",
+      "custodian": "Responsable",
       "owner": "Propriétaire",
       "user": "Utilisateur",
       "distributor": "Distributeur",
