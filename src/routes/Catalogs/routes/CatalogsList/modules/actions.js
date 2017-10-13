@@ -9,6 +9,7 @@ import {
 const { GEODATA_API_URL } = process.env
 
 export const list = () => dispatch => {
+  console.log('listing')
   dispatch({
     type: CATALOGS_LIST_PENDING
   })

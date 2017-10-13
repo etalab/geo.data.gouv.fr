@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, createStore as createReduxStore } from 'redux'
-import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk'
 
 import makeRootReducer from './reducers'
 
@@ -8,11 +8,11 @@ const createStore = (initialState = {}) => {
   // ------------------------------------
   let composeEnhancers = compose
 
-  if (__DEV__) {
-    if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
-      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    }
-  }
+  // if (__DEV__) {
+  //   if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
+  //     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  //   }
+  // }
 
   // Store Instantiation
   // ------------------------------------
@@ -20,9 +20,23 @@ const createStore = (initialState = {}) => {
     makeRootReducer(),
     initialState,
     composeEnhancers(
-      applyMiddleware(thunk)
+      applyMiddleware(({ dispatch, getState }) => next => action => {
+        if (typeof action === 'function') {
+          const res = action(dispatch, getState)
+
+          if (res instanceof Promise) {
+            console.log('pushing promise')
+            store.thunks.push(res)
+          }
+
+          return res
+        }
+
+        return next(action)
+      })
     )
   )
+  store.thunks = []
   store.asyncReducers = {}
 
   // HMR Setup

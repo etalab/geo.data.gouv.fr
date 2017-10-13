@@ -62,11 +62,11 @@ class HomePage extends React.PureComponent {
                 </div>
               ))}
             </div>
-            <Link to='catalogs' className={styles.link}>{t('HomePage.catalogsLink')}</Link>
+            <Link to='/catalogs' className={styles.link}>{t('HomePage.catalogsLink')}</Link>
 
             <h2 id='evenements'>{t('HomePage.eventsSectionTitle')}</h2>
             <div>
-              <Link to='events' className={styles.link}>{t('HomePage.eventsLink')}</Link>
+              <Link to='/events' className={styles.link}>{t('HomePage.eventsLink')}</Link>
             </div>
           </div>
         </div>

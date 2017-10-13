@@ -16,7 +16,7 @@ class CatalogsListPage extends React.PureComponent {
         _id: PropTypes.string.isRequired
       })).isRequired,
 
-      pending: PropTypes.bool.isRequired,
+      pending: PropTypes.bool,
 
       error: PropTypes.oneOfType([
         PropTypes.bool,
@@ -28,10 +28,12 @@ class CatalogsListPage extends React.PureComponent {
     t: PropTypes.func.isRequired
   }
 
-  componentDidMount() {
-    const { fetchCatalogs } = this.props
+  componentWillMount() {
+    const { fetchCatalogs, catalogs } = this.props
 
-    fetchCatalogs()
+    if (catalogs.pending === null) {
+      fetchCatalogs()
+    }
   }
 
   render () {

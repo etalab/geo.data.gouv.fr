@@ -19,7 +19,8 @@
       "useBuiltIns": true
     }],
     "transform-react-display-name",
-    "lodash"
+    "lodash",
+    "universal-import"
   ],
 
   "env": {

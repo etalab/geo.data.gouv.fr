@@ -1,70 +1,49 @@
+require('colors')
 const express = require('express')
-const path = require('path')
-const webpack = require('webpack')
-const logger = require('../build/lib/logger')
-const webpackConfig = require('../build/webpack.config')
-const project = require('../project.config')
-const compress = require('compression')
+const webpack = require('webpack') // aliased to webpack-universal
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
+const clientConfig = require('../build/webpack.config')
+const serverConfig = require('./webpack.config')
 
+const publicPath = clientConfig.output.publicPath
+const outputPath = clientConfig.output.path
+const DEV = process.env.NODE_ENV === 'development'
 const app = express()
-app.use(compress())
 
-// Apply Webpack HMR Middleware
-// ------------------------------------
-if (project.env === 'development') {
-  const compiler = webpack(webpackConfig)
-  logger.info('Enabling webpack development and HMR middleware')
+let isBuilt = false
 
-  app.use(require('webpack-dev-middleware')(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    contentBase: path.resolve(project.basePath, project.srcDir),
-    hot: true,
-    quiet: false,
-    noInfo: false,
-    lazy: false,
-    stats: {
-      assets: false,
-      children: true,
-      chunks: true,
-      chunkModules: false,
-      chunkOrigins: false,
-      colors: true,
-      modules: false,
-      source: false
-    }
-  }))
-
-  app.use(require('webpack-hot-middleware')(compiler, {
-    path: '/__webpack_hmr'
-  }))
-
-  app.use(express.static(path.resolve(project.basePath, 'public')))
-
-  app.use('*', function (req, res, next) {
-    const filename = path.join(compiler.outputPath, 'index.html')
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err)
-      }
-      res.set('content-type', 'text/html')
-      res.send(result)
-      res.end()
-    })
+const done = () =>
+  !isBuilt &&
+  app.listen(3000, () => {
+    isBuilt = true
+    console.log('BUILD COMPLETE -- Listening @ http://localhost:3000'.magenta)
   })
+
+if (DEV) {
+  const compiler = webpack([clientConfig, serverConfig])
+  const clientCompiler = compiler.compilers[0]
+  const options = { publicPath, stats: { colors: true } }
+
+  app.use(webpackDevMiddleware(compiler, options))
+  app.use(webpackHotMiddleware(clientCompiler))
+  app.use(webpackHotServerMiddleware(compiler))
+
+  compiler.plugin('done', done)
 } else {
-  logger.warn(
-    'Server is being run outside of live development mode, meaning it will ' +
-    'only serve the compiled application bundle in ~/dist. Generally you ' +
-    'do not need an application server for this and can instead use a web ' +
-    'server such as nginx to serve your static files. See the "deployment" ' +
-    'section in the README for more information on deployment strategies.'
-  )
+  webpack([clientConfig, serverConfig]).run((err, stats) => {
+    if (err) {
+      console.error(err)
+      process.exit()
+    }
 
-  app.use(express.static(path.resolve(project.basePath, project.outDir)))
+    const clientStats = stats.toJson().children[0]
+    const serverRender = require('../buildServer/main.js').default
 
-  app.use('*', (req, res) => {
-    res.sendFile(path.resolve(project.basePath, project.outDir, 'index.html'))
+    app.use(publicPath, express.static(outputPath))
+    app.use(serverRender({ clientStats }))
+
+    done()
   })
 }
-
-module.exports = app
