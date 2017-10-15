@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 
 import createStore from './store/createStore'
 
+import './i18n'
+
 // Store Initialization
 // ------------------------------------
 const store = createStore(window.__INITIAL_STATE__)
@@ -13,10 +15,9 @@ const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
   const App = require('./components/App').default
-  const i18n = require('./i18n').default()
 
   ReactDOM.render(
-    <App store={store} i18n={i18n} />,
+    <App store={store} />,
     MOUNT_NODE
   )
 }
@@ -44,8 +45,7 @@ if (__DEV__) {
 
     // Setup hot module replacement
     module.hot.accept([
-      './components/App',
-      './i18n/index'
+      './components/App'
     ], () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)

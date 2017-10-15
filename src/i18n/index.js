@@ -1,5 +1,6 @@
-import i18next from 'i18next'
+import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
+import { reactI18nextModule } from 'react-i18next'
 import moment from 'moment'
 
 import { injectLocale } from './helpers'
@@ -10,43 +11,41 @@ const availableLanguages = [
   'en'
 ]
 
-export default () => {
-  const i18n = i18next
-    .use(LanguageDetector)
-    .init({
-      resources: availableLanguages.reduce((resources, lang) => ({
-        ...resources,
-        [lang]: {}
-      }), {}),
+i18n
+  .use(LanguageDetector)
+  .use(reactI18nextModule)
+  .init({
+    resources: availableLanguages.reduce((resources, lang) => ({
+      ...resources,
+      [lang]: {}
+    }), {}),
 
-      whitelist: [
-        ...availableLanguages
-      ],
+    whitelist: [
+      ...availableLanguages
+    ],
 
-      lng: 'fr',
-      fallbackLng: 'fr',
+    fallbackLng: 'fr',
 
-      defaultNS: defaultNamespace,
+    defaultNS: defaultNamespace,
 
-      interpolation: {
-        formatSeparator: ','
-      },
+    interpolation: {
+      formatSeparator: ','
+    },
 
-      react: {
-        wait: true
-      }
-    })
-
-  availableLanguages.forEach(locale => {
-    injectLocale(i18n, {
-      locale,
-      namespace: defaultNamespace,
-      resources: require(`../locales/${locale}.json`)
-    })
+    react: {
+      wait: true
+    }
   })
 
-  i18n.availableLanguages = availableLanguages
-  moment.locale(i18n.language)
+availableLanguages.forEach(locale => {
+  injectLocale(i18n, {
+    locale,
+    namespace: defaultNamespace,
+    resources: require(`../locales/${locale}.json`)
+  })
+})
 
-  return i18n
-}
+i18n.availableLanguages = availableLanguages
+moment.locale(i18n.language)
+
+export default i18n

@@ -3706,17 +3706,13 @@ hoek@4.x.x:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
 
-hoist-non-react-statics@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
+hoist-non-react-statics@2.3.1, hoist-non-react-statics@^2.3.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
 hoist-non-react-statics@^2.2.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.0.tgz#ede16318c2ff1f9fe3a025396ba06fd4c44608bb"
-
-hoist-non-react-statics@^2.3.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -6301,15 +6297,12 @@ react-helmet@^5.1.3:
     prop-types "^15.5.4"
     react-side-effect "^1.1.0"
 
-react-i18next@^5.2.0:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-5.4.1.tgz#94994a2f2103e45b02f5c1083ec555d16068de39"
+react-i18next@^6.0.6:
+  version "6.0.6"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-6.0.6.tgz#be92e3936c98c2934019457484cb85b9c2be1c28"
   dependencies:
-    hoist-non-react-statics "1.2.0"
+    hoist-non-react-statics "2.3.1"
     html-parse-stringify2 "2.0.1"
-    prop-types "^15.5.10"
-    react "^15.6.1"
-    react-dom "^15.6.1"
 
 react-leaflet@^1.6.4:
   version "1.7.1"
