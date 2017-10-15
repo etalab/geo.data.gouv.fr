@@ -112,7 +112,8 @@
         "contributions": "Contributions"
       },
 
-      "id": "Identifiant du jeu de données"
+      "id": "Identifiant du jeu de données",
+      "datasetInfoLastUpdate": "Dernière mise à jour des informations"
     }
   },
 
