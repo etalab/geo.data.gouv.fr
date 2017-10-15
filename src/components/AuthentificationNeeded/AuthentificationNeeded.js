@@ -7,7 +7,7 @@ const { PUBLIC_URL } = process.env
 
 const AuthentificationNeeded = ({ user, children }) => {
   const currentUrl = PUBLIC_URL + window.location.pathname
-  const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(currentUrl)}`
+  const logInUrl = `https://geo.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(currentUrl)}`
 
   if (user) {
     return (

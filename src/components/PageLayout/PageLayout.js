@@ -11,8 +11,8 @@ import styles from './PageLayout.scss'
 export const PageLayout = ({ children, i18n }) => (
   <div className={styles.content}>
     <Helmet
-      titleTemplate='%s | inspire.data.gouv.fr'
-      defaultTitle='inspire.data.gouv.fr'
+      titleTemplate='%s | geo.data.gouv.fr'
+      defaultTitle='geo.data.gouv.fr'
       htmlAttributes={{ lang: i18n.language }}
     />
     <Header />

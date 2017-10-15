@@ -23,7 +23,7 @@ class Admin extends Component {
       .then(() => {
         if (!this.state.user) {
           const redirect = encodeURI(`${process.env.PUBLIC_URL}/publication`)
-          const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${redirect}`
+          const logInUrl = `https://geo.data.gouv.fr/dgv/login?redirect=${redirect}`
 
           document.location.replace(logInUrl)
         }

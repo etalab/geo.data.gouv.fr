@@ -36,13 +36,13 @@ class Header extends React.Component {
     const loginRedirect = `${PUBLIC_URL}/publication`
     const isPublication = window.location.pathname.startsWith('/publication')
     const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + window.location.pathname
-    const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
-    const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
+    const logInUrl = `https://geo.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
+    const logoutUrl = `https://geo.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
     const login = <a className={styles.log} href={logInUrl}>{t('components.Header.login')}</a>
 
     return (
       <nav className={styles.nav}>
-        <Link to='/' className={styles.home}>inspire.data.gouv.fr</Link>
+        <Link to='/' className={styles.home}>geo.data.gouv.fr</Link>
 
         {!user ? login : (
           <div className={styles.authentification}>

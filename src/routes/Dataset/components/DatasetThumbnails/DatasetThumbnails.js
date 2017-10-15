@@ -36,7 +36,7 @@ class DatasetThumbnails extends React.PureComponent {
       <div className={styles.container}>
         <div className={styles.image}>
           <img
-            src={`https://inspire.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
+            src={`https://geo.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
             alt=''
           />
         </div>
@@ -45,7 +45,7 @@ class DatasetThumbnails extends React.PureComponent {
             {thumbnails.map(thumbnail => (
               <div key={thumbnail.originalUrlHash} className={styles.thumbContainer}>
                 <img
-                  src={`https://inspire.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
+                  src={`https://geo.data.gouv.fr/api/geogw/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
                   className={thumbnail === selected && styles.selected}
                   alt={thumbnail.description}
                   onClick={this.selectThumbnail(thumbnail)}
