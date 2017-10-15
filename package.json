@@ -98,7 +98,7 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "hoist-non-react-statics": "^2.3.0",
-    "i18next": "^9.0.0",
+    "i18next": "^10.0.1",
     "i18next-browser-languagedetector": "^2.0.0",
     "leaflet": "^1.2.0",
     "lodash-es": "^4.17.4",

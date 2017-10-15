@@ -3847,9 +3847,9 @@ i18next-browser-languagedetector@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-2.0.0.tgz#4d9df2bd1a5deda3c8c0a6d3db62d50388b9eedd"
 
-i18next@^9.0.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-9.1.0.tgz#408005fe262a990c8d93946a6de0c77bba11667b"
+i18next@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-10.0.1.tgz#ce682ef7c43590d015b0cc5cef31f226475d0a3f"
 
 iconv-lite@0.4.13:
   version "0.4.13"
