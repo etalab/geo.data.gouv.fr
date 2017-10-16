@@ -31,11 +31,10 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
 
   const { creationDate, revisionDate } = dataset.metadata
 
-  const createdAt = creationDate
   const updatedAt = revisionDate || creationDate
 
-  const createdAtLabel = createdAt
-    ? moment(creationDate).format('DD/MM/YYYY')// FIXME
+  const createdAtLabel = creationDate
+    ? moment(creationDate).format('L')
     : t('Common:enums.unknownData.unknown', { context: 'female' })
 
   const updatedAtLabel = updatedAt
