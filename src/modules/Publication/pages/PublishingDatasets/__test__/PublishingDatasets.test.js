@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createRouterContext from 'react-router-test-context'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 
 import Errors from '../../../../../components/Errors/Errors'
 
@@ -58,11 +58,13 @@ describe('<PublishingDatasets />', () => {
     it('should display all errors', () => {
       const errors = ['organizationId is required']
       const err = <Errors errors={errors} />
-      const wrapper = mount(<PublishingDatasets match={{ params: { organizationId: null } }} />)
+      const wrapper = shallow(<PublishingDatasets match={{ params: { organizationId: null } }} />)
 
       return wrapper.instance()
         .componentWillMount()
         .then(() => {
+          wrapper.update()
+
           expect(wrapper.state('errors')).to.eql(errors)
           expect(wrapper).to.contain(err)
         })

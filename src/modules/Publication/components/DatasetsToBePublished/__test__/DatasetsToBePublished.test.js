@@ -62,6 +62,7 @@ describe('<DatasetsToBePublished />', () => {
         const wrapper = shallow(<DatasetsToBePublished organizationId='1' datasets={datasets} title={''} status={''} />)
 
         wrapper.instance().setState({ toPublish: datasets })
+        wrapper.update()
 
         expect(wrapper.text()).to.contain('Tout désélectionner')
         expect(wrapper.text()).to.contain('Publier toutes les données')
