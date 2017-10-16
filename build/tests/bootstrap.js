@@ -7,6 +7,11 @@ import path from 'path'
 import chai from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 
+import Enzyme from 'enzyme'
+import Adapter from 'enzyme-adapter-react-15'
+
+Enzyme.configure({ adapter: new Adapter() })
+
 moduleAlias.addAlias('common', path.join(__dirname, '../../src'))
 
 process.env.PUBLIC_URL = ''
