@@ -12,8 +12,6 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
   const {
     type,
     updateFrequency,
-    creationDate,
-    revisionDate,
     topicCategory,
     equivalentScaleDenominator,
     spatialResolution
@@ -31,8 +29,16 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
     defaultValue: type
   })
 
-  const createDate = creationDate
-    ? moment(creationDate).format('DD/MM/YYYY')
+  const { creationDate, revisionDate } = dataset.metadata
+
+  const updatedAt = revisionDate || creationDate
+
+  const createdAtLabel = creationDate
+    ? moment(creationDate).format('L')
+    : t('Common:enums.unknownData.unknown', { context: 'female' })
+
+  const updatedAtLabel = updatedAt
+    ? doneSince(updatedAt)
     : t('Common:enums.unknownData.unknown', { context: 'female' })
 
   return (
@@ -41,8 +47,8 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
         <h4>{t('components.DatasetTechnicalInfo.lifeCycleTitle')}</h4>
 
         <div>{t('components.DatasetTechnicalInfo.updateFrequency')} : <b>{frequency}</b></div>
-        <div>{t('components.DatasetTechnicalInfo.creationDate')} : <b>{createDate}</b></div>
-        <div>{t('components.DatasetTechnicalInfo.revisionDate')} : <b>{revisionDate ? doneSince(revisionDate) : createDate}</b></div>
+        <div>{t('components.DatasetTechnicalInfo.creationDate')} : <b>{createdAtLabel}</b></div>
+        <div>{t('components.DatasetTechnicalInfo.revisionDate')} : <b>{updatedAtLabel}</b></div>
       </div>
 
       <div className={styles.other}>

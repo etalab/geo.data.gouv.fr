@@ -12,11 +12,16 @@ import styles from './DatasetHeader.scss'
 const DatasetHeader = ({ dataset, t }) => {
   const { title, description, type, purpose, lineage, inspireTheme } = dataset.metadata
 
-  const revisionDate = doneSince(dataset.revisionDate)
   const license = getLicense(dataset.metadata.license)
   const dataType = t(`Common:enums.dataTypes.${type}`, {
     defaultValue: type
   })
+
+  const { creationDate, revisionDate } = dataset.metadata
+  const updatedAt = revisionDate || creationDate
+  const updatedAtLabel = updatedAt
+    ? doneSince(updatedAt)
+    : t('Common:enums.unknownData.unknown', { context: 'female' })
 
   return (
     <div className={styles.container}>
@@ -34,7 +39,7 @@ const DatasetHeader = ({ dataset, t }) => {
               ) : license}</span>
             </div>
             <div>
-              {t('components.DatasetHeader.lastUpdate')} : <span>{revisionDate}</span>
+              {t('components.DatasetHeader.lastUpdate')} : <span>{updatedAtLabel}</span>
             </div>
           </div>
         </div>

@@ -111,7 +111,8 @@
         "contributions": "Contributions"
       },
 
-      "id": "Dataset ID"
+      "id": "Dataset ID",
+      "datasetInfoLastUpdate": "Metadata last update"
     }
   },
 

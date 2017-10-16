@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import Warning from 'common/components/Warning'
 import Loader from 'common/components/Loader'
+import { doneSince } from 'common/helpers/doneSince'
 
 import Discussions from '../../../../modules/Datasets/components/Discussions/Discussions'
 
@@ -75,6 +76,7 @@ class DatasetView extends React.PureComponent {
     const { dataset, publication, dataGouvDataset, fetchGeoJson, t, i18n } = this.props
     const status = dataset.metadata.status
     const hasThumbnails = dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0
+    const datasetInfoLastUpdate = doneSince(dataset.revisionDate)
 
     return (
       <div>
@@ -141,6 +143,7 @@ class DatasetView extends React.PureComponent {
             )}
             <div className={styles.footer}>
               <div>{t('components.DatasetView.id')} : <b>{dataset.metadata.id}</b></div>
+              <div>{t('components.DatasetView.datasetInfoLastUpdate')} : <b>{datasetInfoLastUpdate}</b></div>
             </div>
           </div>
 
