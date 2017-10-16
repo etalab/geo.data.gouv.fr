@@ -1,5 +1,19 @@
 const webpack = require('webpack')
-const dotenv = require('dotenv')
+
+const envVariables = [
+  'NODE_ENV',
+
+  'PUBLIC_URL',
+
+  'DATAGOUV_API_URL',
+  'DATAGOUV_API_KEY',
+
+  'PUBLICATION_BASE_URL',
+  'GEODATA_API_URL',
+
+  'PIWIK_URL',
+  'PIWIK_SITE_ID'
+]
 
 module.exports = {
   webpack: (config, { dev }) => {
@@ -17,14 +31,12 @@ module.exports = {
       }
     )
 
-    const { parsed } = dotenv.config()
-
     config.plugins.push(
       new webpack.DefinePlugin({
-        'process.env': JSON.stringify({
-          ...parsed,
-          NODE_ENV: process.env.NODE_ENV
-        })
+        'process.env': envVariables.reduce((env, entry) => {
+          env[entry] = JSON.stringify(process.env[entry])
+          return env
+        }, {})
       })
     )
 
