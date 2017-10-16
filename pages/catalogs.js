@@ -10,6 +10,8 @@ import { _get } from '../lib/fetch'
 import Page from '../components/page'
 import CatalogPreview from '../components/catalog-preview'
 
+const { GEODATA_API_URL } = process.env
+
 class CatalogsPage extends React.Component {
   static propTypes = {
     catalogs: PropTypes.arrayOf(PropTypes.shape({
@@ -18,7 +20,7 @@ class CatalogsPage extends React.Component {
   }
 
   static async getInitialProps(context) {
-    const catalogs = await _get(`${process.env.GEODATA_API_URL}/catalogs`)
+    const catalogs = await _get(`${GEODATA_API_URL}/catalogs`)
 
     return {
       catalogs
@@ -45,6 +47,8 @@ class CatalogsPage extends React.Component {
         <style jsx>{`
           ul {
             text-align: center;
+            margin-top: 2em;
+            padding: 0;
           }
 
           li {

@@ -7,37 +7,15 @@ import { get } from 'lodash'
 import colors from '../styles/colors'
 
 import HarvestStatus from './harvest-status'
-// import Counter from '../Statistics/Counter/Counter'
-// import Percent from '../Statistics/Percent/Percent'
+import Counter from './counter'
+import Percent from './percent'
 
 // import ObsoleteWarning from './ObsoleteWarning'
-
-// import styles from './CatalogPreview.scss'
 
 export const CatalogPreview = ({ catalog, t }) => {
   let metrics = catalog.metrics
   let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
-
-  const metricsPreview = !metrics ? (
-    <div>{t('components.CatalogPreview.noData')}</div>
-  ) : (
-    <div>
-      {/* <Percent
-        value={openness}
-        total={metrics.datasets.totalCount}
-        size='small'
-        label={t('components.CatalogPreview.openDataLabel')}
-      />
-      <Percent
-        value={download}
-        total={metrics.datasets.totalCount}
-        size='small'
-        label={t('components.CatalogPreview.downloadableLabel')}
-      />
-      <Counter value={metrics.records.totalCount} size='small' label={t('components.CatalogPreview.recordsLabel')} /> */}
-    </div>
-  )
 
   return (
     <Link href={`/catalogs/${catalog._id}`}>
@@ -47,7 +25,26 @@ export const CatalogPreview = ({ catalog, t }) => {
         {/* <ObsoleteWarning catalog={catalog} /> */}
 
         <div className='metrics'>
-          {metricsPreview}
+          {!metrics ? <div>{t('components.CatalogPreview.noData')}</div> : (
+            <div>
+              <Percent
+                value={openness}
+                total={metrics.datasets.totalCount}
+                size='small'
+                label={t('components.CatalogPreview.openDataLabel')} />
+
+              <Percent
+                value={download}
+                total={metrics.datasets.totalCount}
+                size='small'
+                label={t('components.CatalogPreview.downloadableLabel')} />
+
+              <Counter
+                value={metrics.records.totalCount}
+                size='small'
+                label={t('components.CatalogPreview.recordsLabel')} />
+            </div>
+          )}
         </div>
 
         <style jsx>{`
@@ -69,7 +66,7 @@ export const CatalogPreview = ({ catalog, t }) => {
             margin: 0;
           }
 
-          .metrics {
+          .metrics > div {
             display: flex;
             justify-content: space-between;
             align-items: center;
