@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Filter from 'common/components/Filter'
-import Markdown from 'common/components/Markdown'
+import MarkdownSummary from 'common/components/MarkdownSummary'
 
 import styles from './SearchResult.scss'
 import noThumbnail from './images/no-thumbnail.svg'
@@ -26,7 +26,7 @@ const SearchResult = ({ dataset, addFilter, t }) => (
           <h3>{dataset.metadata.title}</h3>
 
           { dataset.metadata.description && (
-            <Markdown markdown={dataset.metadata.description} ellipsis />
+            <MarkdownSummary markdown={dataset.metadata.description} />
           )}
         </div>
 
