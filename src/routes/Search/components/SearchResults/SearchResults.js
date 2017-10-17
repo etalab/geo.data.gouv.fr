@@ -17,8 +17,8 @@ const SearchResults = ({ count, page, query, results, facets, addFilter, changeP
       <SearchResultsCount count={count} />
 
       {count > 0 && (
-        <div className={styles.results}>
-          <div className={styles.result}>
+        <div className={styles.container}>
+          <div>
             {results.map(result => (
               <SearchResult
                 key={result._id}
@@ -28,11 +28,13 @@ const SearchResults = ({ count, page, query, results, facets, addFilter, changeP
             ))}
           </div>
 
-          <Facets
-            facets={facets}
-            filters={query.facets}
-            addFilter={addFilter}
-          />
+          <div className={styles.facets}>
+            <Facets
+              facets={facets}
+              filters={query.facets}
+              addFilter={addFilter}
+            />
+          </div>
         </div>
       )}
 

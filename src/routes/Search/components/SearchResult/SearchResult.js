@@ -7,18 +7,22 @@ import { Link } from 'react-router-dom'
 import MarkdownSummary from 'common/components/MarkdownSummary'
 
 import styles from './SearchResult.scss'
-// import noThumbnail from './images/no-thumbnail.svg'
+import noThumbnail from './images/no-thumbnail.svg'
 
 const { GEODATA_API_URL } = process.env
 
 const SearchResult = ({ dataset, addFilter, t }) => (
   <div className={styles.container}>
     <Link to={`/datasets/${dataset.recordId}`} className={styles.dataset}>
-      <div className={styles.thumbnail}>
-        {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0 && (
+      {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0 ? (
+        <div className={styles.thumbnail}>
           <img src={`${GEODATA_API_URL}/records/${dataset.recordId}/thumbnails/${dataset.metadata.thumbnails[0].originalUrlHash}`} alt='thumbnail' />
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className={`${styles.thumbnail} ${styles.noThumbnail}`}>
+          <img src={noThumbnail} alt='no image available' />
+        </div>
+      )}
 
       <div className={styles.content}>
         <div>

@@ -6,7 +6,7 @@ import Markdown from './Markdown'
 
 class Renderer {
   constructor({ maxLength }) {
-    this.maxLength = maxLength || 500
+    this.maxLength = maxLength || 450
   }
 
   p = 0
@@ -64,7 +64,7 @@ MarkdownSummary.propTypes = {
 }
 
 MarkdownSummary.defaultProps = {
-  maxLength: 500
+  maxLength: 450
 }
 
 export default MarkdownSummary
