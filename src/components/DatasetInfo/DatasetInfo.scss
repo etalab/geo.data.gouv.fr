@@ -1,0 +1,27 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: small;
+
+  > div {
+    margin-right: 1em;
+  }
+
+  b {
+    margin-left: 0.3em;
+    font-weight: bold;
+    color: $blue;
+    word-wrap: break-word;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+  }
+}

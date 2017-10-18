@@ -1,8 +1,9 @@
-.wrapper pre {
-  white-space: pre-wrap;
+.wrapper {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
-.ellipsis {
-  text-overflow: ellipsis;
-  overflow: hidden;
+.wrapper pre {
+  white-space: pre-wrap;
 }

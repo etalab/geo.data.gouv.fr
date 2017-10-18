@@ -4,11 +4,11 @@ import marked from 'marked'
 
 import styles from './Markdown.scss'
 
-const Markdown = ({ markdown, ellipsis }) => {
-  const md = marked(markdown)
+const Markdown = ({ markdown, renderer }) => {
+  const md = marked(markdown, { renderer })
   return (
     <p
-      className={`${styles.wrapper} ${ellipsis && styles.ellipsis}`}
+      className={`${styles.wrapper}`}
       dangerouslySetInnerHTML={{ __html : md }}
     />
   )
@@ -16,7 +16,7 @@ const Markdown = ({ markdown, ellipsis }) => {
 
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
-  ellipsis: PropTypes.bool
+  renderer: PropTypes.object
 }
 
 export default Markdown

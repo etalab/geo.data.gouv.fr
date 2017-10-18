@@ -14,6 +14,10 @@
     "next": "Suivant"
   },
 
+  "SearchResults": {
+    "filterButtonLabel": "Filtres"
+  },
+
   "SearchResult": {
     "keywords": "Mot-clé",
     "keywords_plural": "Mots-clés",
