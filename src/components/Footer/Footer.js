@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { translate } from 'react-i18next'
 
 import styles from './Footer.scss'
@@ -19,7 +20,9 @@ const Footer = ({ t }) => (
       <div>
         <ul className={styles.footerLinks}>
           <li><h2>geo.data.gouv.fr</h2></li>
-          <li>{t('components.Footer.terms')}</li>
+          <li>
+            <Link to='/legal'>{t('components.Footer.legal')}</Link>
+          </li>
         </ul>
       </div>
     </div>
