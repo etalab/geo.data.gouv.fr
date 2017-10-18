@@ -115,4 +115,8 @@
 
 .infos > div:last-child {
   margin: 0 0 0 auto;
+
+  @media (max-width: 551px) {
+    margin: 0;
+  }
 }
