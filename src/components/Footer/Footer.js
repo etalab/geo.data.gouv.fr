@@ -10,22 +10,16 @@ const Footer = ({ t }) => (
       <div className={styles.footerLogo}>
         <img src='assets/etalab.png' />
         <ul className={styles.footerSocial}>
-          <li><a href='https://www.twitter.com/etalab'><img src='assets/socials/twitter.svg' alt='Twitter' /></a></li>
-          <li><a href='https://www.github.com/etalab'><img src='assets/socials/github.svg' alt='Github' /></a></li>
-          <li><a href='https://www.facebook.com/etalab'><img src='assets/socials/facebook.svg' alt='Facebook' /></a></li>
-          <li><a href='mailto:info@data.gouv.fr'><img src='assets/socials/envelop.svg' alt='Contact' /></a></li>
+          <li><a href='https://twitter.com/geodatagouv'><img src='assets/socials/twitter.svg' alt='Twitter' /></a></li>
+          <li><a href='https://github.com/etalab/geo.data.gouv.fr'><img src='assets/socials/github.svg' alt='Github' /></a></li>
+          <li><a href='https://medium.com/geo-data-gouv-fr'><img src='assets/socials/medium.svg' alt='Medium' /></a></li>
+          <li><a href='mailto:info@geo.data.gouv.fr'><img src='assets/socials/envelop.svg' alt='Contact' /></a></li>
         </ul>
       </div>
       <div className={styles.footerLogo}>
         <ul className={styles.footerLinks}>
           <li><h2>geo.data.gouv.fr</h2></li>
           <li>{t('components.Footer.terms')}</li>
-        </ul>
-        <ul className={styles.footerSocial}>
-          <li><a href='https://twitter.com/geodatagouv'><img src='assets/socials/twitter.svg' alt='Twitter' /></a></li>
-          <li><a href='https://github.com/etalab/geo.data.gouv.fr'><img src='assets/socials/github.svg' alt='Github' /></a></li>
-          <li><a href='https://medium.com/geo-data-gouv-fr'><img src='assets/socials/medium.svg' alt='Medium' /></a></li>
-          <li><a href='mailto:info@geo.data.gouv.fr'><img src='assets/socials/envelop.svg' alt='Contact' /></a></li>
         </ul>
       </div>
     </div>
