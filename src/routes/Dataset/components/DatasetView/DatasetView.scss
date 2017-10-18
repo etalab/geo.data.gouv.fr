@@ -3,6 +3,7 @@
 .container {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 3em;
 
   @media (max-width: 768px) {
     flex-flow: wrap;
