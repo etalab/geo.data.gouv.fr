@@ -21,7 +21,7 @@ const Footer = ({ t }) => (
         <ul className={styles.footerLinks}>
           <li><h2>geo.data.gouv.fr</h2></li>
           <li>
-            <Link to='/legal'>{t('components.Footer.terms')}</Link>
+            <Link to='/legal'>{t('components.Footer.legal')}</Link>
           </li>
         </ul>
       </div>
