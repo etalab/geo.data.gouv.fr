@@ -12,37 +12,34 @@ const DatasetHeader = ({ dataset, t }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.inspireThemeHead}>
-        <div className={styles.resume}>
-          <h1 className={styles.title}>{title}</h1>
+      <div className={styles.head}>
+        <div className={styles.title}>
+          <h1>{title}</h1>
 
           <DatasetInfo metadata={dataset.metadata} displayType />
         </div>
 
         {inspireTheme && (
           <div className={styles.theme}>
-            <div>
-              <img src={`/assets/inspire-icons/${inspireTheme.id}.svg`} alt='inspire-theme-icon' />
-            </div>
-            <div>
-              <a href={inspireTheme.uri} target='_blank'>{inspireTheme.label.fr}</a>
-            </div>
+            <img
+              src={`/assets/inspire-icons/${inspireTheme.id}.svg`}
+              title={inspireTheme.label.fr}
+              alt={inspireTheme.label.fr}
+            />
           </div>
         )}
       </div>
 
       <div>
-        <div>
-          {description && (
-            <MarkdownPreview markdown={description} />
-          )}
-          <p>
-            <b>{t('components.DatasetHeader.purpose')} :</b> {purpose || t('Common:enums.unknownData.notSpecified')}
-          </p>
-          <p>
-            <b>{t('components.DatasetHeader.dataOrigin')} :</b> {lineage || t('Common:enums.unknownData.notSpecified', { context: 'female' })}
-          </p>
-        </div>
+        {description && (
+          <MarkdownPreview markdown={description} />
+        )}
+        <p>
+          <b>{t('components.DatasetHeader.purpose')} :</b> {purpose || t('Common:enums.unknownData.notSpecified')}
+        </p>
+        <p>
+          <b>{t('components.DatasetHeader.dataOrigin')} :</b> {lineage || t('Common:enums.unknownData.notSpecified', { context: 'female' })}
+        </p>
       </div>
     </div>
   )
