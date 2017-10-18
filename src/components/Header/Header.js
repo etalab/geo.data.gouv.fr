@@ -6,6 +6,8 @@ import { translate } from 'react-i18next'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
+import LanguageSelection from '../LanguageSelection'
+
 import styles from './Header.scss'
 import logo from './images/logo-geo.svg'
 
@@ -13,10 +15,15 @@ const { PUBLIC_URL, PUBLICATION_BASE_URL } = process.env
 
 class Header extends React.Component {
   static propTypes = {
-    t: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+
+    i18n: PropTypes.shape({
+      language: PropTypes.string.isRequired
+    }).isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -35,7 +42,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { t, location } = this.props
+    const { i18n, t, location } = this.props
     const { user } = this.state
 
     const loginRedirect = `${PUBLIC_URL}/publication`
@@ -44,25 +51,33 @@ class Header extends React.Component {
 
     const logInUrl = `${PUBLICATION_BASE_URL}/login?redirect=${encodeURIComponent(loginRedirect)}`
     const logoutUrl = `${PUBLICATION_BASE_URL}/logout?redirect=${encodeURIComponent(logoutRedirect)}`
-    const login = <a className={styles.log} href={logInUrl}>{t('components.Header.login')}</a>
+    const login = <a href={logInUrl}>{t('components.Header.login')}</a>
 
     return (
-      <nav className={styles.nav}>
-        <Link to='/' className={styles.logo}>
-          <img src={logo} alt='Logo de la République française (1999)' />
-        </Link>
+      <nav>
+        <div className={styles.container}>
+          <Link to={'/'}>
+            <img className={styles.logo} src={logo} alt='Accueil de geo.data.gouv.fr' />
+          </Link>
 
-        {!user ? login : (
-          <div className={styles.authentification}>
-            <Link to={'/publication'}>
-              <div className={styles.account}>
-                <img alt='avatar' className={styles.avatar} src={user.avatar} />
-                {`${user.first_name} ${user.last_name}`}
-              </div>
-            </Link>
-            <a className={styles.log} href={logoutUrl}><span className={styles.logout}>{t('components.Header.logout')}</span><i className='power icon' /></a>
-          </div>
-        )}
+          <ul className={styles.links}>
+            <li>
+              {!user ? login : (
+                <Link to={'/publication'}>
+                  <img alt='avatar' className={styles.avatar} src={user.avatar} />
+                  {`${user.first_name} ${user.last_name}`}
+                </Link>
+              )}
+            </li>
+            <li>
+              <LanguageSelection language={i18n.language} />
+            </li>
+            {user && (
+              <li>
+                <a href={logoutUrl}><span>{t('components.Header.logout')}</span><i className='power icon' /></a>
+              </li>)}
+          </ul>
+        </div>
       </nav>
     )
   }

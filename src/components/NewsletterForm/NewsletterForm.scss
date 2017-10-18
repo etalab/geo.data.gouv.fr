@@ -1,0 +1,25 @@
+@import 'variables';
+
+.container {
+  background-color: $whitesmoke;
+  padding: 6em 0;
+  text-align: center;
+
+  input {
+    display: block;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px 20px;
+    font: inherit;
+    line-height: 1.6;
+    font-size: 1.3em;
+    border-radius: 2px;
+    margin-bottom: 1em;
+  }
+}
+
+.form {
+  max-width: 640px;
+  margin: auto;
+}

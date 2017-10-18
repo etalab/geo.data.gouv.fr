@@ -1,0 +1,28 @@
+@import 'variables';
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.content {
+  position: absolute;
+  background-color: #fff;
+  width: 100px;
+  right: 0;
+  text-align: left;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  div {
+    color: $black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background-color: $lightgrey;
+    }
+  }
+}

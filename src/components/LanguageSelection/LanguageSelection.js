@@ -3,35 +3,30 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { translate } from 'react-i18next'
 
-import styles from './LanguageSelection.scss'
+import Dropdown from '../Dropdown'
 
-class LanguageSelection extends React.PureComponent {
+export class LanguageSelection extends React.PureComponent {
   static propTypes = {
-    language: PropTypes.string.isRequired,
-    t: PropTypes.func.isRequired,
     i18n: PropTypes.shape({
       changeLanguage: PropTypes.func.isRequired
     }).isRequired
   }
 
-  changeLanguage = e => {
+  changeLanguage(language) {
     const { i18n } = this.props
 
-    moment.locale(e.target.value)
-    i18n.changeLanguage(e.target.value)
+    moment.locale(language)
+    i18n.changeLanguage(language)
   }
 
   render() {
-    const { language, t } = this.props
+    const { i18n } = this.props
 
     return (
-      <div>
-        {t('components.LanguageSelection.languageSelection')} :
-        <select className={styles.select} value={language} onChange={this.changeLanguage}>
-          <option value='en'>English 🇬🇧</option>
-          <option value='fr'>Français 🇫🇷</option>
-        </select>
-      </div>
+      <Dropdown title={i18n.language === 'en' ? '🇬🇧' : '🇫🇷'}>
+        <div onClick={() => this.changeLanguage('en')}>English 🇬🇧</div>
+        <div onClick={() => this.changeLanguage('fr')}>Français 🇫🇷</div>
+      </Dropdown>
     )
   }
 }

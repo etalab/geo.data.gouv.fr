@@ -1,85 +1,55 @@
 @import 'variables';
 
-.nav {
-  padding: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: $darkgrey;
-  z-index: 1;
+nav {
+  box-shadow: 0 1px 4px var(--box-dark-shadow);
+  width: 100%;
+  background: #fff;
+  z-index: 100;
 
-  a {
-    color: $darkgrey;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 
-    &:focus,
-    &:hover {
-      color: #000;
+  .logo {
+    height: 68px;
+    padding: 1em;
+  }
+
+  .links {
+    display: inline;
+    margin: 0;
+    padding: 1em;
+    list-style-type: 0;
+    text-align: right;
+
+    li {
+      padding: 0;
+      display: inline;
+    }
+
+    li + li {
+      padding-left: 15px;
+    }
+
+    a {
+      color: $black;
     }
   }
-
-  .log {
-    color: $white;
-  }
-
-  @media (max-width: 551px) {
-    font-size: 0.75em;
-  }
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 260px;
-
-    @media (max-width: 551px) {
-      width: 160px;
+@media (max-width: 550px) {
+  nav {
+    .links {
+      padding-top: 0;
     }
   }
 }
 
-.log {
-  border-radius: 5px;
-  padding: 10px 15px;
-  background-color: $blue;
-  font-size: 1em;
-
-  @media (max-width: 551px) {
-    padding: 0 5px;
-  }
-}
-
-.authentification {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.account {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 1em;
-
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 551px) {
-    margin-right: 0.4em;
-  }
-
-  .avatar {
-    width: 30px;
-    margin-right: 0.3em;
-    border-radius: 60px;
-  }
-}
-
-.logout {
-  @media (max-width: 551px) {
-    display: none;
-  }
+.avatar {
+  width: 30px;
+  margin: -0.7em 0.3em;
+  border-radius: 60px;
 }
