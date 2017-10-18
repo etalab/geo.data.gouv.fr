@@ -26,15 +26,23 @@
   }
 }
 
-.button {
+.filter-open {
   display: none;
 
   @media (max-width: 960px) {
-    font-size: 18px;
     display: block;
+  }
+}
+
+.filter-close {
+  display: none;
+
+  @media (max-width: 960px) {
+    display: block;
+    font-size: 18px;
     position: absolute;
-    top: 0.5em;
-    right: 0;
+    top: 6px;
+    right: 1.4em;
     padding: 0;
   }
 }

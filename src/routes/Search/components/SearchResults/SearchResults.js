@@ -73,7 +73,10 @@ class SearchResults extends React.Component {
       <div className={styles.container}>
         <div className={styles.row}>
           <SearchResultsCount count={count} />
-          <Button action={this.toggleFilters} text={t('SearchResults.filterButtonLabel')} />
+
+          <div className={styles.filterOpen}>
+            <Button action={this.toggleFilters} text={t('SearchResults.filterButtonLabel')} />
+          </div>
         </div>
 
         {count > 0 && (
@@ -89,7 +92,7 @@ class SearchResults extends React.Component {
             </div>
 
             <div className={`${styles.facets} ${showFilters ? styles.open : ''}`} ref={this.setFacetsRef}>
-              <button onClick={this.toggleFilters} className={styles.button}>
+              <button onClick={this.toggleFilters} className={styles.filterClose}>
                 &times;
               </button>
 
