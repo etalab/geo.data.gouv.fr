@@ -13,7 +13,7 @@ const Footer = ({ t }) => (
           <li><a href='https://twitter.com/geodatagouv'><img src='assets/socials/twitter.svg' alt='Twitter' /></a></li>
           <li><a href='https://github.com/etalab/geo.data.gouv.fr'><img src='assets/socials/github.svg' alt='Github' /></a></li>
           <li><a href='https://medium.com/geo-data-gouv-fr'><img src='assets/socials/medium.svg' alt='Medium' /></a></li>
-          <li><a href='mailto:info@geo.data.gouv.fr'><img src='assets/socials/envelop.svg' alt='Contact' /></a></li>
+          <li><a href='mailto:geo@data.gouv.fr'><img src='assets/socials/envelop.svg' alt='Contact' /></a></li>
         </ul>
       </div>
       <div className={styles.footerLogo}>
