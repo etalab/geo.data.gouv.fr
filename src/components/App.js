@@ -14,6 +14,7 @@ import DatasetRoute from '../routes/Dataset'
 import CatalogRoute from '../routes/Catalogs'
 import EventsRoute from '../routes/Events'
 import PublicationRoute from '../routes/Publication'
+import LegalRoute from '../routes/Legal'
 
 import NotFoundRoute from '../routes/NotFound'
 
@@ -45,6 +46,7 @@ class App extends React.Component {
               <Route path='/catalogs' component={CatalogRoute} />
               <Route path='/events' component={EventsRoute} />
               <Route path='/publication' component={PublicationRoute} />
+              <Route path='/legal' component={LegalRoute} />
 
               <Route component={NotFoundRoute} />
             </Switch>
