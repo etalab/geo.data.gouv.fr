@@ -66,7 +66,7 @@
     },
 
     "NewsletterForm": {
-      "newsletterSignUp": "To be informed of news, subscribe to our newsletter:s",
+      "newsletterSignUp": "Keep in touch, subscribe to our newsletter:",
       "label": "Your email address",
       "inputValue": "Subscribe"
     },
