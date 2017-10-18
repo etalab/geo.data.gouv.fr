@@ -12,7 +12,7 @@ import noThumbnail from './images/no-thumbnail.svg'
 
 const { GEODATA_API_URL } = process.env
 
-const SearchResult = ({ dataset, addFilter, t }) => (
+const SearchResult = ({ dataset, addFilter, t, i18n }) => (
   <div className={styles.container}>
     <Link to={`/datasets/${dataset.recordId}`} className={styles.dataset}>
       {dataset.metadata.thumbnails && dataset.metadata.thumbnails.length > 0 ? (
@@ -31,7 +31,11 @@ const SearchResult = ({ dataset, addFilter, t }) => (
 
           {dataset.metadata.inspireTheme && (
             <div className={styles.inspire}>
-              <img src={`/assets/inspire-icons/${dataset.metadata.inspireTheme.id}.svg`} alt='Inspire theme' />
+              <img
+                src={`/assets/inspire-icons/${dataset.metadata.inspireTheme.id}.svg`}
+                title={dataset.metadata.inspireTheme.label[i18n.language]}
+                alt={dataset.metadata.inspireTheme.label[i18n.language]}
+              />
             </div>
           )}
         </div>
@@ -91,6 +95,9 @@ SearchResult.propTypes = {
 
   addFilter: PropTypes.func.isRequired,
 
+  i18n: PropTypes.shape({
+    language: PropTypes.string.isRequired
+  }).isRequired,
   t: PropTypes.func.isRequired
 }
 
