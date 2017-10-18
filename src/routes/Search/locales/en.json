@@ -14,6 +14,10 @@
     "next": "Next"
   },
 
+  "SearchResults": {
+    "filterButtonLabel": "Filters"
+  },
+
   "SearchResult": {
     "keywords": "Keyword",
     "keywords_plural": "Keywords",

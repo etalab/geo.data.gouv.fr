@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import Facets from 'common/components/Facets/Facets'
 
@@ -25,7 +26,9 @@ class SearchResults extends React.Component {
     facets: PropTypes.object.isRequired,
 
     addFilter: PropTypes.func.isRequired,
-    changePage: PropTypes.func.isRequired
+    changePage: PropTypes.func.isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   state = {
@@ -61,7 +64,7 @@ class SearchResults extends React.Component {
   }
 
   render () {
-    const { count, page, query, results, facets, addFilter, changePage } = this.props
+    const { count, page, query, results, facets, addFilter, changePage, t } = this.props
     const { showFilters } = this.state
 
     const pageCount = results ? Math.ceil(count / query.limit) : 0
@@ -70,7 +73,7 @@ class SearchResults extends React.Component {
       <div className={styles.container}>
         <div className={styles.row}>
           <SearchResultsCount count={count} />
-          <Button action={this.toggleFilters} text='Filtres' />
+          <Button action={this.toggleFilters} text={t('SearchResults.filterButtonLabel')} />
         </div>
 
         {count > 0 && (
@@ -113,4 +116,4 @@ class SearchResults extends React.Component {
   }
 }
 
-export default SearchResults
+export default translate('Search')(SearchResults)
