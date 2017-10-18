@@ -56,7 +56,6 @@ class Header extends React.Component {
           </Link>
 
           <ul className={styles.links}>
-            <li><a href='#'>FAQ</a></li>
             <li>
               {!user ? login : (
                 <Link to={'/publication'}>
