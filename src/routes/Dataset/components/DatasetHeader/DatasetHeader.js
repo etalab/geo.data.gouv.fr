@@ -7,7 +7,7 @@ import DatasetInfo from 'common/components/DatasetInfo'
 
 import styles from './DatasetHeader.scss'
 
-const DatasetHeader = ({ dataset, t }) => {
+const DatasetHeader = ({ dataset, t, i18n }) => {
   const { title, description, purpose, lineage, inspireTheme } = dataset.metadata
 
   return (
@@ -20,13 +20,13 @@ const DatasetHeader = ({ dataset, t }) => {
         </div>
 
         {inspireTheme && (
-          <div className={styles.theme}>
+          <a href={`${inspireTheme.uri}?lang=${i18n.language}`} className={styles.theme} target='_blank'>
             <img
               src={`/assets/inspire-icons/${inspireTheme.id}.svg`}
-              title={inspireTheme.label.fr}
-              alt={inspireTheme.label.fr}
+              title={inspireTheme.label[i18n.language]}
+              alt={inspireTheme.label[i18n.language]}
             />
-          </div>
+          </a>
         )}
       </div>
 
@@ -54,13 +54,14 @@ DatasetHeader.propTypes = {
       lineage: PropTypes.string,
       inspireTheme: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        label: PropTypes.shape({
-          fr: PropTypes.string.isRequired
-        }).isRequired
+        label: PropTypes.object.isRequired
       })
     }).isRequired
   }).isRequired,
 
+  i18n: PropTypes.shape({
+    language: PropTypes.string.isRequired
+  }).isRequired,
   t: PropTypes.func.isRequired
 }
 
