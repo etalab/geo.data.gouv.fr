@@ -13,7 +13,19 @@ class Dropdown extends React.Component {
     visible: false
   }
 
-  toggleDropDown = e => {
+  componentDidMount() {
+    window.addEventListener('mousedown', this.closeDropdown)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousedown', this.closeDropdown)
+  }
+
+  setDropdownRef = node => {
+    this.dropdownRef = node
+  }
+
+  toggleDropdown = e => {
     e.preventDefault()
 
     this.setState(state => ({
@@ -21,12 +33,20 @@ class Dropdown extends React.Component {
     }))
   }
 
+  closeDropdown = e => {
+    if (this.dropdownRef && !this.dropdownRef.contains(event.target)) {
+      this.setState(() => ({
+        visible: false
+      }))
+    }
+  }
+
   render() {
     const { title, children } = this.props
     const { visible } = this.state
 
     return (
-      <div className={styles.dropdown} onClick={this.toggleDropDown}>
+      <div className={styles.dropdown} onClick={this.toggleDropdown} ref={this.setDropdownRef}>
         <a>{title}</a>
 
         {visible && (
