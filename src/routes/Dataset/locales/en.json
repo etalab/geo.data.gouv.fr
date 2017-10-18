@@ -62,9 +62,6 @@
     },
 
     "DatasetHeader": {
-      "type": "Type",
-      "license": "License",
-      "lastUpdate": "Last update",
       "purpose": "Purpose",
       "dataOrigin": "Data origin"
     },

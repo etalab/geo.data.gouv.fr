@@ -77,6 +77,12 @@
 
     "SearchInput": {
       "placeholder": "Rechercher…"
+    },
+
+    "DatasetInfo": {
+      "type": "Type",
+      "license": "Licence",
+      "lastUpdate": "Dernière mise à jour"
     }
   },
 

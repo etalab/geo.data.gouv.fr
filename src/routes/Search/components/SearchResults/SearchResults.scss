@@ -1,4 +1,10 @@
-.container {
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.results {
   display: flex;
   margin: 2em 0;
 }
@@ -8,7 +14,33 @@
 
   @media (max-width: 960px) {
     display: none;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: -2px 0 2px rgba(0, 0, 0, 0.2);
+    padding: 1em 2em;
+    overflow: auto;
   }
+}
+
+.button {
+  display: none;
+
+  @media (max-width: 960px) {
+    font-size: 18px;
+    display: block;
+    position: absolute;
+    top: 0.5em;
+    right: 0;
+    padding: 0;
+  }
+}
+
+.facets.open {
+  display: block;
 }
 
 .loader {

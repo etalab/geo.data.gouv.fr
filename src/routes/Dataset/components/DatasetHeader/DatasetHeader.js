@@ -3,25 +3,12 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import MarkdownPreview from 'common/components/MarkdownPreview'
-
-import { doneSince } from 'common/helpers/doneSince'
-import { getLicense } from 'common/helpers/dataGouvChecks'
+import DatasetInfo from 'common/components/DatasetInfo'
 
 import styles from './DatasetHeader.scss'
 
 const DatasetHeader = ({ dataset, t }) => {
-  const { title, description, type, purpose, lineage, inspireTheme } = dataset.metadata
-
-  const license = getLicense(dataset.metadata.license)
-  const dataType = t(`Common:enums.dataTypes.${type}`, {
-    defaultValue: type
-  })
-
-  const { creationDate, revisionDate } = dataset.metadata
-  const updatedAt = revisionDate || creationDate
-  const updatedAtLabel = updatedAt
-    ? doneSince(updatedAt)
-    : t('Common:enums.unknownData.unknown', { context: 'female' })
+  const { title, description, purpose, lineage, inspireTheme } = dataset.metadata
 
   return (
     <div className={styles.container}>
@@ -29,19 +16,7 @@ const DatasetHeader = ({ dataset, t }) => {
         <div className={styles.resume}>
           <h1 className={styles.title}>{title}</h1>
 
-          <div className={styles.infos}>
-            <div>
-              {t('components.DatasetHeader.type')} : <span>{dataType || t('Common:enums.unknownData.unknown')}</span>
-            </div>
-            <div>
-              {t('components.DatasetHeader.license')} : <span>{license.name ? (
-                <a href={license.link} target='_blank'>{license.name}</a>
-              ) : license}</span>
-            </div>
-            <div>
-              {t('components.DatasetHeader.lastUpdate')} : <span>{updatedAtLabel}</span>
-            </div>
-          </div>
+          <DatasetInfo metadata={dataset.metadata} displayType />
         </div>
 
         {inspireTheme && (
@@ -77,7 +52,6 @@ DatasetHeader.propTypes = {
   dataset: PropTypes.shape({
     metadata: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      type: PropTypes.string,
       description: PropTypes.string,
       purpose: PropTypes.string,
       lineage: PropTypes.string,

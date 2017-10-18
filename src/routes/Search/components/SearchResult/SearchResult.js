@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 // import Filter from 'common/components/Filter'
 import MarkdownSummary from 'common/components/MarkdownSummary'
+import DatasetInfo from 'common/components/DatasetInfo'
 
 import styles from './SearchResult.scss'
 import noThumbnail from './images/no-thumbnail.svg'
@@ -25,50 +26,52 @@ const SearchResult = ({ dataset, addFilter, t }) => (
       )}
 
       <div className={styles.content}>
-        <div>
-          <div className={styles.title}>
-            <h3>{dataset.metadata.title}</h3>
+        <div className={styles.description}>
+          <h3>{dataset.metadata.title}</h3>
 
-            {dataset.metadata.inspireTheme && (
-              <div className={styles.inspire}>
-                <img src={`/assets/inspire-icons/${dataset.metadata.inspireTheme.id}.svg`} alt='Inspire theme' />
-              </div>
-            )}
-          </div>
-
-          {dataset.metadata.description && (
-            <MarkdownSummary markdown={dataset.metadata.description} />
+          {dataset.metadata.inspireTheme && (
+            <div className={styles.inspire}>
+              <img src={`/assets/inspire-icons/${dataset.metadata.inspireTheme.id}.svg`} alt='Inspire theme' />
+            </div>
           )}
         </div>
 
-        {/* <div className={styles.filters}>
-          <div className={styles.facet}>
-            <h5>{t('SearchResult.keywords', { context: dataset.metadata.keywords.length })}</h5>
-            <div className={styles.list}>
-              {dataset.metadata.keywords.map((keyword, idx) => (
-                <Filter
-                  key={idx}
-                  onClick={addFilter}
-                  filter={{ value: keyword, name: 'keyword' }}
-                />
-              ))}
-            </div>
-          </div>
+        {dataset.metadata.description && (
+          <MarkdownSummary markdown={dataset.metadata.description} />
+        )}
 
-          <div className={styles.facet}>
-            <h5>{t('SearchResult.organizations', { context: dataset.organizations.length })}</h5>
-            <div className={styles.list}>
-              {dataset.organizations.map((organization, idx) => (
-                <Filter
-                  key={idx}
-                  onClick={addFilter}
-                  filter={{ value: organization, name: 'organization' }}
-                />
-              ))}
-            </div>
-          </div>
-        </div> */}
+        <div className={styles.footer}>
+          <DatasetInfo metadata={dataset.metadata} className={styles.infos} />
+        </div>
       </div>
+
+      {/* <div className={styles.filters}>
+        <div className={styles.facet}>
+          <h5>{t('SearchResult.keywords', { context: dataset.metadata.keywords.length })}</h5>
+          <div className={styles.list}>
+            {dataset.metadata.keywords.map((keyword, idx) => (
+              <Filter
+                key={idx}
+                onClick={addFilter}
+                filter={{ value: keyword, name: 'keyword' }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.facet}>
+          <h5>{t('SearchResult.organizations', { context: dataset.organizations.length })}</h5>
+          <div className={styles.list}>
+            {dataset.organizations.map((organization, idx) => (
+              <Filter
+                key={idx}
+                onClick={addFilter}
+                filter={{ value: organization, name: 'organization' }}
+              />
+            ))}
+          </div>
+        </div>
+      </div> */}
     </Link>
   </div>
 )
