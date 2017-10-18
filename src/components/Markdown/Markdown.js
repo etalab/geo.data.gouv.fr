@@ -7,7 +7,7 @@ import styles from './Markdown.scss'
 const Markdown = ({ markdown, renderer }) => {
   const md = marked(markdown, { renderer })
   return (
-    <p
+    <div
       className={`${styles.wrapper}`}
       dangerouslySetInnerHTML={{ __html : md }}
     />
