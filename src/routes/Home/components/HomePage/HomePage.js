@@ -6,7 +6,7 @@ import { translate } from 'react-i18next'
 
 import SearchInput from 'common/components/SearchInput'
 import CatalogPreview from 'common/components/CatalogPreview'
-import NewsletterForm from 'common/components/Newsletter/NewsletterForm'
+import NewsletterForm from 'common/components/NewsletterForm'
 
 import styles from './HomePage.scss'
 import clouds from '../../../../components/PageLayout/images/clouds.svg'
