@@ -24,8 +24,8 @@ export class LanguageSelection extends React.PureComponent {
 
     return (
       <Dropdown title={i18n.language === 'en' ? '🇬🇧' : '🇫🇷'}>
-        <div onClick={() => this.changeLanguage('en')}>English 🇬🇧</div>
-        <div onClick={() => this.changeLanguage('fr')}>Français 🇫🇷</div>
+        <div onClick={() => this.changeLanguage('en')}>English 🇬🇧</div>
+        <div onClick={() => this.changeLanguage('fr')}>Français 🇫🇷</div>
       </Dropdown>
     )
   }
