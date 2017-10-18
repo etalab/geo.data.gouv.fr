@@ -5,7 +5,7 @@ import { translate } from 'react-i18next'
 
 import Dropdown from '../Dropdown/Dropdown'
 
-class LanguageSelection extends React.PureComponent {
+export class LanguageSelection extends React.PureComponent {
   static propTypes = {
     t: PropTypes.func.isRequired,
     i18n: PropTypes.shape({
@@ -13,7 +13,7 @@ class LanguageSelection extends React.PureComponent {
     }).isRequired
   }
 
-  changeLanguage = language => {
+  changeLanguage(language) {
     const { i18n } = this.props
 
     moment.locale(language)
