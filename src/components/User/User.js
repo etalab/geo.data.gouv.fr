@@ -9,8 +9,8 @@ const User = ({ user }) => {
     url: user.avatar,
     alt: user.slug
   } : {
-    url: 'assets/avatar.png',
-    alt: 'no avatar'
+    url: '/assets/avatar.png',
+    alt: ''
   }
 
   return (
