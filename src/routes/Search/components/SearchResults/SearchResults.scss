@@ -36,14 +36,16 @@
 
 .filter-close {
   display: none;
+  background: none;
+  border: 0 none;
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  right: 1.4em;
+  padding: 0;
 
   @media (max-width: 960px) {
     display: block;
-    font-size: 18px;
-    position: absolute;
-    top: 6px;
-    right: 1.4em;
-    padding: 0;
   }
 }
 
