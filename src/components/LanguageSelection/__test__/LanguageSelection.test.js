@@ -7,7 +7,7 @@ import 'common/i18n'
 describe('<LanguageSelection />', () => {
   describe('Switch language to english', () => {
     it('should display an english sentence', () => {
-      const label = 'Language'
+      const label = '🇬🇧'
       const wrapper = mount(<TranslatedLanguageSelection />)
       const internal = wrapper.find(LanguageSelection)
 
@@ -19,7 +19,7 @@ describe('<LanguageSelection />', () => {
 
   describe('Switch language to french', () => {
     it('should display an french sentence', () => {
-      const label = 'Langage'
+      const label = '🇫🇷'
       const wrapper = mount(<TranslatedLanguageSelection />)
       const internal = wrapper.find(LanguageSelection)
 

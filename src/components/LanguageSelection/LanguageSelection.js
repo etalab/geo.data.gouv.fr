@@ -7,7 +7,6 @@ import Dropdown from '../Dropdown/Dropdown'
 
 export class LanguageSelection extends React.PureComponent {
   static propTypes = {
-    t: PropTypes.func.isRequired,
     i18n: PropTypes.shape({
       changeLanguage: PropTypes.func.isRequired
     }).isRequired
@@ -21,10 +20,10 @@ export class LanguageSelection extends React.PureComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { i18n } = this.props
 
     return (
-      <Dropdown title={t('components.LanguageSelection.languageSelection')}>
+      <Dropdown title={i18n.language === 'en' ? '🇬🇧' : '🇫🇷'}>
         <div onClick={() => this.changeLanguage('en')}>English 🇬🇧</div>
         <div onClick={() => this.changeLanguage('fr')}>Français 🇫🇷</div>
       </Dropdown>
