@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { translate } from 'react-i18next'
 
-import Dropdown from '../Dropdown/Dropdown'
+import Dropdown from '../Dropdown'
 
 export class LanguageSelection extends React.PureComponent {
   static propTypes = {

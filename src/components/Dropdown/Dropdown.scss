@@ -3,6 +3,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 
   &:hover .dropdown-content {
     display: block;

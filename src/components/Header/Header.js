@@ -5,7 +5,8 @@ import { translate } from 'react-i18next'
 
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
-import LanguageSelection from '../LanguageSelection/LanguageSelection'
+
+import LanguageSelection from '../LanguageSelection'
 
 import styles from './Header.scss'
 import logo from './images/logo-geo.svg'
@@ -14,11 +15,15 @@ const { PUBLIC_URL, PUBLICATION_BASE_URL } = process.env
 
 class Header extends React.Component {
   static propTypes = {
-    i18n: PropTypes.object.isRequired,
-    t: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+
+    i18n: PropTypes.shape({
+      language: PropTypes.string.isRequired
+    }).isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   constructor(props) {
