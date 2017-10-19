@@ -70,7 +70,7 @@ jobs:
       - *restore_node_modules
 
       - run:
-          name: Lint JavaScipt
+          name: Lint JavaScript
           command: yarn lint:scripts
 
       - run:
