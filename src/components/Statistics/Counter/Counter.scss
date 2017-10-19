@@ -1,10 +1,30 @@
 @import 'variables';
 
-.large {
-  font-size: 4rem;
-  line-height: 4rem;
+.value {
+  font-size: 2.2rem;
+  height: 1.8rem;
+  text-align: left;
 }
 
+.unit {
+  font-size: 1rem;
+  margin-left: 0.2rem;
+}
+
+// Colors
+.success {
+  color: $green;
+}
+
+.warning {
+  color: $yellow;
+}
+
+.error {
+  color: $red;
+}
+
+// Sizes
 .small {
   font-size: 0.8rem;
   line-height: 0.8rem;
@@ -16,41 +36,7 @@
   font-weight: 300;
 }
 
-.default-label {
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 300;
-}
-
-.value {
-  display: flex;
-  justify-content: center;
-  font-size: 3em;
-  align-items: baseline;
-}
-
-.unit {
-  font-size: 14px;
-}
-
-.label {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.container {
-  text-align: center;
-}
-
-.success {
-  color: $green;
-}
-
-.warning {
-  color: $yellow;
-}
-
-.error {
-  color: $red;
+.large {
+  font-size: 4rem;
+  line-height: 4rem;
 }

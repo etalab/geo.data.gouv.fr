@@ -5,6 +5,10 @@
   padding: 6em 0;
   text-align: center;
 
+  h2 {
+    margin-top: 0;
+  }
+
   input {
     display: block;
     width: 100%;
@@ -16,6 +20,14 @@
     font-size: 1.3em;
     border-radius: 2px;
     margin-bottom: 1em;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3em 0;
+
+    h2 {
+      font-size: 1.4rem;
+    }
   }
 }
 
