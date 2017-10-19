@@ -25,18 +25,27 @@ defaults:
         - v1-geodatagouv-node-
 
 jobs:
-  install:
+  checkout:
     <<: *default_container
     steps:
       - checkout
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - ./
+
+  install:
+    <<: *default_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
 
       - restore_cache:
           name: Restore yarn cache
           keys:
             - v1-geodatagouv-yarn-{{ checksum "yarn.lock" }}
             - v1-geodatagouv-yarn-
-
-      - *restore_node_modules
 
       - run:
           name: Install dependencies
@@ -53,15 +62,6 @@ jobs:
           key: v1-geodatagouv-node-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
-
-      - run:
-          name: Remove node_modules to cleanup workspace
-          command: rm -r node_modules/
-
-      - persist_to_workspace:
-          root: *workspace_root
-          paths:
-            - ./
 
   lint:
     <<: *default_container
@@ -159,7 +159,12 @@ workflows:
 
   build_test_deploy:
     jobs:
+      - checkout:
+          filters: *default_filters
+
       - install:
+          requires:
+            - checkout
           filters: *default_filters
 
       - lint:
