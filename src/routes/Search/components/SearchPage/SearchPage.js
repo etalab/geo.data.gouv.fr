@@ -6,6 +6,7 @@ import qs from 'querystring'
 
 import { unionWith, isEqual } from 'lodash'
 
+import Container from 'common/components/Container'
 import Loader from 'common/components/Loader'
 import SearchInput from 'common/components/SearchInput'
 
@@ -119,20 +120,22 @@ class SearchPage extends React.PureComponent {
       <div className={styles.container}>
         <Helmet title={t('SearchPage.documentTitle')} />
         <div className={styles.header} style={`background: url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)`}>
-          <div className={styles.search}>
-            <SearchInput
-              defaultValue={search.parsedQuery.textInput}
-              onSearch={this.updateQuery}
-              hasButton
-            />
-            <FiltersSummary
-              filters={search.parsedQuery.filters}
-              removeFilter={this.removeFilter}
-            />
-          </div>
+          <Container fluid>
+            <div className={styles.search}>
+              <SearchInput
+                defaultValue={search.parsedQuery.textInput}
+                onSearch={this.updateQuery}
+                hasButton
+              />
+              <FiltersSummary
+                filters={search.parsedQuery.filters}
+                removeFilter={this.removeFilter}
+              />
+            </div>
+          </Container>
         </div>
 
-        <div className={styles.results}>
+        <Container fluid>
           <Loader isLoading={search.pending} error={search.error}>
             <SearchResults
               page={search.parsedQuery.page}
@@ -144,7 +147,7 @@ class SearchPage extends React.PureComponent {
               changePage={this.changePage}
             />
           </Loader>
-        </div>
+        </Container>
       </div>
     )
   }

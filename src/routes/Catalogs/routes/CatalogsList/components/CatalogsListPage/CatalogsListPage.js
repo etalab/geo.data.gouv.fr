@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { Helmet } from 'react-helmet'
 
+import Container from 'common/components/Container'
 import Loader from 'common/components/Loader'
 import CatalogPreview from 'common/components/CatalogPreview'
 
@@ -40,15 +41,18 @@ class CatalogsListPage extends React.PureComponent {
     return (
       <div className={styles.container} style={{ background: `url(${clouds}) bottom / 101% no-repeat, linear-gradient(to top, #41dcd7, #3083b2)` }}>
         <Helmet title={t('CatalogsListPage.documentTitle')} />
-        <Loader isLoading={catalogs.pending} error={catalogs.error}>
-          <div>
-            {catalogs.catalogs.map(catalog => (
-              <div key={catalog._id} className={styles.catalog} >
-                <CatalogPreview catalog={catalog} />
-              </div>
-            ))}
-          </div>
-        </Loader>
+        <Container fluid>
+          <h1>{t('CatalogsListPage.documentTitle')}</h1>
+          <Loader isLoading={catalogs.pending} error={catalogs.error}>
+            <div className={styles.catalogs}>
+              {catalogs.catalogs.map(catalog => (
+                <div key={catalog._id} className={styles.catalog} >
+                  <CatalogPreview catalog={catalog} />
+                </div>
+              ))}
+            </div>
+          </Loader>
+        </Container>
       </div>
     )
   }
