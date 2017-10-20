@@ -17,33 +17,34 @@ export const CatalogPreview = ({ catalog, t }) => {
   let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
 
-  const metricsPreview = !metrics ? (
-    <div>{t('components.CatalogPreview.noData')}</div>
-  ) : (
-    <div className={styles.container}>
-      <Percent
-        value={openness}
-        total={metrics.datasets.totalCount}
-        size='small'
-        label={t('components.CatalogPreview.openDataLabel')}
-      />
-      <Percent
-        value={download}
-        total={metrics.datasets.totalCount}
-        size='small'
-        label={t('components.CatalogPreview.downloadableLabel')}
-      />
-      <Counter value={metrics.records.totalCount} size='small' label={t('components.CatalogPreview.recordsLabel')} />
-    </div>
-  )
-
   return (
     <Link to={`/catalogs/${catalog._id}`} className={styles.link}>
-      <div className={styles.paper}>
-        <div className={styles.title}>{catalog.name}</div>
-        <LastHarvestStatus harvest={catalog.service.sync} />
-        <ObsoleteWarning catalog={catalog} />
-        {metricsPreview}
+      <div className={styles.title}>{catalog.name}</div>
+
+      <LastHarvestStatus harvest={catalog.service.sync} />
+      <ObsoleteWarning catalog={catalog} />
+
+      <div className={styles.metrics}>
+        {!metrics ? <div>{t('components.CatalogPreview.noData')}</div> : (
+          <div>
+            <Percent
+              value={openness}
+              total={metrics.datasets.totalCount}
+              size='small'
+              label={t('components.CatalogPreview.openDataLabel')} />
+
+            <Percent
+              value={download}
+              total={metrics.datasets.totalCount}
+              size='small'
+              label={t('components.CatalogPreview.downloadableLabel')} />
+
+            <Counter
+              value={metrics.records.totalCount}
+              size='small'
+              label={t('components.CatalogPreview.recordsLabel')} />
+          </div>
+        )}
       </div>
     </Link>
   )

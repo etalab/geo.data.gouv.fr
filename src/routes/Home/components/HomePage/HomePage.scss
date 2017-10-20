@@ -14,8 +14,8 @@
   }
 }
 
-.masthead {
-  padding: 20vh 8%;
+.hero {
+  padding: 14em 0 12em;
   text-align: center;
 
   span {
@@ -29,14 +29,14 @@
   }
 
   @media (max-width: 768px) {
-    padding: 0;
+    padding: 5em 0;
   }
 
   @media (max-width: 551px) {
+    padding: 2em 0;
+
     h1 {
       font-size: larger;
-      margin: 2em;
-      padding-top: 2em;
     }
   }
 }
@@ -67,26 +67,16 @@
   }
 }
 
-.paper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-}
-
 .dataset-links {
   display: block;
   margin-top: 2em;
   font-size: 1em;
 }
 
-.datagouv {
-  padding: 40px;
+.section {
+  padding: 1em 0;
+  margin-top: 2em;
+  text-align: center;
 
   h2 {
     color: #fff;
@@ -95,7 +85,8 @@
 }
 
 .link {
-  margin-top: 2em;
+  display: block;
+  margin-top: 1em;
   color: #fff;
 
   &:focus,
@@ -113,4 +104,9 @@
 
 .catalog {
   margin: 10px 20px;
+
+  @media (max-width: 551px) {
+    margin: 10px 0;
+    flex-grow: 1;
+  }
 }

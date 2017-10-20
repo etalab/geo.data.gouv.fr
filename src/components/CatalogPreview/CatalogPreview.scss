@@ -1,29 +1,42 @@
 @import 'variables';
 
 .link {
-  cursor: pointer;
-  display: inline-block;
-  width: 340px;
+  display: block;
+  padding: 1.4em 2em;
+  text-align: left;
   position: relative;
+  width: 340px;
   color: $darkgrey;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: $white;
+  background: linear-gradient(180deg, #fdfdf8, $white);
+
+  @media (max-width: 551px) {
+    width: 100%;
+  }
 }
 
 .title {
   font-size: 1.4em;
 }
 
-.paper {
-  border-radius: 5px;
-  padding: 2em 20px;
-  box-shadow: $box-shadow;
-  background: $white;  /* fallback for old browsers */
-  background: linear-gradient(180deg, #fdfdf8, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.container {
+.metrics > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 3em;
   font-size: 11px;
+
+  > div {
+    margin: 0 0.5em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

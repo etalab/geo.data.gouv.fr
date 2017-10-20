@@ -5,13 +5,11 @@ import styles from './Counter.scss'
 
 const Counter = ({ value, label, unit = '', size = '', color = '', title = '' }) => (
   <div className={styles.container}>
-    { title && <h3>{title}</h3> }
-    <div className={`${styles.value} ${styles[color]} ${styles[size]}`}>
-      {value || '0'} <div className={styles.unit}>{unit}</div>
+    {title && <h3>{title}</h3>}
+    <div className={`${styles.value} ${styles[color]}`}>
+      {value || 0}{unit && <span className={styles.unit}>{unit}</span>}
     </div>
-    <div className={styles.label}>
-      { label && <div className={`${styles[size]}`}>{label}</div> }
-    </div>
+    {label && <div className={styles[size]}>{label}</div>}
   </div>
 )
 
