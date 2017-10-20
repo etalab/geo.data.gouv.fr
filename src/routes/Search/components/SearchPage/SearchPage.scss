@@ -3,27 +3,15 @@
 }
 
 .header {
-  height: 240px;
+  padding: 4em 0;
 
-  @media (max-width: 551px) {
-    height: 110px;
+  @media (max-width: 768px) {
+    padding: 2em 0;
   }
 }
 
 .search {
-  padding: 4em 0 0 2em;
-  width: 80%;
-
-  @media (max-width: 551px) {
-    width: 100%;
-    padding: 0;
-  }
-}
-
-.results {
-  padding: 0 2em;
-
-  @media (max-width: 551px) {
-    padding: 0 1em;
+  @media (min-width: 961px) {
+    width: 80%;
   }
 }
