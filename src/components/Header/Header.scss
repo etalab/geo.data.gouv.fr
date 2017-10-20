@@ -1,50 +1,44 @@
 @import 'variables';
 
-nav {
-  box-shadow: 0 1px 4px var(--box-dark-shadow);
+.header {
   width: 100%;
   background: #fff;
-  z-index: 100;
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .logo {
-    height: 68px;
-    padding: 1em;
-  }
-
-  .links {
-    display: inline;
-    margin: 0;
-    padding: 1em;
-    list-style-type: 0;
-    text-align: right;
-
-    li {
-      padding: 0;
-      display: inline;
-    }
-
-    li + li {
-      padding-left: 15px;
-    }
-
-    a {
-      color: $black;
-    }
-  }
 }
 
-@media (max-width: 550px) {
-  nav {
-    .links {
-      padding-top: 0;
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.logo {
+  height: 68px;
+  padding: 1em;
+}
+
+.links {
+  display: inline;
+  margin: 0;
+  padding: 1em;
+  list-style-type: 0;
+  text-align: right;
+
+  li {
+    padding: 0;
+    display: inline;
+
+    + li {
+      padding-left: 15px;
     }
+  }
+
+  a {
+    color: $black;
+  }
+
+  @media (max-width: 550px) {
+    padding-top: 0;
   }
 }
 
