@@ -65,12 +65,6 @@
       "fail": "Failed"
     },
 
-    "NewsletterForm": {
-      "newsletterSignUp": "Keep in touch, subscribe to our newsletter:",
-      "label": "Your email address",
-      "inputValue": "Subscribe"
-    },
-
     "ObsoleteWarning": {
       "obsoleteCatalog": "This catalog has not been updated for more than 6 months"
     },

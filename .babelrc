@@ -1,11 +1,11 @@
 {
   "plugins": [
     [
-      "inline-import",
-      {
+      "inline-import", {
         "extensions": [".css"]
       }
-    ]
+    ],
+    "dotenv-import"
   ],
   "presets": [
     [

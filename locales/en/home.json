@@ -5,5 +5,11 @@
   "catalogsSectionTitle": "Harvested catalogs",
   "catalogsLink": "See all catalogs",
   "eventsSectionTitle": "Our Events",
-  "eventsLink": "See our events"
+  "eventsLink": "See our events",
+
+  "newsletter": {
+    "title": "Keep in touch, subscribe to our newsletter:",
+    "placeholder": "Your email address",
+    "button": "Subscribe"
+  }
 }

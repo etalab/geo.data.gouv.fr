@@ -16,11 +16,11 @@ class NewsletterForm extends React.Component {
       <div>
         <Container>
           <form action='//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d' method='post'name='mc-embedded-subscribe-form' target='_blank' noValidate>
-            <h2>{t('components.NewsletterForm.newsletterSignUp')}</h2>
-            <input type='email' name='EMAIL' placeholder={t('components.NewsletterForm.label')} />
+            <h2>{t('newsletter.title')}</h2>
+            <input type='email' name='EMAIL' placeholder={t('newsletter.placeholder')} />
 
             <button type='submit' name='subscribe'>
-              {t('components.NewsletterForm.inputValue')}
+              {t('newsletter.button')}
             </button>
           </form>
         </Container>
@@ -88,4 +88,6 @@ class NewsletterForm extends React.Component {
   }
 }
 
-export default translate()(NewsletterForm)
+export default translate('home', {
+  wait: process.browser
+})(NewsletterForm)

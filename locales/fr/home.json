@@ -5,5 +5,11 @@
   "catalogsSectionTitle": "Les catalogues moissonnés",
   "catalogsLink": "Voir tous les catalogues",
   "eventsSectionTitle": "Nos événements",
-  "eventsLink": "Voir nos événements"
+  "eventsLink": "Voir nos événements",
+
+  "newsletter": {
+    "title": "Pour être informé des nouveautés, inscrivez-vous à notre newsletter :",
+    "placeholder": "Votre adresse email",
+    "button": "Inscription"
+  }
 }

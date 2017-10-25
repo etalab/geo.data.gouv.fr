@@ -11,9 +11,6 @@ const i18nextMiddleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
 const i18n = require('./lib/i18n')
 
-// Load .env if available, mostly for development.
-require('dotenv').load()
-
 i18n
   .use(Backend)
   .use(i18nextMiddleware.LanguageDetector)

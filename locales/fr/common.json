@@ -65,12 +65,6 @@
       "fail": "En échec"
     },
 
-    "NewsletterForm": {
-      "newsletterSignUp": "Pour être informé des nouveautés, inscrivez-vous à notre newsletter :",
-      "label": "Votre adresse email",
-      "inputValue": "Inscription"
-    },
-
     "ObsoleteWarning": {
       "obsoleteCatalog": "Ce catalogue n’a pas été mis à jour depuis plus de 6 mois"
     },

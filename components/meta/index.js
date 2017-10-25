@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Reset from './styles/reset'
 import Global from './styles/global'
 
-const PUBLIC_URL = process.env.PUBLIC_URL
+import { PUBLIC_URL } from '@env'
 
 export default () => (
   <Head>

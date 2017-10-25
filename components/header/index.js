@@ -6,8 +6,7 @@ import { translate } from 'react-i18next'
 
 import LanguageSelection from './language-selection'
 
-const PUBLIC_URL = process.env.PUBLIC_URL
-const PUBLICATION_BASE_URL = process.env.PUBLICATION_BASE_URL
+import { PUBLIC_URL, PUBLICATION_BASE_URL } from '@env'
 
 const Header = ({ router, t, i18n }) => {
   const loginRedirect = `${PUBLIC_URL}/publication`

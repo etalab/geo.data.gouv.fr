@@ -12,7 +12,7 @@ import Content from '../components/content'
 import Container from '../components/container'
 import CatalogPreview from '../components/catalog-preview'
 
-const { GEODATA_API_URL } = process.env
+import { GEODATA_API_URL } from '@env'
 
 class CatalogsPage extends React.Component {
   static propTypes = {
@@ -83,4 +83,6 @@ class CatalogsPage extends React.Component {
   }
 }
 
-export default withI18n('catalogs')(translate('catalogs')(CatalogsPage))
+export default withI18n('catalogs')(translate('catalogs', {
+  wait: process.browser
+})(CatalogsPage))
