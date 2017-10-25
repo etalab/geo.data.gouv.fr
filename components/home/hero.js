@@ -58,8 +58,7 @@ const Hero = ({ t }) => (
         display: block;
         margin-top: 2em;
 
-        &:focus,
-        &:hover {
+        &:focus, &:hover {
           color: $black;
         }
       }

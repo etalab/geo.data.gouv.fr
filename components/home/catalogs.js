@@ -2,8 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import { translate } from 'react-i18next'
 
-import colors from '../../styles/colors'
-
 import Section from './section'
 import CatalogPreview from '../catalog-preview'
 
@@ -22,6 +20,8 @@ const Catalogs = ({ catalogs, t }) => (
     </Link>
 
     <style jsx>{`
+      @import 'colors';
+
       .catalogs {
         display: flex;
         flex-wrap: wrap;
@@ -38,12 +38,13 @@ const Catalogs = ({ catalogs, t }) => (
       }
 
       a {
-        color: ${colors.darkgrey};
-      }
+        color: $darkgrey;
+        display: block;
+        margin-top: 1em;
 
-      a:focus,
-      a:hover {
-        color: #000;
+        &:focus, &:hover {
+          color: $black;
+        }
       }
     `}</style>
   </Section>

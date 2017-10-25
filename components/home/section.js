@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Container from '../container'
 
@@ -25,5 +26,10 @@ const Section = ({ title, children }) => (
     `}</style>
   </section>
 )
+
+Section.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired
+}
 
 export default Section

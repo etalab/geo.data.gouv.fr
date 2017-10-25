@@ -1,8 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { translate } from 'react-i18next'
-
-import colors from '../../styles/colors'
 
 import Section from './section'
 
@@ -13,17 +12,24 @@ const Events = ({ t }) => (
     </Link>
 
     <style jsx>{`
-      a {
-        color: ${colors.darkgrey};
-      }
+      @import 'colors';
 
-      a:focus,
-      a:hover {
-        color: #000;
+      a {
+        color: $darkgrey;
+        display: block;
+        margin-top: 1em;
+
+        &:focus, &:hover {
+          color: $black;
+        }
       }
     `}</style>
   </Section>
 )
+
+Events.propTypes = {
+  t: PropTypes.func.isRequired
+}
 
 export default translate('home', {
   wait: process.browser
