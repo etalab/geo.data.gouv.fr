@@ -4,18 +4,12 @@ import { translate } from 'react-i18next'
 
 import colors from '../../styles/colors'
 
-import NewsletterForm from './newsletter-form'
 import Credits from './credits'
 import SocialLinks from './social-links'
-import LanguageSelector from './language-selector'
 
 const Footer = ({ i18n }) => (
   <footer>
-    <div className='space' />
     <div className='container'>
-      <NewsletterForm />
-      <LanguageSelector />
-
       <div className='info'>
         <Credits />
         <SocialLinks />
@@ -30,12 +24,6 @@ const Footer = ({ i18n }) => (
         flex-direction: column;
         justify-content: center;
         z-index: 0;
-      }
-
-      .space {
-        height: 340px;
-        position: relative;
-        pointer-events: none;
       }
 
       .container {

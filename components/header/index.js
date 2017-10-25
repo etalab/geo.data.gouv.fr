@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { withRouter } from 'next/router'
-
-// import { translate } from '../lib/i18n/hoc'
 import { translate } from 'react-i18next'
-// import logo from './images/logo-geo.svg'
+
+import LanguageSelection from './language-selection'
 
 const PUBLIC_URL = process.env.PUBLIC_URL
 const PUBLICATION_BASE_URL = process.env.PUBLICATION_BASE_URL
@@ -42,7 +41,7 @@ const Header = ({ router, t, i18n }) => {
           )}
         </li>
         <li>
-          {/* <LanguageSelection language={i18n.language} /> */}
+          <LanguageSelection language={i18n.language} />
         </li>
         {user && (
           <li>
