@@ -7,7 +7,7 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
   <div>
     {title && <h3>{title}</h3>}
     <div className={`value ${color}`}>
-      {value || 0} {unit && <small>{unit}</small>}
+      {value || 0}{unit && <span className='unit'>{unit}</span>}
     </div>
     {label && <div className={`label ${size}`}>{label}</div>}
 
@@ -18,10 +18,12 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
         text-align: left;
       }
 
-      small {
+      .unit {
         font-size: 1rem;
+        margin-left: 0.2rem;
       }
 
+      // Colors
       .success {
         color: ${colors.green};
       }
@@ -38,6 +40,7 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
         text-align: center;
       }
 
+      // Sizes
       .small {
         font-size: 0.8rem;
         line-height: 0.8rem;

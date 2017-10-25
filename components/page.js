@@ -17,9 +17,7 @@ export const Page = ({ children }) => (
   <div className='container'>
     <Meta />
     <Header />
-    <div className='content'>
-      {children}
-    </div>
+    {children}
     <Footer />
 
     <style jsx>{`
@@ -27,14 +25,6 @@ export const Page = ({ children }) => (
         flex-direction: column;
         display: flex;
         position: relative;
-      }
-
-      .content {
-        z-index: 1;
-        background-color: #fff;
-        min-height: 100vh;
-        background: url('/static/images/clouds.svg') bottom / 101% no-repeat,
-                    linear-gradient(to top, #41dcd7, #3083b2);
       }
     `}</style>
 

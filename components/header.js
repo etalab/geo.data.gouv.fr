@@ -8,19 +8,17 @@ import { translate } from 'react-i18next'
 // import logo from './images/logo-geo.svg'
 
 const PUBLIC_URL = process.env.PUBLIC_URL
+const PUBLICATION_BASE_URL = process.env.PUBLICATION_BASE_URL
 
 const Header = ({ router, t, i18n }) => {
   const loginRedirect = `${PUBLIC_URL}/publication`
   const isPublication = router.pathname.startsWith('/publication')
   const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + router.pathname
 
-  const logInUrl = `https://inspire.data.gouv.fr/dgv/login?redirect=${encodeURIComponent(loginRedirect)}`
-  const logoutUrl = `https://inspire.data.gouv.fr/dgv/logout?redirect=${encodeURIComponent(logoutRedirect)}`
+  const logInUrl = `${PUBLICATION_BASE_URL}/login?redirect=${encodeURIComponent(loginRedirect)}`
+  const logoutUrl = `${PUBLICATION_BASE_URL}/logout?redirect=${encodeURIComponent(logoutRedirect)}`
 
-  const user = {
-    first_name: 'John',
-    last_name: 'Doe'
-  }
+  const user = null
 
   return (
     <nav>
@@ -30,96 +28,81 @@ const Header = ({ router, t, i18n }) => {
         </a>
       </Link>
 
-      {!user ? (
-        <div className='login'>
-          <a href={logInUrl}>{t('components.Header.login')}</a>
-        </div>
-      ) : (
-        <div className='account'>
-          <Link href='/publication'>
-            <a>
-              <img alt='avatar' src={user.avatar} />
-              {`${user.first_name} ${user.last_name}`}
-            </a>
-          </Link>
-
-          <a href={logoutUrl} className='logout'>
-            <span>{t('components.Header.logout')}</span><i className='power icon' />
-          </a>
-        </div>
-      )}
+      <ul>
+        <li>
+          {!user ? (
+            <a href={logInUrl}>{t('components.Header.login')}</a>
+          ) : (
+            <Link href='/publication'>
+              <a>
+                <img alt='avatar' className='avatar' src={user.avatar} />
+                {user.first_name} {user.last_name}
+              </a>
+            </Link>
+          )}
+        </li>
+        <li>
+          {/* <LanguageSelection language={i18n.language} /> */}
+        </li>
+        {user && (
+          <li>
+            <a href={logoutUrl}><span>{t('components.Header.logout')}</span><i className='power icon' /></a>
+          </li>
+        )}
+      </ul>
 
       <style jsx>{`
+        @import 'colors';
+
         nav {
-          padding: 2em;
+          width: 100%;
+          background: $white;
           display: flex;
-          align-items: center;
           justify-content: space-between;
-          color: $darkgrey;
-          z-index: 1;
+          flex-wrap: wrap;
+          align-items: center;
         }
 
         a {
-          color: $darkgrey;
-        }
-
-        a:focus,
-        a:hover {
-          color: #000;
+          color: $black;
         }
 
         .logo {
-          display: flex;
-          align-items: center;
+          img {
+            height: 68px;
+            padding: 1em;
+          }
         }
 
-        .logo img {
-          width: 260px;
+        ul {
+          display: inline;
+          margin: 0;
+          padding: 1em;
+          list-style-type: 0;
+          text-align: right;
+
+          li {
+            padding: 0;
+            display: inline;
+
+            + li {
+              padding-left: 15px;
+            }
+          }
+
+          a {
+            color: $black;
+          }
+
+          @media (max-width: 550px) {
+            padding-top: 0;
+          }
         }
 
-        .login a {
-          border-radius: 5px;
-          padding: 10px 15px;
-          background-color: $blue;
-          font-size: 1em;
-        }
-
-        .account {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .account img {
+        .avatar {
           width: 30px;
-          margin-right: 0.3em;
+          margin: -0.7em 0.3em;
           border-radius: 60px;
-        }
-
-        .account a {
-          text-decoration: underline;
-        }
-
-        .logout {
-          margin-left: 1em;
-        }
-
-        @media (max-width: 551px) {
-          .logo img {
-            width: 160px;
-          }
-
-          .login a {
-            padding: 0 5px;
-          }
-
-          .account {
-            margin-right: 0.4em;
-          }
-
-          .logout {
-            display: none;
-          }
         }
       `}</style>
     </nav>

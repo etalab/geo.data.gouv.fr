@@ -3,9 +3,11 @@ import React from 'react'
 import withI18n from '../components/hoc/with-i18n'
 
 import Page from '../components/page'
+import Content from '../components/content'
 import Hero from '../components/home/hero'
 import Catalogs from '../components/home/catalogs'
 import Events from '../components/home/events'
+import NewsletterForm from '../components/home/newsletter-form'
 
 const catalogs = [
   {
@@ -125,12 +127,14 @@ class IndexPage extends React.PureComponent {
   render() {
     return (
       <Page>
-        <Hero />
+        <Content>
+          <Hero />
 
-        <div>
           <Catalogs catalogs={catalogs} />
           <Events />
-        </div>
+        </Content>
+
+        <NewsletterForm />
       </Page>
     )
   }

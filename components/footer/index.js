@@ -24,7 +24,7 @@ const Footer = ({ i18n }) => (
 
     <style jsx>{`
       footer {
-        color: ${colors.blue}
+        color: ${colors.blue};
         background-color: ${colors.darkgrey};
         display: flex;
         flex-direction: column;
@@ -35,7 +35,6 @@ const Footer = ({ i18n }) => (
       .space {
         height: 340px;
         position: relative;
-        z-index: -2;
         pointer-events: none;
       }
 
@@ -43,8 +42,6 @@ const Footer = ({ i18n }) => (
         padding: 30px;
         bottom: 0;
         width: 100%;
-        position: fixed;
-        z-index: -1;
         will-change: transform;
         backface-visibility: hidden;
         transform: translate3d(0, 0, 0);

@@ -44,12 +44,12 @@
     },
 
     "Footer": {
-      "madeBy": "Made with {{heart}} by {{link}}"
+      "legal": "Legal"
     },
 
     "Header": {
-      "login": "Publishing data",
-      "logout": "Logout"
+      "login": "Publish data",
+      "logout": "Déconnexion"
     },
 
     "Histogram": {
@@ -57,7 +57,7 @@
     },
 
     "LanguageSelection": {
-      "languageSelection": "Language selection"
+      "languageSelection": "Language"
     },
 
     "LastHarvestStatus": {
@@ -66,7 +66,7 @@
     },
 
     "NewsletterForm": {
-      "newsletterSignUp": "Sign up to receive our communications",
+      "newsletterSignUp": "Keep in touch, subscribe to our newsletter:",
       "label": "Your email address",
       "inputValue": "Subscribe"
     },
@@ -77,6 +77,12 @@
 
     "SearchInput": {
       "placeholder": "Search…"
+    },
+
+    "DatasetInfo": {
+      "type": "Type",
+      "license": "License",
+      "lastUpdate": "Last update"
     }
   },
 

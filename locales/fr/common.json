@@ -3,7 +3,7 @@
     "CatalogPreview": {
       "noData": "Aucun donnée disponible",
       "openDataLabel": "Données ouvertes",
-      "downloadableLabel": "Téléchargeable",
+      "downloadableLabel": "Téléchargeables",
       "recordsLabel": "Enregistrements"
     },
 
@@ -44,7 +44,7 @@
     },
 
     "Footer": {
-      "madeBy": "Fait avec {{heart}} par {{link}}"
+      "legal": "Mentions légales"
     },
 
     "Header": {
@@ -57,7 +57,7 @@
     },
 
     "LanguageSelection": {
-      "languageSelection": "Sélection de la langue"
+      "languageSelection": "Langage"
     },
 
     "LastHarvestStatus": {
@@ -66,9 +66,9 @@
     },
 
     "NewsletterForm": {
-      "newsletterSignUp": "Inscrivez-vous pour recevoir nos communications",
+      "newsletterSignUp": "Pour être informé des nouveautés, inscrivez-vous à notre newsletter :",
       "label": "Votre adresse email",
-      "inputValue": "S’inscrire"
+      "inputValue": "Inscription"
     },
 
     "ObsoleteWarning": {
@@ -77,6 +77,12 @@
 
     "SearchInput": {
       "placeholder": "Rechercher…"
+    },
+
+    "DatasetInfo": {
+      "type": "Type",
+      "license": "Licence",
+      "lastUpdate": "Dernière mise à jour"
     }
   },
 

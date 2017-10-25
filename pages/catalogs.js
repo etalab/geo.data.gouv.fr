@@ -8,6 +8,8 @@ import withI18n from '../components/hoc/with-i18n'
 import { _get } from '../lib/fetch'
 
 import Page from '../components/page'
+import Content from '../components/content'
+import Container from '../components/container'
 import CatalogPreview from '../components/catalog-preview'
 
 const { GEODATA_API_URL } = process.env
@@ -16,7 +18,9 @@ class CatalogsPage extends React.Component {
   static propTypes = {
     catalogs: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+
+    t: PropTypes.func.isRequired
   }
 
   static async getInitialProps(context) {
@@ -28,37 +32,49 @@ class CatalogsPage extends React.Component {
   }
 
   render() {
-    const { catalogs } = this.props
+    const { catalogs, t } = this.props
 
     return (
       <Page>
         <Head>
-          <title>Catalogs</title>
+          <title>{t('list.title')}</title>
         </Head>
 
-        <ul>
-          {catalogs.map(catalog => (
-            <li key={catalog._id}>
-              <CatalogPreview catalog={catalog} />
-            </li>
-          ))}
-        </ul>
+        <Content>
+          <Container fluid>
+            <h1>{t('list.title')}</h1>
+
+            <section>
+              {catalogs.map(catalog => (
+                <div key={catalog._id}>
+                  <CatalogPreview catalog={catalog} />
+                </div>
+              ))}
+            </section>
+          </Container>
+        </Content>
 
         <style jsx>{`
-          ul {
+          h1 {
+            color: #fff;
+            font-size: xx-large;
+            font-weight: 100;
+            margin-bottom: 1em;
             text-align: center;
-            margin-top: 2em;
-            padding: 0;
           }
 
-          li {
-            display: inline-block;
-            margin: 1em 3em;
+          section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
           }
 
-          @media (max-width: 768px) {
-            li {
-              margin: 1em;
+          div {
+            margin: 10px 20px;
+
+            @media (max-width: 551px) {
+              margin: 10px 0;
+              flex-grow: 1;
             }
           }
         `}</style>
@@ -67,4 +83,4 @@ class CatalogsPage extends React.Component {
   }
 }
 
-export default withI18n('catalogs')(CatalogsPage)
+export default withI18n('catalogs')(translate('catalogs')(CatalogsPage))

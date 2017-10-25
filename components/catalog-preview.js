@@ -20,7 +20,7 @@ export const CatalogPreview = ({ catalog, t }) => {
   return (
     <Link href={`/catalogs/${catalog._id}`}>
       <a>
-        <h3>{catalog.name}</h3>
+        <div className='title'>{catalog.name}</div>
         <HarvestStatus harvest={catalog.service.sync} />
         {/* <ObsoleteWarning catalog={catalog} /> */}
 
@@ -48,22 +48,27 @@ export const CatalogPreview = ({ catalog, t }) => {
         </div>
 
         <style jsx>{`
+          @import 'colors';
+
           a {
             display: block;
             padding: 1.4em 2em;
+            text-align: left;
             position: relative;
             width: 340px;
-            color: ${colors.darkgrey};
+            color: $darkgrey;
             border-radius: 5px;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            background: ${colors.white};
-            background: linear-gradient(180deg, #fdfdf8, ${colors.white});
+            background: $white;
+            background: linear-gradient(180deg, #fdfdf8, $white);
+
+            @media (max-width: 551px) {
+              width: 100%;
+            }
           }
 
-          h3 {
+          .title {
             font-size: 1.4em;
-            font-weight: normal;
-            margin: 0;
           }
 
           .metrics > div {
@@ -72,6 +77,18 @@ export const CatalogPreview = ({ catalog, t }) => {
             align-items: center;
             margin-top: 3em;
             font-size: 11px;
+
+            > div {
+              margin: 0 0.5em;
+
+              &:first-child {
+                margin-left: 0;
+              }
+
+              &:last-child {
+                margin-right: 0;
+              }
+            }
           }
         `}</style>
       </a>

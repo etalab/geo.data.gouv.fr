@@ -46,54 +46,44 @@ class SearchInput extends React.PureComponent {
 
         <style jsx>{`
           form {
-            display: flex;
-            flex-direction: row;
-            background: #fff;
-            border: 1px solid rgba(34, 36, 38, 0.15);
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-
-            border-radius: 5px;
+            width: 100%;
+            position: relative;
           }
 
           input {
+            display: block;
+            width: 100%;
+            border: 1px solid rgba(34, 36, 38, 0.15);
+            border-radius: 2px;
             margin: 0;
-            flex: 1 0 auto;
             outline: 0;
             line-height: 2em;
-            font-size: 1.5em;
-            padding: 0.59em 1em;
-            border: 0;
+            font-size: 1.5rem;
+            padding: 10px 60px 10px 20px;
 
-            color: #000;
-          }
+            &:focus,
+            &:active {
+              border-color: #85b7d9;
+            }
 
-          input:focus,
-          input:active {
-            border-color: #85b7d9;
+            @media (max-width: 768px) {
+              font-size: 1.2rem;
+            }
           }
 
           button {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #fff;
+            border: 0 none;
             cursor: pointer;
-            margin: 1em;
-            display: inline-block;
-            min-height: 1em;
+            width: 50px;
+            padding: 0 5px;
             outline: 0;
-            border: 0;
-            vertical-align: baseline;
-            padding: 0.8em 1.5em;
             background: url('/static/images/icons/search.svg') center left no-repeat;
-          }
-
-          @media (max-width: 768px) {
-            form {
-              border-radius: 0;
-            }
-          }
-
-          @media (max-width: 551px) {
-            button {
-              margin: 0 0 0 -2em;
-            }
           }
         `}</style>
       </form>

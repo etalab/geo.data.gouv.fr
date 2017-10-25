@@ -1,28 +1,26 @@
 import React from 'react'
 
+import Container from '../container'
+
 const Section = ({ title, children }) => (
   <section>
-    {title && <h2>{title}</h2>}
-    {children}
+    <Container>
+      {title && <h2>{title}</h2>}
+      {children}
+    </Container>
 
     <style jsx>{`
+      @import 'colors';
+
       section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1em;
+        padding: 1em 0;
+        margin-top: 2em;
+        text-align: center;
       }
 
       h2 {
-        color: #fff;
+        color: $white;
         text-transform: uppercase;
-      }
-
-      @media (max-width: 768px) {
-        section {
-          padding: 0;
-        }
       }
     `}</style>
   </section>
