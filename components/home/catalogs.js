@@ -9,29 +9,32 @@ import CatalogPreview from '../catalog-preview'
 
 const Catalogs = ({ catalogs, t }) => (
   <Section title={t('catalogsSectionTitle')}>
-    <ul className='catalogs'>
+    <div className='catalogs'>
       {catalogs.map(catalog => (
-        <li key={catalog._id}>
+        <div key={catalog._id} className='catalog'>
           <CatalogPreview catalog={catalog} />
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
 
     <Link href='/catalogs'>
       <a>{t('catalogsLink')}</a>
     </Link>
 
     <style jsx>{`
-      ul {
+      .catalogs {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 0;
       }
 
-      li {
+      .catalog {
         margin: 10px 20px;
-        display: block;
+
+        @media (max-width: 551px) {
+          margin: 10px 0;
+          flex-grow: 1;
+        }
       }
 
       a {

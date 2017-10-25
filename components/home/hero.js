@@ -41,11 +41,11 @@ const Hero = ({ t }) => (
         }
 
         @media (max-width: 768px) {
-          padding: 5em 0;
+          padding: 3em 0;
         }
 
         @media (max-width: 551px) {
-          padding: 2em 0;
+          padding: 0 0 2em;
 
           h1 {
             font-size: larger;
