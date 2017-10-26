@@ -14,14 +14,14 @@ Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
 export const Page = ({ children }) => (
-  <div className='container'>
+  <div>
     <Meta />
     <Header />
     {children}
     <Footer />
 
     <style jsx>{`
-      .container {
+      div {
         flex-direction: column;
         display: flex;
         position: relative;

@@ -1,8 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 
-import Reset from './styles/reset'
-import Global from './styles/global'
+import reset from 'semantic-ui-css/components/reset.min.css'
+import site from 'semantic-ui-css/components/site.min.css'
 
 import { PUBLIC_URL } from '@env'
 
@@ -36,8 +36,8 @@ export default () => (
     <link rel='manifest' href='/static/favicons/manifest.json' />
     <link rel='mask-icon' href='/static/favicons/safari-pinned-tab.svg' color='#5bbad5' />
 
-    {/* Global styles */}
-    <Reset />
-    <Global />
+    {/* Global style */}
+    <style dangerouslySetInnerHTML={{ __html: reset }} />
+    <style dangerouslySetInnerHTML={{ __html: site }} />
   </Head>
 )
