@@ -88,6 +88,4 @@ class NewsletterForm extends React.Component {
   }
 }
 
-export default translate('home', {
-  wait: process.browser
-})(NewsletterForm)
+export default translate('home')(NewsletterForm)

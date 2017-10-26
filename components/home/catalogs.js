@@ -50,6 +50,4 @@ const Catalogs = ({ catalogs, t }) => (
   </Section>
 )
 
-export default translate('home', {
-  wait: process.browser
-})(Catalogs)
+export default translate('home')(Catalogs)

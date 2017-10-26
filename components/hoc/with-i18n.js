@@ -1,7 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { I18nextProvider } from 'react-i18next'
 import moment from 'moment'
+import { translate } from 'react-i18next'
 
 import i18n from '../../lib/i18n'
 
@@ -21,52 +19,37 @@ export default namespaces => Page => {
     ]
   }
 
-  const Extended = class extends React.Component {
-    static propTypes = {
-      initialI18nStore: PropTypes.object,
-      initialLanguage: PropTypes.string
-    }
+  const Extended = translate(namespaces, {
+    i18n,
+    wait: process.browser
+  })(Page)
 
-    static displayName = `withI18n(${Page.displayName || Page.name})`
-    static WrappedComponent = Page
+  Extended.getInitialProps = async context => {
+    const props = Page.getInitialProps ? await Page.getInitialProps(context) : {}
+    const { req } = context
 
-    static async getInitialProps(context) {
-      const props = Page.getInitialProps ? await Page.getInitialProps(context) : {}
-      const { req } = context
+    if (req && !process.browser) {
+      req.i18n.toJSON = () => null
 
-      if (req && !process.browser) {
-        req.i18n.toJSON = () => null
-
-        const initialI18nStore = {}
-        req.i18n.languages.forEach(l => {
-          initialI18nStore[l] = {}
-          namespaces.forEach(ns => {
-            initialI18nStore[l][ns] = req.i18n.services.resourceStore.data[l][ns] || {}
-          })
+      const initialI18nStore = {}
+      req.i18n.languages.forEach(l => {
+        initialI18nStore[l] = {}
+        namespaces.forEach(ns => {
+          initialI18nStore[l][ns] = req.i18n.services.resourceStore.data[l][ns] || {}
         })
+      })
 
-        return {
-          ...props,
-          i18n: req.i18n,
-          initialI18nStore,
-          initialLanguage: req.i18n.language
-        }
+      moment.locale(req.i18n.language)
+
+      return {
+        ...props,
+        i18n: req.i18n,
+        initialI18nStore,
+        initialLanguage: req.i18n.language
       }
-
-      return props
     }
 
-    render() {
-      const { initialI18nStore, initialLanguage } = this.props
-
-      moment.locale(initialLanguage)
-
-      return (
-        <I18nextProvider i18n={i18n} initialI18nStore={initialI18nStore} initialLanguage={initialLanguage}>
-          <Page {...this.props} />
-        </I18nextProvider>
-      )
-    }
+    return props
   }
 
   return Extended

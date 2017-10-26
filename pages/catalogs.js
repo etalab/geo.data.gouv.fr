@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { translate } from 'react-i18next'
-
-import withI18n from '../components/hoc/with-i18n'
 
 import { _get } from '../lib/fetch'
+
+import withI18n from '../components/hoc/with-i18n'
 
 import Page from '../components/page'
 import Content from '../components/content'
@@ -83,6 +82,4 @@ class CatalogsPage extends React.Component {
   }
 }
 
-export default withI18n('catalogs')(translate('catalogs', {
-  wait: process.browser
-})(CatalogsPage))
+export default withI18n('catalogs')(CatalogsPage)

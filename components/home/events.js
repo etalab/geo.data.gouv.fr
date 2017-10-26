@@ -31,6 +31,4 @@ Events.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('home', {
-  wait: process.browser
-})(Events)
+export default translate('home')(Events)

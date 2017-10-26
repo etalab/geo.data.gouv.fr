@@ -70,6 +70,4 @@ Hero.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('home', {
-  wait: process.browser
-})(Hero)
+export default translate('home')(Hero)
