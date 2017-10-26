@@ -1,64 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 import { translate } from 'react-i18next'
 
-import colors from '../../styles/colors'
+import Container from '../container'
+import Social from './social'
+import Sitemap from './sitemap'
 
-import Credits from './credits'
-import SocialLinks from './social-links'
-
-const Footer = ({ i18n }) => (
+const Footer = ({ t }) => (
   <footer>
-    <div className='container'>
-      <div className='info'>
-        <Credits />
-        <SocialLinks />
+    <Container>
+      <div className='content'>
+        <div>
+          <img src='/static/images/etalab.png' />
+          <Social />
+        </div>
+        <Sitemap />
       </div>
-    </div>
+    </Container>
 
     <style jsx>{`
+      @import 'colors';
+
       footer {
-        color: ${colors.blue};
-        background-color: ${colors.darkgrey};
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        z-index: 0;
+        background: $black;
+        color: $white;
+        padding: 2em 0;
+        line-height: 2em;
       }
 
-      .container {
-        padding: 30px;
-        bottom: 0;
-        width: 100%;
-        will-change: transform;
-        backface-visibility: hidden;
-        transform: translate3d(0, 0, 0);
-      }
-
-      .info {
+      .content {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-      }
+        align-items: center;
 
-      @media (max-width: 768px) {
-        footer {
-          text-align: center;
-        }
-
-        .space {
-          height: 250px;
-        }
-
-        .info {
-          flex-direction: column-reverse;
-          align-items: center;
-        }
-      }
-
-      @media (max-width: 1280px) {
-        .space {
-          height: 340px;
+        @media (max-width: 551px) {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     `}</style>
@@ -66,9 +45,7 @@ const Footer = ({ i18n }) => (
 )
 
 Footer.propTypes = {
-  i18n: PropTypes.shape({
-    language: PropTypes.string.isRequired
-  }).isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default translate()(Footer)
