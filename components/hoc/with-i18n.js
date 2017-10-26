@@ -31,6 +31,16 @@ export default namespaces => Page => {
     if (req && !process.browser) {
       req.i18n.toJSON = () => null
 
+      // Preload all namespaces so we don’t get white screen transition
+      // inbetween pages. This could be fixed when global layouts are
+      // implemented in Next.js. Or when something better is done with
+      // react-i18next’s wait mechanism.
+      namespaces = [
+        'home',
+        'catalogs',
+        'common'
+      ]
+
       const initialI18nStore = {}
       req.i18n.languages.forEach(l => {
         initialI18nStore[l] = {}
