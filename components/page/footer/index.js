@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import { translate } from 'react-i18next'
 
-import Container from '../container'
+import Container from '../../container'
 import Social from './social'
 import Sitemap from './sitemap'
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Head from 'next/head'
 
 import { _get } from '../lib/fetch'
 
 import withI18n from '../components/hoc/with-i18n'
 
 import Page from '../components/page'
+import Meta from '../components/meta'
 import Content from '../components/content'
 import Container from '../components/container'
 import CatalogPreview from '../components/catalog-preview'
@@ -35,9 +35,7 @@ class CatalogsPage extends React.Component {
 
     return (
       <Page>
-        <Head>
-          <title>{t('list.title')}</title>
-        </Head>
+        <Meta title={t('list.title')} />
 
         <Content>
           <Container fluid>

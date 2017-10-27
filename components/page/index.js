@@ -7,8 +7,6 @@ import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
 
-import colors from '../styles/colors'
-
 Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
@@ -29,12 +27,14 @@ export const Page = ({ children }) => (
     `}</style>
 
     <style jsx global>{`
+      @import 'colors';
+
       #nprogress {
         pointer-events: none;
       }
 
       #nprogress .bar {
-        background: ${colors.blue};
+        background: $blue;
         position: fixed;
         z-index: 1031;
         top: 0;
@@ -49,7 +49,7 @@ export const Page = ({ children }) => (
         right: 0px;
         width: 100px;
         height: 100%;
-        box-shadow: 0 0 10px ${colors.blue}, 0 0 5px ${colors.blue};
+        box-shadow: 0 0 10px $blue, 0 0 5px $blue;
         opacity: 1.0;
         transform: rotate(3deg) translate(0px, -4px);
       }

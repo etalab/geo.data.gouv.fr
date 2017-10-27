@@ -34,6 +34,12 @@ i18n
       .then(() => {
         const server = express()
 
+        server.use((req, res, next) => {
+          if (req.url.length > 1 && req.url.substr(-1) === '/') {
+            return res.redirect(301, req.url.slice(0, -1))
+          }
+          next()
+        })
         server.use(i18nextMiddleware.handle(i18n))
 
         server.use('/locales', express.static(path.join(__dirname, '/locales')))
@@ -41,6 +47,12 @@ i18n
         if (dev) {
           server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
         }
+
+        server.get('/catalogs/:id', (req, res) =>
+          app.render(req, res, '/catalog', Object.assign(req.query, {
+            id: req.params.id
+          }))
+        )
 
         server.get('*', (req, res) => {
           return handle(req, res)

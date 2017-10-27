@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { translate } from 'react-i18next'
 import { get } from 'lodash'
 
-import colors from '../styles/colors'
-
 import HarvestStatus from './harvest-status'
 import Counter from './counter'
 import Percent from './percent'
@@ -18,7 +16,7 @@ export const CatalogPreview = ({ catalog, t }) => {
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
 
   return (
-    <Link href={`/catalogs/${catalog._id}`}>
+    <Link href={`/catalog?id=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
         <div className='title'>{catalog.name}</div>
         <HarvestStatus harvest={catalog.service.sync} />

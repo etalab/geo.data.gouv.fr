@@ -1,5 +1,8 @@
 {
   "list": {
     "title": "Catalogues"
+  },
+  "details": {
+    "title": "Catalogue {{name}}"
   }
 }
