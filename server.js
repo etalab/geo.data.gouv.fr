@@ -35,7 +35,7 @@ i18n
         const server = express()
 
         server.use((req, res, next) => {
-          if (req.url.length > 1 && req.url.substr(-1) === '/') {
+          if (req.url.length > 1 && !app.isInternalUrl(req.url) && req.url.substr(-1) === '/') {
             return res.redirect(301, req.url.slice(0, -1))
           }
           next()
