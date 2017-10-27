@@ -7,7 +7,7 @@ const mockTranslation = k => k
 
 describe('<CheckLicense />', () => {
   it('should be true for all accepted licenses', () => {
-    const license = 'odbl'
+    const license = 'odc-odbl'
     const wrapper = shallow(<CheckLicense license={license} valid t={mockTranslation} />)
 
     expect(wrapper.html()).to.contain('validLicense')

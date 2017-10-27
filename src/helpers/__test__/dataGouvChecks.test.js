@@ -31,7 +31,7 @@ describe('dataGouvChecks', () => {
     })
 
     it('should return the license when it is in ACCEPTED_LICENSES', () => {
-      const license = 'odbl'
+      const license = 'odc-odbl'
       expect(getLicense(license)).to.equal(ACCEPTED_LICENSES[license])
     })
   })
