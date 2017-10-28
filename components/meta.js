@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 const SITE_NAME = 'geo.data.gouv.fr'
 
-const Meta = ({ title, description }) => (
+const Meta = ({ title, description, image }) => (
   <Head>
     <title>{title} | {SITE_NAME}</title>
     <meta name='twitter:title' content={title} />
@@ -13,12 +13,16 @@ const Meta = ({ title, description }) => (
     {description && <meta name='description' content={description} />}
     {description && <meta name='twitter:description' content={description} />}
     {description && <meta name='og:description' content={description} />}
+
+    {image && <meta name='twitter:image' content={description} />}
+    {image && <meta name='og:image' content={description} />}
   </Head>
 )
 
 Meta.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string
+  description: PropTypes.string,
+  image: PropTypes.string
 }
 
 export default Meta
