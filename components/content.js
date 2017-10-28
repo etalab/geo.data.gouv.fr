@@ -11,7 +11,7 @@ export const Content = ({ children }) => (
       main {
         background-color: $white;
         min-height: 100vh;
-        padding: 2em 0;
+        padding: 2em 0 10em;
         background: url('/static/images/clouds.svg') bottom / 101% no-repeat,
                     linear-gradient(to top, #41dcd7, #3083b2);
       }
