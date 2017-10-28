@@ -4,9 +4,9 @@
   "version": "2.2.5",
   "license": "MIT",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node server",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production node server",
     "clean": "rimraf dist",
     "compile": "node build/scripts/compile",
     "test": "cross-env NODE_ENV=test mocha -r babel-register -r build/tests/bootstrap.js src/**/*.test.js",

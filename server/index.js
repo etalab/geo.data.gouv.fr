@@ -1,15 +1,16 @@
 const express = require('express')
 const path = require('path')
 const next = require('next')
+const i18nextMiddleware = require('i18next-express-middleware')
+const Backend = require('i18next-node-fs-backend')
+
+const i18n = require('../lib/i18n')
+const removeTrailingSlash = require('./middlewares/remove-trailing-slash')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-
-const i18nextMiddleware = require('i18next-express-middleware')
-const Backend = require('i18next-node-fs-backend')
-const i18n = require('./lib/i18n')
 
 i18n
   .use(Backend)
@@ -23,8 +24,8 @@ i18n
       'catalogs'
     ],
     backend: {
-      loadPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.json'),
-      addPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.missing.json')
+      loadPath: path.join(__dirname, '../locales/{{lng}}/{{ns}}.json'),
+      addPath: path.join(__dirname, '..//locales/{{lng}}/{{ns}}.missing.json')
     },
     detection: {
       lookupCookie: 'locale'
@@ -34,15 +35,10 @@ i18n
       .then(() => {
         const server = express()
 
-        server.use((req, res, next) => {
-          if (req.url.length > 1 && !app.isInternalUrl(req.url) && req.url.substr(-1) === '/') {
-            return res.redirect(301, req.url.slice(0, -1))
-          }
-          next()
-        })
+        server.use(removeTrailingSlash(app))
         server.use(i18nextMiddleware.handle(i18n))
 
-        server.use('/locales', express.static(path.join(__dirname, '/locales')))
+        server.use('/locales', express.static(path.join(__dirname, '../locales')))
 
         if (dev) {
           server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
