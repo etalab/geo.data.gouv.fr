@@ -12,6 +12,7 @@ export default () => (
     <meta name='viewport' content='width=device-width, initial-scale=1' />
 
     <title>geo.data.gouv.fr</title>
+    <meta name='description' content='Trouvez facilement les données géographiques dont vous avez besoin' />
 
     {/* Twitter Card */}
     <meta name='twitter:card' content='summary' />
