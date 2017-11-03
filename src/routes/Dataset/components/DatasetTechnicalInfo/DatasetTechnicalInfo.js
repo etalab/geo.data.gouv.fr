@@ -74,7 +74,7 @@ const DatasetTechnicalInfo = ({ dataset, status, t, i18n }) => {
         )}
 
         {spatialResolution && (
-          <div>{t('components.DatasetTechnicalInfo.resolution')} : <b>{spatialResolution.value} {spatialResolution.unit}</b></div>
+          <div>{t('components.DatasetTechnicalInfo.resolution')} : <b>{spatialResolution.value} {t(`enums.resolutionUnits.${spatialResolution.unit}`, { count: spatialResolution.value })}</b></div>
         )}
       </div>
     </div>
