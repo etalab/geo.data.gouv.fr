@@ -60,6 +60,8 @@ GITHUB_AUTH=… yarn lerna-changelog --tag-from v2.2.1
 
 Le jeton d’authentification GitHub passé à l’aide de la variable d’environnement `GITHUB_AUTH` doit avoir le scope `public_repo`.
 
+La génération du changelog et la création de releases GitHub sont automatisées par CircleCI à chaque publication de tag.
+
 
 ## Mainteneurs principaux
 
