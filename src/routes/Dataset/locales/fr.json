@@ -123,6 +123,15 @@
       "planned": "planifiée",
       "required": "mise à jour requise",
       "underDevelopment": "en construction"
+    },
+
+    "resolutionUnits": {
+      "meter": "mètre",
+      "meter_plural": "mètres",
+      "radian": "radian",
+      "radian_plural": "radians",
+      "degree": "degré",
+      "degree_plural": "degrés"
     }
   }
 }
