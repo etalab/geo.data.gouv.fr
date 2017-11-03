@@ -9,7 +9,7 @@
       "performance": ":racehorse: Performance",
       "design": ":rainbow: Design",
       "cleanup": ":shower: Cleanup"
-    }
-  },
-  "cacheDir": ".changelog"
+    },
+    "cacheDir": ".changelog"
+  }
 }
