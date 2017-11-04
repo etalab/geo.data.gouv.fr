@@ -42,6 +42,27 @@ yarn build
 yarn deploy
 ```
 
+### Génération de Changelog
+
+La génération de changelog pour chaque tag sur GitHub se fait à l’aide de [`lerna-changelog`](https://github.com/lerna/lerna-changelog).
+
+```bash
+GITHUB_AUTH=… yarn lerna-changelog
+```
+
+Pour générer le changelog que pour le dernier tag, utiliser l’option `--tag-from` avec comme argument le précédent tag.
+
+Par exemple:
+
+```bash
+GITHUB_AUTH=… yarn lerna-changelog --tag-from v2.2.1
+````
+
+Le jeton d’authentification GitHub passé à l’aide de la variable d’environnement `GITHUB_AUTH` doit avoir le scope `public_repo`.
+
+La génération du changelog et la création de releases GitHub sont automatisées par CircleCI à chaque publication de tag.
+
+
 ## Mainteneurs principaux
 
 [Jérôme Desboeufs](https://github.com/jdesboeufs) et [Théophile Merlière](https://github.com/tmerlier)

@@ -8,6 +8,7 @@ pids
 logs
 *.log
 npm-debug.log*
+CHANGELOG.md
 
 # Mac
 *.DS_Store
@@ -22,6 +23,7 @@ dist
 .npm
 .eslintcache
 .nyc_output
+.changelog
 
 # Node
 node_modules

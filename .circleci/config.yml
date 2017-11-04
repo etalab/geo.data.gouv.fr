@@ -4,10 +4,15 @@ defaults:
   workspace_root: &workspace_root
     ~/geodatagouv
 
-  container: &default_container
+  nodejs_container: &nodejs_container
     working_directory: *workspace_root
     docker:
       - image: circleci/node:8
+
+  golang_container: &golang_container
+    working_directory: *workspace_root
+    docker:
+      - image: circleci/golang:1
 
   filters: &default_filters
     tags:
@@ -26,7 +31,7 @@ defaults:
 
 jobs:
   checkout:
-    <<: *default_container
+    <<: *nodejs_container
     steps:
       - checkout
 
@@ -36,7 +41,7 @@ jobs:
             - ./
 
   install:
-    <<: *default_container
+    <<: *nodejs_container
     steps:
       - *attach_workspace
       - *restore_node_modules
@@ -64,7 +69,7 @@ jobs:
             - node_modules/
 
   lint:
-    <<: *default_container
+    <<: *nodejs_container
     steps:
       - *attach_workspace
       - *restore_node_modules
@@ -78,7 +83,7 @@ jobs:
           command: yarn lint:styles
 
   test:
-    <<: *default_container
+    <<: *nodejs_container
     steps:
       - *attach_workspace
       - *restore_node_modules
@@ -99,7 +104,7 @@ jobs:
           command: yarn codecov
 
   build:
-    <<: *default_container
+    <<: *nodejs_container
     steps:
       - *attach_workspace
       - *restore_node_modules
@@ -128,8 +133,49 @@ jobs:
           paths:
             - dist/
 
+  changelog:
+    <<: *nodejs_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
+
+      - restore_cache:
+          name: Restore changelog cache
+          keys:
+            - v1-geodatagouv-changelog-{{ .BuildNum }}
+            - v1-geodatagouv-changelog-
+
+      - run:
+          name: Generate changelog
+          command: |
+            if [ $CIRCLE_TAG ]; then
+              PREV_TAG=$(git describe --abbrev=0 $CIRCLE_TAG^1)
+
+              echo "[+] Running for range $PREV_TAG...$CIRCLE_TAG"
+
+              node_modules/.bin/lerna-changelog --tag-from $PREV_TAG --tag-to $CIRCLE_TAG > CHANGELOG.md
+            else
+              node_modules/.bin/lerna-changelog > CHANGELOG.md
+            fi
+
+      - save_cache:
+          name: Save changelog cache
+          key: v1-geodatagouv-changelog-{{ .BuildNum }}
+          paths:
+            - .changelog/
+
+      - run:
+          name: Display changelog
+          command: cat CHANGELOG.md
+
+      - persist_to_workspace:
+          name: Persist changelog
+          root: *workspace_root
+          paths:
+            - CHANGELOG.md
+
   deploy:
-    <<: *default_container
+    <<: *nodejs_container
     steps:
       - *attach_workspace
       - *restore_node_modules
@@ -153,6 +199,20 @@ jobs:
       - deploy:
           name: Deploy to gh-pages branch on GitHub
           command: yarn deploy
+
+  release:
+    <<: *golang_container
+    steps:
+      - *attach_workspace
+      - *restore_node_modules
+
+      - run:
+          name: Install github-release
+          command: go get github.com/aktau/github-release
+
+      - run:
+          name: Create GitHub release
+          command: github-release release --user $CIRCLE_PROJECT_USERNAME --repo $CIRCLE_PROJECT_REPONAME --tag $CIRCLE_TAG --description "$(cat CHANGELOG.md)"
 
 workflows:
   version: 2
@@ -182,6 +242,11 @@ workflows:
             - install
           filters: *default_filters
 
+      - changelog:
+          requires:
+            - install
+          filters: *default_filters
+
       - deploy:
           requires:
             - lint
@@ -191,3 +256,11 @@ workflows:
             <<: *default_filters
             branches:
               ignore: '/.*/'
+
+      - release:
+          requires:
+            - changelog
+          filters:
+            <<: *default_filters
+            branches:
+              ignore: /.*/
