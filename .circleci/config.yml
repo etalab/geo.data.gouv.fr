@@ -149,13 +149,17 @@ jobs:
           name: Generate changelog
           command: |
             if [ $CIRCLE_TAG ]; then
-              PREV_TAG=$(git describe --abbrev=0 $CIRCLE_TAG^1)
+              PREV_TAG=$(git describe --abbrev=0 --tags $CIRCLE_TAG^)
 
               echo "[+] Running for range $PREV_TAG...$CIRCLE_TAG"
 
               node_modules/.bin/lerna-changelog --tag-from $PREV_TAG --tag-to $CIRCLE_TAG > CHANGELOG.md
             else
-              node_modules/.bin/lerna-changelog > CHANGELOG.md
+              PREV_TAG=$(git describe --abbrev=0 --tags)
+
+              echo "[+] Running from $PREV_TAG"
+
+              node_modules/.bin/lerna-changelog --tag-from $PREV_TAG > CHANGELOG.md
             fi
 
       - save_cache:
