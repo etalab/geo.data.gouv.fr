@@ -9,20 +9,31 @@
   margin: 2em 0;
 }
 
+.filters-overlay {
+  @media (max-width: 960px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    z-index: 2;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 .facets {
   margin-left: 2em;
 
   @media (max-width: 960px) {
     display: none;
-    position: fixed;
-    z-index: 2;
+    position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
     background: #fff;
     box-shadow: -2px 0 2px rgba(0, 0, 0, 0.2);
     padding: 1em 2em;
-    overflow: auto;
   }
 }
 

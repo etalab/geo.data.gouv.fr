@@ -35,32 +35,34 @@ class SearchResults extends React.Component {
     showFilters: false
   }
 
-  componentDidMount() {
-    window.addEventListener('mousedown', this.closeFilter)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('mousedown', this.closeFilter)
-  }
-
-  setFacetsRef = node => {
-    this.facetsRef = node
+  setOverlayRef = node => {
+    this.overlayRef = node
   }
 
   closeFilter = e => {
-    if (this.facetsRef && !this.facetsRef.contains(event.target)) {
+    if (this.overlayRef === e.target) {
       this.setState(() => ({
         showFilters: false
       }))
+
+      document.body.classList.remove('no-scroll')
     }
   }
 
   toggleFilters = e => {
     e.preventDefault()
 
-    this.setState(state => ({
-      showFilters: !state.showFilters
+    const { showFilters } = this.state
+
+    this.setState(() => ({
+      showFilters: !showFilters
     }))
+
+    if (!showFilters) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
   }
 
   render () {
@@ -91,16 +93,18 @@ class SearchResults extends React.Component {
               ))}
             </div>
 
-            <div className={`${styles.facets} ${showFilters ? styles.open : ''}`} ref={this.setFacetsRef}>
-              <button onClick={this.toggleFilters} className={styles.filterClose}>
-                &times;
-              </button>
+            <div className={showFilters ? styles.filtersOverlay : ''} onClick={this.closeFilter} ref={this.setOverlayRef}>
+              <div className={`${styles.facets} ${showFilters ? styles.open : ''}`}>
+                <button onClick={this.toggleFilters} className={styles.filterClose}>
+                  &times;
+                </button>
 
-              <Facets
-                facets={facets}
-                filters={query.facets}
-                addFilter={addFilter}
-              />
+                <Facets
+                  facets={facets}
+                  filters={query.facets}
+                  addFilter={addFilter}
+                />
+              </div>
             </div>
           </div>
         )}
