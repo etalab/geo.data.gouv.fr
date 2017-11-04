@@ -1,5 +1,6 @@
 {
   "name": "geo.data.gouv.fr",
+  "private": true,
   "version": "2.2.3",
   "license": "MIT",
   "scripts": {
