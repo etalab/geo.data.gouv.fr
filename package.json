@@ -19,7 +19,7 @@
     "heroku-postbuild": "yarn install --production=false && npm run build"
   },
   "dependencies": {
-    "babel-plugin-dotenv-import": "^1.0.0",
+    "babel-plugin-dotenv-import": "^1.1.0",
     "babel-plugin-inline-import": "^2.0.6",
     "chart.js": "^2.5.0",
     "dotenv": "^4.0.0",

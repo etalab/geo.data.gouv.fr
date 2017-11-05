@@ -1,29 +1,30 @@
 {
   "plugins": [
-    [
-      "inline-import", {
-        "extensions": [".css"]
-      }
-    ],
-    "dotenv-import"
+    ["inline-import", {
+      "extensions": [".css"]
+    }],
+    ["dotenv-import", {
+      "whitelist": [
+        "PUBLIC_URL",
+        "PUBLICATION_BASE_URL",
+        "DATAGOUV_API_URL",
+        "DATAGOUV_API_KEY",
+        "GEODATA_API_URL"
+      ]
+    }]
   ],
   "presets": [
-    [
-      "next/babel",
-      {
-        "styled-jsx": {
-          "plugins": [
-            [
-              "styled-jsx-plugin-sass", {
-                "sassOptions": {
-                  "includePaths": ["./styles"],
-                  "precision": 2
-                }
-              }
-            ]
-          ]
-        }
+    ["next/babel",{
+      "styled-jsx": {
+        "plugins": [
+          ["styled-jsx-plugin-sass", {
+            "sassOptions": {
+              "includePaths": ["./styles"],
+              "precision": 2
+            }
+          }]
+        ]
       }
-    ]
+    }]
   ]
 }
