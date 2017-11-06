@@ -1,13 +1,14 @@
 @import 'variables';
 
 .content {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   position: relative;
 }
 
 .body {
+  flex: 1;
   z-index: 1;
   background-color: #fff;
-  min-height: 100vh;
 }
