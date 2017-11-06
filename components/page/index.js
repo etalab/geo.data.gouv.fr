@@ -20,8 +20,9 @@ export const Page = ({ children }) => (
 
     <style jsx>{`
       div {
-        flex-direction: column;
         display: flex;
+        min-height: 100vh;
+        flex-direction: column;
         position: relative;
       }
     `}</style>

@@ -11,6 +11,7 @@ export const Content = ({ children, clouds }) => (
       main {
         background-color: $white;
         padding: 2em 0 10em;
+        flex: 1;
 
         ${clouds && (`
           background: url('/static/images/clouds.svg') bottom / 101% no-repeat,
