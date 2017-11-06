@@ -9,7 +9,9 @@
         "PUBLICATION_BASE_URL",
         "DATAGOUV_API_URL",
         "DATAGOUV_API_KEY",
-        "GEODATA_API_URL"
+        "GEODATA_API_URL",
+        "PIWIK_URL",
+        "PIWIK_SITE_ID"
       ]
     }]
   ],
