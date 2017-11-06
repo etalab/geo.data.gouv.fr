@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Content = ({ children }) => (
+export const Content = ({ children, clouds }) => (
   <main>
     {children}
 
@@ -10,17 +10,24 @@ export const Content = ({ children }) => (
 
       main {
         background-color: $white;
-        min-height: 100vh;
         padding: 2em 0 10em;
-        background: url('/static/images/clouds.svg') bottom / 101% no-repeat,
-                    linear-gradient(to top, #41dcd7, #3083b2);
+
+        ${clouds && (`
+          background: url('/static/images/clouds.svg') bottom / 101% no-repeat,
+                      linear-gradient(to top, #41dcd7, #3083b2);
+        `)}
       }
     `}</style>
   </main>
 )
 
 Content.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  clouds: PropTypes.bool
+}
+
+Content.defaultProps = {
+  clouds: false
 }
 
 export default Content

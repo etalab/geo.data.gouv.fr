@@ -127,7 +127,7 @@ class IndexPage extends React.PureComponent {
   render() {
     return (
       <Page>
-        <Content>
+        <Content clouds>
           <Hero />
 
           <Catalogs catalogs={catalogs} />
