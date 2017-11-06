@@ -15,7 +15,6 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
       .value {
         font-size: 2.2rem;
         height: 1.8rem;
-        text-align: left;
       }
 
       .unit {
@@ -34,10 +33,6 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
 
       .error {
         color: ${colors.red};
-      }
-
-      .label {
-        text-align: center;
       }
 
       // Sizes
