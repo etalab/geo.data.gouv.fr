@@ -3,6 +3,10 @@
     "title": "Catalogs"
   },
   "details": {
-    "title": "{{name}} Catalog"
+    "title": "{{name}} Catalog",
+
+    "header": {
+      "catalogService": "Access the catalog service"
+    }
   }
 }

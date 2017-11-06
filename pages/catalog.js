@@ -8,6 +8,9 @@ import withI18n from '../components/hoc/with-i18n'
 import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
+import Container from '../components/container'
+
+import Header from '../components/catalog/header'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -35,8 +38,10 @@ class CatalogPage extends React.Component {
       <Page>
         <Meta title={t('details.title', { name: catalog.name })} />
 
-        <Content clouds>
-          {catalog.name}
+        <Content>
+          <Container>
+            <Header catalog={catalog} />
+          </Container>
         </Content>
       </Page>
     )
