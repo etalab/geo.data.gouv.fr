@@ -5,7 +5,6 @@ const i18nextMiddleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
 
 const i18n = require('../lib/i18n')
-const removeTrailingSlash = require('./middlewares/remove-trailing-slash')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -16,7 +15,7 @@ i18n
   .use(Backend)
   .use(i18nextMiddleware.LanguageDetector)
   .init({
-    preload: ['en', 'fr'],
+    preload: i18n.availableLanguages,
     defaultNS: 'common',
     ns: [
       'common',
@@ -28,6 +27,7 @@ i18n
       addPath: path.join(__dirname, '..//locales/{{lng}}/{{ns}}.missing.json')
     },
     detection: {
+      order: ['path', 'cookie'],
       lookupCookie: 'locale'
     }
   }, () => {
@@ -35,7 +35,6 @@ i18n
       .then(() => {
         const server = express()
 
-        server.use(removeTrailingSlash(app))
         server.use(i18nextMiddleware.handle(i18n))
 
         server.use('/locales', express.static(path.join(__dirname, '../locales')))
@@ -44,14 +43,24 @@ i18n
           server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
         }
 
-        server.get('/catalogs/:id', (req, res) =>
+        const lngs = i18n.availableLanguages.join('|')
+
+        server.get(`/:lng(${lngs})/catalogs/:id`, (req, res) => {
           app.render(req, res, '/catalog', Object.assign(req.query, {
             id: req.params.id
           }))
-        )
+        })
+
+        server.get(`/:lng(${lngs})(*)`, (req, res) => {
+          app.render(req, res, req.params[0] || '/', req.query)
+        })
 
         server.get('*', (req, res) => {
-          return handle(req, res)
+          if (!app.isInternalUrl(req)) {
+            return res.redirect(`/${req.i18n.language}${req.url}`)
+          }
+
+          handle(req, res)
         })
 
         server.listen(port, (err) => {

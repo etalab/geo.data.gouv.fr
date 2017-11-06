@@ -1,7 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 import { translate } from 'react-i18next'
 
+import Link from '../link'
 import Section from './section'
 import CatalogPreview from '../catalog-preview'
 

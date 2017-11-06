@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import { withRouter } from 'next/router'
 import { translate } from 'react-i18next'
 
+import Link from '../../link'
 import LanguageSelection from './language-selection'
 
 import { PUBLIC_URL, PUBLICATION_BASE_URL } from '@env'

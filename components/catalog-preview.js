@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import { translate } from 'react-i18next'
 import { get } from 'lodash'
 
+import Link from './link'
 import HarvestStatus from './harvest-status'
 import Counter from './counter'
 import Percent from './percent'
