@@ -109,29 +109,14 @@ jobs:
       - *attach_workspace
       - *restore_node_modules
 
-      - restore_cache:
-          name: Restore reports cache
-          keys:
-            - v1-geodatagouv-reports-master-
-
       - run:
           name: Build output bundles
           command: yarn build
 
-      - save_cache:
-          name: Save reports cache
-          key: v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - reports/
-
-      - store_artifacts:
-          name: Store build report artifacts
-          path: reports/
-
       - persist_to_workspace:
           root: *workspace_root
           paths:
-            - dist/
+            - .next/
 
   changelog:
     <<: *nodejs_container
