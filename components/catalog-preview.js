@@ -4,6 +4,8 @@ import moment from 'moment'
 import { translate } from 'react-i18next'
 import { get } from 'lodash'
 
+import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
+
 import Link from './link'
 import HarvestStatus from './harvest-status'
 import Counter from './counter'
@@ -23,15 +25,13 @@ export const CatalogPreview = ({ catalog, t }) => {
   return (
     <Link href={`/catalog?id=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
-        <div className='title'>
-          {isObsolete(catalog) && (
-            <img
-              src='/static/images/icons/warning.svg'
-              title={t('components.CatalogPreview.obsoleteCatalog')}
-              alt={t('components.CatalogPreview.obsoleteCatalog')}
-            />
-          )}
+        {isObsolete(catalog) && (
+          <span className='obsolete' title={t('components.CatalogPreview.obsoleteCatalog')}>
+            <WarningIcon />
+          </span>
+        )}
 
+        <div className='title'>
           <span title={catalog.name}>
             {catalog.name}
           </span>
@@ -81,16 +81,19 @@ export const CatalogPreview = ({ catalog, t }) => {
             }
           }
 
-          img {
-            height: 23px;
-            display: inline-block;
-            vertical-align: bottom;
-            margin-right: 5px;
+          .obsolete {
+            position: absolute;
+            color: $yellow;
+            right: 12px;
+            top: 9px;
+            font-size: 2em;
+            opacity: 0.7;
           }
 
           .title {
             font-size: 1.4em;
             line-height: 1.2em;
+            padding-right: 1em;
 
             @media (min-width: 552px) {
               white-space: nowrap;
