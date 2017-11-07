@@ -46,7 +46,6 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
-    "styled-jsx-plugin-sass": "^0.2.1",
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
@@ -103,6 +102,7 @@
     "redbox-react": "^1.5.0",
     "redux-devtools-extension": "^2.13.2",
     "rimraf": "^2.6.1",
+    "styled-jsx-plugin-sass": "^0.2.1",
     "webpack-bundle-analyzer": "^2.9.0"
   },
   "engines": {

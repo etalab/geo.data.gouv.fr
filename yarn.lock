@@ -6889,7 +6889,7 @@ semantic-release@^8.0.3:
     require-relative "^0.8.7"
     semver "^5.4.1"
 
-semantic-ui-css@~2.2.12:
+semantic-ui-css@^2.2.12:
   version "2.2.12"
   resolved "https://registry.yarnpkg.com/semantic-ui-css/-/semantic-ui-css-2.2.12.tgz#afc462e5bb4f8a0dcfe3dca11274499a997490dd"
   dependencies:
