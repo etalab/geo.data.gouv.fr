@@ -43,6 +43,7 @@ class ErrorPage extends React.Component {
             flex: 1;
             align-items: center;
             justify-content: center;
+            margin: 5em 0 3em;
           }
 
           h1 {
