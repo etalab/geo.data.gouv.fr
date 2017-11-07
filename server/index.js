@@ -45,7 +45,7 @@ i18n
     },
 
     detection: {
-      order: ['path', 'header']
+      order: ['path', 'cookie', 'header']
     }
   }, () => {
     app.prepare()
