@@ -39,7 +39,7 @@ i18n
 
     backend: {
       loadPath: path.join(__dirname, '../locales/{{lng}}/{{ns}}.json'),
-      addPath: path.join(__dirname, '..//locales/{{lng}}/{{ns}}.missing.json')
+      addPath: path.join(__dirname, '../locales/{{lng}}/{{ns}}.missing.json')
     },
 
     detection: {
