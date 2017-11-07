@@ -1,6 +1,8 @@
+import { stringify } from 'querystring'
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { withRouter } from 'next/router'
 import { translate } from 'react-i18next'
 
 import Dropdown from '../../dropdown'
@@ -13,10 +15,17 @@ export class LanguageSelection extends React.PureComponent {
   }
 
   changeLanguage(language) {
-    const { i18n } = this.props
+    const { i18n, router } = this.props
+
+    const current = i18n.language
 
     moment.locale(language)
     i18n.changeLanguage(language)
+
+    router.replace(
+      `${router.pathname}?${stringify(router.query)}`,
+      `/${language}${router.asPath.substring(1 + current.length)}`
+    )
   }
 
   render() {
@@ -37,4 +46,4 @@ export class LanguageSelection extends React.PureComponent {
   }
 }
 
-export default translate()(LanguageSelection)
+export default translate()(withRouter(LanguageSelection))
