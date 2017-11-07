@@ -43,8 +43,7 @@ i18n
     },
 
     detection: {
-      order: ['path'],
-      lookupCookie: 'locale'
+      order: ['path', 'header']
     }
   }, () => {
     app.prepare()
@@ -73,7 +72,7 @@ i18n
 
         server.get('*', (req, res) => {
           if (!app.isInternalUrl(req)) {
-            return res.redirect(`/${req.i18n.language}${req.url}`)
+            return res.redirect(`/${req.i18n.languages[0]}${req.url}`)
           }
 
           handle(req, res)
