@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import { translate } from 'react-i18next'
 
+import Link from '../link'
 import Section from './section'
 
 const Events = ({ t }) => (
