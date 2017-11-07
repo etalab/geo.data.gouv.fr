@@ -25,7 +25,6 @@
     "dotenv": "^4.0.0",
     "hoist-non-react-statics": "^2.3.0",
     "i18next": "^10.0.3",
-    "i18next-browser-languagedetector": "^2.0.0",
     "i18next-express-middleware": "^1.0.7",
     "i18next-node-fs-backend": "^1.0.0",
     "i18next-xhr-backend": "^1.4.3",

@@ -4343,10 +4343,6 @@ https-proxy-agent@^1.0.0:
     debug "2"
     extend "3"
 
-i18next-browser-languagedetector@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-2.0.0.tgz#4d9df2bd1a5deda3c8c0a6d3db62d50388b9eedd"
-
 i18next-express-middleware@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.0.7.tgz#7909233f4e6e94b5bd4964a114247dc8d6f3f839"
