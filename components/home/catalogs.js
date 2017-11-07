@@ -52,9 +52,9 @@ const Catalogs = ({ catalogs, t }) => (
 )
 
 Catalogs.propTypes = {
-  catalogs: PropTypes.arrayOf({
+  catalogs: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired
-  }).isRequired,
+  })).isRequired,
 
   t: PropTypes.func.isRequired
 }
