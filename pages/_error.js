@@ -9,7 +9,7 @@ import Content from '../components/content'
 
 class ErrorPage extends React.Component {
   static propTypes = {
-    statusCode: PropTypes.number.isRequired,
+    code: PropTypes.number,
     i18n: PropTypes.shape({
       exists: PropTypes.func.isRequired
     }).isRequired,
@@ -17,22 +17,23 @@ class ErrorPage extends React.Component {
   }
 
   static getInitialProps ({ res, err }) {
-    const statusCode = res ? res.statusCode : (err ? err.statusCode : null)
-    return { statusCode }
+    const code = res ? res.statusCode : (err ? err.statusCode : null)
+
+    return { code }
   }
 
   render() {
-    const { statusCode, i18n, t } = this.props
+    const { code, i18n, t } = this.props
 
-    const message = i18n.exists(`errors.${statusCode}`) ? t(`errors.${statusCode}`) : t('errors.unknown')
+    const message = i18n.exists(`errors.${code}`) ? t(`errors.${code}`) : t('errors.unknown')
 
     return (
       <Page>
-        <Meta title={t('errors.title', { code: statusCode })} description={message} />
+        <Meta title={t('errors.title', { code })} description={message} />
 
         <Content clouds>
           <div>
-            {statusCode ? <h1>{statusCode}</h1> : null}
+            <h1>{t('errors.title', { code })}</h1>
             <h2>{message}</h2>
           </div>
         </Content>
