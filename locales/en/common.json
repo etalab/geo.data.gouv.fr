@@ -10,7 +10,8 @@
       "noData": "No data available",
       "openDataLabel": "Open data",
       "downloadableLabel": "Downloadable",
-      "recordsLabel": "Records"
+      "recordsLabel": "Records",
+      "obsoleteCatalog": "This catalog has not been updated for more than 6 months"
     },
 
     "DoughnutChart": {
@@ -66,13 +67,9 @@
       "languageSelection": "Language"
     },
 
-    "LastHarvestStatus": {
+    "HarvestStatus": {
       "success": "Succeeded",
       "fail": "Failed"
-    },
-
-    "ObsoleteWarning": {
-      "obsoleteCatalog": "This catalog has not been updated for more than 6 months"
     },
 
     "SearchInput": {

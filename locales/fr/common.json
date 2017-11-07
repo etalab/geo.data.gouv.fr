@@ -10,7 +10,8 @@
       "noData": "Aucun donnée disponible",
       "openDataLabel": "Données ouvertes",
       "downloadableLabel": "Téléchargeables",
-      "recordsLabel": "Enregistrements"
+      "recordsLabel": "Enregistrements",
+      "obsoleteCatalog": "Ce catalogue n’a pas été mis à jour depuis plus de 6 mois"
     },
 
     "DoughnutChart": {
@@ -62,17 +63,9 @@
       "label": "Enregistrements"
     },
 
-    "LanguageSelection": {
-      "languageSelection": "Langage"
-    },
-
-    "LastHarvestStatus": {
+    "HarvestStatus": {
       "success": "Réussi",
       "fail": "En échec"
-    },
-
-    "ObsoleteWarning": {
-      "obsoleteCatalog": "Ce catalogue n’a pas été mis à jour depuis plus de 6 mois"
     },
 
     "SearchInput": {

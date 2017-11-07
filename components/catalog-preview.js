@@ -27,8 +27,8 @@ export const CatalogPreview = ({ catalog, t }) => {
           {isObsolete(catalog) && (
             <img
               src='/static/images/icons/warning.svg'
-              title={t('components.ObsoleteWarning.obsoleteCatalog')}
-              alt={t('components.ObsoleteWarning.obsoleteCatalog')}
+              title={t('components.CatalogPreview.obsoleteCatalog')}
+              alt={t('components.CatalogPreview.obsoleteCatalog')}
             />
           )}
 

@@ -38,6 +38,7 @@ export default namespaces => Page => {
       namespaces = [
         'home',
         'catalogs',
+        'search',
         'common'
       ]
 
