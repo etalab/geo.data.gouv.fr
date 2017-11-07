@@ -123,21 +123,17 @@ const catalogs = [
   }
 ]
 
-class IndexPage extends React.PureComponent {
-  render() {
-    return (
-      <Page>
-        <Content clouds>
-          <Hero />
+const IndexPage = () => (
+  <Page>
+    <Content clouds>
+      <Hero />
 
-          <Catalogs catalogs={catalogs} />
-          <Events />
-        </Content>
+      <Catalogs catalogs={catalogs} />
+      <Events />
+    </Content>
 
-        <NewsletterForm />
-      </Page>
-    )
-  }
-}
+    <NewsletterForm />
+  </Page>
+)
 
 export default withI18n('home')(IndexPage)
