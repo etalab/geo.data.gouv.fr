@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import Link from '../link'
@@ -49,5 +50,13 @@ const Catalogs = ({ catalogs, t }) => (
     `}</style>
   </Section>
 )
+
+Catalogs.propTypes = {
+  catalogs: PropTypes.arrayOf({
+    _id: PropTypes.string.isRequired
+  }).isRequired,
+
+  t: PropTypes.func.isRequired
+}
 
 export default translate('home')(Catalogs)

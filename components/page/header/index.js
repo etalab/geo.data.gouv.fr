@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { withRouter } from 'next/router'
 import { translate } from 'react-i18next'
 
@@ -104,6 +105,17 @@ const Header = ({ router, t, i18n }) => {
       `}</style>
     </nav>
   )
+}
+
+Header.propTypes = {
+  router: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
+
+  i18n: PropTypes.shape({
+    language: PropTypes.string.isRequired
+  }).isRequired,
+  t: PropTypes.func.isRequired
 }
 
 export default translate()(withRouter(Header))

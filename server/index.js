@@ -79,7 +79,11 @@ i18n
         })
 
         server.listen(port, (err) => {
-          if (err) throw err
+          if (err) {
+            throw err
+          }
+
+          // eslint-disable-next-line no-console
           console.log(`> Ready on http://localhost:${port}`)
         })
       })

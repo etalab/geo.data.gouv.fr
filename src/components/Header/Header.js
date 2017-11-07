@@ -17,10 +17,6 @@ class Header extends React.Component {
       pathname: PropTypes.string.isRequired
     }).isRequired,
 
-    i18n: PropTypes.shape({
-      language: PropTypes.string.isRequired
-    }).isRequired,
-
     t: PropTypes.func.isRequired
   }
 
@@ -40,7 +36,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { i18n, t, location } = this.props
+    const { t, location } = this.props
     const { user } = this.state
 
     const loginRedirect = `${PUBLIC_URL}/publication`
