@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { translate } from 'react-i18next'
 import { get } from 'lodash'
 
@@ -8,7 +9,11 @@ import HarvestStatus from './harvest-status'
 import Counter from './counter'
 import Percent from './percent'
 
-// import ObsoleteWarning from './ObsoleteWarning'
+const isObsolete = (catalog) => {
+  const revisionDate = get(catalog, 'metrics.mostRecentRevisionDate')
+
+  return revisionDate && moment().subtract(6, 'months').isAfter(revisionDate)
+}
 
 export const CatalogPreview = ({ catalog, t }) => {
   let metrics = catalog.metrics
@@ -18,11 +23,20 @@ export const CatalogPreview = ({ catalog, t }) => {
   return (
     <Link href={`/catalog?id=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
-        <div className='title' title={catalog.name}>
-          {catalog.name}
+        <div className='title'>
+          {isObsolete(catalog) && (
+            <img
+              src='/static/images/icons/warning.svg'
+              title={t('components.ObsoleteWarning.obsoleteCatalog')}
+              alt={t('components.ObsoleteWarning.obsoleteCatalog')}
+            />
+          )}
+
+          <span title={catalog.name}>
+            {catalog.name}
+          </span>
         </div>
         <HarvestStatus harvest={catalog.service.sync} />
-        {/* <ObsoleteWarning catalog={catalog} /> */}
 
         <div className='metrics'>
           {!metrics ? <div>{t('components.CatalogPreview.noData')}</div> : (
@@ -52,7 +66,7 @@ export const CatalogPreview = ({ catalog, t }) => {
 
           a {
             display: block;
-            padding: 1.4em 2em;
+            padding: 16px 22px;
             text-align: left;
             position: relative;
             width: 360px;
@@ -65,6 +79,13 @@ export const CatalogPreview = ({ catalog, t }) => {
             @media (max-width: 551px) {
               width: 100%;
             }
+          }
+
+          img {
+            height: 23px;
+            display: inline-block;
+            vertical-align: bottom;
+            margin-right: 5px;
           }
 
           .title {
