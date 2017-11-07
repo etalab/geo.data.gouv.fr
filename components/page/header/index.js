@@ -8,7 +8,7 @@ import LanguageSelection from './language-selection'
 
 import { PUBLIC_URL, PUBLICATION_BASE_URL } from '@env'
 
-const Header = ({ router, t, i18n }) => {
+const Header = ({ router, t }) => {
   const loginRedirect = `${PUBLIC_URL}/publication`
   const isPublication = router.pathname.startsWith('/publication')
   const logoutRedirect = isPublication ? PUBLIC_URL : PUBLIC_URL + router.pathname
@@ -40,7 +40,7 @@ const Header = ({ router, t, i18n }) => {
           )}
         </li>
         <li>
-          <LanguageSelection language={i18n.language} />
+          <LanguageSelection />
         </li>
         {user && (
           <li>
@@ -112,9 +112,6 @@ Header.propTypes = {
     pathname: PropTypes.string.isRequired
   }).isRequired,
 
-  i18n: PropTypes.shape({
-    language: PropTypes.string.isRequired
-  }).isRequired,
   t: PropTypes.func.isRequired
 }
 
