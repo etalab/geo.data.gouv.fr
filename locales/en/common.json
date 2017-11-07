@@ -1,5 +1,6 @@
 {
   "errors": {
+    "title": "{{code}} Error",
     "404": "This page could not be found",
     "unknown": "An unexpected error has occurred"
   },

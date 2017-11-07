@@ -28,7 +28,7 @@ class ErrorPage extends React.Component {
 
     return (
       <Page>
-        <Meta title='Error' />
+        <Meta title={t('errors.title', { code: statusCode })} description={message} />
 
         <Content>
           <div>
