@@ -78,10 +78,6 @@ jobs:
           name: Lint JavaScript
           command: yarn lint:scripts
 
-      - run:
-          name: Lint Stylesheets
-          command: yarn lint:styles
-
   test:
     <<: *nodejs_container
     steps:

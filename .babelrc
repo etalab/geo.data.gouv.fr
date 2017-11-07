@@ -29,5 +29,23 @@
         ]
       }
     }]
-  ]
+  ],
+
+  "env": {
+    "test": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "node": "current"
+          },
+          "loose": true
+        }]
+      ],
+      "plugins": [
+        "transform-react-jsx-source",
+        "transform-react-jsx-self",
+        "istanbul"
+      ]
+    }
+  }
 }

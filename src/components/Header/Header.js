@@ -6,8 +6,6 @@ import { translate } from 'react-i18next'
 import { getUser } from '../../fetch/fetch'
 import { waitForDataAndSetState, cancelAllPromises } from '../../helpers/components'
 
-import LanguageSelection from '../LanguageSelection'
-
 import styles from './Header.scss'
 import logo from './images/logo-geo.svg'
 
@@ -68,9 +66,6 @@ class Header extends React.Component {
                   {`${user.first_name} ${user.last_name}`}
                 </Link>
               )}
-            </li>
-            <li>
-              <LanguageSelection language={i18n.language} />
             </li>
             {user && (
               <li>
