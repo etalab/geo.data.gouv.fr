@@ -140,7 +140,6 @@
       "lcov",
       "text-summary"
     ],
-    "all": true,
     "sourceMap": false,
     "instrument": false,
     "cache": true
