@@ -5,6 +5,8 @@ const i18n = require('i18next')
 const i18nextMiddleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
 
+const createRoutes = require('./routes')
+
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -51,7 +53,6 @@ i18n
         const server = express()
 
         server.use(i18nextMiddleware.handle(i18n))
-
         server.use('/locales', express.static(path.join(__dirname, '../locales')))
 
         if (dev) {
@@ -59,16 +60,7 @@ i18n
         }
 
         const lngs = languages.join('|')
-
-        server.get(`/:lng(${lngs})/catalogs/:id`, (req, res) => {
-          app.render(req, res, '/catalog', Object.assign(req.query, {
-            id: req.params.id
-          }))
-        })
-
-        server.get(`/:lng(${lngs})*`, (req, res) => {
-          app.render(req, res, req.params[0] || '/', req.query)
-        })
+        server.use(`/:lng(${lngs})`, createRoutes(app))
 
         server.get('*', (req, res) => {
           if (!app.isInternalUrl(req)) {
