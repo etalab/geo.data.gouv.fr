@@ -40,19 +40,26 @@ class ErrorPage extends React.Component {
 
         <style jsx>{`
           div {
-            display: flex;
-            flex: 1;
-            align-items: center;
-            justify-content: center;
-            margin: 7em 0 2em;
+            margin: 7em 15px 2em;
+            text-align: center;
+
+            @media (min-width: 552px) {
+              display: flex;
+              flex: 1;
+              align-items: center;
+              justify-content: center;
+            }
           }
 
           h1 {
-            border-right: 1px solid rgba(0, 0, 0,.3);
-            margin: 0 20px 0 0;
-            padding: 10px 20px 10px 0;
             font-size: 24px;
             fontWeight: 500;
+
+            @media (min-width: 552px) {
+              margin: 0 20px 0 0;
+              border-right: 1px solid rgba(0, 0, 0,.3);
+              padding: 10px 20px 10px 0;
+            }
           }
 
           h2 {
