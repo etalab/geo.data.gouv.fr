@@ -11,6 +11,12 @@ export class LanguageSelection extends React.PureComponent {
   static propTypes = {
     i18n: PropTypes.shape({
       changeLanguage: PropTypes.func.isRequired
+    }).isRequired,
+
+    router: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      query: PropTypes.string,
+      asPath: PropTypes.string.isRequired
     }).isRequired
   }
 
