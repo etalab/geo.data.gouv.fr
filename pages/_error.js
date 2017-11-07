@@ -30,7 +30,7 @@ class ErrorPage extends React.Component {
       <Page>
         <Meta title={t('errors.title', { code: statusCode })} description={message} />
 
-        <Content>
+        <Content clouds>
           <div>
             {statusCode ? <h1>{statusCode}</h1> : null}
             <h2>{message}</h2>
@@ -43,7 +43,7 @@ class ErrorPage extends React.Component {
             flex: 1;
             align-items: center;
             justify-content: center;
-            margin: 5em 0 3em;
+            margin: 7em 0 2em;
           }
 
           h1 {
