@@ -18,7 +18,9 @@ export const CatalogPreview = ({ catalog, t }) => {
   return (
     <Link href={`/catalog?id=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
-        <div className='title'>{catalog.name}</div>
+        <div className='title' title={catalog.name}>
+          {catalog.name}
+        </div>
         <HarvestStatus harvest={catalog.service.sync} />
         {/* <ObsoleteWarning catalog={catalog} /> */}
 
@@ -53,7 +55,7 @@ export const CatalogPreview = ({ catalog, t }) => {
             padding: 1.4em 2em;
             text-align: left;
             position: relative;
-            width: 340px;
+            width: 360px;
             color: $darkgrey;
             border-radius: 5px;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -67,6 +69,13 @@ export const CatalogPreview = ({ catalog, t }) => {
 
           .title {
             font-size: 1.4em;
+            line-height: 1.2em;
+
+            @media (min-width: 552px) {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
           }
 
           .metrics > div {

@@ -67,7 +67,7 @@ class CatalogsPage extends React.Component {
           }
 
           div {
-            margin: 10px 20px;
+            margin: 10px;
 
             @media (max-width: 551px) {
               margin: 10px 0;

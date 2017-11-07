@@ -27,10 +27,14 @@ const Catalogs = ({ catalogs, t }) => (
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+
+        @media (max-width: 551px) {
+          flex-direction: column;
+        }
       }
 
       .catalog {
-        margin: 10px 20px;
+        margin: 10px;
 
         @media (max-width: 551px) {
           margin: 10px 0;
