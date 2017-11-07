@@ -87,7 +87,6 @@ export const CatalogPreview = ({ catalog, t }) => {
             right: 12px;
             top: 9px;
             font-size: 2em;
-            opacity: 0.7;
           }
 
           .title {
