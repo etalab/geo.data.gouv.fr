@@ -1,7 +1,6 @@
 import { stringify } from 'querystring'
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import { withRouter } from 'next/router'
 import { translate } from 'react-i18next'
 
@@ -25,7 +24,6 @@ export class LanguageSelection extends React.PureComponent {
 
     const current = i18n.language
 
-    moment.locale(language)
     i18n.changeLanguage(language)
 
     router.replace(
