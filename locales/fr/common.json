@@ -1,4 +1,9 @@
 {
+  "errors": {
+    "404": "La page demandée n’a pas pu être trouvée",
+    "unknown": "Une erreur imprévue s'est produite"
+  },
+
   "components": {
     "CatalogPreview": {
       "noData": "Aucun donnée disponible",

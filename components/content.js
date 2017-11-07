@@ -11,6 +11,8 @@ export const Content = ({ children, clouds }) => (
       main {
         background-color: $white;
         padding: 2em 0 10em;
+        display: flex;
+        flex-direction: column;
         flex: 1;
 
         ${clouds && (`
