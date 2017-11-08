@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'next/router'
 import { translate } from 'react-i18next'
 
+import Container from '../../container'
 import Link from '../../link'
 import LanguageSelection from './language-selection'
 
@@ -20,45 +21,55 @@ const Header = ({ router, t }) => {
 
   return (
     <nav>
-      <Link href='/'>
-        <a className='logo'>
-          <img src='/static/images/logo.svg' alt='Logo de la République française (1999)' />
-        </a>
-      </Link>
+      <Container fluid>
+        <div>
+          <Link href='/'>
+            <a className='logo'>
+              <img src='/static/images/logo.svg' alt='Logo de la République française (1999)' />
+            </a>
+          </Link>
 
-      <ul>
-        <li>
-          {!user ? (
-            <a href={logInUrl}>{t('components.Header.login')}</a>
-          ) : (
-            <Link href='/publication'>
-              <a>
-                <img alt='avatar' className='avatar' src={user.avatar} />
-                {user.first_name} {user.last_name}
-              </a>
-            </Link>
-          )}
-        </li>
-        <li>
-          <LanguageSelection />
-        </li>
-        {user && (
-          <li>
-            <a href={logoutUrl}><span>{t('components.Header.logout')}</span><i className='power icon' /></a>
-          </li>
-        )}
-      </ul>
+          <ul>
+            <li>
+              {!user ? (
+                <a href={logInUrl}>{t('components.Header.login')}</a>
+              ) : (
+                <Link href='/publication'>
+                  <a>
+                    <img alt='avatar' className='avatar' src={user.avatar} />
+                    {user.first_name} {user.last_name}
+                  </a>
+                </Link>
+              )}
+            </li>
+            <li>
+              <LanguageSelection />
+            </li>
+            {user && (
+              <li>
+                <a href={logoutUrl}><span>{t('components.Header.logout')}</span><i className='power icon' /></a>
+              </li>
+            )}
+          </ul>
+        </div>
+      </Container>
 
       <style jsx>{`
         @import 'colors';
 
         nav {
-          width: 100%;
           background: $white;
+        }
+
+        div {
           display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
           align-items: center;
+          justify-content: space-between;
+
+          @media (max-width: 551px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
 
         a {
@@ -68,14 +79,14 @@ const Header = ({ router, t }) => {
         .logo {
           img {
             height: 68px;
-            padding: 1em;
+            padding: 1em 0;
           }
         }
 
         ul {
           display: inline;
           margin: 0;
-          padding: 1em;
+          padding: 0;
           list-style-type: 0;
           text-align: right;
 
@@ -90,10 +101,6 @@ const Header = ({ router, t }) => {
 
           a {
             color: $black;
-          }
-
-          @media (max-width: 550px) {
-            padding-top: 0;
           }
         }
 
