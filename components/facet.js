@@ -19,7 +19,7 @@ const Facet = ({ facet, count, detailed, onClick, t, i18n }) => {
 
         .facet {
           display: inline-block;
-          background: #eee;
+          background: $lightgrey;
           border-radius: 3px 0 0 3px;
           height: 26px;
           line-height: 26px;
@@ -44,7 +44,7 @@ const Facet = ({ facet, count, detailed, onClick, t, i18n }) => {
           &:after {
             background: $white;
             border-bottom: 13px solid transparent;
-            border-left: 10px solid #eee;
+            border-left: 10px solid $lightgrey;
             border-top: 13px solid transparent;
             content: '';
             position: absolute;

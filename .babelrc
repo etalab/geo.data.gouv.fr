@@ -23,7 +23,7 @@
         "plugins": [
           ["styled-jsx-plugin-sass", {
             "sassOptions": {
-              "includePaths": ["./styles"],
+              "includePaths": ["styles"],
               "precision": 2
             }
           }]
