@@ -16,6 +16,36 @@ import Results from '../components/search/results'
 
 import { GEODATA_API_URL } from '@env'
 
+const ignoredFilters = [
+  'q',
+  'page',
+  'offset',
+  'limit'
+]
+
+const getFilters = query => {
+  const filters = []
+
+  Object
+    .entries(query)
+    .filter(([name]) => !ignoredFilters.includes(name))
+    .forEach(([name, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach(v => filters.push({
+          name,
+          value: v
+        }))
+      } else {
+        filters.push({ name, value })
+      }
+    })
+
+  return filters.reduce((acc, filter) => {
+    (acc[filter.name] = acc[filter.name] || []).push(filter.value)
+    return acc
+  }, {})
+}
+
 class SearchPage extends React.Component {
   static propTypes = {
     result: PropTypes.shape({
@@ -38,7 +68,8 @@ class SearchPage extends React.Component {
     const result = await _get(`${GEODATA_API_URL}/records?${stringify({
       q: query.q,
       limit: 20,
-      offset: (page - 1) * 20
+      offset: (page - 1) * 20,
+      ...getFilters(query)
     })}`)
 
     return {
