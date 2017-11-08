@@ -8,8 +8,8 @@ import MarkdownSummary from '../../markdown-summary'
 import Thumbnail from './thumbnail'
 import Footer from './footer'
 
-const Result = ({ result: { _id, recordId, metadata }, i18n, t }) => (
-  <Link href={`/dataset?id=${_id}`} as={`/datasets/${_id}`}>
+const Result = ({ result: { recordId, metadata }, i18n, t }) => (
+  <Link href={`/dataset?id=${recordId}`} as={`/datasets/${recordId}`}>
     <a>
       <Thumbnail thumbnails={metadata.thumbnails} recordId={recordId} />
 
@@ -97,6 +97,7 @@ const Result = ({ result: { _id, recordId, metadata }, i18n, t }) => (
 
 Result.propTypes = {
   result: PropTypes.shape({
+    recordId: PropTypes.string.isRequired,
     metadata: PropTypes.shape({
       title: PropTypes.string.isRequired
     }).isRequired
