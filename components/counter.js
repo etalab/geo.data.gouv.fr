@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import colors from '../styles/colors'
-
 const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
   <div>
     {title && <h3>{title}</h3>}
@@ -12,6 +10,8 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
     {label && <div className={`label ${size}`}>{label}</div>}
 
     <style jsx>{`
+      @import 'colors';
+
       .value {
         font-size: 2.2rem;
         height: 1.8rem;
@@ -24,15 +24,15 @@ const Counter = ({ value, label, unit, size = '', color = '', title = '' }) => (
 
       // Colors
       .success {
-        color: ${colors.green};
+        color: $green;
       }
 
       .warning {
-        color: ${colors.yellow};
+        color: $yellow;
       }
 
       .error {
-        color: ${colors.red};
+        color: $red;
       }
 
       // Sizes
