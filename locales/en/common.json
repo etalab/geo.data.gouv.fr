@@ -63,10 +63,6 @@
       "label": "Records"
     },
 
-    "LanguageSelection": {
-      "languageSelection": "Language"
-    },
-
     "HarvestStatus": {
       "success": "Succeeded",
       "fail": "Failed"
