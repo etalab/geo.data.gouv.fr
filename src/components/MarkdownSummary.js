@@ -33,6 +33,7 @@ class Renderer {
   list = body => body
   heading = body => this.paragraph(body)
   code = body => this.paragraph(body)
+  blockquote = body => this.paragraph(body)
   listitem = body => this.paragraph(body)
 
   link = href => href
