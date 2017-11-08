@@ -1,22 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
 
 import Result from './result'
 
 const Results = ({ results }) => (
   <div>
-    {results.length ? (
-      <div>
-        {results.map(result => (
-          <div key={result._id}>
-            <Result result={result} />
-          </div>
-        ))}
+    {results.map(result => (
+      <div key={result._id}>
+        <Result result={result} />
       </div>
-    ) : (
-      'Empty'
-    )}
+    ))}
   </div>
 )
 
@@ -26,4 +19,4 @@ Results.propTypes = {
   })).isRequired
 }
 
-export default translate('search')(Results)
+export default Results

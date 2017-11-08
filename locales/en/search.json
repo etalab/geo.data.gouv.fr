@@ -1,4 +1,10 @@
 {
   "title": "{{query}} | Search",
-  "title_empty": "Search"
+  "title_empty": "Search",
+
+  "count": {
+    "results": "One dataset found.",
+    "results_plural": "{{count}} datasets found.",
+    "noResults": "No datasets found."
+  }
 }
