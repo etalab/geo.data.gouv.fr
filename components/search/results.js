@@ -17,9 +17,6 @@ const Results = ({ results }) => (
     ) : (
       'Empty'
     )}
-
-    <style jsx>{`
-    `}</style>
   </div>
 )
 
