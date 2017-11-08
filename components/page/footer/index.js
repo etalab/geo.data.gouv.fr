@@ -22,7 +22,7 @@ const Footer = ({ t }) => (
       @import 'colors';
 
       footer {
-        background: $black;
+        background: $darkblue;
         color: $white;
         padding: 2em 0;
         line-height: 2em;
