@@ -13,7 +13,7 @@ const LegalPage = () => (
 
     <Content>
       <Container fluid>
-        <h2>Mentions légales</h2>
+        <h1>Mentions légales</h1>
         <h4>Editeur</h4>
         <p>
           Direction interministérielle du numérique et du système d'information et de communication de l'État (DINSIC)<br />
