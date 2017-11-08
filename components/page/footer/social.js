@@ -27,6 +27,7 @@ const Social = () => (
       ul {
         list-style-type: none;
         padding: 0;
+        margin: 1em 0 0;
       }
 
       li {
