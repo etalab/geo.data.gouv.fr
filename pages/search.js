@@ -12,6 +12,7 @@ import Container from '../components/container'
 import Meta from '../components/meta'
 
 import Header from '../components/search/header'
+import Results from '../components/search/results'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -20,7 +21,9 @@ class SearchPage extends React.Component {
     result: PropTypes.shape({
       query: PropTypes.shape({
         q: PropTypes.string
-      }).isRequired
+      }).isRequired,
+
+      results: PropTypes.array.isRequired
     }).isRequired,
 
     t: PropTypes.func.isRequired
@@ -44,7 +47,7 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const { result: { query }, t } = this.props
+    const { result: { query, results }, t } = this.props
 
     return (
       <Page>
@@ -55,6 +58,8 @@ class SearchPage extends React.Component {
         <Content>
           <Container fluid>
             <Header />
+
+            <Results results={results} />
           </Container>
         </Content>
       </Page>
