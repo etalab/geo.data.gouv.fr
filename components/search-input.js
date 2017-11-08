@@ -34,13 +34,19 @@ class SearchInput extends React.PureComponent {
 
     const { router, i18n, defaultQuery } = this.props
 
+    const query = {
+      ...defaultQuery,
+      ...router.query,
+      q: event.target.query.value
+    }
+
+    // Reset search to first page when firing a new query.
+    // We don’t need p=1 in the query string, so let’s drop it.
+    delete query.p
+
     const url = format({
       pathname: '/search',
-      query: {
-        ...defaultQuery,
-        ...router.query,
-        q: event.target.query.value
-      }
+      query
     })
 
     router.push(url, `/${i18n.language}${url}`)
