@@ -28,7 +28,8 @@ i18n
     ns: [
       'common',
       'home',
-      'catalogs'
+      'catalogs',
+      'search'
     ],
     defaultNS: 'common',
     whitelist: [

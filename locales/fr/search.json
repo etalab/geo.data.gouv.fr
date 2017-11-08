@@ -1,1 +1,4 @@
-{}
+{
+  "title": "{{query}} | Recherche",
+  "title_empty": "Recherche"
+}
