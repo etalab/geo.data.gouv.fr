@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import Link from '../../link'
+import MarkdownSummary from '../../markdown-summary'
 
 import Thumbnail from './thumbnail'
+import Footer from './footer'
 
 const Result = ({ result: { _id, recordId, metadata }, i18n, t }) => (
   <Link href={`/dataset?id=${_id}`} as={`/datasets/${_id}`}>
@@ -26,12 +28,13 @@ const Result = ({ result: { _id, recordId, metadata }, i18n, t }) => (
           )}
         </div>
 
-        {/* {metadata.description && (
+        {metadata.description && (
           <MarkdownSummary markdown={metadata.description} />
         )}
+
         <div className='footer'>
-          <DatasetInfo metadata={metadata} />
-        </div> */}
+          <Footer metadata={metadata} />
+        </div>
       </div>
       <style jsx>{`
         @import 'colors';
