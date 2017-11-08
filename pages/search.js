@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { _get } from '../lib/fetch'
+import { getFilters } from '../lib/query'
 
 import withI18n from '../components/hoc/with-i18n'
 
@@ -15,36 +16,6 @@ import Header from '../components/search/header'
 import Results from '../components/search/results'
 
 import { GEODATA_API_URL } from '@env'
-
-const ignoredFilters = [
-  'q',
-  'page',
-  'offset',
-  'limit'
-]
-
-const getFilters = query => {
-  const filters = []
-
-  Object
-    .entries(query)
-    .filter(([name]) => !ignoredFilters.includes(name))
-    .forEach(([name, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach(v => filters.push({
-          name,
-          value: v
-        }))
-      } else {
-        filters.push({ name, value })
-      }
-    })
-
-  return filters.reduce((acc, filter) => {
-    (acc[filter.name] = acc[filter.name] || []).push(filter.value)
-    return acc
-  }, {})
-}
 
 class SearchPage extends React.Component {
   static propTypes = {
