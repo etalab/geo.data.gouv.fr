@@ -14,7 +14,9 @@ const Hero = ({ t }) => (
       </h1>
       <SearchInput
         placeholder={t('SearchInputPlaceholder')}
-        onSearch={() => {}}
+        defaultQuery={{
+          availability: 'yes'
+        }}
         hasButton
       />
       <Link href='/search?availability=yes'>

@@ -1,16 +1,25 @@
+import { format } from 'url'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'next/router'
 
 import { translate } from 'react-i18next'
 
 class SearchInput extends React.PureComponent {
   static propTypes = {
+    router: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+      query: PropTypes.object.isRequired
+    }).isRequired,
+
     placeholder: PropTypes.string,
-    defaultValue: PropTypes.string,
 
     hasButton: PropTypes.bool,
+    defaultQuery: PropTypes.object,
 
-    onSearch: PropTypes.func.isRequired,
+    i18n: PropTypes.shape({
+      language: PropTypes.string.isRequired
+    }).isRequired,
     t: PropTypes.func.isRequired
   }
 
@@ -21,22 +30,31 @@ class SearchInput extends React.PureComponent {
   }
 
   onSubmit = event => {
-    const { onSearch } = this.props
-
     event.preventDefault()
 
-    onSearch(event.target.query.value)
+    const { router, i18n, defaultQuery } = this.props
+
+    const url = format({
+      pathname: '/search',
+      query: {
+        ...defaultQuery,
+        ...router.query,
+        q: event.target.query.value
+      }
+    })
+
+    router.push(url, `/${i18n.language}${url}`)
   }
 
   render() {
-    const { placeholder, defaultValue, hasButton, t } = this.props
+    const { router, placeholder, hasButton, t } = this.props
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
           type='text'
           name='query'
-          defaultValue={defaultValue}
+          defaultValue={router.query.q}
           placeholder={placeholder || t('components.SearchInput.placeholder')}
         />
 
@@ -91,4 +109,4 @@ class SearchInput extends React.PureComponent {
   }
 }
 
-export default translate()(SearchInput)
+export default translate()(withRouter(SearchInput))
