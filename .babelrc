@@ -14,7 +14,8 @@
         "PIWIK_URL",
         "PIWIK_SITE_ID"
       ]
-    }]
+    }],
+    "lodash"
   ],
   "presets": [
     ["next/babel",{
