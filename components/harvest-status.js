@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { translate } from 'react-i18next'
-
-import { doneSince } from '../lib/date'
 
 const HarvestStatus = ({ harvest, t }) => {
   // Retro-compatibility: the API sends one or the other:
   const finishedAt = harvest.finishedAt || harvest.finished
-  const hoursDifference = doneSince(finishedAt)
   let status
 
   if (harvest.status === 'successful') {
@@ -18,7 +16,7 @@ const HarvestStatus = ({ harvest, t }) => {
 
   return (
     <div>
-      {status} {hoursDifference}
+      {status} {moment(finishedAt).fromNow()}
     </div>
   )
 }
