@@ -5,6 +5,29 @@
     "unknown": "An unexpected error has occurred"
   },
 
+  "facets": {
+    "types": {
+      "availability": "downloadable",
+      "dgvPublication": "published on data.gouv.fr",
+      "distributionFormat": "distribution format",
+      "keyword": "keyword",
+      "metadataType": "metada type",
+      "opendata": "open data",
+      "organization": "organization",
+      "representationType": "representation type",
+      "type": "type",
+      "catalog": "catalog"
+    },
+    "values": {
+      "yes": "yes",
+      "no": "no",
+      "not-determined": "not determined",
+      "other": "other",
+      "unknown": "unknown",
+      "none": "none"
+    }
+  },
+
   "components": {
     "CatalogPreview": {
       "noData": "No data available",
@@ -25,29 +48,6 @@
       "grid": "grid",
       "Dublin Core": "Dublin Core",
       "ISO 19139": "ISO 19139"
-    },
-
-    "Filter": {
-      "types": {
-        "availability": "downloadable",
-        "dgvPublication": "published on data.gouv.fr",
-        "distributionFormat": "distribution format",
-        "keyword": "keyword",
-        "metadataType": "metada type",
-        "opendata": "open data",
-        "organization": "organization",
-        "representationType": "representation type",
-        "type": "type",
-        "catalog": "catalog"
-      },
-      "values": {
-        "yes": "yes",
-        "no": "no",
-        "not-determined": "not determined",
-        "other": "other",
-        "unknown": "unknown",
-        "none": "none"
-      }
     },
 
     "Footer": {

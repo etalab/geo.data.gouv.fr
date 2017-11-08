@@ -5,6 +5,29 @@
     "unknown": "Une erreur imprévue s'est produite"
   },
 
+  "facets": {
+    "types": {
+      "availability": "téléchargeable",
+      "dgvPublication": "publié sur data.gouv.fr",
+      "distributionFormat": "format de distribution",
+      "keyword": "mot-clé",
+      "metadataType": "type de metadonnée",
+      "opendata": "donnée ouverte",
+      "organization": "organisation",
+      "representationType": "type géographique",
+      "type": "type",
+      "catalog": "catalogue"
+    },
+    "values": {
+      "yes": "oui",
+      "no": "non",
+      "not-determined": "non déterminé",
+      "other": "autre",
+      "unknown": "inconnu",
+      "none": "aucun"
+    }
+  },
+
   "components": {
     "CatalogPreview": {
       "noData": "Aucun donnée disponible",
@@ -25,29 +48,6 @@
       "grid": "imagerie",
       "Dublin Core": "Dublin Core",
       "ISO 19139": "ISO 19139"
-    },
-
-    "Filter": {
-      "types": {
-        "availability": "téléchargeable",
-        "dgvPublication": "publié sur data.gouv.fr",
-        "distributionFormat": "format de distribution",
-        "keyword": "mot-clé",
-        "metadataType": "type de metadonnée",
-        "opendata": "donnée ouverte",
-        "organization": "organisation",
-        "representationType": "type géographique",
-        "type": "type",
-        "catalog": "catalogue"
-      },
-      "values": {
-        "yes": "oui",
-        "no": "non",
-        "not-determined": "non déterminé",
-        "other": "autre",
-        "unknown": "inconnu",
-        "none": "aucun"
-      }
     },
 
     "Footer": {

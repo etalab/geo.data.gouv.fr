@@ -11,8 +11,9 @@ import Page from '../components/page'
 import Content from '../components/content'
 import Container from '../components/container'
 import Meta from '../components/meta'
+import SearchInput from '../components/search-input'
 
-import Header from '../components/search/header'
+import ActiveFacets from '../components/search/active-facets'
 import Count from '../components/search/count'
 import Results from '../components/search/results'
 
@@ -22,7 +23,8 @@ class SearchPage extends React.Component {
   static propTypes = {
     result: PropTypes.shape({
       query: PropTypes.shape({
-        q: PropTypes.string
+        q: PropTypes.string,
+        facets: PropTypes.array.isRequired
       }).isRequired,
       results: PropTypes.array.isRequired,
       count: PropTypes.number.isRequired
@@ -60,12 +62,19 @@ class SearchPage extends React.Component {
         })} />
         <Content>
           <Container fluid>
-            <Header />
+            <SearchInput hasButton />
+            <ActiveFacets facets={query.facets} />
             <Count count={count} />
 
             <Results results={results} />
           </Container>
         </Content>
+
+        <style jsx>{`
+          div {
+            margin-bottom: 2em;
+          }
+        `}</style>
       </Page>
     )
   }
