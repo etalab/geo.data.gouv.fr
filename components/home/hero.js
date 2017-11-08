@@ -21,7 +21,7 @@ const Hero = ({ t }) => (
         hasButton
       />
 
-      <Link href='/search?availability=yes'>
+      <Link prefetch href='/search?availability=yes'>
         <a>{t('datasetsLink')}</a>
       </Link>
     </div>
