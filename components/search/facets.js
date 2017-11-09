@@ -45,7 +45,7 @@ class Facets extends React.Component {
         <style jsx>{`
           div {
             margin-left: 2em;
-            flex-basis: 300px;
+            flex-basis: 272px;
             flex-shrink: 0;
           }
         `}</style>

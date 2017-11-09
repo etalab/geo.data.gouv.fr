@@ -85,7 +85,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         }
 
         .value {
-          max-width: 220px;
+          max-width: 210px;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
