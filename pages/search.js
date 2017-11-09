@@ -72,9 +72,8 @@ class SearchPage extends React.Component {
 
                 <Results results={results} />
               </div>
-              <div className='facets'>
-                <Facets facets={facets} active={query.facets} />
-              </div>
+
+              <Facets facets={facets} active={query.facets} />
             </div>
           </Container>
         </Content>
@@ -86,12 +85,6 @@ class SearchPage extends React.Component {
 
           .search {
             flex: 1;
-          }
-
-          .facets {
-            margin-left: 2em;
-            flex-basis: 300px;
-            flex-shrink: 0;
           }
         `}</style>
       </Page>

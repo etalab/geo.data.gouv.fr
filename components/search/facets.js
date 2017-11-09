@@ -26,15 +26,29 @@ class Facets extends React.Component {
   }
 
   render () {
+    const groups = this.getFilterGroups()
+
+    if (!groups.length) {
+      return null
+    }
+
     return (
       <div>
-        {this.getFilterGroups().map(({ name, values }) => (
+        {groups.map(({ name, values }) => (
           <FacetGroup
             key={name}
             name={name}
             values={values}
           />
         ))}
+
+        <style jsx>{`
+          div {
+            margin-left: 2em;
+            flex-basis: 300px;
+            flex-shrink: 0;
+          }
+        `}</style>
       </div>
     )
   }
