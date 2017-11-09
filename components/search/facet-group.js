@@ -1,3 +1,4 @@
+import { format } from 'url'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
@@ -16,6 +17,30 @@ class FacetGroup extends React.Component {
     t: PropTypes.func.isRequired
   }
 
+  addFacet = filter => {
+    const { router, i18n } = this.props
+
+    const query = {
+      ...router.query
+    }
+
+    const match = query[filter.name]
+    if (Array.isArray(match)) {
+      query[filter.name].push(filter.value)
+    } else if (match) {
+      query[filter.name] = [match, filter.value]
+    } else {
+      query[filter.name] = filter.value
+    }
+
+    const url = format({
+      pathname: '/search',
+      query
+    })
+
+    router.push(url, `/${i18n.language}${url}`)
+  }
+
   render () {
     const { name, values, t } = this.props
 
@@ -27,6 +52,7 @@ class FacetGroup extends React.Component {
             <Facet
               facet={{ name, value: facet.value }}
               count={facet.count}
+              onClick={this.addFacet}
             />
           </div>
         ))}
