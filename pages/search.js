@@ -65,7 +65,7 @@ class SearchPage extends React.Component {
         <Content>
           <Container fluid>
             <div className='main'>
-              <div>
+              <div className='search'>
                 <SearchInput hasButton />
                 <ActiveFacets facets={query.facets} />
                 <Count count={count} />
@@ -82,6 +82,10 @@ class SearchPage extends React.Component {
         <style jsx>{`
           .main {
             display: flex;
+          }
+
+          .search {
+            flex: 1;
           }
 
           .facets {
