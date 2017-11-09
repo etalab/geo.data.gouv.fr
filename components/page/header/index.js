@@ -69,6 +69,7 @@ const Header = ({ router, t }) => {
           @media (max-width: 551px) {
             flex-direction: column;
             align-items: flex-start;
+            padding-bottom: 1em;
           }
         }
 

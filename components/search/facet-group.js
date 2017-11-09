@@ -64,6 +64,7 @@ class FacetGroup extends React.Component {
 
           h4 {
             font-variant: small-caps;
+            font-weight: normal;
             line-height: 1em;
             margin: 0 0 10px 0;
           }
