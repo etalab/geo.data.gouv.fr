@@ -7,7 +7,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
   const value = i18n.exists(`facets.values.${facet.value}`) ? t(`facets.values.${facet.value}`) : facet.value
 
   return (
-    <div>
+    <div className='container'>
       <div className={`facet ${remove && 'remove'}`} onClick={onClick && (() => onClick(facet))}>
         {detailed && <span className='title'>{title}</span>}
         <span>{value}</span>
@@ -17,13 +17,17 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
       <style jsx>{`
         @import 'colors';
 
+        .container {
+          display: flex;
+        }
+
         .facet {
-          display: inline-block;
+          flex: 1;
           background: $lightgrey;
           border-radius: 3px 0 0 3px;
           height: 26px;
           line-height: 26px;
-          padding: 0 16px 0 23px;
+          padding: 0 15px 0 23px;
           position: relative;
           text-decoration: none;
           color: $black;
@@ -74,7 +78,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
           display: inline-block;
           line-height: 26px;
           height: 26px;
-          margin-right: 8px;
+          margin-right: 7px;
           padding-right: 8px;
           border-right: 1px solid rgba(255, 255, 255, 0.7);
           font-variant: small-caps;
