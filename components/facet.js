@@ -12,7 +12,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         {detailed && <div className='title'>{title}</div>}
         <div className='value'>{value}</div>
       </div>
-      {count && <div className='number'>&times; {count}</div>}
+      {count && <div className='number'>&times; {count}</div>}
 
       <style jsx>{`
         @import 'colors';
@@ -85,7 +85,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         }
 
         .value {
-          max-width: 240px;
+          max-width: 220px;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;

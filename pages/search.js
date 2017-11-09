@@ -16,6 +16,7 @@ import SearchInput from '../components/search-input'
 import ActiveFacets from '../components/search/active-facets'
 import Count from '../components/search/count'
 import Results from '../components/search/results'
+import Facets from '../components/search/facets'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -27,7 +28,8 @@ class SearchPage extends React.Component {
         facets: PropTypes.array.isRequired
       }).isRequired,
       results: PropTypes.array.isRequired,
-      count: PropTypes.number.isRequired
+      count: PropTypes.number.isRequired,
+      facets: PropTypes.object.isRequired
     }).isRequired,
 
     t: PropTypes.func.isRequired
@@ -52,7 +54,7 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const { result: { query, results, count }, t } = this.props
+    const { result: { query, results, count, facets }, t } = this.props
 
     return (
       <Page>
@@ -62,17 +64,30 @@ class SearchPage extends React.Component {
         })} />
         <Content>
           <Container fluid>
-            <SearchInput hasButton />
-            <ActiveFacets facets={query.facets} />
-            <Count count={count} />
+            <div className='main'>
+              <div>
+                <SearchInput hasButton />
+                <ActiveFacets facets={query.facets} />
+                <Count count={count} />
 
-            <Results results={results} />
+                <Results results={results} />
+              </div>
+              <div className='facets'>
+                <Facets facets={facets} />
+              </div>
+            </div>
           </Container>
         </Content>
 
         <style jsx>{`
-          div {
-            margin-bottom: 2em;
+          .main {
+            display: flex;
+          }
+
+          .facets {
+            margin-left: 2em;
+            flex-basis: 300px;
+            flex-shrink: 0;
           }
         `}</style>
       </Page>
