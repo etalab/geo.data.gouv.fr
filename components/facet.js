@@ -89,6 +89,10 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+
+          &:first-letter {
+            text-transform: capitalize;
+          }
         }
 
         .title + .value {
