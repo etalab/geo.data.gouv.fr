@@ -8,12 +8,20 @@ import Facet from '../facet'
 
 class FacetGroup extends React.Component {
   static propTypes = {
+    router: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+      query: PropTypes.object.isRequired
+    }).isRequired,
+
     name: PropTypes.string.isRequired,
     values: PropTypes.arrayOf(PropTypes.shape({
       value: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired
     })).isRequired,
 
+    i18n: PropTypes.shape({
+      language: PropTypes.string.isRequired
+    }).isRequired,
     t: PropTypes.func.isRequired
   }
 

@@ -73,7 +73,7 @@ class SearchPage extends React.Component {
                 <Results results={results} />
               </div>
               <div className='facets'>
-                <Facets facets={facets} />
+                <Facets facets={facets} active={query.facets} />
               </div>
             </div>
           </Container>
