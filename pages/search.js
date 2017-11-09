@@ -17,6 +17,7 @@ import ActiveFacets from '../components/search/active-facets'
 import Count from '../components/search/count'
 import Results from '../components/search/results'
 import Facets from '../components/search/facets'
+import FacetButton from '../components/search/facet-button'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -53,8 +54,23 @@ class SearchPage extends React.Component {
     }
   }
 
+  getFilterGroups = () => {
+    const { result: { query, facets } } = this.props
+
+    return Object
+      .entries(facets)
+      .filter(([name]) => name !== 'keyword')
+      .map(([name, values]) => ({
+        name,
+        values: values.filter(v => !query.facets.some(a => a.name === name && a.value === v.value))
+      }))
+      .filter(group => group.values.length > 1)
+  }
+
   render() {
-    const { result: { query, results, count, facets }, t } = this.props
+    const { result: { query, results, count }, t } = this.props
+
+    const groups = this.getFilterGroups()
 
     return (
       <Page>
@@ -66,14 +82,17 @@ class SearchPage extends React.Component {
           <Container fluid>
             <div className='main'>
               <div className='search'>
-                <SearchInput hasButton />
+                <div className='search-bar'>
+                  <SearchInput hasButton />
+                  {groups.length > 0 && <FacetButton />}
+                </div>
                 <ActiveFacets facets={query.facets} />
                 <Count count={count} />
 
                 <Results results={results} />
               </div>
 
-              <Facets facets={facets} active={query.facets} />
+              <Facets groups={groups} />
             </div>
           </Container>
         </Content>
@@ -85,6 +104,10 @@ class SearchPage extends React.Component {
 
           .search {
             flex: 1;
+          }
+
+          .search-bar {
+            display: flex;
           }
         `}</style>
       </Page>

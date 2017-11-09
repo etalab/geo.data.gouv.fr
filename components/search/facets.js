@@ -3,55 +3,41 @@ import PropTypes from 'prop-types'
 
 import FacetGroup from './facet-group'
 
-class Facets extends React.Component {
-  static propTypes = {
-    facets: PropTypes.object.isRequired,
-    active: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
-    }))
+const Facets = ({ groups }) => {
+  if (!groups.length) {
+    return null
   }
 
-  getFilterGroups = () => {
-    const { facets, active } = this.props
+  return (
+    <div>
+      {groups.map(({ name, values }) => (
+        <FacetGroup
+          key={name}
+          name={name}
+          values={values}
+        />
+      ))}
 
-    return Object
-      .entries(facets)
-      .filter(([name]) => name !== 'keyword')
-      .map(([name, values]) => ({
-        name,
-        values: values.filter(v => !active.some(a => a.name === name && a.value === v.value))
-      }))
-      .filter(group => group.values.length > 1)
-  }
+      <style jsx>{`
+        div {
+          margin-left: 2em;
+          flex-basis: 272px;
+          flex-shrink: 0;
 
-  render () {
-    const groups = this.getFilterGroups()
-
-    if (!groups.length) {
-      return null
-    }
-
-    return (
-      <div>
-        {groups.map(({ name, values }) => (
-          <FacetGroup
-            key={name}
-            name={name}
-            values={values}
-          />
-        ))}
-
-        <style jsx>{`
-          div {
-            margin-left: 2em;
-            flex-basis: 272px;
-            flex-shrink: 0;
+          @media (max-width: 960px) {
+            display: none;
           }
-        `}</style>
-      </div>
-    )
-  }
+        }
+      `}</style>
+    </div>
+  )
+}
+
+Facets.propTypes = {
+  groups: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    values: PropTypes.array.isRequired
+  })).isRequired
 }
 
 export default Facets
