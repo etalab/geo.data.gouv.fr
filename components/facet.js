@@ -9,10 +9,10 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
   return (
     <div className='container'>
       <div className={`facet ${remove && 'remove'}`} onClick={onClick && (() => onClick(facet))}>
-        {detailed && <span className='title'>{title}</span>}
-        <span>{value}</span>
+        {detailed && <div className='title'>{title}</div>}
+        <div className='value'>{value}</div>
       </div>
-      {count && <span className='number'>&times; {count}</span>}
+      {count && <div className='number'>&times; {count}</div>}
 
       <style jsx>{`
         @import 'colors';
@@ -22,6 +22,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         }
 
         .facet {
+          display: flex;
           flex: 1;
           background: $lightgrey;
           border-radius: 3px 0 0 3px;
@@ -75,7 +76,6 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         }
 
         .title {
-          display: inline-block;
           line-height: 26px;
           height: 26px;
           margin-right: 7px;
@@ -84,11 +84,21 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
           font-variant: small-caps;
         }
 
+        .value {
+          max-width: 240px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        .title + .value {
+          max-width: 160px;
+        }
+
         .number {
-          display: inline-block;
           line-height: 26px;
           height: 26px;
-          margin-left: 6px;
+          margin-left: 5px;
         }
       `}</style>
     </div>
