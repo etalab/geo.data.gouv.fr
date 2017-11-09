@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
-const Facet = ({ facet, count, detailed, onClick, t, i18n }) => {
+const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
   const title = t(`facets.types.${facet.name}`)
   const value = i18n.exists(`facets.values.${facet.value}`) ? t(`facets.values.${facet.value}`) : facet.value
 
   return (
     <div>
-      <div className='facet' onClick={onClick && (() => onClick(facet))}>
+      <div className={`facet ${remove && 'remove'}`} onClick={onClick && (() => onClick(facet))}>
         {detailed && <span className='title'>{title}</span>}
         <span>{value}</span>
       </div>
@@ -59,6 +59,14 @@ const Facet = ({ facet, count, detailed, onClick, t, i18n }) => {
             &:after {
               border-left-color: $blue;
             }
+
+            &.remove {
+              background-color: $red;
+
+              &:after {
+                border-left-color: $red;
+              }
+            }
           }
         }
 
@@ -102,6 +110,7 @@ Facet.propTypes = {
 
   count: PropTypes.number,
   detailed: PropTypes.bool,
+  remove: PropTypes.bool,
   onClick: PropTypes.func,
 
   i18n: PropTypes.shape({
@@ -112,7 +121,7 @@ Facet.propTypes = {
 
 Facet.defaultProps = {
   detailed: false,
-  removable: false
+  remove: false
 }
 
 export default translate()(Facet)

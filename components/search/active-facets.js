@@ -48,7 +48,7 @@ class ActiveFacets extends React.Component {
       <div>
         {facets.map(facet => (
           <span className='facet' key={`${facet.name}-${facet.value}`}>
-            <Facet facet={facet} detailed onClick={this.removeFacet} />
+            <Facet facet={facet} detailed remove onClick={this.removeFacet} />
           </span>
         ))}
 
