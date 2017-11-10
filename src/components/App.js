@@ -9,7 +9,6 @@ import ScrollToTop from './ScrollToTop'
 import TrackPageViews from './TrackPageViews'
 
 import HomeRoute from '../routes/Home'
-import SearchRoute from '../routes/Search'
 import DatasetRoute from '../routes/Dataset'
 import CatalogRoute from '../routes/Catalogs'
 import EventsRoute from '../routes/Events'
@@ -41,7 +40,6 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path='/' component={HomeRoute} />
-              <Route path='/search' component={SearchRoute} />
               <Route path='/datasets/:datasetId' component={DatasetRoute} />
               <Route path='/catalogs' component={CatalogRoute} />
               <Route path='/events' component={EventsRoute} />
