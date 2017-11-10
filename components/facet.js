@@ -52,6 +52,8 @@ class Facet extends React.Component {
         ...router.query
       }
 
+      delete query.p
+
       const match = query[filter.name]
       if (Array.isArray(match)) {
         query[filter.name].push(filter.value)
@@ -80,6 +82,8 @@ class Facet extends React.Component {
     const query = {
       ...router.query
     }
+
+    delete query.p
 
     const match = query[filter.name]
     if (Array.isArray(match)) {
