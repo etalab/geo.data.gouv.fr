@@ -84,7 +84,7 @@ class Facets extends React.Component {
                 right: 0;
                 background: #fff;
                 box-shadow: -2px 0 2px rgba(0, 0, 0, 0.2);
-                padding: 1em 1em 1em 1.5em;
+                padding: 2em 1em 2em 1.5em;
               }
             }
 
