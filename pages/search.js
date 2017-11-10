@@ -59,7 +59,11 @@ class SearchPage extends React.Component {
   }
 
   getFilterGroups = () => {
-    const { result: { query, facets } } = this.props
+    const { result: { query, facets, count } } = this.props
+
+    if (count === 1) {
+      return []
+    }
 
     return Object
       .entries(facets)
