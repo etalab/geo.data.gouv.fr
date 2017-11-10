@@ -97,11 +97,11 @@ class Facet extends React.Component {
   }
 
   onClick = e => {
-    const { remove, facet, onClick } = this.props
+    const { removable, facet, onClick } = this.props
 
     e.preventDefault()
 
-    if (remove) {
+    if (removable) {
       this.remove(facet)
     } else {
       this.add(facet)
