@@ -6,5 +6,10 @@
     "results": "Un jeu de données trouvé.",
     "results_plural": "{{count}} jeux de données trouvés.",
     "noResults": "Aucun jeu de données trouvé."
+  },
+
+  "paging": {
+    "previous": "Page précédente",
+    "next": "Page suivante"
   }
 }

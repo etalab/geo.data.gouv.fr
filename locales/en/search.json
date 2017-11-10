@@ -6,5 +6,10 @@
     "results": "One dataset found.",
     "results_plural": "{{count}} datasets found.",
     "noResults": "No datasets found."
+  },
+
+  "paging": {
+    "previous": "Previous page",
+    "next": "Next page"
   }
 }

@@ -16,6 +16,7 @@ import SearchInput from '../components/search-input'
 import ActiveFacets from '../components/search/active-facets'
 import Count from '../components/search/count'
 import Results from '../components/search/results'
+import Paging from '../components/search/paging'
 import Facets from '../components/search/facets'
 import FacetButton from '../components/search/facet-button'
 
@@ -121,6 +122,7 @@ class SearchPage extends React.Component {
                 <Count count={count} />
 
                 <Results results={results} />
+                <Paging count={count} query={query} />
               </div>
 
               <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
