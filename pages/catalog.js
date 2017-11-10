@@ -9,8 +9,10 @@ import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
 import Container from '../components/container'
+import Box from '../components/box'
 
 import Header from '../components/catalog/header'
+import Statistics from '../components/catalog/statistics'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -24,15 +26,14 @@ class CatalogPage extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-    const catalog = await _get(`${GEODATA_API_URL}/catalogs/${query.id}`)
-
     return {
-      catalog
+      catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.id}`),
+      metrics: await _get(`${GEODATA_API_URL}/catalogs/${query.id}/metrics`)
     }
   }
 
   render() {
-    const { catalog, t } = this.props
+    const { catalog, metrics, t } = this.props
 
     return (
       <Page>
@@ -40,7 +41,10 @@ class CatalogPage extends React.Component {
 
         <Content>
           <Container>
-            <Header catalog={catalog} />
+            <Box>
+              <Header catalog={catalog} />
+              <Statistics metrics={metrics} />
+            </Box>
           </Container>
         </Content>
       </Page>

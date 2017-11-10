@@ -7,6 +7,15 @@
 
     "header": {
       "catalogService": "Access the catalog service"
+    },
+
+    "statistics": {
+      "recordsCount": "Records",
+      "recordTypeChart": "Record types",
+      "metadataTypeChart": "Metadata types",
+      "openDataPercent": "Open data",
+      "downloadablePercent": "Downloadable data",
+      "dataTypeChart": "Data types"
     }
   }
 }

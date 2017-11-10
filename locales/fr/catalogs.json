@@ -7,6 +7,15 @@
 
     "header": {
       "catalogService": "Accéder au service du catalogue"
+    },
+
+    "statistics": {
+      "recordsCount": "Enregistrements",
+      "recordTypeChart": "Types d‘enregistrements",
+      "metadataTypeChart": "Types de metadonnée",
+      "openDataPercent": "Données ouvertes",
+      "downloadablePercent": "Données téléchargeables",
+      "dataTypeChart": "Types de données"
     }
   }
 }

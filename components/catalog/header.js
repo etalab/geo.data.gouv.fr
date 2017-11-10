@@ -14,13 +14,16 @@ const Header = ({ catalog, t }) => (
       div {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+
+        @media (max-width: 960px) {
+          flex-direction: column;
+        }
       }
 
       h1 {
-        font-size: xx-large;
-        font-weight: 100;
-        margin-bottom: 1em;
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
       }
     `}</style>
   </div>
