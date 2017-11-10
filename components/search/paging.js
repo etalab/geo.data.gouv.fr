@@ -46,34 +46,64 @@ class Paging extends React.Component {
     const pageCount = Math.ceil(count / limit)
 
     return (
-      <div>
-        {page > 1 && (
+      <div className='main'>
+        {page > 1 ? (
           <Link href={this.getPageLink(page - 1)}>
-            <a>
-              {'<'} {t('paging.previous')}
+            <a className='previous'>
+              <span>{'< '}</span>{t('paging.previous')}
             </a>
           </Link>
+        ) : (
+          <div className='disabled'>
+            <span>{'< '}</span>{t('paging.previous')}
+          </div>
         )}
-        <span>
+        <b>
           {page} / {pageCount}
-        </span>
-        {page < pageCount && (
-          <Link href={this.getPageLink(page + 1)}>
-            <a>
-              {t('paging.next')} {'>'}
-            </a>
-          </Link>
-        )}
+        </b>
+        <div>
+          {page < pageCount ? (
+            <Link href={this.getPageLink(page + 1)}>
+              <a className='next'>
+                {t('paging.next')}<span>{' >'}</span>
+              </a>
+            </Link>
+          ) : (
+            <div className='disabled'>
+              {t('paging.next')}<span>{' >'}</span>
+            </div>
+          )}
+        </div>
 
         <style jsx>{`
-          div {
+          @import 'colors';
+
+          .main {
             display: flex;
             justify-content: space-between;
             align-items: center;
           }
 
-          span {
+          .disabled {
+            color: $lightgrey;
+          }
+
+          .previous {
+            margin-right: 10px;
+          }
+
+          b {
             font-weight: 600;
+          }
+
+          .next {
+            margin-left: 10px;
+          }
+
+          span {
+            @media (max-width: 551px) {
+              display: none;
+            }
           }
         `}</style>
       </div>
