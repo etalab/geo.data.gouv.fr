@@ -128,7 +128,7 @@ class SearchPage extends React.Component {
                 <Count count={count} />
 
                 <Results results={results} />
-                <Paging count={count} query={query} />
+                {count > 0 && <Paging count={count} query={query} />}
               </div>
 
               <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
