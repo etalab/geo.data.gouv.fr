@@ -1,18 +1,11 @@
-import { format } from 'url'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import { withRouter } from 'next/router'
 
 import Facet from '../facet'
 
 class FacetGroup extends React.Component {
   static propTypes = {
-    router: PropTypes.shape({
-      push: PropTypes.func.isRequired,
-      query: PropTypes.object.isRequired
-    }).isRequired,
-
     name: PropTypes.string.isRequired,
     values: PropTypes.arrayOf(PropTypes.shape({
       value: PropTypes.string.isRequired,
@@ -21,40 +14,11 @@ class FacetGroup extends React.Component {
 
     onClose: PropTypes.func.isRequired,
 
-    i18n: PropTypes.shape({
-      language: PropTypes.string.isRequired
-    }).isRequired,
     t: PropTypes.func.isRequired
   }
 
-  addFacet = filter => {
-    const { router, i18n, onClose } = this.props
-
-    const query = {
-      ...router.query
-    }
-
-    const match = query[filter.name]
-    if (Array.isArray(match)) {
-      query[filter.name].push(filter.value)
-    } else if (match) {
-      query[filter.name] = [match, filter.value]
-    } else {
-      query[filter.name] = filter.value
-    }
-
-    const url = format({
-      pathname: '/search',
-      query
-    })
-
-    onClose()
-
-    router.push(url, `/${i18n.language}${url}`)
-  }
-
   render () {
-    const { name, values, t } = this.props
+    const { name, values, onClose, t } = this.props
 
     return (
       <div className='main'>
@@ -64,7 +28,7 @@ class FacetGroup extends React.Component {
             <Facet
               facet={{ name, value: facet.value }}
               count={facet.count}
-              onClick={this.addFacet}
+              onClick={onClose}
             />
           </div>
         ))}
@@ -90,4 +54,4 @@ class FacetGroup extends React.Component {
   }
 }
 
-export default translate('search')(withRouter(FacetGroup))
+export default translate('search')(FacetGroup)
