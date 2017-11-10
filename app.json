@@ -9,9 +9,14 @@
     "HEROKU_APP_NAME": {
       "required": true
     },
-    "PUBLIC_URL": "https://$HEROKU_APP_NAME.herokuapp.com",
-    "DATAGOUV_API_URL": "https://geo.data.gouv.fr/dgv/proxy-api/1",
-    "PUBLICATION_BASE_URL": "https://geo.data.gouv.fr/dgv",
-    "GEODATA_API_URL": "https://geo.data.gouv.fr/api/geogw"
+    "DATAGOUV_API_URL": {
+      "required": true
+    },
+    "PUBLICATION_BASE_URL": {
+      "required": true
+    },
+    "GEODATA_API_URL": {
+      "required": true
+    }
   }
 }
