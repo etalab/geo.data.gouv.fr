@@ -1,5 +1,7 @@
 # geo.data.gouv.fr [![CircleCI](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master.svg?style=svg)](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/etalab/geo.data.gouv.fr.svg)](https://greenkeeper.io/)
+
 Trouvez facilement les données géographiques dont vous avez besoin
 
 [![codecov](https://codecov.io/gh/etalab/geo.data.gouv.fr/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
