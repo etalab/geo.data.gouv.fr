@@ -107,7 +107,8 @@
     "webpack-bundle-analyzer": "^2.9.0"
   },
   "engines": {
-    "node": "8.x"
+    "node": "8.x",
+    "yarn": "1.x"
   },
   "nyc": {
     "require": [
