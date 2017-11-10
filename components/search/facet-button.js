@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import FilterIcon from 'react-icons/lib/fa/filter'
 
-const FacetButton = () => (
-  <div>
+const FacetButton = ({ onClick }) => (
+  <div onClick={onClick}>
     <FilterIcon />
 
     <style jsx>{`
@@ -31,5 +32,9 @@ const FacetButton = () => (
     `}</style>
   </div>
 )
+
+FacetButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+}
 
 export default FacetButton

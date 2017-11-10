@@ -93,10 +93,30 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
           &:first-letter {
             text-transform: capitalize;
           }
+
+          @media (max-width: 960px) {
+            max-width: 280px;
+          }
+
+          @media (max-width: 551px) {
+            max-width: 160px;
+          }
         }
 
         .title + .value {
-          max-width: 160px;
+          max-width: 380px;
+
+          @media (max-width: 960px) {
+            max-width: 280px;
+          }
+
+          @media (max-width: 768px) {
+            max-width: 180px;
+          }
+
+          @media (max-width: 551px) {
+            max-width: 120px;
+          }
         }
 
         .number {

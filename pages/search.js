@@ -54,6 +54,10 @@ class SearchPage extends React.Component {
     }
   }
 
+  state = {
+    showFacets: false
+  }
+
   getFilterGroups = () => {
     const { result: { query, facets } } = this.props
 
@@ -67,8 +71,31 @@ class SearchPage extends React.Component {
       .filter(group => group.values.length > 1)
   }
 
+  toggleFacets = () => {
+    this.setState(state => {
+      if (state.showFacets) {
+        document.body.classList.remove('no-scroll')
+      } else {
+        document.body.classList.add('no-scroll')
+      }
+
+      return {
+        showFacets: !state.showFacets
+      }
+    })
+  }
+
+  closeFacets = () => {
+    this.setState(state => ({
+      showFacets: false
+    }))
+
+    document.body.classList.remove('no-scroll')
+  }
+
   render() {
     const { result: { query, results, count }, t } = this.props
+    const { showFacets } = this.state
 
     const groups = this.getFilterGroups()
 
@@ -84,7 +111,7 @@ class SearchPage extends React.Component {
               <div className='search'>
                 <div className='search-bar'>
                   <SearchInput hasButton />
-                  {groups.length > 0 && <FacetButton />}
+                  {groups.length > 0 && <FacetButton onClick={this.toggleFacets} />}
                 </div>
                 <ActiveFacets facets={query.facets} />
                 <Count count={count} />
@@ -92,7 +119,7 @@ class SearchPage extends React.Component {
                 <Results results={results} />
               </div>
 
-              <Facets groups={groups} />
+              <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
             </div>
           </Container>
         </Content>

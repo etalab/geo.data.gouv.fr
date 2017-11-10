@@ -30,6 +30,12 @@ export const Page = ({ children }) => (
     <style jsx global>{`
       @import 'colors';
 
+      body.no-scroll {
+        @media (max-width: 960px) {
+          overflow: hidden;
+        }
+      }
+
       #nprogress {
         pointer-events: none;
       }

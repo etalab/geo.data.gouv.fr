@@ -19,6 +19,8 @@ class FacetGroup extends React.Component {
       count: PropTypes.number.isRequired
     })).isRequired,
 
+    onClose: PropTypes.func.isRequired,
+
     i18n: PropTypes.shape({
       language: PropTypes.string.isRequired
     }).isRequired,
@@ -26,7 +28,7 @@ class FacetGroup extends React.Component {
   }
 
   addFacet = filter => {
-    const { router, i18n } = this.props
+    const { router, i18n, onClose } = this.props
 
     const query = {
       ...router.query
@@ -45,6 +47,8 @@ class FacetGroup extends React.Component {
       pathname: '/search',
       query
     })
+
+    onClose()
 
     router.push(url, `/${i18n.language}${url}`)
   }
