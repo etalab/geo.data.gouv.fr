@@ -24,7 +24,7 @@ class Facet extends React.Component {
 
     count: PropTypes.number,
     detailed: PropTypes.bool,
-    remove: PropTypes.bool,
+    removable: PropTypes.bool,
     onClick: PropTypes.func,
 
     router: PropTypes.shape({
@@ -40,7 +40,7 @@ class Facet extends React.Component {
 
   static defaultProps = {
     detailed: false,
-    remove: false
+    removable: false
   }
 
   add = filter => {
@@ -113,14 +113,14 @@ class Facet extends React.Component {
   }
 
   render() {
-    const { facet, count, detailed, remove, t, i18n } = this.props
+    const { facet, count, detailed, removable, t, i18n } = this.props
 
     const title = t(`facets.types.${facet.name}`)
     const value = i18n.exists(`facets.values.${facet.value}`) ? t(`facets.values.${facet.value}`) : facet.value
 
     return (
       <div className='container'>
-        <div className={`facet ${remove && 'remove'}`} onClick={this.onClick}>
+        <div className={`facet ${removable && 'removable'}`} onClick={this.onClick}>
           {detailed && <div className='title'>{title}</div>}
           <div className='value'>{value}</div>
         </div>
@@ -177,7 +177,7 @@ class Facet extends React.Component {
                 border-left-color: $blue;
               }
 
-              &.remove {
+              &.removable {
                 background-color: $red;
 
                 &:after {
