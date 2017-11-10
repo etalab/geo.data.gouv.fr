@@ -13,7 +13,7 @@
     "deploy": "gh-pages -d dist -m 'Deploy [skip ci]'",
     "lint": "npm run lint:scripts",
     "lint:scripts": "eslint .",
-    "heroku-postbuild": "yarn install --production=false && npm run build"
+    "heroku-postbuild": "yarn install --production=false && yarn build"
   },
   "dependencies": {
     "chart.js": "^2.5.0",
