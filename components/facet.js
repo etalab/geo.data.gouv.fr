@@ -57,7 +57,10 @@ class Facet extends React.Component {
 
       const match = query[facet.name]
       if (Array.isArray(match)) {
-        query[facet.name].push(facet.value)
+        query[facet.name] = [
+          ...match,
+          facet.value
+        ]
       } else if (match) {
         query[facet.name] = [match, facet.value]
       } else {
