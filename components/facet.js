@@ -85,7 +85,7 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         }
 
         .value {
-          max-width: 210px;
+          max-width: 215px;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
@@ -95,11 +95,11 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
           }
 
           @media (max-width: 960px) {
-            max-width: 280px;
+            max-width: 255px;
           }
 
           @media (max-width: 551px) {
-            max-width: 160px;
+            max-width: 145px;
           }
         }
 
@@ -122,7 +122,13 @@ const Facet = ({ facet, count, detailed, remove, onClick, t, i18n }) => {
         .number {
           line-height: 26px;
           height: 26px;
-          margin-left: 5px;
+          margin-left: 4px;
+          font-size: 0.9em;
+
+          @media (max-width: 551px) {
+            margin-left: 2px;
+            font-size: 0.8em;
+          }
         }
       `}</style>
     </div>
