@@ -12,13 +12,11 @@ class FacetGroup extends React.Component {
       count: PropTypes.number.isRequired
     })).isRequired,
 
-    onClose: PropTypes.func.isRequired,
-
     t: PropTypes.func.isRequired
   }
 
   render () {
-    const { name, values, onClose, t } = this.props
+    const { name, values, t } = this.props
 
     return (
       <div className='main'>
@@ -28,7 +26,6 @@ class FacetGroup extends React.Component {
             <Facet
               facet={{ name, value: facet.value }}
               count={facet.count}
-              onClick={onClose}
             />
           </div>
         ))}

@@ -27,7 +27,7 @@ class Facets extends React.Component {
   }
 
   render() {
-    const { groups, open, onClose } = this.props
+    const { groups, open } = this.props
 
     if (!groups.length) {
       return null
@@ -41,7 +41,6 @@ class Facets extends React.Component {
               key={name}
               name={name}
               values={values}
-              onClose={onClose}
             />
           ))}
         </div>

@@ -59,6 +59,12 @@ class SearchPage extends React.Component {
     showFacets: false
   }
 
+  componentWillReceiveProps() {
+    this.setState(state => ({
+      showFacets: false
+    }))
+  }
+
   getFilterGroups = () => {
     const { result: { query, facets, count } } = this.props
 

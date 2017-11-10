@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { withRouter } from 'next/router'
 
+import Link from './link'
+
 class Facet extends React.Component {
   static propTypes = {
     facet: PropTypes.shape({
@@ -25,16 +27,15 @@ class Facet extends React.Component {
     count: PropTypes.number,
     detailed: PropTypes.bool,
     removable: PropTypes.bool,
-    onClick: PropTypes.func,
 
     router: PropTypes.shape({
-      push: PropTypes.func.isRequired,
       query: PropTypes.object.isRequired
     }).isRequired,
 
     i18n: PropTypes.shape({
       exists: PropTypes.func.isRequired
     }).isRequired,
+
     t: PropTypes.func.isRequired
   }
 
@@ -43,8 +44,8 @@ class Facet extends React.Component {
     removable: false
   }
 
-  add = filter => {
-    const { router, i18n: { language } } = this.props
+  getAddQuery = facet => {
+    const { router } = this.props
 
     let query
     if (router.pathname === '/search') {
@@ -54,30 +55,25 @@ class Facet extends React.Component {
 
       delete query.p
 
-      const match = query[filter.name]
+      const match = query[facet.name]
       if (Array.isArray(match)) {
-        query[filter.name].push(filter.value)
+        query[facet.name].push(facet.value)
       } else if (match) {
-        query[filter.name] = [match, filter.value]
+        query[facet.name] = [match, facet.value]
       } else {
-        query[filter.name] = filter.value
+        query[facet.name] = facet.value
       }
     } else {
       query = {
-        [filter.name]: filter.value
+        [facet.name]: facet.value
       }
     }
 
-    const url = format({
-      pathname: '/search',
-      query
-    })
-
-    router.push(url, `/${language}${url}`)
+    return query
   }
 
-  remove = filter => {
-    const { router, i18n: { language } } = this.props
+  getRemoveQuery = facet => {
+    const { router } = this.props
 
     const query = {
       ...router.query
@@ -85,35 +81,25 @@ class Facet extends React.Component {
 
     delete query.p
 
-    const match = query[filter.name]
+    const match = query[facet.name]
     if (Array.isArray(match)) {
-      query[filter.name] = match.filter(v => v !== filter.value)
+      query[facet.name] = match.filter(v => v !== facet.value)
     } else {
-      delete query[filter.name]
+      delete query[facet.name]
     }
 
-    const url = format({
+    return query
+  }
+
+  getLink = () => {
+    const { removable, facet } = this.props
+
+    const query = removable ? this.getRemoveQuery(facet) : this.getAddQuery(facet)
+
+    return format({
       pathname: '/search',
       query
     })
-
-    router.push(url, `/${language}${url}`)
-  }
-
-  onClick = e => {
-    const { removable, facet, onClick } = this.props
-
-    e.preventDefault()
-
-    if (removable) {
-      this.remove(facet)
-    } else {
-      this.add(facet)
-    }
-
-    if (onClick) {
-      onClick(facet)
-    }
   }
 
   render() {
@@ -124,10 +110,12 @@ class Facet extends React.Component {
 
     return (
       <div className='container'>
-        <div className={`facet ${removable && 'removable'}`} onClick={this.onClick}>
-          {detailed && <div className='title'>{title}</div>}
-          <div className='value'>{value}</div>
-        </div>
+        <Link href={this.getLink()}>
+          <a className={`facet ${removable && 'removable'}`}>
+            {detailed && <div className='title'>{title}</div>}
+            <div className='value'>{value}</div>
+          </a>
+        </Link>
         {count && <div className='number'>&times; {count}</div>}
 
         <style jsx>{`
