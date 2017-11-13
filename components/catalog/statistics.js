@@ -59,19 +59,19 @@ const Statistics = ({ metrics, t }) => {
 
       <div className='block'>
         <h3>
-          {t('details.statistics.metadataTypeChart')}
+          {t('details.statistics.dataTypeChart')}
         </h3>
         <div>
-          <Chart data={metrics.records.partitions.metadataType} />
+          <Chart data={metrics.datasets.partitions.dataType} />
         </div>
       </div>
 
       <div className='block'>
         <h3>
-          {t('details.statistics.dataTypeChart')}
+          {t('details.statistics.metadataTypeChart')}
         </h3>
         <div>
-          <Chart data={metrics.datasets.partitions.dataType} />
+          <Chart data={metrics.records.partitions.metadataType} />
         </div>
       </div>
 
