@@ -69,6 +69,8 @@ class SearchInput extends React.PureComponent {
         )}
 
         <style jsx>{`
+          @import 'colors';
+
           form {
             width: 100%;
             position: relative;
@@ -77,7 +79,7 @@ class SearchInput extends React.PureComponent {
           input {
             display: block;
             width: 100%;
-            border: 1px solid rgba(34, 36, 38, 0.15);
+            border: 1px solid $lightgrey;
             border-radius: 2px;
             margin: 0;
             outline: 0;
