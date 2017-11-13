@@ -3,15 +3,11 @@ import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 import { translate } from 'react-i18next'
 
-import Percent from '../percent'
+import Loader from '../loader'
 
-const Chart = dynamic(import('../dynamic/chart'), {
+const Pie = dynamic(import('react-chartjs-2').then(m => m.Pie), {
   ssr: false,
-  loading: () => (
-    <div style={{ textAlign: 'center', paddingTop: 20 }}>
-      Chargement…
-    </div>
-  )
+  loading: Loader
 })
 
 const colors = [
@@ -44,7 +40,7 @@ export const formatData = (data, t) => {
   }
 }
 
-export const Donut = ({ data, t }) => {
+export const Chart = ({ data, t }) => {
   const formatedData = formatData(data || {}, t)
 
   if (!formatedData.labels.length) {
@@ -54,8 +50,7 @@ export const Donut = ({ data, t }) => {
   }
 
   return (
-    <Chart
-      chartType='Doughnut'
+    <Pie
       data={formatedData}
       legend={null}
       options={{
@@ -65,9 +60,9 @@ export const Donut = ({ data, t }) => {
   )
 }
 
-Donut.propTypes = {
+Chart.propTypes = {
   data: PropTypes.object,
   t: PropTypes.func.isRequired
 }
 
-export default translate()(Donut)
+export default translate()(Chart)

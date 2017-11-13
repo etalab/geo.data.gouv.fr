@@ -1,4 +1,6 @@
 {
+  "loading": "Loading…",
+
   "errors": {
     "title": "Error {{code}}",
     "404": "This page could not be found",

@@ -1,4 +1,6 @@
 {
+  "loading": "Chargement…",
+
   "errors": {
     "title": "Erreur {{code}}",
     "404": "La page demandée n’a pas pu être trouvée",

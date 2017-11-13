@@ -6,7 +6,7 @@ import { get } from 'lodash'
 import Counter from '../counter'
 import Percent from '../percent'
 
-import Donut from './donut'
+import Chart from './chart'
 
 // import { DoughnutChart } from '../CatalogCharts'
 
@@ -31,7 +31,7 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.recordTypeChart')}
         </h3>
         <div>
-          <Donut data={metrics.records.partitions.recordType} />
+          <Chart data={metrics.records.partitions.recordType} />
         </div>
       </div>
 
@@ -40,7 +40,7 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.metadataTypeChart')}
         </h3>
         <div>
-          <Donut data={metrics.records.partitions.metadataType} />
+          <Chart data={metrics.records.partitions.metadataType} />
         </div>
       </div>
 
@@ -71,7 +71,7 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.dataTypeChart')}
         </h3>
         <div>
-          <Donut data={metrics.datasets.partitions.dataType} />
+          <Chart data={metrics.datasets.partitions.dataType} />
         </div>
       </div>
 
@@ -82,6 +82,10 @@ const Statistics = ({ metrics, t }) => {
           display: flex;
           flex-wrap: wrap;
           margin: 1em -0.6em 0 -0.6em;
+
+          @media (max-width: 551px) {
+            flex-direction: column;
+          }
         }
 
         .block {
@@ -94,7 +98,7 @@ const Statistics = ({ metrics, t }) => {
           padding: 2em;
           border-radius: 2px;
           margin: 0 0.6em 1em 0.6em;
-          flex: 1 1 20%;
+          flex: 1 1 31%;
           text-align: center;
           max-width: calc(100% - 1.2em);
 
