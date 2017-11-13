@@ -14,6 +14,7 @@ import SearchInput from '../components/search-input'
 
 import Header from '../components/catalog/header'
 import Statistics from '../components/catalog/statistics'
+import Organizations from '../components/catalog/organizations'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -22,6 +23,11 @@ class CatalogPage extends React.Component {
     catalog: PropTypes.shape({
       name: PropTypes.string.isRequired,
       metrics: PropTypes.shape({
+        records: PropTypes.shape({
+          counts: PropTypes.shape({
+            organizations: PropTypes.object.isRequired
+          }).isRequired
+        }).isRequired
       }).isRequired
     }).isRequired,
 
@@ -53,6 +59,9 @@ class CatalogPage extends React.Component {
               <SearchInput hasButton defaultQuery={{
                 catalog: catalog.name
               }} />
+
+              <h3>{t('details.organizations')}</h3>
+              <Organizations organizations={catalog.metrics.records.counts.organizations} />
             </Box>
           </Container>
         </Content>
