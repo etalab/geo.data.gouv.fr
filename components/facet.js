@@ -217,7 +217,7 @@ class Facet extends React.Component {
               max-width: 280px;
             }
 
-            @media (max-width: 768px) {
+            @media (max-width: 767px) {
               max-width: 180px;
             }
 

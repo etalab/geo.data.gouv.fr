@@ -90,7 +90,7 @@ class SearchInput extends React.PureComponent {
               border-color: #85b7d9;
             }
 
-            @media (max-width: 768px) {
+            @media (max-width: 767px) {
               font-size: 1.2rem;
             }
           }

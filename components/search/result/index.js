@@ -49,7 +49,7 @@ const Result = ({ result: { recordId, metadata }, i18n, t }) => (
             color: $black;
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             flex-direction: column;
           }
         }
@@ -61,7 +61,7 @@ const Result = ({ result: { recordId, metadata }, i18n, t }) => (
           display: flex;
           flex-direction: column;
 
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             border: 0 none;
           }
         }
@@ -86,7 +86,7 @@ const Result = ({ result: { recordId, metadata }, i18n, t }) => (
         .footer {
           margin-top: auto;
 
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             margin-top: 10px;
           }
         }

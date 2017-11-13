@@ -102,7 +102,7 @@ const Statistics = ({ metrics, t }) => {
             width: calc(50% - 1.2em);
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             width: calc(100% - 1.2em);
           }
 

@@ -33,7 +33,7 @@ class NewsletterForm extends React.Component {
             padding: 6em 0;
             text-align: center;
 
-            @media (max-width: 768px) {
+            @media (max-width: 767px) {
               text-align: left;
               padding: 3em 0;
             }
@@ -47,7 +47,7 @@ class NewsletterForm extends React.Component {
           h2 {
             margin-top: 0;
 
-            @media (max-width: 768px) {
+            @media (max-width: 767px) {
               font-size: 1.4rem;
             }
           }

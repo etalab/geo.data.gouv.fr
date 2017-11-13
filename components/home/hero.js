@@ -33,7 +33,7 @@ const Hero = ({ t }) => (
         padding: 12em 0 12em;
         text-align: center;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           padding: 3em 0;
         }
 

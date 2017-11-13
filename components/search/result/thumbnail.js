@@ -25,7 +25,7 @@ const Thumbnail = ({ recordId, thumbnails, t }) => {
           height: 180px;
           width: 180px;
 
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             width: 100%;
 
             ${!hasThumbnail && (`
@@ -38,7 +38,7 @@ const Thumbnail = ({ recordId, thumbnails, t }) => {
           display: flex;
           height: 100%;
 
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             max-width: 100%;
             height: auto;
             margin: auto;

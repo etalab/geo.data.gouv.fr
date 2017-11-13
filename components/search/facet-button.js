@@ -24,7 +24,7 @@ const FacetButton = ({ onClick }) => (
           display: block;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           line-height: 50px;
           padding: 0 10px;
         }
