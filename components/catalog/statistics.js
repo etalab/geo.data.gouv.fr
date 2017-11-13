@@ -28,24 +28,6 @@ const Statistics = ({ metrics, t }) => {
 
       <div className='block'>
         <h3>
-          {t('details.statistics.recordTypeChart')}
-        </h3>
-        <div>
-          <Chart data={metrics.records.partitions.recordType} />
-        </div>
-      </div>
-
-      <div className='block'>
-        <h3>
-          {t('details.statistics.metadataTypeChart')}
-        </h3>
-        <div>
-          <Chart data={metrics.records.partitions.metadataType} />
-        </div>
-      </div>
-
-      <div className='block'>
-        <h3>
           {t('details.statistics.openDataPercent')}
         </h3>
         <Percent
@@ -68,6 +50,24 @@ const Statistics = ({ metrics, t }) => {
 
       <div className='block'>
         <h3>
+          {t('details.statistics.recordTypeChart')}
+        </h3>
+        <div>
+          <Chart data={metrics.records.partitions.recordType} />
+        </div>
+      </div>
+
+      <div className='block'>
+        <h3>
+          {t('details.statistics.metadataTypeChart')}
+        </h3>
+        <div>
+          <Chart data={metrics.records.partitions.metadataType} />
+        </div>
+      </div>
+
+      <div className='block'>
+        <h3>
           {t('details.statistics.dataTypeChart')}
         </h3>
         <div>
@@ -82,10 +82,6 @@ const Statistics = ({ metrics, t }) => {
           display: flex;
           flex-wrap: wrap;
           margin: 1em -0.6em 0 -0.6em;
-
-          @media (max-width: 551px) {
-            flex-direction: column;
-          }
         }
 
         .block {
@@ -94,13 +90,21 @@ const Statistics = ({ metrics, t }) => {
           justify-content: center;
           flex-direction: column;
           height: 200px;
-          border: 1px solid $lightgrey;
           padding: 2em;
+          border: 1px solid $lightgrey;
           border-radius: 2px;
           margin: 0 0.6em 1em 0.6em;
-          flex: 1 1 31%;
           text-align: center;
           max-width: calc(100% - 1.2em);
+          width: calc(33.33% - 1.2em);
+
+          @media (max-width: 960px) {
+            width: calc(50% - 1.2em);
+          }
+
+          @media (max-width: 768px) {
+            width: calc(100% - 1.2em);
+          }
 
           div {
             display: flex;
