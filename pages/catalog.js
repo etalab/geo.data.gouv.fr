@@ -21,6 +21,7 @@ class CatalogPage extends React.Component {
     catalog: PropTypes.shape({
       name: PropTypes.string.isRequired
     }),
+    metrics: PropTypes.object.isRequired,
 
     t: PropTypes.func.isRequired
   }
