@@ -16,6 +16,8 @@
       "openDataPercent": "Open data",
       "downloadablePercent": "Downloadable data",
       "dataTypeChart": "Data types"
-    }
+    },
+
+    "search": "Search in this catalog"
   }
 }

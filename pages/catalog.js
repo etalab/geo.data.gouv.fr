@@ -10,6 +10,7 @@ import Meta from '../components/meta'
 import Content from '../components/content'
 import Container from '../components/container'
 import Box from '../components/box'
+import SearchInput from '../components/search-input'
 
 import Header from '../components/catalog/header'
 import Statistics from '../components/catalog/statistics'
@@ -45,6 +46,11 @@ class CatalogPage extends React.Component {
             <Box>
               <Header catalog={catalog} />
               <Statistics metrics={metrics} />
+
+              <h3>{t('details.search')}</h3>
+              <SearchInput hasButton defaultQuery={{
+                catalog: catalog.name
+              }} />
             </Box>
           </Container>
         </Content>
