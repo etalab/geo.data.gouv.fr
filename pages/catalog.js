@@ -20,22 +20,24 @@ import { GEODATA_API_URL } from '@env'
 class CatalogPage extends React.Component {
   static propTypes = {
     catalog: PropTypes.shape({
-      name: PropTypes.string.isRequired
-    }),
-    metrics: PropTypes.object.isRequired,
+      name: PropTypes.string.isRequired,
+      metrics: PropTypes.shape({
+      }).isRequired
+    }).isRequired,
 
     t: PropTypes.func.isRequired
   }
 
   static async getInitialProps({ query }) {
+    const catalog = await _get(`${GEODATA_API_URL}/catalogs/${query.id}`)
+
     return {
-      catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.id}`),
-      metrics: await _get(`${GEODATA_API_URL}/catalogs/${query.id}/metrics`)
+      catalog
     }
   }
 
   render() {
-    const { catalog, metrics, t } = this.props
+    const { catalog, t } = this.props
 
     return (
       <Page>
@@ -45,7 +47,7 @@ class CatalogPage extends React.Component {
           <Container>
             <Box>
               <Header catalog={catalog} />
-              <Statistics metrics={metrics} />
+              <Statistics metrics={catalog.metrics} />
 
               <h3>{t('details.search')}</h3>
               <SearchInput hasButton defaultQuery={{
