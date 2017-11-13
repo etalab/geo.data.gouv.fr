@@ -192,21 +192,13 @@ class Facet extends React.Component {
           }
 
           .value {
-            max-width: 215px;
+            max-width: calc(100vw - 14em);
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
 
             &:first-letter {
               text-transform: capitalize;
-            }
-
-            @media (max-width: 960px) {
-              max-width: 255px;
-            }
-
-            @media (max-width: 551px) {
-              max-width: 145px;
             }
           }
 

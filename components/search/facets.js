@@ -49,7 +49,6 @@ class Facets extends React.Component {
           @import 'colors';
 
           .wrapper {
-            flex-basis: 272px;
             flex-shrink: 0;
 
             @media (max-width: 960px) {
@@ -78,18 +77,11 @@ class Facets extends React.Component {
               .facets {
                 position: absolute;
                 min-height: 100vh;
-                width: 380px;
                 top: 0;
                 right: 0;
                 background: #fff;
                 box-shadow: -2px 0 2px rgba(0, 0, 0, 0.2);
                 padding: 2em 1em 2em 1.5em;
-              }
-            }
-
-            @media (max-width: 551px) {
-              .facets {
-                width: 260px;
               }
             }
           }
