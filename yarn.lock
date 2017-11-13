@@ -1540,9 +1540,9 @@ charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
-chart.js@^2.5.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.7.0.tgz#330dbbee0c66199eb715f60fbf8ca4029609a529"
+chart.js@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.7.1.tgz#ae90b4aa4ff1f02decd6b1a2a8dabfd73c9f9886"
   dependencies:
     chartjs-color "~2.2.0"
     moment "~2.18.0"
@@ -5211,13 +5211,13 @@ module-not-found-error@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/module-not-found-error/-/module-not-found-error-1.0.1.tgz#cf8b4ff4f29640674d6cdd02b0e3bc523c2bbdc0"
 
-moment@^2.11.2, moment@~2.18.0:
+moment@^2.11.2:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
-moment@^2.19.1:
-  version "2.19.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
+moment@^2.19.2, moment@~2.18.0:
+  version "2.19.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.2.tgz#8a7f774c95a64550b4c7ebd496683908f9419dbe"
 
 ms@2.0.0:
   version "2.0.0"
