@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-
 import { Pie } from 'react-chartjs-2'
 
 const colors = [
@@ -18,7 +17,7 @@ const colors = [
   '#000000'
 ]
 
-export const formatData = (data, t) => {
+const formatData = (data, t) => {
   const labels = Object.keys(data).sort((a, b) => data[a] < data[b])
 
   return {

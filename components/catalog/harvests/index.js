@@ -1,36 +1,83 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { translate } from 'react-i18next'
 
 import Table from './table'
+import Histogram from './histogram'
 
-const Harvests = ({ catalog, harvests, t }) => (
-  <section>
-    <div>
-      <Table catalog={catalog} harvests={harvests} />
-    </div>
-    <div />
+class Harvests extends React.Component {
+  static propTypes = {
+    catalog: PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    }).isRequired,
+    harvests: PropTypes.arrayOf(PropTypes.shape({
+    })).isRequired,
 
-    <style jsx>{`
-      section {
-        display: flex;
+    t: PropTypes.func.isRequired
+  }
+
+  getGraphData = () => {
+    const { harvests } = this.props
+
+    const ordered = [...harvests].reverse()
+    const data = []
+
+    ordered.forEach(harvest => {
+      if (harvest.status === 'successful') {
+        const date = moment(harvest.finished).format('L')
+        data[date] = harvest.itemsFound
       }
+    })
 
-      div {
-        flex: 1 1;
-      }
-    `}</style>
-  </section>
-)
+    return data
+  }
 
-Harvests.propTypes = {
-  catalog: PropTypes.shape({
-    _id: PropTypes.string.isRequired
-  }).isRequired,
-  harvests: PropTypes.arrayOf(PropTypes.shape({
-  })).isRequired,
+  render() {
+    const { catalog, harvests, t } = this.props
 
-  t: PropTypes.func.isRequired
+    return (
+      <section>
+        <div className='table'>
+          <Table catalog={catalog} harvests={harvests} />
+        </div>
+        <div className='graph'>
+          <h4>{t('details.harvests.chart.title')}</h4>
+          <div>
+            <Histogram data={this.getGraphData()} />
+          </div>
+        </div>
+
+        <style jsx>{`
+          section {
+            display: flex;
+          }
+
+          div {
+            flex: 1 1;
+          }
+
+          h4 {
+            text-align: center;
+          }
+
+          .table {
+            margin-right: 1em;
+          }
+
+          .graph {
+            display: flex;
+            flex-direction: column;
+            margin-left: 1em;
+
+            div {
+              flex: 1 1;
+            }
+          }
+        `}</style>
+      </section>
+    )
+  }
 }
 
 export default translate('catalogs')(Harvests)

@@ -47,6 +47,11 @@
       "status": {
         "successful": "Réussi",
         "failed": "Erreur"
+      },
+
+      "chart": {
+        "title": "Enregistrements par moissonnage",
+        "label": "Enregistrements"
       }
     },
 

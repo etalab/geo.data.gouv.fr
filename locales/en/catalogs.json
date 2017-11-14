@@ -47,6 +47,11 @@
       "status": {
         "successful": "Success",
         "failed": "Error"
+      },
+
+      "chart": {
+        "title": "Records per harvest",
+        "label": "Records"
       }
     },
 
