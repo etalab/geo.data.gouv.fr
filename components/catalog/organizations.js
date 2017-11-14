@@ -24,6 +24,7 @@ const Oraganizations = ({ catalog: { name, metrics: { records: { counts } } } })
       span {
         display: inline-block;
         margin: 0 15px 10px 0;
+        max-width: 100%;
 
         @media (max-width: 551px) {
           display: block;
