@@ -4,26 +4,24 @@ import { translate } from 'react-i18next'
 
 import Table from './table'
 
-const Harvests = ({ catalog, harvests, t }) => {
-  return (
-    <section>
-      <div>
-        <Table catalog={catalog} harvests={harvests} />
-      </div>
-      <div />
+const Harvests = ({ catalog, harvests, t }) => (
+  <section>
+    <div>
+      <Table catalog={catalog} harvests={harvests} />
+    </div>
+    <div />
 
-      <style jsx>{`
-        section {
-          display: flex;
-        }
+    <style jsx>{`
+      section {
+        display: flex;
+      }
 
-        div {
-          flex: 1 1;
-        }
-      `}</style>
-    </section>
-  )
-}
+      div {
+        flex: 1 1;
+      }
+    `}</style>
+  </section>
+)
 
 Harvests.propTypes = {
   catalog: PropTypes.shape({
