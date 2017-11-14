@@ -65,6 +65,12 @@ class CatalogPage extends React.Component {
             </Box>
           </Container>
         </Content>
+
+        <style jsx>{`
+          h3 {
+            margin: 2.6em 0 1.4em;
+          }
+        `}</style>
       </Page>
     )
   }

@@ -22,6 +22,11 @@ const Oraganizations = ({ organizations }) => (
       span {
         display: inline-block;
         margin: 0 15px 10px 0;
+
+        @media (max-width: 551px) {
+          display: block;
+          margin-right: 0;
+        }
       }
     `}</style>
   </div>
