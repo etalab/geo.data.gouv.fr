@@ -46,7 +46,7 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
       }
 
       td {
-        padding: 0.3em;
+        padding: 0.3em 0.6em;
       }
 
       .successful {

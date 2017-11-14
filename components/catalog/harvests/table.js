@@ -4,8 +4,8 @@ import { translate } from 'react-i18next'
 
 import Row from './row'
 
-const Table = ({ harvests, catalog, t }) => {
-  return (
+const Table = ({ harvests, catalog, t }) => (
+  <div>
     <table>
       <thead>
         <tr>
@@ -33,9 +33,15 @@ const Table = ({ harvests, catalog, t }) => {
           />
         ))}
       </tbody>
+    </table>
 
-      <style jsx>{`
+    <style jsx>{`
         @import 'colors';
+
+        div {
+          overflow-x: auto;
+          white-space: nowrap;
+        }
 
         table {
           border-collapse: collapse;
@@ -44,17 +50,16 @@ const Table = ({ harvests, catalog, t }) => {
 
         th {
           text-align: center;
-          padding: 0.3em;
+          padding: 0.3em 0.6em;
           border-bottom: 1px solid $lightgrey;
         }
 
         .status {
           width: 30px;
         }
-      `}</style>
-    </table>
-  )
-}
+    `}</style>
+  </div>
+)
 
 Table.propTypes = {
   harvests: PropTypes.arrayOf(PropTypes.shape({
