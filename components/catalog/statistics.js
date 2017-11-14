@@ -6,9 +6,8 @@ import { get } from 'lodash'
 import Counter from '../counter'
 import Percent from '../percent'
 
-import Chart from './chart'
+import Pie from './pie'
 
-// import { DoughnutChart } from '../CatalogCharts'
 
 const Statistics = ({ metrics, t }) => {
   const openness = get(metrics, 'datasets.partitions.openness.yes', 0)
@@ -53,7 +52,7 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.recordTypeChart')}
         </h3>
         <div>
-          <Chart data={metrics.records.partitions.recordType} />
+          <Pie data={metrics.records.partitions.recordType} />
         </div>
       </div>
 
@@ -62,7 +61,7 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.dataTypeChart')}
         </h3>
         <div>
-          <Chart data={metrics.datasets.partitions.dataType} />
+          <Pie data={metrics.datasets.partitions.dataType} />
         </div>
       </div>
 
@@ -71,7 +70,7 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.metadataTypeChart')}
         </h3>
         <div>
-          <Chart data={metrics.records.partitions.metadataType} />
+          <Pie data={metrics.records.partitions.metadataType} />
         </div>
       </div>
 

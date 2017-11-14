@@ -1,14 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import dynamic from 'next/dynamic'
 import { translate } from 'react-i18next'
 
-import Loader from '../loader'
-
-const Pie = dynamic(import('react-chartjs-2').then(m => m.Pie), {
-  ssr: false,
-  loading: Loader
-})
+import { Pie } from 'react-chartjs-2'
 
 const colors = [
   '#2185D0',
@@ -40,7 +34,7 @@ export const formatData = (data, t) => {
   }
 }
 
-export const Chart = ({ data, t }) => {
+export const PieChart = ({ data, t }) => {
   const formatedData = formatData(data || {}, t)
 
   if (!formatedData.labels.length) {
@@ -60,9 +54,9 @@ export const Chart = ({ data, t }) => {
   )
 }
 
-Chart.propTypes = {
+PieChart.propTypes = {
   data: PropTypes.object,
   t: PropTypes.func.isRequired
 }
 
-export default translate()(Chart)
+export default translate()(PieChart)
