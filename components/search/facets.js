@@ -49,7 +49,6 @@ class Facets extends React.Component {
           @import 'colors';
 
           .wrapper {
-            flex-shrink: 0;
 
             @media (max-width: 960px) {
               display: none;
@@ -59,14 +58,15 @@ class Facets extends React.Component {
           .facets {
             background-color: $white;
             margin-left: 2em;
+            width: 300px;
           }
 
           .open {
             @media (max-width: 960px) {
               display: block;
               position: fixed;
-              top: 0;
               left: 0;
+              top: 0;
               right: 0;
               bottom: 0;
               background-color: rgba(0, 0, 0, 0.2);
@@ -75,6 +75,7 @@ class Facets extends React.Component {
               -webkit-overflow-scrolling: touch;
 
               .facets {
+                width: 80%;
                 position: absolute;
                 min-height: 100vh;
                 top: 0;

@@ -141,6 +141,9 @@ class Facet extends React.Component {
             color: $black;
             cursor: pointer;
 
+            max-width: 100%;
+            overflow: hidden;
+
             &:before {
               background: $white;
               border-radius: 10px;
@@ -192,7 +195,6 @@ class Facet extends React.Component {
           }
 
           .value {
-            max-width: calc(100vw - 14em);
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
