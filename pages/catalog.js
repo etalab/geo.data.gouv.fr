@@ -58,7 +58,7 @@ class CatalogPage extends React.Component {
       <Page>
         <Meta title={t('details.title', { name: catalog.name })} />
 
-        <Content>
+        <Content clouds>
           <Container>
             <Box>
               <Header catalog={catalog} />

@@ -59,6 +59,7 @@ const Header = ({ router, t }) => {
 
         nav {
           background: $white;
+          border-bottom: 1px solid $lightgrey;
         }
 
         div {

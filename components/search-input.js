@@ -79,7 +79,7 @@ class SearchInput extends React.PureComponent {
           input {
             display: block;
             width: 100%;
-            border: 1px solid $lightgrey;
+            border: 1px solid darken($lightgrey, 6%);
             border-radius: 2px;
             margin: 0;
             outline: 0;
