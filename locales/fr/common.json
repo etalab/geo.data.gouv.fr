@@ -39,19 +39,6 @@
       "obsoleteCatalog": "Ce catalogue n’a pas été mis à jour depuis plus de 6 mois"
     },
 
-    "DoughnutChart": {
-      "noData": "Aucune donnée",
-      "dataset": "jeu de données",
-      "nonGeographicDataset": "jeu de données non géographiques",
-      "service": "service",
-      "other": "autre",
-      "vector": "vecteurs",
-      "none": "aucun",
-      "grid": "imagerie",
-      "Dublin Core": "Dublin Core",
-      "ISO 19139": "ISO 19139"
-    },
-
     "Footer": {
       "legal": "Mentions légales"
     },

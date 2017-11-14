@@ -22,13 +22,13 @@ export const formatData = (data, t) => {
   const labels = Object.keys(data).sort((a, b) => data[a] < data[b])
 
   return {
-    labels: labels.map(label => t(`components.DoughnutChart.${label}`, {
+    labels: labels.map(label => t(`details.statistics.pie.${label}`, {
       defaultValue: label
     })),
     datasets: [
       {
         data: labels.map(label => data[label]),
-        backgroundColor: colors.slice(0, labels.length)
+        backgroundColor: colors
       }
     ]
   }
@@ -39,7 +39,7 @@ export const PieChart = ({ data, t }) => {
 
   if (!formatedData.labels.length) {
     return (
-      <h1>{t('components.DoughnutChart.noData')}</h1>
+      <div>{t('details.statistics.noData')}</div>
     )
   }
 
@@ -59,4 +59,4 @@ PieChart.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate()(PieChart)
+export default translate('catalogs')(PieChart)

@@ -8,7 +8,6 @@ import Percent from '../percent'
 
 import Pie from './pie'
 
-
 const Statistics = ({ metrics, t }) => {
   const openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   const download = get(metrics, 'datasets.partitions.download.yes', 0)

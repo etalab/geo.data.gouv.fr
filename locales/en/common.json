@@ -39,19 +39,6 @@
       "obsoleteCatalog": "This catalog has not been updated for more than 6 months"
     },
 
-    "DoughnutChart": {
-      "noData": "No data",
-      "dataset": "dataset",
-      "nonGeographicDataset": "non geographic dataset",
-      "service": "service",
-      "other": "other",
-      "vector": "vector",
-      "none": "none",
-      "grid": "grid",
-      "Dublin Core": "Dublin Core",
-      "ISO 19139": "ISO 19139"
-    },
-
     "Footer": {
       "legal": "Legal"
     },

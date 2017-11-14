@@ -15,7 +15,21 @@
       "metadataTypeChart": "Types de metadonnées",
       "openDataPercent": "Données ouvertes",
       "downloadablePercent": "Données téléchargeables",
-      "dataTypeChart": "Types de données"
+      "dataTypeChart": "Types de données",
+
+      "noData": "Aucune donnée",
+
+      "pie": {
+        "dataset": "Jeu de données",
+        "nonGeographicDataset": "Jeu de données non géographiques",
+        "service": "Service",
+        "other": "Autre",
+        "vector": "Vecteurs",
+        "none": "Aucun",
+        "grid": "Imagerie",
+        "Dublin Core": "Dublin Core",
+        "ISO 19139": "ISO 19139"
+      }
     },
 
     "search": "Rechercher dans ce catalogue",
