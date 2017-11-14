@@ -24,6 +24,8 @@ class Facet extends React.Component {
       value: PropTypes.string.isRequired
     }).isRequired,
 
+    defaultQuery: PropTypes.object,
+
     count: PropTypes.number,
     detailed: PropTypes.bool,
     removable: PropTypes.bool,
@@ -45,11 +47,15 @@ class Facet extends React.Component {
   }
 
   getAddQuery = facet => {
-    const { router } = this.props
+    const { router, defaultQuery } = this.props
 
-    let query
+    let query = {
+      ...defaultQuery
+    }
+
     if (router.pathname === '/search') {
       query = {
+        ...query,
         ...router.query
       }
 
@@ -67,9 +73,7 @@ class Facet extends React.Component {
         query[facet.name] = facet.value
       }
     } else {
-      query = {
-        [facet.name]: facet.value
-      }
+      query[facet.name] = facet.value
     }
 
     return query

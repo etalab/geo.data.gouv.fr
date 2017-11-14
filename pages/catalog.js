@@ -22,15 +22,8 @@ class CatalogPage extends React.Component {
   static propTypes = {
     catalog: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      metrics: PropTypes.shape({
-        records: PropTypes.shape({
-          counts: PropTypes.shape({
-            organizations: PropTypes.object.isRequired
-          }).isRequired
-        }).isRequired
-      }).isRequired
-    }).isRequired,
-
+      metrics: PropTypes.object.isRequired
+    }),
     t: PropTypes.func.isRequired
   }
 
@@ -61,7 +54,7 @@ class CatalogPage extends React.Component {
               }} />
 
               <h3>{t('details.organizations')}</h3>
-              <Organizations organizations={catalog.metrics.records.counts.organizations} />
+              <Organizations catalog={catalog} />
             </Box>
           </Container>
         </Content>

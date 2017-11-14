@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 
 import Facet from '../facet'
 
-const Oraganizations = ({ organizations }) => (
+const Oraganizations = ({ catalog: { name, metrics: { records: { counts } } } }) => (
   <div>
-    {Object.entries(organizations).map(([value, count]) => (
+    {Object.entries(counts.organizations).map(([value, count]) => (
       <span key={value}>
-        <Facet facet={{
+        <Facet defaultQuery={{
+          catalog: name
+        }} facet={{
           name: 'organization',
           value
         }} count={count} />
@@ -33,7 +35,16 @@ const Oraganizations = ({ organizations }) => (
 )
 
 Oraganizations.propTypes = {
-  organizations: PropTypes.object.isRequired
+  catalog: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    metrics: PropTypes.shape({
+      records: PropTypes.shape({
+        counts: PropTypes.shape({
+          organizations: PropTypes.object.isRequired
+        }).isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired
 }
 
 export default Oraganizations
