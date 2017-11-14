@@ -14,6 +14,7 @@ import SearchInput from '../components/search-input'
 
 import Header from '../components/catalog/header'
 import Statistics from '../components/catalog/statistics'
+import Harvests from '../components/catalog/harvests'
 import Organizations from '../components/catalog/organizations'
 
 import { GEODATA_API_URL } from '@env'
@@ -35,8 +36,23 @@ class CatalogPage extends React.Component {
     }
   }
 
+  state = {
+    harvests: null
+  }
+
+  async componentDidMount() {
+    const { catalog } = this.props
+
+    const harvests = await _get(`${GEODATA_API_URL}/services/${catalog.id}/synchronizations`)
+
+    this.setState(() => ({
+      harvests
+    }))
+  }
+
   render() {
     const { catalog, t } = this.props
+    const { harvests } = this.state
 
     return (
       <Page>
@@ -47,6 +63,9 @@ class CatalogPage extends React.Component {
             <Box>
               <Header catalog={catalog} />
               <Statistics metrics={catalog.metrics} />
+
+              <h3>{t('details.harvests.title')}</h3>
+              {harvests ? <Harvests catalog={catalog} harvests={harvests} /> : t('common:loading')}
 
               <h3>{t('details.search')}</h3>
               <SearchInput hasButton defaultQuery={{

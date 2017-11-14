@@ -32,6 +32,24 @@
       }
     },
 
+    "harvests": {
+      "title": "Moissonnage du catalogue",
+
+      "table": {
+        "records": "Enregistrements",
+        "delta": "Delta",
+        "date": "Date"
+      },
+
+      "noHarvest": "Aucun moissonage…",
+      "viewDetails": "Détails",
+
+      "status": {
+        "successful": "Réussi",
+        "failed": "Erreur"
+      }
+    },
+
     "search": "Rechercher dans ce catalogue",
     "organizations": "Organisations"
   }

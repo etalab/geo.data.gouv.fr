@@ -32,6 +32,24 @@
       }
     },
 
+    "harvests": {
+      "title": "Catalog harvesting",
+
+      "table": {
+        "records": "Records",
+        "delta": "Delta",
+        "date": "Date"
+      },
+
+      "noHarvest": "No harvests…",
+      "viewDetails": "Détails",
+
+      "status": {
+        "successful": "Success",
+        "failed": "Error"
+      }
+    },
+
     "search": "Search in this catalog",
     "organizations": "Organizations"
   }
