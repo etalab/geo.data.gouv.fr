@@ -8,12 +8,10 @@ import PageLayout from './PageLayout'
 import ScrollToTop from './ScrollToTop'
 import TrackPageViews from './TrackPageViews'
 
-import HomeRoute from '../routes/Home'
 import DatasetRoute from '../routes/Dataset'
 import CatalogRoute from '../routes/Catalogs'
 import EventsRoute from '../routes/Events'
 import PublicationRoute from '../routes/Publication'
-import LegalRoute from '../routes/Legal'
 
 import NotFoundRoute from '../routes/NotFound'
 
@@ -39,12 +37,10 @@ class App extends React.Component {
             <TrackPageViews />
 
             <Switch>
-              <Route exact path='/' component={HomeRoute} />
               <Route path='/datasets/:datasetId' component={DatasetRoute} />
               <Route path='/catalogs' component={CatalogRoute} />
               <Route path='/events' component={EventsRoute} />
               <Route path='/publication' component={PublicationRoute} />
-              <Route path='/legal' component={LegalRoute} />
 
               <Route component={NotFoundRoute} />
             </Switch>
