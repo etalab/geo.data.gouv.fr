@@ -51,6 +51,10 @@ class Harvests extends React.Component {
         <style jsx>{`
           section {
             display: flex;
+
+            @media (max-width: 960px) {
+              flex-direction: column;
+            }
           }
 
           div {
@@ -63,12 +67,20 @@ class Harvests extends React.Component {
 
           .table {
             margin-right: 1em;
+
+            @media (max-width: 960px) {
+              margin-right: 0;
+            }
           }
 
           .graph {
             display: flex;
             flex-direction: column;
             margin-left: 1em;
+
+            @media (max-width: 960px) {
+              margin: 1em 0 0;
+            }
 
             div {
               flex: 1 1;
