@@ -104,6 +104,10 @@ const Statistics = ({ metrics, t }) => {
             width: calc(100% - 1.2em);
           }
 
+          @media (max-width: 551px) {
+            height: auto;
+          }
+
           div {
             display: flex;
           }
