@@ -36,6 +36,10 @@ const Event = ({ event, t }) => (
         border-radius: 2px;
         display: flex;
         align-items: center;
+
+        @media (max-width: 551px) {
+          padding: 1em 1.4em;
+        }
       }
 
       h3 {
@@ -45,6 +49,11 @@ const Event = ({ event, t }) => (
       .icon {
         font-size: 3em;
         margin-right: 2rem;
+
+        @media (max-width: 551px) {
+          font-size: 2em;
+          margin-right: 1.4rem;
+        }
       }
     `}</style>
   </div>
