@@ -66,6 +66,23 @@
 
     "header": {
       "backToCatalog": "Return to catalog"
+    },
+
+    "results": {
+      "title": "Results",
+      "labels": {
+        "Records matched": "Records matched:",
+        "Record identifier too short": "Record identifier too short:",
+        "Record identifier too long": "Record identifier too long:",
+        "Not supported record type": "Non supported record type:",
+        "Unique records returned": "Unique records returned:",
+        "Ignore statistics": "Ignored statistics",
+        "Error": "Error:",
+        "  * Not supported type": "Non-supported record types:",
+        "  * Record already seen": "Record already seen:",
+        "  * Identifier too short": "Identifiers too short:",
+        "  * Identifier too long": "Identifiers too long:"
+      }
     }
   }
 }
