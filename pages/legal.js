@@ -12,9 +12,9 @@ const LegalPage = () => (
     <Meta title='Mentions légales' />
 
     <Content>
-      <Container fluid>
+      <Container>
         <h1>Mentions légales</h1>
-        <h4>Editeur</h4>
+        <h3>Editeur</h3>
         <p>
           Direction interministérielle du numérique et du système d'information et de communication de l'État (DINSIC)<br />
           39, quai André Citroën<br />
@@ -24,7 +24,7 @@ const LegalPage = () => (
 
         <p>Directeur de la publication : M. Henri Verdier, DINSIC</p>
 
-        <h4>Hébergeur</h4>
+        <h3>Hébergeur</h3>
         <p>
           OVH<br />
           SAS au capital de 10 059 500 €<br />
@@ -34,6 +34,14 @@ const LegalPage = () => (
         </p>
       </Container>
     </Content>
+
+    <style jsx>{`
+      h1 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 1em;
+      }
+    `}</style>
   </Page>
 )
 
