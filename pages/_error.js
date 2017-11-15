@@ -6,6 +6,7 @@ import withI18n from '../components/hoc/with-i18n'
 import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
+import Box from '../components/box'
 
 class ErrorPage extends React.Component {
   static propTypes = {
@@ -33,8 +34,12 @@ class ErrorPage extends React.Component {
 
         <Content clouds>
           <div>
-            <h1>{t('errors.title', { code })}</h1>
-            <h2>{message}</h2>
+            <Box>
+              <section>
+                <h1>{t('errors.title', { code })}</h1>
+                <h2>{message}</h2>
+              </section>
+            </Box>
           </div>
         </Content>
 
@@ -48,6 +53,15 @@ class ErrorPage extends React.Component {
               flex: 1;
               align-items: center;
               justify-content: center;
+            }
+          }
+
+          section {
+            padding: 10px;
+
+            @media (min-width: 552px) {
+              display: flex;
+              align-items: center;
             }
           }
 
