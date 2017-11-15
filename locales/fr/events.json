@@ -1,1 +1,12 @@
-{}
+{
+  "title": "Événements",
+  "nextEvents": "Événements à venir",
+  "noEvents": "Aucun événement programmé pour le moment.",
+  "previousEvents": "Événements passés",
+
+  "event": {
+    "download": "Télécharger le compte-rendu",
+    "soonAvailable": "Compte-rendu bientôt disponible…",
+    "noReport": "Pas de compte-rendu"
+  }
+}

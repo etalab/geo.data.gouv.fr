@@ -1,0 +1,68 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import moment from 'moment'
+import { translate } from 'react-i18next'
+
+import CalendarIcon from 'react-icons/lib/fa/calendar-check-o'
+
+const Event = ({ event, t }) => (
+  <div className='event'>
+    <div className='icon'>
+      <CalendarIcon />
+    </div>
+    <div>
+      <h3>{event.name}</h3>
+      <div>{moment(event.date).format('LL')}</div>
+      {event.link ? (
+        <div>
+          <a href={event.link}>{t('event.download')}</a>
+        </div>
+      ) : (
+        <div>
+          {event.linkComingSoon
+            ? t('event.soonAvailable')
+            : t('event.noReport')
+          }
+        </div>
+      )}
+    </div>
+
+    <style jsx>{`
+      @import 'colors';
+
+      .event {
+        border: 1px solid $lightgrey;
+        padding: 1.4em 2em;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+      }
+
+      h3 {
+        margin-bottom: 0.4rem;
+      }
+
+      .icon {
+        font-size: 3em;
+        margin-right: 2rem;
+      }
+    `}</style>
+  </div>
+)
+
+Event.propTypes = {
+  event: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    link: PropTypes.string,
+    linkComingSoon: PropTypes.bool
+  }).isRequired,
+
+  t: PropTypes.func.isRequired
+}
+
+Event.defaultProps = {
+  linkComingSoon: false
+}
+
+export default translate('events')(Event)
