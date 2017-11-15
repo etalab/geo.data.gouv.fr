@@ -12,8 +12,6 @@ import DatasetRoute from '../routes/Dataset'
 import EventsRoute from '../routes/Events'
 import PublicationRoute from '../routes/Publication'
 
-import NotFoundRoute from '../routes/NotFound'
-
 import '../styles/global.scss'
 
 class App extends React.Component {
@@ -39,8 +37,6 @@ class App extends React.Component {
               <Route path='/datasets/:datasetId' component={DatasetRoute} />
               <Route path='/events' component={EventsRoute} />
               <Route path='/publication' component={PublicationRoute} />
-
-              <Route component={NotFoundRoute} />
             </Switch>
           </PageLayout>
         </BrowserRouter>
