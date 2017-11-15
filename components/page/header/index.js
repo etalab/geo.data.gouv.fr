@@ -23,7 +23,7 @@ const Header = ({ router, t }) => {
     <nav>
       <Container fluid>
         <div>
-          <Link href='/'>
+          <Link href='/' prefetch>
             <a className='logo'>
               <img src='/static/images/logo.svg' alt='Logo de la République française (1999)' />
             </a>
