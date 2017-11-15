@@ -34,8 +34,8 @@ const EventsPage = ({ t }) => (
           <h1>{t('previousEvents')}</h1>
           <section>
             {pastEvents.map(event => (
-              <div>
-                <Event key={event.name} event={event} />
+              <div key={event.name}>
+                <Event event={event} />
               </div>
             ))}
           </section>

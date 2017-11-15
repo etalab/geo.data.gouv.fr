@@ -53,7 +53,7 @@ const Event = ({ event, t }) => (
 Event.propTypes = {
   event: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    date: PropTypes.instanceOf(Date),
     link: PropTypes.string,
     linkComingSoon: PropTypes.bool
   }).isRequired,
