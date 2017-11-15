@@ -3,17 +3,17 @@ const { Router } = require('express')
 module.exports = app => {
   const router = new Router()
 
-  router.get('/catalogs/:id', (req, res) => {
+  router.get('/catalogs/:cid', (req, res) => {
     app.render(req, res, '/catalog', {
       ...req.query,
-      id: req.params.id
+      cid: req.params.cid
     })
   })
 
-  router.get('/datasets/:id', (req, res) => {
+  router.get('/datasets/:did', (req, res) => {
     app.render(req, res, '/dataset', {
       ...req.query,
-      id: req.params.id
+      did: req.params.did
     })
   })
 

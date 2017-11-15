@@ -22,7 +22,7 @@ class DatasetPage extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-    const dataset = await _get(`${GEODATA_API_URL}/records/${query.id}`)
+    const dataset = await _get(`${GEODATA_API_URL}/records/${query.did}`)
 
     return {
       dataset

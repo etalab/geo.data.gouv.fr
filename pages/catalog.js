@@ -29,7 +29,7 @@ class CatalogPage extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-    const catalog = await _get(`${GEODATA_API_URL}/catalogs/${query.id}`)
+    const catalog = await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
 
     return {
       catalog

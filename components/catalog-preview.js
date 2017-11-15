@@ -23,7 +23,7 @@ export const CatalogPreview = ({ catalog, t }) => {
   let download = get(metrics, 'datasets.partitions.download.yes', 0)
 
   return (
-    <Link href={`/catalog?id=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
+    <Link href={`/catalog?cid=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
         {isObsolete(catalog) && (
           <span className='obsolete' title={t('components.CatalogPreview.obsoleteCatalog')}>

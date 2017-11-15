@@ -9,7 +9,7 @@ import Thumbnail from './thumbnail'
 import Footer from './footer'
 
 const Result = ({ result: { recordId, metadata }, i18n, t }) => (
-  <Link prefetch href={`/dataset?id=${recordId}`} as={`/datasets/${recordId}`}>
+  <Link prefetch href={`/dataset?did=${recordId}`} as={`/datasets/${recordId}`}>
     <a>
       <Thumbnail thumbnails={metadata.thumbnails} recordId={recordId} />
 
