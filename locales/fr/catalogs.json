@@ -58,5 +58,14 @@
 
     "search": "Rechercher dans ce catalogue",
     "organizations": "Organisations"
+  },
+
+  "harvest": {
+    "title": "Moissonnage du catalogue {{name}}",
+    "idLabel": "Identifiant du moissonnage :",
+
+    "header": {
+      "backToCatalog": "Retour au catalogue"
+    }
   }
 }

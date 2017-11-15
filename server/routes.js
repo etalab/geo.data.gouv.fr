@@ -3,6 +3,14 @@ const { Router } = require('express')
 module.exports = app => {
   const router = new Router()
 
+  router.get('/catalogs/:cid/harvest/:hid', (req, res) => {
+    app.render(req, res, '/harvest', {
+      ...req.query,
+      cid: req.params.cid,
+      hid: req.params.hid
+    })
+  })
+
   router.get('/catalogs/:cid', (req, res) => {
     app.render(req, res, '/catalog', {
       ...req.query,

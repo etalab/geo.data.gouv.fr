@@ -35,7 +35,10 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
       {harvest.status === 'pending' ? (
         <span className='pending'>{t('details.harvests.status.pending')}</span>
       ) : (
-        <Link href={`/catalogs/${catalog._id}/harvest/${harvest._id}`}>
+        <Link
+          href={`/harvest?cid=${catalog._id}&hid=${harvest._id}`}
+          as={`/catalogs/${catalog._id}/harvest/${harvest._id}`}
+        >
           <a>
             {t('details.harvests.viewDetails')}
           </a>

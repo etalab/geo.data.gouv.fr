@@ -58,5 +58,14 @@
 
     "search": "Search in this catalog",
     "organizations": "Organizations"
+  },
+
+  "harvest": {
+    "title": "{{name}} Catalog Harvest",
+    "idLabel": "Harvest ID:",
+
+    "header": {
+      "backToCatalog": "Return to catalog"
+    }
   }
 }
