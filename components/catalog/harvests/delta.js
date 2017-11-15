@@ -5,7 +5,7 @@ import UpIcon from 'react-icons/lib/fa/long-arrow-up'
 import DownIcon from 'react-icons/lib/fa/long-arrow-down'
 
 const Delta = ({ harvest, previous }) => {
-  if (!previous) {
+  if (!previous || harvest.status === 'failed') {
     return (
       <div>–</div>
     )
@@ -52,11 +52,12 @@ const Delta = ({ harvest, previous }) => {
 
 Delta.propTypes = {
   harvest: PropTypes.shape({
-    itemsFound: PropTypes.number.isRequired
+    status: PropTypes.string.isRequired,
+    itemsFound: PropTypes.number
   }).isRequired,
 
   previous: PropTypes.shape({
-    itemsFound: PropTypes.number.isRequired
+    itemsFound: PropTypes.number
   })
 }
 

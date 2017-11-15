@@ -16,7 +16,7 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
       {harvest.status === 'successful' ? <SuccessIcon /> : <FailIcon />}
     </td>
     <td>
-      {harvest.itemsFound}
+      {harvest.status === 'successful' ? harvest.itemsFound : '–'}
     </td>
     <td>
       <Delta harvest={harvest} previous={previousHarvest} />
