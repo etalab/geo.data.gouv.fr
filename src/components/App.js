@@ -9,7 +9,6 @@ import ScrollToTop from './ScrollToTop'
 import TrackPageViews from './TrackPageViews'
 
 import DatasetRoute from '../routes/Dataset'
-import EventsRoute from '../routes/Events'
 import PublicationRoute from '../routes/Publication'
 
 import '../styles/global.scss'
@@ -35,7 +34,6 @@ class App extends React.Component {
 
             <Switch>
               <Route path='/datasets/:datasetId' component={DatasetRoute} />
-              <Route path='/events' component={EventsRoute} />
               <Route path='/publication' component={PublicationRoute} />
             </Switch>
           </PageLayout>
