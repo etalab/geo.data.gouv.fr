@@ -69,7 +69,8 @@
     },
 
     "logs": {
-      "title": "Log",
+      "title": "Harvest log",
+      "empty": "No log entry",
       "labels": {
         "Records matched": "Records matched:",
         "Record identifier too short": "Record identifier too short:",

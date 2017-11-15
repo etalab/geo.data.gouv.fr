@@ -32,6 +32,10 @@ const parse = logs => {
 const Logs = ({ logs, t }) => {
   const { entries, totals } = parse(logs)
 
+  if (!entries.length && !totals.length) {
+    return t('harvest.logs.empty')
+  }
+
   return (
     <div>
       <ul>

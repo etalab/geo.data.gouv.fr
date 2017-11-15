@@ -69,7 +69,8 @@
     },
 
     "logs": {
-      "title": "Journal",
+      "title": "Journal du moissonnage",
+      "empty": "Aucune entrée dans le journal…",
       "labels": {
         "Records matched": "Enregistrements détectés :",
         "Record identifier too short": "Identifiant d’enregistrement trop court :",
