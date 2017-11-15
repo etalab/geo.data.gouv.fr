@@ -11,7 +11,7 @@ const Footer = ({ t }) => (
     <Container>
       <div className='content'>
         <div>
-          <img src='/static/images/etalab.png' />
+          <img src='/static/images/etalab.png' alt='Etalab' />
           <Social />
         </div>
         <Sitemap />
