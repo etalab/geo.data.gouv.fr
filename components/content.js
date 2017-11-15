@@ -16,7 +16,7 @@ export const Content = ({ children, clouds }) => (
         flex: 1;
 
         ${clouds && (`
-          background: url('/static/images/clouds.svg') bottom -120px right 0, linear-gradient(to top, #41dcd7, #3083b2);
+          background: url('/static/images/clouds.svg') bottom -42px right 0, linear-gradient(to top, #41dcd7, #3083b2);
           background-repeat: no-repeat;
           background-size: 100%;
         `)}
