@@ -4,6 +4,7 @@ const next = require('next')
 const i18n = require('i18next')
 const i18nextMiddleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
+const compression = require('compression')
 
 const createRoutes = require('./routes')
 
@@ -53,6 +54,10 @@ i18n
     app.prepare()
       .then(() => {
         const server = express()
+
+        if (!dev) {
+          server.use(compression())
+        }
 
         server.use(i18nextMiddleware.handle(i18n))
         server.use('/locales', express.static(path.join(__dirname, '../locales')))
