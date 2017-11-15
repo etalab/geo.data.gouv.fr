@@ -66,7 +66,7 @@ class Harvests extends React.Component {
           }
 
           .table {
-            margin-right: 1em;
+            margin-right: 2em;
 
             @media (max-width: 960px) {
               margin-right: 0;
@@ -76,11 +76,6 @@ class Harvests extends React.Component {
           .graph {
             display: flex;
             flex-direction: column;
-            margin-left: 1em;
-
-            @media (max-width: 960px) {
-              margin: 1em 0 0;
-            }
 
             div {
               flex: 1 1;

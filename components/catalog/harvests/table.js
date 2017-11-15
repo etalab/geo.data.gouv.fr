@@ -18,6 +18,14 @@ const Table = ({ harvests, catalog, t }) => (
       </thead>
 
       <tbody>
+        {catalog.service.sync.pending && (
+          <Row
+            catalog={catalog}
+            harvest={{
+              status: 'pending'
+            }}
+          />
+        )}
         {!harvests.length ? (
           <tr>
             <td colSpan={5}>

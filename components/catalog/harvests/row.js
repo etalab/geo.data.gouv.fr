@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { translate } from 'react-i18next'
 
+import RefreshIcon from 'react-icons/lib/fa/refresh'
 import SuccessIcon from 'react-icons/lib/fa/check'
 import FailIcon from 'react-icons/lib/fa/close'
 
@@ -10,10 +11,16 @@ import Link from '../../link'
 
 import Delta from './delta'
 
+const iconMap = {
+  pending: <RefreshIcon />,
+  successful: <SuccessIcon />,
+  failed: <FailIcon />
+}
+
 const Row = ({ harvest, previousHarvest, catalog, t }) => (
   <tr>
     <td title={t(`details.harvests.status.${harvest.status}`)} className={harvest.status}>
-      {harvest.status === 'successful' ? <SuccessIcon /> : <FailIcon />}
+      {iconMap[harvest.status]}
     </td>
     <td>
       {harvest.status === 'successful' ? harvest.itemsFound : '–'}
@@ -22,14 +29,18 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
       <Delta harvest={harvest} previous={previousHarvest} />
     </td>
     <td>
-      {moment(harvest.finished).fromNow()}
+      {harvest.finished ? moment(harvest.finished).fromNow() : '–'}
     </td>
     <td>
-      <Link href={`/catalogs/${catalog._id}/harvest/${harvest._id}`}>
-        <a>
-          {t('details.harvests.viewDetails')}
-        </a>
-      </Link>
+      {harvest.status === 'pending' ? (
+        <span className='pending'>{t('details.harvests.status.pending')}</span>
+      ) : (
+        <Link href={`/catalogs/${catalog._id}/harvest/${harvest._id}`}>
+          <a>
+            {t('details.harvests.viewDetails')}
+          </a>
+        </Link>
+      )}
     </td>
 
     <style jsx>{`
@@ -49,6 +60,10 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
         padding: 0.3em 0.6em;
       }
 
+      .pending {
+        color: $grey;
+      }
+
       .successful {
         color: $green;
       }
@@ -66,7 +81,7 @@ Row.propTypes = {
   }).isRequired,
 
   harvest: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
+    _id: PropTypes.string,
     status: PropTypes.string.isRequired,
     itemsFound: PropTypes.number
   }).isRequired,

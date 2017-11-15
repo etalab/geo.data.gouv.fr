@@ -45,6 +45,7 @@
       "viewDetails": "Détails",
 
       "status": {
+        "pending": "En cours…",
         "successful": "Réussi",
         "failed": "Erreur"
       },
