@@ -44,12 +44,6 @@
       "noHarvest": "Aucun moissonage…",
       "viewDetails": "Détails",
 
-      "status": {
-        "pending": "En cours…",
-        "successful": "Réussi",
-        "failed": "Erreur"
-      },
-
       "chart": {
         "title": "Enregistrements par moissonnage",
         "label": "Enregistrements"
@@ -68,9 +62,15 @@
       "backToCatalog": "Retour au catalogue"
     },
 
+    "status": {
+      "pending": "En cours…",
+      "successful": "Réussi",
+      "failed": "Échec"
+    },
+
     "logs": {
       "title": "Journal du moissonnage",
-      "empty": "Aucune entrée dans le journal…",
+      "empty": "Aucune entrée dans le journal",
       "labels": {
         "Records matched": "Enregistrements détectés :",
         "Record identifier too short": "Identifiant d’enregistrement trop court :",

@@ -19,7 +19,7 @@ const iconMap = {
 
 const Row = ({ harvest, previousHarvest, catalog, t }) => (
   <tr>
-    <td title={t(`details.harvests.status.${harvest.status}`)} className={harvest.status}>
+    <td title={t(`harvest.status.${harvest.status}`)} className={harvest.status}>
       {iconMap[harvest.status]}
     </td>
     <td>
@@ -33,7 +33,7 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
     </td>
     <td>
       {harvest.status === 'pending' ? (
-        <span className='pending'>{t('details.harvests.status.pending')}</span>
+        <span className='pending'>{t('harvest.status.pending')}</span>
       ) : (
         <Link
           href={`/harvest?cid=${catalog._id}&hid=${harvest._id}`}

@@ -22,8 +22,11 @@ class HarvestPage extends React.Component {
     catalog: PropTypes.shape({
       name: PropTypes.string.isRequired
     }).isRequired,
+
     harvest: PropTypes.shape({
-      _id: PropTypes.string.isRequired
+      _id: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      log: PropTypes.arrayOf(PropTypes.string).isRequired
     }).isRequired,
 
     t: PropTypes.func.isRequired
@@ -51,7 +54,7 @@ class HarvestPage extends React.Component {
         <Content clouds>
           <Container>
             <Box>
-              <Header catalog={catalog} />
+              <Header catalog={catalog} status={harvest.status} />
 
               <div>
                 {t('harvest.idLabel')} <b><code>{harvest._id}</code></b>
