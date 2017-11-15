@@ -75,7 +75,12 @@ Table.propTypes = {
   })).isRequired,
 
   catalog: PropTypes.shape({
-    _id: PropTypes.string.isRequired
+    _id: PropTypes.string.isRequired,
+    service: PropTypes.shape({
+      sync: PropTypes.shape({
+        pending: PropTypes.bool.isRequired
+      }).isRequired
+    }).isRequired
   }).isRequired,
 
   t: PropTypes.func.isRequired
