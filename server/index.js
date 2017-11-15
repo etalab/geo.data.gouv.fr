@@ -26,10 +26,11 @@ i18n
     lowerCaseLng: true,
 
     ns: [
-      'common',
       'home',
       'catalogs',
-      'search'
+      'search',
+      'events',
+      'common'
     ],
     defaultNS: 'common',
     whitelist: [

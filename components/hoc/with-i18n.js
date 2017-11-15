@@ -39,6 +39,7 @@ export default namespaces => Page => {
         'home',
         'catalogs',
         'search',
+        'events',
         'common'
       ]
 
