@@ -27,7 +27,9 @@ const EventsPage = ({ t }) => (
       <Container>
         <Box>
           <h1>{t('nextEvents')}</h1>
-          {t('noEvents')}
+          <div className='empty'>
+            {t('noEvents')}
+          </div>
 
           <h1>{t('previousEvents')}</h1>
           <section>
@@ -46,6 +48,10 @@ const EventsPage = ({ t }) => (
         font-size: 1.8rem;
         font-weight: 500;
         margin-bottom: 1em;
+      }
+
+      .empty {
+        margin-bottom: 3em;
       }
 
       section {
