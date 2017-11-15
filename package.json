@@ -24,7 +24,7 @@
     "i18next-express-middleware": "^1.0.7",
     "i18next-node-fs-backend": "^1.0.0",
     "i18next-xhr-backend": "^1.5.0",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-unfetch": "^2.0.0",
     "leaflet": "^1.2.0",
     "marked": "^0.3.6",
     "moment": "^2.19.2",
