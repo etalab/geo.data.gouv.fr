@@ -15,7 +15,7 @@ const Event = ({ event, t }) => (
       <div>{moment(event.date).format('LL')}</div>
       {event.link ? (
         <div>
-          <a href={event.link}>{t('event.download')}</a>
+          <a href={event.link} download>{t('event.download')}</a>
         </div>
       ) : (
         <div>
