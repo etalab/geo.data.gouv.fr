@@ -55,6 +55,12 @@ const Header = ({ catalog, status, t }) => (
         margin-left: 10px;
         padding: 4px 8px 4px 5px;
         border-radius: 3px;
+
+        @media (max-width: 551px) {
+          display: block;
+          width: auto;
+          margin: 10px 0 0;
+        }
       }
 
       .successful {
