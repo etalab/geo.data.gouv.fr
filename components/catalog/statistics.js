@@ -110,6 +110,7 @@ const Statistics = ({ metrics, t }) => {
 
           div {
             display: flex;
+            overflow: hidden;
           }
         }
       `}</style>
