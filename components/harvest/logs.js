@@ -29,7 +29,7 @@ const parse = logs => {
   return result
 }
 
-const Results = ({ logs, t }) => {
+const Logs = ({ logs, t }) => {
   const { entries, totals } = parse(logs)
 
   return (
@@ -37,7 +37,7 @@ const Results = ({ logs, t }) => {
       <ul>
         {entries.map(({ key, label, value }) => (
           <li key={key}>
-            {t(`harvest.results.labels.${label}`, {
+            {t(`harvest.logs.labels.${label}`, {
               defaultValue: label
             })} <b>{value}</b>
           </li>
@@ -48,7 +48,7 @@ const Results = ({ logs, t }) => {
         <ul className='totals'>
           {totals.map(({ key, label, value }) => (
             <li key={key}>
-              {t(`harvest.results.labels.${label}`, {
+              {t(`harvest.logs.labels.${label}`, {
                 defaultValue: label
               })} <b>{value}</b>
             </li>
@@ -78,9 +78,9 @@ const Results = ({ logs, t }) => {
   )
 }
 
-Results.propTypes = {
+Logs.propTypes = {
   logs: PropTypes.arrayOf(PropTypes.string).isRequired,
   t: PropTypes.func.isRequired
 }
 
-export default translate('catalogs')(Results)
+export default translate('catalogs')(Logs)

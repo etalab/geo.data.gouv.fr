@@ -68,8 +68,8 @@
       "backToCatalog": "Retour au catalogue"
     },
 
-    "results": {
-      "title": "Résultats",
+    "logs": {
+      "title": "Journal",
       "labels": {
         "Records matched": "Enregistrements détectés :",
         "Record identifier too short": "Identifiant d’enregistrement trop court :",

@@ -13,7 +13,7 @@ import Box from '../components/box'
 import HarvestStatus from '../components/harvest-status'
 
 import Header from '../components/harvest/header'
-import Results from '../components/harvest/results'
+import Logs from '../components/harvest/logs'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -59,14 +59,10 @@ class HarvestPage extends React.Component {
 
               <HarvestStatus harvest={harvest} />
 
-              {harvest.status === 'successful' ? (
-                <div>
-                  <h3>{t('harvest.results.title')}</h3>
-                  <Results logs={harvest.log} />
-                </div>
-              ) : (
-                <h3>{t('harvest.logs')}</h3>
-              )}
+              <div>
+                <h3>{t('harvest.logs.title')}</h3>
+                <Logs logs={harvest.log} />
+              </div>
             </Box>
           </Container>
         </Content>

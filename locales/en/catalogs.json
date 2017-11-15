@@ -68,8 +68,8 @@
       "backToCatalog": "Return to catalog"
     },
 
-    "results": {
-      "title": "Results",
+    "logs": {
+      "title": "Log",
       "labels": {
         "Records matched": "Records matched:",
         "Record identifier too short": "Record identifier too short:",
