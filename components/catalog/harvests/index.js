@@ -3,18 +3,30 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { translate } from 'react-i18next'
 
+import Button from '../../button'
+
 import Table from './table'
 import Histogram from './histogram'
 
 class Harvests extends React.Component {
   static propTypes = {
     catalog: PropTypes.shape({
-      _id: PropTypes.string.isRequired
+      _id: PropTypes.string.isRequired,
+      service: PropTypes.shape({
+        sync: PropTypes.shape({
+          pending: PropTypes.bool.isRequired
+        }).isRequired
+      }).isRequired
     }).isRequired,
-    harvests: PropTypes.arrayOf(PropTypes.shape({
-    })).isRequired,
+    harvests: PropTypes.array.isRequired,
+
+    runHarvest: PropTypes.func.isRequired,
 
     t: PropTypes.func.isRequired
+  }
+
+  state = {
+    pending: false
   }
 
   getGraphData = () => {
@@ -33,13 +45,30 @@ class Harvests extends React.Component {
     return data
   }
 
+  runHarvest = async () => {
+    const { runHarvest } = this.props
+
+    await runHarvest()
+
+    this.setState(() => ({
+      pending: true
+    }))
+  }
+
   render() {
     const { catalog, harvests, t } = this.props
+
+    const pending = this.state.pending || catalog.service.sync.pending
 
     return (
       <section>
         <div className='table'>
-          <Table catalog={catalog} harvests={harvests} />
+          <Table catalog={catalog} harvests={harvests} pending={pending} />
+          <div className='button'>
+            <Button onClick={this.runHarvest} disabled={pending}>
+              {t('details.harvests.run')}
+            </Button>
+          </div>
         </div>
         <div className='graph'>
           <h4>{t('details.harvests.chart.title')}</h4>
@@ -57,8 +86,8 @@ class Harvests extends React.Component {
             }
           }
 
-          div {
-            flex: 1 1;
+          .button {
+            margin: 0.3em 0.6em;
           }
 
           h4 {
@@ -66,16 +95,19 @@ class Harvests extends React.Component {
           }
 
           .table {
-            margin-right: 2em;
+            margin-right: 3em;
+            flex: 1 1;
 
             @media (max-width: 960px) {
               margin-right: 0;
+              margin-bottom: 1em;
             }
           }
 
           .graph {
             display: flex;
             flex-direction: column;
+            flex: 1 1;
 
             div {
               flex: 1 1;

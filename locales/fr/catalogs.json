@@ -34,6 +34,7 @@
 
     "harvests": {
       "title": "Moissonnage du catalogue",
+      "run": "Moissonner ce catalogue",
 
       "table": {
         "records": "Enregistrements",
@@ -63,7 +64,7 @@
     },
 
     "status": {
-      "pending": "En cours…",
+      "pending": "En cours",
       "successful": "Réussi",
       "failed": "Échec"
     },

@@ -31,7 +31,7 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
     <td>
       {harvest.finished ? moment(harvest.finished).fromNow() : '–'}
     </td>
-    <td>
+    <td className='right'>
       {harvest.status === 'pending' ? (
         <span className='pending'>{t('harvest.status.pending')}</span>
       ) : (
@@ -63,6 +63,10 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
         padding: 0.3em 0.6em;
       }
 
+      .right {
+        text-align: right;
+      }
+
       .pending {
         color: $grey;
       }
@@ -81,7 +85,7 @@ const Row = ({ harvest, previousHarvest, catalog, t }) => (
 Row.propTypes = {
   catalog: PropTypes.shape({
     _id: PropTypes.string.isRequired
-  }).isRequired,
+  }),
 
   harvest: PropTypes.shape({
     _id: PropTypes.string,

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { _get } from '../lib/fetch'
+import { _get, _post } from '../lib/fetch'
 
 import withI18n from '../components/hoc/with-i18n'
 
@@ -50,6 +50,12 @@ class CatalogPage extends React.Component {
     }))
   }
 
+  runHarvest = () => {
+    const { catalog } = this.props
+
+    return _post(`${GEODATA_API_URL}/services/${catalog.id}/sync`)
+  }
+
   render() {
     const { catalog, t } = this.props
     const { harvests } = this.state
@@ -65,7 +71,9 @@ class CatalogPage extends React.Component {
               <Statistics metrics={catalog.metrics} />
 
               <h3>{t('details.harvests.title')}</h3>
-              {harvests ? <Harvests catalog={catalog} harvests={harvests} /> : t('common:loading')}
+              {harvests ? (
+                <Harvests catalog={catalog} harvests={harvests} runHarvest={this.runHarvest} />
+              ) : t('common:loading')}
 
               <h3>{t('details.search')}</h3>
               <SearchInput hasButton defaultQuery={{

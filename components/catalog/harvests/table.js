@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 
 import Row from './row'
 
-const Table = ({ harvests, catalog, t }) => (
+const Table = ({ harvests, catalog, pending, t }) => (
   <div>
     <table>
       <thead>
@@ -18,9 +18,8 @@ const Table = ({ harvests, catalog, t }) => (
       </thead>
 
       <tbody>
-        {catalog.service.sync.pending && (
+        {pending && (
           <Row
-            catalog={catalog}
             harvest={{
               status: 'pending'
             }}
@@ -75,13 +74,10 @@ Table.propTypes = {
   })).isRequired,
 
   catalog: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    service: PropTypes.shape({
-      sync: PropTypes.shape({
-        pending: PropTypes.bool.isRequired
-      }).isRequired
-    }).isRequired
+    _id: PropTypes.string.isRequired
   }).isRequired,
+
+  pending: PropTypes.bool.isRequired,
 
   t: PropTypes.func.isRequired
 }

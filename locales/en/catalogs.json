@@ -34,6 +34,7 @@
 
     "harvests": {
       "title": "Catalog harvesting",
+      "run": "Harvest this catalog",
 
       "table": {
         "records": "Records",
@@ -63,7 +64,7 @@
     },
 
     "status": {
-      "pending": "Pending…",
+      "pending": "Pending",
       "successful": "Success",
       "failed": "Failed"
     },
