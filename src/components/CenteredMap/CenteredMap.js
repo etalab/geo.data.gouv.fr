@@ -60,6 +60,7 @@ class CenteredMap extends React.Component {
         scrollWheelZoom={false}
         doubleClickZoom={!frozen}
         zoomControl={!frozen}
+        preferCanvas
       >
         <TileLayer
           attribution='© Contributeurs <a href="http://osm.org/copyright">OpenStreetMap</a>'
