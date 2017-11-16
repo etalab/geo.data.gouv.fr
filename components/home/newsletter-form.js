@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import Container from '../container'
+import Button from '../button'
 
 class NewsletterForm extends React.Component {
   static propTypes = {
@@ -16,12 +17,12 @@ class NewsletterForm extends React.Component {
       <div>
         <Container>
           <form action='//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d' method='post'name='mc-embedded-subscribe-form' target='_blank' noValidate>
-            <h2>{t('newsletter.title')}</h2>
+            <h3>{t('newsletter.title')}</h3>
             <input type='email' name='EMAIL' placeholder={t('newsletter.placeholder')} />
 
-            <button type='submit' name='subscribe'>
-              {t('newsletter.button')}
-            </button>
+            <Button type='submit' name='subscribe' size='large'>
+              <span>{t('newsletter.button')}</span>
+            </Button>
           </form>
         </Container>
 
@@ -31,11 +32,9 @@ class NewsletterForm extends React.Component {
           div {
             background-color: $whitesmoke;
             padding: 6em 0;
-            text-align: center;
 
             @media (max-width: 767px) {
-              text-align: left;
-              padding: 3em 0;
+              padding: 4em 0;
             }
           }
 
@@ -44,12 +43,8 @@ class NewsletterForm extends React.Component {
             margin: auto;
           }
 
-          h2 {
+          h3 {
             margin-top: 0;
-
-            @media (max-width: 767px) {
-              font-size: 1.4rem;
-            }
           }
 
           input {
@@ -57,30 +52,16 @@ class NewsletterForm extends React.Component {
             width: 100%;
             border: 0;
             outline: 0;
-            padding: 16px 20px;
-            font: inherit;
+            padding: 12px 16px;
             line-height: 1.6;
-            font-size: 1.3em;
+            font-size: 1.2em;
             border-radius: 2px;
             margin-bottom: 1em;
           }
 
-          button {
-            padding: 0.85em 3em;
-            margin-top: 1em;
-            width: 100%;
+          span {
             text-transform: uppercase;
-            font-size: 1.2em;
             font-weight: bold;
-            color: $white;
-            background-color: $blue;
-            border: 1px solid $white;
-
-            &:hover {
-              color: $blue;
-              background-color: #fff;
-              border-color: $blue;
-            }
           }
         `}</style>
       </div>

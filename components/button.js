@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, type, onClick, disabled }) => (
-  <button type={type} onClick={onClick} disabled={disabled}>
+const Button = ({ children, type, name, onClick, disabled, size }) => (
+  <button type={type} name={name} onClick={onClick} disabled={disabled} className={size}>
     {children}
 
     <style jsx>{`
@@ -28,6 +28,11 @@ const Button = ({ children, type, onClick, disabled }) => (
           cursor: not-allowed;
         }
       }
+
+      .large {
+        font-size: 1.2em;
+        padding: 12px 16px;
+      }
     `}</style>
   </button>
 )
@@ -35,8 +40,12 @@ const Button = ({ children, type, onClick, disabled }) => (
 Button.propTypes = {
   children: PropTypes.node,
   type: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  disabled: PropTypes.bool
+  name: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  size: PropTypes.oneOf([
+    'large'
+  ])
 }
 
 Button.defaultProps = {
