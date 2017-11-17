@@ -77,7 +77,9 @@ class SearchPage extends React.Component {
       .filter(([name]) => name !== 'keyword')
       .map(([name, values]) => ({
         name,
-        values: values.filter(v => !query.facets.some(a => a.name === name && a.value === v.value))
+        values: values.filter(v => (
+          v.count !== count && !query.facets.some(a => a.name === name && a.value === v.value)
+        ))
       }))
       .filter(group => group.values.length > 1)
   }
