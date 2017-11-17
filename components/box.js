@@ -11,7 +11,7 @@ const Box = ({ children }) => (
       div {
         background-color: $white;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-        padding: 1.6em 2em 3em;
+        padding: 1.6em 2em;
         border-radius: 2px;
 
         @media (max-width: 551px) {
