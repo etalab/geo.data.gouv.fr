@@ -27,10 +27,11 @@ i18n
     lowerCaseLng: true,
 
     ns: [
-      'home',
       'catalogs',
-      'search',
+      'dataset',
       'events',
+      'home',
+      'search',
       'common'
     ],
     defaultNS: 'common',

@@ -36,10 +36,11 @@ export default namespaces => Page => {
       // implemented in Next.js. Or when something better is done with
       // react-i18next’s wait mechanism.
       namespaces = [
-        'home',
         'catalogs',
-        'search',
+        'dataset',
         'events',
+        'home',
+        'search',
         'common'
       ]
 
