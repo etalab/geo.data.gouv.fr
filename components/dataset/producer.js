@@ -14,6 +14,7 @@ const Producer = ({ producer }) => (
       img {
         display: block;
         margin: auto;
+        width: 100%;
         max-width: 160px;
         max-height: 160px;
       }

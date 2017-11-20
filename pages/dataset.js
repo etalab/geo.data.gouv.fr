@@ -93,15 +93,65 @@ class DatasetPage extends React.Component {
         <style jsx>{`
           .container {
             display: flex;
+
+            flex-wrap: wrap;
+            @media (max-width: 768px) {
+              flex-direction: column;
+            }
           }
 
           .left, .right {
-            flex: 0 0 20%;
+            width: 350px;
+
+            @media (max-width: 1480px) {
+              width: 300px;
+            }
+
+            @media (max-width: 1280px) {
+              width: 250px;
+            }
+
+            @media (max-width: 1080px) {
+              width: 200px;
+            }
+
+            @media (max-width: 768px) {
+              width: 100%;
+            }
+          }
+
+          .left {
+            @media (max-width: 960px) {
+              margin: 0 0 20px 0;
+            }
+
+            @media (max-width: 768px) {
+              order: 1;
+            }
+          }
+
+          .right {
+            @media (max-width: 960px) {
+              flex: 1 0 100%;
+            }
+
+            @media (max-width: 768px) {
+              order: 2;
+            }
           }
 
           .main {
             flex: 1;
-            margin: 0 2em;
+            margin: 0 20px;
+
+            @media (max-width: 960px) {
+              margin: 0 0 0 20px;
+            }
+
+            @media (max-width: 768px) {
+              margin: 0 0 20px 0;
+              order: 0;
+            }
           }
         `}</style>
       </Page>
