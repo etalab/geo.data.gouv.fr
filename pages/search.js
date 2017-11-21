@@ -63,6 +63,8 @@ class SearchPage extends React.Component {
     this.setState(state => ({
       showFacets: false
     }))
+
+    document.body.classList.remove('no-scroll')
   }
 
   getFilterGroups = () => {
