@@ -5,14 +5,20 @@ import { translate } from 'react-i18next'
 
 import licenses from '../../../lib/licenses'
 
-const Footer = ({ metadata, t }) => {
+const Infos = ({ metadata, t }) => {
+  const dataType = t(`common:enums.dataTypes.${metadata.type}`, {
+    defaultValue: metadata.type
+  })
+
   let license
+  let licenseLink
 
   if (metadata.license) {
     const found = licenses[metadata.license]
 
     if (found) {
       license = found.name
+      licenseLink = found.link
     } else {
       license = t('common:enums.unknownData.unknown', {
         context: 'female'
@@ -34,7 +40,12 @@ const Footer = ({ metadata, t }) => {
   return (
     <div>
       <span>
-        {t('license')} : <b>{license}</b>
+        {t('type')} : <b>{dataType}</b>
+      </span>
+      <span>
+        {t('license')} : <b>{licenseLink ? (
+          <a href={licenseLink} rel='noopener noreferrer' target='_blank'>{license}</a>
+        ) : license}</b>
       </span>
       <span>
         {t('lastUpdate')} : <b>{updatedAtLabel}</b>
@@ -44,18 +55,12 @@ const Footer = ({ metadata, t }) => {
         @import 'colors';
 
         div {
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
           font-size: small;
         }
 
         span {
+          display: inline-block;
           margin-right: 1em;
-
-          &:last-child {
-            margin-right: 0;
-          }
         }
 
         b {
@@ -63,12 +68,20 @@ const Footer = ({ metadata, t }) => {
           font-weight: bold;
           color: $blue;
         }
+
+        a {
+          color: inherit;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       `}</style>
     </div>
   )
 }
 
-Footer.propTypes = {
+Infos.propTypes = {
   metadata: PropTypes.shape({
     license: PropTypes.string,
     creationDate: PropTypes.string,
@@ -78,4 +91,4 @@ Footer.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default translate('dataset')(Footer)
+export default translate('dataset')(Infos)

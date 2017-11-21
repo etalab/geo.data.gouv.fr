@@ -12,6 +12,7 @@ import Container from '../components/container'
 import Box from '../components/box'
 
 import Producer from '../components/dataset/producer'
+import Header from '../components/dataset/header'
 
 import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
 
@@ -25,7 +26,9 @@ class DatasetPage extends React.Component {
 
     datagouvPublication: PropTypes.shape({
       remoteId: PropTypes.isRequired
-    })
+    }),
+
+    t: PropTypes.func.isRequired
   }
 
   static async getInitialProps({ query }) {
@@ -72,15 +75,15 @@ class DatasetPage extends React.Component {
           <Container fluid>
             <div className='container'>
               <div className='left'>
-                <Box>
-                  {datagouvPublication && (
-                    datagouvDataset ? <Producer producer={datagouvDataset.organization} /> : t('common:loading')
-                  )}
-                </Box>
+                {datagouvPublication && (
+                  <Box>
+                    {datagouvDataset ? <Producer producer={datagouvDataset.organization} /> : t('common:loading')}
+                  </Box>
+                )}
               </div>
               <div className='main'>
                 <Box>
-                  {metadata.title}
+                  <Header metadata={metadata} />
                 </Box>
               </div>
               <div className='right'>
@@ -93,8 +96,8 @@ class DatasetPage extends React.Component {
         <style jsx>{`
           .container {
             display: flex;
-
             flex-wrap: wrap;
+
             @media (max-width: 768px) {
               flex-direction: column;
             }
@@ -102,6 +105,10 @@ class DatasetPage extends React.Component {
 
           .left, .right {
             width: 350px;
+
+            @media (max-width: 1680px) {
+              width: 320px;
+            }
 
             @media (max-width: 1480px) {
               width: 300px;
@@ -121,10 +128,6 @@ class DatasetPage extends React.Component {
           }
 
           .left {
-            @media (max-width: 960px) {
-              margin: 0 0 20px 0;
-            }
-
             @media (max-width: 768px) {
               order: 1;
             }
@@ -145,11 +148,11 @@ class DatasetPage extends React.Component {
             margin: 0 20px;
 
             @media (max-width: 960px) {
-              margin: 0 0 0 20px;
+              margin-right: 0;
             }
 
             @media (max-width: 768px) {
-              margin: 0 0 20px 0;
+              margin-left: 0;
               order: 0;
             }
           }

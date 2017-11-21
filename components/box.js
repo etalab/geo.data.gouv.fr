@@ -13,6 +13,7 @@ const Box = ({ children }) => (
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
         padding: 1.6em 2em;
         border-radius: 2px;
+        margin-bottom: 20px;
 
         @media (max-width: 551px) {
           padding: 0.6em 1em;

@@ -16,8 +16,19 @@ const Markdown = ({ markdown, renderer }) => {
           word-break: break-word;
         }
 
-        .wrapper :global(pre) {
-          white-space: pre-wrap;
+        .wrapper {
+          :global(pre) {
+            white-space: pre-wrap;
+            font-family: inherit;
+          }
+
+          :global(code) {
+            font-family: inherit;
+          }
+
+          :global(:last-child) {
+            margin-bottom: 0;
+          }
         }
       `}</style>
     </div>

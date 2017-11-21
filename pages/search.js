@@ -158,4 +158,4 @@ class SearchPage extends React.Component {
   }
 }
 
-export default withI18n('search')(SearchPage)
+export default withI18n(['search', 'dataset'])(SearchPage)
