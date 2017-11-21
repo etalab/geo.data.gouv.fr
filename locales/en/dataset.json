@@ -1,5 +1,9 @@
 {
-  "type": "Type",
-  "license": "License",
-  "lastUpdate": "Last update"
+  "labels": {
+    "type": "Type:",
+    "license": "License:",
+    "lastUpdate": "Last update:",
+    "purpose": "Purpose:",
+    "dataOrigin": "Data origin:"
+  }
 }

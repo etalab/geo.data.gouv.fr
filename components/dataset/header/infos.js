@@ -40,15 +40,15 @@ const Infos = ({ metadata, t }) => {
   return (
     <div>
       <span>
-        {t('type')} : <b>{dataType}</b>
+        {t('labels.type')} <b>{dataType}</b>
       </span>
       <span>
-        {t('license')} : <b>{licenseLink ? (
+        {t('labels.license')} <b>{licenseLink ? (
           <a href={licenseLink} rel='noopener noreferrer' target='_blank'>{license}</a>
         ) : license}</b>
       </span>
       <span>
-        {t('lastUpdate')} : <b>{updatedAtLabel}</b>
+        {t('labels.lastUpdate')} <b>{updatedAtLabel}</b>
       </span>
 
       <style jsx>{`

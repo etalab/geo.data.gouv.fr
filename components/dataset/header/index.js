@@ -5,7 +5,7 @@ import { translate } from 'react-i18next'
 import Markdown from '../../markdown'
 import Infos from './infos'
 
-const Header = ({ metadata, i18n: { language } }) => (
+const Header = ({ metadata, i18n: { language }, t }) => (
   <div>
     <section className='row'>
       <div className='left'>
@@ -28,17 +28,31 @@ const Header = ({ metadata, i18n: { language } }) => (
       <Markdown markdown={metadata.description} />
     </section>
 
+    <section>
+      <p>
+        <b>{t('labels.purpose')}</b> {metadata.purpose || t('common:enums.unknownData.notSpecified')}
+      </p>
+      <p>
+        <b>{t('labels.dataOrigin')}</b> {metadata.lineage || t('common:enums.unknownData.notSpecified', {
+          context: 'female'
+        })}
+      </p>
+    </section>
+
     <style jsx>{`
       @import 'colors';
+
+      section:not(:last-child) {
+        border-bottom: 1px solid $lightgrey;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+      }
 
       .row {
         display: flex;
         overflow-wrap: break-word;
         word-wrap: break-word;
         word-break: break-word;
-        border-bottom: 1px solid $lightgrey;
-        margin-bottom: 1em;
-        padding-bottom: 1em;
       }
 
       .left {

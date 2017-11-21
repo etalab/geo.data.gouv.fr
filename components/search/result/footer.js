@@ -34,10 +34,10 @@ const Footer = ({ metadata, t }) => {
   return (
     <div>
       <span>
-        {t('license')} : <b>{license}</b>
+        {t('labels.license')} <b>{license}</b>
       </span>
       <span>
-        {t('lastUpdate')} : <b>{updatedAtLabel}</b>
+        {t('labels.lastUpdate')} <b>{updatedAtLabel}</b>
       </span>
 
       <style jsx>{`
