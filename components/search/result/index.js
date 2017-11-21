@@ -68,6 +68,9 @@ const Result = ({ result: { recordId, metadata }, i18n, t }) => (
 
         .description {
           display: flex;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          word-break: break-word;
 
           h3 {
             flex-grow: 1;
