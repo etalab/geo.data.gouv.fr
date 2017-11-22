@@ -68,17 +68,17 @@
     },
 
     "frequencies": {
-      "continual": "continual",
-      "daily": "daily",
-      "weekly": "weekly",
-      "fortnightly": "fortnightly",
-      "monthly": "monthly",
-      "quarterly": "quarterly",
-      "biannually": "biannually",
-      "annually": "annually",
-      "asNeeded": "as needed",
-      "irregular": "irregular",
-      "notPlanned": "not planned"
+      "continual": "Continual",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "fortnightly": "Fortnightly",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "biannually": "Biannually",
+      "annually": "Annually",
+      "asNeeded": "As needed",
+      "irregular": "Irregular",
+      "notPlanned": "Not planned"
     },
 
     "topicCategories": {

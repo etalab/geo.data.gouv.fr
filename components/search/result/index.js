@@ -102,7 +102,11 @@ Result.propTypes = {
   result: PropTypes.shape({
     recordId: PropTypes.string.isRequired,
     metadata: PropTypes.shape({
-      title: PropTypes.string.isRequired
+      title: PropTypes.string.isRequired,
+      inspireTheme: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        label: PropTypes.object.isRequired
+      })
     }).isRequired
   }).isRequired,
 

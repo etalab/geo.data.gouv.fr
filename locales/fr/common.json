@@ -68,17 +68,17 @@
     },
 
     "frequencies": {
-      "continual": "en continu",
-      "daily": "quotidienne",
-      "weekly": "hebdomadaire",
-      "fortnightly": "bimensuelle",
-      "monthly": "mensuelle",
-      "quarterly": "trimestrielle",
-      "biannually": "semestrielle",
-      "annually": "annuelle",
-      "asNeeded": "ponctuelle",
-      "irregular": "irrégulière",
-      "notPlanned": "non planifiée"
+      "continual": "En continu",
+      "daily": "Quotidienne",
+      "weekly": "Hebdomadaire",
+      "fortnightly": "Bimensuelle",
+      "monthly": "Mensuelle",
+      "quarterly": "Trimestrielle",
+      "biannually": "Semestrielle",
+      "annually": "Annuelle",
+      "asNeeded": "Ponctuelle",
+      "irregular": "Irrégulière",
+      "notPlanned": "Non planifiée"
     },
 
     "topicCategories": {

@@ -27,13 +27,13 @@ const SpatialExtent = ({ extent, scale, resolution, t }) => {
       {(scale || resolution) && (
         <div className='infos'>
           {scale && <div>
-            <b>{t('labels.scale')}</b> 1 / {scale}
+            {t('labels.scale')} <b>1 / {scale}</b>
           </div>}
 
           {resolution && <div>
-            <b>{t('labels.resolution')}</b> {resolution.value} {t(`enums.resolutionUnits.${resolution.unit}`, {
+            {t('labels.resolution')} <b>{resolution.value} {t(`enums.resolutionUnits.${resolution.unit}`, {
               count: resolution.value
-            })}
+            })}</b>
           </div>}
         </div>
       )}
@@ -61,6 +61,10 @@ const SpatialExtent = ({ extent, scale, resolution, t }) => {
 
         .infos {
           margin-top: 1em;
+        }
+
+        b {
+          color: $blue;
         }
       `}</style>
     </div>

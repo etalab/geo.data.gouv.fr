@@ -1,4 +1,6 @@
 {
+  "lifeCycle": "Cycle de vie de la donnée renseigné par le producteur :",
+
   "labels": {
     "type": "Type :",
     "license": "Licence :",
@@ -6,7 +8,9 @@
     "purpose": "Objectif :",
     "dataOrigin": "Origine de la donnée :",
     "scale": "Échelle :",
-    "resolution": "Résolution :"
+    "resolution": "Résolution :",
+    "updateFrequency": "Fréquence de mise à jour :",
+    "creationDate": "Date de création :"
   },
 
   "blocks": {

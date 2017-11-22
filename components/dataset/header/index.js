@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 
 import Markdown from '../../markdown'
 import Infos from './infos'
+import LifeCycle from './life-cycle'
 
 const Header = ({ metadata, i18n: { language }, t }) => (
   <div>
@@ -37,6 +38,10 @@ const Header = ({ metadata, i18n: { language }, t }) => (
           context: 'female'
         })}
       </p>
+    </section>
+
+    <section>
+      <LifeCycle updateFrequency={metadata.updateFrequency} creationDate={metadata.creationDate} />
     </section>
 
     <style jsx>{`
@@ -79,7 +84,14 @@ const Header = ({ metadata, i18n: { language }, t }) => (
 
 Header.propTypes = {
   metadata: PropTypes.shape({
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    inspireTheme: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      uri: PropTypes.string.isRequired,
+      label: PropTypes.object.isRequired
+    }),
+    updateFrequency: PropTypes.string,
+    creationDate: PropTypes.string
   }).isRequired,
 
   i18n: PropTypes.shape({
