@@ -66,21 +66,21 @@
 
   "enums": {
     "dataTypes": {
-      "dataset": "Dataset"
+      "dataset": "dataset"
     },
 
     "frequencies": {
-      "continual": "Continual",
-      "daily": "Daily",
-      "weekly": "Weekly",
-      "fortnightly": "Fortnightly",
-      "monthly": "Monthly",
-      "quarterly": "Quarterly",
-      "biannually": "Biannually",
-      "annually": "Annually",
-      "asNeeded": "As needed",
-      "irregular": "Irregular",
-      "notPlanned": "Not planned"
+      "continual": "continual",
+      "daily": "daily",
+      "weekly": "weekly",
+      "fortnightly": "fortnightly",
+      "monthly": "monthly",
+      "quarterly": "quarterly",
+      "biannually": "biannually",
+      "annually": "annually",
+      "asNeeded": "as needed",
+      "irregular": "irregular",
+      "notPlanned": "not planned"
     },
 
     "topicCategories": {
@@ -106,8 +106,8 @@
     },
 
     "unknownData": {
-      "unknown": "Unknown",
-      "notSpecified": "Not specified"
+      "unknown": "unknown",
+      "notSpecified": "not specified"
     }
   }
 }

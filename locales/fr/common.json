@@ -66,21 +66,21 @@
 
   "enums": {
     "dataTypes": {
-      "dataset": "Jeu de données"
+      "dataset": "jeu de données"
     },
 
     "frequencies": {
-      "continual": "En continu",
-      "daily": "Quotidienne",
-      "weekly": "Hebdomadaire",
-      "fortnightly": "Bimensuelle",
-      "monthly": "Mensuelle",
-      "quarterly": "Trimestrielle",
-      "biannually": "Semestrielle",
-      "annually": "Annuelle",
-      "asNeeded": "Ponctuelle",
-      "irregular": "Irrégulière",
-      "notPlanned": "Non planifiée"
+      "continual": "en continu",
+      "daily": "quotidienne",
+      "weekly": "hebdomadaire",
+      "fortnightly": "bimensuelle",
+      "monthly": "mensuelle",
+      "quarterly": "trimestrielle",
+      "biannually": "semestrielle",
+      "annually": "annuelle",
+      "asNeeded": "ponctuelle",
+      "irregular": "irrégulière",
+      "notPlanned": "non planifiée"
     },
 
     "topicCategories": {
@@ -106,10 +106,10 @@
     },
 
     "unknownData": {
-      "unknown": "Inconnu",
-      "unknown_female": "Inconnue",
-      "notSpecified": "Non renseigné",
-      "notSpecified_female": "Non renseignée"
+      "unknown": "inconnu",
+      "unknown_female": "inconnue",
+      "notSpecified": "non renseigné",
+      "notSpecified_female": "non renseignée"
     }
   }
 }

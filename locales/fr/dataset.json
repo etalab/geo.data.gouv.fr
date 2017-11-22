@@ -46,13 +46,13 @@
     },
 
     "status": {
-      "completed": "Terminée",
-      "historicalArchive": "Archivée",
-      "obsolete": "Obsolète",
-      "onGoing": "En cours",
-      "planned": "Planifiée",
-      "required": "Mise à jour requise",
-      "underDevelopment": "En construction"
+      "completed": "terminée",
+      "historicalArchive": "archivée",
+      "obsolete": "obsolète",
+      "onGoing": "en cours",
+      "planned": "planifiée",
+      "required": "mise à jour requise",
+      "underDevelopment": "en construction"
     }
   }
 }
