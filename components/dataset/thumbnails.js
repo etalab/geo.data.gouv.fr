@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { uniqBy } from 'lodash'
 
 import { GEODATA_API_URL } from '@env'
 
@@ -30,14 +31,16 @@ class Thumbnails extends React.Component {
     const { recordId, thumbnails } = this.props
     const { selected } = this.state
 
+    const thumbs = uniqBy(thumbnails, 'originalUrlHash')
+
     return (
       <div>
         <div className='thumbnail'>
           <img src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${selected.originalUrlHash}`} alt='' />
         </div>
-        {thumbnails.length > 1 && (
+        {thumbs.length > 1 && (
           <div className='list'>
-            {thumbnails.map(thumbnail => (
+            {thumbs.map(thumbnail => (
               <img
                 key={thumbnail.originalUrlHash}
                 src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
