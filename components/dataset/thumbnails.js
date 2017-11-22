@@ -33,11 +33,7 @@ class Thumbnails extends React.Component {
     return (
       <div>
         <div className='thumbnail'>
-          <img
-            src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
-            className='thumbnail'
-            alt=''
-          />
+          <img src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${selected.originalUrlHash}`} alt='' />
         </div>
         {thumbnails.length > 1 && (
           <div className='list'>
@@ -64,6 +60,9 @@ class Thumbnails extends React.Component {
 
             img {
               display: block;
+              align-self: center;
+              max-width: 100%;
+              max-height: 100%;
             }
           }
 
