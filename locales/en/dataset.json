@@ -23,8 +23,8 @@
 
   "downloads": {
     "noDownloads": "No data is available for download.",
-    "vectorData": "Vector data",
-    "otherData": "Other data",
+    "vectorData": "Vector data:",
+    "otherData": "Other data:",
     "unavailable": "Unavailable",
     "openPreview": "Preview"
   },

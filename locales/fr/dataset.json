@@ -23,8 +23,8 @@
 
   "downloads": {
     "noDownloads": "Aucune donnée n’est téléchargeable.",
-    "vectorData": "Données vectorielles",
-    "otherData": "Autres données",
+    "vectorData": "Données vectorielles :",
+    "otherData": "Autres données :",
     "unavailable": "Non disponible",
     "openPreview": "Visualiser"
   },

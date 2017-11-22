@@ -31,7 +31,7 @@ class Downloads extends React.Component {
         <div>
           {vectorDistributions.length > 0 && (
             <section>
-              <h4>{t('downloads.vectorData')}</h4>
+              <h5>{t('downloads.vectorData')}</h5>
               {vectorDistributions.map(distribution => (
                 <div className='distribution' key={distribution._id}>
                   <DatasetDownload distribution={distribution} />
@@ -41,7 +41,7 @@ class Downloads extends React.Component {
           )}
           {otherDistributions.length > 0 && (
             <section>
-              <h4>{t('downloads.otherData')}</h4>
+              <h5>{t('downloads.otherData')}</h5>
               <ul>
                 {otherDistributions.map(distribution => (
                   <li key={distribution._id}>
@@ -64,10 +64,6 @@ class Downloads extends React.Component {
             &:last-child {
               margin-bottom: 0;
             }
-          }
-
-          h4 {
-            margin: 0 0 1rem;
           }
 
           ul {
