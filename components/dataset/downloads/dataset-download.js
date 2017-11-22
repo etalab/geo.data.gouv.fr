@@ -3,7 +3,7 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import strRightBack from 'underscore.string/strRightBack'
 
-import DownloadIcon from 'react-icons/lib/fa/long-arrow-down'
+import DownloadIcon from 'react-icons/lib/fa/download'
 import PreviewIcon from 'react-icons/lib/fa/eye'
 
 import formats from '../../../lib/formats'
