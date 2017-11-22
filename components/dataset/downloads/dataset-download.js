@@ -52,7 +52,6 @@ export const DatasetDownload = ({ distribution, t }) => {
 
         .container {
           border-left: 2px solid $blue;
-          margin-bottom: 1em;
           padding-left: 0.5em;
         }
 

@@ -33,10 +33,12 @@ class Downloads extends React.Component {
             <section>
               <h4>{t('downloads.vectorData')}</h4>
               {vectorDistributions.map(distribution => (
-                <DatasetDownload
-                  key={distribution._id}
-                  distribution={distribution}
-                />
+                <div className='distribution'>
+                  <DatasetDownload
+                    key={distribution._id}
+                    distribution={distribution}
+                  />
+                </div>
               ))}
             </section>
           )}
@@ -75,6 +77,14 @@ class Downloads extends React.Component {
             margin: 0;
             padding: 0;
             list-style-position: inside;
+          }
+
+          .distribution {
+            margin-bottom: 1em;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
           }
         `}</style>
       </div>
