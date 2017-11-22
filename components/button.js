@@ -1,48 +1,65 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, type, name, onClick, disabled, size }) => (
-  <button type={type} name={name} onClick={onClick} disabled={disabled} className={size}>
-    {children}
+const Button = ({ children, type, size, href, ...props }) => {
+  const buttonProps = href ? {} : props
 
-    <style jsx>{`
-      @import 'colors';
+  return (
+    <button type={type} className={size} {...buttonProps}>
+      {href ? (
+        <a href={href} {...props}>{children}</a>
+      ) : children}
 
-      button {
-        display: block;
-        width: 100%;
-        background-color: $blue;
-        border: 0 none;
-        color: $white;
-        border-radius: 2px;
-        padding: 6px 8px;
-        cursor: pointer;
+      <style jsx>{`
+        @import 'colors';
 
-        &:hover {
-          background-color: $highlight-blue;
+        button {
+          display: block;
+          width: 100%;
+          background-color: $blue;
+          border: 0 none;
+          color: $white;
+          border-radius: 2px;
+          padding: 6px 8px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken($blue, 7%);
+          }
+
+          &:disabled {
+            background-color: $lightgrey;
+            color: $grey;
+            cursor: not-allowed;
+          }
         }
 
-        &:disabled {
-          background-color: $lightgrey;
-          color: $grey;
-          cursor: not-allowed;
+        a {
+          display: block;
+          margin: -6px -8px;
+          padding: 6px 8px;
+          color: inherit;
         }
-      }
 
-      .large {
-        font-size: 1.2em;
-        padding: 12px 16px;
-      }
-    `}</style>
-  </button>
-)
+        .large {
+          font-size: 1.2em;
+          padding: 12px 16px;
+
+          a {
+            display: block;
+            margin: -12px -16px;
+            padding: 12px 16px;
+          }
+        }
+      `}</style>
+    </button>
+  )
+}
 
 Button.propTypes = {
   children: PropTypes.node,
   type: PropTypes.string,
-  name: PropTypes.string,
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
+  href: PropTypes.string,
   size: PropTypes.oneOf([
     'large'
   ])
@@ -50,7 +67,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  disabled: false
+  href: null
 }
 
 export default Button
