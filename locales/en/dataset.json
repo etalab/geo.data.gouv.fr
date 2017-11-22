@@ -9,6 +9,7 @@
   "labels": {
     "type": "Type:",
     "license": "License:",
+    "category": "Category:",
     "lastUpdate": "Last update:",
     "purpose": "Purpose:",
     "dataOrigin": "Data origin:",

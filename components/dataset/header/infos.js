@@ -30,6 +30,10 @@ const Infos = ({ metadata, t }) => {
     })
   }
 
+  const category = t([`common:enums.topicCategories.${metadata.topicCategory}`, 'common:enums.unknownData.notSpecified'], {
+    context: 'female'
+  })
+
   const updatedAt = metadata.revisionDate || metadata.creationDate
   const updatedAtLabel = updatedAt
     ? moment(updatedAt).fromNow()
@@ -46,6 +50,9 @@ const Infos = ({ metadata, t }) => {
         {t('labels.license')} <b>{licenseLink ? (
           <a href={licenseLink} rel='noopener noreferrer' target='_blank'>{license}</a>
         ) : license}</b>
+      </span>
+      <span>
+        {t('labels.category')} <b>{category}</b>
       </span>
       <span>
         {t('labels.lastUpdate')} <b>{updatedAtLabel}</b>
@@ -84,6 +91,7 @@ const Infos = ({ metadata, t }) => {
 Infos.propTypes = {
   metadata: PropTypes.shape({
     license: PropTypes.string,
+    topicCategory: PropTypes.string,
     creationDate: PropTypes.string,
     revisionDate: PropTypes.string
   }).isRequired,
