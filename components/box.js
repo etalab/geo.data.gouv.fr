@@ -30,7 +30,7 @@ const Box = ({ children, title }) => (
       }
 
       .inner {
-        padding: 1.6em 1.7em;
+        padding: 1.5em 1.7em;
 
         @media (max-width: 551px) {
           padding: 1em;
