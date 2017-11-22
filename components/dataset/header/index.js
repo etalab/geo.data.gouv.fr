@@ -49,7 +49,11 @@ const Header = ({ metadata, i18n: { language }, t }) => (
     </section>
 
     <section>
-      <LifeCycle updateFrequency={metadata.updateFrequency} creationDate={metadata.creationDate} />
+      <LifeCycle
+        updateFrequency={metadata.updateFrequency}
+        creationDate={metadata.creationDate}
+        status={metadata.status}
+      />
     </section>
 
     <style jsx>{`

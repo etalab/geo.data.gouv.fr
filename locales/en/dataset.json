@@ -15,7 +15,8 @@
     "scale": "Scale:",
     "resolution": "Resolution:",
     "updateFrequency": "Update frequency:",
-    "creationDate": "Creation date:"
+    "creationDate": "Creation date:",
+    "status": "State:"
   },
 
   "blocks": {
@@ -42,6 +43,16 @@
       "radian_plural": "radians",
       "degree": "degree",
       "degree_plural": "degrees"
+    },
+
+    "status": {
+      "completed": "Completed",
+      "historicalArchive": "Archived",
+      "obsolete": "Obsolete",
+      "onGoing": "On going",
+      "planned": "Planned",
+      "required": "Update required",
+      "underDevelopment": "Under development"
     }
   }
 }
