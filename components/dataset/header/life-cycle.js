@@ -16,10 +16,10 @@ const LifeCycle = ({ updateFrequency, creationDate, t }) => {
     <div>
       <h5>{t('lifeCycle')}</h5>
       <div>
-        {t('labels.updateFrequency')} <b>{frequency}</b>
+        {t('labels.creationDate')} <b>{creation}</b>
       </div>
       <div>
-        {t('labels.creationDate')} <b>{creation}</b>
+        {t('labels.updateFrequency')} <b>{frequency}</b>
       </div>
 
       <style jsx>{`
