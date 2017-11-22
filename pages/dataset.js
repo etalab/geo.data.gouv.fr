@@ -15,6 +15,7 @@ import Producer from '../components/dataset/producer'
 
 import Header from '../components/dataset/header'
 import Downloads from '../components/dataset/downloads'
+import Organizations from '../components/dataset/organizations'
 
 import Thumbnails from '../components/dataset/thumbnails'
 
@@ -74,7 +75,7 @@ class DatasetPage extends React.Component {
   }
 
   render() {
-    const { dataset: { recordId, metadata, dataset }, datagouvPublication, t } = this.props
+    const { dataset: { recordId, metadata, dataset, organizations }, datagouvPublication, t } = this.props
     const { datagouvDataset } = this.state
 
     return (
@@ -88,6 +89,11 @@ class DatasetPage extends React.Component {
                 {datagouvPublication && (
                   <Box>
                     {datagouvDataset ? <Producer producer={datagouvDataset.organization} /> : t('common:loading')}
+                  </Box>
+                )}
+                {organizations.length > 0 && (
+                  <Box title={t('blocks.organizations')}>
+                    <Organizations organizations={organizations} />
                   </Box>
                 )}
               </div>

@@ -9,7 +9,8 @@
 
   "blocks": {
     "thumbnails": "Aperçu des données",
-    "downloads": "Téléchargements"
+    "downloads": "Téléchargements",
+    "organizations": "Organisations"
   },
 
   "downloads": {
