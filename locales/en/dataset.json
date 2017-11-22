@@ -5,5 +5,9 @@
     "lastUpdate": "Last update:",
     "purpose": "Purpose:",
     "dataOrigin": "Data origin:"
+  },
+
+  "blocks": {
+    "thumbnails": "Data preview"
   }
 }

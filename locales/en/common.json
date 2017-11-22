@@ -59,18 +59,12 @@
 
     "SearchInput": {
       "placeholder": "Search…"
-    },
-
-    "DatasetInfo": {
-      "type": "Type",
-      "license": "License",
-      "lastUpdate": "Last update"
     }
   },
 
   "enums": {
     "dataTypes": {
-      "dataset": "dataset"
+      "dataset": "Dataset"
     },
 
     "frequencies": {

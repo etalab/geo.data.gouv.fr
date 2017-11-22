@@ -13,14 +13,17 @@ import Box from '../components/box'
 
 import Producer from '../components/dataset/producer'
 import Header from '../components/dataset/header'
+import Thumbnails from '../components/dataset/thumbnails'
 
 import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
 
 class DatasetPage extends React.Component {
   static propTypes = {
     dataset: PropTypes.shape({
+      recordId: PropTypes.string.isRequired,
       metadata: PropTypes.shape({
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
+        thumbnails: PropTypes.array
       }).isRequired
     }).isRequired,
 
@@ -64,7 +67,7 @@ class DatasetPage extends React.Component {
   }
 
   render() {
-    const { dataset: { metadata }, datagouvPublication, t } = this.props
+    const { dataset: { recordId, metadata }, datagouvPublication, t } = this.props
     const { datagouvDataset } = this.state
 
     return (
@@ -87,7 +90,11 @@ class DatasetPage extends React.Component {
                 </Box>
               </div>
               <div className='right'>
-                <Box />
+                {metadata.thumbnails && metadata.thumbnails.length > 0 && (
+                  <Box title={t('blocks.thumbnails')}>
+                    <Thumbnails recordId={recordId} thumbnails={metadata.thumbnails} />
+                  </Box>
+                )}
               </div>
             </div>
           </Container>
