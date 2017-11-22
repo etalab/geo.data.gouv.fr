@@ -30,6 +30,14 @@ export const Page = ({ children }) => (
     <style jsx global>{`
       @import 'colors';
 
+      a {
+        color: $blue;
+
+        &:hover {
+          color: darken($blue, 10%);
+        }
+      }
+
       body.no-scroll {
         @media (max-width: 960px) {
           overflow: hidden;

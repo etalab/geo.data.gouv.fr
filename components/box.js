@@ -20,7 +20,7 @@ const Box = ({ children, title }) => (
       }
 
       h3 {
-        background: darken($blue, 7%);
+        background: $blue;
         font-size: 1.2em;
         color: $white;
         margin: 0;

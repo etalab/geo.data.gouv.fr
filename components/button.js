@@ -24,7 +24,7 @@ const Button = ({ children, type, size, href, ...props }) => {
           cursor: pointer;
 
           &:hover {
-            background-color: darken($blue, 7%);
+            background-color: darken($blue, 10%);
           }
 
           &:disabled {
