@@ -39,6 +39,10 @@ const Button = ({ children, type, size, href, ...props }) => {
           margin: -6px -8px;
           padding: 6px 8px;
           color: inherit;
+
+          &:hover {
+            color: inherit;
+          }
         }
 
         .large {

@@ -20,18 +20,17 @@ const Box = ({ children, title }) => (
       }
 
       h3 {
-        background: $blue;
-        font-size: 1.2em;
-        color: $white;
+        background-color: $lightgrey;
+        font-size: 1.1em;
         margin: 0;
-        padding: 0.6em 1em;
+        padding: 0.6em 0.75em 0.55em;
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
       .inner {
-        padding: 1.6em 2em;
+        padding: 1.6em 1.7em;
 
         @media (max-width: 551px) {
           padding: 1em;
