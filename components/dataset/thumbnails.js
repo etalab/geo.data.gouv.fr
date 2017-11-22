@@ -32,11 +32,13 @@ class Thumbnails extends React.Component {
 
     return (
       <div>
-        <img
-          src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
-          className='thumbnail'
-          alt=''
-        />
+        <div className='thumbnail'>
+          <img
+            src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${selected.originalUrlHash}`}
+            className='thumbnail'
+            alt=''
+          />
+        </div>
         {thumbnails.length > 1 && (
           <div className='list'>
             {thumbnails.map(thumbnail => (
@@ -55,10 +57,14 @@ class Thumbnails extends React.Component {
           @import 'colors';
 
           .thumbnail {
-            display: block;
-            margin: auto;
-            max-width: 100%;
-            max-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 180px;
+
+            img {
+              display: block;
+            }
           }
 
           .list {
