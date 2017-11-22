@@ -8,6 +8,15 @@
   },
 
   "blocks": {
-    "thumbnails": "Aperçu des données"
+    "thumbnails": "Aperçu des données",
+    "downloads": "Téléchargements"
+  },
+
+  "downloads": {
+    "noDownloads": "Aucune donnée n’est téléchargeable.",
+    "vectorData": "Données vectorielles",
+    "otherData": "Autres données",
+    "unavailable": "Non disponible",
+    "openPreview": "Visualiser"
   }
 }

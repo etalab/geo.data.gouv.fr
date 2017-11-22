@@ -8,6 +8,15 @@
   },
 
   "blocks": {
-    "thumbnails": "Data preview"
+    "thumbnails": "Data preview",
+    "downloads": "Downloads"
+  },
+
+  "downloads": {
+    "noDownloads": "No data is available for download.",
+    "vectorData": "Vector data",
+    "otherData": "Other data",
+    "unavailable": "Unavailable",
+    "openPreview": "Preview"
   }
 }

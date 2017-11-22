@@ -12,7 +12,10 @@ import Container from '../components/container'
 import Box from '../components/box'
 
 import Producer from '../components/dataset/producer'
+
 import Header from '../components/dataset/header'
+import Downloads from '../components/dataset/downloads'
+
 import Thumbnails from '../components/dataset/thumbnails'
 
 import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
@@ -24,6 +27,10 @@ class DatasetPage extends React.Component {
       metadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
         thumbnails: PropTypes.array
+      }).isRequired,
+
+      dataset: PropTypes.shape({
+        distributions: PropTypes.array.isRequired
       }).isRequired
     }).isRequired,
 
@@ -67,7 +74,7 @@ class DatasetPage extends React.Component {
   }
 
   render() {
-    const { dataset: { recordId, metadata }, datagouvPublication, t } = this.props
+    const { dataset: { recordId, metadata, dataset }, datagouvPublication, t } = this.props
     const { datagouvDataset } = this.state
 
     return (
@@ -87,6 +94,9 @@ class DatasetPage extends React.Component {
               <div className='main'>
                 <Box>
                   <Header metadata={metadata} />
+                </Box>
+                <Box title={t('blocks.downloads')}>
+                  <Downloads distributions={dataset.distributions} />
                 </Box>
               </div>
               <div className='right'>
