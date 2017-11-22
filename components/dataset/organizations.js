@@ -6,8 +6,8 @@ import Facet from '../facet'
 const Oraganizations = ({ organizations }) => (
   <div>
     {organizations.map(organization => (
-      <span >
-        <Facet key={organization} facet={{
+      <span key={organization}>
+        <Facet facet={{
           name: 'organization',
           value: organization
         }} />

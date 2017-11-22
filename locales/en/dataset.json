@@ -8,9 +8,11 @@
   },
 
   "blocks": {
+    "producer": "Producer",
     "thumbnails": "Data preview",
     "downloads": "Downloads",
-    "organizations": "Organizations"
+    "organizations": "Organizations",
+    "spatialExtent": "Spatial extent"
   },
 
   "downloads": {

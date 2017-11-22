@@ -18,6 +18,7 @@ import Downloads from '../components/dataset/downloads'
 import Organizations from '../components/dataset/organizations'
 
 import Thumbnails from '../components/dataset/thumbnails'
+import SpatialExtent from '../components/dataset/spatial-extent'
 
 import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
 
@@ -27,8 +28,11 @@ class DatasetPage extends React.Component {
       recordId: PropTypes.string.isRequired,
       metadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        thumbnails: PropTypes.array
+        thumbnails: PropTypes.array,
+        spatialExtent: PropTypes.object
       }).isRequired,
+
+      organizations: PropTypes.array.isRequired,
 
       dataset: PropTypes.shape({
         distributions: PropTypes.array.isRequired
@@ -87,7 +91,7 @@ class DatasetPage extends React.Component {
             <div className='container'>
               <div className='left'>
                 {datagouvPublication && (
-                  <Box>
+                  <Box title={t('blocks.producer')}>
                     {datagouvDataset ? <Producer producer={datagouvDataset.organization} /> : t('common:loading')}
                   </Box>
                 )}
@@ -111,6 +115,11 @@ class DatasetPage extends React.Component {
                     <Thumbnails recordId={recordId} thumbnails={metadata.thumbnails} />
                   </Box>
                 )}
+                {metadata.spatialExtent && (
+                  <Box title={t('blocks.spatialExtent')}>
+                    <SpatialExtent extent={metadata.spatialExtent} />
+                  </Box>
+                )}
               </div>
             </div>
           </Container>
@@ -127,7 +136,7 @@ class DatasetPage extends React.Component {
           }
 
           .left, .right {
-            width: 350px;
+            width: 360px;
 
             @media (max-width: 1680px) {
               width: 320px;
