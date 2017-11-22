@@ -21,6 +21,7 @@ const Box = ({ children, title }) => (
 
       h3 {
         background: darken($blue, 7%);
+        font-size: 1.2em;
         color: $white;
         margin: 0;
         padding: 0.6em 1em;
