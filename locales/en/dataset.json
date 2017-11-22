@@ -4,7 +4,9 @@
     "license": "License:",
     "lastUpdate": "Last update:",
     "purpose": "Purpose:",
-    "dataOrigin": "Data origin:"
+    "dataOrigin": "Data origin:",
+    "scale": "Scale:",
+    "resolution": "Resolution:"
   },
 
   "blocks": {
@@ -21,5 +23,16 @@
     "otherData": "Other data",
     "unavailable": "Unavailable",
     "openPreview": "Preview"
+  },
+
+  "enums": {
+    "resolutionUnits": {
+      "meter": "meter",
+      "meter_plural": "meters",
+      "radian": "radian",
+      "radian_plural": "radians",
+      "degree": "degree",
+      "degree_plural": "degrees"
+    }
   }
 }

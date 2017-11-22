@@ -29,7 +29,9 @@ class DatasetPage extends React.Component {
       metadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
         thumbnails: PropTypes.array,
-        spatialExtent: PropTypes.object
+        spatialExtent: PropTypes.object,
+        equivalentScaleDenominator: PropTypes.number,
+        spatialResolution: PropTypes.object
       }).isRequired,
 
       organizations: PropTypes.array.isRequired,
@@ -117,7 +119,11 @@ class DatasetPage extends React.Component {
                 )}
                 {metadata.spatialExtent && (
                   <Box title={t('blocks.spatialExtent')}>
-                    <SpatialExtent extent={metadata.spatialExtent} />
+                    <SpatialExtent
+                      extent={metadata.spatialExtent}
+                      scale={metadata.equivalentScaleDenominator}
+                      resolution={metadata.spatialResolution}
+                    />
                   </Box>
                 )}
               </div>
