@@ -70,10 +70,16 @@ export const DatasetDownload = ({ distribution, t }) => {
         .container {
           display: flex;
           flex-wrap: wrap;
+
+          @media (max-width: 551px) {
+            border-left: 2px solid $blue;
+            padding-left: 5px;
+          }
         }
 
         .main {
           display: flex;
+          align-items: center;
         }
 
         .download-icon {
@@ -81,6 +87,10 @@ export const DatasetDownload = ({ distribution, t }) => {
           color: $blue;
           opacity: 0.2;
           margin-right: 10px;
+
+          @media (max-width: 551px) {
+            display: none;
+          }
         }
 
         .fail-icon {
@@ -88,12 +98,16 @@ export const DatasetDownload = ({ distribution, t }) => {
           color: $red;
           opacity: 0.2;
           margin-right: 10px;
-          margin-top: -12px;
+          margin-top: -10px;
+
+          @media (max-width: 551px) {
+            display: none;
+          }
         }
 
         b {
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 7px;
           overflow-wrap: break-word;
           word-wrap: break-word;
           word-break: break-word;
@@ -101,14 +115,19 @@ export const DatasetDownload = ({ distribution, t }) => {
 
         .download {
           display: inline-block;
-          margin: 5px 5px 0 0;
+          margin: 0 5px 5px 0;
         }
 
         .preview {
-          margin: 5px 0 0 auto;
+          margin-left: auto;
 
           @media (max-width: 1180px) {
             flex: 1 1 100%;
+            padding-left: 72px;
+          }
+
+          @media (max-width: 551px) {
+            padding-left: 0;
           }
         }
       `}</style>
