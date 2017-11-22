@@ -5,6 +5,7 @@ import strRightBack from 'underscore.string/strRightBack'
 
 import DownloadIcon from 'react-icons/lib/fa/download'
 import PreviewIcon from 'react-icons/lib/fa/eye'
+import FailIcon from 'react-icons/lib/fa/close'
 
 import formats from '../../../lib/formats'
 
@@ -27,52 +28,87 @@ export const DatasetDownload = ({ distribution, t }) => {
   const name = layerName || distribution.typeName
 
   return (
-    <div className='container'>
-      <h5>{name}</h5>
+    <div>
       {distribution.available ? (
-        <div className='distributions'>
-          {formats.map(format => (
-            <div key={format.label}>
-              <Button href={`${link}?format=${format.format}&projection=${format.projection}`} download>
-                <DownloadIcon /> {format.label}
-              </Button>
+        <div className='container'>
+          <div className='main'>
+            <div className='download-icon'>
+              <DownloadIcon />
             </div>
-          ))}
-
+            <div>
+              <b>{name}</b>
+              {formats.map(format => (
+                <div key={format.label} className='download'>
+                  <Button href={`${link}?format=${format.format}&projection=${format.projection}`} download>
+                    {format.label}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className='preview'>
             <Button>
               <PreviewIcon style={{ verticalAlign: -2 }} /> {t('downloads.openPreview')}
             </Button>
           </div>
         </div>
-      ) : t('downloads.unavailable')}
+      ) : (
+        <div className='container'>
+          <div className='fail-icon'>
+            <FailIcon />
+          </div>
+          <div>
+            <b>{name}</b>
+            {t('downloads.unavailable')}
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         @import 'colors';
 
         .container {
-          border-left: 2px solid $blue;
-          padding-left: 0.5em;
-        }
-
-        h5 {
-          margin: 0;
-        }
-
-        .distributions {
           display: flex;
           flex-wrap: wrap;
+        }
 
-          div {
-            margin: 5px 5px 0 0;
-          }
+        .main {
+          display: flex;
+        }
 
-          .preview {
-            margin: 5px 0 0 auto;
+        .download-icon {
+          font-size: 4.51em;
+          color: $blue;
+          opacity: 0.2;
+          margin-right: 10px;
+        }
 
-            @media (max-width: 768px) {
-              flex: 1 1 100%;
-            }
+        .fail-icon {
+          font-size: 4.51em;
+          color: $red;
+          opacity: 0.2;
+          margin-right: 10px;
+          margin-top: -12px;
+        }
+
+        b {
+          display: block;
+          margin-bottom: 2px;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          word-break: break-word;
+        }
+
+        .download {
+          display: inline-block;
+          margin: 5px 5px 0 0;
+        }
+
+        .preview {
+          margin: 5px 0 0 auto;
+
+          @media (max-width: 1180px) {
+            flex: 1 1 100%;
           }
         }
       `}</style>
