@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
-import Markdown from '../../markdown'
+import MarkdownPreview from '../../markdown-preview'
 import Infos from './infos'
 import LifeCycle from './life-cycle'
 
@@ -26,7 +26,7 @@ const Header = ({ metadata, i18n: { language }, t }) => (
     </section>
 
     <section>
-      <Markdown markdown={metadata.description} />
+      <MarkdownPreview markdown={metadata.description} />
     </section>
 
     <section>

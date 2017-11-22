@@ -1,5 +1,7 @@
 {
   "loading": "Loading…",
+  "displayMore": "Display more…",
+  "displayLess": "Display less",
 
   "errors": {
     "title": "Error {{code}}",

@@ -1,5 +1,7 @@
 {
   "loading": "Chargement…",
+  "displayMore": "Afficher la suite…",
+  "displayLess": "Réduire",
 
   "errors": {
     "title": "Erreur {{code}}",
