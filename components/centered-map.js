@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Head from 'next/head'
 import { Map, TileLayer, GeoJSON } from 'react-leaflet'
 
 import leafletStyle from 'leaflet/dist/leaflet.css'
@@ -72,8 +73,10 @@ class CenteredMap extends React.Component {
             data={vectors}
           />
         </Map>
-        <style jsx global>{leafletStyle}</style>
 
+        <Head>
+          <style dangerouslySetInnerHTML={{ __html: leafletStyle }} />
+        </Head>
         <style jsx>{`
           div {
             height: 100%;
