@@ -5,9 +5,17 @@ import { translate } from 'react-i18next'
 import MarkdownPreview from '../../markdown-preview'
 import Infos from './infos'
 import LifeCycle from './life-cycle'
+import Warning from './warning'
+
+const shouldWarn = status => [
+  'obsolete',
+  'underDevelopment'
+].includes(status)
 
 const Header = ({ metadata, i18n: { language }, t }) => (
   <div>
+    {shouldWarn(metadata.status) && <Warning status={metadata.status} />}
+
     <section className='row'>
       <div className='left'>
         <h1>{metadata.title}</h1>
@@ -67,7 +75,7 @@ const Header = ({ metadata, i18n: { language }, t }) => (
       h1 {
         font-size: 1.8rem;
         font-weight: 500;
-        margin-bottom: 0.6rem;
+        margin: 0 0 0.6rem 0;
       }
 
       a {
@@ -91,7 +99,8 @@ Header.propTypes = {
       label: PropTypes.object.isRequired
     }),
     updateFrequency: PropTypes.string,
-    creationDate: PropTypes.string
+    creationDate: PropTypes.string,
+    status: PropTypes.string
   }).isRequired,
 
   i18n: PropTypes.shape({

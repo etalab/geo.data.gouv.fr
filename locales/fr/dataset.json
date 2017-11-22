@@ -1,6 +1,11 @@
 {
   "lifeCycle": "Cycle de vie de la donnée renseigné par le producteur :",
 
+  "warnings": {
+    "obsolete": "Attention, ce jeu de données est obsolète, les données peuvent être incomplètes ou ne plus être à jour.",
+    "underDevelopment": "Attention, ce jeu de données est en développement, certaines données peuvent être erronées ou vont subir des changements."
+  },
+
   "labels": {
     "type": "Type :",
     "license": "Licence :",

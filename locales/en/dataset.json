@@ -1,6 +1,11 @@
 {
   "lifeCycle": "Data life cycle, according to producer:",
 
+  "warnings": {
+    "obsolete": "Beware, this dataset is obsolete, the data can be incomplete or outdated.",
+    "underDevelopment": "Beware, this dataset is under development, the data can be incorrect and will certainly be updated in the near future."
+  },
+
   "labels": {
     "type": "Type:",
     "license": "License:",
