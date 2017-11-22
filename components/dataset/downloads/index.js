@@ -33,11 +33,8 @@ class Downloads extends React.Component {
             <section>
               <h4>{t('downloads.vectorData')}</h4>
               {vectorDistributions.map(distribution => (
-                <div className='distribution'>
-                  <DatasetDownload
-                    key={distribution._id}
-                    distribution={distribution}
-                  />
+                <div className='distribution' key={distribution._id}>
+                  <DatasetDownload distribution={distribution} />
                 </div>
               ))}
             </section>
