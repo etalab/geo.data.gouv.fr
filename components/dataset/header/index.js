@@ -84,7 +84,9 @@ Header.propTypes = {
 
   i18n: PropTypes.shape({
     language: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+
+  t: PropTypes.func.isRequired
 }
 
 export default translate('dataset')(Header)
