@@ -44,10 +44,10 @@ const SpatialExtent = ({ extent, scale, resolution, t }) => {
         .map {
           width: 100%;
           position: relative;
-          height: 270px;
+          height: 250px;
 
           @media (max-width: 1480px) {
-            height: 250px;
+            height: 230px;
           }
 
           @media (max-width: 1080px) {
