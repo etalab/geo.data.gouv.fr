@@ -69,7 +69,8 @@
 
   "enums": {
     "dataTypes": {
-      "dataset": "jeu de données"
+      "dataset": "jeu de données",
+      "nonGeographicDataset": "jeu de données non-géographique"
     },
 
     "frequencies": {

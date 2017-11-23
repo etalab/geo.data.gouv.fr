@@ -69,7 +69,8 @@
 
   "enums": {
     "dataTypes": {
-      "dataset": "dataset"
+      "dataset": "dataset",
+      "nonGeographicDataset": "non-geographic dataset"
     },
 
     "frequencies": {
