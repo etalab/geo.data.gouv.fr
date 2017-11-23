@@ -26,7 +26,7 @@ class ErrorPage extends React.Component {
   render() {
     const { code, i18n, t } = this.props
 
-    const message = i18n.exists(`errors.${code}`) ? t(`errors.${code}`) : t('errors.unknown')
+    const message = i18n.exists(`errors.http.${code}`) ? t(`errors.http.${code}`) : t('errors.unknown')
 
     return (
       <Page>

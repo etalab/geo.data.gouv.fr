@@ -5,8 +5,11 @@
 
   "errors": {
     "title": "Error {{code}}",
-    "404": "This page could not be found",
-    "unknown": "An unexpected error has occurred"
+    "unknown": "An unexpected error has occurred",
+
+    "http": {
+      "404": "This page could not be found"
+    }
   },
 
   "facets": {

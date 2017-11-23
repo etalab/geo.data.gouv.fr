@@ -5,8 +5,11 @@
 
   "errors": {
     "title": "Erreur {{code}}",
-    "404": "La page demandée n’a pas pu être trouvée",
-    "unknown": "Une erreur imprévue s'est produite"
+    "unknown": "Une erreur imprévue s'est produite",
+
+    "http": {
+      "404": "La page demandée n’a pas pu être trouvée"
+    }
   },
 
   "facets": {

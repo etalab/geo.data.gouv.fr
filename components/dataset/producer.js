@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Producer = ({ producer }) => (
+import withFetch from '../hoc/with-fetch'
+
+const Producer = ({ data: { logo, name } }) => (
   <div>
-    <img src={producer.logo} alt='' />
-    <h4>{producer.name}</h4>
+    <img src={logo} alt='' />
+    <h4>{name}</h4>
 
     <style jsx>{`
       div {
@@ -23,10 +25,10 @@ const Producer = ({ producer }) => (
 )
 
 Producer.propTypes = {
-  producer: PropTypes.shape({
+  data: PropTypes.shape({
     name: PropTypes.string.isRequired,
     logo: PropTypes.string.isRequired
   }).isRequired
 }
 
-export default Producer
+export default withFetch()(Producer)
