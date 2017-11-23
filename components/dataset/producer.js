@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import withFetch from '../hoc/with-fetch'
 
-const Producer = ({ data: { logo, name } }) => (
+const Producer = ({ producer }) => (
   <div>
-    <img src={logo} alt='' />
-    <h4>{name}</h4>
+    <img src={producer.logo} alt='' />
+    <h4>{producer.name}</h4>
 
     <style jsx>{`
       div {
@@ -25,10 +25,12 @@ const Producer = ({ data: { logo, name } }) => (
 )
 
 Producer.propTypes = {
-  data: PropTypes.shape({
+  producer: PropTypes.shape({
     name: PropTypes.string.isRequired,
     logo: PropTypes.string.isRequired
   }).isRequired
 }
 
-export default withFetch()(Producer)
+export default withFetch(data => ({
+  producer: data.organization
+}))(Producer)

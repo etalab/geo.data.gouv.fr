@@ -2,20 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
-export default () => Component => {
+export default (mapStateWithProps) => Component => {
+  mapStateWithProps = mapStateWithProps || (state => state)
+
   const Extended = translate()(class extends React.Component {
     static propTypes = {
       promise: PropTypes.instanceOf(Promise),
-      dataQuery: PropTypes.func,
 
       i18n: PropTypes.shape({
         exists: PropTypes.func.isRequired
       }).isRequired,
       t: PropTypes.func.isRequired
-    }
-
-    static defaultProps = {
-      dataQuery: data => data
     }
 
     state = {
@@ -25,14 +22,14 @@ export default () => Component => {
     }
 
     async componentWillReceiveProps(newProps) {
-      const { promise, dataQuery } = newProps
+      const { promise } = newProps
 
       if (promise === this.props.promise) {
         return
       }
 
       try {
-        const data = dataQuery(await promise)
+        const data = mapStateWithProps(await promise)
 
         this.setState(() => ({
           data,
@@ -73,7 +70,7 @@ export default () => Component => {
       }
 
       return (
-        <Component data={data} {...props} />
+        <Component {...data} {...props} />
       )
     }
   })

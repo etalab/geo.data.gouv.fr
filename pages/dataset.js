@@ -94,7 +94,7 @@ class DatasetPage extends React.Component {
               <div className='left'>
                 {datagouvPublication && (
                   <Box title={t('blocks.producer')}>
-                    <Producer promise={datagouvDatasetPromise} dataQuery={data => data.organization} />
+                    <Producer promise={datagouvDatasetPromise} />
                   </Box>
                 )}
                 {organizations.length > 0 && (
