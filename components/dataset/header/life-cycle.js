@@ -43,6 +43,7 @@ const LifeCycle = ({ updateFrequency, creationDate, status, t }) => {
 LifeCycle.propTypes = {
   updateFrequency: PropTypes.string,
   creationDate: PropTypes.string,
+  status: PropTypes.string,
 
   t: PropTypes.func.isRequired
 }
