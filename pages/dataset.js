@@ -72,10 +72,8 @@ class DatasetPage extends React.Component {
     // Let’s not depend too much on data.gouv.fr’s availability, so we’re
     // fetching this after the page has loaded.
     if (datagouvPublication && datagouvPublication.remoteId) {
-      const promise = _get(`${DATAGOUV_API_URL}/datasets/${datagouvPublication.remoteId}/`)
-
       this.setState(() => ({
-        datagouvDatasetPromise: promise
+        datagouvDatasetPromise: _get(`${DATAGOUV_API_URL}/datasets/${datagouvPublication.remoteId}/`)
       }))
     }
   }

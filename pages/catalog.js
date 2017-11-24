@@ -37,16 +37,14 @@ class CatalogPage extends React.Component {
   }
 
   state = {
-    harvests: null
+    harvestsPromise: null
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { catalog } = this.props
 
-    const harvests = await _get(`${GEODATA_API_URL}/services/${catalog.id}/synchronizations`)
-
     this.setState(() => ({
-      harvests
+      harvestsPromise: _get(`${GEODATA_API_URL}/services/${catalog.id}/synchronizations`)
     }))
   }
 
@@ -58,7 +56,7 @@ class CatalogPage extends React.Component {
 
   render() {
     const { catalog, t } = this.props
-    const { harvests } = this.state
+    const { harvestsPromise } = this.state
 
     return (
       <Page>
@@ -71,9 +69,7 @@ class CatalogPage extends React.Component {
               <Statistics metrics={catalog.metrics} />
 
               <h3>{t('details.harvests.title')}</h3>
-              {harvests ? (
-                <Harvests catalog={catalog} harvests={harvests} runHarvest={this.runHarvest} />
-              ) : t('common:loading')}
+              <Harvests promise={harvestsPromise} catalog={catalog} runHarvest={this.runHarvest} />
 
               <h3>{t('details.search')}</h3>
               <SearchInput hasButton defaultQuery={{

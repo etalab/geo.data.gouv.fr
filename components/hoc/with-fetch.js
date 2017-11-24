@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
-export default (mapStateWithProps) => Component => {
+export default mapStateWithProps => Component => {
   mapStateWithProps = mapStateWithProps || (state => state)
 
   const Extended = translate()(class extends React.Component {

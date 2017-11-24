@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { translate } from 'react-i18next'
 
+import withFetch from '../../hoc/with-fetch'
+
 import Button from '../../button'
 
 import Table from './table'
@@ -119,4 +121,6 @@ class Harvests extends React.Component {
   }
 }
 
-export default translate('catalogs')(Harvests)
+export default withFetch(data => ({
+  harvests: data
+}))(translate('catalogs')(Harvests))
