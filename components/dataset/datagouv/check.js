@@ -24,7 +24,7 @@ const Check = ({ title, isValid, children }) => (
       @import 'colors';
 
       .container {
-        margin-bottom: 1em;
+        margin-bottom: 1.3em;
       }
 
       .body {
