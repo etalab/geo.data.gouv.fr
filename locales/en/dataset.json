@@ -47,6 +47,11 @@
         "title": "Producer",
         "foundProducer": "At least one producer was identified:",
         "noProducer": "A producer has not been identified."
+      },
+      "distribution": {
+        "title": "Data availability",
+        "available": "At least one distribution is available:",
+        "unavailable": "No distribution was found."
       }
     }
   },

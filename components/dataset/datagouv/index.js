@@ -13,6 +13,7 @@ import Warning from '../../warning'
 
 import LicenseCheck from './license-check'
 import ProducerCheck from './producer-check'
+import DistributionCheck from './distribution-check'
 
 class Datagouv extends React.Component {
   static propTypes = {
@@ -48,7 +49,7 @@ class Datagouv extends React.Component {
   }
 
   render () {
-    const { publication, license, organizations, t } = this.props
+    const { publication, license, organizations, distributions, t } = this.props
     const { expanded } = this.state
 
     const { hasLicense, hasOrganizations, isDistributable } = this.getPublishableProperties()
@@ -79,6 +80,7 @@ class Datagouv extends React.Component {
             <div>
               <LicenseCheck isValid={hasLicense} license={license} />
               <ProducerCheck isValid={hasOrganizations} organizations={organizations} />
+              <DistributionCheck isValid={isDistributable} distributions={distributions} />
             </div>
           )}
 
