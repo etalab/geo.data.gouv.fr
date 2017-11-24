@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
 
 import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
 
-const Warning = ({ status, t }) => (
+const Warning = ({ children }) => (
   <div>
     <span className='icon'>
       <WarningIcon />
     </span>
-    {t(`warnings.${status}`)}
+    {children}
 
     <style jsx>{`
       @import 'colors';
@@ -18,7 +17,6 @@ const Warning = ({ status, t }) => (
         background-color: lighten($yellow, 45%);
         padding: 0.8em;
         border-radius: 3px;
-        margin-bottom: 1em;
         display: flex;
         align-items: center;
       }
@@ -33,12 +31,7 @@ const Warning = ({ status, t }) => (
 )
 
 Warning.propTypes = {
-  status: PropTypes.oneOf([
-    'obsolete',
-    'underDevelopment'
-  ]).isRequired,
-
-  t: PropTypes.func.isRequired
+  children: PropTypes.node
 }
 
-export default translate('dataset')(Warning)
+export default Warning

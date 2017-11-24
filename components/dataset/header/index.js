@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import MarkdownPreview from '../../markdown-preview'
+import Warning from '../../warning'
+
 import Infos from './infos'
 import LifeCycle from './life-cycle'
-import Warning from './warning'
 
 const shouldWarn = status => [
   'obsolete',
@@ -14,7 +15,11 @@ const shouldWarn = status => [
 
 const Header = ({ metadata, i18n: { language }, t }) => (
   <div>
-    {shouldWarn(metadata.status) && <Warning status={metadata.status} />}
+    {shouldWarn(metadata.status) && (
+      <div className='warning'>
+        <Warning>{t(`warnings.${metadata.status}`)}</Warning>
+      </div>
+    )}
 
     <section className='row'>
       <div className='left'>
@@ -63,6 +68,10 @@ const Header = ({ metadata, i18n: { language }, t }) => (
         border-bottom: 1px solid $lightgrey;
         margin-bottom: 1em;
         padding-bottom: 1em;
+      }
+
+      .warning {
+        margin-bottom: 1em;
       }
 
       .row {
