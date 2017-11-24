@@ -42,6 +42,11 @@
         "unknownLicense": "The license <1><0>{{ license }}</0></1> is unknown.",
         "noLicense": "No license was specified.",
         "licenseList": "The known licenses are:"
+      },
+      "producer": {
+        "title": "Producer",
+        "foundProducer": "At least one producer was identified:",
+        "noProducer": "A producer has not been identified."
       }
     }
   },

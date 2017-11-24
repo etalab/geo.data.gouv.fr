@@ -10,7 +10,7 @@ const Check = ({ title, isValid, children }) => (
       {title}
       <i className={isValid ? 'valid' : null}>
         {isValid ? (
-          <CheckIcon style={{ verticalAlign: -3 }} />
+          <CheckIcon style={{ verticalAlign: -2 }} />
         ) : (
           <FailIcon style={{ verticalAlign: -3 }} />
         )}
@@ -29,7 +29,7 @@ const Check = ({ title, isValid, children }) => (
 
       .body {
         border-left: 2px solid $red;
-        padding-left: 0.6em;
+        padding: 0.2em 0 0.2em 0.6em;
       }
 
       h4 {

@@ -42,6 +42,11 @@
         "unknownLicense": "La licence <1><0>{{ license }}</0></1> n’est pas reconnue.",
         "noLicense": "Aucune licence n’a été spécifiée.",
         "licenseList": "Les licences reconnues sont :"
+      },
+      "producer": {
+        "title": "Producteur",
+        "foundProducer": "Au moins un producteur a été identifié :",
+        "noProducer": "Un producteur n’a pas été identifié."
       }
     }
   },

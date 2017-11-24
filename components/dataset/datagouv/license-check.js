@@ -43,6 +43,7 @@ class LicenseCheck extends React.Component {
         <style jsx>{`
           ul {
             margin-top: 0.4em;
+            margin-bottom: 0;
             padding-left: 1.8em;
           }
         `}</style>
@@ -62,14 +63,10 @@ class LicenseCheck extends React.Component {
 }
 
 LicenseCheck.propTypes = {
-  isValid: PropTypes.bool,
+  isValid: PropTypes.bool.isRequired,
   license: PropTypes.string,
 
   t: PropTypes.func.isRequired
-}
-
-LicenseCheck.defaultProps = {
-  valid: false
 }
 
 export default translate('dataset')(LicenseCheck)
