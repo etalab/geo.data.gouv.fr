@@ -83,6 +83,8 @@ class DatasetPage extends React.Component {
     const { dataset: { recordId, metadata, dataset, organizations }, datagouvPublication, t } = this.props
     const { datagouvDatasetPromise } = this.state
 
+    const hasThumbnails = metadata.thumbnails && metadata.thumbnails.length > 0
+
     return (
       <Page>
         <Meta title={metadata.title} />
@@ -120,22 +122,24 @@ class DatasetPage extends React.Component {
                   <Downloads distributions={dataset.distributions} />
                 </Box>
               </div>
-              <div className='right'>
-                {metadata.thumbnails && metadata.thumbnails.length > 0 && (
-                  <Box title={t('blocks.thumbnails')}>
-                    <Thumbnails recordId={recordId} thumbnails={metadata.thumbnails} />
-                  </Box>
-                )}
-                {metadata.spatialExtent && (
-                  <Box title={t('blocks.spatialExtent')}>
-                    <SpatialExtent
-                      extent={metadata.spatialExtent}
-                      scale={metadata.equivalentScaleDenominator}
-                      resolution={metadata.spatialResolution}
-                    />
-                  </Box>
-                )}
-              </div>
+              {(hasThumbnails || metadata.spatialExtent) && (
+                <div className='right'>
+                  {hasThumbnails && (
+                    <Box title={t('blocks.thumbnails')}>
+                      <Thumbnails recordId={recordId} thumbnails={metadata.thumbnails} />
+                    </Box>
+                  )}
+                  {metadata.spatialExtent && (
+                    <Box title={t('blocks.spatialExtent')}>
+                      <SpatialExtent
+                        extent={metadata.spatialExtent}
+                        scale={metadata.equivalentScaleDenominator}
+                        resolution={metadata.spatialResolution}
+                      />
+                    </Box>
+                  )}
+                </div>
+              )}
             </div>
           </Container>
         </Content>
