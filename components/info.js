@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
+import InfoIcon from 'react-icons/lib/fa/info-circle'
 
-const Warning = ({ children }) => (
+const Info = ({ children }) => (
   <div className='container'>
     <span className='icon'>
-      <WarningIcon />
+      <InfoIcon />
     </span>
     <div>{children}</div>
 
@@ -14,7 +14,7 @@ const Warning = ({ children }) => (
       @import 'colors';
 
       .container {
-        background-color: lighten($yellow, 45%);
+        background-color: lighten($blue, 43%);
         padding: 0.8em;
         border-radius: 2px;
         display: flex;
@@ -22,7 +22,7 @@ const Warning = ({ children }) => (
       }
 
       .icon {
-        color: lighten($yellow, 20%);
+        color: lighten($blue, 20%);
         font-size: 1.8em;
         margin-right: 0.9rem;
       }
@@ -30,8 +30,8 @@ const Warning = ({ children }) => (
   </div>
 )
 
-Warning.propTypes = {
+Info.propTypes = {
   children: PropTypes.node
 }
 
-export default Warning
+export default Info

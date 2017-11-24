@@ -22,10 +22,28 @@
 
   "blocks": {
     "producer": "Producer",
-    "thumbnails": "Data preview",
-    "downloads": "Downloads",
+    "datagouv": "Publication on data.gouv.fr",
     "organizations": "Organizations",
+    "downloads": "Downloads",
+    "thumbnails": "Data preview",
     "spatialExtent": "Spatial extent"
+  },
+
+  "datagouv": {
+    "published": "This dataset <1>is published</1> on data.gouv.fr.",
+    "producerActionNeeded": "An action of the producer is necessary to publish this dataset on data.gouv.fr.",
+    "unpublishable": "This dataset cannot be published on data.gouv.fr.",
+    "showDetails": "Show details…",
+
+    "checks": {
+      "license": {
+        "title": "License",
+        "validLicense": "The license <1><0>{{ license }}</0></1> is valid.",
+        "unknownLicense": "The license <1><0>{{ license }}</0></1> is unknown.",
+        "noLicense": "No license was specified.",
+        "licenseList": "The known licenses are:"
+      }
+    }
   },
 
   "downloads": {

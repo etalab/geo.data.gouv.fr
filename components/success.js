@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
+import SuccessIcon from 'react-icons/lib/fa/check-circle'
 
-const Warning = ({ children }) => (
+const Success = ({ children }) => (
   <div className='container'>
     <span className='icon'>
-      <WarningIcon />
+      <SuccessIcon />
     </span>
     <div>{children}</div>
 
@@ -14,15 +14,23 @@ const Warning = ({ children }) => (
       @import 'colors';
 
       .container {
-        background-color: lighten($yellow, 45%);
+        background-color: lighten($green, 51%);
         padding: 0.8em;
         border-radius: 2px;
         display: flex;
         align-items: center;
+
+        :global(a) {
+          color: $green;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
 
       .icon {
-        color: lighten($yellow, 20%);
+        color: lighten($green, 12%);
         font-size: 1.8em;
         margin-right: 0.9rem;
       }
@@ -30,8 +38,8 @@ const Warning = ({ children }) => (
   </div>
 )
 
-Warning.propTypes = {
+Success.propTypes = {
   children: PropTypes.node
 }
 
-export default Warning
+export default Success

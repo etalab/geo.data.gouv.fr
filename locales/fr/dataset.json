@@ -22,10 +22,28 @@
 
   "blocks": {
     "producer": "Producteur",
-    "thumbnails": "Aperçu des données",
-    "downloads": "Téléchargements",
+    "datagouv": "Publication sur data.gouv.fr",
     "organizations": "Organisations",
+    "downloads": "Téléchargements",
+    "thumbnails": "Aperçu des données",
     "spatialExtent": "Étendue spatiale"
+  },
+
+  "datagouv": {
+    "published": "Ce jeu de données <1>est publié</1> sur data.gouv.fr.",
+    "producerActionNeeded": "Une action du producteur est nécessaire pour publier ce jeu de données sur data.gouv.fr.",
+    "unpublishable": "Ce jeu de données ne peut pas être publié sur data.gouv.fr.",
+    "showDetails": "En savoir plus…",
+
+    "checks": {
+      "license": {
+        "title": "Licence",
+        "validLicense": "La licence <1><0>{{ license }}</0></1> est valide.",
+        "unknownLicense": "La licence <1><0>{{ license }}</0></1> n’est pas reconnue.",
+        "noLicense": "Aucune licence n’a été spécifiée.",
+        "licenseList": "Les licences reconnues sont :"
+      }
+    }
   },
 
   "downloads": {

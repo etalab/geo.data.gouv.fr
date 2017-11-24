@@ -1,7 +1,7 @@
 {
   "loading": "Loading…",
   "displayMore": "Display more…",
-  "displayLess": "Display less",
+  "displayLess": "Hide",
 
   "errors": {
     "title": "Error {{code}}",

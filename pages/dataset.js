@@ -12,10 +12,11 @@ import Container from '../components/container'
 import Box from '../components/box'
 
 import Producer from '../components/dataset/producer'
+import Datagouv from '../components/dataset/datagouv'
+import Organizations from '../components/dataset/organizations'
 
 import Header from '../components/dataset/header'
 import Downloads from '../components/dataset/downloads'
-import Organizations from '../components/dataset/organizations'
 
 import Thumbnails from '../components/dataset/thumbnails'
 import SpatialExtent from '../components/dataset/spatial-extent'
@@ -95,6 +96,16 @@ class DatasetPage extends React.Component {
                     <Producer promise={datagouvDatasetPromise} />
                   </Box>
                 )}
+
+                <Box title={t('blocks.datagouv')}>
+                  <Datagouv
+                    license={metadata.license}
+                    organizations={organizations}
+                    distributions={dataset.distributions}
+                    publication={datagouvPublication}
+                  />
+                </Box>
+
                 {organizations.length > 0 && (
                   <Box title={t('blocks.organizations')}>
                     <Organizations organizations={organizations} />
@@ -161,7 +172,7 @@ class DatasetPage extends React.Component {
 
           .left {
             @media (max-width: 960px) {
-              width: 270px;
+              width: 290px;
             }
 
             @media (max-width: 768px) {
