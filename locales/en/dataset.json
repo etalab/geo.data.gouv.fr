@@ -65,6 +65,11 @@
     "openPreview": "Preview"
   },
 
+  "metadata": {
+    "id": "Dataset ID:",
+    "revisionDate": "Metadata last update:"
+  },
+
   "enums": {
     "resolutionUnits": {
       "meter": "meter",

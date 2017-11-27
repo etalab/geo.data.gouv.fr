@@ -65,6 +65,11 @@
     "openPreview": "Visualiser"
   },
 
+  "metadata": {
+    "id": "Identifiant du jeu de données :",
+    "revisionDate": "Dernière mise à jour des informations :"
+  },
+
   "enums": {
     "resolutionUnits": {
       "meter": "mètre",

@@ -23,13 +23,17 @@ import Thumbnails from '../components/dataset/thumbnails'
 import SpatialExtent from '../components/dataset/spatial-extent'
 import Links from '../components/dataset/links'
 
+import Metadata from '../components/dataset/metadata'
+
 import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
 
 class DatasetPage extends React.Component {
   static propTypes = {
     dataset: PropTypes.shape({
       recordId: PropTypes.string.isRequired,
+      revisionDate: PropTypes.string.isRequired,
       metadata: PropTypes.shape({
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         thumbnails: PropTypes.array,
         spatialExtent: PropTypes.object,
@@ -83,8 +87,18 @@ class DatasetPage extends React.Component {
     }
   }
 
+  setPreviewRef = ref => {
+    this.previewRef = ref
+  }
+
   render() {
-    const { dataset: { recordId, metadata, dataset, organizations }, datagouvPublication, t } = this.props
+    const { dataset: {
+      recordId,
+      revisionDate,
+      metadata,
+      dataset,
+      organizations
+    }, datagouvPublication, t } = this.props
     const { datagouvDatasetPromise } = this.state
 
     const contacts = uniq(metadata.contacts.map(contact => ({
@@ -156,6 +170,8 @@ class DatasetPage extends React.Component {
                 </div>
               )}
             </div>
+
+            <Metadata id={metadata.id} revisionDate={revisionDate} />
           </Container>
         </Content>
 
