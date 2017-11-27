@@ -20,6 +20,7 @@ import Downloads from '../components/dataset/downloads'
 
 import Thumbnails from '../components/dataset/thumbnails'
 import SpatialExtent from '../components/dataset/spatial-extent'
+import Links from '../components/dataset/links'
 
 import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
 
@@ -33,7 +34,8 @@ class DatasetPage extends React.Component {
         spatialExtent: PropTypes.object,
         equivalentScaleDenominator: PropTypes.number,
         spatialResolution: PropTypes.object,
-        contacts: PropTypes.array.isRequired
+        contacts: PropTypes.array.isRequired,
+        links: PropTypes.array.isRequired
       }).isRequired,
 
       organizations: PropTypes.array.isRequired,
@@ -85,6 +87,7 @@ class DatasetPage extends React.Component {
     const { datagouvDatasetPromise } = this.state
 
     const hasThumbnails = metadata.thumbnails && metadata.thumbnails.length > 0
+    const hasLinks = metadata.links.length > 0
 
     return (
       <Page>
@@ -123,7 +126,7 @@ class DatasetPage extends React.Component {
                   <Downloads distributions={dataset.distributions} />
                 </Box>
               </div>
-              {(hasThumbnails || metadata.spatialExtent) && (
+              {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
                 <div className='right'>
                   {hasThumbnails && (
                     <Box title={t('blocks.thumbnails')}>
@@ -137,6 +140,11 @@ class DatasetPage extends React.Component {
                         scale={metadata.equivalentScaleDenominator}
                         resolution={metadata.spatialResolution}
                       />
+                    </Box>
+                  )}
+                  {hasLinks && (
+                    <Box title={t('blocks.links')}>
+                      <Links links={metadata.links} />
                     </Box>
                   )}
                 </div>

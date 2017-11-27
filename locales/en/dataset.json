@@ -26,7 +26,8 @@
     "contacts": "Contacts",
     "downloads": "Downloads",
     "thumbnails": "Data preview",
-    "spatialExtent": "Spatial extent"
+    "spatialExtent": "Spatial extent",
+    "links": "Links"
   },
 
   "datagouv": {
