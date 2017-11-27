@@ -225,11 +225,8 @@ class DatasetPage extends React.Component {
             @media (max-width: 1080px) {
               flex: 1 0 100%;
               width: 100%;
-              order: 2;
-            }
-
-            @media (max-width: 768px) {
               margin: 0;
+              order: 2;
             }
           }
 
