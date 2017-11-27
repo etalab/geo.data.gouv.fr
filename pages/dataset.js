@@ -86,6 +86,7 @@ class DatasetPage extends React.Component {
     const { dataset: { recordId, metadata, dataset, organizations }, datagouvPublication, t } = this.props
     const { datagouvDatasetPromise } = this.state
 
+    const dataContacts = metadata.contacts.filter(contact => contact.relatedTo === 'data')
     const hasThumbnails = metadata.thumbnails && metadata.thumbnails.length > 0
     const hasLinks = metadata.links.length > 0
 
@@ -112,9 +113,9 @@ class DatasetPage extends React.Component {
                   />
                 </Box>
 
-                {metadata.contacts.length > 0 && (
+                {dataContacts.length > 0 && (
                   <Box title={t('blocks.contacts')}>
-                    <Contacts contacts={metadata.contacts} />
+                    <Contacts contacts={dataContacts} />
                   </Box>
                 )}
               </div>
