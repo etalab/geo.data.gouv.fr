@@ -174,8 +174,8 @@ class DatasetPage extends React.Component {
           }
 
           .left {
-            @media (max-width: 960px) {
-              width: 290px;
+            @media (max-width: 1080px) {
+              width: 38%;
             }
 
             @media (max-width: 768px) {
@@ -185,11 +185,8 @@ class DatasetPage extends React.Component {
           }
 
           .right {
-            @media (max-width: 960px) {
+            @media (max-width: 1080px) {
               flex: 1 0 100%;
-            }
-
-            @media (max-width: 768px) {
               width: 100%;
               order: 2;
             }
@@ -199,7 +196,7 @@ class DatasetPage extends React.Component {
             flex: 1;
             margin: 0 20px;
 
-            @media (max-width: 960px) {
+            @media (max-width: 1080px) {
               margin-right: 0;
             }
 
