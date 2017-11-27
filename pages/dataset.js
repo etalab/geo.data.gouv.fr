@@ -13,7 +13,7 @@ import Box from '../components/box'
 
 import Producer from '../components/dataset/producer'
 import Datagouv from '../components/dataset/datagouv'
-import Organizations from '../components/dataset/organizations'
+import Contacts from '../components/dataset/contacts'
 
 import Header from '../components/dataset/header'
 import Downloads from '../components/dataset/downloads'
@@ -32,7 +32,8 @@ class DatasetPage extends React.Component {
         thumbnails: PropTypes.array,
         spatialExtent: PropTypes.object,
         equivalentScaleDenominator: PropTypes.number,
-        spatialResolution: PropTypes.object
+        spatialResolution: PropTypes.object,
+        contacts: PropTypes.array.isRequired
       }).isRequired,
 
       organizations: PropTypes.array.isRequired,
@@ -93,16 +94,11 @@ class DatasetPage extends React.Component {
           <Container fluid>
             <div className='container'>
               <div className='left'>
-                <Box title={t('blocks.producer')}>
-                  {datagouvPublication && (
-                    <div className='producer'>
-                      <Producer promise={datagouvDatasetPromise} />
-                    </div>
-                  )}
-                  <div className='organization'>
-                    <Organizations organizations={organizations} />
-                  </div>
-                </Box>
+                {datagouvPublication && (
+                  <Box title={t('blocks.producer')}>
+                    <Producer promise={datagouvDatasetPromise} />
+                  </Box>
+                )}
 
                 <Box title={t('blocks.datagouv')}>
                   <Datagouv
@@ -112,6 +108,12 @@ class DatasetPage extends React.Component {
                     publication={datagouvPublication}
                   />
                 </Box>
+
+                {metadata.contacts.length > 0 && (
+                  <Box title={t('blocks.contacts')}>
+                    <Contacts contacts={metadata.contacts} />
+                  </Box>
+                )}
               </div>
               <div className='main'>
                 <Box>

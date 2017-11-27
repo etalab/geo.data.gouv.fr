@@ -109,6 +109,22 @@
       "utilitiesCommunication": "utilities, communication"
     },
 
+    "role": {
+      "resourceProvider": "Resource provider",
+      "custodian": "Custodian",
+      "owner": "Owner",
+      "user": "User",
+      "distributor": "Distributor",
+      "originator": "Originator",
+      "pointOfContact": "Point of contact",
+      "processor": "Processor",
+      "publisher": "Publisher",
+      "author": "Author",
+      "other": "Other",
+      "principalInvestigator": "Principal investigator",
+      "sponsor": "Sponsor"
+    },
+
     "unknownData": {
       "unknown": "unknown",
       "notSpecified": "not specified"

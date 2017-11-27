@@ -109,6 +109,22 @@
       "utilitiesCommunication": "services d’utilité publique, communication"
     },
 
+    "role": {
+      "resourceProvider": "Fournisseur",
+      "custodian": "Responsable",
+      "owner": "Propriétaire",
+      "user": "Utilisateur",
+      "distributor": "Distributeur",
+      "originator": "Initiateur",
+      "pointOfContact": "Point de contact",
+      "processor": "Intervenant technique",
+      "publisher": "Diffuseur",
+      "author": "Auteur",
+      "other": "Autre",
+      "principalInvestigator": "Directeur de recherche",
+      "sponsor": "Financeur"
+    },
+
     "unknownData": {
       "unknown": "inconnu",
       "unknown_female": "inconnue",
