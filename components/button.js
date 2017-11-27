@@ -5,7 +5,13 @@ const Button = ({ children, type, size, color, href, disabled, ...props }) => {
   const buttonProps = href ? {} : props
 
   return (
-    <button type={type} disabled={disabled} className={`${size} ${disabled ? '' : color}`} {...buttonProps}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={`${size} ${disabled ? '' : color}`}
+      tabIndex={href ? -1 : null}
+      {...buttonProps}
+    >
       {href ? (
         <a href={href} {...props}>{children}</a>
       ) : children}
