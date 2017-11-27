@@ -9,13 +9,29 @@ const DistributionCheck = ({ distributions, isValid, t }) => (
     {isValid ? (
       <div>
         {t('datagouv.checks.distribution.available')}
-        {distributions.map(distribution => distribution.available ? (
-          <div key={distribution._id}>
-            <b>{distribution.typeName || distribution.layer || distribution.name}</b>
-          </div>
-        ) : null)}
+        <ul>
+          {distributions.map(distribution => distribution.available ? (
+            <li key={distribution._id}>
+              {distribution.typeName || distribution.layer || distribution.name}
+            </li>
+          ) : null)}
+        </ul>
       </div>
     ) : t('datagouv.checks.distribution.unavailable')}
+
+    <style jsx>{`
+      ul {
+        margin-top: 0.4em;
+        margin-bottom: 0;
+        padding-left: 0.8em;
+      }
+
+      li {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    `}</style>
   </Check>
 )
 
