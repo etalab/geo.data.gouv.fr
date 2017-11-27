@@ -143,6 +143,7 @@ class SearchPage extends React.Component {
         <style jsx>{`
           .main {
             display: flex;
+            margin-bottom: 4em;
           }
 
           .search {

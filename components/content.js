@@ -10,15 +10,15 @@ const Content = ({ children, clouds }) => (
 
       main {
         background-color: $white;
-        padding: 20px 0 70px;
+        padding: 20px 0 40px;
         display: flex;
         flex-direction: column;
         flex: 1;
 
         ${clouds && (`
-          background: url('/static/images/clouds.svg') bottom -30px right 0, linear-gradient(to top, #41dcd7, #3083b2);
+          background: url('/static/images/clouds.svg') bottom -50px left 0, linear-gradient(to top, #41dcd7, #3083b2);
           background-repeat: no-repeat;
-          background-size: 100%;
+          background-size: 1924px;
         `)}
       }
     `}</style>
