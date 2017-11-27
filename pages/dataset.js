@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { uniq } from 'lodash'
+import { uniqWith, isEqual } from 'lodash'
 
 import { _get } from '../lib/fetch'
 
@@ -101,11 +101,12 @@ class DatasetPage extends React.Component {
     }, datagouvPublication, t } = this.props
     const { datagouvDatasetPromise } = this.state
 
-    const contacts = uniq(metadata.contacts.map(contact => ({
+    const contacts = uniqWith(metadata.contacts.map(contact => ({
       ...contact,
       // We don’t use this field and it causes some contacts to be duplicated.
       relatedTo: undefined
-    })))
+    })), isEqual)
+
     const hasThumbnails = metadata.thumbnails && metadata.thumbnails.length > 0
     const hasLinks = metadata.links.length > 0
 
