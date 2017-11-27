@@ -5,7 +5,6 @@ import strRightBack from 'underscore.string/strRightBack'
 
 import DownloadIcon from 'react-icons/lib/fa/arrow-circle-o-down'
 import PreviewIcon from 'react-icons/lib/fa/eye'
-import FailIcon from 'react-icons/lib/fa/times-circle'
 
 import formats from '../../../lib/formats'
 
@@ -60,7 +59,6 @@ export const DatasetDownload = ({ distribution, t }) => {
         <div className='container'>
           <div className='unavailable'>
             <b>
-              <FailIcon style={{ verticalAlign: -5 }} />
               {name}
             </b>
             <i>{t('downloads.unavailable')}</i>
@@ -83,7 +81,7 @@ export const DatasetDownload = ({ distribution, t }) => {
 
         b {
           display: block;
-          margin-bottom: 7px;
+          margin-bottom: 5px;
           overflow-wrap: break-word;
           word-wrap: break-word;
           word-break: break-word;
@@ -101,8 +99,15 @@ export const DatasetDownload = ({ distribution, t }) => {
         }
 
         .unavailable {
+          opacity: .5;
+
           :global(svg) {
             color: $red;
+          }
+
+          i {
+            display: block;
+            margin-bottom: 5px;
           }
         }
 
