@@ -111,17 +111,17 @@
 
     "role": {
       "resourceProvider": "Fournisseur",
-      "custodian": "Responsable",
+      "custodian": "Gestionnaire",
       "owner": "Propriétaire",
       "user": "Utilisateur",
       "distributor": "Distributeur",
-      "originator": "Initiateur",
+      "originator": "Commanditaire",
       "pointOfContact": "Point de contact",
-      "processor": "Intervenant technique",
-      "publisher": "Diffuseur",
+      "processor": "Intégrateur",
+      "publisher": "Éditeur",
       "author": "Auteur",
       "other": "Autre",
-      "principalInvestigator": "Directeur de recherche",
+      "principalInvestigator": "Maître d’œuvre",
       "sponsor": "Financeur"
     },
 
