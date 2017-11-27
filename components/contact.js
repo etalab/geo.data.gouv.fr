@@ -23,19 +23,21 @@ const Contact = ({ contact, t }) => (
       </div>
     )}
 
-    <div className='contact'>
-      <div>
-        <PhoneIcon /> {contact.phoneNumber || t('enums.unknownData.notSpecified')}
-      </div>
+    {(contact.phoneNumber || contact.email) && (
+      <div className='contact'>
+        {contact.phoneNumber && (
+          <div>
+            <PhoneIcon /> {contact.phoneNumber}
+          </div>
+        )}
 
-      <div>
-        <EmailIcon /> {contact.email ? (
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        ) : t('enums.unknownData.notSpecified', {
-          context: 'female'
-        })}
+        {contact.email && (
+          <div>
+            <EmailIcon /> <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </div>
+        )}
       </div>
-    </div>
+    )}
 
     <style jsx>{`
       @import 'colors';
@@ -52,7 +54,7 @@ const Contact = ({ contact, t }) => (
       }
 
       .contact {
-        margin-top: 0.4em;
+        margin-top: 0.5em;
 
         :global(svg) {
           margin-right: 5px;
