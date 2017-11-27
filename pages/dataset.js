@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { uniq } from 'lodash'
 
 import { _get } from '../lib/fetch'
 
@@ -86,7 +87,11 @@ class DatasetPage extends React.Component {
     const { dataset: { recordId, metadata, dataset, organizations }, datagouvPublication, t } = this.props
     const { datagouvDatasetPromise } = this.state
 
-    const dataContacts = metadata.contacts.filter(contact => contact.relatedTo === 'data')
+    const contacts = uniq(metadata.contacts.map(contact => ({
+      ...contact,
+      // We don’t use this field and it causes some contacts to be duplicated.
+      relatedTo: undefined
+    })))
     const hasThumbnails = metadata.thumbnails && metadata.thumbnails.length > 0
     const hasLinks = metadata.links.length > 0
 
@@ -113,9 +118,9 @@ class DatasetPage extends React.Component {
                   />
                 </Box>
 
-                {dataContacts.length > 0 && (
+                {contacts.length > 0 && (
                   <Box title={t('blocks.contacts')}>
-                    <Contacts contacts={dataContacts} />
+                    <Contacts contacts={contacts} />
                   </Box>
                 )}
               </div>

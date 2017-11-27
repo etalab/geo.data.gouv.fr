@@ -18,7 +18,7 @@ const Contact = ({ contact, t }) => (
     </div>
 
     {contact.address && (
-      <div>
+      <div className='address'>
         {contact.address[0]} {contact.town} - {contact.postalCode} {contact.country}
       </div>
     )}
@@ -50,7 +50,10 @@ const Contact = ({ contact, t }) => (
 
       .name {
         font-weight: bold;
-        margin-bottom: 0.6em;
+      }
+
+      .address {
+        margin-top: 0.5em;
       }
 
       .contact {
