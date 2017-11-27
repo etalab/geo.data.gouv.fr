@@ -63,6 +63,7 @@ const Contact = ({ contact, t }) => (
         font-size: small;
         padding: 1px 5px;
         border-radius: 2px;
+        margin-left: 5px;
 
         background-color: $grey;
         color: $white;

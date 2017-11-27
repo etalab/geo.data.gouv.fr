@@ -17,8 +17,8 @@ const Contacts = ({ contacts }) => (
 
       .contact:not(:last-child) {
         border-bottom: 1px solid $lightgrey;
-        padding-bottom: 0.6em;
-        margin-bottom: 0.6em;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
       }
     `}</style>
   </div>
