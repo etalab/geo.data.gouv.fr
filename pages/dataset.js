@@ -93,11 +93,16 @@ class DatasetPage extends React.Component {
           <Container fluid>
             <div className='container'>
               <div className='left'>
-                {datagouvPublication && (
-                  <Box title={t('blocks.producer')}>
-                    <Producer promise={datagouvDatasetPromise} />
-                  </Box>
-                )}
+                <Box title={t('blocks.producer')}>
+                  {datagouvPublication && (
+                    <div className='producer'>
+                      <Producer promise={datagouvDatasetPromise} />
+                    </div>
+                  )}
+                  <div className='organization'>
+                    <Organizations organizations={organizations} />
+                  </div>
+                </Box>
 
                 <Box title={t('blocks.datagouv')}>
                   <Datagouv
@@ -107,12 +112,6 @@ class DatasetPage extends React.Component {
                     publication={datagouvPublication}
                   />
                 </Box>
-
-                {organizations.length > 0 && (
-                  <Box title={t('blocks.organizations')}>
-                    <Organizations organizations={organizations} />
-                  </Box>
-                )}
               </div>
               <div className='main'>
                 <Box>
@@ -208,6 +207,10 @@ class DatasetPage extends React.Component {
               margin-left: 0;
               order: 0;
             }
+          }
+
+          .producer + .organization {
+            margin-top: 1.6em;
           }
         `}</style>
       </Page>

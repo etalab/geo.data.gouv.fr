@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import withFetch from '../hoc/with-fetch'
 
-const Producer = ({ name, logo }) => (
+const Producer = ({ name, logo_thumbnail: logo }) => (
   <div>
     <div className='wrapper'>
       <img src={logo} alt='' />
@@ -15,8 +15,8 @@ const Producer = ({ name, logo }) => (
         display: flex;
         align-items: center;
         justify-content: center;
-        max-height: 160px;
-        max-width: 160px;
+        max-height: 100px;
+        max-width: 100px;
         margin: auto;
       }
 
@@ -28,6 +28,7 @@ const Producer = ({ name, logo }) => (
 
       h4 {
         text-align: center;
+        margin-top: 1rem;
       }
     `}</style>
   </div>
@@ -35,7 +36,7 @@ const Producer = ({ name, logo }) => (
 
 Producer.propTypes = {
   name: PropTypes.string.isRequired,
-  logo: PropTypes.string.isRequired
+  logo_thumbnail: PropTypes.string.isRequired
 }
 
 export default withFetch(data => data.organization)(Producer)

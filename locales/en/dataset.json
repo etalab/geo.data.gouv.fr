@@ -23,7 +23,6 @@
   "blocks": {
     "producer": "Producer",
     "datagouv": "Publication on data.gouv.fr",
-    "organizations": "Organizations",
     "downloads": "Downloads",
     "thumbnails": "Data preview",
     "spatialExtent": "Spatial extent"

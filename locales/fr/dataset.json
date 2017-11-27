@@ -23,7 +23,6 @@
   "blocks": {
     "producer": "Producteur",
     "datagouv": "Publication sur data.gouv.fr",
-    "organizations": "Organisations",
     "downloads": "Téléchargements",
     "thumbnails": "Aperçu des données",
     "spatialExtent": "Étendue spatiale"
