@@ -3,9 +3,9 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import strRightBack from 'underscore.string/strRightBack'
 
-import DownloadIcon from 'react-icons/lib/fa/download'
+import DownloadIcon from 'react-icons/lib/fa/arrow-circle-o-down'
 import PreviewIcon from 'react-icons/lib/fa/eye'
-import FailIcon from 'react-icons/lib/fa/close'
+import FailIcon from 'react-icons/lib/fa/times-circle'
 
 import formats from '../../../lib/formats'
 
@@ -32,14 +32,18 @@ export const DatasetDownload = ({ distribution, t }) => {
       {distribution.available ? (
         <div className='container'>
           <div className='main'>
-            <div className='download-icon'>
-              <DownloadIcon />
-            </div>
             <div>
-              <b>{name}</b>
+              <b>
+                <DownloadIcon style={{ verticalAlign: -5 }} />
+                {name}
+              </b>
               {formats.map(format => (
                 <div key={format.label} className='download'>
-                  <Button href={`${link}?format=${format.format}&projection=${format.projection}`} download>
+                  <Button
+                    color='white'
+                    href={`${link}?format=${format.format}&projection=${format.projection}`}
+                    download
+                  >
                     {format.label}
                   </Button>
                 </div>
@@ -54,12 +58,12 @@ export const DatasetDownload = ({ distribution, t }) => {
         </div>
       ) : (
         <div className='container'>
-          <div className='fail-icon'>
-            <FailIcon />
-          </div>
-          <div>
-            <b>{name}</b>
-            {t('downloads.unavailable')}
+          <div className='unavailable'>
+            <b>
+              <FailIcon style={{ verticalAlign: -5 }} />
+              {name}
+            </b>
+            <i>{t('downloads.unavailable')}</i>
           </div>
         </div>
       )}
@@ -70,39 +74,11 @@ export const DatasetDownload = ({ distribution, t }) => {
         .container {
           display: flex;
           flex-wrap: wrap;
-
-          @media (max-width: 551px) {
-            border-left: 2px solid $blue;
-            padding-left: 5px;
-          }
         }
 
         .main {
           display: flex;
           align-items: center;
-        }
-
-        .download-icon {
-          font-size: 4.51em;
-          color: $blue;
-          opacity: 0.2;
-          margin-right: 10px;
-
-          @media (max-width: 551px) {
-            display: none;
-          }
-        }
-
-        .fail-icon {
-          font-size: 4.51em;
-          color: $red;
-          opacity: 0.2;
-          margin-right: 10px;
-          margin-top: -10px;
-
-          @media (max-width: 551px) {
-            display: none;
-          }
         }
 
         b {
@@ -111,6 +87,12 @@ export const DatasetDownload = ({ distribution, t }) => {
           overflow-wrap: break-word;
           word-wrap: break-word;
           word-break: break-word;
+
+          :global(svg) {
+            color: $blue;
+            font-size: 1.4em;
+            margin-right: 4px;
+          }
         }
 
         .download {
@@ -118,16 +100,17 @@ export const DatasetDownload = ({ distribution, t }) => {
           margin: 0 5px 5px 0;
         }
 
+        .unavailable {
+          :global(svg) {
+            color: $red;
+          }
+        }
+
         .preview {
           margin-left: auto;
 
           @media (max-width: 1180px) {
             flex: 1 1 100%;
-            padding-left: 72px;
-          }
-
-          @media (max-width: 551px) {
-            padding-left: 0;
           }
         }
       `}</style>

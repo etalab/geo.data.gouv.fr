@@ -73,7 +73,7 @@ class Downloads extends React.Component {
           }
 
           .distribution {
-            margin-bottom: 1em;
+            margin-bottom: 1.4em;
 
             &:last-child {
               margin-bottom: 0;

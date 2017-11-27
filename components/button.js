@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, type, size, href, ...props }) => {
+const Button = ({ children, type, size, color, href, disabled, ...props }) => {
   const buttonProps = href ? {} : props
 
   return (
-    <button type={type} className={size} {...buttonProps}>
+    <button type={type} disabled={disabled} className={`${size} ${disabled ? '' : color}`} {...buttonProps}>
       {href ? (
         <a href={href} {...props}>{children}</a>
       ) : children}
@@ -16,16 +16,12 @@ const Button = ({ children, type, size, href, ...props }) => {
         button {
           display: block;
           width: 100%;
-          background-color: $blue;
           border: 0 none;
-          color: $white;
           border-radius: 2px;
-          padding: 6px 8px;
+          padding: 5px 7px;
+          border: 1px solid transparent;
           cursor: pointer;
 
-          &:hover {
-            background-color: darken($blue, 10%);
-          }
 
           &:disabled {
             background-color: $lightgrey;
@@ -55,6 +51,27 @@ const Button = ({ children, type, size, href, ...props }) => {
             padding: 12px 16px;
           }
         }
+
+        // Colors
+        .blue {
+          background-color: $blue;
+          border-color: $blue;
+          color: $white;
+
+          &:hover {
+            background-color: darken($blue, 10%);
+          }
+        }
+
+        .white {
+          background-color: $white;
+          border-color: $blue;
+          color: $blue;
+
+          &:hover {
+            background-color: lighten($blue, 43%);
+          }
+        }
       `}</style>
     </button>
   )
@@ -62,15 +79,21 @@ const Button = ({ children, type, size, href, ...props }) => {
 
 Button.propTypes = {
   children: PropTypes.node,
+  disabled: PropTypes.bool,
   type: PropTypes.string,
   href: PropTypes.string,
   size: PropTypes.oneOf([
     'large'
+  ]),
+  color: PropTypes.oneOf([
+    'blue',
+    'white'
   ])
 }
 
 Button.defaultProps = {
   type: 'button',
+  color: 'blue',
   href: null
 }
 
