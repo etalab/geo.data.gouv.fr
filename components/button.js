@@ -27,7 +27,7 @@ const Button = ({ children, type, size, color, href, disabled, ...props }) => {
           padding: 5px 7px;
           border: 1px solid transparent;
           cursor: pointer;
-
+          -webkit-font-smoothing: antialiased;
 
           &:disabled {
             background-color: $lightgrey;
