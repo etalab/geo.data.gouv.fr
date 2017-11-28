@@ -14,7 +14,7 @@ const Metadata = ({ id, revisionDate, t }) => {
 
       <style jsx>{`
         div {
-          margin-top: 1.8em;
+          margin-top: 1em;
         }
       `}</style>
     </div>

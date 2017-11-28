@@ -65,9 +65,7 @@ const Header = ({ metadata, i18n: { language }, t }) => (
       @import 'colors';
 
       section:not(:last-child) {
-        border-bottom: 1px solid $lightgrey;
         margin-bottom: 1em;
-        padding-bottom: 1em;
       }
 
       .warning {
@@ -79,6 +77,8 @@ const Header = ({ metadata, i18n: { language }, t }) => (
         overflow-wrap: break-word;
         word-wrap: break-word;
         word-break: break-word;
+        border-bottom: 1px solid $lightgrey;
+        padding-bottom: 1em;
       }
 
       .left {
