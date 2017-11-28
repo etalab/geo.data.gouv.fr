@@ -40,7 +40,8 @@ class DatasetPage extends React.Component {
         equivalentScaleDenominator: PropTypes.number,
         spatialResolution: PropTypes.object,
         contacts: PropTypes.array.isRequired,
-        links: PropTypes.array.isRequired
+        links: PropTypes.array.isRequired,
+        credits: PropTypes.string
       }).isRequired,
 
       organizations: PropTypes.array.isRequired,
@@ -147,7 +148,7 @@ class DatasetPage extends React.Component {
                   <Downloads distributions={dataset.distributions} />
                 </Box>
               </div>
-              {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
+              {(hasThumbnails || metadata.spatialExtent || hasLinks || metadata.credits) && (
                 <div className='right'>
                   {hasThumbnails && (
                     <Box title={t('blocks.thumbnails')}>
@@ -166,6 +167,11 @@ class DatasetPage extends React.Component {
                   {hasLinks && (
                     <Box title={t('blocks.links')}>
                       <Links links={metadata.links} />
+                    </Box>
+                  )}
+                  {metadata.credits && (
+                    <Box title={t('blocks.credits')}>
+                      {metadata.credits}
                     </Box>
                   )}
                 </div>
