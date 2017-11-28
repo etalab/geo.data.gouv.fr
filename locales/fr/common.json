@@ -35,15 +35,15 @@
     }
   },
 
-  "components": {
-    "CatalogPreview": {
-      "noData": "Aucun donnée disponible",
-      "openDataLabel": "Données ouvertes",
-      "downloadableLabel": "Téléchargeables",
-      "recordsLabel": "Enregistrements",
-      "obsoleteCatalog": "Ce catalogue n’a pas été mis à jour depuis plus de 6 mois"
-    },
+  "catalog": {
+    "empty": "Aucun donnée disponible",
+    "openData": "Données ouvertes",
+    "downloadable": "Téléchargeables",
+    "records": "Enregistrements",
+    "obsolete": "Attention, ce catalogue n’a pas été mis à jour depuis plus de 6 mois."
+  },
 
+  "components": {
     "Footer": {
       "legal": "Mentions légales"
     },

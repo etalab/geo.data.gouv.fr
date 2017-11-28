@@ -1,21 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import { translate } from 'react-i18next'
 import { get } from 'lodash'
 
 import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
 
+import { isObsolete } from '../lib/catalog'
+
 import Link from './link'
 import HarvestStatus from './harvest-status'
 import Counter from './counter'
 import Percent from './percent'
-
-const isObsolete = (catalog) => {
-  const revisionDate = get(catalog, 'metrics.mostRecentRevisionDate')
-
-  return revisionDate && moment().subtract(6, 'months').isAfter(revisionDate)
-}
 
 export const CatalogPreview = ({ catalog, t }) => {
   let metrics = catalog.metrics
@@ -26,7 +21,7 @@ export const CatalogPreview = ({ catalog, t }) => {
     <Link href={`/catalog?cid=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
         {isObsolete(catalog) && (
-          <span className='obsolete' title={t('components.CatalogPreview.obsoleteCatalog')}>
+          <span className='obsolete' title={t('catalog.obsolete')}>
             <WarningIcon />
           </span>
         )}
@@ -39,24 +34,24 @@ export const CatalogPreview = ({ catalog, t }) => {
         <HarvestStatus harvest={catalog.service.sync} />
 
         <div className='metrics'>
-          {!metrics ? <div>{t('components.CatalogPreview.noData')}</div> : (
+          {!metrics ? <div>{t('catalog.empty')}</div> : (
             <div>
               <Percent
                 value={openness}
                 total={metrics.datasets.totalCount}
                 size='small'
-                label={t('components.CatalogPreview.openDataLabel')} />
+                label={t('catalog.openData')} />
 
               <Percent
                 value={download}
                 total={metrics.datasets.totalCount}
                 size='small'
-                label={t('components.CatalogPreview.downloadableLabel')} />
+                label={t('catalog.downloadable')} />
 
               <Counter
                 value={metrics.records.totalCount}
                 size='small'
-                label={t('components.CatalogPreview.recordsLabel')} />
+                label={t('catalog.records')} />
             </div>
           )}
         </div>

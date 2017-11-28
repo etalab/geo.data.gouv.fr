@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { _get, _post } from '../lib/fetch'
+import { isObsolete } from '../lib/catalog'
 
 import withI18n from '../components/hoc/with-i18n'
 
@@ -11,6 +12,7 @@ import Content from '../components/content'
 import Container from '../components/container'
 import Box from '../components/box'
 import SearchInput from '../components/search-input'
+import Warning from '../components/warning'
 
 import Header from '../components/catalog/header'
 import Statistics from '../components/catalog/statistics'
@@ -66,6 +68,9 @@ class CatalogPage extends React.Component {
           <Container>
             <Box>
               <Header catalog={catalog} />
+              {isObsolete(catalog) && (
+                <Warning>{t('common:catalog.obsolete')}</Warning>
+              )}
               <Statistics metrics={catalog.metrics} />
 
               <h3>{t('details.harvests.title')}</h3>
