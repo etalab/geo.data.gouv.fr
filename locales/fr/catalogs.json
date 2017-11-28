@@ -9,8 +9,6 @@
       "catalogService": "Accéder au service du catalogue"
     },
 
-    "obsoleteWarning": "Attention, ce catalogue n’a pas été mis à jour depuis plus de 6 mois.",
-
     "statistics": {
       "recordsCount": "Enregistrements",
       "recordTypeChart": "Types d‘enregistrements",
