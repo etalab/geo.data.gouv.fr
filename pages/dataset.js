@@ -139,6 +139,12 @@ class DatasetPage extends React.Component {
                     <Contacts contacts={contacts} />
                   </Box>
                 )}
+
+                {metadata.credit && (
+                  <Box title={t('blocks.credit')}>
+                    {metadata.credit}
+                  </Box>
+                )}
               </div>
               <div className='main'>
                 <Box>
@@ -148,7 +154,7 @@ class DatasetPage extends React.Component {
                   <Downloads distributions={dataset.distributions} />
                 </Box>
               </div>
-              {(hasThumbnails || metadata.spatialExtent || hasLinks || metadata.credits) && (
+              {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
                 <div className='right'>
                   {hasThumbnails && (
                     <Box title={t('blocks.thumbnails')}>
@@ -169,16 +175,13 @@ class DatasetPage extends React.Component {
                       <Links links={metadata.links} />
                     </Box>
                   )}
-                  {metadata.credits && (
-                    <Box title={t('blocks.credits')}>
-                      {metadata.credits}
-                    </Box>
-                  )}
                 </div>
               )}
             </div>
 
-            <Metadata id={metadata.id} revisionDate={revisionDate} />
+            <div className='footer'>
+              <Metadata id={metadata.id} revisionDate={revisionDate} />
+            </div>
           </Container>
         </Content>
 
@@ -246,8 +249,8 @@ class DatasetPage extends React.Component {
             }
           }
 
-          .producer + .organization {
-            margin-top: 1.6em;
+          .footer {
+            margin-top: auto;
           }
         `}</style>
       </Page>

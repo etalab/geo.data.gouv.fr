@@ -24,11 +24,11 @@
     "producer": "Producteur",
     "datagouv": "Publication sur data.gouv.fr",
     "contacts": "Contacts",
+    "credit": "Contributions",
     "downloads": "Téléchargements",
     "thumbnails": "Aperçu des données",
     "spatialExtent": "Étendue spatiale",
-    "links": "Liens",
-    "credits": "Contributions"
+    "links": "Liens"
   },
 
   "datagouv": {

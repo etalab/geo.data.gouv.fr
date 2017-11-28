@@ -24,11 +24,11 @@
     "producer": "Producer",
     "datagouv": "Publication on data.gouv.fr",
     "contacts": "Contacts",
+    "credit": "Credit",
     "downloads": "Downloads",
     "thumbnails": "Data preview",
     "spatialExtent": "Spatial extent",
-    "links": "Links",
-    "credits": "Credits"
+    "links": "Links"
   },
 
   "datagouv": {
