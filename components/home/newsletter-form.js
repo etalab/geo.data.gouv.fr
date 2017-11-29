@@ -39,6 +39,7 @@ class NewsletterForm extends React.Component {
           }
 
           form {
+            width: 100%;
             max-width: 640px;
             margin: auto;
           }
