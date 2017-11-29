@@ -59,6 +59,10 @@ class SearchPage extends React.Component {
     showFacets: false
   }
 
+  componentWillUnmount() {
+    document.body.classList.remove('no-xs-scroll')
+  }
+
   componentWillReceiveProps() {
     this.setState(state => ({
       showFacets: false
