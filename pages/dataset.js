@@ -88,10 +88,6 @@ class DatasetPage extends React.Component {
     }
   }
 
-  setPreviewRef = ref => {
-    this.previewRef = ref
-  }
-
   render() {
     const { dataset: {
       recordId,

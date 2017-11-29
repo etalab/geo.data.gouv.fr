@@ -38,9 +38,15 @@ export const Page = ({ children }) => (
         }
       }
 
-      body.no-scroll {
-        @media (max-width: 960px) {
+      body {
+        &.no-scroll {
           overflow: hidden;
+        }
+
+        &.no-xs-scroll {
+          @media (max-width: 960px) {
+            overflow: hidden;
+          }
         }
       }
 

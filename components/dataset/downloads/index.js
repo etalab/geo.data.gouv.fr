@@ -3,6 +3,7 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import DatasetDownload from './dataset-download'
+import Preview from './preview'
 
 class Downloads extends React.Component {
   static propTypes = {
@@ -16,8 +17,22 @@ class Downloads extends React.Component {
     t: PropTypes.func.isRequired
   }
 
+  state = {}
+
+  setPreview = (distribution, link) => {
+    this.setState(() => distribution ? ({
+      preview: {
+        distribution,
+        link
+      }
+    }) : {
+      preview: null
+    })
+  }
+
   render() {
     const { distributions, t } = this.props
+    const { preview } = this.state
 
     if (!distributions.length) {
       return t('downloads.noDownloads')
@@ -28,34 +43,40 @@ class Downloads extends React.Component {
 
     return (
       <div>
-        <div>
-          {vectorDistributions.length > 0 && (
-            <section>
-              <h5>{t('downloads.vectorData')}</h5>
-              {vectorDistributions.map(distribution => (
-                <div className='distribution' key={distribution._id}>
-                  <DatasetDownload distribution={distribution} />
-                </div>
+        {vectorDistributions.length > 0 && (
+          <section>
+            <h5>{t('downloads.vectorData')}</h5>
+            {vectorDistributions.map(distribution => (
+              <div className='distribution' key={distribution._id}>
+                <DatasetDownload distribution={distribution} setPreview={this.setPreview} />
+              </div>
+            ))}
+
+            {preview && (
+              <Preview
+                distribution={preview.distribution}
+                link={preview.link}
+                onClose={() => this.setPreview(null)}
+              />
+            )}
+          </section>
+        )}
+        {otherDistributions.length > 0 && (
+          <section>
+            <h5>{t('downloads.otherData')}</h5>
+            <ul>
+              {otherDistributions.map(distribution => (
+                <li key={distribution._id}>
+                  {distribution.available ? (
+                    <a href={distribution.location} download>
+                      {distribution.name}
+                    </a>
+                  ) : distribution.name}
+                </li>
               ))}
-            </section>
-          )}
-          {otherDistributions.length > 0 && (
-            <section>
-              <h5>{t('downloads.otherData')}</h5>
-              <ul>
-                {otherDistributions.map(distribution => (
-                  <li key={distribution._id}>
-                    {distribution.available ? (
-                      <a href={distribution.location} download>
-                        {distribution.name}
-                      </a>
-                    ) : distribution.name}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </div>
+            </ul>
+          </section>
+        )}
 
         <style jsx>{`
           section {

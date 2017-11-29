@@ -64,7 +64,7 @@ class SearchPage extends React.Component {
       showFacets: false
     }))
 
-    document.body.classList.remove('no-scroll')
+    document.body.classList.remove('no-xs-scroll')
   }
 
   getFilterGroups = () => {
@@ -89,9 +89,9 @@ class SearchPage extends React.Component {
   toggleFacets = () => {
     this.setState(state => {
       if (state.showFacets) {
-        document.body.classList.remove('no-scroll')
+        document.body.classList.remove('no-xs-scroll')
       } else {
-        document.body.classList.add('no-scroll')
+        document.body.classList.add('no-xs-scroll')
       }
 
       return {
@@ -105,7 +105,7 @@ class SearchPage extends React.Component {
       showFacets: false
     }))
 
-    document.body.classList.remove('no-scroll')
+    document.body.classList.remove('no-xs-scroll')
   }
 
   render() {

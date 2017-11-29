@@ -12,7 +12,7 @@ import Button from '../../button'
 
 import { GEODATA_API_URL } from '@env'
 
-export const DatasetDownload = ({ distribution, t }) => {
+export const DatasetDownload = ({ distribution, setPreview, t }) => {
   let link, layerName
 
   if (distribution.type === 'file-package') {
@@ -50,7 +50,7 @@ export const DatasetDownload = ({ distribution, t }) => {
             </div>
           </div>
           <div className='preview'>
-            <Button>
+            <Button onClick={() => setPreview(distribution, link)}>
               <PreviewIcon style={{ verticalAlign: -2 }} /> {t('downloads.openPreview')}
             </Button>
           </div>
@@ -131,6 +131,8 @@ DatasetDownload.propTypes = {
     service: PropTypes.string,
     typeName: PropTypes.string
   }).isRequired,
+
+  setPreview: PropTypes.func.isRequired,
 
   t: PropTypes.func.isRequired
 }
