@@ -5,16 +5,8 @@ import { Map, TileLayer, GeoJSON } from 'react-leaflet'
 
 import leafletStyle from 'leaflet/dist/leaflet.css'
 
-// Fix icon issues when importing images with webpack
-// https://github.com/PaulLeCam/react-leaflet/issues/255
 import Leaflet from 'leaflet'
-delete Leaflet.Icon.Default.prototype._getIconUrl
-
-// Leaflet.Icon.Default.mergeOptions({
-//   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-//   iconUrl: require('leaflet/dist/images/marker-icon.png'),
-//   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-// })
+Leaflet.Icon.Default.imagePath = '/static/images/leaflet/'
 
 class CenteredMap extends React.Component {
   static propTypes = {
