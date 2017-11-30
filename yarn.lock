@@ -3724,9 +3724,9 @@ i18next-xhr-backend@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/i18next-xhr-backend/-/i18next-xhr-backend-1.5.0.tgz#fee4ae803879b824bef865a77d6eb6164a8d61f1"
 
-i18next@^10.0.7:
-  version "10.0.7"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-10.0.7.tgz#4a4aac2aa21804b8ca1d19b15726bee10fbda6b4"
+i18next@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-10.2.1.tgz#bec61a98d7976c3084147cc2cd2bafdeff9088f2"
 
 iconv-lite@0.4.13:
   version "0.4.13"
@@ -5861,9 +5861,9 @@ react-hot-loader@3.1.1:
     redbox-react "^1.3.6"
     source-map "^0.6.1"
 
-react-i18next@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-6.1.0.tgz#6bc6fca03c9d1dc42e8f9c5b1c3e781b68773271"
+react-i18next@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-7.0.2.tgz#b942407841d96cb3dcc317c1d1267f6f1d5d1ab2"
   dependencies:
     hoist-non-react-statics "2.3.1"
     html-parse-stringify2 "2.0.1"
