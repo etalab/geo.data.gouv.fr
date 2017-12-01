@@ -28,7 +28,7 @@
     "leaflet": "^1.2.0",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
-    "moment": "^2.19.2",
+    "moment": "^2.19.3",
     "next": "^4.1.4",
     "nprogress": "^0.2.0",
     "piwik-react-router": "^0.10.0",
@@ -53,7 +53,7 @@
     "underscore.string": "^3.3.4"
   },
   "resolutions": {
-    "chart.js/moment": "^2.19.2"
+    "chart.js/moment": "^2.19.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
