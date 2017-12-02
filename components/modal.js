@@ -22,12 +22,10 @@ class Modal extends React.Component {
   componentWillMount() {
     this.node = document.createElement('div')
     document.body.appendChild(this.node)
-    document.body.classList.add('no-scroll')
   }
 
   componentWillUnmount() {
     document.body.removeChild(this.node)
-    document.body.classList.remove('no-scroll')
     this.node = null
   }
 
@@ -50,6 +48,12 @@ class Modal extends React.Component {
             {children}
           </div>
         </Container>
+
+        <style jsx global>{`
+          body {
+            overflow: hidden;
+          }
+        `}</style>
 
         <style jsx>{`
           @import 'colors';
