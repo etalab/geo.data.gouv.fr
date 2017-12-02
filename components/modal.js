@@ -41,13 +41,12 @@ class Modal extends React.Component {
     return ReactDOM.createPortal(
       <div className={`modal ${overlay ? 'overlay' : ''}`}>
         <Container fluid={fluid}>
-          <nav>
-            <span onClick={onClose}>
-              <CloseIcon />
-            </span>
-          </nav>
-
           <div className='content'>
+            <nav>
+              <span onClick={onClose}>
+                <CloseIcon />
+              </span>
+            </nav>
             {children}
           </div>
         </Container>
@@ -72,28 +71,30 @@ class Modal extends React.Component {
           }
 
           span {
-            color: $white;
-            font-size: 50px;
-            opacity: 0.9;
+            color: darken($lightgrey, 10%);
+            font-size: 40px;
 
             &:hover {
-              opacity: 1;
+              color: darken($lightgrey, 20%);
               cursor: pointer;
             }
           }
 
           nav {
             text-align: right;
-            padding: 10px 0;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid $lightgrey;
           }
 
           .content {
             background: $white;
             border-radius: 2px;
             flex: 1;
+            margin: 20px 0;
             padding: 20px;
-            margin-bottom: 20px;
             padding: 1.5em 1.7em;
+            padding-top: 12px;
             display: flex;
             flex-direction: column;
 
