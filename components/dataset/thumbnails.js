@@ -44,7 +44,7 @@ class Thumbnails extends React.Component {
               <img
                 key={thumbnail.originalUrlHash}
                 src={`${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`}
-                className={thumbnail === selected && 'selected'}
+                className={thumbnail.originalUrlHash === selected.originalUrlHash && 'selected'}
                 alt={thumbnail.description}
                 onClick={this.selectThumbnail(thumbnail)}
               />
