@@ -82,6 +82,10 @@ class Modal extends React.Component {
               color: darken($lightgrey, 20%);
               cursor: pointer;
             }
+
+            @media (max-width: 551px) {
+              font-size: 24px;
+            }
           }
 
           nav {
