@@ -67,7 +67,7 @@ class Harvests extends React.Component {
         <div className='table'>
           <Table catalog={catalog} harvests={harvests} pending={pending} />
           <div className='button'>
-            <Button onClick={this.runHarvest} disabled={pending}>
+            <Button onClick={this.runHarvest} disabled={pending} block>
               {t('details.harvests.run')}
             </Button>
           </div>

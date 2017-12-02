@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, type, size, color, href, disabled, ...props }) => {
+const Button = ({ children, type, size, color, href, disabled, block, ...props }) => {
   const buttonProps = href ? {} : props
 
   return (
     <button
       type={type}
       disabled={disabled}
-      className={`${size} ${disabled ? '' : color}`}
+      className={`${size} ${disabled ? '' : color} ${block ? 'block' : ''}`}
       tabIndex={href ? -1 : null}
       {...buttonProps}
     >
@@ -20,8 +20,7 @@ const Button = ({ children, type, size, color, href, disabled, ...props }) => {
         @import 'colors';
 
         button {
-          display: block;
-          width: 100%;
+          display: inline-block;
           border: 0 none;
           border-radius: 2px;
           padding: 5px 7px;
@@ -45,6 +44,11 @@ const Button = ({ children, type, size, color, href, disabled, ...props }) => {
           &:hover {
             color: inherit;
           }
+        }
+
+        .block {
+          display: block;
+          width: 100%;
         }
 
         .large {
@@ -86,6 +90,7 @@ const Button = ({ children, type, size, color, href, disabled, ...props }) => {
 Button.propTypes = {
   children: PropTypes.node,
   disabled: PropTypes.bool,
+  block: PropTypes.bool,
   type: PropTypes.string,
   href: PropTypes.string,
   size: PropTypes.oneOf([

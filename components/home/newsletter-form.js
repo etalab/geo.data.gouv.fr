@@ -20,7 +20,7 @@ class NewsletterForm extends React.Component {
             <h3>{t('newsletter.title')}</h3>
             <input type='email' name='EMAIL' placeholder={t('newsletter.placeholder')} />
 
-            <Button type='submit' name='subscribe' size='large'>
+            <Button type='submit' name='subscribe' size='large' block>
               <span>{t('newsletter.button')}</span>
             </Button>
           </form>
