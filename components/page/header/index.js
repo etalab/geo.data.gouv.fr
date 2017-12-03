@@ -142,8 +142,10 @@ class Header extends React.Component {
           }
 
           .avatar {
+            display: inline-block;
+            vertical-align: -10px;
             width: 30px;
-            margin: -0.7em 0.3em;
+            margin-right: 5px;
             border-radius: 60px;
           }
         `}</style>
