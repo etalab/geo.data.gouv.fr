@@ -6,7 +6,8 @@ import { getSession, clearSession } from '../../lib/user'
 
 export default () => Component => hoist(class extends React.PureComponent {
   static childContextTypes = {
-    auth: PropTypes.shape({
+    session: PropTypes.shape({
+      auth: PropTypes.bool,
       user: PropTypes.shape({
         id: PropTypes.string.isRequired,
         first_name: PropTypes.string.isRequired,
@@ -14,33 +15,36 @@ export default () => Component => hoist(class extends React.PureComponent {
         avatar_thumbnail: PropTypes.string.isRequired
       }),
       clear: PropTypes.func.isRequired
-    }).isRequired
+    })
   }
 
   state = {}
 
   getChildContext() {
-    const { user } = this.state
+    const { session } = this.state
 
     return {
-      auth: {
-        user: user,
+      session: session ? {
+        auth: session.auth,
+        user: session.user,
         clear: clearSession
-      }
+      } : null
     }
   }
 
   async componentDidMount() {
-    const { user } = await getSession()
+    const session = await getSession()
 
     this.setState(state => ({
-      user
+      session
     }))
   }
 
   render() {
+    const { session } = this.getChildContext()
+
     return (
-      <Component {...this.props} />
+      <Component session={session} {...this.props} />
     )
   }
 }, Component)

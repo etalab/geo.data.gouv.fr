@@ -4,7 +4,7 @@ import hoist from 'hoist-non-react-statics'
 
 export default () => Component => hoist(class extends React.Component {
   static contextTypes = {
-    auth: PropTypes.shape({
+    session: PropTypes.shape({
       user: PropTypes.shape({
         id: PropTypes.string.isRequired,
         first_name: PropTypes.string.isRequired,
@@ -12,14 +12,14 @@ export default () => Component => hoist(class extends React.Component {
         avatar_thumbnail: PropTypes.string.isRequired
       }),
       clear: PropTypes.func.isRequired
-    }).isRequired
+    })
   }
 
   render() {
-    const { auth } = this.context
+    const { session } = this.context
 
     return (
-      <Component session={auth} {...this.props} />
+      <Component session={session} {...this.props} />
     )
   }
 }, Component)

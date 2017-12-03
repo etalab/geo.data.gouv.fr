@@ -41,7 +41,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { router, session: { user }, t, i18n: { language } } = this.props
+    const { router, session, t, i18n: { language } } = this.props
 
     const publicUrl = `${PUBLIC_URL}/${language}`
 
@@ -64,21 +64,23 @@ class Header extends React.Component {
 
             <ul>
               <li>
-                {!user ? (
-                  <a href={logInUrl} onClick={this.clearSession}>{t('header.publish')}</a>
-                ) : (
+                {session && session.user ? (
                   <Link href='/publication'>
                     <a>
-                      <img alt='' className='avatar' src={user.avatar_thumbnail} />
-                      {user.first_name} {user.last_name}
+                      <img alt='' className='avatar' src={session.user.avatar_thumbnail} />
+                      {session.user.first_name} {session.user.last_name}
                     </a>
                   </Link>
+                ) : (
+                  <a href={logInUrl} onClick={session && this.clearSession}>
+                    {t('header.publish')}
+                  </a>
                 )}
               </li>
               <li>
                 <LanguageSelection />
               </li>
-              {user && (
+              {session && session.user && (
                 <li>
                   <a href={logoutUrl} onClick={this.clearSession}>
                     <span>{t('header.logout')}</span>
@@ -143,7 +145,7 @@ class Header extends React.Component {
 
           .avatar {
             display: inline-block;
-            vertical-align: -10px;
+            vertical-align: -9px;
             width: 30px;
             margin-right: 5px;
             border-radius: 60px;
