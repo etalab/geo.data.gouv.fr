@@ -38,12 +38,6 @@ export const Page = ({ children }) => (
         }
       }
 
-      body.no-xs-scroll {
-        @media (max-width: 960px) {
-          overflow: hidden;
-        }
-      }
-
       #nprogress {
         pointer-events: none;
       }

@@ -59,16 +59,10 @@ class SearchPage extends React.Component {
     showFacets: false
   }
 
-  componentWillUnmount() {
-    document.body.classList.remove('no-xs-scroll')
-  }
-
   componentWillReceiveProps() {
     this.setState(state => ({
       showFacets: false
     }))
-
-    document.body.classList.remove('no-xs-scroll')
   }
 
   getFilterGroups = () => {
@@ -91,25 +85,15 @@ class SearchPage extends React.Component {
   }
 
   toggleFacets = () => {
-    this.setState(state => {
-      if (state.showFacets) {
-        document.body.classList.remove('no-xs-scroll')
-      } else {
-        document.body.classList.add('no-xs-scroll')
-      }
-
-      return {
-        showFacets: !state.showFacets
-      }
-    })
+    this.setState(state => ({
+      showFacets: !state.showFacets
+    }))
   }
 
   closeFacets = () => {
     this.setState(state => ({
       showFacets: false
     }))
-
-    document.body.classList.remove('no-xs-scroll')
   }
 
   render() {
@@ -143,6 +127,14 @@ class SearchPage extends React.Component {
             </div>
           </Container>
         </Content>
+
+        <style jsx global>{`
+          body {
+            @media (max-width: 960px) {
+              ${showFacets && 'overflow: hidden;'}
+            }
+          }
+        `}</style>
 
         <style jsx>{`
           .main {
