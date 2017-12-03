@@ -7,6 +7,7 @@
     "title": "Erreur {{code}}",
     "unknown": "Une erreur imprévue s'est produite",
 
+    "map": "Une erreur est survenue lors du chargement de la carte, veuillez réessayer plus tard.",
     "http": {
       "404": "La page demandée n’a pas pu être trouvée"
     }

@@ -7,6 +7,7 @@
     "title": "Error {{code}}",
     "unknown": "An unexpected error has occurred",
 
+    "map": "An error happened when loading the map, try again later.",
     "http": {
       "404": "This page could not be found"
     }
