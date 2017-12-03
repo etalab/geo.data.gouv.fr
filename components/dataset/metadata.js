@@ -4,7 +4,9 @@ import moment from 'moment'
 import { translate } from 'react-i18next'
 
 const Metadata = ({ id, revisionDate, t }) => {
-  const revisionDateLabel = moment(revisionDate).fromNow()
+  const revisionDateLabel = revisionDate ? moment(revisionDate).fromNow() : t('common:enums.unknownData.unknown', {
+    context: 'female'
+  })
 
   return (
     <div>
@@ -23,7 +25,7 @@ const Metadata = ({ id, revisionDate, t }) => {
 
 Metadata.propTypes = {
   id: PropTypes.string.isRequired,
-  revisionDate: PropTypes.string.isRequired,
+  revisionDate: PropTypes.string,
 
   t: PropTypes.func.isRequired
 }

@@ -31,7 +31,7 @@ class DatasetPage extends React.Component {
   static propTypes = {
     dataset: PropTypes.shape({
       recordId: PropTypes.string.isRequired,
-      revisionDate: PropTypes.string.isRequired,
+      revisionDate: PropTypes.string,
       metadata: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
