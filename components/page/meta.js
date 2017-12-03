@@ -1,12 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
+import { withRouter } from 'next/router'
 
 import reset from 'semantic-ui-css/components/reset.min.css'
 import site from 'semantic-ui-css/components/site.min.css'
 
 import { PUBLIC_URL } from '@env'
 
-export default () => (
+const Meta = ({ router }) => (
   <Head>
     <meta charSet='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -24,7 +26,7 @@ export default () => (
     {/* Open Graph */}
     <meta property='og:title' content='geo.data.gouv.fr' />
     <meta property='og:type' content='website' />
-    <meta property='og:url' content={PUBLIC_URL} />
+    <meta property='og:url' content={PUBLIC_URL + router.asPath} />
     <meta property='og:image' content={`${PUBLIC_URL}/static/images/geo-data-gouv-logo.jpg`} />
     <meta property='og:description' content='Trouvez facilement les données géographiques dont vous avez besoin' />
     <meta property='og:site_name' content='geo.data.gouv.fr' />
@@ -42,3 +44,11 @@ export default () => (
     <style dangerouslySetInnerHTML={{ __html: site }} />
   </Head>
 )
+
+Meta.propTypes = {
+  router: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
+}
+
+export default withRouter(Meta)
