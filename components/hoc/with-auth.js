@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import hoist from 'hoist-non-react-statics'
 
 import { getUser, clearUser } from '../../lib/user'
 
-export default () => Component => class extends React.PureComponent {
+export default () => Component => hoist(class extends React.PureComponent {
   static childContextTypes = {
     auth: PropTypes.shape({
       user: PropTypes.shape({
@@ -42,4 +43,4 @@ export default () => Component => class extends React.PureComponent {
       <Component {...this.props} />
     )
   }
-}
+}, Component)
