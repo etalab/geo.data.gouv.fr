@@ -18,6 +18,11 @@ module.exports = {
     }
 
     config.resolve.alias = {
+      // Replace lodash with lodash-es on client side.
+      // This reduces the bundles sizes greatly and allows for webpack
+      // scope hoisting in other dependencies.
+      // Both lodash and lodash-es should be installed, as lodash-es
+      // will not work server-side.
       lodash: 'lodash-es'
     }
 
