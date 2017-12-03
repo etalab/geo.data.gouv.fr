@@ -47,7 +47,7 @@ class Header extends React.Component {
 
     const loginRedirect = `${publicUrl}/publication`
     const isPublication = router.pathname.startsWith('/publication')
-    const logoutRedirect = isPublication ? publicUrl : publicUrl + router.pathname
+    const logoutRedirect = isPublication ? `${PUBLIC_URL}/${language}` : PUBLIC_URL + router.asPath
 
     const logInUrl = `${PUBLICATION_BASE_URL}/login?redirect=${encodeURIComponent(loginRedirect)}`
     const logoutUrl = `${PUBLICATION_BASE_URL}/logout?redirect=${encodeURIComponent(logoutRedirect)}`
