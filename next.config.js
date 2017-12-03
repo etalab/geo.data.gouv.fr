@@ -17,6 +17,10 @@ module.exports = {
       }))
     }
 
+    config.resolve.alias = {
+      lodash: 'lodash-es'
+    }
+
     return config
   }
 }
