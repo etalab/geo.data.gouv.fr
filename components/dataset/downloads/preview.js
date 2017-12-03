@@ -16,6 +16,11 @@ const CenteredMap = dynamic(import('../../centered-map'), {
   loading: translate()(({ t }) => t('loading'))
 })
 
+const PreviewTable = dynamic(import('./preview-table'), {
+  ssr: false,
+  loading: translate()(({ t }) => t('loading'))
+})
+
 class Preview extends React.Component {
   static propTypes = {
     // distribution: PropTypes.object.isRequired,
@@ -82,7 +87,7 @@ class Preview extends React.Component {
                   />
                 </div>
               ) : (
-                'table'
+                <PreviewTable data={data} />
               )}
             </div>
           </div>
@@ -98,6 +103,8 @@ class Preview extends React.Component {
           .map-wrapper {
             flex: 1;
             position: relative;
+            display: flex;
+            flex-direction: column;
           }
 
           .map {

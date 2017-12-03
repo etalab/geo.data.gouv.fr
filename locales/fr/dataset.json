@@ -66,6 +66,16 @@
     "openPreview": "Visualiser"
   },
 
+  "preview": {
+    "paging": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page",
+      "of": "sur"
+    },
+    "empty": "Aucune donnée…"
+  },
+
   "metadata": {
     "id": "Identifiant du jeu de données :",
     "revisionDate": "Dernière mise à jour des informations :"

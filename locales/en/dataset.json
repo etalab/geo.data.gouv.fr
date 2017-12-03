@@ -66,6 +66,16 @@
     "openPreview": "Preview"
   },
 
+  "preview": {
+    "paging": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    },
+    "empty": "No data…"
+  },
+
   "metadata": {
     "id": "Dataset ID:",
     "revisionDate": "Metadata last update:"
