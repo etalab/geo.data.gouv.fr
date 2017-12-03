@@ -10,7 +10,7 @@ const Sitemap = ({ t }) => (
     <li>
       <Link href='/legal'>
         <a>
-          {t('components.Footer.legal')}
+          {t('footer.legal')}
         </a>
       </Link>
     </li>

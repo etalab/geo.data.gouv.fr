@@ -36,6 +36,15 @@
     }
   },
 
+  "header": {
+    "publish": "Publier des données",
+    "logout": "Déconnexion"
+  },
+
+  "footer": {
+    "legal": "Mentions légales"
+  },
+
   "catalog": {
     "empty": "Aucun donnée disponible",
     "openData": "Données ouvertes",
@@ -45,15 +54,6 @@
   },
 
   "components": {
-    "Footer": {
-      "legal": "Mentions légales"
-    },
-
-    "Header": {
-      "login": "Publier des données",
-      "logout": "Déconnexion"
-    },
-
     "Histogram": {
       "label": "Enregistrements"
     },

@@ -36,6 +36,15 @@
     }
   },
 
+  "header": {
+    "publish": "Publish data",
+    "logout": "Logout"
+  },
+
+  "footer": {
+    "legal": "Legal"
+  },
+
   "catalog": {
     "empty": "No data available",
     "openData": "Open data",
@@ -45,15 +54,6 @@
   },
 
   "components": {
-    "Footer": {
-      "legal": "Legal"
-    },
-
-    "Header": {
-      "login": "Publish data",
-      "logout": "Déconnexion"
-    },
-
     "Histogram": {
       "label": "Records"
     },

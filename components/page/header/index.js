@@ -65,7 +65,7 @@ class Header extends React.Component {
             <ul>
               <li>
                 {!user ? (
-                  <a href={logInUrl}>{t('components.Header.login')}</a>
+                  <a href={logInUrl}>{t('header.publish')}</a>
                 ) : (
                   <Link href='/publication'>
                     <a>
@@ -81,7 +81,7 @@ class Header extends React.Component {
               {user && (
                 <li>
                   <a href={logoutUrl} onClick={this.onLogout}>
-                    <span>{t('components.Header.logout')}</span>
+                    <span>{t('header.logout')}</span>
                   </a>
                 </li>
               )}
