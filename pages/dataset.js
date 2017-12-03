@@ -35,7 +35,9 @@ class DatasetPage extends React.Component {
       metadata: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        thumbnails: PropTypes.array,
+        thumbnails: PropTypes.arrayOf(PropTypes.shape({
+          originalUrlHash: PropTypes.string.isRequired
+        })),
         spatialExtent: PropTypes.object,
         equivalentScaleDenominator: PropTypes.number,
         spatialResolution: PropTypes.object,
@@ -109,7 +111,13 @@ class DatasetPage extends React.Component {
 
     return (
       <Page>
-        <Meta title={metadata.title} />
+        <Meta
+          title={metadata.title}
+          description={metadata.description}
+          images={hasThumbnails && metadata.thumbnails.map(
+            thumbnail => `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`
+          )}
+        />
 
         <Content clouds>
           <Container fluid>
