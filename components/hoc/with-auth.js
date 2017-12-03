@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import hoist from 'hoist-non-react-statics'
 
-import { getUser, clearUser } from '../../lib/user'
+import { getSession, clearSession } from '../../lib/user'
 
 export default () => Component => hoist(class extends React.PureComponent {
   static childContextTypes = {
@@ -13,7 +13,7 @@ export default () => Component => hoist(class extends React.PureComponent {
         last_name: PropTypes.string.isRequired,
         avatar_thumbnail: PropTypes.string.isRequired
       }),
-      logout: PropTypes.func.isRequired
+      clear: PropTypes.func.isRequired
     }).isRequired
   }
 
@@ -25,13 +25,13 @@ export default () => Component => hoist(class extends React.PureComponent {
     return {
       auth: {
         user: user,
-        logout: clearUser
+        clear: clearSession
       }
     }
   }
 
   async componentDidMount() {
-    const user = await getUser()
+    const { user } = await getSession()
 
     this.setState(state => ({
       user

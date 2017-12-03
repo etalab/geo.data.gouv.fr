@@ -25,7 +25,7 @@ class Header extends React.Component {
         last_name: PropTypes.string.isRequired,
         avatar_thumbnail: PropTypes.string.isRequired
       }),
-      logout: PropTypes.func.isRequired
+      clear: PropTypes.func.isRequired
     }),
 
     i18n: PropTypes.shape({
@@ -34,10 +34,10 @@ class Header extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  onLogout = e => {
-    const { session: { logout } } = this.props
+  clearSession = e => {
+    const { session } = this.props
 
-    logout()
+    session.clear()
   }
 
   render() {
@@ -65,7 +65,7 @@ class Header extends React.Component {
             <ul>
               <li>
                 {!user ? (
-                  <a href={logInUrl}>{t('header.publish')}</a>
+                  <a href={logInUrl} onClick={this.clearSession}>{t('header.publish')}</a>
                 ) : (
                   <Link href='/publication'>
                     <a>
@@ -80,7 +80,7 @@ class Header extends React.Component {
               </li>
               {user && (
                 <li>
-                  <a href={logoutUrl} onClick={this.onLogout}>
+                  <a href={logoutUrl} onClick={this.clearSession}>
                     <span>{t('header.logout')}</span>
                   </a>
                 </li>

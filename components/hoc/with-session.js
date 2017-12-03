@@ -11,7 +11,7 @@ export default () => Component => hoist(class extends React.Component {
         last_name: PropTypes.string.isRequired,
         avatar_thumbnail: PropTypes.string.isRequired
       }),
-      logout: PropTypes.func.isRequired
+      clear: PropTypes.func.isRequired
     }).isRequired
   }
 
