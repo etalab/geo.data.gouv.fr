@@ -33,6 +33,7 @@ const Sitemap = ({ t }) => (
         color: inherit;
 
         &:hover {
+          color: inherit;
           text-decoration: underline;
         }
       }
