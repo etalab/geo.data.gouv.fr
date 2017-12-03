@@ -22,11 +22,21 @@ class Modal extends React.Component {
   componentWillMount() {
     this.node = document.createElement('div')
     document.body.appendChild(this.node)
+    document.addEventListener('keydown', this.onKeyDown, false)
   }
 
   componentWillUnmount() {
     document.body.removeChild(this.node)
+    document.removeEventListener('keydown', this.onKeyDown, false)
     this.node = null
+  }
+
+  onKeyDown = e => {
+    const { onClose } = this.props
+
+    if (e.keyCode === 27 /* ESC */) {
+      onClose()
+    }
   }
 
   render() {
