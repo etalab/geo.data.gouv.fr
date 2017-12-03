@@ -15,14 +15,14 @@ const Meta = ({ title, description, images }) => (
       <Fragment>
         <meta name='description' content={prune(description, 160, '…')} />
         <meta name='twitter:description' content={prune(description, 300, '…')} />
-        <meta name='og:description' content={prune(description, 160, '…')} />
+        <meta property='og:description' content={prune(description, 160, '…')} />
       </Fragment>
     )}
 
     {images && images.length > 0 && images.map((image, idx) => (
       <Fragment key={idx}>
         <meta name='twitter:image' content={image} />
-        <meta name='og:image' content={image} />
+        <meta property='og:image' content={image} />
       </Fragment>
     ))}
   </Head>
