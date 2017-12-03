@@ -8,7 +8,7 @@ const CenteredMap = dynamic(import('../centered-map'), {
   loading: translate()(({ t }) => t('loading'))
 })
 
-const SpatialExtent = ({ extent, scale, resolution, t }) => {
+const SpatialExtent = ({ extent, t }) => {
   const features = {
     type: 'FeatureCollection',
     features: [{
@@ -23,20 +23,6 @@ const SpatialExtent = ({ extent, scale, resolution, t }) => {
       <div className='map'>
         <CenteredMap vectors={features} frozen />
       </div>
-
-      {(scale || resolution) && (
-        <div className='infos'>
-          {scale && <div>
-            {t('labels.scale')} <b>1 / {scale}</b>
-          </div>}
-
-          {resolution && <div>
-            {t('labels.resolution')} <b>{resolution.value} {t(`enums.resolutionUnits.${resolution.unit}`, {
-              count: resolution.value
-            })}</b>
-          </div>}
-        </div>
-      )}
 
       <style jsx>{`
         @import 'colors';
@@ -58,14 +44,6 @@ const SpatialExtent = ({ extent, scale, resolution, t }) => {
             height: 250px;
           }
         }
-
-        .infos {
-          margin-top: 1em;
-        }
-
-        b {
-          color: $blue;
-        }
       `}</style>
     </div>
   )
@@ -73,11 +51,6 @@ const SpatialExtent = ({ extent, scale, resolution, t }) => {
 
 SpatialExtent.propTypes = {
   extent: PropTypes.object.isRequired,
-  scale: PropTypes.number,
-  resolution: PropTypes.shape({
-    value: PropTypes.number.isRequired,
-    unit: PropTypes.string.isRequired
-  }),
 
   t: PropTypes.func.isRequired
 }

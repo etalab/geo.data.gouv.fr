@@ -40,8 +40,6 @@ class DatasetPage extends React.Component {
           originalUrlHash: PropTypes.string.isRequired
         })),
         spatialExtent: PropTypes.object,
-        equivalentScaleDenominator: PropTypes.number,
-        spatialResolution: PropTypes.object,
         contacts: PropTypes.array.isRequired,
         links: PropTypes.array.isRequired,
         credits: PropTypes.string
@@ -168,11 +166,7 @@ class DatasetPage extends React.Component {
                   )}
                   {metadata.spatialExtent && (
                     <Box title={t('blocks.spatialExtent')}>
-                      <SpatialExtent
-                        extent={metadata.spatialExtent}
-                        scale={metadata.equivalentScaleDenominator}
-                        resolution={metadata.spatialResolution}
-                      />
+                      <SpatialExtent extent={metadata.spatialExtent} />
                     </Box>
                   )}
                   {hasLinks && (

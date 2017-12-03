@@ -41,19 +41,37 @@ const Infos = ({ metadata, t }) => {
       context: 'female'
     })
 
+  const {
+    equivalentScaleDenominator: scale,
+    spatialResolution: resolution
+  } = metadata
+
   return (
     <div>
       <span>
         {t('labels.type')} <b>{dataType}</b>
       </span>
+
       <span>
         {t('labels.license')} <b>{licenseLink ? (
           <a href={licenseLink} rel='noopener noreferrer' target='_blank'>{license}</a>
         ) : license}</b>
       </span>
+
       <span>
         {t('labels.category')} <b>{category}</b>
       </span>
+
+      {scale && <span>
+        {t('labels.scale')} <b>1 / {scale}</b>
+      </span>}
+
+      {resolution && <span>
+        {t('labels.resolution')} <b>{resolution.value} {t(`enums.resolutionUnits.${resolution.unit}`, {
+          count: resolution.value
+        })}</b>
+      </span>}
+
       <span>
         {t('labels.lastUpdate')} <b>{updatedAtLabel}</b>
       </span>
@@ -71,8 +89,6 @@ const Infos = ({ metadata, t }) => {
         }
 
         b {
-          margin-left: 0.3em;
-          font-weight: bold;
           color: $blue;
         }
 
@@ -93,7 +109,12 @@ Infos.propTypes = {
     license: PropTypes.string,
     topicCategory: PropTypes.string,
     creationDate: PropTypes.string,
-    revisionDate: PropTypes.string
+    revisionDate: PropTypes.string,
+    equivalentScaleDenominator: PropTypes.number,
+    spatialResolution: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      unit: PropTypes.string.isRequired
+    })
   }).isRequired,
 
   t: PropTypes.func.isRequired
