@@ -69,7 +69,7 @@ class Header extends React.Component {
                 ) : (
                   <Link href='/publication'>
                     <a>
-                      <img alt='avatar' className='avatar' src={user.avatar_thumbnail} />
+                      <img alt='' className='avatar' src={user.avatar_thumbnail} />
                       {user.first_name} {user.last_name}
                     </a>
                   </Link>
