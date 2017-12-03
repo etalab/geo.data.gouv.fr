@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
+import prune from 'underscore.string/prune'
 
 const SITE_NAME = 'geo.data.gouv.fr'
 
@@ -12,9 +13,9 @@ const Meta = ({ title, description, images }) => (
 
     {description && (
       <Fragment>
-        <meta name='description' content={description} />
-        <meta name='twitter:description' content={description} />
-        <meta name='og:description' content={description} />
+        <meta name='description' content={prune(description, 160, '…')} />
+        <meta name='twitter:description' content={prune(description, 300, '…')} />
+        <meta name='og:description' content={prune(description, 160, '…')} />
       </Fragment>
     )}
 
