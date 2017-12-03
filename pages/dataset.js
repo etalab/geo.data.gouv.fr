@@ -114,7 +114,7 @@ class DatasetPage extends React.Component {
         <Meta
           title={metadata.title}
           description={metadata.description}
-          images={hasThumbnails && metadata.thumbnails.map(
+          images={metadata.thumbnails && metadata.thumbnails.map(
             thumbnail => `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`
           )}
         />
