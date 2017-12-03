@@ -1,6 +1,8 @@
 import React from 'react'
+import { flowRight } from 'lodash'
 
 import withI18n from '../components/hoc/with-i18n'
+import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -45,4 +47,7 @@ const LegalPage = () => (
   </Page>
 )
 
-export default withI18n()(LegalPage)
+export default flowRight(
+  withI18n(),
+  withAuth()
+)(LegalPage)

@@ -1,11 +1,13 @@
 import { stringify } from 'querystring'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { flowRight } from 'lodash'
 
 import { _get } from '../lib/fetch'
 import { getFilters } from '../lib/query'
 
 import withI18n from '../components/hoc/with-i18n'
+import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
 import Content from '../components/content'
@@ -155,4 +157,7 @@ class SearchPage extends React.Component {
   }
 }
 
-export default withI18n(['search', 'dataset'])(SearchPage)
+export default flowRight(
+  withI18n(['search', 'dataset']),
+  withAuth()
+)(SearchPage)

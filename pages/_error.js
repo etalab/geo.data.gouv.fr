@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { flowRight } from 'lodash'
 
 import withI18n from '../components/hoc/with-i18n'
+import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -87,4 +89,7 @@ class ErrorPage extends React.Component {
   }
 }
 
-export default withI18n()(ErrorPage)
+export default flowRight(
+  withI18n(),
+  withAuth()
+)(ErrorPage)

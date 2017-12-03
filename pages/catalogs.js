@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { flowRight } from 'lodash'
 
 import { _get } from '../lib/fetch'
 
 import withI18n from '../components/hoc/with-i18n'
+import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -80,4 +82,7 @@ class CatalogsPage extends React.Component {
   }
 }
 
-export default withI18n('catalogs')(CatalogsPage)
+export default flowRight(
+  withI18n('catalogs'),
+  withAuth()
+)(CatalogsPage)

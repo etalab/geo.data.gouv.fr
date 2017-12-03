@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { flowRight } from 'lodash'
 
 import withI18n from '../components/hoc/with-i18n'
+import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -84,4 +86,7 @@ EventsPage.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default withI18n('events')(EventsPage)
+export default flowRight(
+  withI18n('events'),
+  withAuth()
+)(EventsPage)

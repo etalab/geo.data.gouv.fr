@@ -1,6 +1,8 @@
 import React from 'react'
+import { flowRight } from 'lodash'
 
 import withI18n from '../components/hoc/with-i18n'
+import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
 import Content from '../components/content'
@@ -136,4 +138,7 @@ const IndexPage = () => (
   </Page>
 )
 
-export default withI18n('home')(IndexPage)
+export default flowRight(
+  withI18n('home'),
+  withAuth()
+)(IndexPage)
