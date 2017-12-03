@@ -24,11 +24,13 @@ const PreviewTable = ({ data, t }) => {
         data={data}
         columns={Array.from(attributes).map(attribute => ({
           Header: attribute,
-          accessor: attribute
+          accessor: attribute,
+          minWidth: 200
         }))}
         showPageSizeOptions={false}
         defaultPageSize={50}
         minRows={25}
+        resizable={false}
 
         previousText={t('preview.paging.previous')}
         nextText={t('preview.paging.next')}
