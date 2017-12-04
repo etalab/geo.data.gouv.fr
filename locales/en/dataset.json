@@ -85,6 +85,14 @@
     "reply": "Reply",
 
     "empty": "No discussions yet…",
+    "fields": {
+      "title": "Title",
+      "message": "Message"
+    },
+    "errors": {
+      "replyValidation": "Please specify the message.",
+      "postValidation": "Please specify the title and message."
+    },
 
     "replyCount": "One reply",
     "replyCount_plural": "{{ count }} replies",

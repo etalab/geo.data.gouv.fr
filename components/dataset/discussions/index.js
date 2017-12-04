@@ -14,12 +14,6 @@ import List from './list'
 
 import { DATAGOUV_API_URL } from '@env'
 
-// import Discussion from './Discussion'
-// import DiscussionForm from './DiscussionForm'
-
-// import { getDiscussions, getUser, createNewDiscussion, createNewReply } from '../../../../fetch/fetch'
-// import { waitForDataAndSetState, cancelAllPromises } from '../../../../helpers/components'
-
 class Discussions extends React.Component {
   static propTypes = {
     remoteId: PropTypes.string.isRequired,

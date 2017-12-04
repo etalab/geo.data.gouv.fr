@@ -85,6 +85,14 @@
     "reply": "Répondre",
 
     "empty": "Aucune discussion pour le moment…",
+    "fields": {
+      "title": "Titre",
+      "message": "Commentaire"
+    },
+    "errors": {
+      "replyValidation": "Merci de préciser le commentaire.",
+      "postValidation": "Merci de préciser le titre le commentaire."
+    },
 
     "replyCount": "Une réponse",
     "replyCount_plural": "{{ count }} réponses",

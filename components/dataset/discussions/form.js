@@ -75,9 +75,9 @@ class DiscussionForm extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         {error && (replying ? (
-          <p>Merci de préciser le commentaire.</p>
+          <p>{t('discussions.errors.replyValidation')}</p>
         ) : (
-          <p>Merci de préciser le titre le commentaire.</p>
+          <p>{t('discussions.errors.postValidation')}</p>
         ))}
 
         {!replying && (
@@ -85,7 +85,7 @@ class DiscussionForm extends React.Component {
             type='text'
             value={title}
             onChange={this.onTitleChange}
-            placeholder='Titre' />
+            placeholder={t('discussions.fields.title')} />
         )}
         <div>
           <img src={user.avatar_thumbnail || '/static/images/avatar.png'} alt='avatar' />
@@ -93,7 +93,7 @@ class DiscussionForm extends React.Component {
             type='textarea'
             value={comment}
             onChange={this.onCommentChange}
-            placeholder='Commentaire' />
+            placeholder={t('discussions.fields.message')} />
         </div>
 
         <Button type='submit'>
@@ -119,7 +119,7 @@ class DiscussionForm extends React.Component {
 
           p {
             color: $red;
-            margin-bottom: 0;
+            margin-bottom: 4px;
           }
 
           input {
