@@ -3,6 +3,11 @@
   "displayMore": "Afficher la suite…",
   "displayLess": "Réduire",
 
+  "auth": {
+    "login": "Se connecter",
+    "register": "Créer un compte"
+  },
+
   "errors": {
     "title": "Erreur {{code}}",
     "unknown": "Une erreur imprévue s'est produite",

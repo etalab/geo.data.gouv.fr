@@ -3,6 +3,11 @@
   "displayMore": "Display more…",
   "displayLess": "Hide",
 
+  "auth": {
+    "login": "Login",
+    "register": "Register"
+  },
+
   "errors": {
     "title": "Error {{code}}",
     "unknown": "An unexpected error has occurred",
