@@ -70,6 +70,7 @@ const Button = ({ children, type, size, color, href, disabled, block, ...props }
 
           &:hover {
             background-color: darken($blue, 10%);
+            border-color: darken($blue, 10%);
           }
         }
 

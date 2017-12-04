@@ -26,6 +26,7 @@
     "contacts": "Contacts",
     "credit": "Contributions",
     "downloads": "Téléchargements",
+    "discussions": "Discussions",
     "thumbnails": "Aperçu des données",
     "spatialExtent": "Étendue spatiale",
     "links": "Liens"
@@ -74,6 +75,20 @@
       "of": "sur"
     },
     "empty": "Aucune donnée…"
+  },
+
+  "discussions": {
+    "loggedOutMessage": "Vous devez être connecté pour démarrer une discussion.",
+
+    "new": "Démarrer une nouvelle discussion",
+    "start": "Démarrer une discussion",
+    "reply": "Répondre",
+
+    "empty": "Aucune discussion pour le moment…",
+
+    "replyCount": "Une réponse",
+    "replyCount_plural": "{{ count }} réponses",
+    "closeReplies": "Fermer"
   },
 
   "metadata": {

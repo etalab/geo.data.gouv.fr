@@ -4,7 +4,7 @@ import hoist from 'hoist-non-react-statics'
 
 import { getSession, clearSession } from '../../lib/user'
 
-export default () => Component => hoist(class extends React.PureComponent {
+export default () => Page => hoist(class extends React.PureComponent {
   static childContextTypes = {
     session: PropTypes.shape({
       auth: PropTypes.bool,
@@ -41,10 +41,8 @@ export default () => Component => hoist(class extends React.PureComponent {
   }
 
   render() {
-    const { session } = this.getChildContext()
-
     return (
-      <Component session={session} {...this.props} />
+      <Page {...this.props} />
     )
   }
-}, Component)
+}, Page)

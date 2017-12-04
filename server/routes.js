@@ -25,6 +25,12 @@ module.exports = app => {
     })
   })
 
+  router.get('/publication/*', (req, res) => {
+    app.render(req, res, '/publication', {
+      ...req.query
+    })
+  })
+
   router.get('*', (req, res) => {
     app.render(req, res, req.params[0], req.query)
   })

@@ -21,13 +21,7 @@ export default mapStateWithProps => Component => {
       error: null
     }
 
-    async componentWillReceiveProps(newProps) {
-      const { promise } = newProps
-
-      if (promise === this.props.promise) {
-        return
-      }
-
+    async resolvePromise(promise) {
       try {
         const data = mapStateWithProps(await promise)
 
@@ -40,6 +34,22 @@ export default mapStateWithProps => Component => {
           error: err,
           loading: false
         }))
+      }
+    }
+
+    componentDidMount() {
+      const { promise } = this.props
+
+      if (promise) {
+        this.resolvePromise(promise)
+      }
+    }
+
+    componentWillReceiveProps(newProps) {
+      const { promise } = this.props
+
+      if (newProps.promise && promise !== newProps.promise) {
+        this.resolvePromise(newProps.promise)
       }
     }
 

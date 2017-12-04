@@ -26,6 +26,7 @@
     "contacts": "Contacts",
     "credit": "Credit",
     "downloads": "Downloads",
+    "discussions": "Discussions",
     "thumbnails": "Data preview",
     "spatialExtent": "Spatial extent",
     "links": "Links"
@@ -74,6 +75,20 @@
       "of": "of"
     },
     "empty": "No data…"
+  },
+
+  "discussions": {
+    "loggedOutMessage": "You need to be authenticated to start a discussion.",
+
+    "new": "Start new discussion",
+    "start": "Start a discussion",
+    "reply": "Reply",
+
+    "empty": "No discussions yet…",
+
+    "replyCount": "One reply",
+    "replyCount_plural": "{{ count }} replies",
+    "closeReplies": "Close"
   },
 
   "metadata": {

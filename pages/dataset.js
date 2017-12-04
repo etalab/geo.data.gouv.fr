@@ -19,6 +19,7 @@ import Contacts from '../components/dataset/contacts'
 
 import Header from '../components/dataset/header'
 import Downloads from '../components/dataset/downloads'
+import Discussions from '../components/dataset/discussions'
 
 import Thumbnails from '../components/dataset/thumbnails'
 import SpatialExtent from '../components/dataset/spatial-extent'
@@ -149,6 +150,7 @@ class DatasetPage extends React.Component {
                   </Box>
                 )}
               </div>
+
               <div className='main'>
                 <Box>
                   <Header metadata={metadata} />
@@ -156,7 +158,13 @@ class DatasetPage extends React.Component {
                 <Box title={t('blocks.downloads')}>
                   <Downloads distributions={dataset.distributions} />
                 </Box>
+                {datagouvPublication && (
+                  <Box title={t('blocks.discussions')}>
+                    <Discussions remoteId={datagouvPublication.remoteId} />
+                  </Box>
+                )}
               </div>
+
               {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
                 <div className='right'>
                   {hasThumbnails && (

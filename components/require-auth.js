@@ -44,7 +44,7 @@ class RequireAuth extends React.Component {
 
     if (!session.user) {
       return (
-        <div>
+        <div className='container'>
           {message && (
             <div className='message'>
               <Info>{message}</Info>
@@ -61,6 +61,10 @@ class RequireAuth extends React.Component {
           </div>
 
           <style jsx>{`
+            .container {
+              text-align: left;
+            }
+
             .message {
               margin-bottom: 1em;
             }
