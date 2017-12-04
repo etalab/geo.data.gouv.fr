@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
+import Markdown from '../../markdown'
+
 const Message = ({ message }) => {
   const postedOn = moment.utc(message.posted_on).local()
 
@@ -19,7 +21,9 @@ const Message = ({ message }) => {
 
           <div className='timestamp'>{postedOn.fromNow()}</div>
         </div>
-        <div className='text'>{message.content}</div>
+        <div className='text'>
+          <Markdown markdown={message.content} />
+        </div>
       </div>
 
       <style jsx>{`
