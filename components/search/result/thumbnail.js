@@ -36,10 +36,11 @@ const Thumbnail = ({ recordId, thumbnails, t }) => {
 
         img {
           display: flex;
-          height: 100%;
+          max-height: 100%;
 
           @media (max-width: 767px) {
             max-width: 100%;
+            max-height: none;
             height: auto;
             margin: auto;
           }
