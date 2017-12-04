@@ -42,18 +42,22 @@ const Header = ({ metadata, i18n: { language }, t }) => (
       <MarkdownPreview markdown={metadata.description} />
     </section>
 
+    <section className='origin'>
+      <h5>{t('labels.dataOrigin')}</h5>
+      {metadata.lineage ? (
+        <MarkdownPreview markdown={metadata.lineage} />
+      ) : (
+        <i>{t('common:enums.unknownData.notSpecified', {
+          context: 'female'
+        })}</i>
+      )}
+    </section>
+
     <section>
       <p>
         <b>{t('labels.purpose')}</b> {metadata.purpose || t('common:enums.unknownData.notSpecified')}
       </p>
-      <p>
-        <b>{t('labels.dataOrigin')}</b> {metadata.lineage || t('common:enums.unknownData.notSpecified', {
-          context: 'female'
-        })}
-      </p>
-    </section>
 
-    <section>
       <LifeCycle
         updateFrequency={metadata.updateFrequency}
         creationDate={metadata.creationDate}
@@ -79,6 +83,12 @@ const Header = ({ metadata, i18n: { language }, t }) => (
         word-break: break-word;
         border-bottom: 1px solid $lightgrey;
         padding-bottom: 1em;
+      }
+
+      .origin {
+        border-top: 1px solid $lightgrey;
+        border-bottom: 1px solid $lightgrey;
+        padding: 1em 0;
       }
 
       .left {
