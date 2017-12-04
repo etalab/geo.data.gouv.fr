@@ -132,6 +132,7 @@ class DiscussionForm extends React.Component {
             width: 100%;
             border: 1px solid $lightgrey;
             height: 53px;
+            resize: none;
           }
 
           button {
