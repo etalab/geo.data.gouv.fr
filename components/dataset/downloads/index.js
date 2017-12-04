@@ -19,11 +19,12 @@ class Downloads extends React.Component {
 
   state = {}
 
-  setPreview = (distribution, link) => {
+  setPreview = (distribution, link, name) => {
     this.setState(() => distribution ? ({
       preview: {
         distribution,
-        link
+        link,
+        name
       }
     }) : {
       preview: null
@@ -54,7 +55,7 @@ class Downloads extends React.Component {
 
             {preview && (
               <Preview
-                distribution={preview.distribution}
+                title={preview.name}
                 link={preview.link}
                 onClose={() => this.setPreview(null)}
               />

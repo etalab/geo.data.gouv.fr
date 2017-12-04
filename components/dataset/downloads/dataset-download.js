@@ -50,7 +50,7 @@ export const DatasetDownload = ({ distribution, setPreview, t }) => {
             </div>
           </div>
           <div className='preview'>
-            <Button onClick={() => setPreview(distribution, link)} block>
+            <Button onClick={() => setPreview(distribution, link, name)} block>
               <PreviewIcon style={{ verticalAlign: -2 }} /> {t('downloads.openPreview')}
             </Button>
           </div>

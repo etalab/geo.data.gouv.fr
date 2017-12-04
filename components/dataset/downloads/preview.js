@@ -23,7 +23,7 @@ const PreviewTable = dynamic(import('./preview-table'), {
 
 class Preview extends React.Component {
   static propTypes = {
-    // distribution: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired
@@ -60,11 +60,11 @@ class Preview extends React.Component {
   }
 
   render() {
-    const { onClose, t } = this.props
+    const { title, onClose, t } = this.props
     const { loading, data, view, error } = this.state
 
     return (
-      <Modal fluid onClose={onClose}>
+      <Modal fluid onClose={onClose} title={title}>
         {loading ? t('common:loading') : (
           <div className='preview'>
             <div className='actions'>

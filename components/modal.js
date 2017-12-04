@@ -10,6 +10,7 @@ class Modal extends React.Component {
   static propTypes = {
     overlay: PropTypes.bool,
     fluid: PropTypes.bool,
+    title: PropTypes.string,
     children: PropTypes.node.isRequired,
     onClose: PropTypes.func.isRequired
   }
@@ -40,7 +41,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { children, overlay, fluid, onClose } = this.props
+    const { children, title, overlay, fluid, onClose } = this.props
 
     if (!process.browser) {
       return null
@@ -51,6 +52,7 @@ class Modal extends React.Component {
         <Container fluid={fluid}>
           <div className='content'>
             <nav>
+              {title && <h2>{title}</h2>}
               <span onClick={onClose}>
                 <CloseIcon />
               </span>
@@ -84,9 +86,26 @@ class Modal extends React.Component {
             background-color: rgba(0, 0, 0, 0.7);
           }
 
+          h2 {
+            margin: 0;
+            font-size: 24px;
+            padding-right: 50px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+
+            @media (max-width: 551px) {
+              font-size: 20px;
+            }
+          }
+
           span {
+            position: absolute;
+            right: 0;
+            top: 0;
+
             color: darken($lightgrey, 10%);
-            font-size: 40px;
+            font-size: 32px;
 
             &:hover {
               color: darken($lightgrey, 20%);
@@ -99,10 +118,10 @@ class Modal extends React.Component {
           }
 
           nav {
-            text-align: right;
             padding-bottom: 10px;
             margin-bottom: 10px;
             border-bottom: 1px solid $lightgrey;
+            position: relative;
           }
 
           .content {
