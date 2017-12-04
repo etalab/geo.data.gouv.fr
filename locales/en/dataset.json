@@ -74,7 +74,10 @@
       "page": "Page",
       "of": "of"
     },
-    "empty": "No data…"
+    "empty": "No data…",
+    "errors": {
+      "download": "The preview data could not be downloaded at this time, please try again later."
+    }
   },
 
   "discussions": {

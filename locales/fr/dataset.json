@@ -74,7 +74,10 @@
       "page": "Page",
       "of": "sur"
     },
-    "empty": "Aucune donnée…"
+    "empty": "Aucune donnée…",
+    "errors": {
+      "download": "Les données à prévisualiser n’ont pas pu être téléchargées, merci de réessayer plus tard."
+    }
   },
 
   "discussions": {

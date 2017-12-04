@@ -38,12 +38,19 @@ class Preview extends React.Component {
   async componentDidMount() {
     const { link } = this.props
 
-    const data = await _get(`${link}?format=GeoJSON&projection=WGS84`)
+    try {
+      const data = await _get(`${link}?format=GeoJSON&projection=WGS84`)
 
-    this.setState(() => ({
-      loading: false,
-      data
-    }))
+      this.setState({
+        loading: false,
+        data
+      })
+    } catch (error) {
+      this.setState({
+        loading: false,
+        error
+      })
+    }
   }
 
   changeView = view => () => {
@@ -54,7 +61,7 @@ class Preview extends React.Component {
 
   render() {
     const { onClose, t } = this.props
-    const { loading, data, view } = this.state
+    const { loading, data, view, error } = this.state
 
     return (
       <Modal fluid onClose={onClose}>
@@ -76,28 +83,37 @@ class Preview extends React.Component {
                 <TableIcon />
               </Button>
             </div>
-            <div className='map-wrapper'>
-              {view === 'map' ? (
-                <div className='map'>
-                  <CenteredMap
-                    vectors={data}
-                    lat={47}
-                    lon={1}
-                    zoom={5.5}
-                  />
-                </div>
-              ) : (
-                <PreviewTable data={data} />
-              )}
-            </div>
+
+            {error ? <span className='error'>{t('preview.errors.download')}</span> : (
+              <div className='map-wrapper'>
+                {view === 'map' ? (
+                  <div className='map'>
+                    <CenteredMap
+                      vectors={data}
+                      lat={47}
+                      lon={1}
+                      zoom={5.5}
+                    />
+                  </div>
+                ) : (
+                  <PreviewTable data={data} />
+                )}
+              </div>
+            )}
           </div>
         )}
 
         <style jsx>{`
+          @import 'colors';
+
           .preview {
             flex: 1;
             display: flex;
             flex-direction: column;
+          }
+
+          .error {
+            color: $red;
           }
 
           .map-wrapper {
