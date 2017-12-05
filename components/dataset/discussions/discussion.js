@@ -30,20 +30,6 @@ class Discussion extends React.Component {
     showReplies: false
   }
 
-  // extendsHandle(e) {
-  //   e.stopPropagation()
-  //   this.setState({ replyInput: false, more: !this.state.more })
-  // }
-
-  // replyForm() {
-  //   this.setState({ more: true, replyInput: true })
-  // }
-
-  // newReply(content, discussionId) {
-  //   this.setState({ replyInput: false })
-  //   this.props.returForm(content, discussionId)
-  // }
-
   onSubmit = ({ comment }) => {
     const { onReply, discussion } = this.props
 
