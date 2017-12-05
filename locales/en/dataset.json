@@ -82,6 +82,7 @@
 
   "discussions": {
     "loggedOutMessage": "You need to be authenticated to start a discussion.",
+    "loggedOutReplyMessage": "You need to be authenticated to reply to a discussion.",
 
     "new": "Start new discussion",
     "start": "Start a discussion",

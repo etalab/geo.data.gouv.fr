@@ -82,6 +82,7 @@
 
   "discussions": {
     "loggedOutMessage": "Vous devez être connecté pour démarrer une discussion.",
+    "loggedOutReplyMessage": "Vous devez être connecté pour répondre à une discussion.",
 
     "new": "Démarrer une nouvelle discussion",
     "start": "Démarrer une discussion",

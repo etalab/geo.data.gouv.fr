@@ -73,7 +73,7 @@ class Discussion extends React.Component {
             <div className='footer'>
               {expanded ? (
                 <div>
-                  <RequireAuth message={t('discussions.loggedOutMessage')} render={user => (
+                  <RequireAuth message={t('discussions.loggedOutReplyMessage')} render={user => (
                     <Form onSubmit={this.onSubmit} user={user} replying />
                   )} />
                   <span onClick={this.toggleReplies}>{t('discussions.closeReplies')}</span>
