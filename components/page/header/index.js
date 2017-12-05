@@ -67,7 +67,7 @@ class Header extends React.Component {
                 {session && session.user ? (
                   <Link href='/publication'>
                     <a>
-                      <img alt='' className='avatar' src={session.user.avatar_thumbnail} />
+                      <img alt='' className='avatar' src={session.user.avatar_thumbnail || '/static/images/avatar.png'} />
                       {session.user.first_name} {session.user.last_name}
                     </a>
                   </Link>
@@ -111,10 +111,6 @@ class Header extends React.Component {
             }
           }
 
-          a {
-            color: $black;
-          }
-
           .logo {
             img {
               height: 68px;
@@ -123,31 +119,54 @@ class Header extends React.Component {
           }
 
           ul {
-            display: inline;
+            display: inline-block;
             margin: 0;
             padding: 0;
             list-style-type: 0;
             text-align: right;
 
+            @media (max-width: 551px) {
+              text-align: left;
+            }
+
             li {
               padding: 0;
-              display: inline;
+              display: inline-block;
 
               + li {
-                padding-left: 15px;
+                margin-left: 5px;
+              }
+
+              @media (max-width: 551px) {
+                margin-right: 5px;
+                margin-bottom: 2px;
+
+                + li {
+                  margin-left: 0;
+                }
               }
             }
 
             a {
               color: $black;
+
+              @media (min-width: 552px) {
+                padding: 0.4em 0.8em;
+                border-radius: 3px;
+
+                &:hover {
+                  background: $hoverblue;
+                  transition: background ease-out 0.5s;
+                }
+              }
             }
           }
 
           .avatar {
             display: inline-block;
-            vertical-align: -9px;
-            width: 30px;
-            margin-right: 5px;
+            vertical-align: -4px;
+            height: 20px;
+            margin-right: 8px;
             border-radius: 60px;
           }
         `}</style>

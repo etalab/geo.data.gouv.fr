@@ -65,6 +65,20 @@ class Dropdown extends React.Component {
             cursor: pointer;
           }
 
+          a {
+            color: $black;
+
+            @media (min-width: 552px) {
+              padding: 0.4em 0.8em;
+              border-radius: 3px;
+
+              &:hover {
+                background: $hoverblue;
+                transition: background ease-out 0.5s;
+              }
+            }
+          }
+
           .content {
             position: absolute;
             background-color: $white;
