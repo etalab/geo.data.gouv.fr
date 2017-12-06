@@ -10,6 +10,7 @@ import Content from '../../components/content'
 import Container from '../../components/container'
 import RequireAuth from '../../components/require-auth'
 
+import Header from '../../components/publication/header'
 import OrganizationPreview from '../../components/publication/organization-preview'
 
 const PublicationPage = () => (
@@ -20,6 +21,7 @@ const PublicationPage = () => (
       <Container fluid>
         <RequireAuth message='Vous devez être connecté pour accéder à l’interface de publication.' render={user => (
           <div>
+            <Header user={user} />
             <h3>Mes organisations</h3>
             <div className='organizations'>
               {user.organizations.map(organization => (
