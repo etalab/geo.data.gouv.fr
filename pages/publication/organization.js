@@ -39,14 +39,20 @@ class PublicationPage extends React.Component {
 
   state = {}
 
+  fetchOrganization = () => {
+    const { organizationId } = this.props
+
+    return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}`)
+  }
+
   componentWillReceiveProps(props, state, context) {
     const { session, organizationId } = props
 
     if (session && session.user && !this.props.session) {
       this.setState({
-        organizationPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/`),
+        organizationPromise: this.fetchOrganization(),
         catalogsPromise: _get(`${GEODATA_API_URL}/catalogs`),
-        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/metrics/`)
+        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/metrics`)
       })
     }
   }
@@ -57,7 +63,7 @@ class PublicationPage extends React.Component {
     this.setState({
       organizationPromise: _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
         sourceCatalogs: catalogs
-      })
+      }).then(() => this.fetchOrganization())
     })
   }
 
@@ -70,7 +76,7 @@ class PublicationPage extends React.Component {
     this.setState({
       organizationPromise: _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
         sourceCatalogs: catalogs
-      })
+      }).then(() => this.fetchOrganization())
     })
   }
 
