@@ -25,9 +25,30 @@ module.exports = app => {
     })
   })
 
-  router.get('/publication/*', (req, res) => {
+  router.get('/publication', (req, res) => {
     app.render(req, res, '/publication', {
       ...req.query
+    })
+  })
+
+  router.get('/publication/:oid/datasets', (req, res) => {
+    app.render(req, res, '/publication/datasets', {
+      ...req.query,
+      oid: req.params.oid
+    })
+  })
+
+  router.get('/publication/:oid/producers', (req, res) => {
+    app.render(req, res, '/publication/producers', {
+      ...req.query,
+      oid: req.params.oid
+    })
+  })
+
+  router.get('/publication/:oid', (req, res) => {
+    app.render(req, res, '/publication/organization', {
+      ...req.query,
+      oid: req.params.oid
     })
   })
 
