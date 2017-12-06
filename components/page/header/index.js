@@ -132,7 +132,7 @@ class Header extends React.Component {
               }
 
               @media (max-width: 551px) {
-                margin-right: 5px;
+                margin-right: 15px;
                 margin-bottom: 2px;
 
                 + li {
