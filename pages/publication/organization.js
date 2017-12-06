@@ -139,12 +139,12 @@ class PublicationPage extends React.Component {
     return (
       <Page>
         <Meta title='Publication' />
-
         <Content>
           <Container fluid>
             <RequireAuth
               message='Vous devez être connecté pour accéder à l’interface de publication.'
-              render={this.renderAuth} />
+              render={this.renderAuth}
+            />
           </Container>
         </Content>
       </Page>
