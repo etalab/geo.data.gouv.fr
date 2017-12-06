@@ -10,6 +10,7 @@ class Modal extends React.Component {
   static propTypes = {
     overlay: PropTypes.bool,
     fluid: PropTypes.bool,
+    fullHeight: PropTypes.bool,
     title: PropTypes.string,
     children: PropTypes.node.isRequired,
     onClose: PropTypes.func.isRequired
@@ -17,7 +18,8 @@ class Modal extends React.Component {
 
   static defaultProps = {
     overlay: true,
-    fluid: false
+    fluid: false,
+    fullHeight: false
   }
 
   componentWillMount() {
@@ -41,7 +43,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { children, title, overlay, fluid, onClose } = this.props
+    const { children, title, overlay, fluid, fullHeight, onClose } = this.props
 
     if (!process.browser) {
       return null
@@ -50,7 +52,7 @@ class Modal extends React.Component {
     return ReactDOM.createPortal(
       <div className={`modal ${overlay ? 'overlay' : ''}`}>
         <Container fluid={fluid}>
-          <div className='content'>
+          <div className={`content ${fullHeight ? 'full-height' : ''}`}>
             <nav>
               {title && <h2>{title}</h2>}
               <span onClick={onClose}>
@@ -75,8 +77,10 @@ class Modal extends React.Component {
             z-index: 2000;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
 
             display: flex;
             flex-direction: column;
@@ -127,17 +131,21 @@ class Modal extends React.Component {
           .content {
             background: $white;
             border-radius: 2px;
-            flex: 1;
             margin: 20px 0;
             padding: 20px;
             padding: 1.5em 1.7em;
             padding-top: 12px;
-            display: flex;
-            flex-direction: column;
+            display: block;
 
             @media (max-width: 551px) {
               padding: 1em;
             }
+          }
+
+          .full-height {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
           }
         `}</style>
       </div>,

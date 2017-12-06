@@ -64,7 +64,7 @@ class Preview extends React.Component {
     const { loading, data, view, error } = this.state
 
     return (
-      <Modal fluid onClose={onClose} title={title}>
+      <Modal fluid fullHeight onClose={onClose} title={title}>
         {loading ? t('common:loading') : (
           <div className='preview'>
             <div className='actions'>
