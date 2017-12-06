@@ -119,8 +119,8 @@ class PublicationPage extends React.Component {
         <style jsx>{`
           .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fill, 420px);
-            grid-gap: 3em 4em;
+            grid-template-columns: repeat(auto-fill, 430px);
+            grid-gap: 2em 3em;
 
             @media (max-width: 1480px) {
               grid-gap: 1em 2em;
