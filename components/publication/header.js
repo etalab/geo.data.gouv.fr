@@ -41,6 +41,10 @@ const Header = ({ user, organization }) => (
         align-items: center;
         border-radius: 2px;
         position: relative;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
       }
 
       a {
@@ -56,6 +60,7 @@ const Header = ({ user, organization }) => (
         border-radius: 50%;
         background-color: $white;
         border: 2px solid transparent;
+        flex-shrink: 0;
 
         img {
           height: 100%;
@@ -65,7 +70,7 @@ const Header = ({ user, organization }) => (
       .organization {
         position: absolute;
         left: calc(1.2em + 70px);
-        bottom: 1em;
+        top: calc(1em + 60px);
         width: 50px;
         height: 50px;
         display: flex;
@@ -76,6 +81,10 @@ const Header = ({ user, organization }) => (
         border: 1px solid $darkblue;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
 
+        @media (max-width: 768px) {
+          left: calc(50% + 15px);
+        }
+
         img {
           height: 100%;
         }
@@ -83,6 +92,12 @@ const Header = ({ user, organization }) => (
 
       .infos {
         margin-left: 1.2em;
+
+        @media (max-width: 768px) {
+          text-align: center;
+          margin-left: 0;
+          margin-top: 1em;
+        }
       }
     `}</style>
   </div>
