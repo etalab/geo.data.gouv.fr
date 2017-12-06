@@ -74,6 +74,17 @@ const Button = ({ children, type, size, color, href, disabled, block, ...props }
           }
         }
 
+        .red {
+          background-color: $red;
+          border-color: $red;
+          color: $white;
+
+          &:hover {
+            background-color: darken($red, 10%);
+            border-color: darken($red, 10%);
+          }
+        }
+
         .white {
           background-color: $white;
           border-color: $blue;
@@ -99,6 +110,7 @@ Button.propTypes = {
   ]),
   color: PropTypes.oneOf([
     'blue',
+    'red',
     'white'
   ])
 }
