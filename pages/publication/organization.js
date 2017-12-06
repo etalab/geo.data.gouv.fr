@@ -136,6 +136,8 @@ class PublicationPage extends React.Component {
   render() {
     return (
       <Page>
+        <Meta title='Publication' />
+
         <Content>
           <Container fluid>
             <RequireAuth
