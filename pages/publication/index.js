@@ -10,26 +10,49 @@ import Content from '../../components/content'
 import Container from '../../components/container'
 import RequireAuth from '../../components/require-auth'
 
-class PublicationPage extends React.Component {
-  render() {
-    return (
-      <Page>
-        <Meta title='Publication' />
+import OrganizationPreview from '../../components/publication/organization-preview'
 
-        <Content>
-          <Container fluid>
-            <RequireAuth message='Vous devez être connecté pour accéder à l’interface de publication.' render={user => (
-              'publication page'
-            )} />
-          </Container>
-        </Content>
+const PublicationPage = () => (
+  <Page>
+    <Meta title='Publication' />
 
-        <style jsx>{`
-        `}</style>
-      </Page>
-    )
-  }
-}
+    <Content>
+      <Container fluid>
+        <RequireAuth message='Vous devez être connecté pour accéder à l’interface de publication.' render={user => (
+          <div>
+            <h3>Mes organisations</h3>
+            <div className='organizations'>
+              {user.organizations.map(organization => (
+                <div key={organization.id}>
+                  <OrganizationPreview organization={organization} />
+                </div>
+              ))}
+            </div>
+
+            <style jsx>{`
+              .organizations {
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: -1em;
+                margin-right: -1em;
+
+                div {
+                  width: 290px;
+
+                  margin: 0 1em 1em 1em;
+
+                  @media (max-width: 551px) {
+                    width: 100%;
+                  }
+                }
+              }
+            `}</style>
+          </div>
+        )} />
+      </Container>
+    </Content>
+  </Page>
+)
 
 export default flowRight(
   withI18n(),

@@ -23,9 +23,6 @@ class PublicationPage extends React.Component {
             )} />
           </Container>
         </Content>
-
-        <style jsx>{`
-        `}</style>
       </Page>
     )
   }
