@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { flowRight } from 'lodash'
 
+import IconBack from 'react-icons/lib/fa/long-arrow-left'
+
 import { _get, _put } from '../../lib/fetch'
 
 import withI18n from '../../components/hoc/with-i18n'
@@ -14,6 +16,7 @@ import Content from '../../components/content'
 import Container from '../../components/container'
 import RequireAuth from '../../components/require-auth'
 import Box from '../../components/box'
+import Link from '../../components/link'
 
 import Header from '../../components/publication/header'
 import SourceCatalogs from '../../components/publication/source-catalogs'
@@ -95,6 +98,14 @@ class PublicationPage extends React.Component {
           <Box title='Jeux de données' color='blue' />
         </div>
 
+        <div className='back'>
+          <Link href='/publication'>
+            <a>
+              <IconBack style={{ marginRight: 5 }} /> Retour aux organisations
+            </a>
+          </Link>
+        </div>
+
         <style jsx>{`
           .dashboard {
             display: grid;
@@ -112,6 +123,10 @@ class PublicationPage extends React.Component {
             @media (max-width: 768px) {
               display: block;
             }
+          }
+
+          .back {
+            margin-top: 2.5em;
           }
         `}</style>
       </div>

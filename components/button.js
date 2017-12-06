@@ -56,9 +56,8 @@ const Button = ({ children, type, size, color, href, disabled, block, ...props }
           padding: 12px 16px;
 
           a {
-            display: block;
-            margin: -12px -16px;
-            padding: 12px 16px;
+            margin: -13px -17px;
+            padding: 13px 17px;
           }
         }
 
