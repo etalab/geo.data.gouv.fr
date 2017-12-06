@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { flowRight } from 'lodash'
 
 import { _get } from '../lib/fetch'
+import { sortByScore } from '../lib/catalog'
 
 import withI18n from '../components/hoc/with-i18n'
 import withAuth from '../components/hoc/with-auth'
@@ -35,6 +36,8 @@ class CatalogsPage extends React.Component {
   render() {
     const { catalogs, t } = this.props
 
+    const sorted = sortByScore(catalogs)
+
     return (
       <Page>
         <Meta title={t('list.title')} />
@@ -44,7 +47,7 @@ class CatalogsPage extends React.Component {
             <h1>{t('list.title')}</h1>
 
             <section>
-              {catalogs.map(catalog => (
+              {sorted.map(catalog => (
                 <div key={catalog._id}>
                   <CatalogPreview catalog={catalog} />
                 </div>
