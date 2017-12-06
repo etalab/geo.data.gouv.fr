@@ -49,10 +49,9 @@ class AddCatalogModal extends React.Component {
         <style jsx>{`
           .catalogs {
             display: grid;
-            grid-template-columns: repeat(auto-fill, 360px);
+            grid-template-columns: repeat(auto-fill, 350px);
             grid-gap: 1.2em;
             align-items: center;
-            justify-content: center;
 
             @media (max-width: 551px) {
               display: block;
