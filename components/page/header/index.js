@@ -34,12 +34,6 @@ class Header extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  clearSession = e => {
-    const { session } = this.props
-
-    session.clear()
-  }
-
   render() {
     const { router, session, t, i18n: { language } } = this.props
 
@@ -82,7 +76,7 @@ class Header extends React.Component {
               </li>
               {session && session.user && (
                 <li>
-                  <a href={logoutUrl} onClick={this.clearSession}>
+                  <a href={logoutUrl} onClick={session.clear}>
                     <span>{t('header.logout')}</span>
                   </a>
                 </li>
