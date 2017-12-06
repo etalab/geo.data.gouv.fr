@@ -16,7 +16,7 @@ const SourceProducers = ({ organization }) => (
       </ul>
     </div>
 
-    <Link href={`/publication/producers?oid=${organization._id}`} as={`/publication/producers?oid=${organization._id}`}>
+    <Link href={`/publication/producers?oid=${organization._id}`} as={`/publication/${organization._id}/producers`}>
       <a>
         Associer des producteurs
       </a>

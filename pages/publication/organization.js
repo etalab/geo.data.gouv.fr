@@ -21,6 +21,7 @@ import Link from '../../components/link'
 import Header from '../../components/publication/header'
 import SourceCatalogs from '../../components/publication/organization/source-catalogs'
 import SourceProducers from '../../components/publication/organization//source-producers'
+import DatasetMetrics from '../../components/publication/organization//dataset-metrics'
 
 import { PUBLICATION_BASE_URL, GEODATA_API_URL } from '@env'
 
@@ -79,7 +80,7 @@ class PublicationPage extends React.Component {
     const { organizationId } = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
 
-    const { organizationPromise, catalogsPromise } = this.state
+    const { organizationPromise, catalogsPromise, metricsPromise } = this.state
 
     return (
       <div>
@@ -100,7 +101,11 @@ class PublicationPage extends React.Component {
               promise={organizationPromise}
             />
           </Box>
-          <Box title='Jeux de données' color='blue' />
+          <Box title='Jeux de données' color='blue'>
+            <DatasetMetrics
+              promise={Promise.all([organizationPromise, metricsPromise])}
+            />
+          </Box>
         </div>
 
         <div className='back'>
@@ -114,7 +119,7 @@ class PublicationPage extends React.Component {
         <style jsx>{`
           .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fill, 400px);
+            grid-template-columns: repeat(auto-fill, 420px);
             grid-gap: 3em 4em;
 
             @media (max-width: 1480px) {
