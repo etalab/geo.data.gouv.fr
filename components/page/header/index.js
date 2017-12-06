@@ -65,7 +65,7 @@ class Header extends React.Component {
             <ul>
               <li>
                 {session && session.user ? (
-                  <Link href='/publication'>
+                  <Link href='/publication' prefetch>
                     <a>
                       <img alt='' className='avatar' src={session.user.avatar_thumbnail || '/static/images/avatar.png'} />
                       {session.user.first_name} {session.user.last_name}
