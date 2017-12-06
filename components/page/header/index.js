@@ -72,7 +72,7 @@ class Header extends React.Component {
                     </a>
                   </Link>
                 ) : (
-                  <a href={logInUrl} onClick={session && this.clearSession}>
+                  <a href={logInUrl}>
                     {t('header.publish')}
                   </a>
                 )}

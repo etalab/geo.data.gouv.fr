@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import hoist from 'hoist-non-react-statics'
 
 import { getSession, clearSession } from '../../lib/user'
 
-export default () => Page => hoist(class extends React.PureComponent {
+export default () => Page => class extends React.PureComponent {
+  static propTypes = {
+    ssr: PropTypes.bool.isRequired
+  }
+
   static childContextTypes = {
     session: PropTypes.shape({
       auth: PropTypes.bool,
@@ -16,6 +19,15 @@ export default () => Page => hoist(class extends React.PureComponent {
       }),
       clear: PropTypes.func.isRequired
     })
+  }
+
+  static async getInitialProps(context) {
+    const props = Page.getInitialProps ? await Page.getInitialProps(context) : {}
+
+    return {
+      ...props,
+      ssr: !process.browser
+    }
   }
 
   state = {}
@@ -33,7 +45,11 @@ export default () => Page => hoist(class extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const session = await getSession()
+    const { ssr } = this.props
+
+    const session = await getSession({
+      force: ssr
+    })
 
     this.setState(state => ({
       session
@@ -45,4 +61,4 @@ export default () => Page => hoist(class extends React.PureComponent {
       <Page {...this.props} />
     )
   }
-}, Page)
+}

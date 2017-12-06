@@ -26,12 +26,6 @@ class RequireAuth extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  clearSession = e => {
-    const { session } = this.props
-
-    session.clear()
-  }
-
   render() {
     const { session, router, message, t } = this.props
 
@@ -52,10 +46,10 @@ class RequireAuth extends React.Component {
           )}
 
           <div className='buttons'>
-            <Button href={loginUrl} onClick={this.clearSession}>
+            <Button href={loginUrl}>
               {t('auth.login')}
             </Button>
-            <Button href='https://id.data.gouv.fr/register/' onClick={this.clearSession}>
+            <Button href='https://id.data.gouv.fr/register/'>
               {t('auth.register')}
             </Button>
           </div>
