@@ -20,6 +20,7 @@ import Link from '../../components/link'
 
 import Header from '../../components/publication/header'
 import SourceCatalogs from '../../components/publication/source-catalogs'
+import SourceProducers from '../../components/publication/source-producers'
 
 import { PUBLICATION_BASE_URL, GEODATA_API_URL } from '@env'
 
@@ -94,7 +95,11 @@ class PublicationPage extends React.Component {
               addCatalog={this.addCatalog}
             />
           </Box>
-          <Box title='Producteurs source' color='blue' />
+          <Box title='Producteurs source' color='blue'>
+            <SourceProducers
+              promise={organizationPromise}
+            />
+          </Box>
           <Box title='Jeux de données' color='blue' />
         </div>
 
