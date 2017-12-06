@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Head from 'next/head'
 import Table from 'react-table'
 import { translate } from 'react-i18next'
 
@@ -40,6 +41,9 @@ const PreviewTable = ({ data, t }) => {
         ofText={t('preview.paging.of')}
       />
 
+      <Head>
+        <style dangerouslySetInnerHTML={{ __html: tableStyle }} />
+      </Head>
       <style jsx>{`
         div {
           display: flex;
@@ -51,7 +55,6 @@ const PreviewTable = ({ data, t }) => {
           }
         }
       `}</style>
-      <style jsx global>{tableStyle}</style>
     </div>
   )
 }
