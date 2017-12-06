@@ -33,7 +33,7 @@ const OrganizationPreview = ({ organization }) => (
 
         .image {
           padding: 1em;
-          height: 150px;
+          height: 130px;
           flex: 1;
 
           justify-content: center;
