@@ -10,6 +10,8 @@ import Content from '../../components/content'
 import Container from '../../components/container'
 import RequireAuth from '../../components/require-auth'
 
+import Header from '../../components/publication/header'
+
 class PublicationPage extends React.Component {
   render() {
     return (
@@ -19,7 +21,9 @@ class PublicationPage extends React.Component {
         <Content>
           <Container fluid>
             <RequireAuth message='Vous devez être connecté pour accéder à l’interface de publication.' render={user => (
-              'organization page'
+              <div>
+                <Header user={user} />
+              </div>
             )} />
           </Container>
         </Content>
