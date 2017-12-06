@@ -2,36 +2,84 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import prune from 'underscore.string/prune'
+import { flowRight } from 'lodash'
+import { translate } from 'react-i18next'
+import { withRouter } from 'next/router'
+
+import { PUBLIC_URL } from '@env'
 
 const SITE_NAME = 'geo.data.gouv.fr'
+const TWITTER_HANDLE = '@geodatagouv'
 
-const Meta = ({ title, description, images }) => (
-  <Head>
-    <title>{title} | {SITE_NAME}</title>
-    <meta name='twitter:title' content={title} />
-    <meta property='og:title' content={title} />
+const Meta = ({ title, description, images, router, t }) => {
+  if (!description) {
+    description = t('meta.description')
+  } else {
+    description = prune(description, 160, '…')
+  }
 
-    {description && (
-      <Fragment>
-        <meta name='description' content={prune(description, 160, '…')} />
-        <meta name='twitter:description' content={prune(description, 300, '…')} />
-        <meta property='og:description' content={prune(description, 160, '…')} />
-      </Fragment>
-    )}
+  return (
+    <Fragment>
+      {title ? (
+        <Head>
+          <title>{title} | {SITE_NAME}</title>
+          <meta name='twitter:title' content={title} />
+          <meta property='og:title' content={title} />
+        </Head>
+      ) : (
+        <Head>
+          <title>{SITE_NAME}</title>
+        </Head>
+      )}
 
-    {images && images.length > 0 && images.map((image, idx) => (
-      <Fragment key={idx}>
-        <meta name='twitter:image' content={image} />
-        <meta property='og:image' content={image} />
-      </Fragment>
-    ))}
-  </Head>
-)
+      {images && images.length > 0 ? (
+        <Fragment>
+          <Head>
+            <meta name='twitter:image' content={images[0]} />
+          </Head>
 
-Meta.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  images: PropTypes.arrayOf(PropTypes.string)
+          {images.map((image, idx) => (
+            <Head key={idx}>
+              <meta property='og:image' content={image} />
+            </Head>
+          ))}
+        </Fragment>
+      ) : (
+        <Head>
+          <meta name='twitter:image' content={`${PUBLIC_URL}/static/images/geo-data-gouv-logo.jpg`} />
+          <meta property='og:image' content={`${PUBLIC_URL}/static/images/geo-data-gouv-logo.jpg`} />
+        </Head>
+      )}
+
+      <Head>
+        <meta name='description' content={description} />
+        <meta name='twitter:description' content={description} />
+        <meta property='og:description' content={description} />
+
+        <meta name='twitter:card' content='summary' />
+        <meta name='twitter:site' content={TWITTER_HANDLE} />
+
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content={PUBLIC_URL + router.asPath} />
+        <meta property='og:site_name' content={SITE_NAME} />
+      </Head>
+    </Fragment>
+  )
 }
 
-export default Meta
+Meta.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  images: PropTypes.arrayOf(PropTypes.string),
+
+  router: PropTypes.shape({
+    asPath: PropTypes.string.isRequired
+  }).isRequired,
+
+  t: PropTypes.func.isRequired
+}
+
+export default flowRight(
+  translate(),
+  withRouter
+)(Meta)

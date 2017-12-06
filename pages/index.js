@@ -5,6 +5,7 @@ import withI18n from '../components/hoc/with-i18n'
 import withAuth from '../components/hoc/with-auth'
 
 import Page from '../components/page'
+import Meta from '../components/meta'
 import Content from '../components/content'
 import Hero from '../components/home/hero'
 import Catalogs from '../components/home/catalogs'
@@ -127,6 +128,7 @@ const catalogs = [
 
 const IndexPage = () => (
   <Page>
+    <Meta />
     <Content clouds>
       <Hero />
 

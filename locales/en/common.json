@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "description": "Easily find the geographic data you need"
+  },
+
   "loading": "Loading…",
   "displayMore": "Display more…",
   "displayLess": "Hide",

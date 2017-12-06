@@ -1,35 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { withRouter } from 'next/router'
 
 import reset from 'semantic-ui-css/components/reset.min.css'
 import site from 'semantic-ui-css/components/site.min.css'
 
-import { PUBLIC_URL } from '@env'
-
-const Meta = ({ router }) => (
+const Meta = () => (
   <Head>
     <meta charSet='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
-
-    <title>geo.data.gouv.fr</title>
-    <meta name='description' content='Trouvez facilement les données géographiques dont vous avez besoin' />
-
-    {/* Twitter Card */}
-    <meta name='twitter:card' content='summary' />
-    <meta name='twitter:site' content='@geodatagouv' />
-    <meta name='twitter:title' content='geo.data.gouv.fr' />
-    <meta name='twitter:description' content='Trouvez facilement les données géographiques dont vous avez besoin' />
-    <meta name='twitter:image' content={`${PUBLIC_URL}/static/images/geo-data-gouv-logo.jpg`} />
-
-    {/* Open Graph */}
-    <meta property='og:title' content='geo.data.gouv.fr' />
-    <meta property='og:type' content='website' />
-    <meta property='og:url' content={PUBLIC_URL + router.asPath} />
-    <meta property='og:image' content={`${PUBLIC_URL}/static/images/geo-data-gouv-logo.jpg`} />
-    <meta property='og:description' content='Trouvez facilement les données géographiques dont vous avez besoin' />
-    <meta property='og:site_name' content='geo.data.gouv.fr' />
 
     <meta name='theme-color' content='#ffffff' />
 
@@ -45,10 +23,4 @@ const Meta = ({ router }) => (
   </Head>
 )
 
-Meta.propTypes = {
-  router: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
-  }).isRequired
-}
-
-export default withRouter(Meta)
+export default Meta

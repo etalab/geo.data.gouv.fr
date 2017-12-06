@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "description": "Trouvez facilement les données géographiques dont vous avez besoin"
+  },
+
   "loading": "Chargement…",
   "displayMore": "Afficher la suite…",
   "displayLess": "Réduire",
