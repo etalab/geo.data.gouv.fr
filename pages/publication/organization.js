@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { flowRight } from 'lodash'
 
-import { _get } from '../../lib/fetch'
+import { _get, _put } from '../../lib/fetch'
 
 import withI18n from '../../components/hoc/with-i18n'
 import withAuth from '../../components/hoc/with-auth'
@@ -48,6 +48,16 @@ class PublicationPage extends React.Component {
     }
   }
 
+  removeCatalog = (organization, catalog) => {
+    const catalogs = organization.sourceCatalogs.filter(c => c !== catalog._id)
+
+    this.setState({
+      organizationPromise: _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
+        sourceCatalogs: catalogs
+      })
+    })
+  }
+
   renderAuth = user => {
     const { organizationId } = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
@@ -62,7 +72,10 @@ class PublicationPage extends React.Component {
         <h3>{organization.name}</h3>
         <div className='dashboard'>
           <Box title='Catalogues source' color='blue'>
-            <SourceCatalogs promise={Promise.all([organizationPromise, catalogsPromise])} />
+            <SourceCatalogs
+              promise={Promise.all([organizationPromise, catalogsPromise])}
+              removeCatalog={this.removeCatalog}
+            />
           </Box>
           <Box title='Producteurs source' color='blue' />
           <Box title='Jeux de données' color='blue' />
