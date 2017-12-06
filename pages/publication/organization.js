@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { flowRight } from 'lodash'
 
 import withI18n from '../../components/hoc/with-i18n'
@@ -13,6 +14,27 @@ import RequireAuth from '../../components/require-auth'
 import Header from '../../components/publication/header'
 
 class PublicationPage extends React.Component {
+  static propTypes = {
+    organizationId: PropTypes.string.isRequired
+  }
+
+  static getInitialProps({ query }) {
+    return {
+      organizationId: query.oid
+    }
+  }
+
+  renderAuth = user => {
+    const { organizationId } = this.props
+    const organization = user.organizations.find(org => org.id === organizationId)
+
+    return (
+      <div>
+        <Header user={user} organization={organization} />
+      </div>
+    )
+  }
+
   render() {
     return (
       <Page>
@@ -20,11 +42,9 @@ class PublicationPage extends React.Component {
 
         <Content>
           <Container fluid>
-            <RequireAuth message='Vous devez être connecté pour accéder à l’interface de publication.' render={user => (
-              <div>
-                <Header user={user} />
-              </div>
-            )} />
+            <RequireAuth
+              message='Vous devez être connecté pour accéder à l’interface de publication.'
+              render={this.renderAuth} />
           </Container>
         </Content>
       </Page>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Link from '../link'
 
-const Header = ({ user }) => (
+const Header = ({ user, organization }) => (
   <div className='container'>
     <Link href='/publication'>
       <a className='avatar'>
@@ -11,20 +11,36 @@ const Header = ({ user }) => (
       </a>
     </Link>
 
+    {organization && (
+      <Link href={`/publication/organization?oid=${organization.id}`} as={`/publication/${organization.id}`}>
+        <a className='organization'>
+          <img
+            src={organization.logo_thumbnail || '/static/images/no-img.png'}
+            alt={organization.name}
+            title={organization.name}
+          />
+        </a>
+      </Link>
+    )}
+
     <div className='infos'>
-      <b>{user.first_name} {user.last_name}</b>
-      <br />
-      {user.email}
+      <div>
+        <b>{user.first_name} {user.last_name}</b>
+      </div>
+      <div>
+        {user.email}
+      </div>
     </div>
 
     <style jsx>{`
       @import 'colors';
       .container {
-        padding: 1em;
+        padding: 1em 1.2em;
         background-color: $lightgrey;
         display: flex;
         align-items: center;
         border-radius: 2px;
+        position: relative;
       }
 
       a {
@@ -38,7 +54,27 @@ const Header = ({ user }) => (
         justify-content: center;
         overflow: hidden;
         border-radius: 50%;
-        border: 2px solid $white;
+        background-color: $white;
+        border: 2px solid transparent;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .organization {
+        position: absolute;
+        left: calc(1.2em + 70px);
+        bottom: 1em;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: $white;
+        border: 1px solid $darkblue;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
 
         img {
           height: 100%;
@@ -46,7 +82,7 @@ const Header = ({ user }) => (
       }
 
       .infos {
-        margin-left: 1em;
+        margin-left: 1.2em;
       }
     `}</style>
   </div>
@@ -58,7 +94,13 @@ Header.propTypes = {
     first_name: PropTypes.string.isRequired,
     last_name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+
+  organization:PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    logo_thumbnail: PropTypes.string
+  })
 }
 
 export default Header
