@@ -66,13 +66,14 @@ export const CatalogPreview = ({ catalog, t }) => {
             position: relative;
             color: $darkgrey;
             border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
             background: $white;
             background: linear-gradient(180deg, #fdfdf8, $white);
 
             &:hover {
               color: inherit;
-              box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+              box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
             }
           }
 
