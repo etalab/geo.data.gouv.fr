@@ -19,6 +19,7 @@ import Box from '../../components/box'
 import Link from '../../components/link'
 
 import Header from '../../components/publication/header'
+import Breadcrumbs from '../../components/publication/breadcrumbs'
 import SourceCatalogs from '../../components/publication/organization/source-catalogs'
 import SourceProducers from '../../components/publication/organization//source-producers'
 import DatasetMetrics from '../../components/publication/organization//dataset-metrics'
@@ -87,7 +88,7 @@ class PublicationPage extends React.Component {
         <Meta title={`${organization.name} | Publication`} />
 
         <Header user={user} organization={organization} />
-        <h3>{organization.name}</h3>
+        <Breadcrumbs organization={organization} />
         <div className='dashboard'>
           <Box title='Catalogues source' color='blue'>
             <SourceCatalogs
@@ -108,15 +109,13 @@ class PublicationPage extends React.Component {
           </Box>
         </div>
 
-        <div className='back'>
-          <Link href='/publication'>
-            <a>
-              <IconBack style={{ marginRight: 5 }} /> Retour aux organisations
-            </a>
-          </Link>
-        </div>
-
         <style jsx>{`
+          h2 {
+            font-size: 1.5em;
+            font-weight: normal;
+            margin-bottom: 1.6em;
+          }
+
           .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fill, 430px);
@@ -133,10 +132,6 @@ class PublicationPage extends React.Component {
             @media (max-width: 768px) {
               display: block;
             }
-          }
-
-          .back {
-            margin-top: 2.5em;
           }
         `}</style>
       </div>
