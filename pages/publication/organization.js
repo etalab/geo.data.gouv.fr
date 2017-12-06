@@ -16,8 +16,9 @@ import RequireAuth from '../../components/require-auth'
 import Box from '../../components/box'
 
 import Header from '../../components/publication/header'
+import SourceCatalogs from '../../components/publication/source-catalogs'
 
-import { PUBLICATION_BASE_URL } from '@env'
+import { PUBLICATION_BASE_URL, GEODATA_API_URL } from '@env'
 
 class PublicationPage extends React.Component {
   static propTypes = {
@@ -40,8 +41,9 @@ class PublicationPage extends React.Component {
 
     if (session && session.user && !this.props.session) {
       this.setState({
-        organizationPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}`),
-        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/metrics`)
+        organizationPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/`),
+        catalogsPromise: _get(`${GEODATA_API_URL}/catalogs`),
+        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/metrics/`)
       })
     }
   }
@@ -50,6 +52,8 @@ class PublicationPage extends React.Component {
     const { organizationId } = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
 
+    const { organizationPromise, catalogsPromise } = this.state
+
     return (
       <div>
         <Meta title={`${organization.name} | Publication`} />
@@ -57,7 +61,9 @@ class PublicationPage extends React.Component {
         <Header user={user} organization={organization} />
         <h3>{organization.name}</h3>
         <div className='dashboard'>
-          <Box title='Catalogues source' color='blue' />
+          <Box title='Catalogues source' color='blue'>
+            <SourceCatalogs promise={Promise.all([organizationPromise, catalogsPromise])} />
+          </Box>
           <Box title='Producteurs source' color='blue' />
           <Box title='Jeux de données' color='blue' />
         </div>
