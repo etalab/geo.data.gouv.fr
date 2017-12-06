@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Box = ({ children, title }) => (
+const Box = ({ children, title, color }) => (
   <div className='wrapper'>
-    {title && <h3>{title}</h3>}
+    {title && <h3 className={color}>{title}</h3>}
     <div className='inner'>
       {children}
     </div>
@@ -20,7 +20,6 @@ const Box = ({ children, title }) => (
       }
 
       h3 {
-        background-color: $lightgrey;
         font-size: 1.1em;
         margin: 0;
         padding: 0.6em 0.75em 0.55em;
@@ -36,13 +35,32 @@ const Box = ({ children, title }) => (
           padding: 1em;
         }
       }
+
+      // Colors
+
+      .grey {
+        background-color: $lightgrey;
+      }
+
+      .blue {
+        background-color: $blue;
+        color: $white;
+      }
     `}</style>
   </div>
 )
 
 Box.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string
+  title: PropTypes.string,
+  color: PropTypes.oneOf([
+    'grey',
+    'blue'
+  ])
+}
+
+Box.defaultProps = {
+  color: 'grey'
 }
 
 export default Box
