@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import AddIcon from 'react-icons/lib/fa/plus-circle'
 
-import { sortByScore, findCandidates } from '../../lib/catalog'
+import { sortByScore, findCandidates } from '../../../lib/catalog'
 
-import Modal from '../modal'
-import CatalogPreview from '../catalog-preview'
-import Button from '../button'
+import Modal from '../../modal'
+import CatalogPreview from '../../catalog-preview'
+import Button from '../../button'
 
 class AddCatalogModal extends React.Component {
   static propTypes = {

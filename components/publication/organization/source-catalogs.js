@@ -6,10 +6,10 @@ import RemoveIcon from 'react-icons/lib/fa/trash-o'
 import LoadingIcon from 'react-icons/lib/fa/refresh'
 import AddIcon from 'react-icons/lib/fa/plus-circle'
 
-import withFetch from '../hoc/with-fetch'
+import withFetch from '../../hoc/with-fetch'
 
-import CatalogPreview from '../catalog-preview'
-import Button from '../button'
+import CatalogPreview from '../../catalog-preview'
+import Button from '../../button'
 import AddCatalogModal from './add-catalog-modal'
 
 class SourceCatalogs extends React.Component {

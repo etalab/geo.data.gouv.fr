@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import withFetch from '../hoc/with-fetch'
+import withFetch from '../../hoc/with-fetch'
 
-import Link from '../link'
+import Link from '../../link'
 
 const SourceProducers = ({ organization }) => (
   <div>
