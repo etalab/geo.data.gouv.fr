@@ -58,6 +58,19 @@ class PublicationPage extends React.Component {
     })
   }
 
+  addCatalog = (organization, catalog) => {
+    const catalogs = [
+      ...organization.sourceCatalogs,
+      catalog._id
+    ]
+
+    this.setState({
+      organizationPromise: _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
+        sourceCatalogs: catalogs
+      })
+    })
+  }
+
   renderAuth = user => {
     const { organizationId } = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
@@ -75,6 +88,7 @@ class PublicationPage extends React.Component {
             <SourceCatalogs
               promise={Promise.all([organizationPromise, catalogsPromise])}
               removeCatalog={this.removeCatalog}
+              addCatalog={this.addCatalog}
             />
           </Box>
           <Box title='Producteurs source' color='blue' />

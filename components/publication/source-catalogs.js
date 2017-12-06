@@ -4,11 +4,13 @@ import { intersectionWith } from 'lodash'
 
 import RemoveIcon from 'react-icons/lib/fa/trash-o'
 import LoadingIcon from 'react-icons/lib/fa/refresh'
+import AddIcon from 'react-icons/lib/fa/plus-circle'
 
 import withFetch from '../hoc/with-fetch'
 
 import CatalogPreview from '../catalog-preview'
 import Button from '../button'
+import AddCatalogModal from './add-catalog-modal'
 
 class SourceCatalogs extends React.Component {
   static propTypes = {
@@ -20,11 +22,23 @@ class SourceCatalogs extends React.Component {
       _id: PropTypes.string.isRequired
     })).isRequired,
 
-    removeCatalog: PropTypes.func.isRequired
+    removeCatalog: PropTypes.func.isRequired,
+    addCatalog: PropTypes.func.isRequired
   }
 
   state = {
-    removing: {}
+    removing: {},
+    showAddModal: false,
+    adding: false
+  }
+
+  componentWillReceiveProps(props) {
+    if (this.props.organization.sourceCatalogs !== props.organization.sourceCatalogs) {
+      this.setState({
+        adding: false,
+        removing: {}
+      })
+    }
   }
 
   removeCatalog = catalog => () => {
@@ -40,9 +54,31 @@ class SourceCatalogs extends React.Component {
     removeCatalog(organization, catalog)
   }
 
+  addCatalog = catalog => {
+    const { organization, addCatalog } = this.props
+
+    this.setState({
+      adding: true
+    })
+
+    addCatalog(organization, catalog)
+  }
+
+  onOpenModal = () => {
+    this.setState({
+      showAddModal: true
+    })
+  }
+
+  onCloseModal = () => {
+    this.setState({
+      showAddModal: false
+    })
+  }
+
   render() {
     const { organization, catalogs } = this.props
-    const { removing } = this.state
+    const { removing, showAddModal, adding } = this.state
 
     const sourceCatalogs = intersectionWith(
       catalogs,
@@ -50,32 +86,65 @@ class SourceCatalogs extends React.Component {
       (catalog, id) => catalog._id === id
     )
 
+    const anyRemoving = Object.values(removing).some(v => v)
+
     return (
       <div>
-        {sourceCatalogs.map(catalog => {
-          const isRemoving = removing[catalog._id]
+        <div className={sourceCatalogs.length > 0 && 'bordered'} >
+          {sourceCatalogs.map(catalog => {
+            const isRemoving = removing[catalog._id]
 
-          return (
-            <div key={catalog._id} className='catalog'>
-              <CatalogPreview catalog={catalog} />
-              <div className='remove'>
-                <Button color='red' disabled={isRemoving} onClick={this.removeCatalog(catalog)}>
-                  {isRemoving ? (
-                    <Fragment>
-                      <LoadingIcon style={{ verticalAlign: -2 }} /> Suppression…
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      <RemoveIcon style={{ verticalAlign: -1 }} /> Supprimer
-                    </Fragment>
-                  )}
-                </Button>
+            return (
+              <div key={catalog._id} className='catalog'>
+                <CatalogPreview catalog={catalog} />
+                <div className='remove'>
+                  <Button color='red' disabled={adding || anyRemoving} onClick={this.removeCatalog(catalog)}>
+                    {isRemoving ? (
+                      <Fragment>
+                        <LoadingIcon style={{ verticalAlign: -2 }} /> Suppression…
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <RemoveIcon style={{ verticalAlign: -2 }} /> Supprimer
+                      </Fragment>
+                    )}
+                  </Button>
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
+
+        <Button disabled={adding || anyRemoving} onClick={this.onOpenModal}>
+          {adding ? (
+            <Fragment>
+              <LoadingIcon style={{ verticalAlign: -2 }} /> Ajout du catalogue…
+            </Fragment>
+          ) : (
+            <Fragment>
+              <AddIcon style={{ verticalAlign: -2 }} /> Ajouter un catalogue
+            </Fragment>
+          )}
+        </Button>
+
+        {showAddModal && (
+          <AddCatalogModal
+            catalogs={catalogs}
+            blacklist={organization.sourceCatalogs}
+            onClose={this.onCloseModal}
+            addCatalog={this.addCatalog}
+          />
+        )}
 
         <style jsx>{`
+          @import 'colors';
+
+          .bordered {
+            border-bottom: 1px solid $lightgrey;
+            padding-bottom: 1em;
+            margin-bottom: 1em;
+          }
+
           .catalog {
             margin-bottom: 1.2em;
 
@@ -85,7 +154,7 @@ class SourceCatalogs extends React.Component {
           }
 
           .remove {
-            margin-top: 5px;
+            margin-top: 7px;
           }
         `}</style>
       </div>
