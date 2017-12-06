@@ -35,10 +35,11 @@ const Catalogs = ({ catalogs, t }) => (
 
       .catalog {
         margin: 10px;
+        width: 360px;
 
         @media (max-width: 551px) {
+          width: 100%;
           margin: 10px 0;
-          flex-grow: 1;
         }
       }
 

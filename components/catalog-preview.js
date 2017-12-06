@@ -64,16 +64,11 @@ export const CatalogPreview = ({ catalog, t }) => {
             padding: 16px 22px;
             text-align: left;
             position: relative;
-            width: 360px;
             color: $darkgrey;
             border-radius: 5px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
             background: $white;
             background: linear-gradient(180deg, #fdfdf8, $white);
-
-            @media (max-width: 551px) {
-              width: 100%;
-            }
 
             &:hover {
               color: inherit;
