@@ -26,6 +26,7 @@ const Box = ({ children, title, color }) => (
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: normal;
       }
 
       .inner {
