@@ -1,15 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Box = ({ children, title, subtitle, color }) => (
+const Box = ({ children, title, padded, color }) => (
   <div className='wrapper'>
-    {(title || subtitle) && (
-      <div className={`header ${color}`}>
-        {title && <h3>{title}</h3>}
-        {subtitle && <div className='subtitle'>{subtitle}</div>}
-      </div>
-    )}
-    <div className='inner'>
+    {title && <h3 className={`header ${color}`}>{title}</h3>}
+    <div className={padded ? 'padded' : ''}>
       {children}
     </div>
 
@@ -38,10 +33,11 @@ const Box = ({ children, title, subtitle, color }) => (
       }
 
       .subtitle {
+        margin-top: 0.2em;
         font-size: 0.9em;
       }
 
-      .inner {
+      .padded {
         padding: 1.5em 1.7em;
 
         @media (max-width: 551px) {
@@ -53,19 +49,16 @@ const Box = ({ children, title, subtitle, color }) => (
 
       .grey {
         background-color: $lightgrey;
-
-        .subtitle {
-          color: $grey;
-        }
       }
 
       .blue {
         background-color: $blue;
         color: $white;
+      }
 
-        .subtitle {
-          color: lighten($blue, 35%);
-        }
+      .green {
+        background-color: $green;
+        color: $white;
       }
     `}</style>
   </div>
@@ -73,16 +66,21 @@ const Box = ({ children, title, subtitle, color }) => (
 
 Box.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
+  padded: PropTypes.bool,
   color: PropTypes.oneOf([
     'grey',
-    'blue'
+    'blue',
+    'green'
   ])
 }
 
 Box.defaultProps = {
-  color: 'grey'
+  color: 'grey',
+  padded: true
 }
 
 export default Box
