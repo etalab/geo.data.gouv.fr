@@ -92,7 +92,7 @@
     "mocha": "^4.0.1",
     "mocha-circleci-reporter": "^0.0.2",
     "module-alias": "^2.0.2",
-    "node-sass": "^4.6.1",
+    "node-sass": "^4.7.2",
     "nyc": "^11.3.0",
     "proxyquire": "^1.7.10",
     "react-router-test-context": "^0.1.0",
