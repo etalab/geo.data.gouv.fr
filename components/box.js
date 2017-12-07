@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Box = ({ children, title, color }) => (
+const Box = ({ children, title, subtitle, color }) => (
   <div className='wrapper'>
-    {title && <h3 className={color}>{title}</h3>}
+    {(title || subtitle) && (
+      <div className={`header ${color}`}>
+        {title && <h3>{title}</h3>}
+        {subtitle && <div className='subtitle'>{subtitle}</div>}
+      </div>
+    )}
     <div className='inner'>
       {children}
     </div>
@@ -19,14 +24,21 @@ const Box = ({ children, title, color }) => (
         overflow: hidden;
       }
 
+      .header {
+        padding: 0.6em 0.75em 0.55em;
+      }
+
       h3 {
         font-size: 1.1em;
         margin: 0;
-        padding: 0.6em 0.75em 0.55em;
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: normal;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
       }
 
       .inner {
@@ -41,11 +53,19 @@ const Box = ({ children, title, color }) => (
 
       .grey {
         background-color: $lightgrey;
+
+        .subtitle {
+          color: $grey;
+        }
       }
 
       .blue {
         background-color: $blue;
         color: $white;
+
+        .subtitle {
+          color: lighten($blue, 35%);
+        }
       }
     `}</style>
   </div>
@@ -54,6 +74,7 @@ const Box = ({ children, title, color }) => (
 Box.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
+  subtitle: PropTypes.string,
   color: PropTypes.oneOf([
     'grey',
     'blue'
