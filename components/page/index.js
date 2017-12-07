@@ -6,6 +6,7 @@ import NProgress from 'nprogress'
 import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
+import Piwik from './piwik'
 
 Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
@@ -17,6 +18,7 @@ export const Page = ({ children }) => (
     <Header />
     {children}
     <Footer />
+    <Piwik />
 
     <style jsx>{`
       div {

@@ -6,8 +6,6 @@ import { flowRight } from 'lodash'
 import { translate } from 'react-i18next'
 import { withRouter } from 'next/router'
 
-import Piwik from './piwik'
-
 import { PUBLIC_URL } from '@env'
 
 const SITE_NAME = 'geo.data.gouv.fr'
@@ -20,21 +18,17 @@ const Meta = ({ title, description, images, router, t }) => {
     description = prune(description, 160, '…')
   }
 
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
-
   return (
     <Fragment>
-      <Piwik title={fullTitle} />
-
       {title ? (
         <Head>
-          <title>{fullTitle}</title>
+          <title>{title} | {SITE_NAME}</title>
           <meta name='twitter:title' content={title} />
           <meta property='og:title' content={title} />
         </Head>
       ) : (
         <Head>
-          <title>{fullTitle}</title>
+          <title>{SITE_NAME}</title>
         </Head>
       )}
 
