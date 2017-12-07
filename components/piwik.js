@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { withRouter } from 'next/router'
 
 import { PIWIK_URL, PIWIK_SITE_ID } from '@env'
 
@@ -14,10 +13,8 @@ class Piwik extends React.Component {
     const { title } = this.props
 
     if (window.Piwik) {
-      const tracker = window.Piwik.getAsyncTracker()
+      const tracker = window.Piwik.getTracker(`${PIWIK_URL}/piwik.php`, PIWIK_SITE_ID)
 
-      tracker.setTrackerUrl(`${PIWIK_URL}/piwik.php`)
-      tracker.setSiteId(PIWIK_SITE_ID)
       tracker.trackPageView(title)
     }
   }
@@ -35,4 +32,4 @@ class Piwik extends React.Component {
   }
 }
 
-export default withRouter(Piwik)
+export default Piwik
