@@ -99,7 +99,7 @@
     "react-test-renderer": "^16.2.0",
     "redbox-react": "^1.5.0",
     "redux-devtools-extension": "^2.13.2",
-    "styled-jsx-plugin-sass": "^0.2.1",
+    "styled-jsx-plugin-sass": "^0.2.2",
     "webpack-bundle-analyzer": "^2.9.1"
   },
   "engines": {
