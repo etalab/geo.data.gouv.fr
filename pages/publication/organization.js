@@ -4,8 +4,8 @@ import { flowRight } from 'lodash'
 
 import { _get, _put } from '../../lib/fetch'
 
-import withI18n from '../../components/hoc/with-i18n'
-import withAuth from '../../components/hoc/with-auth'
+import attachI18n from '../../components/hoc/attach-i18n'
+import attachSession from '../../components/hoc/attach-session'
 import withSession from '../../components/hoc/with-session'
 
 import Page from '../../components/page'
@@ -159,7 +159,7 @@ class PublicationPage extends React.Component {
 }
 
 export default flowRight(
-  withI18n(),
-  withAuth(),
-  withSession()
+  attachI18n(),
+  attachSession,
+  withSession
 )(PublicationPage)

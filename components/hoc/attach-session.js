@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { getSession, clearSession } from '../../lib/user'
 
-export default () => Page => class extends React.PureComponent {
+export default Page => class extends React.PureComponent {
   static propTypes = {
     ssr: PropTypes.bool.isRequired
   }

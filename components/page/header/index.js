@@ -172,5 +172,5 @@ class Header extends React.Component {
 export default flowRight(
   translate(),
   withRouter,
-  withSession()
+  withSession
 )(Header)

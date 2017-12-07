@@ -6,8 +6,8 @@ import { flowRight } from 'lodash'
 import { _get } from '../lib/fetch'
 import { getFilters } from '../lib/query'
 
-import withI18n from '../components/hoc/with-i18n'
-import withAuth from '../components/hoc/with-auth'
+import attachI18n from '../components/hoc/attach-i18n'
+import attachSession from '../components/hoc/attach-session'
 
 import Page from '../components/page'
 import Content from '../components/content'
@@ -158,6 +158,6 @@ class SearchPage extends React.Component {
 }
 
 export default flowRight(
-  withI18n(['search', 'dataset']),
-  withAuth()
+  attachI18n(['search', 'dataset']),
+  attachSession
 )(SearchPage)

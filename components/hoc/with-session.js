@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import hoist from 'hoist-non-react-statics'
 
-export default () => Component => hoist(class extends React.Component {
+export default Component => hoist(class extends React.Component {
   static contextTypes = {
     session: PropTypes.shape({
       user: PropTypes.shape({

@@ -5,8 +5,8 @@ import { flowRight } from 'lodash'
 import { _get } from '../lib/fetch'
 import { sortByScore } from '../lib/catalog'
 
-import withI18n from '../components/hoc/with-i18n'
-import withAuth from '../components/hoc/with-auth'
+import attachI18n from '../components/hoc/attach-i18n'
+import attachSession from '../components/hoc/attach-session'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -87,6 +87,6 @@ class CatalogsPage extends React.Component {
 }
 
 export default flowRight(
-  withI18n('catalogs'),
-  withAuth()
+  attachI18n('catalogs'),
+  attachSession
 )(CatalogsPage)

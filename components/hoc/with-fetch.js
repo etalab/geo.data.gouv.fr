@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
+import hoist from 'hoist-non-react-statics'
 
 export default mapStateWithProps => Component => {
   mapStateWithProps = mapStateWithProps || (state => state)
@@ -85,5 +86,5 @@ export default mapStateWithProps => Component => {
     }
   })
 
-  return Extended
+  return hoist(Extended, Component)
 }

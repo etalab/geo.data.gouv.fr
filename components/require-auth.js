@@ -80,5 +80,5 @@ class RequireAuth extends React.Component {
 export default flowRight(
   translate(),
   withRouter,
-  withSession()
+  withSession
 )(RequireAuth)
