@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import hoist from 'hoist-non-react-statics'
 
-export default mapStateWithProps => Component => {
+export default (mapStateWithProps, options) => Component => {
   mapStateWithProps = mapStateWithProps || (state => state)
+  options = options || {}
 
   const Extended = translate()(class extends React.Component {
     static propTypes = {
@@ -59,7 +60,7 @@ export default mapStateWithProps => Component => {
       const { loading, data, error } = this.state
 
       if (loading) {
-        return t('loading')
+        return options.Loader ? <options.Loader /> : t('loading')
       }
 
       if (error) {
