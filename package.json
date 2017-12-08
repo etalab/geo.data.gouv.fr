@@ -7,7 +7,7 @@
     "dev": "node server",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server",
-    "test": "cross-env BABEL_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest",
     "lint": "npm run lint:scripts",
     "lint:scripts": "eslint .",
     "heroku-postbuild": "yarn install --production=false && yarn build"
