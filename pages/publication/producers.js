@@ -16,7 +16,6 @@ import RequireAuth from '../../components/require-auth'
 
 import Header from '../../components/publication/header'
 import Breadcrumbs from '../../components/publication/breadcrumbs'
-
 import Producers from '../../components/publication/producers'
 
 import { PUBLICATION_BASE_URL } from '@env'
