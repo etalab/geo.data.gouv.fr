@@ -60,6 +60,10 @@ i18n
           server.use(compression())
         }
 
+        server.get('/robots.txt', (req, res) => {
+          res.sendFile(path.join(__dirname, '../robots.txt'))
+        })
+
         server.use(i18nextMiddleware.handle(i18n))
         server.use('/locales', express.static(path.join(__dirname, '../locales')))
 
