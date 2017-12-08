@@ -7,6 +7,8 @@ import { _get } from '../lib/fetch'
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
 
+import ErrorPage from './_error'
+
 import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
@@ -31,22 +33,40 @@ class HarvestPage extends React.Component {
       log: PropTypes.arrayOf(PropTypes.string).isRequired
     }).isRequired,
 
+    error: PropTypes.shape({
+      code: PropTypes.number
+    }),
+
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ query }) {
-    const [catalog, harvest] = await Promise.all([
-      _get(`${GEODATA_API_URL}/catalogs/${query.cid}`),
-      _get(`${GEODATA_API_URL}/services/${query.cid}/synchronizations/${query.hid}`)
-    ])
+  static async getInitialProps({ res, query }) {
+    try {
+      const [catalog, harvest] = await Promise.all([
+        _get(`${GEODATA_API_URL}/catalogs/${query.cid}`),
+        _get(`${GEODATA_API_URL}/services/${query.cid}/synchronizations/${query.hid}`)
+      ])
 
-    return {
-      catalog,
-      harvest
+      return {
+        catalog,
+        harvest
+      }
+    } catch (err) {
+      if (res) {
+        res.statusCode = err.code
+      }
+
+      return {
+        error: err
+      }
     }
   }
 
   render() {
+    if (this.props.error) {
+      return <ErrorPage code={this.props.error.code} />
+    }
+
     const { catalog, harvest, t } = this.props
 
     return (
