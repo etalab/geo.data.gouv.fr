@@ -17,7 +17,7 @@ const DatasetMetrics = ({ organization, metrics }) => (
       <strong>{metrics.publishedByOthers}</strong> jeux de données sont <strong>publiés par d’autres producteurs</strong>
     </p>
 
-    <Link href={`/publication/datasets?oid=${organization._id}`} as={`/publication/${organization._id}/datasets`}>
+    <Link prefetch href={`/publication/datasets?oid=${organization._id}`} as={`/publication/${organization._id}/datasets`}>
       <a>
         Publier des données
       </a>
