@@ -83,11 +83,12 @@
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
+      "components/**/*.js",
       "lib/**/*.js"
     ],
     "coverageReporters": [
       "json",
-      "text"
+      "text-summary"
     ],
     "testResultsProcessor": "jest-junit"
   },
