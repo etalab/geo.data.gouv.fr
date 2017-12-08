@@ -8,6 +8,8 @@ import { isObsolete } from '../lib/catalog'
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
 
+import ErrorPage from './_error'
+
 import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
@@ -29,14 +31,25 @@ class CatalogPage extends React.Component {
       name: PropTypes.string.isRequired,
       metrics: PropTypes.object.isRequired
     }),
+    error: PropTypes.shape({
+      code: PropTypes.number
+    }),
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ query }) {
-    const catalog = await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
+  static async getInitialProps({ res, query }) {
+    try {
+      return {
+        catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
+      }
+    } catch (err) {
+      if (res) {
+        res.statusCode = err.code
+      }
 
-    return {
-      catalog
+      return {
+        error: err
+      }
     }
   }
 
@@ -47,9 +60,11 @@ class CatalogPage extends React.Component {
   componentDidMount() {
     const { catalog } = this.props
 
-    this.setState(() => ({
-      harvestsPromise: _get(`${GEODATA_API_URL}/services/${catalog.id}/synchronizations`)
-    }))
+    if (catalog) {
+      this.setState(() => ({
+        harvestsPromise: _get(`${GEODATA_API_URL}/services/${catalog.id}/synchronizations`)
+      }))
+    }
   }
 
   runHarvest = () => {
@@ -59,6 +74,10 @@ class CatalogPage extends React.Component {
   }
 
   render() {
+    if (this.props.error) {
+      return <ErrorPage code={this.props.error.code} />
+    }
+
     const { catalog, t } = this.props
     const { harvestsPromise } = this.state
 

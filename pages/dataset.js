@@ -7,6 +7,8 @@ import { _get } from '../lib/fetch'
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
 
+import ErrorPage from './_error'
+
 import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
@@ -57,20 +59,34 @@ class DatasetPage extends React.Component {
       remoteId: PropTypes.isRequired
     }),
 
+    error: PropTypes.shape({
+      code: PropTypes.number
+    }),
+
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ query }) {
-    const [dataset, publications] = await Promise.all([
-      _get(`${GEODATA_API_URL}/records/${query.did}`),
-      _get(`${GEODATA_API_URL}/records/${query.did}/publications`)
-    ])
+  static async getInitialProps({ res, query }) {
+    try {
+      const [dataset, publications] = await Promise.all([
+        _get(`${GEODATA_API_URL}/records/${query.did}`),
+        _get(`${GEODATA_API_URL}/records/${query.did}/publications`)
+      ])
 
-    const datagouvPublication = publications.find(p => p.target === 'dgv')
+      const datagouvPublication = publications.find(p => p.target === 'dgv')
 
-    return {
-      dataset,
-      datagouvPublication
+      return {
+        dataset,
+        datagouvPublication
+      }
+    } catch (err) {
+      if (res) {
+        res.statusCode = err.code
+      }
+
+      return {
+        error: err
+      }
     }
   }
 
@@ -91,6 +107,10 @@ class DatasetPage extends React.Component {
   }
 
   render() {
+    if (this.props.error) {
+      return <ErrorPage code={this.props.error.code} />
+    }
+
     const { dataset: {
       recordId,
       revisionDate,
