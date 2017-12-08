@@ -24,11 +24,11 @@ const Catalogs = ({ catalogs, t }) => {
             <CatalogPreview catalog={catalog} />
           </div>
         ))}
-
-        <Link href='/catalogs'>
-          <a>{t('catalogsLink')}</a>
-        </Link>
       </div>
+
+      <Link href='/catalogs'>
+        <a>{t('catalogsLink')}</a>
+      </Link>
 
       <style jsx>{`
         @import 'colors';
