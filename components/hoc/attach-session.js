@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getSession, clearSession } from '../../lib/user'
+import { getSession, clearSession } from '../../lib/session'
 
 export default Page => class extends React.PureComponent {
   static propTypes = {
