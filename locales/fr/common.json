@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "description": "Trouvez facilement les données géographiques dont vous avez besoin"
+  },
+
+  "loading": "Chargement…",
+  "displayMore": "Afficher la suite…",
+  "displayLess": "Réduire",
+
+  "auth": {
+    "login": "Se connecter",
+    "register": "Créer un compte"
+  },
+
+  "errors": {
+    "title": "Erreur {{code}}",
+    "unknown": "Une erreur imprévue s'est produite",
+
+    "map": "Une erreur est survenue lors du chargement de la carte, veuillez réessayer plus tard.",
+    "http": {
+      "404": "La page demandée n’a pas pu être trouvée"
+    }
+  },
+
+  "facets": {
+    "types": {
+      "availability": "téléchargeable",
+      "dgvPublication": "publié sur data.gouv.fr",
+      "distributionFormat": "format de distribution",
+      "keyword": "mot-clé",
+      "metadataType": "type de metadonnée",
+      "opendata": "donnée ouverte",
+      "organization": "organisation",
+      "representationType": "type géographique",
+      "type": "type",
+      "catalog": "catalogue"
+    },
+    "values": {
+      "yes": "oui",
+      "no": "non",
+      "not-determined": "non déterminé",
+      "other": "autre",
+      "unknown": "inconnu",
+      "none": "aucun"
+    }
+  },
+
+  "header": {
+    "publish": "Publier des données",
+    "logout": "Déconnexion"
+  },
+
+  "footer": {
+    "legal": "Mentions légales"
+  },
+
+  "catalog": {
+    "empty": "Aucun donnée disponible",
+    "openData": "Données ouvertes",
+    "downloadable": "Téléchargeables",
+    "records": "Enregistrements",
+    "obsolete": "Attention, ce catalogue n’a pas été mis à jour depuis plus de 6 mois."
+  },
+
+  "components": {
+    "Histogram": {
+      "label": "Enregistrements"
+    },
+
+    "HarvestStatus": {
+      "success": "Réussi",
+      "fail": "En échec"
+    },
+
+    "SearchInput": {
+      "placeholder": "Rechercher…"
+    }
+  },
+
+  "enums": {
+    "dataTypes": {
+      "dataset": "jeu de données",
+      "nonGeographicDataset": "jeu de données non-géographique"
+    },
+
+    "frequencies": {
+      "continual": "en continu",
+      "daily": "quotidienne",
+      "weekly": "hebdomadaire",
+      "fortnightly": "bimensuelle",
+      "monthly": "mensuelle",
+      "quarterly": "trimestrielle",
+      "biannually": "semestrielle",
+      "annually": "annuelle",
+      "asNeeded": "ponctuelle",
+      "irregular": "irrégulière",
+      "notPlanned": "non planifiée"
+    },
+
+    "topicCategories": {
+      "farming": "agriculture",
+      "biota": "biote",
+      "boundaries": "limites",
+      "climatologyMeteorologyAtmosphere": "climatologie, météorologie, athmosphère",
+      "economy": "économie",
+      "elevation": "altitude",
+      "environment": "environnement",
+      "geoscientificInformation": "informations géoscientifiques",
+      "health": "santé",
+      "imageryBaseMapsEarthCover": "imagerie, fonds de cartes, occupation des sols",
+      "intelligenceMilitary": "infrastructures militaires",
+      "inlandWaters": "eaux intérieures",
+      "location": "localisation",
+      "oceans": "océans",
+      "planningCadastre": "cadastre, planification",
+      "society": "société",
+      "structure": "structure",
+      "transportation": "transport",
+      "utilitiesCommunication": "services d’utilité publique, communication"
+    },
+
+    "role": {
+      "resourceProvider": "Fournisseur",
+      "custodian": "Gestionnaire",
+      "owner": "Propriétaire",
+      "user": "Utilisateur",
+      "distributor": "Distributeur",
+      "originator": "Commanditaire",
+      "pointOfContact": "Point de contact",
+      "processor": "Intégrateur",
+      "publisher": "Éditeur",
+      "author": "Auteur",
+      "other": "Autre",
+      "principalInvestigator": "Maître d’œuvre",
+      "sponsor": "Financeur"
+    },
+
+    "unknownData": {
+      "unknown": "inconnu",
+      "unknown_female": "inconnue",
+      "notSpecified": "non renseigné",
+      "notSpecified_female": "non renseignée"
+    }
+  }
+}

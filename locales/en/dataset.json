@@ -1,0 +1,131 @@
+{
+  "lifeCycle": "Data life cycle, according to producer:",
+
+  "warnings": {
+    "obsolete": "Beware, this dataset is obsolete, the data can be incomplete or outdated.",
+    "underDevelopment": "Beware, this dataset is under development, the data can be incorrect and will certainly be updated in the near future."
+  },
+
+  "labels": {
+    "type": "Type:",
+    "license": "License:",
+    "category": "Category:",
+    "lastUpdate": "Last update:",
+    "purpose": "Purpose:",
+    "dataOrigin": "Data origin:",
+    "scale": "Scale:",
+    "resolution": "Resolution:",
+    "updateFrequency": "Update frequency:",
+    "creationDate": "Creation date:",
+    "status": "State:"
+  },
+
+  "blocks": {
+    "producer": "Producer",
+    "datagouv": "Publication on data.gouv.fr",
+    "contacts": "Contacts",
+    "credit": "Credit",
+    "downloads": "Downloads",
+    "discussions": "Discussions",
+    "thumbnails": "Data preview",
+    "spatialExtent": "Spatial extent",
+    "links": "Links"
+  },
+
+  "datagouv": {
+    "published": "This dataset <1>is published</1> on data.gouv.fr.",
+    "producerActionNeeded": "An action of the producer is necessary to publish this dataset on data.gouv.fr.",
+    "unpublishable": "This dataset cannot be published on data.gouv.fr.",
+    "showDetails": "Show details…",
+
+    "checks": {
+      "license": {
+        "title": "License",
+        "validLicense": "The license <1><0>{{ license }}</0></1> is valid.",
+        "unknownLicense": "The license <1><0>{{ license }}</0></1> is unknown.",
+        "noLicense": "No license was specified.",
+        "licenseList": "The known licenses are:"
+      },
+      "producer": {
+        "title": "Producer",
+        "foundProducer": "At least one producer was identified:",
+        "noProducer": "A producer has not been identified."
+      },
+      "distribution": {
+        "title": "Data availability",
+        "available": "At least one distribution is available:",
+        "unavailable": "No distribution was found."
+      }
+    }
+  },
+
+  "downloads": {
+    "noDownloads": "No data is available for download.",
+    "vectorData": "Vector data:",
+    "otherData": "Other data:",
+    "unavailable": "Unavailable",
+    "openPreview": "Preview"
+  },
+
+  "preview": {
+    "paging": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    },
+    "empty": "No data…",
+    "errors": {
+      "download": "The preview data could not be downloaded at this time, please try again later."
+    }
+  },
+
+  "discussions": {
+    "loggedOutMessage": "You need to be authenticated to start a discussion.",
+    "loggedOutReplyMessage": "You need to be authenticated to reply to a discussion.",
+
+    "new": "Start new discussion",
+    "start": "Start a discussion",
+    "reply": "Reply",
+
+    "empty": "No discussions yet…",
+    "fields": {
+      "title": "Title",
+      "message": "Message"
+    },
+    "errors": {
+      "replyValidation": "Please specify the message.",
+      "postValidation": "Please specify the title and message."
+    },
+
+    "replyCount": "One reply",
+    "replyCount_plural": "{{ count }} replies",
+    "closeReplies": "Close"
+  },
+
+  "metadata": {
+    "id": "Dataset ID:",
+    "revisionDate": "Metadata last update:"
+  },
+
+  "enums": {
+    "resolutionUnits": {
+      "meter": "meter",
+      "meter_plural": "meters",
+      "radian": "radian",
+      "radian_plural": "radians",
+      "degree": "degree",
+      "degree_plural": "degrees"
+    },
+
+    "status": {
+      "completed": "completed",
+      "historicalArchive": "archived",
+      "obsolete": "obsolete",
+      "onGoing": "on going",
+      "planned": "planned",
+      "required": "update required",
+      "underDevelopment": "under development"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "list": {
+    "title": "Catalogs"
+  },
+  "details": {
+    "title": "{{name}} Catalog",
+
+    "header": {
+      "catalogService": "Access the catalog service"
+    },
+
+    "statistics": {
+      "recordsCount": "Records",
+      "recordTypeChart": "Record types",
+      "metadataTypeChart": "Metadata types",
+      "openDataPercent": "Open data",
+      "downloadablePercent": "Downloadable data",
+      "dataTypeChart": "Data types",
+
+      "noData": "No data",
+
+      "pie": {
+        "dataset": "Dataset",
+        "nonGeographicDataset": "Non geographic dataset",
+        "service": "Service",
+        "other": "Other",
+        "vector": "Vector",
+        "none": "None",
+        "grid": "Grid",
+        "Dublin Core": "Dublin Core",
+        "ISO 19139": "ISO 19139"
+      }
+    },
+
+    "harvests": {
+      "title": "Catalog harvesting",
+      "run": "Harvest this catalog",
+
+      "table": {
+        "records": "Records",
+        "delta": "Delta",
+        "date": "Date"
+      },
+
+      "noHarvest": "No harvests…",
+      "viewDetails": "Details",
+
+      "chart": {
+        "title": "Records per harvest",
+        "label": "Records"
+      }
+    },
+
+    "search": "Search in this catalog",
+    "organizations": "Organizations"
+  },
+
+  "harvest": {
+    "title": "{{name}} Catalog Harvest",
+    "idLabel": "Harvest ID:",
+
+    "header": {
+      "backToCatalog": "Return to catalog"
+    },
+
+    "status": {
+      "pending": "Pending",
+      "successful": "Success",
+      "failed": "Failed"
+    },
+
+    "logs": {
+      "title": "Harvest log",
+      "empty": "No log entry",
+      "labels": {
+        "Records matched": "Records matched:",
+        "Record identifier too short": "Record identifier too short:",
+        "Record identifier too long": "Record identifier too long:",
+        "Not supported record type": "Non supported record type:",
+        "Unique records returned": "Unique records returned:",
+        "Ignore statistics": "Ignored statistics",
+        "Error": "Error:",
+        "  * Not supported type": "Non-supported record types:",
+        "  * Record already seen": "Record already seen:",
+        "  * Identifier too short": "Identifiers too short:",
+        "  * Identifier too long": "Identifiers too long:"
+      }
+    }
+  }
+}

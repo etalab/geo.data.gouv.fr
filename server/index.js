@@ -1,70 +1,94 @@
 const express = require('express')
 const path = require('path')
-const webpack = require('webpack')
-const logger = require('../build/lib/logger')
-const webpackConfig = require('../build/webpack.config')
-const project = require('../project.config')
-const compress = require('compression')
+const next = require('next')
+const i18n = require('i18next')
+const i18nextMiddleware = require('i18next-express-middleware')
+const Backend = require('i18next-node-fs-backend')
+const compression = require('compression')
 
-const app = express()
-app.use(compress())
+const createRoutes = require('./routes')
 
-// Apply Webpack HMR Middleware
-// ------------------------------------
-if (project.env === 'development') {
-  const compiler = webpack(webpackConfig)
-  logger.info('Enabling webpack development and HMR middleware')
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
 
-  app.use(require('webpack-dev-middleware')(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    contentBase: path.resolve(project.basePath, project.srcDir),
-    hot: true,
-    quiet: false,
-    noInfo: false,
-    lazy: false,
-    stats: {
-      assets: false,
-      children: true,
-      chunks: true,
-      chunkModules: false,
-      chunkOrigins: false,
-      colors: true,
-      modules: false,
-      source: false
+const languages = [
+  'fr',
+  'en'
+]
+
+i18n
+  .use(Backend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init({
+    fallbackLng: 'fr',
+    load: 'languageOnly',
+    lowerCaseLng: true,
+
+    ns: [
+      'catalogs',
+      'dataset',
+      'events',
+      'home',
+      'search',
+      'common'
+    ],
+    defaultNS: 'common',
+    whitelist: [
+      ...languages
+    ],
+
+    preload: [
+      ...languages
+    ],
+
+    backend: {
+      loadPath: path.join(__dirname, '../locales/{{lng}}/{{ns}}.json'),
+      addPath: path.join(__dirname, '../locales/{{lng}}/{{ns}}.missing.json')
+    },
+
+    detection: {
+      order: ['path', 'cookie', 'header']
     }
-  }))
+  }, () => {
+    app.prepare()
+      .then(() => {
+        const server = express()
 
-  app.use(require('webpack-hot-middleware')(compiler, {
-    path: '/__webpack_hmr'
-  }))
+        if (!dev) {
+          server.use(compression())
+        }
 
-  app.use(express.static(path.resolve(project.basePath, 'public')))
+        server.get('/robots.txt', (req, res) => {
+          res.sendFile(path.join(__dirname, '../robots.txt'))
+        })
 
-  app.use('*', function (req, res, next) {
-    const filename = path.join(compiler.outputPath, 'index.html')
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err)
-      }
-      res.set('content-type', 'text/html')
-      res.send(result)
-      res.end()
-    })
+        server.use(i18nextMiddleware.handle(i18n))
+        server.use('/locales', express.static(path.join(__dirname, '../locales')))
+
+        if (dev) {
+          server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
+        }
+
+        const lngs = languages.join('|')
+        server.use(`/:lng(${lngs})`, createRoutes(app))
+
+        server.get('*', (req, res) => {
+          if (!app.isInternalUrl(req)) {
+            return res.redirect(`/${req.i18n.languages[0]}${req.url}`)
+          }
+
+          handle(req, res)
+        })
+
+        server.listen(port, (err) => {
+          if (err) {
+            throw err
+          }
+
+          // eslint-disable-next-line no-console
+          console.log(`> Ready on http://localhost:${port}`)
+        })
+      })
   })
-} else {
-  logger.warn(
-    'Server is being run outside of live development mode, meaning it will ' +
-    'only serve the compiled application bundle in ~/dist. Generally you ' +
-    'do not need an application server for this and can instead use a web ' +
-    'server such as nginx to serve your static files. See the "deployment" ' +
-    'section in the README for more information on deployment strategies.'
-  )
-
-  app.use(express.static(path.resolve(project.basePath, project.outDir)))
-
-  app.use('*', (req, res) => {
-    res.sendFile(path.resolve(project.basePath, project.outDir, 'index.html'))
-  })
-}
-
-module.exports = app

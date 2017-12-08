@@ -1,3 +1,6 @@
+# Environment config
+.env
+
 # Runtime
 pids
 *.pid
@@ -16,13 +19,13 @@ CHANGELOG.md
 .LSOverride
 
 # Build
+.next
 dist
 
 # Cache
 .yarn-cache
 .npm
 .eslintcache
-.nyc_output
 .changelog
 
 # Node

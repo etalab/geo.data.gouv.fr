@@ -1,0 +1,12 @@
+{
+  "title": "Events",
+  "nextEvents": "Upcoming events",
+  "noEvents": "No events scheduled for the moment.",
+  "previousEvents": "Past events",
+
+  "event": {
+    "download": "Download the report",
+    "soonAvailable": "Report soon available…",
+    "noReport": "No report"
+  }
+}

@@ -34,17 +34,7 @@
         "*.test.js"
       ],
       "env": {
-        "mocha": true
-      },
-      "globals": {
-        "expect": true
-      },
-      "plugins": [
-        "mocha"
-      ],
-      "rules": {
-        "mocha/no-exclusive-tests": "error",
-        "no-unused-expressions": "off"
+        "jest": true
       }
     }
   ]

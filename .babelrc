@@ -1,57 +1,75 @@
 {
-  "presets": [
-    ["env", {
-      "targets": {
-        "ie": 9
-      },
-      "useBuiltIns": false,
-      "modules": false,
-      "loose": true
-    }]
-  ],
-
-  "plugins":[
-    "transform-class-properties",
-    ["transform-object-rest-spread", {
-      "useBuiltIns": true
+  "plugins": [
+    ["inline-import", {
+      "extensions": [".css"]
     }],
-    ["transform-react-jsx", {
-      "useBuiltIns": true
+    ["dotenv-import", {
+      "allowUndefined": true,
+      "whitelist": [
+        "PUBLIC_URL",
+        "PUBLICATION_BASE_URL",
+        "DATAGOUV_API_URL",
+        "DATAGOUV_API_KEY",
+        "GEODATA_API_URL",
+        "PIWIK_URL",
+        "PIWIK_SITE_ID"
+      ]
     }],
-    "transform-react-display-name",
     "lodash"
   ],
 
   "env": {
-    "development": {
-      "plugins": [
-        "transform-react-jsx-source",
-        "transform-react-jsx-self",
-        "syntax-dynamic-import"
+    "production": {
+      "presets": [
+        ["next/babel", {
+          "styled-jsx": {
+            "plugins": [
+              ["styled-jsx-plugin-sass", {
+                "sassOptions": {
+                  "includePaths": ["styles"],
+                  "precision": 2
+                }
+              }]
+            ]
+          }
+        }]
       ]
     },
 
-    "production": {
-      "plugins": [
-        "syntax-dynamic-import",
-        "transform-react-remove-prop-types"
+    "development": {
+      "presets": [
+        ["next/babel", {
+          "styled-jsx": {
+            "plugins": [
+              ["styled-jsx-plugin-sass", {
+                "sassOptions": {
+                  "includePaths": ["styles"],
+                  "precision": 2
+                }
+              }]
+            ]
+          }
+        }]
       ]
     },
 
     "test": {
       "presets": [
-        ["env", {
-          "targets": {
-            "node": "current"
+        ["next/babel", {
+          "preset-env": {
+            "modules": "commonjs"
           },
-          "loose": true
+          "styled-jsx": {
+            "plugins": [
+              ["styled-jsx-plugin-sass", {
+                "sassOptions": {
+                  "includePaths": ["styles"],
+                  "precision": 2
+                }
+              }]
+            ]
+          }
         }]
-      ],
-      "plugins": [
-        "transform-react-jsx-source",
-        "transform-react-jsx-self",
-        "dynamic-import-node",
-        "istanbul"
       ]
     }
   }

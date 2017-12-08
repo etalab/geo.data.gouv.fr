@@ -8,6 +8,15 @@
   "env":{
     "HEROKU_APP_NAME": {
       "required": true
+    },
+    "DATAGOUV_API_URL": {
+      "required": true
+    },
+    "PUBLICATION_BASE_URL": {
+      "required": true
+    },
+    "GEODATA_API_URL": {
+      "required": true
     }
   }
 }

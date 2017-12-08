@@ -8,13 +8,13 @@ Trouvez facilement les données géographiques dont vous avez besoin
 
 Interface du site [geo.data.gouv.fr](https://geo.data.gouv.fr) basée sur les API de la [plateforme Inspire](https://github.com/inspireteam) et développée par la mission [Etalab](https://github.com/etalab).
 
-Ce projet _front_ utilise [React](https://facebook.github.io/react/) et [Webpack](https://webpack.js.org/).
+Ce projet _front_ est basé sur [Next.js](https://github.com/zeit/next.js), il utilise [React](https://reactjs.org).
 
 ## Contribuer au code
 
 ### Prérequis
 
-* [Node.js](https://nodejs.org/en/) >= 6
+* [Node.js](https://nodejs.org/en/) >= 8
 * [yarn](https://yarnpkg.com) (mais ça fonctionne aussi avec npm)
 
 ### Installation des dépendances
@@ -25,8 +25,20 @@ yarn
 
 ### Développement
 
+Afin de configurer le projet correctement, il est conseillé de créer un fichier `.env` avec les variables d’environnement nécessaires à l’application.
+
+`.env` permet de persister les variables d’environnement de développement dans un fichier plutôt que de les définir dans le shell, mais les deux fonctionnent. Cela fonctionne avec [dotenv](https://github.com/motdotla/dotenv) et [babel-plugin-dotenv-import](https://github.com/tusbar/babel-plugin-dotenv-import).
+
+Un fichier d’example existe : `.env.example`. Pour obtenir une configuration de base :
+
 ```bash
-yarn start # Lance le serveur de développement
+cp .env.example .env
+```
+
+Enfin, lancer le serveur de développement avec :
+
+```bash
+yarn dev
 ```
 
 ### Tests
@@ -35,11 +47,18 @@ yarn start # Lance le serveur de développement
 yarn test
 ```
 
-### Déploiement sur GitHub Pages
+### Génération des bundles de production
 
 ```bash
 yarn build
-yarn deploy
+```
+
+### Lancer le serveur en mode production
+
+Il utilisera les bundles générés par `yarn build`.
+
+```bash
+yarn start
 ```
 
 ### Génération de Changelog
@@ -65,7 +84,7 @@ La génération du changelog et la création de releases GitHub sont automatisé
 
 ## Mainteneurs principaux
 
-[Jérôme Desboeufs](https://github.com/jdesboeufs) et [Théophile Merlière](https://github.com/tmerlier)
+[Jérôme Desboeufs](https://github.com/jdesboeufs), [Théophile Merlière](https://github.com/tmerlier) et [Bertrand Marron](https://github.com/tusbar)
 
 Ce projet est largement ouvert aux contributions.
 

@@ -1,0 +1,90 @@
+{
+  "list": {
+    "title": "Catalogues"
+  },
+  "details": {
+    "title": "Catalogue {{name}}",
+
+    "header": {
+      "catalogService": "Accéder au service du catalogue"
+    },
+
+    "statistics": {
+      "recordsCount": "Enregistrements",
+      "recordTypeChart": "Types d‘enregistrements",
+      "metadataTypeChart": "Types de metadonnées",
+      "openDataPercent": "Données ouvertes",
+      "downloadablePercent": "Données téléchargeables",
+      "dataTypeChart": "Types de données",
+
+      "noData": "Aucune donnée",
+
+      "pie": {
+        "dataset": "Jeu de données",
+        "nonGeographicDataset": "Jeu de données non géographiques",
+        "service": "Service",
+        "other": "Autre",
+        "vector": "Vecteurs",
+        "none": "Aucun",
+        "grid": "Imagerie",
+        "Dublin Core": "Dublin Core",
+        "ISO 19139": "ISO 19139"
+      }
+    },
+
+    "harvests": {
+      "title": "Moissonnage du catalogue",
+      "run": "Moissonner ce catalogue",
+
+      "table": {
+        "records": "Enregistrements",
+        "delta": "Delta",
+        "date": "Date"
+      },
+
+      "noHarvest": "Aucun moissonage…",
+      "viewDetails": "Détails",
+
+      "chart": {
+        "title": "Enregistrements par moissonnage",
+        "label": "Enregistrements"
+      }
+    },
+
+    "search": "Rechercher dans ce catalogue",
+    "organizations": "Organisations"
+  },
+
+  "harvest": {
+    "title": "Moissonnage du catalogue {{name}}",
+    "idLabel": "Identifiant du moissonnage :",
+
+    "header": {
+      "backToCatalog": "Retour au catalogue"
+    },
+
+    "status": {
+      "pending": "En cours",
+      "successful": "Réussi",
+      "failed": "Échec"
+    },
+
+    "logs": {
+      "title": "Journal du moissonnage",
+      "empty": "Aucune entrée dans le journal",
+      "labels": {
+        "Records matched": "Enregistrements détectés :",
+        "Record identifier too short": "Identifiant d’enregistrement trop court :",
+        "Record identifier too long": "Identifiant d’enregistrement trop long :",
+        "Not supported record type": "Type d’enregistrement non supporté :",
+        "Unique records returned": "Enregistrements uniques trouvés :",
+        "Ignore statistics": "Statistiques ignorées",
+        "Error": "Erreur :",
+        "  * Not supported type": "Types d’enregistrements non supportés :",
+        "  * Record already seen": "Enregistrements déjà vus :",
+        "  * Identifier too short": "Identifiants trop courts :",
+        "  * Identifier too long": "Identifiants trop longs :"
+      }
+    }
+  }
+}

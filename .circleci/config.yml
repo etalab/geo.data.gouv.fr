@@ -78,10 +78,6 @@ jobs:
           name: Lint JavaScript
           command: yarn lint:scripts
 
-      - run:
-          name: Lint Stylesheets
-          command: yarn lint:styles
-
   test:
     <<: *nodejs_container
     steps:
@@ -90,18 +86,14 @@ jobs:
 
       - run:
           name: Run tests
-          command: yarn test:ci
+          command: yarn test
 
       - store_test_results:
           path: reports/tests/
 
-      - store_artifacts:
-          name: Store coverage artifacts
-          path: coverage/
-
       - run:
           name: Upload code coverage to codecov
-          command: yarn codecov
+          command: yarn codecov -f coverage/coverage-final.json
 
   build:
     <<: *nodejs_container
@@ -109,29 +101,26 @@ jobs:
       - *attach_workspace
       - *restore_node_modules
 
-      - restore_cache:
-          name: Restore reports cache
-          keys:
-            - v1-geodatagouv-reports-master-
-
       - run:
           name: Build output bundles
           command: yarn build
 
-      - save_cache:
-          name: Save reports cache
-          key: v1-geodatagouv-reports-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - reports/
-
-      - store_artifacts:
-          name: Store build report artifacts
-          path: reports/
-
       - persist_to_workspace:
           root: *workspace_root
           paths:
-            - dist/
+            - .next/
+
+      - run:
+          name: Extract built bundles for stats
+          command: |
+            mkdir dist-stats
+            cp -r .next/app.js .next/bundles dist-stats
+            tar cvf dist-stats/chunks.js.tar .next/chunks/*.js
+            gzip -r dist-stats
+
+      -  store_artifacts:
+          name: Store built bundles for stats
+          path: dist-stats
 
   changelog:
     <<: *nodejs_container
@@ -251,15 +240,15 @@ workflows:
             - install
           filters: *default_filters
 
-      - deploy:
-          requires:
-            - lint
-            - test
-            - build
-          filters:
-            <<: *default_filters
-            branches:
-              ignore: '/.*/'
+      # - deploy:
+      #     requires:
+      #       - lint
+      #       - test
+      #       - build
+      #     filters:
+      #       <<: *default_filters
+      #       branches:
+      #         ignore: '/.*/'
 
       - release:
           requires:

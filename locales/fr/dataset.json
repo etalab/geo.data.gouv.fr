@@ -1,0 +1,131 @@
+{
+  "lifeCycle": "Cycle de vie de la donnée renseigné par le producteur :",
+
+  "warnings": {
+    "obsolete": "Attention, ce jeu de données est obsolète, les données peuvent être incomplètes ou ne plus être à jour.",
+    "underDevelopment": "Attention, ce jeu de données est en développement, certaines données peuvent être erronées ou vont subir des changements."
+  },
+
+  "labels": {
+    "type": "Type :",
+    "license": "Licence :",
+    "category": "Catégorie :",
+    "lastUpdate": "Dernière mise à jour :",
+    "purpose": "Objectif :",
+    "dataOrigin": "Origine de la donnée :",
+    "scale": "Échelle :",
+    "resolution": "Résolution :",
+    "updateFrequency": "Fréquence de mise à jour :",
+    "creationDate": "Date de création :",
+    "status": "État :"
+  },
+
+  "blocks": {
+    "producer": "Producteur",
+    "datagouv": "Publication sur data.gouv.fr",
+    "contacts": "Contacts",
+    "credit": "Contributions",
+    "downloads": "Téléchargements",
+    "discussions": "Discussions",
+    "thumbnails": "Aperçu des données",
+    "spatialExtent": "Étendue spatiale",
+    "links": "Liens"
+  },
+
+  "datagouv": {
+    "published": "Ce jeu de données <1>est publié</1> sur data.gouv.fr.",
+    "producerActionNeeded": "Une action du producteur est nécessaire pour publier ce jeu de données sur data.gouv.fr.",
+    "unpublishable": "Ce jeu de données ne peut pas être publié sur data.gouv.fr.",
+    "showDetails": "En savoir plus…",
+
+    "checks": {
+      "license": {
+        "title": "Licence",
+        "validLicense": "La licence <1><0>{{ license }}</0></1> est valide.",
+        "unknownLicense": "La licence <1><0>{{ license }}</0></1> n’est pas reconnue.",
+        "noLicense": "Aucune licence n’a été spécifiée.",
+        "licenseList": "Les licences reconnues sont :"
+      },
+      "producer": {
+        "title": "Producteur",
+        "foundProducer": "Au moins un producteur a été identifié :",
+        "noProducer": "Un producteur n’a pas été identifié."
+      },
+      "distribution": {
+        "title": "Disponibilité de la donnée",
+        "available": "Au moins une distribution est disponible :",
+        "unavailable": "Aucune distribution n’a été trouvée."
+      }
+    }
+  },
+
+  "downloads": {
+    "noDownloads": "Aucune donnée n’est téléchargeable.",
+    "vectorData": "Données vectorielles :",
+    "otherData": "Autres données :",
+    "unavailable": "Non disponible",
+    "openPreview": "Visualiser"
+  },
+
+  "preview": {
+    "paging": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page",
+      "of": "sur"
+    },
+    "empty": "Aucune donnée…",
+    "errors": {
+      "download": "Les données à prévisualiser n’ont pas pu être téléchargées, merci de réessayer plus tard."
+    }
+  },
+
+  "discussions": {
+    "loggedOutMessage": "Vous devez être connecté pour démarrer une discussion.",
+    "loggedOutReplyMessage": "Vous devez être connecté pour répondre à une discussion.",
+
+    "new": "Démarrer une nouvelle discussion",
+    "start": "Démarrer une discussion",
+    "reply": "Répondre",
+
+    "empty": "Aucune discussion pour le moment…",
+    "fields": {
+      "title": "Titre",
+      "message": "Commentaire"
+    },
+    "errors": {
+      "replyValidation": "Merci de préciser le commentaire.",
+      "postValidation": "Merci de préciser le titre le commentaire."
+    },
+
+    "replyCount": "Une réponse",
+    "replyCount_plural": "{{ count }} réponses",
+    "closeReplies": "Fermer"
+  },
+
+  "metadata": {
+    "id": "Identifiant du jeu de données :",
+    "revisionDate": "Dernière mise à jour des informations :"
+  },
+
+  "enums": {
+    "resolutionUnits": {
+      "meter": "mètre",
+      "meter_plural": "mètres",
+      "radian": "radian",
+      "radian_plural": "radians",
+      "degree": "degré",
+      "degree_plural": "degrés"
+    },
+
+    "status": {
+      "completed": "terminée",
+      "historicalArchive": "archivée",
+      "obsolete": "obsolète",
+      "onGoing": "en cours",
+      "planned": "planifiée",
+      "required": "mise à jour requise",
+      "underDevelopment": "en construction"
+    }
+  }
+}

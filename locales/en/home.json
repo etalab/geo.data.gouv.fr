@@ -1,0 +1,15 @@
+{
+  "tagline": "Easily find the geographic data you need",
+  "SearchInputPlaceholder": "Search for a dataset",
+  "datasetsLink": "View all datasets",
+  "catalogsSectionTitle": "Harvested catalogs",
+  "catalogsLink": "See all catalogs",
+  "eventsSectionTitle": "Our Events",
+  "eventsLink": "See our events",
+
+  "newsletter": {
+    "title": "Keep in touch, subscribe to our newsletter:",
+    "placeholder": "Your email address",
+    "button": "Subscribe"
+  }
+}

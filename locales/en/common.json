@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "description": "Easily find the geographic data you need"
+  },
+
+  "loading": "Loading…",
+  "displayMore": "Display more…",
+  "displayLess": "Hide",
+
+  "auth": {
+    "login": "Login",
+    "register": "Register"
+  },
+
+  "errors": {
+    "title": "Error {{code}}",
+    "unknown": "An unexpected error has occurred",
+
+    "map": "An error happened when loading the map, try again later.",
+    "http": {
+      "404": "This page could not be found"
+    }
+  },
+
+  "facets": {
+    "types": {
+      "availability": "downloadable",
+      "dgvPublication": "published on data.gouv.fr",
+      "distributionFormat": "distribution format",
+      "keyword": "keyword",
+      "metadataType": "metada type",
+      "opendata": "open data",
+      "organization": "organization",
+      "representationType": "representation type",
+      "type": "type",
+      "catalog": "catalog"
+    },
+    "values": {
+      "yes": "yes",
+      "no": "no",
+      "not-determined": "not determined",
+      "other": "other",
+      "unknown": "unknown",
+      "none": "none"
+    }
+  },
+
+  "header": {
+    "publish": "Publish data",
+    "logout": "Logout"
+  },
+
+  "footer": {
+    "legal": "Legal"
+  },
+
+  "catalog": {
+    "empty": "No data available",
+    "openData": "Open data",
+    "downloadable": "Downloadable",
+    "records": "Records",
+    "obsolete": "Beware, this catalog has not been updated in the last 6 months."
+  },
+
+  "components": {
+    "Histogram": {
+      "label": "Records"
+    },
+
+    "HarvestStatus": {
+      "success": "Succeeded",
+      "fail": "Failed"
+    },
+
+    "SearchInput": {
+      "placeholder": "Search…"
+    }
+  },
+
+  "enums": {
+    "dataTypes": {
+      "dataset": "dataset",
+      "nonGeographicDataset": "non-geographic dataset"
+    },
+
+    "frequencies": {
+      "continual": "continual",
+      "daily": "daily",
+      "weekly": "weekly",
+      "fortnightly": "fortnightly",
+      "monthly": "monthly",
+      "quarterly": "quarterly",
+      "biannually": "biannually",
+      "annually": "annually",
+      "asNeeded": "as needed",
+      "irregular": "irregular",
+      "notPlanned": "not planned"
+    },
+
+    "topicCategories": {
+      "farming": "farming",
+      "biota": "biota",
+      "boundaries": "boundaries",
+      "climatologyMeteorologyAtmosphere": "climatology, meteorology, athmosphere",
+      "economy": "economy",
+      "elevation": "elevation",
+      "environment": "environment",
+      "geoscientificInformation": "geoscientific information",
+      "health": "health",
+      "imageryBaseMapsEarthCover": "imagery, base maps, earth cover",
+      "intelligenceMilitary": "intelligence military",
+      "inlandWaters": "inland waters",
+      "location": "location",
+      "oceans": "oceans",
+      "planningCadastre": "cadastre, planning",
+      "society": "society",
+      "structure": "structure",
+      "transportation": "transportation",
+      "utilitiesCommunication": "utilities, communication"
+    },
+
+    "role": {
+      "resourceProvider": "Resource provider",
+      "custodian": "Custodian",
+      "owner": "Owner",
+      "user": "User",
+      "distributor": "Distributor",
+      "originator": "Originator",
+      "pointOfContact": "Point of contact",
+      "processor": "Processor",
+      "publisher": "Publisher",
+      "author": "Author",
+      "other": "Other",
+      "principalInvestigator": "Principal investigator",
+      "sponsor": "Sponsor"
+    },
+
+    "unknownData": {
+      "unknown": "unknown",
+      "notSpecified": "not specified"
+    }
+  }
+}
