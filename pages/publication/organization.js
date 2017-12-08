@@ -23,7 +23,7 @@ import DatasetMetrics from '../../components/publication/organization//dataset-m
 
 import { PUBLICATION_BASE_URL, GEODATA_API_URL } from '@env'
 
-class PublicationPage extends React.Component {
+class OrganizationPublicationPage extends React.Component {
   static propTypes = {
     organizationId: PropTypes.string.isRequired,
     session: PropTypes.shape({
@@ -162,4 +162,4 @@ export default flowRight(
   attachI18n(),
   attachSession,
   withSession
-)(PublicationPage)
+)(OrganizationPublicationPage)

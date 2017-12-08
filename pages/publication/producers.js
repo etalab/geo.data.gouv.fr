@@ -21,7 +21,7 @@ import Producers from '../../components/publication/producers'
 
 import { PUBLICATION_BASE_URL } from '@env'
 
-class ProducersPage extends React.Component {
+class ProducersPublicationPage extends React.Component {
   static propTypes = {
     organizationId: PropTypes.string.isRequired,
     session: PropTypes.shape({
@@ -111,4 +111,4 @@ export default flowRight(
   attachI18n(),
   attachSession,
   withSession
-)(ProducersPage)
+)(ProducersPublicationPage)

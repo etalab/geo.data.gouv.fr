@@ -15,7 +15,7 @@ import RequireAuth from '../../components/require-auth'
 import Header from '../../components/publication/header'
 import Breadcrumbs from '../../components/publication/breadcrumbs'
 
-class PublicationPage extends React.Component {
+class DatasetsPublicationPage extends React.Component {
   static propTypes = {
     organizationId: PropTypes.string.isRequired
   }
@@ -60,4 +60,4 @@ export default flowRight(
   attachI18n(),
   attachSession,
   withSession
-)(PublicationPage)
+)(DatasetsPublicationPage)
