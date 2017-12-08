@@ -86,14 +86,14 @@ jobs:
 
       - run:
           name: Run tests
-          command: yarn test:ci
+          command: yarn test
 
-      - store_test_results:
-          path: reports/tests/
+      # - store_test_results:
+      #     path: reports/tests/
 
-      - run:
-          name: Upload code coverage to codecov
-          command: yarn codecov
+      # - run:
+      #     name: Upload code coverage to codecov
+      #     command: yarn codecov
 
   build:
     <<: *nodejs_container
@@ -213,10 +213,10 @@ workflows:
             - install
           filters: *default_filters
 
-      # - test:
-      #     requires:
-      #       - install
-      #     filters: *default_filters
+      - test:
+          requires:
+            - install
+          filters: *default_filters
 
       - build:
           requires:
@@ -231,7 +231,7 @@ workflows:
       - deploy:
           requires:
             - lint
-            # - test
+            - test
             - build
           filters:
             <<: *default_filters
