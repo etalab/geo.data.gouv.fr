@@ -26,7 +26,6 @@ dist
 .yarn-cache
 .npm
 .eslintcache
-.nyc_output
 .changelog
 
 # Node
