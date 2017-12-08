@@ -228,15 +228,15 @@ workflows:
             - install
           filters: *default_filters
 
-      - deploy:
-          requires:
-            - lint
-            - test
-            - build
-          filters:
-            <<: *default_filters
-            branches:
-              ignore: '/.*/'
+      # - deploy:
+      #     requires:
+      #       - lint
+      #       - test
+      #       - build
+      #     filters:
+      #       <<: *default_filters
+      #       branches:
+      #         ignore: '/.*/'
 
       - release:
           requires:
