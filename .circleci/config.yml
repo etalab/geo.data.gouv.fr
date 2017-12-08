@@ -93,7 +93,7 @@ jobs:
 
       - run:
           name: Upload code coverage to codecov
-          command: yarn codecov -f coverage/coverage-final.json
+          command: yarn codecov
 
   build:
     <<: *nodejs_container
