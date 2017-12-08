@@ -21,20 +21,20 @@ class Producers extends React.Component {
       _id: PropTypes.string.isRequired
     })).isRequired,
 
-    associate: PropTypes.func.isRequired,
-    dissociate: PropTypes.func.isRequired
+    associateProducer: PropTypes.func.isRequired,
+    dissociateProducer: PropTypes.func.isRequired
   }
 
   associateProducer = producer => () => {
-    const { organization, associate } = this.props
+    const { associateProducer } = this.props
 
-    associate(organization, producer)
+    associateProducer(producer)
   }
 
   dissociateProducer = producer => () => {
-    const { organization, dissociate } = this.props
+    const { dissociateProducer } = this.props
 
-    dissociate(organization, producer)
+    dissociateProducer(producer)
   }
 
   render() {

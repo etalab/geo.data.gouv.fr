@@ -53,17 +53,21 @@ class ProducersPublicationPage extends React.Component {
     }
   }
 
-  associateProducer = (organization, producer) => {
+  associateProducer = producer => {
+    const { organizationId } = this.props
+
     this.setState({
-      producersPromise: _post(`${PUBLICATION_BASE_URL}/api/organizations/${organization.id}/producers`, {
+      producersPromise: _post(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`, {
         _id: producer._id
       }).then(() => this.fetchProducers())
     })
   }
 
-  dissociateProducer = (organization, producer) => {
+  dissociateProducer = producer => {
+    const { organizationId } = this.props
+
     this.setState({
-      producersPromise: _delete(`${PUBLICATION_BASE_URL}/api/organizations/${organization.id}/producers/${producer._id}`).then(() => this.fetchProducers())
+      producersPromise: _delete(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers/${producer._id}`).then(() => this.fetchProducers())
     })
   }
 
@@ -82,8 +86,8 @@ class ProducersPublicationPage extends React.Component {
         <Producers
           organization={organization}
           promise={Promise.all([producersPromise, organizationsPromise])}
-          associate={this.associateProducer}
-          dissociate={this.dissociateProducer}
+          associateProducer={this.associateProducer}
+          dissociateProducer={this.dissociateProducer}
         />
       </div>
     )
