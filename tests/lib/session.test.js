@@ -11,7 +11,7 @@ test('store session in sessionStorage', () => {
 
   storeSession(session)
 
-  expect(sessionStorage['dgv-session']).toBe(JSON.stringify(session))
+  expect(sessionStorage['geo-dgv-session']).toBe(JSON.stringify(session))
 })
 
 test('clear session from sessionStorage', () => {
@@ -20,7 +20,7 @@ test('clear session from sessionStorage', () => {
   })
   clearSession()
 
-  expect(sessionStorage['dgv-session']).toBe(undefined)
+  expect(sessionStorage['geo-dgv-session']).toBe(undefined)
 })
 
 test('retrieve session from sessionStorage', () => {
