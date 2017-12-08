@@ -110,6 +110,18 @@ jobs:
           paths:
             - .next/
 
+      - run:
+          name: Extract built bundles for stats
+          command: |
+            mkdir dist-stats
+            cp -r .next/app.js .next/bundles dist-stats
+            tar cvf dist-stats/chunks.js.tar .next/chunks/*.js
+            gzip -r dist-stats
+
+      -  store_artifacts:
+          name: Store built bundles for stats
+          path: dist-stats
+
   changelog:
     <<: *nodejs_container
     steps:
