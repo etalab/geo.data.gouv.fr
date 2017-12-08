@@ -61,7 +61,7 @@ class SearchInput extends React.PureComponent {
           type='text'
           name='query'
           defaultValue={router.query.q}
-          placeholder={placeholder || t('components.SearchInput.placeholder')}
+          placeholder={placeholder || t('search')}
         />
 
         {hasButton && (

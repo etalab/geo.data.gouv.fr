@@ -9,9 +9,9 @@ const HarvestStatus = ({ harvest, t }) => {
   let status
 
   if (harvest.status === 'successful') {
-    status = t('components.HarvestStatus.success')
+    status = t('catalog.harvest.success')
   } else {
-    status = t('components.HarvestStatus.fail')
+    status = t('catalog.harvest.fail')
   }
 
   return (

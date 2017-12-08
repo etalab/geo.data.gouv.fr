@@ -4,6 +4,7 @@
   },
 
   "loading": "Chargement…",
+  "search": "Rechercher…",
   "displayMore": "Afficher la suite…",
   "displayLess": "Réduire",
 
@@ -59,21 +60,11 @@
     "openData": "Données ouvertes",
     "downloadable": "Téléchargeables",
     "records": "Enregistrements",
-    "obsolete": "Attention, ce catalogue n’a pas été mis à jour depuis plus de 6 mois."
-  },
+    "obsolete": "Attention, ce catalogue n’a pas été mis à jour depuis plus de 6 mois.",
 
-  "components": {
-    "Histogram": {
-      "label": "Enregistrements"
-    },
-
-    "HarvestStatus": {
+    "harvest": {
       "success": "Réussi",
       "fail": "En échec"
-    },
-
-    "SearchInput": {
-      "placeholder": "Rechercher…"
     }
   },
 

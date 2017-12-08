@@ -4,6 +4,7 @@
   },
 
   "loading": "Loading…",
+  "search": "Search…",
   "displayMore": "Display more…",
   "displayLess": "Hide",
 
@@ -59,21 +60,11 @@
     "openData": "Open data",
     "downloadable": "Downloadable",
     "records": "Records",
-    "obsolete": "Beware, this catalog has not been updated in the last 6 months."
-  },
+    "obsolete": "Beware, this catalog has not been updated in the last 6 months.",
 
-  "components": {
-    "Histogram": {
-      "label": "Records"
-    },
-
-    "HarvestStatus": {
+    "harvest": {
       "success": "Succeeded",
       "fail": "Failed"
-    },
-
-    "SearchInput": {
-      "placeholder": "Search…"
     }
   },
 
