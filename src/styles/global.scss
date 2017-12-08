@@ -1,9 +1,0 @@
-@import '~semantic-ui-css/components/reset.css';
-@import '~semantic-ui-css/components/site.css';
-@import '~semantic-ui-css/components/icon.css';
-
-.no-scroll {
-  @media (max-width: 960px) {
-    overflow: hidden;
-  }
-}

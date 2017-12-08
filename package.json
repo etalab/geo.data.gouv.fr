@@ -7,10 +7,7 @@
     "dev": "node server",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server",
-    "test": "cross-env NODE_ENV=test mocha -r babel-register -r build/tests/bootstrap.js src/**/*.test.js",
-    "test:ci": "cross-env NODE_ENV=test MOCHA_FILE=reports/tests/geodatagouv/results.xml nyc mocha -r build/tests/bootstrap.js --reporter mocha-circleci-reporter src/**/*.test.js",
-    "codecov": "codecov",
-    "deploy": "gh-pages -d dist -m 'Deploy [skip ci]'",
+    "test": "echo 'No tests for now'",
     "lint": "npm run lint:scripts",
     "lint:scripts": "eslint .",
     "heroku-postbuild": "yarn install --production=false && yarn build"

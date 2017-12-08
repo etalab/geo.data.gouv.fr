@@ -91,10 +91,6 @@ jobs:
       - store_test_results:
           path: reports/tests/
 
-      - store_artifacts:
-          name: Store coverage artifacts
-          path: coverage/
-
       - run:
           name: Upload code coverage to codecov
           command: yarn codecov
@@ -217,10 +213,10 @@ workflows:
             - install
           filters: *default_filters
 
-      - test:
-          requires:
-            - install
-          filters: *default_filters
+      # - test:
+      #     requires:
+      #       - install
+      #     filters: *default_filters
 
       - build:
           requires:
@@ -235,7 +231,7 @@ workflows:
       - deploy:
           requires:
             - lint
-            - test
+            # - test
             - build
           filters:
             <<: *default_filters
