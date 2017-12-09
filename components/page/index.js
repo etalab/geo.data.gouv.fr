@@ -32,8 +32,16 @@ export const Page = ({ children }) => (
     <style jsx global>{`
       @import 'colors';
 
+      body {
+        font-size: 14px;
+        line-height: 1.5;
+        min-width: 320px;
+        background-color: $white;
+      }
+
       a {
         color: $blue;
+        text-decoration: none;
 
         &:hover {
           color: darken($blue, 10%);
