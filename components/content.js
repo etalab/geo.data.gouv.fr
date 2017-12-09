@@ -13,7 +13,7 @@ const Content = ({ children, clouds }) => (
         padding: 20px 0;
         display: flex;
         flex-direction: column;
-        flex: 1;
+        flex: auto;
       }
 
       .clouds {
