@@ -2,7 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 
 import reset from 'semantic-ui-css/components/reset.min.css'
-import site from 'semantic-ui-css/components/site.min.css'
 
 const Meta = () => (
   <Head>
@@ -19,7 +18,6 @@ const Meta = () => (
 
     {/* Global style */}
     <style dangerouslySetInnerHTML={{ __html: reset }} />
-    <style dangerouslySetInnerHTML={{ __html: site }} />
   </Head>
 )
 
