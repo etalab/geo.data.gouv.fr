@@ -71,6 +71,9 @@
     "styled-jsx-plugin-sass": "^0.2.2",
     "webpack-bundle-analyzer": "^2.9.1"
   },
+  "browserslist": [
+    "> 1%"
+  ],
   "engines": {
     "node": "8.x",
     "yarn": "1.x"
