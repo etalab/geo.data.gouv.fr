@@ -21,8 +21,9 @@ const Section = ({ title, children }) => (
 
       h2 {
         color: $white;
+        font-size: 1.5rem;
         text-transform: uppercase;
-        margin: 0 0 1em;
+        margin: 0 0 1rem;
       }
     `}</style>
   </section>

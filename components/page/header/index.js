@@ -116,7 +116,7 @@ class Header extends React.Component {
             display: inline-block;
             margin: 0;
             padding: 0;
-            list-style-type: 0;
+            list-style-type: none;
             text-align: right;
 
             @media (max-width: 551px) {

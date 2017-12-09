@@ -1,0 +1,36 @@
+@import 'colors';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4285;
+  text-size-adjust: 100%;
+  min-width: 320px;
+  background-color: $white;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($blue, 10%);
+  }
+}
+
+input {
+  font-family: inherit;
+}
+
+input[type=email], input[type=password], input[type=search], input[type=text] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}

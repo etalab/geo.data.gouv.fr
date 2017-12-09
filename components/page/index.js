@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import FontFaceObserver from 'fontfaceobserver'
 
 import Meta from './meta'
 import Header from './header'
@@ -12,76 +13,80 @@ Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-export const Page = ({ children }) => (
-  <div>
-    <Meta />
-    <Header />
-    {children}
-    <Footer />
-    <Piwik />
+class Page extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  }
 
-    <style jsx>{`
-      div {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-        position: relative;
-      }
-    `}</style>
+  componentDidMount() {
+    console.log('page/index componentDidMount')
 
-    <style jsx global>{`
-      @import 'colors';
+    // if (sessionStorage.fontsLoaded) {
+    //   document.documentElement.classList.add('font-loaded')
+    //   return
+    // }
 
-      body {
-        font-size: 14px;
-        line-height: 1.4;
-        min-width: 320px;
-        background-color: $white;
-      }
+    const lato = new FontFaceObserver('Lato')
+    lato.load().then(() => {
+      console.log('page/index font loaded')
+      document.documentElement.classList.add('font-loaded')
+      sessionStorage.fontLoaded = true
+    })
+  }
 
-      p {
-        margin: 0 0 1em;
-      }
+  render() {
+    const { children } = this.props
 
-      a {
-        color: $blue;
-        text-decoration: none;
+    return (
+      <div>
+        <Meta />
+        <Header />
+        {children}
+        <Footer />
+        <Piwik />
 
-        &:hover {
-          color: darken($blue, 10%);
-        }
-      }
+        <style jsx>{`
+          div {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            position: relative;
+          }
+        `}</style>
 
-      #nprogress {
-        pointer-events: none;
-      }
+        <style jsx global>{`
+          @import 'reset';
+          @import 'fonts';
+          @import 'colors';
 
-      #nprogress .bar {
-        background: $blue;
-        position: fixed;
-        z-index: 1031;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-      }
+          #nprogress {
+            pointer-events: none;
+          }
 
-      #nprogress .peg {
-        display: block;
-        position: absolute;
-        right: 0px;
-        width: 100px;
-        height: 100%;
-        box-shadow: 0 0 10px $blue, 0 0 5px $blue;
-        opacity: 1.0;
-        transform: rotate(3deg) translate(0px, -4px);
-      }
-    `}</style>
-  </div>
-)
+          #nprogress .bar {
+            background: $blue;
+            position: fixed;
+            z-index: 1031;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+          }
 
-Page.propTypes = {
-  children: PropTypes.node
+          #nprogress .peg {
+            display: block;
+            position: absolute;
+            right: 0px;
+            width: 100px;
+            height: 100%;
+            box-shadow: 0 0 10px $blue, 0 0 5px $blue;
+            opacity: 1.0;
+            transform: rotate(3deg) translate(0px, -4px);
+          }
+        `}</style>
+      </div>
+    )
+  }
 }
 
 export default Page

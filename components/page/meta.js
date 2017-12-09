@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 
-import reset from 'semantic-ui-css/components/reset.min.css'
 
 const Meta = () => (
   <Head>
@@ -16,8 +15,6 @@ const Meta = () => (
     <link rel='manifest' href='/static/favicons/manifest.json' />
     <link rel='mask-icon' href='/static/favicons/safari-pinned-tab.svg' color='#5bbad5' />
 
-    {/* Global style */}
-    <style dangerouslySetInnerHTML={{ __html: reset }} />
   </Head>
 )
 

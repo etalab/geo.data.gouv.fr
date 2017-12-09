@@ -84,7 +84,7 @@ class SearchInput extends React.PureComponent {
             margin: 0;
             outline: 0;
             line-height: 2em;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             padding: 10px 60px 10px 20px;
 
             &:focus,

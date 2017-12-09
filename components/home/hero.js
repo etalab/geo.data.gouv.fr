@@ -44,9 +44,9 @@ const Hero = ({ t }) => (
 
       h1 {
         color: $white;
-        font-size: xx-large;
-        font-weight: 100;
-        margin: 0 0 2em;
+        font-size: 2.3em;
+        font-weight: normal;
+        margin: 0 0 1.8em;
 
         @media (max-width: 551px) {
           font-size: larger;
