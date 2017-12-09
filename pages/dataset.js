@@ -216,7 +216,7 @@ class DatasetPage extends React.Component {
           .container {
             display: flex;
             flex-wrap: wrap;
-            flex: 1;
+            flex: auto;
 
             @media (max-width: 768px) {
               flex-direction: column;
