@@ -134,7 +134,7 @@ class Facet extends React.Component {
 
           .facet {
             display: flex;
-            flex: 1;
+            flex: auto;
             background: $lightgrey;
             border-radius: 3px 0 0 3px;
             height: 26px;
