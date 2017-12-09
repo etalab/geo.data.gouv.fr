@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
         <Head />
         <body>
           <Main />
-          <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=default,es7' />
+          <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=default,es6,es7' />
           <NextScript />
         </body>
       </html>
