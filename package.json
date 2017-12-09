@@ -28,6 +28,7 @@
     "marked": "^0.3.7",
     "moment": "^2.19.3",
     "next": "^4.2.1",
+    "node-sass": "^4.7.2",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -38,6 +39,7 @@
     "react-leaflet": "^1.7.8",
     "react-table": "^6.7.4",
     "semantic-ui-css": "^2.2.12",
+    "styled-jsx-plugin-sass": "^0.2.2",
     "underscore.string": "^3.3.4"
   },
   "resolutions": {
@@ -65,10 +67,8 @@
     "jest-junit": "^3.4.0",
     "lerna-changelog": "^0.7.0",
     "mock-local-storage": "^1.0.5",
-    "node-sass": "^4.7.2",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.2.0",
-    "styled-jsx-plugin-sass": "^0.2.2",
     "webpack-bundle-analyzer": "^2.9.1"
   },
   "browserslist": [
