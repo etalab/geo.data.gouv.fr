@@ -34,7 +34,7 @@ const Header = ({ catalog, status, t }) => (
       div {
         display: flex;
         justify-content: space-between;
-        margin: 0.2em 0 1em;
+        margin: 0.2em 0 1.2em;
 
         @media (max-width: 960px) {
           flex-direction: column;
@@ -44,12 +44,12 @@ const Header = ({ catalog, status, t }) => (
       h1 {
         font-size: 1.8rem;
         font-weight: 500;
-        margin-bottom: 1em;
+        margin: 0;
       }
 
       span {
-        font-size: 0.7em;
-        line-height: 1em;
+        font-size: 1.1rem;
+        line-height: 1;
         display: inline-block;
         vertical-align: 1px;
         margin-left: 10px;

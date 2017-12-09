@@ -43,7 +43,7 @@ const Event = ({ event, t }) => (
       }
 
       h3 {
-        margin-bottom: 0.4rem;
+        margin: 0 0 0.4rem;
       }
 
       .icon {

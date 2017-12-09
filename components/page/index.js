@@ -34,9 +34,13 @@ export const Page = ({ children }) => (
 
       body {
         font-size: 14px;
-        line-height: 1.5;
+        line-height: 1.4;
         min-width: 320px;
         background-color: $white;
+      }
+
+      p {
+        margin: 0 0 1em;
       }
 
       a {

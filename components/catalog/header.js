@@ -14,7 +14,7 @@ const Header = ({ catalog, t }) => (
       div {
         display: flex;
         justify-content: space-between;
-        margin: 0.2em 0 1em;
+        margin: 0.2em 0 1.2em;
 
         @media (max-width: 960px) {
           flex-direction: column;
@@ -24,7 +24,7 @@ const Header = ({ catalog, t }) => (
       h1 {
         font-size: 1.8rem;
         font-weight: 500;
-        margin-bottom: 1em;
+        margin: 0;
       }
     `}</style>
   </div>

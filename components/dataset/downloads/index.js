@@ -88,6 +88,10 @@ class Downloads extends React.Component {
             }
           }
 
+          h5 {
+            margin: 0 0 1em;
+          }
+
           ul {
             margin: 0;
             padding: 0;

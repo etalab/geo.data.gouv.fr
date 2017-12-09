@@ -41,7 +41,7 @@ const LegalPage = () => (
       h1 {
         font-size: 1.8rem;
         font-weight: 500;
-        margin-bottom: 1em;
+        margin: 0 0 1em;
       }
     `}</style>
   </Page>
