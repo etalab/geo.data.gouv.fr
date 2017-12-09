@@ -74,7 +74,7 @@ const Result = ({ result: { recordId, metadata }, i18n, t }) => (
 
           h3 {
             flex-grow: 1;
-            margin-bottom: 0.8rem;
+            margin: 0 0 0.8rem;
           }
         }
 
