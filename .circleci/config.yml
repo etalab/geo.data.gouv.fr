@@ -115,6 +115,8 @@ jobs:
           command: |
             mkdir dist-stats
             cp -r .next/app.js .next/bundles dist-stats
+            # Remove _document.js as it’s only used by the server.
+            rm dist-stats/bundles/pages/_document.js
             tar cvf dist-stats/chunks.js.tar .next/chunks/*.js
             gzip -r dist-stats
 
