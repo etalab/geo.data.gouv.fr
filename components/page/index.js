@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import FontFaceObserver from 'fontfaceobserver'
 
 import Meta from './meta'
 import Header from './header'
@@ -16,22 +15,6 @@ Router.onRouteChangeError = () => NProgress.done()
 class Page extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired
-  }
-
-  componentDidMount() {
-    console.log('page/index componentDidMount')
-
-    // if (sessionStorage.fontsLoaded) {
-    //   document.documentElement.classList.add('font-loaded')
-    //   return
-    // }
-
-    const lato = new FontFaceObserver('Lato')
-    lato.load().then(() => {
-      console.log('page/index font loaded')
-      document.documentElement.classList.add('font-loaded')
-      sessionStorage.fontLoaded = true
-    })
   }
 
   render() {
