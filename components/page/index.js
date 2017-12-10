@@ -36,8 +36,6 @@ class Page extends React.Component {
         `}</style>
 
         <style jsx global>{`
-          @import 'reset';
-          @import 'fonts';
           @import 'colors';
 
           #nprogress {
