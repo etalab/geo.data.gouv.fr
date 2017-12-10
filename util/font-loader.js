@@ -6,11 +6,6 @@ import FontFaceObserver from 'fontfaceobserver'
     return
   }
 
-  const latoSubset = new FontFaceObserver('LatoSubset')
-
-  await latoSubset.load()
-  document.documentElement.classList.add('font-subset-loaded')
-
   const lato = new FontFaceObserver('Lato')
   const latoBold = new FontFaceObserver('Lato', {
     weight: 700
@@ -31,6 +26,5 @@ import FontFaceObserver from 'fontfaceobserver'
   ])
 
   document.documentElement.classList.add('font-loaded')
-  document.documentElement.classList.remove('font-subset-loaded')
   sessionStorage.fontLoaded = true
 })()
