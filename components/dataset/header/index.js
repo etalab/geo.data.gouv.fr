@@ -97,13 +97,8 @@ const Header = ({ metadata, i18n: { language }, t }) => (
 
       h1 {
         font-size: 1.8rem;
-        line-height: 1.2;
         font-weight: 500;
         margin: 0 0 0.6rem 0;
-      }
-
-      h5 {
-        margin: 0 0 1em 0;
       }
 
       a {

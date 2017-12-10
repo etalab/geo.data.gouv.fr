@@ -49,7 +49,7 @@ const EventsPage = ({ t }) => (
       h1 {
         font-size: 1.8rem;
         font-weight: 500;
-        margin: 0 0 1em;
+        margin-bottom: 1em;
       }
 
       .empty {

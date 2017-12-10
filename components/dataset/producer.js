@@ -28,7 +28,7 @@ const Producer = ({ name, logo_thumbnail: logo }) => (
 
       h4 {
         text-align: center;
-        margin: 1rem 0 0;
+        margin-top: 1rem;
       }
     `}</style>
   </div>
