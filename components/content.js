@@ -17,9 +17,14 @@ const Content = ({ children, clouds }) => (
       }
 
       .clouds {
-        background: url('/static/images/clouds.svg') bottom -69px left 0, linear-gradient(to top, #41dcd7, #3083b2);
+        background-image: url('/static/images/clouds.svg'), linear-gradient(to top, #41dcd7, #3083b2);
+        background-position: bottom -69px center, top;
         background-repeat: no-repeat;
         background-size: 1920px;
+
+        @media (max-width: 551px) {
+          background-position: bottom 0 center, top;
+        }
       }
     `}</style>
   </main>
