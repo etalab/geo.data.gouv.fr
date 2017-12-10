@@ -36,10 +36,6 @@ const Hero = ({ t }) => (
         @media (max-width: 767px) {
           padding: 3em 0;
         }
-
-        @media (max-width: 551px) {
-          padding: 0 0 2em;
-        }
       }
 
       h1 {
@@ -49,7 +45,7 @@ const Hero = ({ t }) => (
         margin: 0 0 2em;
 
         @media (max-width: 551px) {
-          font-size: larger;
+          font-size: 1.6em;
         }
       }
 
