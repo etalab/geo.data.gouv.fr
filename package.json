@@ -39,7 +39,6 @@
     "react-icons": "^2.2.7",
     "react-leaflet": "^1.7.8",
     "react-table": "^6.7.4",
-    "semantic-ui-css": "^2.2.12",
     "styled-jsx-plugin-sass": "^0.2.2",
     "underscore.string": "^3.3.4"
   },
