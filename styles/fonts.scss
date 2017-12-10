@@ -42,10 +42,24 @@ body {
   font-family: sans-serif;
 }
 
-.font-subset-loaded body {
-  font-family: LatoSubset, sans-serif;
+.font-subset-loaded {
+  body,
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: LatoSubset, sans-serif;
+  }
 }
 
-.font-loaded body {
-  font-family: Lato, sans-serif;
+.font-loaded {
+  body,
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: Lato, sans-serif;
+  }
 }

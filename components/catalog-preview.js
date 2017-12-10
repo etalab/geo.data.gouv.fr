@@ -101,7 +101,7 @@ export const CatalogPreview = ({ catalog, t }) => {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 3em;
+            margin-top: 2.8em;
             font-size: 11px;
 
             > div {
