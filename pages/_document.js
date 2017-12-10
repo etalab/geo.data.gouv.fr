@@ -21,11 +21,6 @@ export default class MyDocument extends Document {
           <link rel='icon' type='image/png' sizes='32x32' href='/static/favicons/favicon-32x32.png' />
           <link rel='manifest' href='/static/favicons/manifest.json' />
           <link rel='mask-icon' href='/static/favicons/safari-pinned-tab.svg' color='#5bbad5' />
-
-          <style jsx global>{`
-            @import 'reset';
-            @import 'fonts';
-          `}</style>
         </Head>
         <body>
           <Main />

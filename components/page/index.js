@@ -13,6 +13,11 @@ Router.onRouteChangeError = () => NProgress.done()
 
 const Page = ({ children }) => (
   <div>
+    <style jsx global>{`
+      @import 'reset';
+      @import 'fonts';
+    `}</style>
+
     <Header />
     {children}
     <Footer />
