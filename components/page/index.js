@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
-import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
 import Piwik from './piwik'
@@ -22,7 +21,6 @@ class Page extends React.Component {
 
     return (
       <div>
-        <Meta />
         <Header />
         {children}
         <Footer />
