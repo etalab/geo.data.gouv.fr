@@ -11,61 +11,55 @@ Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-class Page extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  }
+const Page = ({ children }) => (
+  <div>
+    <Header />
+    {children}
+    <Footer />
+    <Piwik />
 
-  render() {
-    const { children } = this.props
+    <style jsx>{`
+      div {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        position: relative;
+      }
+    `}</style>
 
-    return (
-      <div>
-        <Header />
-        {children}
-        <Footer />
-        <Piwik />
+    <style jsx global>{`
+      @import 'colors';
 
-        <style jsx>{`
-          div {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            position: relative;
-          }
-        `}</style>
+      #nprogress {
+        pointer-events: none;
+      }
 
-        <style jsx global>{`
-          @import 'colors';
+      #nprogress .bar {
+        background: $blue;
+        position: fixed;
+        z-index: 1031;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+      }
 
-          #nprogress {
-            pointer-events: none;
-          }
+      #nprogress .peg {
+        display: block;
+        position: absolute;
+        right: 0px;
+        width: 100px;
+        height: 100%;
+        box-shadow: 0 0 10px $blue, 0 0 5px $blue;
+        opacity: 1.0;
+        transform: rotate(3deg) translate(0px, -4px);
+      }
+    `}</style>
+  </div>
+)
 
-          #nprogress .bar {
-            background: $blue;
-            position: fixed;
-            z-index: 1031;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-          }
-
-          #nprogress .peg {
-            display: block;
-            position: absolute;
-            right: 0px;
-            width: 100px;
-            height: 100%;
-            box-shadow: 0 0 10px $blue, 0 0 5px $blue;
-            opacity: 1.0;
-            transform: rotate(3deg) translate(0px, -4px);
-          }
-        `}</style>
-      </div>
-    )
-  }
+Page.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Page
