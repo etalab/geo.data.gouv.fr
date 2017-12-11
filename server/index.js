@@ -74,6 +74,10 @@ i18n
         const lngs = languages.join('|')
         server.use(`/:lng(${lngs})`, createRoutes(app))
 
+        server.use('/static', express.static(path.join(__dirname, '../static'), {
+          maxAge: '15d'
+        }))
+
         server.get('*', (req, res) => {
           if (!app.isInternalUrl(req)) {
             return res.redirect(`/${req.i18n.languages[0]}${req.url}`)
