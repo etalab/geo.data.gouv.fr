@@ -1,9 +1,13 @@
 @font-face {
+  font-family: LatoInitial;
+  src: url('/static/fonts/lato-regular-webfont.woff2') format('woff2'),
+       url('/static/fonts/lato-regular-webfont.woff') format('woff');
+}
+
+@font-face {
   font-family: Lato;
   src: url('/static/fonts/lato-regular-webfont.woff2') format('woff2'),
        url('/static/fonts/lato-regular-webfont.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
 }
 
 @font-face {
@@ -18,7 +22,6 @@
   font-family: Lato;
   src: url('/static/fonts/lato-italic-webfont.woff2') format('woff2'),
        url('/static/fonts/lato-italic-webfont.woff') format('woff');
-  font-weight: 400;
   font-style: italic;
 }
 
@@ -39,13 +42,24 @@ textarea {
   font-family: sans-serif;
 }
 
-.font-loaded {
+.font-stage-1 {
   body,
   button,
   input,
   optgroup,
   select,
   textarea {
-    font-family: Lato, sans-serif;
+    font-family: LatoInitial;
+  }
+}
+
+.font-stage-2 {
+  body,
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: Lato;
   }
 }

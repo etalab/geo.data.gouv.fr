@@ -3,9 +3,6 @@ const { join } = require('path')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = {
-  clientBootstrap: [
-    require.resolve('./util/font-loader.js')
-  ],
   webpack: function (config, { dev }) {
     config.plugins.push(
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fr/)

@@ -16,7 +16,6 @@
     "chart.js": "^2.7.1",
     "compression": "^1.7.1",
     "express": "^4.16.2",
-    "fontfaceobserver": "^2.0.13",
     "hoist-non-react-statics": "^2.3.1",
     "i18next": "^10.2.1",
     "i18next-express-middleware": "^1.0.7",
