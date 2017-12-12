@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { sortBy, deburr } from 'lodash'
 
 import LoadingIcon from 'react-icons/lib/fa/refresh'
 
@@ -94,6 +95,10 @@ class Datasets extends React.Component {
   render() {
     const { published, notPublished, publishedByOthers } = this.props
 
+    const sortedPublished = sortBy(published, ({ title }) => deburr(title))
+    const sortedNotPublished = sortBy(notPublished, ({ title }) => deburr(title))
+    const sortedPublishedByOthers = sortBy(publishedByOthers, ({ title }) => deburr(title))
+
     const { publishing, toPublish } = this.state
 
     const allSelected = toPublish.length === notPublished.length
@@ -114,7 +119,7 @@ class Datasets extends React.Component {
         >
           {notPublished.length > 0 ? (
             <Fragment>
-              {notPublished.map(dataset => (
+              {sortedNotPublished.map(dataset => (
                 <div className='row' key={dataset._id} onClick={!publishing ? this.toggleSelect(dataset) : null}>
                   <div>
                     <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
@@ -164,7 +169,7 @@ class Datasets extends React.Component {
             </div>
           }
         >
-          {published.length > 0 ? published.map(dataset => (
+          {published.length > 0 ? sortedPublished.map(dataset => (
             <div className='row' key={dataset._id}>
               <div>
                 <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
@@ -197,7 +202,7 @@ class Datasets extends React.Component {
             </div>
           }
         >
-          {publishedByOthers.length > 0 ? publishedByOthers.map(dataset => (
+          {publishedByOthers.length > 0 ? sortedPublishedByOthers.map(dataset => (
             <div className='row' key={dataset._id}>
               <div>
                 <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
