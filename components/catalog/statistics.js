@@ -19,7 +19,6 @@ const Statistics = ({ metrics, t }) => {
           {t('details.statistics.recordsCount')}
         </h3>
         <Counter
-          size='medium'
           value={metrics.records.totalCount}
         />
       </div>
@@ -31,7 +30,6 @@ const Statistics = ({ metrics, t }) => {
         <Percent
           value={openness}
           total={metrics.datasets.totalCount}
-          size='medium'
         />
       </div>
 
@@ -42,7 +40,6 @@ const Statistics = ({ metrics, t }) => {
         <Percent
           value={download}
           total={metrics.datasets.totalCount}
-          size='medium'
         />
       </div>
 

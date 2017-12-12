@@ -48,8 +48,8 @@ const Header = ({ catalog, status, t }) => (
       }
 
       span {
-        font-size: 0.7em;
-        line-height: 1em;
+        font-size: 1.1rem;
+        line-height: 1;
         display: inline-block;
         vertical-align: 1px;
         margin-left: 10px;

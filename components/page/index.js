@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
-import Meta from './meta'
 import Header from './header'
 import Footer from './footer'
 import Piwik from './piwik'
@@ -12,9 +11,13 @@ Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-export const Page = ({ children }) => (
+const Page = ({ children }) => (
   <div>
-    <Meta />
+    <style jsx global>{`
+      @import 'reset';
+      @import 'fonts';
+    `}</style>
+
     <Header />
     {children}
     <Footer />
@@ -31,14 +34,6 @@ export const Page = ({ children }) => (
 
     <style jsx global>{`
       @import 'colors';
-
-      a {
-        color: $blue;
-
-        &:hover {
-          color: darken($blue, 10%);
-        }
-      }
 
       #nprogress {
         pointer-events: none;
@@ -69,7 +64,7 @@ export const Page = ({ children }) => (
 )
 
 Page.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
 }
 
 export default Page

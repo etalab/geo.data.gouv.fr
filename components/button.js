@@ -8,7 +8,7 @@ const Button = ({ children, type, size, color, href, disabled, block, ...props }
     <button
       type={type}
       disabled={disabled}
-      className={`${size} ${disabled ? '' : color} ${block ? 'block' : ''}`}
+      className={`${size || ''} ${disabled ? '' : color} ${block ? 'block' : ''}`}
       tabIndex={href ? -1 : null}
       {...buttonProps}
     >

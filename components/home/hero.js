@@ -36,20 +36,16 @@ const Hero = ({ t }) => (
         @media (max-width: 767px) {
           padding: 3em 0;
         }
-
-        @media (max-width: 551px) {
-          padding: 0 0 2em;
-        }
       }
 
       h1 {
         color: $white;
-        font-size: xx-large;
-        font-weight: 100;
-        margin-bottom: 2em;
+        font-size: 2.3em;
+        font-weight: normal;
+        margin: 0 0 2em;
 
         @media (max-width: 551px) {
-          font-size: larger;
+          font-size: 1.6em;
         }
       }
 
