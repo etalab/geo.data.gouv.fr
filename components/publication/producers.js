@@ -5,6 +5,7 @@ import withFetch from '../hoc/with-fetch'
 
 import Box from '../box'
 import Button from '../button'
+import { sortBy, deburr } from 'lodash'
 
 class Producers extends React.Component {
   static propTypes = {
@@ -44,7 +45,9 @@ class Producers extends React.Component {
     const linkedToOthers = []
     const unlinked = []
 
-    producers.forEach(producer => {
+    const sortedProducers = sortBy(producers, ({ _id }) => deburr(_id))
+
+    sortedProducers.forEach(producer => {
       if (!producer.associatedTo) {
         unlinked.push(producer)
       } else if (producer.associatedTo === organization.id) {
