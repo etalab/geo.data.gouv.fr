@@ -26,7 +26,7 @@
     "lodash": "^4.17.4",
     "lodash-es": "^4.17.4",
     "marked": "^0.3.7",
-    "moment": "^2.19.3",
+    "moment": "^2.19.4",
     "next": "^4.2.1",
     "node-sass": "^4.7.2",
     "nprogress": "^0.2.0",
@@ -43,7 +43,7 @@
     "webpack-bundle-analyzer": "^2.9.1"
   },
   "resolutions": {
-    "chart.js/moment": "^2.19.3"
+    "chart.js/moment": "^2.19.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
