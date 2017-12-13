@@ -92,7 +92,8 @@
     ],
     "coverageReporters": [
       "lcov",
-      "text-summary"
+      "text-summary",
+      "html"
     ],
     "testResultsProcessor": "jest-junit"
   },
