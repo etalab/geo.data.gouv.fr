@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`<Container /> renders correctly 1`] = `
 <div
   className="jsx-1157840685"
   style={
