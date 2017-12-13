@@ -78,6 +78,7 @@
     "yarn": "1.x"
   },
   "jest": {
+    "verbose": true,
     "setupFiles": [
       "<rootDir>/jest.setup.js"
     ],
