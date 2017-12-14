@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import Info from '../../components/info'
 
 describe('<Info />', () => {
-  test('renders correctly', () => {
+  test('render correctly', () => {
     const tree = renderer
       .create(
         <Info>

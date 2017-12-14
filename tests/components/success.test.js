@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import Success from '../../components/success'
 
 describe('<Success />', () => {
-  test('renders correctly', () => {
+  test('render correctly', () => {
     const tree = renderer
       .create(
         <Success>

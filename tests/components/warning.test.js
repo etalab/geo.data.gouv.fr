@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import Warning from '../../components/warning'
 
 describe('<Warning />', () => {
-  test('renders correctly', () => {
+  test('render correctly', () => {
     const tree = renderer
       .create(
         <Warning>
