@@ -4,26 +4,28 @@ import { shallow } from 'enzyme'
 
 import Container from '../../components/container'
 
-test('should set maxWidth when not fluid', () => {
-  const element = shallow(<Container />).getElement()
+describe('<Container />', () => {
+  test('set maxWidth when not fluid', () => {
+    const element = shallow(<Container />).getElement()
 
-  expect(element.props.style.maxWidth).toBe(1200)
-})
+    expect(element.props.style.maxWidth).toBe(1200)
+  })
 
-test('should not set maxWidth when fluid', () => {
-  const element = shallow(<Container fluid />).getElement()
+  test('do not set maxWidth when fluid', () => {
+    const element = shallow(<Container fluid />).getElement()
 
-  expect(element.props.style.maxWidth).toBe(null)
-})
+    expect(element.props.style.maxWidth).toBe(null)
+  })
 
-test('renders correctly', () => {
-  const tree = renderer
-    .create(
-      <Container>
-        Some content
-      </Container>
-    )
-    .toJSON()
+  test('render correctly', () => {
+    const tree = renderer
+      .create(
+        <Container>
+          Some content
+        </Container>
+      )
+      .toJSON()
 
-  expect(tree).toMatchSnapshot()
+    expect(tree).toMatchSnapshot()
+  })
 })

@@ -78,6 +78,7 @@
     "yarn": "1.x"
   },
   "jest": {
+    "verbose": true,
     "setupFiles": [
       "<rootDir>/jest.setup.js"
     ],
@@ -91,7 +92,8 @@
     ],
     "coverageReporters": [
       "lcov",
-      "text-summary"
+      "text-summary",
+      "html"
     ],
     "testResultsProcessor": "jest-junit"
   },
