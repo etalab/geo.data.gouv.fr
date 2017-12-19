@@ -1,12 +1,12 @@
 import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, {Head, Main, NextScript} from 'next/document'
 import flush from 'styled-jsx/server'
 
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
-    const { html, head, errorHtml, chunks } = renderPage()
+  static getInitialProps({renderPage}) {
+    const {html, head, errorHtml, chunks} = renderPage()
     const styles = flush()
-    return { html, head, errorHtml, chunks, styles }
+    return {html, head, errorHtml, chunks, styles}
   }
 
   render() {
@@ -26,6 +26,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          {/* eslint-disable react/no-danger */}
           <script dangerouslySetInnerHTML={{
             __html: `
               (function () {
@@ -54,6 +55,7 @@ export default class MyDocument extends Document {
               })()
             `
           }} />
+          {/* eslint-enable react/no-danger */}
           <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=default,modernizr:es6array,modernizr:es7array' />
           <NextScript />
         </body>

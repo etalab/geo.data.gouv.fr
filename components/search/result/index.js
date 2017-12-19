@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Link from '../../link'
 import MarkdownSummary from '../../markdown-summary'
@@ -8,7 +8,7 @@ import MarkdownSummary from '../../markdown-summary'
 import Thumbnail from './thumbnail'
 import Footer from './footer'
 
-const Result = ({ result: { recordId, metadata }, i18n, t }) => (
+const Result = ({result: {recordId, metadata}, i18n}) => (
   <Link prefetch href={`/dataset?did=${recordId}`} as={`/datasets/${recordId}`}>
     <a>
       <Thumbnail thumbnails={metadata.thumbnails} recordId={recordId} />
@@ -112,8 +112,7 @@ Result.propTypes = {
 
   i18n: PropTypes.shape({
     language: PropTypes.string.isRequired
-  }).isRequired,
-  t: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default translate('search')(Result)

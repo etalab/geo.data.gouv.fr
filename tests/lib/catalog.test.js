@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-import { isObsolete, findCandidates, computeScore } from '../../lib/catalog'
+import {isObsolete, findCandidates, computeScore} from '../../lib/catalog'
 
 describe('isObsolete', () => {
   test('return false if catalog is not defined', () => {
@@ -57,7 +57,7 @@ describe('findCandidates', () => {
     const catalogs = [{}, {
       metrics: {
         datasets: {
-          partitions: { openness: { yes: 1 } }
+          partitions: {openness: {yes: 1}}
         }
       }
     }, {}]
@@ -69,7 +69,7 @@ describe('findCandidates', () => {
     const catalogs = [{}, {
       metrics: {
         datasets: {
-          partitions: { download: { yes: 1 } }
+          partitions: {download: {yes: 1}}
         }
       }
     }, {}]
@@ -82,8 +82,8 @@ describe('findCandidates', () => {
       metrics: {
         datasets: {
           partitions: {
-            openness: { yes: 1 },
-            download: { yes: 1 }
+            openness: {yes: 1},
+            download: {yes: 1}
           }
         }
       }
@@ -98,8 +98,8 @@ describe('findCandidates', () => {
       metrics: {
         datasets: {
           partitions: {
-            openness: { yes: 1 },
-            download: { yes: 1 }
+            openness: {yes: 1},
+            download: {yes: 1}
           }
         }
       }
@@ -108,8 +108,8 @@ describe('findCandidates', () => {
       metrics: {
         datasets: {
           partitions: {
-            openness: { yes: 1 },
-            download: { yes: 1 }
+            openness: {yes: 1},
+            download: {yes: 1}
           }
         }
       }
@@ -131,8 +131,8 @@ describe('computeScore', () => {
       metrics: {
         datasets: {
           partitions: {
-            openness: { yes: 1 },
-            download: { yes: 1 }
+            openness: {yes: 1},
+            download: {yes: 1}
           }
         }
       }
@@ -147,8 +147,8 @@ describe('computeScore', () => {
         datasets: {
           totalCount: 42,
           partitions: {
-            openness: { yes: 42 },
-            download: { yes: 42 }
+            openness: {yes: 42},
+            download: {yes: 42}
           }
         }
       }
@@ -164,8 +164,8 @@ describe('computeScore', () => {
         datasets: {
           totalCount: 42,
           partitions: {
-            openness: { yes: 42 },
-            download: { yes: 42 }
+            openness: {yes: 42},
+            download: {yes: 42}
           }
         }
       }
@@ -181,8 +181,8 @@ describe('computeScore', () => {
         datasets: {
           totalCount: 42,
           partitions: {
-            openness: { yes: 42 },
-            download: { yes: 42 }
+            openness: {yes: 42},
+            download: {yes: 42}
           }
         }
       }
@@ -198,8 +198,8 @@ describe('computeScore', () => {
         datasets: {
           totalCount: 10,
           partitions: {
-            openness: { yes: 5 },
-            download: { yes: 10 }
+            openness: {yes: 5},
+            download: {yes: 10}
           }
         }
       }
@@ -215,8 +215,8 @@ describe('computeScore', () => {
         datasets: {
           totalCount: 10,
           partitions: {
-            openness: { yes: 10 },
-            download: { yes: 5 }
+            openness: {yes: 10},
+            download: {yes: 5}
           }
         }
       }

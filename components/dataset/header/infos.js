@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import licenses from '../../../lib/licenses'
 
-const Infos = ({ metadata, t }) => {
+const Infos = ({metadata, t}) => {
   const dataType = t(`common:enums.dataTypes.${metadata.type}`, {
     defaultValue: metadata.type
   })
@@ -35,9 +35,9 @@ const Infos = ({ metadata, t }) => {
   })
 
   const updatedAt = metadata.revisionDate || metadata.creationDate
-  const updatedAtLabel = updatedAt
-    ? moment(updatedAt).fromNow()
-    : t('common:enums.unknownData.unknown', {
+  const updatedAtLabel = updatedAt ?
+    moment(updatedAt).fromNow() :
+    t('common:enums.unknownData.unknown', {
       context: 'female'
     })
 

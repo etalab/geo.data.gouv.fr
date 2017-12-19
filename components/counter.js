@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Counter = ({ value, label, unit, size, color, title }) => (
+const Counter = ({value, label, unit, size, color, title}) => (
   <div>
     {title && <h3>{title}</h3>}
     <div className={`value ${color}`}>
@@ -48,15 +48,25 @@ Counter.propTypes = {
   value: PropTypes.number.isRequired,
   label: PropTypes.string,
   unit: PropTypes.string,
+  title: PropTypes.string,
   size: PropTypes.oneOf([
+    '',
     'small'
   ]),
   color: PropTypes.oneOf([
+    '',
     'success',
     'warning',
     'error'
-  ]),
-  title: PropTypes.string
+  ])
+}
+
+Counter.defaultProps = {
+  label: null,
+  unit: null,
+  title: null,
+  size: '',
+  color: ''
 }
 
 export default Counter

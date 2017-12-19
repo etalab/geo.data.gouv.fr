@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Row from './row'
 
-const Table = ({ harvests, catalog, pending, t }) => (
+const Table = ({harvests, catalog, pending, t}) => (
   <div>
     <table>
       <thead>
@@ -25,20 +25,20 @@ const Table = ({ harvests, catalog, pending, t }) => (
             }}
           />
         )}
-        {!harvests.length ? (
-          <tr>
-            <td colSpan={5}>
-              {t('details.harvests.noHarvest')}
-            </td>
-          </tr>
-        ) : harvests.map((harvest, idx) => (
+        {harvests.length ? harvests.map((harvest, idx) => (
           <Row
             key={harvest._id}
             catalog={catalog}
             harvest={harvest}
             previousHarvest={harvests[idx + 1]}
           />
-        ))}
+        )) : (
+          <tr>
+            <td colSpan={5}>
+              {t('details.harvests.noHarvest')}
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
 

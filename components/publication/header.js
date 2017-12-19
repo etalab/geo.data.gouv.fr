@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Link from '../link'
 
-const Header = ({ user, organization }) => (
+const Header = ({user, organization}) => (
   <div className='container'>
     <Link href='/publication'>
       <a className='avatar'>
@@ -111,11 +111,15 @@ Header.propTypes = {
     email: PropTypes.string.isRequired
   }).isRequired,
 
-  organization:PropTypes.shape({
+  organization: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     logo_thumbnail: PropTypes.string
   })
+}
+
+Header.defaultProps = {
+  organization: null
 }
 
 export default Header

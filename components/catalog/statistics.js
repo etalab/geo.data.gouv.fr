@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
-import { get } from 'lodash'
+import {translate} from 'react-i18next'
+import {get} from 'lodash'
 
 import Counter from '../counter'
 import Percent from '../percent'
 
 import Pie from './pie'
 
-const Statistics = ({ metrics, t }) => {
+const Statistics = ({metrics, t}) => {
   const openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   const download = get(metrics, 'datasets.partitions.download.yes', 0)
 

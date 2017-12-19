@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
-import { Line } from 'react-chartjs-2'
+import {translate} from 'react-i18next'
+import {Line} from 'react-chartjs-2'
 
 const formatData = (data, t) => {
   return {
-    'labels': Object.keys(data).map(item => item),
-    'datasets': [
+    labels: Object.keys(data).map(item => item),
+    datasets: [
       {
         label: t('details.harvests.chart.label'),
         lineTension: 0.2,
@@ -17,7 +17,7 @@ const formatData = (data, t) => {
   }
 }
 
-export const Histogram = ({ data, width, height, t }) => (
+const Histogram = ({data, t}) => (
   <Line
     data={formatData(data, t)}
     legend={null}
@@ -35,9 +35,7 @@ export const Histogram = ({ data, width, height, t }) => (
 )
 
 Histogram.propTypes = {
-  data: PropTypes.array,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  data: PropTypes.array.isRequired,
   t: PropTypes.func.isRequired
 }
 

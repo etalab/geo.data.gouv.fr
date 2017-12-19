@@ -1,8 +1,9 @@
-import { format } from 'url'
+import {format} from 'url'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'next/router'
-import { translate } from 'react-i18next'
+import {flowRight} from 'lodash'
+import {withRouter} from 'next/router'
+import {translate} from 'react-i18next'
 
 import Link from '../link'
 
@@ -12,19 +13,19 @@ class Paging extends React.Component {
     query: PropTypes.shape({
       offset: PropTypes.number,
       limit: PropTypes.number.isRequired
-    }),
+    }).isRequired,
 
     router: PropTypes.shape({
       query: PropTypes.object.isRequired
-    }),
+    }).isRequired,
 
     t: PropTypes.func.isRequired
   }
 
   getPageLink = page => {
-    const { router } = this.props
+    const {router} = this.props
 
-    let query = {
+    const query = {
       ...router.query
     }
 
@@ -40,7 +41,7 @@ class Paging extends React.Component {
   }
 
   render() {
-    const { count, query: { offset = 0, limit }, t } = this.props
+    const {count, query: {offset = 0, limit}, t} = this.props
 
     const page = 1 + Math.ceil(offset / limit)
     const pageCount = Math.ceil(count / limit)
@@ -111,4 +112,7 @@ class Paging extends React.Component {
   }
 }
 
-export default translate('search')(withRouter(Paging))
+export default flowRight(
+  translate('search'),
+  withRouter
+)(Paging)

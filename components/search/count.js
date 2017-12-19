@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
-const Count = ({ count, t }) => (
+const Count = ({count, t}) => (
   <div>
     {count ? t('count.results', {
       count

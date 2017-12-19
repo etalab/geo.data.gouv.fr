@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import InfoIcon from 'react-icons/lib/fa/info-circle'
 
-const Info = ({ children }) => (
+const Info = ({children}) => (
   <div className='container'>
     <span className='icon'>
       <InfoIcon />
@@ -31,7 +31,7 @@ const Info = ({ children }) => (
 )
 
 Info.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
 }
 
 export default Info

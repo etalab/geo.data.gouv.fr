@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import prune from 'underscore.string/prune'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import PlusIcon from 'react-icons/lib/fa/plus-circle'
 import MinusIcon from 'react-icons/lib/fa/minus-circle'
@@ -31,8 +31,8 @@ class MarkdownPreview extends React.Component {
   }
 
   render() {
-    const { markdown, limit, t } = this.props
-    const { expanded } = this.state
+    const {markdown, limit, t} = this.props
+    const {expanded} = this.state
 
     return (
       <div>
@@ -42,11 +42,11 @@ class MarkdownPreview extends React.Component {
           <b onClick={this.toggleExpanded}>
             {expanded ? (
               <span>
-                <MinusIcon style={{ verticalAlign: -2 }} /> {t('displayLess')}
+                <MinusIcon style={{verticalAlign: -2}} /> {t('displayLess')}
               </span>
             ) : (
               <span>
-                <PlusIcon style={{ verticalAlign: -2 }} /> {t('displayMore')}
+                <PlusIcon style={{verticalAlign: -2}} /> {t('displayMore')}
               </span>
             )}
           </b>

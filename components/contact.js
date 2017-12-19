@@ -1,11 +1,11 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import PhoneIcon from 'react-icons/lib/fa/phone'
 import EmailIcon from 'react-icons/lib/fa/envelope-o'
 
-const Contact = ({ contact, t }) => (
+const Contact = ({contact, t}) => (
   <div className='container'>
     <div className='header'>
       <div className='name'>

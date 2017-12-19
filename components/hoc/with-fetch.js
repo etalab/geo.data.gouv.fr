@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 import hoist from 'hoist-non-react-statics'
 
 export default (mapStateWithProps, options) => Component => {
@@ -15,6 +15,10 @@ export default (mapStateWithProps, options) => Component => {
         exists: PropTypes.func.isRequired
       }).isRequired,
       t: PropTypes.func.isRequired
+    }
+
+    static defaultProps = {
+      promise: null
     }
 
     state = {
@@ -40,7 +44,7 @@ export default (mapStateWithProps, options) => Component => {
     }
 
     componentDidMount() {
-      const { promise } = this.props
+      const {promise} = this.props
 
       if (promise) {
         this.resolvePromise(promise)
@@ -48,7 +52,7 @@ export default (mapStateWithProps, options) => Component => {
     }
 
     componentWillReceiveProps(newProps) {
-      const { promise } = this.props
+      const {promise} = this.props
 
       if (newProps.promise && promise !== newProps.promise) {
         this.resolvePromise(newProps.promise)
@@ -56,8 +60,8 @@ export default (mapStateWithProps, options) => Component => {
     }
 
     render() {
-      const { t, i18n, promise, ...props } = this.props
-      const { loading, data, error } = this.state
+      const {t, i18n, promise, ...props} = this.props
+      const {loading, data, error} = this.state
 
       if (loading) {
         return options.Loader ? <options.Loader /> : t('loading')

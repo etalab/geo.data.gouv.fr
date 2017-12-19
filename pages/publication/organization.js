@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get, _put } from '../../lib/fetch'
+import {_get, _put} from '../../lib/fetch'
 
 import attachI18n from '../../components/hoc/attach-i18n'
 import attachSession from '../../components/hoc/attach-session'
@@ -21,7 +21,7 @@ import SourceCatalogs from '../../components/publication/organization/source-cat
 import SourceProducers from '../../components/publication/organization//source-producers'
 import DatasetMetrics from '../../components/publication/organization//dataset-metrics'
 
-import { PUBLICATION_BASE_URL, GEODATA_API_URL } from '@env'
+import {PUBLICATION_BASE_URL, GEODATA_API_URL} from '@env'
 
 class OrganizationPublicationPage extends React.Component {
   static propTypes = {
@@ -31,7 +31,11 @@ class OrganizationPublicationPage extends React.Component {
     })
   }
 
-  static getInitialProps({ query }) {
+  static defaultProps = {
+    session: null
+  }
+
+  static getInitialProps({query}) {
     return {
       organizationId: query.oid
     }
@@ -40,19 +44,19 @@ class OrganizationPublicationPage extends React.Component {
   state = {}
 
   fetchOrganization = () => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
 
     return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}`)
   }
 
-  componentWillReceiveProps(props, state, context) {
-    const { session, organizationId } = props
+  componentWillReceiveProps(props) {
+    const {session} = this.props
 
-    if (session && session.user && !this.props.session) {
+    if (props.session && props.session.user && !session) {
       this.setState({
         organizationPromise: this.fetchOrganization(),
         catalogsPromise: _get(`${GEODATA_API_URL}/catalogs`),
-        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/metrics`)
+        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${props.organizationId}/datasets/metrics`)
       })
     }
   }
@@ -81,10 +85,10 @@ class OrganizationPublicationPage extends React.Component {
   }
 
   renderAuth = user => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
 
-    const { organizationPromise, catalogsPromise, metricsPromise } = this.state
+    const {organizationPromise, catalogsPromise, metricsPromise} = this.state
 
     return (
       <div>

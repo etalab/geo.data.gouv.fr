@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get } from '../lib/fetch'
-import { sortByScore } from '../lib/catalog'
+import {_get} from '../lib/fetch'
+import {sortByScore} from '../lib/catalog'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -14,7 +14,7 @@ import Content from '../components/content'
 import Container from '../components/container'
 import CatalogPreview from '../components/catalog-preview'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
 class CatalogsPage extends React.Component {
   static propTypes = {
@@ -25,7 +25,7 @@ class CatalogsPage extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps(context) {
+  static async getInitialProps() {
     const catalogs = await _get(`${GEODATA_API_URL}/catalogs`)
 
     return {
@@ -34,7 +34,7 @@ class CatalogsPage extends React.Component {
   }
 
   render() {
-    const { catalogs, t } = this.props
+    const {catalogs, t} = this.props
 
     const sorted = sortByScore(catalogs)
 

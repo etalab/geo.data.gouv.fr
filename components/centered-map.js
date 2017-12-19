@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { translate } from 'react-i18next'
-import { Map, TileLayer, GeoJSON } from 'react-leaflet'
+import {translate} from 'react-i18next'
+import {Map, TileLayer, GeoJSON} from 'react-leaflet'
 
 import Leaflet from 'leaflet'
 import leafletStyle from 'leaflet/dist/leaflet.css'
@@ -31,10 +31,12 @@ class CenteredMap extends React.Component {
   }
 
   componentWillMount() {
+    const {vectors} = this.props
+
     // We’re computing bounds only once: when the component will mount.
     // Whatever happens, GeoJSON will not re-render if the input data changes.
     // So we’re safe only computing once.
-    this.bounds = Leaflet.geoJson(this.props.vectors).getBounds()
+    this.bounds = Leaflet.geoJson(vectors).getBounds()
   }
 
   shouldComponentUpdate() {
@@ -45,7 +47,7 @@ class CenteredMap extends React.Component {
   }
 
   render() {
-    const { vectors, frozen, lat, lon, zoom, t } = this.props
+    const {vectors, frozen, lat, lon, zoom, t} = this.props
 
     return (
       <div>
@@ -74,7 +76,9 @@ class CenteredMap extends React.Component {
         </ErrorWrapper>
 
         <Head>
-          <style dangerouslySetInnerHTML={{ __html: leafletStyle }} />
+          {/* eslint-disable react/no-danger */}
+          <style dangerouslySetInnerHTML={{__html: leafletStyle}} />
+          {/* eslint-enable react/no-danger */}
         </Head>
         <style jsx>{`
           div {

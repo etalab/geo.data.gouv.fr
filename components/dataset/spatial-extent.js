@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 const CenteredMap = dynamic(import('../centered-map'), {
   ssr: false,
-  loading: translate()(({ t }) => t('loading'))
+  loading: translate()(({t}) => t('loading'))
 })
 
-const SpatialExtent = ({ extent, t }) => {
+const SpatialExtent = ({extent}) => {
   const features = {
     type: 'FeatureCollection',
     features: [{
@@ -50,9 +50,7 @@ const SpatialExtent = ({ extent, t }) => {
 }
 
 SpatialExtent.propTypes = {
-  extent: PropTypes.object.isRequired,
-
-  t: PropTypes.func.isRequired
+  extent: PropTypes.object.isRequired
 }
 
-export default translate('dataset')(SpatialExtent)
+export default SpatialExtent

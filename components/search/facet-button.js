@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import FilterIcon from 'react-icons/lib/fa/filter'
 
-const FacetButton = ({ onClick }) => (
+const FacetButton = ({onClick}) => (
   <div onClick={onClick}>
     <FilterIcon />
 

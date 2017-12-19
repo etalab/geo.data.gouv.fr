@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Container from '../container'
 import Button from '../button'
@@ -11,7 +11,7 @@ class NewsletterForm extends React.Component {
   }
 
   render() {
-    const { t } = this.props
+    const {t} = this.props
 
     return (
       <div>

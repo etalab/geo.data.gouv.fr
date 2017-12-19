@@ -1,21 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
-import { get } from 'lodash'
+import {translate} from 'react-i18next'
+import {get} from 'lodash'
 
 import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
 
-import { isObsolete } from '../lib/catalog'
+import {isObsolete} from '../lib/catalog'
 
 import Link from './link'
 import HarvestStatus from './harvest-status'
 import Counter from './counter'
 import Percent from './percent'
 
-export const CatalogPreview = ({ catalog, t }) => {
-  let metrics = catalog.metrics
-  let openness = get(metrics, 'datasets.partitions.openness.yes', 0)
-  let download = get(metrics, 'datasets.partitions.download.yes', 0)
+const CatalogPreview = ({catalog, t}) => {
+  const metrics = catalog.metrics
+  const openness = get(metrics, 'datasets.partitions.openness.yes', 0)
+  const download = get(metrics, 'datasets.partitions.download.yes', 0)
 
   return (
     <Link href={`/catalog?cid=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
@@ -34,7 +34,7 @@ export const CatalogPreview = ({ catalog, t }) => {
         <HarvestStatus harvest={catalog.service.sync} />
 
         <div className='metrics'>
-          {!metrics ? <div>{t('catalog.empty')}</div> : (
+          {metrics ? (
             <div>
               <Percent
                 value={openness}
@@ -53,6 +53,8 @@ export const CatalogPreview = ({ catalog, t }) => {
                 size='small'
                 label={t('catalog.records')} />
             </div>
+          ) : (
+            <div>{t('catalog.empty')}</div>
           )}
         </div>
 
@@ -137,7 +139,7 @@ CatalogPreview.propTypes = {
     service: PropTypes.shape({
       sync: PropTypes.object.isRequired
     }).isRequired
-  }),
+  }).isRequired,
 
   t: PropTypes.func.isRequired
 }

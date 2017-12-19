@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Link from '../../link'
 
-const Sitemap = ({ t }) => (
+const Sitemap = ({t}) => (
   <ul className='links'>
     <li><h2>geo.data.gouv.fr</h2></li>
     <li>

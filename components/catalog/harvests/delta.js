@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import UpIcon from 'react-icons/lib/fa/long-arrow-up'
 import DownIcon from 'react-icons/lib/fa/long-arrow-down'
 
-const Delta = ({ harvest, previous }) => {
+const Delta = ({harvest, previous}) => {
   if (!previous || harvest.status === 'failed') {
     return (
       <div>–</div>
@@ -59,6 +59,10 @@ Delta.propTypes = {
   previous: PropTypes.shape({
     itemsFound: PropTypes.number
   })
+}
+
+Delta.defaultProps = {
+  previous: null
 }
 
 export default Delta

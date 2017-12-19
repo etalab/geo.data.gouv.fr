@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { uniqWith, isEqual, flowRight } from 'lodash'
+import {uniqWith, isEqual, flowRight} from 'lodash'
 
-import { _get } from '../lib/fetch'
+import {_get} from '../lib/fetch'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -29,7 +29,7 @@ import Links from '../components/dataset/links'
 
 import Metadata from '../components/dataset/metadata'
 
-import { GEODATA_API_URL, DATAGOUV_API_URL } from '@env'
+import {GEODATA_API_URL, DATAGOUV_API_URL} from '@env'
 
 class DatasetPage extends React.Component {
   static propTypes = {
@@ -53,7 +53,7 @@ class DatasetPage extends React.Component {
       dataset: PropTypes.shape({
         distributions: PropTypes.array.isRequired
       }).isRequired
-    }).isRequired,
+    }),
 
     datagouvPublication: PropTypes.shape({
       remoteId: PropTypes.isRequired
@@ -66,7 +66,13 @@ class DatasetPage extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ res, query }) {
+  static defaultProps = {
+    dataset: null,
+    datagouvPublication: null,
+    error: null
+  }
+
+  static async getInitialProps({res, query}) {
     try {
       const [dataset, publications] = await Promise.all([
         _get(`${GEODATA_API_URL}/records/${query.did}`),
@@ -95,7 +101,7 @@ class DatasetPage extends React.Component {
   }
 
   componentDidMount() {
-    const { datagouvPublication } = this.props
+    const {datagouvPublication} = this.props
 
     // Let’s not depend too much on data.gouv.fr’s availability, so we’re
     // fetching this after the page has loaded.
@@ -107,18 +113,20 @@ class DatasetPage extends React.Component {
   }
 
   render() {
-    if (this.props.error) {
-      return <ErrorPage code={this.props.error.code} />
+    const {error} = this.props
+
+    if (error) {
+      return <ErrorPage code={error.code} />
     }
 
-    const { dataset: {
+    const {dataset: {
       recordId,
       revisionDate,
       metadata,
       dataset,
       organizations
-    }, datagouvPublication, t } = this.props
-    const { datagouvDatasetPromise } = this.state
+    }, datagouvPublication, t} = this.props
+    const {datagouvDatasetPromise} = this.state
 
     const contacts = uniqWith(metadata.contacts.map(contact => ({
       ...contact,

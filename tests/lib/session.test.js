@@ -1,4 +1,4 @@
-import { storeSession, retrieveSession, clearSession } from '../../lib/session'
+import {storeSession, retrieveSession, clearSession} from '../../lib/session'
 
 afterAll(() => {
   clearSession()

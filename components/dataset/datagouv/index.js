@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate, Trans } from 'react-i18next'
+import {translate, Trans} from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import PlusIcon from 'react-icons/lib/fa/plus-circle'
@@ -28,6 +28,11 @@ class Datagouv extends React.Component {
     t: PropTypes.func.isRequired
   }
 
+  static defaultProps = {
+    license: null,
+    publication: null
+  }
+
   state = {
     expanded: false
   }
@@ -39,7 +44,7 @@ class Datagouv extends React.Component {
   }
 
   getPublishableProperties = () => {
-    const { license, organizations, distributions } = this.props
+    const {license, organizations, distributions} = this.props
 
     return {
       hasLicense: Object.prototype.hasOwnProperty.call(licenses, license),
@@ -48,11 +53,11 @@ class Datagouv extends React.Component {
     }
   }
 
-  render () {
-    const { publication, license, organizations, distributions, t } = this.props
-    const { expanded } = this.state
+  render() {
+    const {publication, license, organizations, distributions, t} = this.props
+    const {expanded} = this.state
 
-    const { hasLicense, hasOrganizations, isDistributable } = this.getPublishableProperties()
+    const {hasLicense, hasOrganizations, isDistributable} = this.getPublishableProperties()
 
     if (hasLicense && hasOrganizations && isDistributable) {
       if (publication) {
@@ -87,11 +92,11 @@ class Datagouv extends React.Component {
           <b onClick={this.toggleDetails}>
             {expanded ? (
               <span>
-                <MinusIcon style={{ verticalAlign: -2 }} /> {t('common:displayLess')}
+                <MinusIcon style={{verticalAlign: -2}} /> {t('common:displayLess')}
               </span>
             ) : (
               <span>
-                <PlusIcon style={{ verticalAlign: -2 }} /> {t('datagouv.showDetails')}
+                <PlusIcon style={{verticalAlign: -2}} /> {t('datagouv.showDetails')}
               </span>
             )}
           </b>

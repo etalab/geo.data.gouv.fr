@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 class ErrorWrapper extends React.Component {
   static propTypes = {
@@ -9,17 +9,21 @@ class ErrorWrapper extends React.Component {
     t: PropTypes.func.isRequired
   }
 
+  static defaultProps = {
+    message: null
+  }
+
   state = {}
 
   componentDidCatch() {
-    this.setState(() => ({
+    this.setState({
       error: true
-    }))
+    })
   }
 
   render() {
-    const { children, message, t } = this.props
-    const { error } = this.state
+    const {children, message, t} = this.props
+    const {error} = this.state
 
     if (error) {
       return (

@@ -1,10 +1,10 @@
-import { stringify } from 'querystring'
+import {stringify} from 'querystring'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get } from '../lib/fetch'
-import { getFilters } from '../lib/query'
+import {_get} from '../lib/fetch'
+import {getFilters} from '../lib/query'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -24,7 +24,7 @@ import Paging from '../components/search/paging'
 import Facets from '../components/search/facets'
 import FacetButton from '../components/search/facet-button'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
 class SearchPage extends React.Component {
   static propTypes = {
@@ -36,7 +36,7 @@ class SearchPage extends React.Component {
       results: PropTypes.array.isRequired,
       count: PropTypes.number.isRequired,
       facets: PropTypes.object.isRequired
-    }).isRequired,
+    }),
 
     error: PropTypes.shape({
       code: PropTypes.number
@@ -45,7 +45,12 @@ class SearchPage extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ res, query }) {
+  static defaultProps = {
+    result: null,
+    error: null
+  }
+
+  static async getInitialProps({res, query}) {
     let page = parseInt(query.p, 10) || 1
     if (page < 1) {
       page = 1
@@ -76,13 +81,13 @@ class SearchPage extends React.Component {
   }
 
   componentWillReceiveProps() {
-    this.setState(state => ({
+    this.setState({
       showFacets: false
-    }))
+    })
   }
 
   getFilterGroups = () => {
-    const { result: { query, facets, count } } = this.props
+    const {result: {query, facets, count}} = this.props
 
     if (count === 1) {
       return []
@@ -107,18 +112,20 @@ class SearchPage extends React.Component {
   }
 
   closeFacets = () => {
-    this.setState(state => ({
+    this.setState({
       showFacets: false
-    }))
+    })
   }
 
   render() {
-    if (this.props.error) {
-      return <ErrorPage code={this.props.error.code} />
+    const {error} = this.props
+
+    if (error) {
+      return <ErrorPage code={error.code} />
     }
 
-    const { result: { query, results, count }, t } = this.props
-    const { showFacets } = this.state
+    const {result: {query, results, count}, t} = this.props
+    const {showFacets} = this.state
 
     const groups = this.getFilterGroups()
 

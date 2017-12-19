@@ -1,4 +1,4 @@
-const { Router } = require('express')
+const {Router} = require('express')
 
 module.exports = app => {
   const router = new Router()

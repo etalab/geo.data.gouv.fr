@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -13,15 +13,15 @@ import Box from '../components/box'
 import Event from '../components/event'
 
 const pastEvents = [
-  { name: 'Atelier #6', date: new Date(2017, 4, 18), linkComingSoon: true },
-  { name: 'Atelier #5', date: new Date(2017, 3, 18), link: '/static/files/events/synthese_atelier_5.pdf' },
-  { name: 'Atelier #4', date: new Date(2017, 2, 9), link: '/static/files/events/synthese_atelier_4.pdf' },
-  { name: 'Atelier #3', date: new Date(2017, 1, 9), link: '/static/files/events/synthese_atelier_3.pdf' },
-  { name: 'Atelier #2', date: new Date(2016, 10, 3) },
-  { name: 'Atelier #1', date: new Date(2016, 9, 6), link: '/static/files/events/synthese_atelier_1.pdf' }
+  {name: 'Atelier #6', date: new Date(2017, 4, 18), linkComingSoon: true},
+  {name: 'Atelier #5', date: new Date(2017, 3, 18), link: '/static/files/events/synthese_atelier_5.pdf'},
+  {name: 'Atelier #4', date: new Date(2017, 2, 9), link: '/static/files/events/synthese_atelier_4.pdf'},
+  {name: 'Atelier #3', date: new Date(2017, 1, 9), link: '/static/files/events/synthese_atelier_3.pdf'},
+  {name: 'Atelier #2', date: new Date(2016, 10, 3)},
+  {name: 'Atelier #1', date: new Date(2016, 9, 6), link: '/static/files/events/synthese_atelier_1.pdf'}
 ]
 
-const EventsPage = ({ t }) => (
+const EventsPage = ({t}) => (
   <Page>
     <Meta title={t('title')} />
 

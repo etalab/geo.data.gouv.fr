@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Content = ({ children, clouds }) => (
+const Content = ({children, clouds}) => (
   <main className={clouds ? 'clouds' : ''}>
     {children}
 
@@ -31,7 +31,7 @@ const Content = ({ children, clouds }) => (
 )
 
 Content.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   clouds: PropTypes.bool
 }
 

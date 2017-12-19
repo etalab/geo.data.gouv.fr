@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 
 import Link from '../link'
@@ -8,7 +8,7 @@ const PAGE_NAMES = {
   producers: 'Producteurs'
 }
 
-const Breadcrumbs = ({ organization, page }) => (
+const Breadcrumbs = ({organization, page}) => (
   <div>
     {organization ? (
       <Fragment>
@@ -71,6 +71,11 @@ Breadcrumbs.propTypes = {
     'datasets',
     'producers'
   ])
+}
+
+Breadcrumbs.defaultProps = {
+  organization: null,
+  page: null
 }
 
 export default Breadcrumbs

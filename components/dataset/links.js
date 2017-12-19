@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Links = ({ links }) => (
+const Links = ({links}) => (
   <ul>
     {links.map((link, idx) => link.href && (
+      // eslint-disable-next-line react/no-array-index-key
       <li key={idx}>
         <a href={link.href}>{link.name || link.href}</a>
       </li>

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
-import { Pie } from 'react-chartjs-2'
+import {translate} from 'react-i18next'
+import {Pie} from 'react-chartjs-2'
 
 const colors = [
   '#2185D0',
@@ -33,10 +33,10 @@ const formatData = (data, t) => {
   }
 }
 
-export const PieChart = ({ data, t }) => {
-  const formatedData = formatData(data || {}, t)
+export const PieChart = ({data, t}) => {
+  const formatedData = formatData(data, t)
 
-  if (!formatedData.labels.length) {
+  if (formatedData.labels.length < 1) {
     return (
       <div>{t('details.statistics.noData')}</div>
     )
@@ -56,6 +56,10 @@ export const PieChart = ({ data, t }) => {
 PieChart.propTypes = {
   data: PropTypes.object,
   t: PropTypes.func.isRequired
+}
+
+PieChart.defaultProps = {
+  data: {}
 }
 
 export default translate('catalogs')(PieChart)

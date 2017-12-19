@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate, Trans } from 'react-i18next'
+import {translate, Trans} from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import licenses from '../../../lib/licenses'
@@ -8,7 +8,7 @@ import Check from './check'
 
 class LicenseCheck extends React.Component {
   renderValid() {
-    const { license } = this.props
+    const {license} = this.props
     const found = licenses[license]
 
     return (
@@ -21,7 +21,7 @@ class LicenseCheck extends React.Component {
   }
 
   renderInvalid() {
-    const { license, t } = this.props
+    const {license, t} = this.props
 
     return (
       <div>
@@ -52,7 +52,7 @@ class LicenseCheck extends React.Component {
   }
 
   render() {
-    const { isValid, t } = this.props
+    const {isValid, t} = this.props
 
     return (
       <Check title={t('datagouv.checks.license.title')} isValid={isValid}>
@@ -67,6 +67,10 @@ LicenseCheck.propTypes = {
   license: PropTypes.string,
 
   t: PropTypes.func.isRequired
+}
+
+LicenseCheck.defaultProps = {
+  license: null
 }
 
 export default translate('dataset')(LicenseCheck)

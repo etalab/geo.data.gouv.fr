@@ -5,7 +5,7 @@ import withFetch from '../../hoc/with-fetch'
 
 import Link from '../../link'
 
-const SourceProducers = ({ organization }) => (
+const SourceProducers = ({organization}) => (
   <div>
     <div>
       <strong>{organization.producers.length}</strong> producteurs sont associés à votre organisation

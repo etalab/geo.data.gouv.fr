@@ -1,5 +1,5 @@
 import React from 'react'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'

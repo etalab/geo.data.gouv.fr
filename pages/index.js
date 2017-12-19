@@ -1,10 +1,10 @@
 import React from 'react'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
 
-import { _get } from '../lib/fetch'
+import {_get} from '../lib/fetch'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -15,7 +15,7 @@ import Catalogs from '../components/home/catalogs'
 import Events from '../components/home/events'
 import NewsletterForm from '../components/home/newsletter-form'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
 class IndexPage extends React.Component {
   state = {}
@@ -27,7 +27,7 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const { catalogsPromise } = this.state
+    const {catalogsPromise} = this.state
 
     return (
       <Page>

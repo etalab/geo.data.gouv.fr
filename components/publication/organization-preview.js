@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Link from '../link'
 
-const OrganizationPreview = ({ organization }) => (
+const OrganizationPreview = ({organization}) => (
   <Link href={`/publication/organization?oid=${organization.id}`} as={`/publication/${organization.id}`} prefetch>
     <a>
       <div className='image'>

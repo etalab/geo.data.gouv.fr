@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Facet from '../facet'
 
@@ -15,16 +15,16 @@ class FacetGroup extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  render () {
-    const { name, values, t } = this.props
+  render() {
+    const {name, values, t} = this.props
 
     return (
       <div className='main'>
         <h4>{t(`common:facets.types.${name}`)}</h4>
         {values.map(facet => (
-          <div className='facet' key={facet.value}>
+          <div key={facet.value} className='facet'>
             <Facet
-              facet={{ name, value: facet.value }}
+              facet={{name, value: facet.value}}
               count={facet.count}
             />
           </div>

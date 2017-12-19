@@ -1,12 +1,12 @@
-import { stringify } from 'querystring'
+import {stringify} from 'querystring'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'next/router'
-import { translate } from 'react-i18next'
+import {withRouter} from 'next/router'
+import {translate} from 'react-i18next'
 
 import Dropdown from '../../dropdown'
 
-export class LanguageSelection extends React.PureComponent {
+class LanguageSelection extends React.PureComponent {
   static propTypes = {
     i18n: PropTypes.shape({
       changeLanguage: PropTypes.func.isRequired
@@ -20,7 +20,7 @@ export class LanguageSelection extends React.PureComponent {
   }
 
   changeLanguage(language) {
-    const { i18n, router } = this.props
+    const {i18n, router} = this.props
 
     const current = i18n.language
 
@@ -33,7 +33,7 @@ export class LanguageSelection extends React.PureComponent {
   }
 
   render() {
-    const { i18n } = this.props
+    const {i18n} = this.props
 
     return (
       <Dropdown title={i18n.language === 'en' ? '🇬🇧' : '🇫🇷'} links={[

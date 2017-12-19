@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -19,26 +19,30 @@ class ErrorPage extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  static getInitialProps ({ res, err }) {
+  static defaultProps = {
+    code: 500
+  }
+
+  static getInitialProps({res, err}) {
     const code = res ? res.statusCode : (err ? err.statusCode : null)
 
-    return { code }
+    return {code}
   }
 
   render() {
-    const { code, i18n, t } = this.props
+    const {code, i18n, t} = this.props
 
     const message = i18n.exists(`errors.http.${code}`) ? t(`errors.http.${code}`) : t('errors.unknown')
 
     return (
       <Page>
-        <Meta title={t('errors.title', { code })} description={message} />
+        <Meta title={t('errors.title', {code})} description={message} />
 
         <Content clouds>
           <div>
             <Box>
               <section>
-                <h1>{t('errors.title', { code })}</h1>
+                <h1>{t('errors.title', {code})}</h1>
                 <h2>{message}</h2>
               </section>
             </Box>

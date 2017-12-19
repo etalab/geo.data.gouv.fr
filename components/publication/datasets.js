@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import { sortBy, deburr } from 'lodash'
+import {sortBy, deburr} from 'lodash'
 
 import LoadingIcon from 'react-icons/lib/fa/refresh'
 
@@ -38,7 +38,9 @@ class Datasets extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (this.props.notPublished !== props.notPublished) {
+    const {notPublished} = this.props
+
+    if (notPublished !== props.notPublished) {
       this.setState({
         publishing: false,
         toPublish: []
@@ -66,7 +68,7 @@ class Datasets extends React.Component {
   }
 
   toggleSelectAll = () => {
-    const { notPublished } = this.props
+    const {notPublished} = this.props
 
     this.setState(state => {
       if (state.toPublish.length === notPublished.length) {
@@ -82,8 +84,8 @@ class Datasets extends React.Component {
   }
 
   publishDatasets = () => {
-    const { publishDatasets } = this.props
-    const { toPublish } = this.state
+    const {publishDatasets} = this.props
+    const {toPublish} = this.state
 
     this.setState({
       publishing: true
@@ -93,15 +95,15 @@ class Datasets extends React.Component {
   }
 
   render() {
-    const { published, notPublished, publishedByOthers } = this.props
+    const {published, notPublished, publishedByOthers} = this.props
 
-    const { publishing, toPublish } = this.state
+    const {publishing, toPublish} = this.state
 
     const allSelected = toPublish.length === notPublished.length
 
-    const sortedPublished = sortBy(published, ({ title }) => deburr(title))
-    const sortedNotPublished = sortBy(notPublished, ({ title }) => deburr(title))
-    const sortedPublishedByOthers = sortBy(publishedByOthers, ({ title }) => deburr(title))
+    const sortedPublished = sortBy(published, ({title}) => deburr(title))
+    const sortedNotPublished = sortBy(notPublished, ({title}) => deburr(title))
+    const sortedPublishedByOthers = sortBy(publishedByOthers, ({title}) => deburr(title))
 
     return (
       <div>
@@ -120,7 +122,7 @@ class Datasets extends React.Component {
           {sortedNotPublished.length > 0 ? (
             <Fragment>
               {sortedNotPublished.map(dataset => (
-                <div className='row' key={dataset._id} onClick={!publishing ? this.toggleSelect(dataset) : null}>
+                <div key={dataset._id} className='row' onClick={publishing ? null : this.toggleSelect(dataset)}>
                   <div>
                     <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
                       <a>
@@ -138,7 +140,7 @@ class Datasets extends React.Component {
                   <Button disabled={!toPublish.length || publishing} onClick={this.publishDatasets}>
                     {publishing ? (
                       <Fragment>
-                        <LoadingIcon style={{ verticalAlign: -2 }} /> Publication…
+                        <LoadingIcon style={{verticalAlign: -2}} /> Publication…
                       </Fragment>
                     ) : 'Publier les données sélectionnées'}
                   </Button>
@@ -170,7 +172,7 @@ class Datasets extends React.Component {
           }
         >
           {sortedPublished.length > 0 ? sortedPublished.map(dataset => (
-            <div className='row' key={dataset._id}>
+            <div key={dataset._id} className='row'>
               <div>
                 <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
                   <a>
@@ -203,7 +205,7 @@ class Datasets extends React.Component {
           }
         >
           {sortedPublishedByOthers.length > 0 ? sortedPublishedByOthers.map(dataset => (
-            <div className='row' key={dataset._id}>
+            <div key={dataset._id} className='row'>
               <div>
                 <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
                   <a>
@@ -275,7 +277,7 @@ class Datasets extends React.Component {
 }
 
 export default withFetch(
-  ([ published, notPublished, publishedByOthers ]) => ({
+  ([published, notPublished, publishedByOthers]) => ({
     published,
     notPublished,
     publishedByOthers
