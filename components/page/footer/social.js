@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Social = () => (
   <ul className='social'>
     <li>

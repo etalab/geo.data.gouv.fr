@@ -1,4 +1,3 @@
-import React from 'react'
 import {flowRight} from 'lodash'
 
 import attachI18n from '../components/hoc/attach-i18n'

@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import InfoIcon from 'react-icons/lib/fa/info-circle'
