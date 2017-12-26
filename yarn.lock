@@ -2531,9 +2531,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-xo-nextjs@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo-nextjs/-/eslint-config-xo-nextjs-1.0.0.tgz#54228f267a9a430e1126ce8cb1993edafc70cec8"
+eslint-config-xo-nextjs@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-nextjs/-/eslint-config-xo-nextjs-1.1.1.tgz#3200b2a727a02061ae107c042e0f2edb8f1f6ab7"
   dependencies:
     eslint-config-xo-react "^0.15.0"
 
