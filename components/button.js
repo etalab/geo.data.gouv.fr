@@ -5,8 +5,6 @@ const Button = ({children, type, size, color, href, disabled, block, ...props}) 
   const buttonProps = href ? {} : props
 
   return (
-    // Button does have a type, but eslint is broken.
-    // eslint-disable-next-line react/button-has-type
     <button
       type={type}
       disabled={disabled}
