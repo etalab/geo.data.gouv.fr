@@ -57,7 +57,7 @@ class Modal extends React.Component {
             <nav>
               {title && <h2>{title}</h2>}
               <span onClick={onClose}>
-                <CloseIcon />
+                <CloseIcon style={{verticalAlign: 0}} />
               </span>
             </nav>
             {children}

@@ -52,7 +52,9 @@ class DatasetDownload extends React.PureComponent {
 
   setPreview = () => {
     const {distribution, setPreview} = this.props
-    const {link} = this.state
+    const {link, layerName} = this.state
+
+    const name = layerName || distribution.typeName
 
     setPreview(distribution, link, name)
   }
