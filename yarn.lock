@@ -2629,7 +2629,7 @@ eslint-plugin-unicorn@^2.1.0:
     lodash.snakecase "^4.0.1"
     lodash.upperfirst "^4.2.0"
 
-eslint@^3, eslint@^3.18.0:
+eslint@^3.18.0:
   version "3.19.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
