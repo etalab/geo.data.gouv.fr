@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import AddIcon from 'react-icons/lib/fa/plus-circle'
 
-import { sortByScore, findCandidates } from '../../../lib/catalog'
+import {sortByScore, findCandidates} from '../../../lib/catalog'
 
 import Modal from '../../modal'
 import CatalogPreview from '../../catalog-preview'
@@ -13,7 +13,7 @@ class AddCatalogModal extends React.Component {
   static propTypes = {
     catalogs: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string.isRequired
-    })),
+    })).isRequired,
     blacklist: PropTypes.arrayOf(PropTypes.string).isRequired,
 
     addCatalog: PropTypes.func.isRequired,
@@ -21,25 +21,25 @@ class AddCatalogModal extends React.Component {
   }
 
   addCatalog = catalog => () => {
-    const { addCatalog, onClose } = this.props
+    const {addCatalog, onClose} = this.props
 
     onClose()
     addCatalog(catalog)
   }
 
   render() {
-    const { catalogs, blacklist, onClose } = this.props
+    const {catalogs, blacklist, onClose} = this.props
     const addable = sortByScore(findCandidates(catalogs, blacklist))
 
     return (
       <Modal fluid onClose={onClose} title='Ajouter un catalogue'>
         <div className='catalogs'>
           {addable.map(catalog => (
-            <div className='catalog' key={catalog._id}>
+            <div key={catalog._id} className='catalog'>
               <CatalogPreview catalog={catalog} />
               <div className='button'>
                 <Button onClick={this.addCatalog(catalog)}>
-                  <AddIcon style={{ verticalAlign: -2 }} /> Ajouter ce catalogue
+                  <AddIcon style={{verticalAlign: -2}} /> Ajouter ce catalogue
                 </Button>
               </div>
             </div>

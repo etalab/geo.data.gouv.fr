@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import { intersectionWith } from 'lodash'
+import {intersectionWith} from 'lodash'
 
 import RemoveIcon from 'react-icons/lib/fa/trash-o'
 import LoadingIcon from 'react-icons/lib/fa/refresh'
@@ -33,7 +33,9 @@ class SourceCatalogs extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (this.props.organization.sourceCatalogs !== props.organization.sourceCatalogs) {
+    const {organization} = this.props
+
+    if (organization.sourceCatalogs !== props.organization.sourceCatalogs) {
       this.setState({
         adding: false,
         removing: {}
@@ -42,7 +44,7 @@ class SourceCatalogs extends React.Component {
   }
 
   removeCatalog = catalog => () => {
-    const { organization, removeCatalog } = this.props
+    const {organization, removeCatalog} = this.props
 
     this.setState(state => ({
       removing: {
@@ -55,7 +57,7 @@ class SourceCatalogs extends React.Component {
   }
 
   addCatalog = catalog => {
-    const { organization, addCatalog } = this.props
+    const {organization, addCatalog} = this.props
 
     this.setState({
       adding: true
@@ -77,8 +79,8 @@ class SourceCatalogs extends React.Component {
   }
 
   render() {
-    const { organization, catalogs } = this.props
-    const { removing, showAddModal, adding } = this.state
+    const {organization, catalogs} = this.props
+    const {removing, showAddModal, adding} = this.state
 
     const sourceCatalogs = intersectionWith(
       catalogs,
@@ -101,11 +103,11 @@ class SourceCatalogs extends React.Component {
                   <Button color='red' disabled={adding || anyRemoving} onClick={this.removeCatalog(catalog)}>
                     {isRemoving ? (
                       <Fragment>
-                        <LoadingIcon style={{ verticalAlign: -2 }} /> Suppression…
+                        <LoadingIcon style={{verticalAlign: -2}} /> Suppression…
                       </Fragment>
                     ) : (
                       <Fragment>
-                        <RemoveIcon style={{ verticalAlign: -2 }} /> Supprimer
+                        <RemoveIcon style={{verticalAlign: -2}} /> Supprimer
                       </Fragment>
                     )}
                   </Button>
@@ -118,11 +120,11 @@ class SourceCatalogs extends React.Component {
         <Button disabled={adding || anyRemoving} onClick={this.onOpenModal}>
           {adding ? (
             <Fragment>
-              <LoadingIcon style={{ verticalAlign: -2 }} /> Ajout du catalogue…
+              <LoadingIcon style={{verticalAlign: -2}} /> Ajout du catalogue…
             </Fragment>
           ) : (
             <Fragment>
-              <AddIcon style={{ verticalAlign: -2 }} /> Ajouter un catalogue
+              <AddIcon style={{verticalAlign: -2}} /> Ajouter un catalogue
             </Fragment>
           )}
         </Button>
@@ -163,7 +165,7 @@ class SourceCatalogs extends React.Component {
 }
 
 export default withFetch(
-  ([ organization, catalogs ]) => ({
+  ([organization, catalogs]) => ({
     organization,
     catalogs
   })

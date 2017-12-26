@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import CalendarIcon from 'react-icons/lib/fa/calendar-check-o'
 
-const Event = ({ event, t }) => (
+const Event = ({event, t}) => (
   <div className='event'>
     <div className='icon'>
       <CalendarIcon />
@@ -19,9 +19,9 @@ const Event = ({ event, t }) => (
         </div>
       ) : (
         <div>
-          {event.linkComingSoon
-            ? t('event.soonAvailable')
-            : t('event.noReport')
+          {event.linkComingSoon ?
+            t('event.soonAvailable') :
+            t('event.noReport')
           }
         </div>
       )}
@@ -68,10 +68,6 @@ Event.propTypes = {
   }).isRequired,
 
   t: PropTypes.func.isRequired
-}
-
-Event.defaultProps = {
-  linkComingSoon: false
 }
 
 export default translate('events')(Event)

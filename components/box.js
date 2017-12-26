@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Box = ({ children, title, padded, color }) => (
+const Box = ({children, title, padded, color}) => (
   <div className='wrapper'>
     {title && <h3 className={`header ${color}`}>{title}</h3>}
     <div className={padded ? 'padded' : ''}>
@@ -65,7 +65,7 @@ const Box = ({ children, title, padded, color }) => (
 )
 
 Box.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   title: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
@@ -80,6 +80,7 @@ Box.propTypes = {
 
 Box.defaultProps = {
   color: 'grey',
+  title: null,
   padded: true
 }
 

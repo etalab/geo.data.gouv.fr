@@ -5,7 +5,7 @@ import prune from 'underscore.string/prune'
 import Markdown from './markdown'
 
 class Renderer {
-  constructor({ maxLength }) {
+  constructor({maxLength}) {
     this.maxLength = maxLength || 450
   }
 
@@ -51,8 +51,8 @@ class Renderer {
   html = () => ''
 }
 
-const MarkdownSummary = ({ markdown, maxLength }) => {
-  const renderer = new Renderer({ maxLength })
+const MarkdownSummary = ({markdown, maxLength}) => {
+  const renderer = new Renderer({maxLength})
 
   return (
     <Markdown markdown={markdown} renderer={renderer} />

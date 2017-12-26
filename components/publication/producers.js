@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {sortBy, deburr} from 'lodash'
 
 import withFetch from '../hoc/with-fetch'
 
 import Box from '../box'
 import Button from '../button'
-import { sortBy, deburr } from 'lodash'
 
 class Producers extends React.Component {
   static propTypes = {
@@ -27,25 +27,25 @@ class Producers extends React.Component {
   }
 
   associateProducer = producer => () => {
-    const { associateProducer } = this.props
+    const {associateProducer} = this.props
 
     associateProducer(producer)
   }
 
   dissociateProducer = producer => () => {
-    const { dissociateProducer } = this.props
+    const {dissociateProducer} = this.props
 
     dissociateProducer(producer)
   }
 
   render() {
-    const { organization, producers, organizations } = this.props
+    const {organization, producers, organizations} = this.props
 
     const linked = []
     const linkedToOthers = []
     const unlinked = []
 
-    const sortedProducers = sortBy(producers, ({ _id }) => deburr(_id))
+    const sortedProducers = sortBy(producers, ({_id}) => deburr(_id))
 
     sortedProducers.forEach(producer => {
       if (!producer.associatedTo) {
@@ -75,7 +75,7 @@ class Producers extends React.Component {
           }
         >
           {linked.map(producer => (
-            <div className='row' key={producer._id}>
+            <div key={producer._id} className='row'>
               <div>{producer._id}</div>
               <Button color='white' onClick={this.dissociateProducer(producer)}>
                 Dissocier
@@ -100,7 +100,7 @@ class Producers extends React.Component {
           }
         >
           {unlinked.map(producer => (
-            <div className='row' key={producer._id}>
+            <div key={producer._id} className='row'>
               <div>{producer._id}</div>
               <Button color='white' onClick={this.associateProducer(producer)}>
                 Associer
@@ -125,8 +125,8 @@ class Producers extends React.Component {
             </div>
           }
         >
-          {linkedToOthers.map(({ producer, organization }) => (
-            <div className='row' key={producer._id}>
+          {linkedToOthers.map(({producer, organization}) => (
+            <div key={producer._id} className='row'>
               <div>{producer._id}</div>
               <div>
                 Rattaché à <a href={`https://www.data.gouv.fr/fr/organizations/${organization._id}/`}>
@@ -184,7 +184,7 @@ class Producers extends React.Component {
 }
 
 export default withFetch(
-  ([ producers, organizations ]) => ({
+  ([producers, organizations]) => ({
     producers,
     organizations
   })

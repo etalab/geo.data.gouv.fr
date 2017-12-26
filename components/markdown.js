@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import marked from 'marked'
 
-const Markdown = ({ markdown, renderer }) => {
-  const md = marked(markdown, { renderer })
+const Markdown = ({markdown, renderer}) => {
+  const md = marked(markdown, {renderer})
 
   return (
     <div className='wrapper'>
-      <div dangerouslySetInnerHTML={{ __html : md }} />
+      {/* eslint-disable react/no-danger */}
+      <div dangerouslySetInnerHTML={{__html: md}} />
+      {/* eslint-enable react/no-danger */}
 
       <style jsx>{`
         .wrapper {
@@ -38,6 +40,10 @@ const Markdown = ({ markdown, renderer }) => {
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
   renderer: PropTypes.object
+}
+
+Markdown.defaultProps = {
+  renderer: null
 }
 
 export default Markdown

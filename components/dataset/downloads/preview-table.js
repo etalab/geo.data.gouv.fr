@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import Table from 'react-table'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import tableStyle from 'react-table/react-table.css'
 
-const PreviewTable = ({ data, t }) => {
+const PreviewTable = ({data, t}) => {
   const attributes = new Set()
   data = data.features.map(feature => {
-    const properties = { ...feature.properties }
+    const properties = {...feature.properties}
     delete properties.gml_id
 
     Object.keys(properties).forEach(key => {
@@ -42,7 +42,9 @@ const PreviewTable = ({ data, t }) => {
       />
 
       <Head>
-        <style dangerouslySetInnerHTML={{ __html: tableStyle }} />
+        {/* eslint-disable react/no-danger */}
+        <style dangerouslySetInnerHTML={{__html: tableStyle}} />
+        {/* eslint-enable react/no-danger */}
       </Head>
       <style jsx>{`
         div {

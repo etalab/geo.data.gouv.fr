@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import CommentIcon from 'react-icons/lib/fa/comments'
 
-import { _get, _post } from '../../../lib/fetch'
+import {_get, _post} from '../../../lib/fetch'
 
 import Button from '../../button'
 import RequireAuth from '../../require-auth'
@@ -12,7 +12,7 @@ import RequireAuth from '../../require-auth'
 import Form from './form'
 import List from './list'
 
-import { DATAGOUV_API_URL } from '@env'
+import {DATAGOUV_API_URL} from '@env'
 
 class Discussions extends React.Component {
   static propTypes = {
@@ -29,21 +29,21 @@ class Discussions extends React.Component {
   }
 
   refreshDiscussions = () => {
-    const { remoteId } = this.props
+    const {remoteId} = this.props
 
     this.setState(() => ({
       discussionsPromise: _get(`${DATAGOUV_API_URL}/discussions/?for=${remoteId}`)
     }))
   }
 
-  onExpand = e => {
-    this.setState(() => ({
+  onExpand = () => {
+    this.setState({
       expanded: true
-    }))
+    })
   }
 
   createDiscussion = async (title, comment) => {
-    const { remoteId } = this.props
+    const {remoteId} = this.props
 
     await _post(`${DATAGOUV_API_URL}/discussions/`, {
       title,
@@ -65,13 +65,19 @@ class Discussions extends React.Component {
     this.refreshDiscussions()
   }
 
-  onSubmit = ({ title, comment }) => {
+  onSubmit = ({title, comment}) => {
     this.createDiscussion(title, comment)
   }
 
+  renderAuth = user => (
+    <div className='form'>
+      <Form onSubmit={this.onSubmit} user={user} />
+    </div>
+  )
+
   render() {
-    const { t } = this.props
-    const { expanded, discussionsPromise } = this.state
+    const {t} = this.props
+    const {expanded, discussionsPromise} = this.state
 
     return (
       <div>
@@ -80,14 +86,10 @@ class Discussions extends React.Component {
         </div>
 
         {expanded ? (
-          <RequireAuth message={t('discussions.loggedOutMessage')} render={user => (
-            <div className='form'>
-              <Form onSubmit={this.onSubmit} user={user} />
-            </div>
-          )} />
+          <RequireAuth message={t('discussions.loggedOutMessage')} render={this.renderAuth} />
         ) : (
           <Button onClick={this.onExpand}>
-            <CommentIcon style={{ verticalAlign: -2 }} /> {t('discussions.new')}
+            <CommentIcon style={{verticalAlign: -2}} /> {t('discussions.new')}
           </Button>
         )}
         <style jsx>{`

@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
-import { withRouter } from 'next/router'
-import { translate } from 'react-i18next'
+import {flowRight} from 'lodash'
+import {withRouter} from 'next/router'
+import {translate} from 'react-i18next'
 
 import withSession from './hoc/with-session'
 
 import Info from './info'
 import Button from './button'
 
-import { PUBLIC_URL, PUBLICATION_BASE_URL } from '@env'
+import {PUBLIC_URL, PUBLICATION_BASE_URL} from '@env'
 
 class RequireAuth extends React.Component {
   static propTypes = {
@@ -26,8 +26,13 @@ class RequireAuth extends React.Component {
     t: PropTypes.func.isRequired
   }
 
+  static defaultProps = {
+    message: null,
+    session: null
+  }
+
   render() {
-    const { session, router, message, t } = this.props
+    const {session, router, message, render, t} = this.props
 
     const currentUrl = `${PUBLIC_URL}${router.asPath}`
     const loginUrl = `${PUBLICATION_BASE_URL}/login?redirect=${encodeURIComponent(currentUrl)}`
@@ -73,7 +78,7 @@ class RequireAuth extends React.Component {
       )
     }
 
-    return this.props.render(session.user)
+    return render(session.user)
   }
 }
 

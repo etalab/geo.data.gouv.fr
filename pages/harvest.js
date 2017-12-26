@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get } from '../lib/fetch'
+import {_get} from '../lib/fetch'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -19,19 +19,19 @@ import HarvestStatus from '../components/harvest-status'
 import Header from '../components/harvest/header'
 import Logs from '../components/harvest/logs'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
 class HarvestPage extends React.Component {
   static propTypes = {
     catalog: PropTypes.shape({
       name: PropTypes.string.isRequired
-    }).isRequired,
+    }),
 
     harvest: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
       log: PropTypes.arrayOf(PropTypes.string).isRequired
-    }).isRequired,
+    }),
 
     error: PropTypes.shape({
       code: PropTypes.number
@@ -40,7 +40,13 @@ class HarvestPage extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ res, query }) {
+  static defaultProps = {
+    catalog: null,
+    harvest: null,
+    error: null
+  }
+
+  static async getInitialProps({res, query}) {
     try {
       const [catalog, harvest] = await Promise.all([
         _get(`${GEODATA_API_URL}/catalogs/${query.cid}`),
@@ -63,15 +69,17 @@ class HarvestPage extends React.Component {
   }
 
   render() {
-    if (this.props.error) {
-      return <ErrorPage code={this.props.error.code} />
+    const {error} = this.props
+
+    if (error) {
+      return <ErrorPage code={error.code} />
     }
 
-    const { catalog, harvest, t } = this.props
+    const {catalog, harvest, t} = this.props
 
     return (
       <Page>
-        <Meta title={t('harvest.title', { name: catalog.name })} />
+        <Meta title={t('harvest.title', {name: catalog.name})} />
 
         <Content clouds>
           <Container>

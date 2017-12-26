@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 const parse = logs => {
   const result = {
@@ -29,17 +29,17 @@ const parse = logs => {
   return result
 }
 
-const Logs = ({ logs, t }) => {
-  const { entries, totals } = parse(logs)
+const Logs = ({logs, t}) => {
+  const {entries, totals} = parse(logs)
 
-  if (!entries.length && !totals.length) {
+  if (entries.length < 1 && totals.length < 1) {
     return t('harvest.logs.empty')
   }
 
   return (
     <div>
       <ul>
-        {entries.map(({ key, label, value }) => (
+        {entries.map(({key, label, value}) => (
           <li key={key}>
             {t(`harvest.logs.labels.${label}`, {
               defaultValue: label
@@ -50,7 +50,7 @@ const Logs = ({ logs, t }) => {
 
       {totals.length > 0 && (
         <ul className='totals'>
-          {totals.map(({ key, label, value }) => (
+          {totals.map(({key, label, value}) => (
             <li key={key}>
               {t(`harvest.logs.labels.${label}`, {
                 defaultValue: label

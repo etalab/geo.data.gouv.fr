@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getSession, clearSession } from '../../lib/session'
+import {getSession, clearSession} from '../../lib/session'
 
 export default Page => class extends React.PureComponent {
   static propTypes = {
@@ -33,7 +33,7 @@ export default Page => class extends React.PureComponent {
   state = {}
 
   getChildContext() {
-    const { session } = this.state
+    const {session} = this.state
 
     return {
       session: session ? {
@@ -45,15 +45,15 @@ export default Page => class extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const { ssr } = this.props
+    const {ssr} = this.props
 
     const session = await getSession({
       force: ssr
     })
 
-    this.setState(state => ({
+    this.setState({
       session
-    }))
+    })
   }
 
   render() {

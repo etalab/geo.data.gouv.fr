@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-import { PIWIK_URL, PIWIK_SITE_ID } from '@env'
+import {PIWIK_URL, PIWIK_SITE_ID} from '@env'
 
 class Piwik extends React.Component {
   componentDidMount() {

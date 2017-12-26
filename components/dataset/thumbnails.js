@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { uniqBy } from 'lodash'
+import {uniqBy} from 'lodash'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
 class Thumbnails extends React.Component {
   static propTypes = {
@@ -28,8 +28,8 @@ class Thumbnails extends React.Component {
   }
 
   render() {
-    const { recordId, thumbnails } = this.props
-    const { selected } = this.state
+    const {recordId, thumbnails} = this.props
+    const {selected} = this.state
 
     const thumbs = uniqBy(thumbnails, 'originalUrlHash')
 

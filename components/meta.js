@@ -1,21 +1,21 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import prune from 'underscore.string/prune'
-import { flowRight } from 'lodash'
-import { translate } from 'react-i18next'
-import { withRouter } from 'next/router'
+import {flowRight} from 'lodash'
+import {translate} from 'react-i18next'
+import {withRouter} from 'next/router'
 
-import { PUBLIC_URL } from '@env'
+import {PUBLIC_URL} from '@env'
 
 const SITE_NAME = 'geo.data.gouv.fr'
 const TWITTER_HANDLE = '@geodatagouv'
 
-const Meta = ({ title, description, images, router, t }) => {
-  if (!description) {
-    description = t('meta.description')
-  } else {
+const Meta = ({title, description, images, router, t}) => {
+  if (description) {
     description = prune(description, 160, '…')
+  } else {
+    description = t('meta.description')
   }
 
   return (
@@ -38,8 +38,8 @@ const Meta = ({ title, description, images, router, t }) => {
             <meta name='twitter:image' content={images[0]} />
           </Head>
 
-          {images.map((image, idx) => (
-            <Head key={idx}>
+          {images.map(image => (
+            <Head key={image}>
               <meta property='og:image' content={image} />
             </Head>
           ))}
@@ -77,6 +77,12 @@ Meta.propTypes = {
   }).isRequired,
 
   t: PropTypes.func.isRequired
+}
+
+Meta.defaultProps = {
+  title: null,
+  description: null,
+  images: null
 }
 
 export default flowRight(

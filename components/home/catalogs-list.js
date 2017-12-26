@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
-import { translate } from 'react-i18next'
+import {flowRight} from 'lodash'
+import {translate} from 'react-i18next'
 
-import { sortByScore } from '../../lib/catalog'
+import {sortByScore} from '../../lib/catalog'
 
 import withFetch from '../hoc/with-fetch'
 
 import Link from '../link'
 import CatalogPreview from '../catalog-preview'
 
-const Catalogs = ({ catalogs, t }) => {
+const Catalogs = ({catalogs, t}) => {
   const highlighted = sortByScore(catalogs).slice(
     0,
     Math.min(3, catalogs.length)
@@ -79,7 +79,7 @@ export default flowRight(
   withFetch(data => ({
     catalogs: data
   }), {
-    Loader: translate()(({ t }) => (
+    Loader: translate()(({t}) => (
       <div>
         {t('loading')}
 

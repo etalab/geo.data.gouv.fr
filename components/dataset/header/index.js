@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import MarkdownPreview from '../../markdown-preview'
 import Warning from '../../warning'
@@ -13,7 +13,7 @@ const shouldWarn = status => [
   'underDevelopment'
 ].includes(status)
 
-const Header = ({ metadata, i18n: { language }, t }) => (
+const Header = ({metadata, i18n: {language}, t}) => (
   <div>
     {shouldWarn(metadata.status) && (
       <div className='warning'>

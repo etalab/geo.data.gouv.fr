@@ -1,5 +1,5 @@
-const express = require('express')
 const path = require('path')
+const express = require('express')
 const next = require('next')
 const i18n = require('i18next')
 const i18nextMiddleware = require('i18next-express-middleware')
@@ -10,7 +10,7 @@ const createRoutes = require('./routes')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const app = next({dev})
 const handle = app.getRequestHandler()
 
 const languages = [
@@ -86,7 +86,7 @@ i18n
           handle(req, res)
         })
 
-        server.listen(port, (err) => {
+        server.listen(port, err => {
           if (err) {
             throw err
           }

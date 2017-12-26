@@ -1,8 +1,8 @@
-import { format } from 'url'
+import {format} from 'url'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
-import { withRouter } from 'next/router'
+import {translate} from 'react-i18next'
+import {withRouter} from 'next/router'
 
 import Link from './link'
 
@@ -42,12 +42,14 @@ class Facet extends React.Component {
   }
 
   static defaultProps = {
+    defaultQuery: null,
+    count: null,
     detailed: false,
     removable: false
   }
 
   getAddQuery = facet => {
-    const { router, defaultQuery } = this.props
+    const {router, defaultQuery} = this.props
 
     let query = {
       ...defaultQuery
@@ -80,7 +82,7 @@ class Facet extends React.Component {
   }
 
   getRemoveQuery = facet => {
-    const { router } = this.props
+    const {router} = this.props
 
     const query = {
       ...router.query
@@ -99,7 +101,7 @@ class Facet extends React.Component {
   }
 
   getLink = () => {
-    const { removable, facet } = this.props
+    const {removable, facet} = this.props
 
     const query = removable ? this.getRemoveQuery(facet) : this.getAddQuery(facet)
 
@@ -110,7 +112,7 @@ class Facet extends React.Component {
   }
 
   render() {
-    const { facet, count, detailed, removable, t, i18n } = this.props
+    const {facet, count, detailed, removable, t, i18n} = this.props
 
     const title = t(`facets.types.${facet.name}`)
     const value = i18n.exists(`facets.values.${facet.value}`) ? t(`facets.values.${facet.value}`) : facet.value

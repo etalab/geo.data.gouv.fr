@@ -5,7 +5,7 @@ import withFetch from '../../hoc/with-fetch'
 
 import Link from '../../link'
 
-const DatasetMetrics = ({ organization, metrics }) => (
+const DatasetMetrics = ({organization, metrics}) => (
   <div>
     <p>
       <strong>{metrics.published}</strong> jeux de données sont <strong>publiés et accessibles</strong> sur <a href='https://data.gouv.fr'>data.gouv.fr</a>
@@ -37,7 +37,7 @@ DatasetMetrics.propTypes = {
 }
 
 export default withFetch(
-  ([ organization, metrics ]) => ({
+  ([organization, metrics]) => ({
     organization,
     metrics
   })

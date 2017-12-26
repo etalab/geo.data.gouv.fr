@@ -1,9 +1,9 @@
-import { format } from 'url'
+import {format} from 'url'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'next/router'
+import {withRouter} from 'next/router'
 
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 class SearchInput extends React.PureComponent {
   static propTypes = {
@@ -24,15 +24,15 @@ class SearchInput extends React.PureComponent {
   }
 
   static defaultProps = {
-    defaultValue: '',
-
+    placeholder: null,
+    defaultQuery: null,
     hasButton: false
   }
 
   onSubmit = event => {
     event.preventDefault()
 
-    const { router, i18n, defaultQuery } = this.props
+    const {router, i18n, defaultQuery} = this.props
 
     const query = {
       ...defaultQuery,
@@ -53,7 +53,7 @@ class SearchInput extends React.PureComponent {
   }
 
   render() {
-    const { router, placeholder, hasButton, t } = this.props
+    const {router, placeholder, hasButton, t} = this.props
 
     return (
       <form onSubmit={this.onSubmit}>

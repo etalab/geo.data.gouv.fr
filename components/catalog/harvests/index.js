@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import withFetch from '../../hoc/with-fetch'
 
@@ -32,7 +32,7 @@ class Harvests extends React.Component {
   }
 
   getGraphData = () => {
-    const { harvests } = this.props
+    const {harvests} = this.props
 
     const ordered = [...harvests].reverse()
     const data = []
@@ -48,7 +48,7 @@ class Harvests extends React.Component {
   }
 
   runHarvest = async () => {
-    const { runHarvest } = this.props
+    const {runHarvest} = this.props
 
     await runHarvest()
 
@@ -58,16 +58,17 @@ class Harvests extends React.Component {
   }
 
   render() {
-    const { catalog, harvests, t } = this.props
+    const {catalog, harvests, t} = this.props
+    const {pending} = this.state
 
-    const pending = this.state.pending || catalog.service.sync.pending
+    const isPending = pending || catalog.service.sync.pending
 
     return (
       <section>
         <div className='table'>
-          <Table catalog={catalog} harvests={harvests} pending={pending} />
+          <Table catalog={catalog} harvests={harvests} pending={isPending} />
           <div className='button'>
-            <Button onClick={this.runHarvest} disabled={pending} block>
+            <Button onClick={this.runHarvest} disabled={isPending} block>
               {t('details.harvests.run')}
             </Button>
           </div>

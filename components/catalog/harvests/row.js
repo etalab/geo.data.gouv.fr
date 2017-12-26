@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import RefreshIcon from 'react-icons/lib/fa/refresh'
 import SuccessIcon from 'react-icons/lib/fa/check'
@@ -17,7 +17,7 @@ const iconMap = {
   failed: <FailIcon />
 }
 
-const Row = ({ harvest, previousHarvest, catalog, t }) => (
+const Row = ({harvest, previousHarvest, catalog, t}) => (
   <tr>
     <td title={t(`harvest.status.${harvest.status}`)} className={harvest.status}>
       {iconMap[harvest.status]}
@@ -98,6 +98,11 @@ Row.propTypes = {
   }),
 
   t: PropTypes.func.isRequired
+}
+
+Row.defaultProps = {
+  catalog: null,
+  previousHarvest: null
 }
 
 export default translate('catalogs')(Row)

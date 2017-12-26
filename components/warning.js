@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import WarningIcon from 'react-icons/lib/fa/exclamation-triangle'
 
-const Warning = ({ children }) => (
+const Warning = ({children}) => (
   <div className='container'>
     <span className='icon'>
       <WarningIcon />
@@ -31,7 +31,7 @@ const Warning = ({ children }) => (
 )
 
 Warning.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
 }
 
 export default Warning

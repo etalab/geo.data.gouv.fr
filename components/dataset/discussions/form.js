@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import CommentIcon from 'react-icons/lib/fa/comments'
 import ReplyIcon from 'react-icons/lib/fa/mail-reply'
@@ -25,7 +25,6 @@ class DiscussionForm extends React.Component {
 
   state = {
     error: false,
-    expanded: false,
     title: '',
     comment: ''
   }
@@ -47,8 +46,8 @@ class DiscussionForm extends React.Component {
   onSubmit = e => {
     e.preventDefault()
 
-    const { replying, onSubmit } = this.props
-    const { title, comment } = this.state
+    const {replying, onSubmit} = this.props
+    const {title, comment} = this.state
 
     if (replying) {
       if (!comment) {
@@ -69,8 +68,8 @@ class DiscussionForm extends React.Component {
   }
 
   render() {
-    const { user, replying, t } = this.props
-    const { title, comment, error } = this.state
+    const {user, replying, t} = this.props
+    const {title, comment, error} = this.state
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -99,11 +98,11 @@ class DiscussionForm extends React.Component {
         <Button type='submit'>
           {replying ? (
             <Fragment>
-              <ReplyIcon style={{ verticalAlign: -2 }} /> {t('discussions.reply')}
+              <ReplyIcon style={{verticalAlign: -2}} /> {t('discussions.reply')}
             </Fragment>
           ) : (
             <Fragment>
-              <CommentIcon style={{ verticalAlign: -2 }} /> {t('discussions.start')}
+              <CommentIcon style={{verticalAlign: -2}} /> {t('discussions.start')}
             </Fragment>
           )}
         </Button>

@@ -1,23 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import SuccessIcon from 'react-icons/lib/fa/check'
 import FailIcon from 'react-icons/lib/fa/close'
 
 import Link from '../link'
 
-const Header = ({ catalog, status, t }) => (
+const Header = ({catalog, status, t}) => (
   <div>
     <h1>
       {catalog.name}
       {status === 'successful' ? (
         <span className='successful'>
-          <SuccessIcon style={{ verticalAlign: -2 }} /> {t('harvest.status.successful')}
+          <SuccessIcon style={{verticalAlign: -2}} /> {t('harvest.status.successful')}
         </span>
       ) : (
         <span className='failed'>
-          <FailIcon style={{ verticalAlign: -2 }} /> {t('harvest.status.failed')}
+          <FailIcon style={{verticalAlign: -2}} /> {t('harvest.status.failed')}
         </span>
       )}
     </h1>

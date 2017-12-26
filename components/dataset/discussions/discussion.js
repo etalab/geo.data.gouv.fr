@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import ReplyIcon from 'react-icons/lib/fa/mail-reply'
 import CheckIcon from 'react-icons/lib/fa/check'
@@ -30,8 +30,8 @@ class Discussion extends React.Component {
     showReplies: false
   }
 
-  onSubmit = ({ comment }) => {
-    const { onReply, discussion } = this.props
+  onSubmit = ({comment}) => {
+    const {onReply, discussion} = this.props
 
     this.setState({
       expanded: false
@@ -47,41 +47,44 @@ class Discussion extends React.Component {
     }))
   }
 
-  onExpand = e => {
+  onExpand = () => {
     this.setState({
       expanded: true
     })
   }
 
+  renderAuth = user => (
+    <Form onSubmit={this.onSubmit} user={user} replying />
+  )
+
   render() {
-    const { discussion, t } = this.props
-    const { expanded, showReplies } = this.state
+    const {discussion, t} = this.props
+    const {expanded, showReplies} = this.state
 
     const replyCount = discussion.discussion.length - 1
 
     return (
       <div className='discussion'>
         <h4>
-          {discussion.closed && <CheckIcon style={{ verticalAlign: -2 }} />} {discussion.title}
+          {discussion.closed && <CheckIcon style={{verticalAlign: -2}} />} {discussion.title}
         </h4>
         {(showReplies || !replyCount) ? (
           <div>
             {discussion.discussion.map((message, idx) => (
+              // eslint-disable-next-line react/no-array-index-key
               <Message key={idx} message={message} />
             ))}
 
             <div className='footer'>
               {expanded ? (
                 <div>
-                  <RequireAuth message={t('discussions.loggedOutReplyMessage')} render={user => (
-                    <Form onSubmit={this.onSubmit} user={user} replying />
-                  )} />
+                  <RequireAuth message={t('discussions.loggedOutReplyMessage')} render={this.renderAuth} />
                   <span onClick={this.toggleReplies}>{t('discussions.closeReplies')}</span>
                 </div>
               ) : (
                 <div>
                   <Button onClick={this.onExpand}>
-                    <ReplyIcon style={{ verticalAlign: -2 }} /> {t('discussions.reply')}
+                    <ReplyIcon style={{verticalAlign: -2}} /> {t('discussions.reply')}
                   </Button>
                   <span onClick={this.toggleReplies}>{t('discussions.closeReplies')}</span>
                 </div>

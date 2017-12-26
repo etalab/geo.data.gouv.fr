@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import licenses from '../../../lib/licenses'
 
-const Footer = ({ metadata, t }) => {
+const Footer = ({metadata, t}) => {
   let license
 
   if (metadata.license) {
@@ -25,9 +25,9 @@ const Footer = ({ metadata, t }) => {
   }
 
   const updatedAt = metadata.revisionDate || metadata.creationDate
-  const updatedAtLabel = updatedAt
-    ? moment(updatedAt).fromNow()
-    : t('common:enums.unknownData.unknown', {
+  const updatedAtLabel = updatedAt ?
+    moment(updatedAt).fromNow() :
+    t('common:enums.unknownData.unknown', {
       context: 'female'
     })
 

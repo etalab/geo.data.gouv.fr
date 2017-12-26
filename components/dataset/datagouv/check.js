@@ -4,15 +4,15 @@ import PropTypes from 'prop-types'
 import CheckIcon from 'react-icons/lib/fa/check'
 import FailIcon from 'react-icons/lib/fa/close'
 
-const Check = ({ title, isValid, children }) => (
+const Check = ({title, isValid, children}) => (
   <div className={`container ${isValid ? 'valid' : ''}`}>
     <h4>
       {title}
       <i className={isValid ? 'valid' : null}>
         {isValid ? (
-          <CheckIcon style={{ verticalAlign: -2 }} />
+          <CheckIcon style={{verticalAlign: -2}} />
         ) : (
-          <FailIcon style={{ verticalAlign: -3 }} />
+          <FailIcon style={{verticalAlign: -3}} />
         )}
       </i>
     </h4>
@@ -57,7 +57,7 @@ const Check = ({ title, isValid, children }) => (
 Check.propTypes = {
   title: PropTypes.string.isRequired,
   isValid: PropTypes.bool.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
 }
 
 export default Check

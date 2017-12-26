@@ -11,7 +11,7 @@ Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const Page = ({ children }) => (
+const Page = ({children}) => (
   <div>
     <style jsx global>{`
       @import 'reset';

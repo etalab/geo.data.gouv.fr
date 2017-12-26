@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
-const Header = ({ catalog, t }) => (
+const Header = ({catalog, t}) => (
   <div>
     <h1>{catalog.name}</h1>
 

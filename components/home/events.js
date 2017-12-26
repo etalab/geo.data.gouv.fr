@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Link from '../link'
 import Section from './section'
 
-const Events = ({ t }) => (
+const Events = ({t}) => (
   <Section title={t('eventsSectionTitle')}>
     <Link href='/events'>
       <a>{t('eventsLink')}</a>

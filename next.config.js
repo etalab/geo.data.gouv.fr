@@ -1,9 +1,9 @@
+const {join} = require('path')
 const webpack = require('webpack')
-const { join } = require('path')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 module.exports = {
-  webpack: function (config, { dev }) {
+  webpack(config, {dev}) {
     config.plugins.push(
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fr/)
     )

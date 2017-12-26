@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, type, size, color, href, disabled, block, ...props }) => {
+const Button = ({children, type, size, color, href, disabled, block, ...props}) => {
   const buttonProps = href ? {} : props
 
   return (
+    // Button does have a type, but eslint is broken.
+    // eslint-disable-next-line react/button-has-type
     <button
       type={type}
       disabled={disabled}
-      className={`${size || ''} ${disabled ? '' : color} ${block ? 'block' : ''}`}
+      className={`${size} ${disabled ? '' : color} ${block ? 'block' : ''}`}
       tabIndex={href ? -1 : null}
       {...buttonProps}
     >
@@ -99,12 +101,13 @@ const Button = ({ children, type, size, color, href, disabled, block, ...props }
 }
 
 Button.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   block: PropTypes.bool,
   type: PropTypes.string,
   href: PropTypes.string,
   size: PropTypes.oneOf([
+    '',
     'large'
   ]),
   color: PropTypes.oneOf([
@@ -115,9 +118,12 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  disabled: false,
+  block: false,
+  href: null,
+  size: '',
   type: 'button',
-  color: 'blue',
-  href: null
+  color: 'blue'
 }
 
 export default Button

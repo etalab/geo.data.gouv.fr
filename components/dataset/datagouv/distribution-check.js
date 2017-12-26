@@ -1,10 +1,10 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Check from './check'
 
-const DistributionCheck = ({ distributions, isValid, t }) => (
+const DistributionCheck = ({distributions, isValid, t}) => (
   <Check title={t('datagouv.checks.distribution.title')} isValid={isValid}>
     {isValid ? (
       <div>

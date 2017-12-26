@@ -1,10 +1,10 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import Check from './check'
 
-const ProducerCheck = ({ organizations, isValid, t }) => (
+const ProducerCheck = ({organizations, isValid, t}) => (
   <Check title={t('datagouv.checks.producer.title')} isValid={isValid}>
     {isValid ? (
       <div>
@@ -24,7 +24,7 @@ const ProducerCheck = ({ organizations, isValid, t }) => (
 
 ProducerCheck.propTypes = {
   isValid: PropTypes.bool.isRequired,
-  organizations: PropTypes.arrayOf(PropTypes.string),
+  organizations: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   t: PropTypes.func.isRequired
 }

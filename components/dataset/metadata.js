@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
-const Metadata = ({ id, revisionDate, t }) => {
+const Metadata = ({id, revisionDate, t}) => {
   const revisionDateLabel = revisionDate ? moment(revisionDate).fromNow() : t('common:enums.unknownData.unknown', {
     context: 'female'
   })
@@ -28,6 +28,10 @@ Metadata.propTypes = {
   revisionDate: PropTypes.string,
 
   t: PropTypes.func.isRequired
+}
+
+Metadata.defaultProps = {
+  revisionDate: null
 }
 
 export default translate('dataset')(Metadata)

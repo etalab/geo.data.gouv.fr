@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import SuccessIcon from 'react-icons/lib/fa/check-circle'
 
-const Success = ({ children }) => (
+const Success = ({children}) => (
   <div className='container'>
     <span className='icon'>
       <SuccessIcon />
@@ -39,7 +39,7 @@ const Success = ({ children }) => (
 )
 
 Success.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
 }
 
 export default Success

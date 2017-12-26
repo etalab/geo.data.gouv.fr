@@ -34,7 +34,7 @@ class Dropdown extends React.Component {
     }))
   }
 
-  closeDropdown = e => {
+  closeDropdown = event => {
     if (this.dropdownRef && !this.dropdownRef.contains(event.target)) {
       this.setState(() => ({
         visible: false
@@ -43,11 +43,11 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { title, links } = this.props
-    const { visible } = this.state
+    const {title, links} = this.props
+    const {visible} = this.state
 
     return (
-      <div className='dropdown' onClick={this.toggleDropdown} ref={this.setDropdownRef}>
+      <div ref={this.setDropdownRef} className='dropdown' onClick={this.toggleDropdown}>
         <a>{title}</a>
 
         {visible && (

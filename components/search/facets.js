@@ -19,7 +19,7 @@ class Facets extends React.Component {
   }
 
   onWrapperClick = e => {
-    const { onClose } = this.props
+    const {onClose} = this.props
 
     if (this.wrapperRef === e.target) {
       onClose()
@@ -27,16 +27,16 @@ class Facets extends React.Component {
   }
 
   render() {
-    const { groups, open } = this.props
+    const {groups, open} = this.props
 
-    if (!groups.length) {
+    if (groups.length < 1) {
       return null
     }
 
     return (
-      <div className={open ? 'wrapper open' : 'wrapper'} ref={this.setWrapperRef} onClick={this.onWrapperClick}>
+      <div ref={this.setWrapperRef} className={open ? 'wrapper open' : 'wrapper'} onClick={this.onWrapperClick}>
         <div className='facets'>
-          {groups.map(({ name, values }) => (
+          {groups.map(({name, values}) => (
             <FacetGroup
               key={name}
               name={name}

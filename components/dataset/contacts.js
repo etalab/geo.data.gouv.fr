@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import Contact from '../contact'
 
-const Contacts = ({ contacts }) => (
+const Contacts = ({contacts}) => (
   <div>
     {contacts.map((contact, key) => (
+      // eslint-disable-next-line react/no-array-index-key
       <div key={key} className='contact'>
         <Contact contact={contact} />
       </div>

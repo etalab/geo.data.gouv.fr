@@ -16,7 +16,7 @@ export default Component => hoist(class extends React.Component {
   }
 
   render() {
-    const { session } = this.context
+    const {session} = this.context
 
     return (
       <Component session={session} {...this.props} />

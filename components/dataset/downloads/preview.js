@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import MapIcon from 'react-icons/lib/fa/map'
 import TableIcon from 'react-icons/lib/fa/table'
 
-import { _get } from '../../../lib/fetch'
+import {_get} from '../../../lib/fetch'
 
 import Modal from '../../modal'
 import Button from '../../button'
 
 const CenteredMap = dynamic(import('../../centered-map'), {
   ssr: false,
-  loading: translate()(({ t }) => t('loading'))
+  loading: translate()(({t}) => t('loading'))
 })
 
 const PreviewTable = dynamic(import('./preview-table'), {
   ssr: false,
-  loading: translate()(({ t }) => t('loading'))
+  loading: translate()(({t}) => t('loading'))
 })
 
 class Preview extends React.Component {
@@ -36,7 +36,7 @@ class Preview extends React.Component {
   }
 
   async componentDidMount() {
-    const { link } = this.props
+    const {link} = this.props
 
     try {
       const data = await _get(`${link}?format=GeoJSON&projection=WGS84`)
@@ -45,10 +45,10 @@ class Preview extends React.Component {
         loading: false,
         data
       })
-    } catch (error) {
+    } catch (err) {
       this.setState({
         loading: false,
-        error
+        error: err
       })
     }
   }
@@ -60,8 +60,8 @@ class Preview extends React.Component {
   }
 
   render() {
-    const { title, onClose, t } = this.props
-    const { loading, data, view, error } = this.state
+    const {title, onClose, t} = this.props
+    const {loading, data, view, error} = this.state
 
     return (
       <Modal fluid fullHeight onClose={onClose} title={title}>

@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
 import i18n from '../../lib/i18n'
 
@@ -26,7 +26,7 @@ export default namespaces => Page => {
 
   Extended.getInitialProps = async context => {
     const props = Page.getInitialProps ? await Page.getInitialProps(context) : {}
-    const { req } = context
+    const {req} = context
 
     if (req && !process.browser) {
       req.i18n.toJSON = () => null

@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Container = ({ children, fluid }) => (
+const Container = ({children, fluid}) => (
   <div style={{
     maxWidth: fluid ? null : 1200
-  }}>
+  }}
+  >
     {children}
 
     <style jsx>{`
@@ -22,7 +23,7 @@ const Container = ({ children, fluid }) => (
 )
 
 Container.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   fluid: PropTypes.bool
 }
 

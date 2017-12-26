@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 
-const LifeCycle = ({ updateFrequency, creationDate, status, t }) => {
+const LifeCycle = ({updateFrequency, creationDate, status, t}) => {
   const frequency = t([`common:enums.frequencies.${updateFrequency}`, 'common:enums.unknownData.unknown'], {
     context: 'female'
   })
@@ -46,6 +46,12 @@ LifeCycle.propTypes = {
   status: PropTypes.string,
 
   t: PropTypes.func.isRequired
+}
+
+LifeCycle.defaultProps = {
+  updateFrequency: 'unknown',
+  creationDate: null,
+  status: null
 }
 
 export default translate('dataset')(LifeCycle)

@@ -1,12 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
 
 import Container from '../../container'
 import Social from './social'
 import Sitemap from './sitemap'
 
-const Footer = ({ t }) => (
+const Footer = () => (
   <footer>
     <Container>
       <div className='content'>
@@ -43,8 +41,4 @@ const Footer = ({ t }) => (
   </footer>
 )
 
-Footer.propTypes = {
-  t: PropTypes.func.isRequired
-}
-
-export default translate()(Footer)
+export default Footer

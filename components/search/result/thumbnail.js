@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
-const Thumbnail = ({ recordId, thumbnails, t }) => {
+const Thumbnail = ({recordId, thumbnails}) => {
   const hasThumbnail = thumbnails && thumbnails.length > 0
-  const thumbnail = hasThumbnail
-    ? `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnails[0].originalUrlHash}`
-    : '/static/images/datasets/default-thumbnail.svg'
+  const thumbnail = hasThumbnail ?
+    `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnails[0].originalUrlHash}` :
+    '/static/images/datasets/default-thumbnail.svg'
 
   return (
     <div>
@@ -54,9 +53,11 @@ Thumbnail.propTypes = {
   thumbnails: PropTypes.arrayOf(PropTypes.shape({
     originalUrlHash: PropTypes.isRequired
   })),
-  recordId: PropTypes.string.isRequired,
-
-  t: PropTypes.func.isRequired
+  recordId: PropTypes.string.isRequired
 }
 
-export default translate('search')(Thumbnail)
+Thumbnail.defaultProps = {
+  thumbnails: null
+}
+
+export default Thumbnail

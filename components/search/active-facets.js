@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Facet from '../facet'
 
-const ActiveFacets = ({ facets }) => (
+const ActiveFacets = ({facets}) => (
   <div>
     {facets.map(facet => (
       <span key={`${facet.name}-${facet.value}`}>

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get, _post } from '../lib/fetch'
-import { isObsolete } from '../lib/catalog'
+import {_get, _post} from '../lib/fetch'
+import {isObsolete} from '../lib/catalog'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -23,7 +23,7 @@ import Statistics from '../components/catalog/statistics'
 import Harvests from '../components/catalog/harvests'
 import Organizations from '../components/catalog/organizations'
 
-import { GEODATA_API_URL } from '@env'
+import {GEODATA_API_URL} from '@env'
 
 class CatalogPage extends React.Component {
   static propTypes = {
@@ -37,7 +37,12 @@ class CatalogPage extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  static async getInitialProps({ res, query }) {
+  static defaultProps = {
+    catalog: null,
+    error: null
+  }
+
+  static async getInitialProps({res, query}) {
     try {
       return {
         catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
@@ -58,7 +63,7 @@ class CatalogPage extends React.Component {
   }
 
   componentDidMount() {
-    const { catalog } = this.props
+    const {catalog} = this.props
 
     if (catalog) {
       this.setState(() => ({
@@ -68,22 +73,24 @@ class CatalogPage extends React.Component {
   }
 
   runHarvest = () => {
-    const { catalog } = this.props
+    const {catalog} = this.props
 
     return _post(`${GEODATA_API_URL}/services/${catalog.id}/sync`)
   }
 
   render() {
-    if (this.props.error) {
-      return <ErrorPage code={this.props.error.code} />
+    const {error} = this.props
+
+    if (error) {
+      return <ErrorPage code={error.code} />
     }
 
-    const { catalog, t } = this.props
-    const { harvestsPromise } = this.state
+    const {catalog, t} = this.props
+    const {harvestsPromise} = this.state
 
     return (
       <Page>
-        <Meta title={t('details.title', { name: catalog.name })} />
+        <Meta title={t('details.title', {name: catalog.name})} />
 
         <Content clouds>
           <Container>

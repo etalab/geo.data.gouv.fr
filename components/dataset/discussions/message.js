@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import Markdown from '../../markdown'
 
-const Message = ({ message }) => {
+const Message = ({message}) => {
   const postedOn = moment.utc(message.posted_on).local()
 
   return (

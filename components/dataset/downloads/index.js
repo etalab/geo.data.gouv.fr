@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import {translate} from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import DatasetDownload from './dataset-download'
@@ -31,11 +31,15 @@ class Downloads extends React.Component {
     })
   }
 
-  render() {
-    const { distributions, t } = this.props
-    const { preview } = this.state
+  clearPreview = () => {
+    this.setPreview(null)
+  }
 
-    if (!distributions.length) {
+  render() {
+    const {distributions, t} = this.props
+    const {preview} = this.state
+
+    if (distributions.length < 1) {
       return t('downloads.noDownloads')
     }
 
@@ -48,7 +52,7 @@ class Downloads extends React.Component {
           <section>
             <h5>{t('downloads.vectorData')}</h5>
             {vectorDistributions.map(distribution => (
-              <div className='distribution' key={distribution._id}>
+              <div key={distribution._id} className='distribution'>
                 <DatasetDownload distribution={distribution} setPreview={this.setPreview} />
               </div>
             ))}
@@ -57,7 +61,7 @@ class Downloads extends React.Component {
               <Preview
                 title={preview.name}
                 link={preview.link}
-                onClose={() => this.setPreview(null)}
+                onClose={this.clearPreview}
               />
             )}
           </section>

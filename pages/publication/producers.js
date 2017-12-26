@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get, _post, _delete } from '../../lib/fetch'
+import {_get, _post, _delete} from '../../lib/fetch'
 
 import attachI18n from '../../components/hoc/attach-i18n'
 import attachSession from '../../components/hoc/attach-session'
@@ -18,7 +18,7 @@ import Header from '../../components/publication/header'
 import Breadcrumbs from '../../components/publication/breadcrumbs'
 import Producers from '../../components/publication/producers'
 
-import { PUBLICATION_BASE_URL } from '@env'
+import {PUBLICATION_BASE_URL} from '@env'
 
 class ProducersPublicationPage extends React.Component {
   static propTypes = {
@@ -28,24 +28,28 @@ class ProducersPublicationPage extends React.Component {
     })
   }
 
+  static defaultProps = {
+    session: null
+  }
+
   state = {}
 
-  static getInitialProps({ query }) {
+  static getInitialProps({query}) {
     return {
       organizationId: query.oid
     }
   }
 
   fetchProducers = () => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
 
     return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`)
   }
 
-  componentWillReceiveProps(props, state, context) {
-    const { session } = props
+  componentWillReceiveProps(props) {
+    const {session} = this.props
 
-    if (session && session.user && !this.props.session) {
+    if (props.session && props.session.user && !session) {
       this.setState({
         producersPromise: this.fetchProducers(),
         organizationsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations`)
@@ -54,7 +58,7 @@ class ProducersPublicationPage extends React.Component {
   }
 
   associateProducer = producer => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
 
     this.setState({
       producersPromise: _post(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`, {
@@ -64,7 +68,7 @@ class ProducersPublicationPage extends React.Component {
   }
 
   dissociateProducer = producer => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
 
     this.setState({
       producersPromise: _delete(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers/${producer._id}`).then(() => this.fetchProducers())
@@ -72,10 +76,10 @@ class ProducersPublicationPage extends React.Component {
   }
 
   renderAuth = user => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
 
-    const { producersPromise, organizationsPromise } = this.state
+    const {producersPromise, organizationsPromise} = this.state
 
     return (
       <div>

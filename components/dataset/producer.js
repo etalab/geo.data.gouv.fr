@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import withFetch from '../hoc/with-fetch'
 
-const Producer = ({ name, logo_thumbnail: logo }) => (
+const Producer = ({name, logo_thumbnail: logo}) => (
   <div>
     <div className='wrapper'>
       <img src={logo} alt='' />

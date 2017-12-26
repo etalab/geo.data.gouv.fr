@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
+import {flowRight} from 'lodash'
 
-import { _get, _put } from '../../lib/fetch'
+import {_get, _put} from '../../lib/fetch'
 
 import attachI18n from '../../components/hoc/attach-i18n'
 import attachSession from '../../components/hoc/attach-session'
@@ -18,7 +18,7 @@ import Header from '../../components/publication/header'
 import Breadcrumbs from '../../components/publication/breadcrumbs'
 import Datasets from '../../components/publication/datasets'
 
-import { PUBLICATION_BASE_URL } from '@env'
+import {PUBLICATION_BASE_URL} from '@env'
 
 class DatasetsPublicationPage extends React.Component {
   static propTypes = {
@@ -28,16 +28,20 @@ class DatasetsPublicationPage extends React.Component {
     })
   }
 
+  static defaultProps = {
+    session: null
+  }
+
   state = {}
 
-  static getInitialProps({ query }) {
+  static getInitialProps({query}) {
     return {
       organizationId: query.oid
     }
   }
 
   fetchDatasets = () => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
 
     return Promise.all([
       _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/published`),
@@ -46,10 +50,10 @@ class DatasetsPublicationPage extends React.Component {
     ])
   }
 
-  componentWillReceiveProps(props, state, context) {
-    const { session } = props
+  componentWillReceiveProps(props) {
+    const {session} = this.props
 
-    if (session && session.user && !this.props.session) {
+    if (props.session && props.session.user && !session) {
       this.setState({
         datasetsPromise: this.fetchDatasets()
       })
@@ -57,7 +61,7 @@ class DatasetsPublicationPage extends React.Component {
   }
 
   publishDatasets = datasets => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
 
     this.setState({
       datasetsPromise: Promise.all(
@@ -69,10 +73,10 @@ class DatasetsPublicationPage extends React.Component {
   }
 
   renderAuth = user => {
-    const { organizationId } = this.props
+    const {organizationId} = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
 
-    const { datasetsPromise } = this.state
+    const {datasetsPromise} = this.state
 
     return (
       <div>

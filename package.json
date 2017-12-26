@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=production node server",
     "test": "cross-env NODE_ENV=test jest",
     "lint": "npm run lint:scripts",
-    "lint:scripts": "eslint .",
+    "lint:scripts": "xo",
     "heroku-postbuild": "yarn install --production=false && yarn build"
   },
   "dependencies": {
@@ -38,6 +38,7 @@
     "react-icons": "^2.2.7",
     "react-leaflet": "^1.7.8",
     "react-table": "^6.7.5",
+    "styled-jsx": "^2.2.1",
     "styled-jsx-plugin-sass": "^0.2.2",
     "underscore.string": "^3.3.4",
     "webpack-bundle-analyzer": "^2.9.1"
@@ -54,21 +55,16 @@
     "cross-env": "^5.1.1",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "eslint": "^4.13.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-config-standard-react": "^5.0.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-config-xo-nextjs": "^1.0.0",
     "eslint-plugin-react": "^7.5.1",
-    "eslint-plugin-standard": "^3.0.1",
     "jest": "^21.2.1",
     "jest-junit": "^3.4.0",
     "lerna-changelog": "^0.7.0",
     "mock-local-storage": "^1.0.5",
     "raf": "^3.4.0",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "webpack": "^3.10.0",
+    "xo": "^0.18.2"
   },
   "browserslist": [
     "> 1%"
@@ -99,5 +95,31 @@
   },
   "jest-junit": {
     "output": "reports/tests/junit.xml"
+  },
+  "xo": {
+    "extends": "xo-nextjs",
+    "semicolon": false,
+    "space": 2,
+    "env": "browser",
+    "rules": {
+      "camelcase": "warn",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "@env"
+          ]
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": "tests/**/*.test.js",
+        "env": [
+          "browser",
+          "jest"
+        ]
+      }
+    ]
   }
 }

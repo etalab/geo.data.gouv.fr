@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { flowRight } from 'lodash'
-import { withRouter } from 'next/router'
-import { translate } from 'react-i18next'
+import {flowRight} from 'lodash'
+import {withRouter} from 'next/router'
+import {translate} from 'react-i18next'
 
 import withSession from '../../hoc/with-session'
 
@@ -10,7 +10,7 @@ import Container from '../../container'
 import Link from '../../link'
 import LanguageSelection from './language-selection'
 
-import { PUBLIC_URL, PUBLICATION_BASE_URL } from '@env'
+import {PUBLIC_URL, PUBLICATION_BASE_URL} from '@env'
 
 class Header extends React.Component {
   static propTypes = {
@@ -34,8 +34,12 @@ class Header extends React.Component {
     t: PropTypes.func.isRequired
   }
 
+  static defaultProps = {
+    session: null
+  }
+
   render() {
-    const { router, session, t, i18n: { language } } = this.props
+    const {router, session, t, i18n: {language}} = this.props
 
     const publicUrl = `${PUBLIC_URL}/${language}`
 

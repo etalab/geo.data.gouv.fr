@@ -17,6 +17,7 @@ class Modal extends React.Component {
   }
 
   static defaultProps = {
+    title: null,
     overlay: true,
     fluid: false,
     fullHeight: false
@@ -35,7 +36,7 @@ class Modal extends React.Component {
   }
 
   onKeyDown = e => {
-    const { onClose } = this.props
+    const {onClose} = this.props
 
     if (e.keyCode === 27 /* ESC */) {
       onClose()
@@ -43,7 +44,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { children, title, overlay, fluid, fullHeight, onClose } = this.props
+    const {children, title, overlay, fluid, fullHeight, onClose} = this.props
 
     if (!process.browser) {
       return null
@@ -56,7 +57,7 @@ class Modal extends React.Component {
             <nav>
               {title && <h2>{title}</h2>}
               <span onClick={onClose}>
-                <CloseIcon />
+                <CloseIcon style={{verticalAlign: 0}} />
               </span>
             </nav>
             {children}

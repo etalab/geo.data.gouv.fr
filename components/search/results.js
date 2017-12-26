@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Result from './result'
 
-const Results = ({ results }) => (
+const Results = ({results}) => (
   <div>
     {results.map(result => (
       <div key={result._id}>

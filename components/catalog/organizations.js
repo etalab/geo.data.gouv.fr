@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Facet from '../facet'
 
-const Oraganizations = ({ catalog: { name, metrics: { records: { counts } } } }) => (
+const Oraganizations = ({catalog: {name, metrics: {records: {counts}}}}) => (
   <div>
     {Object.entries(counts.organizations).map(([value, count]) => (
       <span key={value}>
