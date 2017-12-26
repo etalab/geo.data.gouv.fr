@@ -7,12 +7,12 @@ defaults:
   nodejs_container: &nodejs_container
     working_directory: *workspace_root
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:8-stretch
 
   golang_container: &golang_container
     working_directory: *workspace_root
     docker:
-      - image: circleci/golang:1
+      - image: circleci/golang:1-stretch
 
   filters: &default_filters
     tags:
