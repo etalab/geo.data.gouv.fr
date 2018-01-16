@@ -1,5 +1,6 @@
 {
   "lifeCycle": "Data life cycle, according to producer:",
+  "noDescription": "No description…",
 
   "warnings": {
     "obsolete": "Beware, this dataset is obsolete, the data can be incomplete or outdated.",

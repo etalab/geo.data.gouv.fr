@@ -39,7 +39,11 @@ const Header = ({metadata, i18n: {language}, t}) => (
     </section>
 
     <section>
-      <MarkdownPreview markdown={metadata.description} />
+      {metadata.description ? (
+        <MarkdownPreview markdown={metadata.description} />
+      ) : (
+        <i>{t('noDescription')}</i>
+      )}
     </section>
 
     <section className='origin'>
