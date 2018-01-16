@@ -1,5 +1,6 @@
 {
   "lifeCycle": "Cycle de vie de la donnée renseigné par le producteur :",
+  "noDescription": "Aucune description renseignée…",
 
   "warnings": {
     "obsolete": "Attention, ce jeu de données est obsolète, les données peuvent être incomplètes ou ne plus être à jour.",
