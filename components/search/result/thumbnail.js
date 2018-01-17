@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import {GEODATA_API_URL} from '@env'

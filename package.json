@@ -55,7 +55,7 @@
     "cross-env": "^5.1.1",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "eslint-config-xo-nextjs": "^1.0.0",
+    "eslint-config-xo-nextjs": "^1.1.1",
     "eslint-plugin-react": "^7.5.1",
     "jest": "^21.2.1",
     "jest-junit": "^3.4.0",

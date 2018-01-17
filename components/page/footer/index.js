@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Container from '../../container'
 import Social from './social'
 import Sitemap from './sitemap'
