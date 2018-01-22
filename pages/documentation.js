@@ -72,12 +72,12 @@ const DocumentationPage = () => (
         <p>Pour publier des données via geo.data.gouv.fr, vous devez disposer d’un compte compte individuel sur data.gouv.fr et de l’associer à une organisation.</p>
         <ul className='numbers'>
           <li>
-            <p>Créer un compte sur data.gouv.fr.fr</p>
+            <p>Créer un compte sur data.gouv.fr</p>
             <p>Pour créer un compte ou se connecter : <a href='https://www.data.gouv.fr/login'>https://www.data.gouv.fr/login</a>. Il est recommandé de créer un compte directement sans l’interface d’un réseau social.</p>
             <img src='/static/documentation/datagouv_authentification.png' alt='Se connecter ou créer un compte sur data.gouv.fr' />
           </li>
           <li>
-            <p>Créer / rejoindre une organisation sur data.gouv.fr.fr</p>
+            <p>Créer / rejoindre une organisation sur data.gouv.fr</p>
             <p>
               Pour cela, il faut passer par l’administration de son profil : <a href='https://www.data.gouv.fr/fr/admin/organization/new/'>https://www.data.gouv.fr/fr/admin/organization/new/</a>. Si elle existe déjà, faites une demande pour la rejoindre.
             </p>
