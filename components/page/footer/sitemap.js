@@ -14,6 +14,13 @@ const Sitemap = ({t}) => (
         </a>
       </Link>
     </li>
+    <li>
+      <Link href='/documentation'>
+        <a>
+          {t('footer.publishData')}
+        </a>
+      </Link>
+    </li>
 
     <style jsx>{`
       @import 'colors';
