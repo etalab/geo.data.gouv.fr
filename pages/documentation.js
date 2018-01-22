@@ -193,10 +193,6 @@ const DocumentationPage = () => (
         list-style-type: decimal;
       }
 
-      a {
-        display: block;
-      }
-
       img {
         margin: 1em 0;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
@@ -210,6 +206,10 @@ const DocumentationPage = () => (
       @media (max-width: 767px) {
         img, img.small {
           width: 100%;
+        }
+
+        a {
+          display: block;
         }
       }
 
