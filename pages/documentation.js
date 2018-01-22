@@ -1,5 +1,6 @@
 import React from 'react'
 import {flowRight} from 'lodash'
+import Link from '../components/link'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -89,7 +90,9 @@ const DocumentationPage = () => (
             <p>Lancer le moissonnage de son catalogue</p>
             <p>Une fois votre flux CSW référencé par l’équipe de data.gouv.fr, il faut lancer le moissonnage. Pour cela :</p>
             <ul>
-              <li><a href='https://inspire.data.gouv.fr/catalogs/'>se rendre sur liste des catalogues</a></li>
+              <li>
+                <Link href='/catalogs'><a>se rendre sur liste des catalogues</a></Link>
+              </li>
               <li>cliquez sur votre catalogue ;</li>
               <li>
                 <p>puis dans la section <b>Moissonnage du catalogue</b> cliquez sur <b>Moissonner ce catalogue</b>.</p>
@@ -102,13 +105,13 @@ const DocumentationPage = () => (
             <p>Une fois la synchronisation terminée (actualiser la page au bout de quelques minutes selon le nombre de métadonnées à moissonner), il est possible d’effectuer une recherche.</p>
             <p>Plusieurs filtres facilitent la consultation des métadonnées moissonnées :</p>
             <ul>
-              <li><b>Disponibilité = Oui</b> : limite l’affichage aux métadonnées dont les données sont accessibles (cf. <a href='https://github.com/etalab/geo.data.gouv.fr/wiki/Publier-sur-data.gouv.fr#pr%C3%A9-requis-applicables-aux-donn%C3%A9es'>prérequis</a>)</li>
+              <li><b>Disponibilité = Oui</b> : limite l’affichage aux métadonnées dont les données sont accessibles (cf. <a href='#prerequisites'>prérequis</a>)</li>
               <li><b>Type de résultat = Jeu de données ou Jeu de données (non géographiques)</b> : en choisissant ’Jeu de données’, seules les métadonnées publiées à l’origine en ISO 19139 sont affichées ; en choisissant ’Jeu de données (non géographiques)’, seules les métadonnées publiées à l’origine en Dublin Core sont affichées</li>
               <li><b>Donnée ouverte = Oui</b> : limite l’affichage aux données ouvertes dont la licence est reconnue par data.gouv.fr. Exemples de licences non reconnues par data.gouv.fr : la licence engagée et la licence associée du Grand-Lyon</li>
               <li>
                 <p><b>Publié sur data.gouv.fr = Oui</b> : identifie les métadonnées moissonnées par geo.data.gouv.fr et déjà publiées sur data.gouv.fr</p>
                 <img src='/static/documentation/search_datasets.png' alt='Recherche jeux de données' />
-                <p>Si une donnée semble ne pas être disponible, revérifier les <a href='https://github.com/etalab/geo.data.gouv.fr/wiki/Publier-sur-data.gouv.fr#pr%C3%A9-requis-applicables-aux-donn%C3%A9es'>prérequis</a> puis <a href='contact@geo.data.gouv.fr'>contacter l’équipe data.gouv.fr</a>.</p>
+                <p>Si une donnée semble ne pas être disponible, revérifier les <a href='#prerequisites'>prérequis</a> puis <a href='contact@geo.data.gouv.fr'>contacter l’équipe data.gouv.fr</a>.</p>
               </li>
             </ul>
           </li>
@@ -117,7 +120,7 @@ const DocumentationPage = () => (
         <h3 id='organizations'>Gestion de vos organisations</h3>
         <ul className='numbers'>
           <li>
-            <p>Aller sur <a href='https://geo.data.gouv.fr/'>https://geo.data.gouv.fr/</a> et cliquer sur <b>Publier des données</b></p>
+            <p>Aller sur <Link href='/'><a>https://geo.data.gouv.fr/</a></Link> et cliquer sur <b>Publier des données</b></p>
             <img src='/static/documentation/home_page.png' alt='Page d’accueil de geo.data.gouv.fr' />
           </li>
           <li>
@@ -129,7 +132,7 @@ const DocumentationPage = () => (
         <h3 id='add-catalogs'>Ajouter des catalogues source à l’organisation</h3>
         <ul className='numbers'>
           <li>
-            <p>Accéder à la <a href='https://github.com/etalab/geo.data.gouv.fr/wiki/Publier-sur-data.gouv.fr#gestion_organisations'>page de votre organisation</a></p>
+            <p>Accéder à la <a href='#account'>page de votre organisation</a></p>
             <ul>
               <li>
                 <p>cliquer sur le bouton <b>Ajouter des catalogues</b> puis, dans la liste, ajouter le ou les catalogues correspondant aux flux que vous avez référencé précédemment.</p>
@@ -144,7 +147,7 @@ const DocumentationPage = () => (
         <img className='small' src='/static/documentation/associated_producers.png' alt='Aperçu des producteurs associés' />
         <ul>
           <li>
-            <p>Accéder à la <a href='https://github.com/etalab/geo.data.gouv.fr/wiki/Publier-sur-data.gouv.fr#gestion_organisations'>page de votre organisation</a></p>
+            <p>Accéder à la <a href='#account'>page de votre organisation</a></p>
             <ul>
               <li>cliquez sur <b>Associer des producteurs</b></li>
               <li>ajouter les producteurs pour lesquels vous assumerez la publication des métadonnées.</li>
@@ -158,13 +161,13 @@ const DocumentationPage = () => (
         <h3 id='publish'>Publier sur data.gouv.fr</h3>
         <ul className='numbers'>
           <li>
-            <p><a href='https://github.com/etalab/geo.data.gouv.fr/wiki/Publier-sur-data.gouv.fr#gestion_organisations'>Accéder à la page de votre organisation</a></p>
+            <p><a href='#account'>Accéder à la page de votre organisation</a></p>
             <img className='small' src='/static/documentation/datasets.png' alt='Jeux de données d’une organisation' />
             <ul>
               <li>cliquez sur <b>Publier des données</b></li>
             </ul>
             <p>Le premier cadre au haut de la page dresse un état des lieux des données publiables au sens de data.gouv.fr: - les données déjà publiées et accessibles sur data.gouv.fr ; - les données en attente de publication : les données vérifiant les prérequis, issues de producteurs associés à votre organisme et qui n’ont pas encore été publiées (elles sont en attente d’une action de votre part).</p>
-            <p>Les données qui ne vérifient pas les <a href='https://github.com/etalab/geo.data.gouv.fr/wiki/Publier-sur-data.gouv.fr#pr%C3%A9-requis-applicables-aux-donn%C3%A9es'>prérequis</a> et qui ne sont pas issues de producteurs associés à votre organisme n’apparaissent pas dans cette page.</p>
+            <p>Les données qui ne vérifient pas les <a href='#prerequisites'>prérequis</a> et qui ne sont pas issues de producteurs associés à votre organisme n’apparaissent pas dans cette page.</p>
             <img src='/static/documentation/awaiting_publication.png' alt='Données en attente de publication' />
           </li>
           <li>
