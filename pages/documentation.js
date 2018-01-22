@@ -30,9 +30,7 @@ const DocumentationPage = () => (
             <li><a href='#publish'>Publier sur data.gouv.fr</a></li>
           </ul>
         </div>
-      </Container>
 
-      <Container>
         <h3 id='prerequisites'>Pré-requis applicables aux données</h3>
         <p>
           Afin que vos données puissent être intégrées à data.gouv.fr via la passerelle, il faut qu’elles disposent de métadonnées et que celles-ci remplissent tous les critères suivants :
@@ -53,9 +51,7 @@ const DocumentationPage = () => (
           <li>lien vers des fichiers de données raster aux formats ECW, JPEG2000 et GeoTIFF.</li>
         </ul>
         <p>Les liens vers des fichiers PDF ne sont pas reconnus comme des liens vers des données.</p>
-      </Container>
 
-      <Container>
         <h3 id='step-by-step'>Utilisation pas à pas</h3>
         <p>Pour publier des métadonnées via geo.data.gouv.fr vous devez suivre les étapes suivantes :</p>
         <ul className='numbers'>
@@ -65,9 +61,7 @@ const DocumentationPage = () => (
           <li>Publier les métadonnées pertinentes sur data.gouv.fr</li>
         </ul>
         <p>Ces étapes sont détaillées dans les chapitres suivants.</p>
-      </Container>
 
-      <Container>
         <h3 id='account'>Compte et organisation sur data.gouv.fr</h3>
         <p>Pour publier des données via geo.data.gouv.fr, vous devez disposer d’un compte compte individuel sur data.gouv.fr et de l’associer à une organisation.</p>
         <ul className='numbers'>
@@ -84,9 +78,7 @@ const DocumentationPage = () => (
             <img src='/static/documentation/datagouv_create_org.png' alt='Créer son organisation sur data.gouv.fr' />
           </li>
         </ul>
-      </Container>
 
-      <Container>
         <h3 id='harvesting'>Référencement et moissonnage du flux CSW</h3>
         <ul className='numbers'>
           <li>
@@ -121,9 +113,7 @@ const DocumentationPage = () => (
             </ul>
           </li>
         </ul>
-      </Container>
 
-      <Container>
         <h3 id='organizations'>Gestion de vos organisations</h3>
         <ul className='numbers'>
           <li>
@@ -135,9 +125,7 @@ const DocumentationPage = () => (
             <img src='/static/documentation/organizations.png' alt='Choisir parmi ses organisations' />
           </li>
         </ul>
-      </Container>
 
-      <Container>
         <h3 id='add-catalogs'>Ajouter des catalogues source à l’organisation</h3>
         <ul className='numbers'>
           <li>
@@ -150,9 +138,7 @@ const DocumentationPage = () => (
             </ul>
           </li>
         </ul>
-      </Container>
 
-      <Container>
         <h3 id='associate-producers'>Associer des producteurs au catalogue</h3>
         <p>Il s’agit de faire correspondre les contacts renseignés dans la métadonnée et le producteur identifié de la donnée. Par exemple, l’administrateur d’une IDG pourra indiquer à quels ayant-droits correspondent quelles données :</p>
         <img className='small' src='/static/documentation/associated_producers.png' alt='Aperçu des producteurs associés' />
@@ -168,9 +154,7 @@ const DocumentationPage = () => (
             <p>Typiquement, n’associez pas l’IGN, le BRGM, l’INSEE ou d’autres producteurs de données de ce type si vous ne faites pas partie de ces organismes. Par contre, il peut être très pertinent qu’un EPCI prenne en charge la publication des données pour le compte de ses communes.</p>
           </li>
         </ul>
-      </Container>
 
-      <Container>
         <h3 id='publish'>Publier sur data.gouv.fr</h3>
         <ul className='numbers'>
           <li>
