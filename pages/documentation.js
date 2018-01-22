@@ -1,6 +1,5 @@
 import React from 'react'
 import {flowRight} from 'lodash'
-import Link from '../components/link'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -9,6 +8,7 @@ import Page from '../components/page'
 import Meta from '../components/meta'
 import Content from '../components/content'
 import Container from '../components/container'
+import Link from '../components/link'
 
 const DocumentationPage = () => (
   <Page>
