@@ -27,7 +27,7 @@
     "lodash-es": "^4.17.4",
     "marked": "^0.3.7",
     "moment": "^2.19.4",
-    "next": "^4.2.1",
+    "next": "^4.2.3",
     "node-sass": "^4.7.2",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
