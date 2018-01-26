@@ -9,7 +9,7 @@ const SourceProducers = ({organization}) => (
   <div>
     {organization.producers ?
       <div>
-        <strong>{organization.producers.length}</strong> producteurs sont associés à votre organisation
+        <strong>{organization.producers && organization.producers.length > 0}</strong> producteurs sont associés à votre organisation
         <ul>
           {organization.producers.map(producer => (
             <li key={producer._id}>{producer._id}</li>
