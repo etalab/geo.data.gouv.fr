@@ -7,14 +7,19 @@ import Link from '../../link'
 
 const SourceProducers = ({organization}) => (
   <div>
-    <div>
-      <strong>{organization.producers.length}</strong> producteurs sont associés à votre organisation
-      <ul>
-        {organization.producers.map(producer => (
-          <li key={producer._id}>{producer._id}</li>
-        ))}
-      </ul>
-    </div>
+    {organization.producers ?
+      <div>
+        <strong>{organization.producers.length}</strong> producteurs sont associés à votre organisation
+        <ul>
+          {organization.producers.map(producer => (
+            <li key={producer._id}>{producer._id}</li>
+          ))}
+        </ul>
+      </div> :
+      <div>
+        Aucun producteur n’est associé à votre organisation.
+      </div>
+    }
 
     <Link prefetch href={`/publication/producers?oid=${organization._id}`} as={`/publication/${organization._id}/producers`}>
       <a>
