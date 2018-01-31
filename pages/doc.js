@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
 import FaBook from 'react-icons/lib/fa/book'
 
-import attachI18n from '../../components/hoc/attach-i18n'
-import attachSession from '../../components/hoc/attach-session'
+import attachI18n from '../components/hoc/attach-i18n'
+import attachSession from '../components/hoc/attach-session'
 
-import Page from '../../components/page'
-import Meta from '../../components/meta'
-import Head from '../../components/head'
-import Content from '../../components/content'
-import Container from '../../components/container'
-import Link from '../../components/link'
+import Page from '../components/page'
+import Meta from '../components/meta'
+import Head from '../components/head'
+import Content from '../components/content'
+import Container from '../components/container'
+import Link from '../components/link'
 
 class DocumentationPage extends React.Component {
   static propTypes = {
