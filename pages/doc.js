@@ -8,7 +8,7 @@ import attachSession from '../components/hoc/attach-session'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
-import Head from '../components/head'
+import PageTitle from '../components/doc/page-title'
 import Content from '../components/content'
 import Container from '../components/container'
 import Link from '../components/link'
@@ -24,9 +24,9 @@ class DocumentationPage extends React.Component {
     return (
       <Page>
         <Meta title={title} />
-        <Head title={title} icon={<FaBook />}>
+        <PageTitle title={title} icon={<FaBook />}>
           Retrouver ici toute la documentation liée à l’utilisation de la plateforme
-        </Head>
+        </PageTitle>
 
         <Content>
           <Container>

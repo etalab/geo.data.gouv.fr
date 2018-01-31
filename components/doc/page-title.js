@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Container from './container'
+import Container from '../container'
 
-const Head = ({children, title, icon}) => (
+const PageTitle = ({children, title, icon}) => (
   <div className='head'>
     <Container>
       <div className='row'>
@@ -49,10 +49,10 @@ const Head = ({children, title, icon}) => (
   </div>
 )
 
-Head.propTypes = {
+PageTitle.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired
 }
 
-export default Head
+export default PageTitle
