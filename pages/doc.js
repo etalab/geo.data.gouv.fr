@@ -31,7 +31,7 @@ class DocumentationPage extends React.Component {
         <Content>
           <Container>
             <ul>
-              <Link href='/doc/publier-vos-donnees'>
+              <Link href='/doc/publish-your-data'>
                 <a>
                   <h3>{t('footer.publishData')}</h3>
                 </a>
