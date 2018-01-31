@@ -175,7 +175,7 @@ const DocumentationPage = () => (
             <ul>
               <li>sélectionner les données que vous souhaitez publié en cochant la case ;</li>
               <li>ou sélectionner toutes les données en attente en cliquant sur le bouton <b>Tout sélectionner</b> ;</li>
-              <li>une fois la sélection effectuée, cliquer sur <b>Publier les données sélectionnées</b> ;</li>
+              <li>une fois la sélection effectuée, cliquer sur <b>Publier les données sélectionnées</b>.</li>
             </ul>
           </li>
         </ul>
