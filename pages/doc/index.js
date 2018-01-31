@@ -40,9 +40,6 @@ class DocumentationPage extends React.Component {
 
           </Container>
         </Content>
-
-        <style jsx>{`
-        `}</style>
       </Page>
     )
   }
