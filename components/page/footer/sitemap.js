@@ -8,6 +8,13 @@ const Sitemap = ({t}) => (
   <ul className='links'>
     <li><h2>geo.data.gouv.fr</h2></li>
     <li>
+      <Link href='/doc/publish-your-data'>
+        <a>
+          {t('footer.publishData')}
+        </a>
+      </Link>
+    </li>
+    <li>
       <Link href='/legal'>
         <a>
           {t('footer.legal')}
