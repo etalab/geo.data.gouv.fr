@@ -8,16 +8,16 @@ const Sitemap = ({t}) => (
   <ul className='links'>
     <li><h2>geo.data.gouv.fr</h2></li>
     <li>
-      <Link href='/legal'>
+      <Link href='/doc/publier-vos-donnees'>
         <a>
-          {t('footer.legal')}
+          {t('footer.publishData')}
         </a>
       </Link>
     </li>
     <li>
-      <Link href='/documentation'>
+      <Link href='/legal'>
         <a>
-          {t('footer.publishData')}
+          {t('footer.legal')}
         </a>
       </Link>
     </li>
