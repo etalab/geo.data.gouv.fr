@@ -1,18 +1,18 @@
 import React from 'react'
 import {flowRight} from 'lodash'
 
-import attachI18n from '../../components/hoc/attach-i18n'
-import attachSession from '../../components/hoc/attach-session'
+import attachI18n from '../components/hoc/attach-i18n'
+import attachSession from '../components/hoc/attach-session'
 
-import Page from '../../components/page'
-import Meta from '../../components/meta'
-import Content from '../../components/content'
-import Container from '../../components/container'
-import RequireAuth from '../../components/require-auth'
+import Page from '../components/page'
+import Meta from '../components/meta'
+import Content from '../components/content'
+import Container from '../components/container'
+import RequireAuth from '../components/require-auth'
 
-import Header from '../../components/publication/header'
-import Breadcrumbs from '../../components/publication/breadcrumbs'
-import OrganizationPreview from '../../components/publication/organization-preview'
+import Header from '../components/publication/header'
+import Breadcrumbs from '../components/publication/breadcrumbs'
+import OrganizationPreview from '../components/publication/organization-preview'
 
 const renderAuth = user => (
   <div>
