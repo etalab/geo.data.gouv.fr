@@ -9,7 +9,8 @@
       "i18n": ":earth_africa: Internationalization",
       "performance": ":racehorse: Performance",
       "design": ":rainbow: Design",
-      "cleanup": ":shower: Cleanup"
+      "cleanup": ":shower: Cleanup",
+      "documentation": ":memo: Documentation"
     },
     "cacheDir": ".changelog"
   }
