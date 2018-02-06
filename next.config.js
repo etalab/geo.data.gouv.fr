@@ -3,12 +3,12 @@ const webpack = require('webpack')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 module.exports = {
-  webpack(config, {dev}) {
+  webpack(config, {dev, isServer}) {
     config.plugins.push(
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fr/)
     )
 
-    if (!dev) {
+    if (!dev && !isServer) {
       config.plugins.push(new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         openAnalyzer: false,
