@@ -20,7 +20,7 @@ CHANGELOG.md
 
 # Build
 .next
-dist
+bundle-stats
 
 # Cache
 .yarn-cache
