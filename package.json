@@ -27,7 +27,7 @@
     "lodash-es": "^4.17.4",
     "marked": "^0.3.7",
     "moment": "^2.19.4",
-    "next": "^5.0.1-canary.2",
+    "next": "^5.0.1-canary.5",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -62,7 +62,7 @@
     "react-test-renderer": "^16.2.0",
     "styled-jsx": "^2.2.4",
     "styled-jsx-plugin-sass": "^0.2.2",
-    "webpack": "^3.10.0",
+    "webpack": "3.10.0",
     "webpack-bundle-analyzer": "^2.10.0",
     "xo": "^0.18.2"
   },
