@@ -9,8 +9,8 @@ set -e
 TARGET=${TARGET:-bundle-stats}
 mkdir -p $TARGET
 
-# Copy app bundle
-cp -r .next/app.js $TARGET
+# Copy main bundle
+cp -r .next/main.js $TARGET
 
 # Copy every page with a clean namespaced name
 # e.g.: pages/publication/producers => page-publication-producers
