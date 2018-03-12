@@ -18,7 +18,7 @@ module.exports = {
 
     if (!dev && !isServer) {
       const commonPlugin = config.plugins.find(p =>
-        p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'commons.js'
+        p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'main.js'
       )
 
       if (commonPlugin) {
