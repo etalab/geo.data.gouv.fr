@@ -112,17 +112,11 @@ jobs:
 
       - run:
           name: Extract built bundles for stats
-          command: |
-            mkdir dist-stats
-            cp -r .next/app.js .next/bundles dist-stats
-            # Remove _document.js as it’s only used by the server.
-            rm dist-stats/bundles/pages/_document.js
-            tar cvf dist-stats/chunks.js.tar .next/chunks/*.js
-            gzip -r dist-stats
+          command: ./build/scripts/extract-bundles
 
       -  store_artifacts:
           name: Store built bundles for stats
-          path: dist-stats
+          path: bundle-stats
 
   changelog:
     <<: *nodejs_container
