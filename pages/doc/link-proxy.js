@@ -12,13 +12,13 @@ import Container from '../../components/container'
 const LinkProxyPage = () => (
   <Page>
     <Meta
-      title='Link Proxy'
+      title='Analyse des données et ressources associées'
       description='Documentation sur l’analyse des ressources associées à vos données.'
     />
 
     <Content>
       <Container>
-        <h1>Link Proxy</h1>
+        <h1>Analyse des données et ressources associées</h1>
 
         <p>
           Afin que les ressources associées (documents, distributions, etc.) à vos jeux de données soient toujours à jour et accessibles, elles sont régulièrement analysées par la plateforme <b>geo.data.gouv.fr</b>.
