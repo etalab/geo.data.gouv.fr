@@ -52,48 +52,47 @@ i18n
     detection: {
       order: ['path', 'cookie', 'header']
     }
-  }, () => {
-    app.prepare()
-      .then(() => {
-        const server = express()
+  }, async () => {
+    await app.prepare()
 
-        if (!dev) {
-          server.use(compression())
-        }
+    const server = express()
 
-        server.get('/robots.txt', (req, res) => {
-          res.sendFile(path.join(__dirname, '../robots.txt'))
-        })
+    if (!dev) {
+      server.use(compression())
+    }
 
-        server.use(i18nextMiddleware.handle(i18n))
-        server.use('/locales', express.static(path.join(__dirname, '../locales')))
+    server.get('/robots.txt', (req, res) => {
+      res.sendFile(path.join(__dirname, '../robots.txt'))
+    })
 
-        if (dev) {
-          server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
-        }
+    server.use(i18nextMiddleware.handle(i18n))
+    server.use('/locales', express.static(path.join(__dirname, '../locales')))
 
-        const lngs = languages.join('|')
-        server.use(`/:lng(${lngs})`, createRoutes(app))
+    if (dev) {
+      server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
+    }
 
-        server.use('/static', express.static(path.join(__dirname, '../static'), {
-          maxAge: '15d'
-        }))
+    const lngs = languages.join('|')
+    server.use(`/:lng(${lngs})`, createRoutes(app))
 
-        server.get('*', (req, res) => {
-          if (!isInternalUrl(req)) {
-            return res.redirect(`/${req.i18n.languages[0]}${req.url}`)
-          }
+    server.use('/static', express.static(path.join(__dirname, '../static'), {
+      maxAge: '15d'
+    }))
 
-          handle(req, res)
-        })
+    server.get('*', (req, res) => {
+      if (!isInternalUrl(req)) {
+        return res.redirect(`/${req.i18n.languages[0]}${req.url}`)
+      }
 
-        server.listen(port, err => {
-          if (err) {
-            throw err
-          }
+      handle(req, res)
+    })
 
-          // eslint-disable-next-line no-console
-          console.log(`> Ready on http://localhost:${port}`)
-        })
-      })
+    server.listen(port, err => {
+      if (err) {
+        throw err
+      }
+
+      // eslint-disable-next-line no-console
+      console.log(`> Ready on http://localhost:${port}`)
+    })
   })

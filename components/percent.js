@@ -6,7 +6,9 @@ import Counter from './counter'
 const color = percent => {
   if (percent < 20) {
     return 'error'
-  } else if (percent > 55) {
+  }
+
+  if (percent > 55) {
     return 'success'
   }
 

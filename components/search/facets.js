@@ -29,7 +29,7 @@ class Facets extends React.Component {
   render() {
     const {groups, open} = this.props
 
-    if (groups.length < 1) {
+    if (groups.length === 0) {
       return null
     }
 

@@ -61,13 +61,19 @@ class OrganizationPublicationPage extends React.Component {
     }
   }
 
+  _getUpdateCatalogsPromise = async (organization, catalogs) => {
+    await _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
+      sourceCatalogs: catalogs
+    })
+
+    return this.fetchOrganization()
+  }
+
   removeCatalog = (organization, catalog) => {
     const catalogs = organization.sourceCatalogs.filter(c => c !== catalog._id)
 
     this.setState({
-      organizationPromise: _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
-        sourceCatalogs: catalogs
-      }).then(() => this.fetchOrganization())
+      organizationPromise: this._getUpdateCatalogsPromise(organization, catalogs)
     })
   }
 
@@ -78,9 +84,7 @@ class OrganizationPublicationPage extends React.Component {
     ]
 
     this.setState({
-      organizationPromise: _put(`${PUBLICATION_BASE_URL}/api/organizations/${organization._id}`, {
-        sourceCatalogs: catalogs
-      }).then(() => this.fetchOrganization())
+      organizationPromise: this._getUpdateCatalogsPromise(organization, catalogs)
     })
   }
 

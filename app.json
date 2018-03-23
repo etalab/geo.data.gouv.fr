@@ -6,6 +6,9 @@
     }
   ],
   "env":{
+    "YARN_PRODUCTION": {
+      "required": true
+    },
     "HEROKU_APP_NAME": {
       "required": true
     },
