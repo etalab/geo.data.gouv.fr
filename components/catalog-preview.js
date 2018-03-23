@@ -13,7 +13,7 @@ import Counter from './counter'
 import Percent from './percent'
 
 const CatalogPreview = ({catalog, t}) => {
-  const metrics = catalog.metrics
+  const {metrics} = catalog
   const openness = get(metrics, 'datasets.partitions.openness.yes', 0)
   const download = get(metrics, 'datasets.partitions.download.yes', 0)
 

@@ -39,7 +39,7 @@ class Downloads extends React.Component {
     const {distributions, t} = this.props
     const {preview} = this.state
 
-    if (distributions.length < 1) {
+    if (distributions.length === 0) {
       return t('downloads.noDownloads')
     }
 

@@ -22,7 +22,8 @@ module.exports = {
       )
 
       if (commonPlugin) {
-        const minChunks = commonPlugin.minChunks
+        const {minChunks} = commonPlugin
+
         commonPlugin.minChunks = (module, count) => {
           if (module.resource && commonDependencies.some(c => module.resource.includes(`${sep}${c}${sep}`))) {
             return true

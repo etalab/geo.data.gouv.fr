@@ -32,7 +32,7 @@ const parse = logs => {
 const Logs = ({logs, t}) => {
   const {entries, totals} = parse(logs)
 
-  if (entries.length < 1 && totals.length < 1) {
+  if (entries.length === 0 && totals.length === 0) {
     return t('harvest.logs.empty')
   }
 

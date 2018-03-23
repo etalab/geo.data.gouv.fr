@@ -23,7 +23,7 @@ const PreviewTable = ({data, t}) => {
     <div>
       <Table
         data={data}
-        columns={Array.from(attributes).map(attribute => ({
+        columns={[...attributes].map(attribute => ({
           Header: attribute,
           accessor: attribute,
           minWidth: 200

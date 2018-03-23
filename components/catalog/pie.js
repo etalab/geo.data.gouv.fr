@@ -36,7 +36,7 @@ const formatData = (data, t) => {
 export const PieChart = ({data, t}) => {
   const formatedData = formatData(data, t)
 
-  if (formatedData.labels.length < 1) {
+  if (formatedData.labels.length === 0) {
     return (
       <div>{t('details.statistics.noData')}</div>
     )

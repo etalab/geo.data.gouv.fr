@@ -30,24 +30,39 @@ class Renderer {
   }
 
   text = body => body
+
   list = body => body
+
   heading = body => this.paragraph(body)
+
   code = body => this.paragraph(body)
+
   blockquote = body => this.paragraph(body)
+
   listitem = body => this.paragraph(body)
 
   link = href => href
+
   strong = body => `<b>${body}</b>`
+
   em = body => `<i>${body}</i>`
+
   codespan = body => body
+
   del = body => body
 
   br = () => ''
+
   hr = () => ''
+
   image = () => ''
+
   table = () => ''
+
   tablerow = () => ''
+
   tablecell = () => ''
+
   html = () => ''
 }
 

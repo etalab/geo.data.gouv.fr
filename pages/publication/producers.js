@@ -57,21 +57,33 @@ class ProducersPublicationPage extends React.Component {
     }
   }
 
-  associateProducer = producer => {
+  _getAssociateProducerPromise = async producer => {
     const {organizationId} = this.props
 
+    await _post(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`, {
+      _id: producer._id
+    })
+
+    return this.fetchProducers()
+  }
+
+  associateProducer = producer => {
     this.setState({
-      producersPromise: _post(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`, {
-        _id: producer._id
-      }).then(() => this.fetchProducers())
+      producersPromise: this._getAssociateProducerPromise(producer)
     })
   }
 
-  dissociateProducer = producer => {
+  _getDissociateProducerPromise = async producer => {
     const {organizationId} = this.props
 
+    await _delete(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers/${producer._id}`)
+
+    return this.fetchProducers()
+  }
+
+  dissociateProducer = producer => {
     this.setState({
-      producersPromise: _delete(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers/${producer._id}`).then(() => this.fetchProducers())
+      producersPromise: this._getDissociateProducerPromise(producer)
     })
   }
 

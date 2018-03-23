@@ -60,15 +60,21 @@ class DatasetsPublicationPage extends React.Component {
     }
   }
 
-  publishDatasets = datasets => {
+  _getPublishDatasetsPromise = async datasets => {
     const {organizationId} = this.props
 
+    await Promise.all(
+      datasets.map(datasetId => _put(`${PUBLICATION_BASE_URL}/api/datasets/${datasetId}/publication`, {
+        organization: organizationId
+      }))
+    )
+
+    return this.fetchDatasets()
+  }
+
+  publishDatasets = datasets => {
     this.setState({
-      datasetsPromise: Promise.all(
-        datasets.map(datasetId => _put(`${PUBLICATION_BASE_URL}/api/datasets/${datasetId}/publication`, {
-          organization: organizationId
-        }))
-      ).then(() => this.fetchDatasets())
+      datasetsPromise: this._getPublishDatasetsPromise(datasets)
     })
   }
 
