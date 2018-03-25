@@ -163,32 +163,6 @@ jobs:
           paths:
             - CHANGELOG.md
 
-  deploy:
-    <<: *nodejs_container
-    steps:
-      - *attach_workspace
-      - *restore_node_modules
-
-      - add_ssh_keys:
-          fingerprints:
-            - 15:6e:be:9c:af:66:a8:b4:2b:be:9a:cd:03:d4:f3:87
-
-      - run:
-          name: Setup SSH to GitHub
-          command: ssh-keyscan github.com > ~/.ssh/known_hosts
-
-      - run:
-          name: Set SSH user email
-          command: git config --global user.email "infra@beta.gouv.fr"
-
-      - run:
-          name: Set SSH user name
-          command: git config --global user.name "CircleCI"
-
-      - deploy:
-          name: Deploy to gh-pages branch on GitHub
-          command: yarn deploy
-
   release:
     <<: *golang_container
     steps:
@@ -206,7 +180,7 @@ jobs:
 workflows:
   version: 2
 
-  build_test_deploy:
+  push:
     jobs:
       - checkout:
           filters: *default_filters
@@ -235,16 +209,6 @@ workflows:
           requires:
             - install
           filters: *default_filters
-
-      # - deploy:
-      #     requires:
-      #       - lint
-      #       - test
-      #       - build
-      #     filters:
-      #       <<: *default_filters
-      #       branches:
-      #         ignore: '/.*/'
 
       - release:
           requires:
