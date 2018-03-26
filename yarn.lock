@@ -2614,15 +2614,15 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-xo-nextjs@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo-nextjs/-/eslint-config-xo-nextjs-1.2.0.tgz#a163d06522926e7c1b33ba5837e473c78b4463ec"
+eslint-config-xo-nextjs@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-nextjs/-/eslint-config-xo-nextjs-1.3.0.tgz#a867395f8930ada491b09fb069944101bf59bc3d"
   dependencies:
-    eslint-config-xo-react "^0.15.0"
+    eslint-config-xo-react "^0.16.0"
 
-eslint-config-xo-react@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.15.0.tgz#9dd9858cbeff2094d775db25ffb5f79b98c546e4"
+eslint-config-xo-react@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.16.0.tgz#39bc63630de9940c59026cace6c272ce5a7d9897"
 
 eslint-config-xo@^0.20.0:
   version "0.20.1"

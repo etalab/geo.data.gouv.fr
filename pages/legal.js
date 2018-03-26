@@ -19,8 +19,11 @@ const LegalPage = () => (
         <h3>Editeur</h3>
         <p>
           Direction interministérielle du numérique et du système d’information et de communication de l’État (DINSIC)<br />
+          {''}
           39, quai André Citroën<br />
+          {''}
           75015 Paris 15<br />
+          {''}
           dinsic-sec.sgmap [à] modernisation.gouv.fr
         </p>
 
@@ -29,9 +32,13 @@ const LegalPage = () => (
         <h3>Hébergeur</h3>
         <p>
           OVH<br />
+          {''}
           SAS au capital de 10 059 500 €<br />
+          {''}
           RCS Lille Métropole 424 761 419 00045<br />
+          {''}
           Code APE 6311Z<br />
+          {''}
           Siège social : 2 rue Kellermann - 59100 Roubaix - France.
         </p>
       </Container>

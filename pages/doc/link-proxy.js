@@ -37,14 +37,14 @@ const LinkProxyPage = () => (
 
         <ul>
           <li>
-            Les en-têtes HTTP <code>Etag</code> et <code>Last-Modified</code> sont respectés : à chaque requête, nous passons les dernières valeurs connues de ces en-têtes via les en-têtes respectifs <code>If-None-Match</code> et <code>If-Last-Modified-Since</code>.
-            <br />
+            Les en-têtes HTTP <code>Etag</code> et <code>Last-Modified</code> sont respectés : à chaque requête, nous passons les dernières valeurs connues de ces en-têtes via les en-têtes respectifs <code>If-None-Match</code> et <code>If-Last-Modified-Since</code>.<br />
+            {''}
             Si votre serveur HTTP supporte ces en-têtes, rien ne sera téléchargé si les données n’ont pas changé.
           </li>
 
           <li>
-            Afin de déterminer la fréquence de téléchargement (ou de modification des ressources), vous pouvez spécifier un en-tête <code>Cache-Control</code>.
-            <br />
+            Afin de déterminer la fréquence de téléchargement (ou de modification des ressources), vous pouvez spécifier un en-tête <code>Cache-Control</code>.<br />
+            {''}
             Par exemple, si nous trouvons un en-tête <code>Cache-Control: public, max-age=2592000</code> sur une ressource, nous l’analyserons de nouveau qu’un mois plus tard (2592000 secondes correspondant à un mois).
           </li>
         </ul>
