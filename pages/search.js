@@ -8,8 +8,7 @@ import {getFilters} from '../lib/query'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
-
-import ErrorPage from './_error'
+import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
 import Content from '../components/content'
@@ -38,41 +37,26 @@ class SearchPage extends React.Component {
       facets: PropTypes.object.isRequired
     }),
 
-    error: PropTypes.shape({
-      code: PropTypes.number
-    }),
-
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
-    result: null,
-    error: null
+    result: null
   }
 
-  static async getInitialProps({res, query}) {
+  static async getInitialProps({query}) {
     let page = parseInt(query.p, 10) || 1
     if (page < 1) {
       page = 1
     }
 
-    try {
-      return {
-        result: await _get(`${GEODATA_API_URL}/records?${stringify({
-          q: query.q,
-          limit: 20,
-          offset: (page - 1) * 20,
-          ...getFilters(query)
-        })}`)
-      }
-    } catch (err) {
-      if (res) {
-        res.statusCode = err.code
-      }
-
-      return {
-        error: err
-      }
+    return {
+      result: await _get(`${GEODATA_API_URL}/records?${stringify({
+        q: query.q,
+        limit: 20,
+        offset: (page - 1) * 20,
+        ...getFilters(query)
+      })}`)
     }
   }
 
@@ -118,12 +102,6 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const {error} = this.props
-
-    if (error) {
-      return <ErrorPage code={error.code} />
-    }
-
     const {result: {query, results, count}, t} = this.props
     const {showFacets} = this.state
 
@@ -184,5 +162,6 @@ class SearchPage extends React.Component {
 
 export default flowRight(
   attachI18n(['search', 'dataset']),
-  attachSession
+  attachSession,
+  withErrors
 )(SearchPage)

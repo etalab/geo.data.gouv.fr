@@ -7,8 +7,7 @@ import {isObsolete} from '../lib/catalog'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
-
-import ErrorPage from './_error'
+import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -31,30 +30,16 @@ class CatalogPage extends React.Component {
       name: PropTypes.string.isRequired,
       metrics: PropTypes.object.isRequired
     }),
-    error: PropTypes.shape({
-      code: PropTypes.number
-    }),
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
-    catalog: null,
-    error: null
+    catalog: null
   }
 
-  static async getInitialProps({res, query}) {
-    try {
-      return {
-        catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
-      }
-    } catch (err) {
-      if (res) {
-        res.statusCode = err.code
-      }
-
-      return {
-        error: err
-      }
+  static async getInitialProps({query}) {
+    return {
+      catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
     }
   }
 
@@ -79,12 +64,6 @@ class CatalogPage extends React.Component {
   }
 
   render() {
-    const {error} = this.props
-
-    if (error) {
-      return <ErrorPage code={error.code} />
-    }
-
     const {catalog, t} = this.props
     const {harvestsPromise} = this.state
 
@@ -127,5 +106,6 @@ class CatalogPage extends React.Component {
 
 export default flowRight(
   attachI18n('catalogs'),
-  attachSession
+  attachSession,
+  withErrors
 )(CatalogPage)

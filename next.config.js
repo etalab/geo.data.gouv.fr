@@ -1,13 +1,15 @@
-const {join, sep} = require('path')
+const {join} = require('path')
 const webpack = require('webpack')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 // The following dependencies will be pushed to the commons.js bundle
 const commonDependencies = [
-  'lodash-es',
-  'marked',
+  '/lodash-es/',
+  '/marked/',
 
-  'components/hoc'
+  '/components/hoc/',
+
+  '/pages/_error.js'
 ]
 
 module.exports = {
@@ -25,7 +27,7 @@ module.exports = {
         const {minChunks} = commonPlugin
 
         commonPlugin.minChunks = (module, count) => {
-          if (module.resource && commonDependencies.some(c => module.resource.includes(`${sep}${c}${sep}`))) {
+          if (module.resource && commonDependencies.some(c => module.resource.includes(c))) {
             return true
           }
 

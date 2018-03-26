@@ -6,8 +6,7 @@ import {_get} from '../lib/fetch'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
-
-import ErrorPage from './_error'
+import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -59,40 +58,25 @@ class DatasetPage extends React.Component {
       remoteId: PropTypes.isRequired
     }),
 
-    error: PropTypes.shape({
-      code: PropTypes.number
-    }),
-
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     dataset: null,
-    datagouvPublication: null,
-    error: null
+    datagouvPublication: null
   }
 
-  static async getInitialProps({res, query}) {
-    try {
-      const [dataset, publications] = await Promise.all([
-        _get(`${GEODATA_API_URL}/records/${query.did}`),
-        _get(`${GEODATA_API_URL}/records/${query.did}/publications`)
-      ])
+  static async getInitialProps({query}) {
+    const [dataset, publications] = await Promise.all([
+      _get(`${GEODATA_API_URL}/records/${query.did}`),
+      _get(`${GEODATA_API_URL}/records/${query.did}/publications`)
+    ])
 
-      const datagouvPublication = publications.find(p => p.target === 'dgv')
+    const datagouvPublication = publications.find(p => p.target === 'dgv')
 
-      return {
-        dataset,
-        datagouvPublication
-      }
-    } catch (err) {
-      if (res) {
-        res.statusCode = err.code
-      }
-
-      return {
-        error: err
-      }
+    return {
+      dataset,
+      datagouvPublication
     }
   }
 
@@ -113,12 +97,6 @@ class DatasetPage extends React.Component {
   }
 
   render() {
-    const {error} = this.props
-
-    if (error) {
-      return <ErrorPage code={error.code} />
-    }
-
     const {dataset: {
       recordId,
       revisionDate,
@@ -295,5 +273,6 @@ class DatasetPage extends React.Component {
 
 export default flowRight(
   attachI18n('dataset'),
-  attachSession
+  attachSession,
+  withErrors
 )(DatasetPage)
