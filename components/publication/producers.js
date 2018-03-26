@@ -90,7 +90,9 @@ class Producers extends React.Component {
           title={
             <div className='title blue'>
               <div>
-                Producteurs non-rattachés
+                <div>
+                  Producteurs non-rattachés
+                </div>
                 <small>
                   Ajoutez les producteurs dont vous souhaitez que les données ouvertes soient publiées dans votre organisation.
                 </small>
@@ -114,11 +116,11 @@ class Producers extends React.Component {
           title={
             <div className='title'>
               <div>
-                Producteurs rattachés à d’autres organisations
+                <div>
+                  Producteurs rattachés à d’autres organisations
+                </div>
                 <small>
-                  Les producteurs de cette liste ne peuvent pas être rattachés à votre compte organisation parce qu’ils sont déjà rattachés à un autre compte. N’hésitez pas à contacter l’organisation de rattachement si vous estimez que votre propre compte est plus pertinent.
-                  <br />
-                  En cas de difficulté, contactez <a href='mailto:geo@data.gouv.fr'>notre équipe</a>.
+                  Les producteurs de cette liste ne peuvent pas être rattachés à votre compte organisation parce qu’ils sont déjà rattachés à un autre compte. N’hésitez pas à contacter l’organisation de rattachement si vous estimez que votre propre compte est plus pertinent.<br />En cas de difficulté, contactez <a href='mailto:geo@data.gouv.fr'>notre équipe</a>.
                 </small>
               </div>
               <div>{linkedToOthers.length}</div>
