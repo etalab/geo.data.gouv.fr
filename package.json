@@ -41,7 +41,7 @@
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.3",
+    "babel-eslint": "^8.2.2",
     "babel-plugin-dotenv-import": "^1.3.1",
     "babel-plugin-inline-import": "^2.0.6",
     "babel-plugin-lodash": "^3.3.2",
