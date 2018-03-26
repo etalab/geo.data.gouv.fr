@@ -42,16 +42,22 @@ export default Page => {
     }
   }, Page)
 
-  if (Page.getInitialProps) {
-    Extended.getInitialProps = async context => {
+  Extended.getInitialProps = async context => {
+    if (Page.getInitialProps) {
       try {
         return await Page.getInitialProps(context)
       } catch (error) {
+        if (context.res) {
+          context.res.statusCode = error.code || 500
+        }
+
         return {
           error
         }
       }
     }
+
+    return {}
   }
 
   return Extended
