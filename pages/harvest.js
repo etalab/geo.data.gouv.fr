@@ -6,8 +6,7 @@ import {_get} from '../lib/fetch'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
-
-import ErrorPage from './_error'
+import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -33,48 +32,27 @@ class HarvestPage extends React.Component {
       log: PropTypes.arrayOf(PropTypes.string).isRequired
     }),
 
-    error: PropTypes.shape({
-      code: PropTypes.number
-    }),
-
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     catalog: null,
-    harvest: null,
-    error: null
+    harvest: null
   }
 
-  static async getInitialProps({res, query}) {
-    try {
-      const [catalog, harvest] = await Promise.all([
-        _get(`${GEODATA_API_URL}/catalogs/${query.cid}`),
-        _get(`${GEODATA_API_URL}/services/${query.cid}/synchronizations/${query.hid}`)
-      ])
+  static async getInitialProps({query}) {
+    const [catalog, harvest] = await Promise.all([
+      _get(`${GEODATA_API_URL}/catalogs/${query.cid}`),
+      _get(`${GEODATA_API_URL}/services/${query.cid}/synchronizations/${query.hid}`)
+    ])
 
-      return {
-        catalog,
-        harvest
-      }
-    } catch (err) {
-      if (res) {
-        res.statusCode = err.code
-      }
-
-      return {
-        error: err
-      }
+    return {
+      catalog,
+      harvest
     }
   }
 
   render() {
-    const {error} = this.props
-
-    if (error) {
-      return <ErrorPage code={error.code} />
-    }
-
     const {catalog, harvest, t} = this.props
 
     return (
@@ -112,5 +90,6 @@ class HarvestPage extends React.Component {
 
 export default flowRight(
   attachI18n('catalogs'),
-  attachSession
+  attachSession,
+  withErrors
 )(HarvestPage)
