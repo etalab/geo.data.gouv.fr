@@ -29,7 +29,7 @@
     "marked": "^0.3.18",
     "moment": "^2.19.4",
     "next": "^5.1.0",
-    "next-runtime-dotenv": "^1.0.0",
+    "next-runtime-dotenv": "^1.0.1",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
