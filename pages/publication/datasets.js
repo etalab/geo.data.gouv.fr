@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import {_get, _put} from '../../lib/fetch'
 
@@ -18,7 +19,9 @@ import Header from '../../components/publication/header'
 import Breadcrumbs from '../../components/publication/breadcrumbs'
 import Datasets from '../../components/publication/datasets'
 
-import {PUBLICATION_BASE_URL} from '@env'
+const {publicRuntimeConfig: {
+  PUBLICATION_BASE_URL
+}} = getConfig()
 
 class DatasetsPublicationPage extends React.Component {
   static propTypes = {

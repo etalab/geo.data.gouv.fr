@@ -1,5 +1,6 @@
 import React from 'react'
 import {translate} from 'react-i18next'
+import getConfig from 'next/config'
 import PropTypes from 'prop-types'
 import strRightBack from 'underscore.string/strRightBack'
 
@@ -10,7 +11,9 @@ import formats from '../../../lib/formats'
 
 import Button from '../../button'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class DatasetDownload extends React.PureComponent {
   static propTypes = {

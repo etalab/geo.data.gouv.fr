@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import getConfig from 'next/config'
 import {uniqWith, isEqual, flowRight} from 'lodash'
 
 import {_get} from '../lib/fetch'
@@ -28,7 +29,10 @@ import Links from '../components/dataset/links'
 
 import Metadata from '../components/dataset/metadata'
 
-import {GEODATA_API_URL, DATAGOUV_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL,
+  DATAGOUV_API_URL
+}} = getConfig()
 
 class DatasetPage extends React.Component {
   static propTypes = {

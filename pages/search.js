@@ -2,6 +2,7 @@ import {stringify} from 'querystring'
 import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import {_get} from '../lib/fetch'
 import {getFilters} from '../lib/query'
@@ -23,7 +24,9 @@ import Paging from '../components/search/paging'
 import Facets from '../components/search/facets'
 import FacetButton from '../components/search/facet-button'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class SearchPage extends React.Component {
   static propTypes = {

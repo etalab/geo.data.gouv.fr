@@ -1,12 +1,15 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
+import getConfig from 'next/config'
 import Head from 'next/head'
 import prune from 'underscore.string/prune'
 import {flowRight} from 'lodash'
 import {translate} from 'react-i18next'
 import {withRouter} from 'next/router'
 
-import {PUBLIC_URL} from '@env'
+const {publicRuntimeConfig: {
+  PUBLIC_URL
+}} = getConfig()
 
 const SITE_NAME = 'geo.data.gouv.fr'
 const TWITTER_HANDLE = '@geodatagouv'

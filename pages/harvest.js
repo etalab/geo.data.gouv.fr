@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import {_get} from '../lib/fetch'
 
@@ -18,7 +19,9 @@ import HarvestStatus from '../components/harvest-status'
 import Header from '../components/harvest/header'
 import Logs from '../components/harvest/logs'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class HarvestPage extends React.Component {
   static propTypes = {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import {_get, _put} from '../../lib/fetch'
 
@@ -21,7 +22,10 @@ import SourceCatalogs from '../../components/publication/organization/source-cat
 import SourceProducers from '../../components/publication/organization//source-producers'
 import DatasetMetrics from '../../components/publication/organization//dataset-metrics'
 
-import {PUBLICATION_BASE_URL, GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  PUBLICATION_BASE_URL,
+  GEODATA_API_URL
+}} = getConfig()
 
 class OrganizationPublicationPage extends React.Component {
   static propTypes = {

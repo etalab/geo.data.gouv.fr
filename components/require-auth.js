@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
 import {withRouter} from 'next/router'
+import getConfig from 'next/config'
 import {translate} from 'react-i18next'
 
 import withSession from './hoc/with-session'
@@ -9,7 +10,10 @@ import withSession from './hoc/with-session'
 import Info from './info'
 import Button from './button'
 
-import {PUBLIC_URL, PUBLICATION_BASE_URL} from '@env'
+const {publicRuntimeConfig: {
+  PUBLIC_URL,
+  PUBLICATION_BASE_URL
+}} = getConfig()
 
 class RequireAuth extends React.Component {
   static propTypes = {

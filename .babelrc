@@ -3,18 +3,6 @@
     ["inline-import", {
       "extensions": [".css"]
     }],
-    ["dotenv-import", {
-      "allowUndefined": true,
-      "whitelist": [
-        "PUBLIC_URL",
-        "PUBLICATION_BASE_URL",
-        "DATAGOUV_API_URL",
-        "DATAGOUV_API_KEY",
-        "GEODATA_API_URL",
-        "PIWIK_URL",
-        "PIWIK_SITE_ID"
-      ]
-    }],
     "lodash"
   ],
 

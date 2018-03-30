@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {uniqBy} from 'lodash'
+import getConfig from 'next/config'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class Thumbnails extends React.Component {
   static propTypes = {

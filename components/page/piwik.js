@@ -1,7 +1,11 @@
 import React from 'react'
+import getConfig from 'next/config'
 import Head from 'next/head'
 
-import {PIWIK_URL, PIWIK_SITE_ID} from '@env'
+const {publicRuntimeConfig: {
+  PIWIK_URL,
+  PIWIK_SITE_ID
+}} = getConfig()
 
 class Piwik extends React.Component {
   componentDidMount() {

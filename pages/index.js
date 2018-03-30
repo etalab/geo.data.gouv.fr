@@ -1,5 +1,6 @@
 import React from 'react'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import attachSession from '../components/hoc/attach-session'
@@ -15,7 +16,9 @@ import Catalogs from '../components/home/catalogs'
 import Events from '../components/home/events'
 import NewsletterForm from '../components/home/newsletter-form'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class IndexPage extends React.Component {
   state = {}
