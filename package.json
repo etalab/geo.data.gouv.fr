@@ -28,7 +28,7 @@
     "lodash-es": "^4.17.4",
     "marked": "^0.3.18",
     "moment": "^2.19.4",
-    "next": "^5.0.1-canary.17",
+    "next": "^5.1.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
