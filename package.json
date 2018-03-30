@@ -60,7 +60,7 @@
     "styled-jsx": "^2.2.6",
     "styled-jsx-plugin-sass": "^0.2.4",
     "webpack": "3.10.0",
-    "webpack-bundle-analyzer": "^2.11.0",
+    "webpack-bundle-analyzer": "^2.11.1",
     "xo": "^0.20.3"
   },
   "browserslist": [
