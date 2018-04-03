@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import {_get, _post} from '../lib/fetch'
 import {isObsolete} from '../lib/catalog'
@@ -22,7 +23,9 @@ import Statistics from '../components/catalog/statistics'
 import Harvests from '../components/catalog/harvests'
 import Organizations from '../components/catalog/organizations'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class CatalogPage extends React.Component {
   static propTypes = {

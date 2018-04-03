@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
+import getConfig from 'next/config'
 
 import {_get} from '../lib/fetch'
 import {sortByScore} from '../lib/catalog'
@@ -15,7 +16,9 @@ import Content from '../components/content'
 import Container from '../components/container'
 import CatalogPreview from '../components/catalog-preview'
 
-import {GEODATA_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  GEODATA_API_URL
+}} = getConfig()
 
 class CatalogsPage extends React.Component {
   static propTypes = {

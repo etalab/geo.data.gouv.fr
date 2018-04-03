@@ -1,5 +1,6 @@
 const {join} = require('path')
 const webpack = require('webpack')
+const nextRuntimeDotenv = require('next-runtime-dotenv')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 // The following dependencies will be pushed to the commons.js bundle
@@ -12,7 +13,19 @@ const commonDependencies = [
   '/pages/_error.js'
 ]
 
-module.exports = {
+const withConfig = nextRuntimeDotenv({
+  public: [
+    'PUBLIC_URL',
+    'DATAGOUV_API_URL',
+    'DATAGOUV_API_KEY',
+    'PUBLICATION_BASE_URL',
+    'GEODATA_API_URL',
+    'PIWIK_URL',
+    'PIWIK_SITE_ID'
+  ]
+})
+
+module.exports = withConfig({
   webpack(config, {dev, isServer}) {
     config.plugins.push(
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fr/)
@@ -54,4 +67,4 @@ module.exports = {
 
     return config
   }
-}
+})

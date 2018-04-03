@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
+import getConfig from 'next/config'
 
 import CommentIcon from 'react-icons/lib/fa/comments'
 
@@ -12,7 +13,9 @@ import RequireAuth from '../../require-auth'
 import Form from './form'
 import List from './list'
 
-import {DATAGOUV_API_URL} from '@env'
+const {publicRuntimeConfig: {
+  DATAGOUV_API_URL
+}} = getConfig()
 
 class Discussions extends React.Component {
   static propTypes = {
