@@ -83,7 +83,6 @@ class CenteredMap extends React.Component {
   }
 
   renderPopUp(features) {
-    console.log(features);
     return (
       features.map((feature, key) => (
         <ul key={`feature-${key}`}>

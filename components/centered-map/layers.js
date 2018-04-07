@@ -31,7 +31,6 @@ class Layers extends React.Component {
   }
 
   onHover(event) {
-    console.log(event);
     const {onToggleHover} = this.props
     onToggleHover(event)
   }
