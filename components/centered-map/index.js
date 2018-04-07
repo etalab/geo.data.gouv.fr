@@ -1,4 +1,4 @@
-/* eslint new-cap: off */
+/* eslint new-cap: off, react/no-array-index-key: off */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
@@ -107,7 +107,7 @@ class CenteredMap extends React.Component {
             fitBoundsOptions={{padding: 20, linear: frozen}}
             zoom={layerZoom || [zoom]}
             onDrag={this.onDrag}
-            style={mapStyle}
+            style={mapStyle} /* eslint-disable-line react/style-prop-object */
             flyToOptions={{speed: 0.8}}
             containerStyle={{
               height: '100%',
@@ -120,14 +120,14 @@ class CenteredMap extends React.Component {
                 coordinates={layerCenter}
                 features={layer}
                 renderPopUp={this.renderPopUp}
-                  />
+              />
             }
 
             <Layers
               data={vectors}
               markerClick={this.markerClick}
               onToggleHover={this.onToggleHover}
-               />
+            />
           </Mapbox>
         </ErrorWrapper>
 

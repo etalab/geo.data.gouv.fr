@@ -62,7 +62,7 @@ class Layers extends React.Component {
         circleOnMouseDown={this.markerClick}
         circleOnMouseEnter={this.onHover}
         circleOnMouseLeave={this.onHover}
-         />
+      />
     )
   }
 }
