@@ -13,7 +13,7 @@ import Layers from './layers'
 import PopUp from './pop-up'
 
 const Mapbox = ReactMapboxGl({})
-const mapStyle = 'https://free.tilehosting.com/styles/bright/style.json?key=bCzitV3Whud1dgslD9c4'
+const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json'
 
 class CenteredMap extends React.Component {
   static propTypes = {
