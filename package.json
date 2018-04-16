@@ -41,6 +41,9 @@
     "react-table": "^6.7.5",
     "underscore.string": "^3.3.4"
   },
+  "resolutions": {
+    "chart.js/moment": "^2.22.1"
+  },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "babel-plugin-inline-import": "^2.0.6",
