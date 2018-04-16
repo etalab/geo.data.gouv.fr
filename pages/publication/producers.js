@@ -28,7 +28,9 @@ class ProducersPublicationPage extends React.Component {
     organizationId: PropTypes.string.isRequired,
     session: PropTypes.shape({
       user: PropTypes.object
-    })
+    }),
+
+    tReady: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
@@ -113,17 +115,23 @@ class ProducersPublicationPage extends React.Component {
   }
 
   render() {
+    const {tReady} = this.props
+
     return (
-      <Page>
-        <Meta title='Publication' />
-        <Content>
-          <Container fluid>
-            <RequireAuth
-              message='Vous devez être connecté pour accéder à l’interface de publication.'
-              render={this.renderAuth}
-            />
-          </Container>
-        </Content>
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title='Publication' />
+            <Content>
+              <Container fluid>
+                <RequireAuth
+                  message='Vous devez être connecté pour accéder à l’interface de publication.'
+                  render={this.renderAuth}
+                />
+              </Container>
+            </Content>
+          </React.Fragment>
+        )}
       </Page>
     )
   }
