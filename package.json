@@ -27,7 +27,7 @@
     "lodash": "^4.17.5",
     "lodash-es": "^4.17.8",
     "marked": "^0.3.18",
-    "moment": "^2.19.4",
+    "moment": "^2.22.1",
     "next": "^5.1.0",
     "next-runtime-dotenv": "^1.0.1",
     "nprogress": "^0.2.0",
