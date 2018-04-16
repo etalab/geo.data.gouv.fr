@@ -29,15 +29,36 @@ class SearchInput extends React.PureComponent {
     hasButton: false
   }
 
+  constructor(props) {
+    super(props)
+
+    const {router} = this.props
+
+    this.state = {
+      value: router.query.q || ''
+    }
+  }
+
+  componentWillReceiveProps({router}) {
+    const {value} = this.state
+
+    if (router.query.q && router.query.q !== value) {
+      this.setState({
+        value: router.query.q
+      })
+    }
+  }
+
   onSubmit = event => {
     event.preventDefault()
 
     const {router, i18n, defaultQuery} = this.props
+    const {value} = this.state
 
     const query = {
       ...defaultQuery,
       ...router.query,
-      q: event.target.query.value
+      q: value
     }
 
     // Reset search to first page when firing a new query.
@@ -52,15 +73,25 @@ class SearchInput extends React.PureComponent {
     router.push(url, `/${i18n.language}${url}`)
   }
 
+  onChange = event => {
+    event.preventDefault()
+
+    this.setState({
+      value: event.target.value
+    })
+  }
+
   render() {
-    const {router, placeholder, hasButton, t} = this.props
+    const {placeholder, hasButton, t} = this.props
+    const {value} = this.state
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
           type='text'
           name='query'
-          defaultValue={router.query.q}
+          value={value}
+          onChange={this.onChange}
           placeholder={placeholder || t('search')}
         />
 
