@@ -11,7 +11,7 @@ import ErrorWrapper from './error-wrapper'
 
 Leaflet.Icon.Default.imagePath = '/static/images/leaflet/'
 
-class CenteredMap extends React.PureComponent {
+class CenteredMap extends React.Component {
   static propTypes = {
     vectors: PropTypes.object.isRequired,
     frozen: PropTypes.bool,
@@ -28,6 +28,11 @@ class CenteredMap extends React.PureComponent {
     lat: 47,
     lon: 1,
     zoom: 4
+  }
+
+  shouldComponentUpdate() {
+    // If we ever need this to re-render on prop changes, remove this method.
+    return false
   }
 
   render() {
