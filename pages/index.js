@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
 import getConfig from 'next/config'
 
@@ -21,6 +22,10 @@ const {publicRuntimeConfig: {
 }} = getConfig()
 
 class IndexPage extends React.Component {
+  static propTypes = {
+    tReady: PropTypes.bool.isRequired
+  }
+
   state = {}
 
   async componentDidMount() {
@@ -30,19 +35,24 @@ class IndexPage extends React.Component {
   }
 
   render() {
+    const {tReady} = this.props
     const {catalogsPromise} = this.state
 
     return (
-      <Page>
-        <Meta />
-        <Content clouds>
-          <Hero />
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title='geo.data.gouv.fr' />
+            <Content clouds>
+              <Hero />
 
-          <Catalogs catalogsPromise={catalogsPromise} />
-          <Events />
-        </Content>
+              <Catalogs catalogsPromise={catalogsPromise} />
+              <Events />
+            </Content>
 
-        <NewsletterForm />
+            <NewsletterForm />
+          </React.Fragment>
+        )}
       </Page>
     )
   }

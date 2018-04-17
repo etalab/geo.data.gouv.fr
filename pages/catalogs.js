@@ -26,7 +26,8 @@ class CatalogsPage extends React.Component {
       _id: PropTypes.string.isRequired
     })).isRequired,
 
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   static async getInitialProps() {
@@ -38,53 +39,57 @@ class CatalogsPage extends React.Component {
   }
 
   render() {
-    const {catalogs, t} = this.props
+    const {catalogs, t, tReady} = this.props
 
     const sorted = sortByScore(catalogs)
 
     return (
-      <Page>
-        <Meta title={t('list.title')} />
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title={t('list.title')} />
 
-        <Content clouds>
-          <Container fluid>
-            <h1>{t('list.title')}</h1>
+            <Content clouds>
+              <Container fluid>
+                <h1>{t('list.title')}</h1>
 
-            <section>
-              {sorted.map(catalog => (
-                <div key={catalog._id}>
-                  <CatalogPreview catalog={catalog} />
-                </div>
-              ))}
-            </section>
-          </Container>
-        </Content>
+                <section>
+                  {sorted.map(catalog => (
+                    <div key={catalog._id}>
+                      <CatalogPreview catalog={catalog} />
+                    </div>
+                  ))}
+                </section>
+              </Container>
+            </Content>
 
-        <style jsx>{`
-          h1 {
-            color: #fff;
-            font-size: xx-large;
-            font-weight: 100;
-            margin-bottom: 1em;
-            text-align: center;
-          }
+            <style jsx>{`
+              h1 {
+                color: #fff;
+                font-size: xx-large;
+                font-weight: 100;
+                margin-bottom: 1em;
+                text-align: center;
+              }
 
-          section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-          }
+              section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+              }
 
-          div {
-            width: 360px;
-            margin: 10px;
+              div {
+                width: 360px;
+                margin: 10px;
 
-            @media (max-width: 551px) {
-              width: 100%;
-              margin: 10px 0;
-            }
-          }
-        `}</style>
+                @media (max-width: 551px) {
+                  width: 100%;
+                  margin: 10px 0;
+                }
+              }
+            `}</style>
+          </React.Fragment>
+        )}
       </Page>
     )
   }

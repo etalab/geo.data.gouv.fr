@@ -62,7 +62,8 @@ class DatasetPage extends React.Component {
       remoteId: PropTypes.isRequired
     }),
 
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
@@ -107,7 +108,7 @@ class DatasetPage extends React.Component {
       metadata,
       dataset,
       organizations
-    }, datagouvPublication, t} = this.props
+    }, datagouvPublication, t, tReady} = this.props
     const {datagouvDatasetPromise} = this.state
 
     const contacts = uniqWith(metadata.contacts.map(contact => ({
@@ -120,156 +121,160 @@ class DatasetPage extends React.Component {
     const hasLinks = metadata.links.length > 0
 
     return (
-      <Page>
-        <Meta
-          title={metadata.title}
-          description={metadata.description}
-          images={metadata.thumbnails && metadata.thumbnails.map(
-            thumbnail => `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`
-          )}
-        />
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta
+              title={metadata.title}
+              description={metadata.description}
+              images={metadata.thumbnails && metadata.thumbnails.map(
+                thumbnail => `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnail.originalUrlHash}`
+              )}
+            />
 
-        <Content clouds>
-          <Container fluid>
-            <div className='container'>
-              <div className='left'>
-                {datagouvPublication && (
-                  <Box title={t('blocks.producer')}>
-                    <Producer promise={datagouvDatasetPromise} />
-                  </Box>
-                )}
+            <Content clouds>
+              <Container fluid>
+                <div className='container'>
+                  <div className='left'>
+                    {datagouvPublication && (
+                      <Box title={t('blocks.producer')}>
+                        <Producer promise={datagouvDatasetPromise} />
+                      </Box>
+                    )}
 
-                <Box title={t('blocks.datagouv')}>
-                  <Datagouv
-                    license={metadata.license}
-                    organizations={organizations}
-                    distributions={dataset.distributions}
-                    publication={datagouvPublication}
-                  />
-                </Box>
-
-                {contacts.length > 0 && (
-                  <Box title={t('blocks.contacts')}>
-                    <Contacts contacts={contacts} />
-                  </Box>
-                )}
-
-                {metadata.credit && (
-                  <Box title={t('blocks.credit')}>
-                    {metadata.credit}
-                  </Box>
-                )}
-              </div>
-
-              <div className='main'>
-                <Box>
-                  <Header metadata={metadata} />
-                </Box>
-                <Box title={t('blocks.downloads')}>
-                  <Downloads distributions={dataset.distributions} />
-                </Box>
-                {datagouvPublication && (
-                  <Box title={t('blocks.discussions')}>
-                    <Discussions remoteId={datagouvPublication.remoteId} />
-                  </Box>
-                )}
-              </div>
-
-              {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
-                <div className='right'>
-                  {hasThumbnails && (
-                    <Box title={t('blocks.thumbnails')}>
-                      <Thumbnails recordId={recordId} thumbnails={metadata.thumbnails} />
+                    <Box title={t('blocks.datagouv')}>
+                      <Datagouv
+                        license={metadata.license}
+                        organizations={organizations}
+                        distributions={dataset.distributions}
+                        publication={datagouvPublication}
+                      />
                     </Box>
-                  )}
-                  {metadata.spatialExtent && (
-                    <Box title={t('blocks.spatialExtent')}>
-                      <SpatialExtent extent={metadata.spatialExtent} />
+
+                    {contacts.length > 0 && (
+                      <Box title={t('blocks.contacts')}>
+                        <Contacts contacts={contacts} />
+                      </Box>
+                    )}
+
+                    {metadata.credit && (
+                      <Box title={t('blocks.credit')}>
+                        {metadata.credit}
+                      </Box>
+                    )}
+                  </div>
+
+                  <div className='main'>
+                    <Box>
+                      <Header metadata={metadata} />
                     </Box>
-                  )}
-                  {hasLinks && (
-                    <Box title={t('blocks.links')}>
-                      <Links links={metadata.links} />
+                    <Box title={t('blocks.downloads')}>
+                      <Downloads distributions={dataset.distributions} />
                     </Box>
+                    {datagouvPublication && (
+                      <Box title={t('blocks.discussions')}>
+                        <Discussions remoteId={datagouvPublication.remoteId} />
+                      </Box>
+                    )}
+                  </div>
+
+                  {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
+                    <div className='right'>
+                      {hasThumbnails && (
+                        <Box title={t('blocks.thumbnails')}>
+                          <Thumbnails recordId={recordId} thumbnails={metadata.thumbnails} />
+                        </Box>
+                      )}
+                      {metadata.spatialExtent && (
+                        <Box title={t('blocks.spatialExtent')}>
+                          <SpatialExtent extent={metadata.spatialExtent} />
+                        </Box>
+                      )}
+                      {hasLinks && (
+                        <Box title={t('blocks.links')}>
+                          <Links links={metadata.links} />
+                        </Box>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
-            </div>
 
-            <div className='footer'>
-              <Metadata id={metadata.id} revisionDate={revisionDate} />
-            </div>
-          </Container>
-        </Content>
+                <div className='footer'>
+                  <Metadata id={metadata.id} revisionDate={revisionDate} />
+                </div>
+              </Container>
+            </Content>
 
-        <style jsx>{`
-          .container {
-            display: flex;
-            flex-wrap: wrap;
-            flex: auto;
+            <style jsx>{`
+              .container {
+                display: flex;
+                flex-wrap: wrap;
+                flex: auto;
 
-            @media (max-width: 768px) {
-              flex-direction: column;
-            }
-          }
+                @media (max-width: 768px) {
+                  flex-direction: column;
+                }
+              }
 
-          .left, .right {
-            width: 370px;
+              .left, .right {
+                width: 370px;
 
-            @media (max-width: 1680px) {
-              width: 330px;
-            }
+                @media (max-width: 1680px) {
+                  width: 330px;
+                }
 
-            @media (max-width: 1480px) {
-              width: 310px;
-            }
+                @media (max-width: 1480px) {
+                  width: 310px;
+                }
 
-            @media (max-width: 1280px) {
-              width: 270px;
-            }
+                @media (max-width: 1280px) {
+                  width: 270px;
+                }
 
-            @media (max-width: 1080px) {
-              width: 230px;
-            }
-          }
+                @media (max-width: 1080px) {
+                  width: 230px;
+                }
+              }
 
-          .left {
-            margin-right: 20px;
+              .left {
+                margin-right: 20px;
 
-            @media (max-width: 1080px) {
-              width: 38%;
-            }
+                @media (max-width: 1080px) {
+                  width: 38%;
+                }
 
-            @media (max-width: 768px) {
-              width: 100%;
-              margin: 0;
-              order: 1;
-            }
-          }
+                @media (max-width: 768px) {
+                  width: 100%;
+                  margin: 0;
+                  order: 1;
+                }
+              }
 
-          .right {
-            margin-left: 20px;
+              .right {
+                margin-left: 20px;
 
-            @media (max-width: 1080px) {
-              flex: 1 0 100%;
-              width: 100%;
-              margin: 0;
-              order: 2;
-            }
-          }
+                @media (max-width: 1080px) {
+                  flex: 1 0 100%;
+                  width: 100%;
+                  margin: 0;
+                  order: 2;
+                }
+              }
 
-          .main {
-            flex: 1;
+              .main {
+                flex: 1;
 
-            @media (max-width: 768px) {
-              order: 0;
-            }
-          }
+                @media (max-width: 768px) {
+                  order: 0;
+                }
+              }
 
-          .footer {
-            margin-top: auto;
-          }
-        `}</style>
+              .footer {
+                margin-top: auto;
+              }
+            `}</style>
+          </React.Fragment>
+        )}
       </Page>
     )
   }

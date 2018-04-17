@@ -35,7 +35,8 @@ class HarvestPage extends React.Component {
       log: PropTypes.arrayOf(PropTypes.string).isRequired
     }),
 
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
@@ -56,36 +57,40 @@ class HarvestPage extends React.Component {
   }
 
   render() {
-    const {catalog, harvest, t} = this.props
+    const {catalog, harvest, t, tReady} = this.props
 
     return (
-      <Page>
-        <Meta title={t('harvest.title', {name: catalog.name})} />
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title={t('harvest.title', {name: catalog.name})} />
 
-        <Content clouds>
-          <Container>
-            <Box>
-              <Header catalog={catalog} status={harvest.status} />
+            <Content clouds>
+              <Container>
+                <Box>
+                  <Header catalog={catalog} status={harvest.status} />
 
-              <div>
-                {t('harvest.idLabel')} <b><code>{harvest._id}</code></b>
-              </div>
+                  <div>
+                    {t('harvest.idLabel')} <b><code>{harvest._id}</code></b>
+                  </div>
 
-              <HarvestStatus harvest={harvest} />
+                  <HarvestStatus harvest={harvest} />
 
-              <div>
-                <h3>{t('harvest.logs.title')}</h3>
-                <Logs logs={harvest.log} />
-              </div>
-            </Box>
-          </Container>
-        </Content>
+                  <div>
+                    <h3>{t('harvest.logs.title')}</h3>
+                    <Logs logs={harvest.log} />
+                  </div>
+                </Box>
+              </Container>
+            </Content>
 
-        <style jsx>{`
-          h3 {
-            margin: 1.6em 0 1.4em;
-          }
-        `}</style>
+            <style jsx>{`
+              h3 {
+                margin: 1.6em 0 1.4em;
+              }
+            `}</style>
+          </React.Fragment>
+        )}
       </Page>
     )
   }
