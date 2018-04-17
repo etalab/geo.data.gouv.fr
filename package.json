@@ -76,20 +76,17 @@
   "jest": {
     "verbose": true,
     "setupFiles": [
-      "<rootDir>/jest.setup.js"
-    ],
-    "testMatch": [
-      "<rootDir>/tests/**/*.test.js"
+      "./jest.setup.js"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "components/**/*.js",
-      "lib/**/*.js"
+      "lib/**/*.js",
+      "server/**/*.js"
     ],
     "coverageReporters": [
       "lcov",
-      "text-summary",
-      "html"
+      "text-summary"
     ],
     "testResultsProcessor": "jest-junit"
   },
@@ -106,7 +103,7 @@
     },
     "overrides": [
       {
-        "files": "tests/**/*.test.js",
+        "files": "__tests__/**/*.js",
         "env": [
           "browser",
           "jest"
