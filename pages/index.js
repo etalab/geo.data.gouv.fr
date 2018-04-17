@@ -42,7 +42,7 @@ class IndexPage extends React.Component {
       <Page ready={tReady}>
         {() => (
           <React.Fragment>
-            <Meta title='geo.data.gouv.fr' />
+            <Meta />
             <Content clouds>
               <Hero />
 
