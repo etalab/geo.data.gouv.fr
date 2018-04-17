@@ -30,18 +30,7 @@ class CenteredMap extends React.Component {
     zoom: 4
   }
 
-  componentWillMount() {
-    const {vectors} = this.props
-
-    // We’re computing bounds only once: when the component will mount.
-    // Whatever happens, GeoJSON will not re-render if the input data changes.
-    // So we’re safe only computing once.
-    this.bounds = Leaflet.geoJson(vectors).getBounds()
-  }
-
   shouldComponentUpdate() {
-    // As seen in componentWillMount, we do not need to re-render this component.
-    // All the props are not going to change.
     // If we ever need this to re-render on prop changes, remove this method.
     return false
   }
@@ -49,14 +38,17 @@ class CenteredMap extends React.Component {
   render() {
     const {vectors, frozen, lat, lon, zoom, t} = this.props
 
+    const bounds = Leaflet.geoJson(vectors).getBounds()
+
     return (
       <div>
         <ErrorWrapper message={t('errors.map')}>
           <Map
             center={[lat, lon]}
-            bounds={this.bounds}
+            bounds={bounds}
             minZoom={zoom}
             dragging={!frozen}
+            touchZoom={!frozen}
             scrollWheelZoom={false}
             doubleClickZoom={!frozen}
             zoomControl={!frozen}
