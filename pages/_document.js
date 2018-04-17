@@ -1,6 +1,12 @@
 import React from 'react'
 import Document, {Head, Main, NextScript} from 'next/document'
+import getConfig from 'next/config'
 import flush from 'styled-jsx/server'
+
+const {publicRuntimeConfig: {
+  PIWIK_URL,
+  PIWIK_SITE_ID
+}} = getConfig()
 
 export default class MyDocument extends Document {
   static getInitialProps({renderPage}) {
@@ -57,6 +63,7 @@ export default class MyDocument extends Document {
           }} />
           {/* eslint-enable react/no-danger */}
           <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=default,modernizr:es6array,modernizr:es7array' />
+          {PIWIK_URL && PIWIK_SITE_ID && <script src={`${PIWIK_URL}/piwik.js`} defer async />}
           <NextScript />
         </body>
       </html>
