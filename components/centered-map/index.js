@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
 import mapboxGl, {GeoJSONLayer, Popup} from 'react-mapbox-gl'
-import {bbox} from '@turf/turf'
+import bbox from '@turf/bbox'
 
 import ErrorWrapper from '../error-wrapper'
 
