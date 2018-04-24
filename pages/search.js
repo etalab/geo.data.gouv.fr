@@ -40,7 +40,8 @@ class SearchPage extends React.Component {
       facets: PropTypes.object.isRequired
     }),
 
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
@@ -105,59 +106,63 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const {result: {query, results, count}, t} = this.props
+    const {result: {query, results, count}, t, tReady} = this.props
     const {showFacets} = this.state
 
     const groups = this.getFilterGroups()
 
     return (
-      <Page>
-        <Meta title={t('title', {
-          query: query.q,
-          context: !query.q && 'empty'
-        })} />
-        <Content>
-          <Container fluid>
-            <div className='main'>
-              <div className='search'>
-                <div className='search-bar'>
-                  <SearchInput hasButton />
-                  {groups.length > 0 && <FacetButton onClick={this.toggleFacets} />}
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title={t('title', {
+              query: query.q,
+              context: !query.q && 'empty'
+            })} />
+            <Content>
+              <Container fluid>
+                <div className='main'>
+                  <div className='search'>
+                    <div className='search-bar'>
+                      <SearchInput hasButton />
+                      {groups.length > 0 && <FacetButton onClick={this.toggleFacets} />}
+                    </div>
+                    <ActiveFacets facets={query.facets} />
+                    <Count count={count} />
+
+                    <Results results={results} />
+                    {count > 0 && <Paging count={count} query={query} />}
+                  </div>
+
+                  <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
                 </div>
-                <ActiveFacets facets={query.facets} />
-                <Count count={count} />
+              </Container>
+            </Content>
 
-                <Results results={results} />
-                {count > 0 && <Paging count={count} query={query} />}
-              </div>
+            <style jsx global>{`
+              body {
+                @media (max-width: 960px) {
+                  ${showFacets && 'overflow: hidden;'}
+                }
+              }
+            `}</style>
 
-              <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
-            </div>
-          </Container>
-        </Content>
+            <style jsx>{`
+              .main {
+                display: flex;
+                margin-bottom: 4em;
+              }
 
-        <style jsx global>{`
-          body {
-            @media (max-width: 960px) {
-              ${showFacets && 'overflow: hidden;'}
-            }
-          }
-        `}</style>
+              .search {
+                flex: 1;
+              }
 
-        <style jsx>{`
-          .main {
-            display: flex;
-            margin-bottom: 4em;
-          }
-
-          .search {
-            flex: 1;
-          }
-
-          .search-bar {
-            display: flex;
-          }
-        `}</style>
+              .search-bar {
+                display: flex;
+              }
+            `}</style>
+          </React.Fragment>
+        )}
       </Page>
     )
   }

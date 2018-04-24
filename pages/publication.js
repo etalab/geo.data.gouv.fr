@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
 
 import attachI18n from '../components/hoc/attach-i18n'
@@ -47,17 +48,28 @@ const renderAuth = user => (
   </div>
 )
 
-const PublicationPage = () => (
-  <Page>
-    <Meta title='Publication' />
+const PublicationPage = ({tReady}) => (
+  <Page ready={tReady}>
+    {() => (
+      <React.Fragment>
+        <Meta title='Publication' />
 
-    <Content>
-      <Container fluid>
-        <RequireAuth message='Vous devez être connecté pour accéder à l’interface de publication.' render={renderAuth} />
-      </Container>
-    </Content>
+        <Content>
+          <Container fluid>
+            <RequireAuth
+              message='Vous devez être connecté pour accéder à l’interface de publication.'
+              render={renderAuth}
+            />
+          </Container>
+        </Content>
+      </React.Fragment>
+    )}
   </Page>
 )
+
+PublicationPage.propTypes = {
+  tReady: PropTypes.bool.isRequired
+}
 
 export default flowRight(
   attachI18n(),

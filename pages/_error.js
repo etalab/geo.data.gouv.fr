@@ -13,10 +13,12 @@ import Box from '../components/box'
 class ErrorPage extends React.Component {
   static propTypes = {
     code: PropTypes.number,
+
     i18n: PropTypes.shape({
       exists: PropTypes.func.isRequired
     }).isRequired,
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
@@ -30,64 +32,68 @@ class ErrorPage extends React.Component {
   }
 
   render() {
-    const {code, i18n, t} = this.props
+    const {code, i18n, t, tReady} = this.props
 
     const message = i18n.exists(`errors.http.${code}`) ? t(`errors.http.${code}`) : t('errors.unknown')
 
     return (
-      <Page>
-        <Meta title={t('errors.title', {code})} description={message} />
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title={t('errors.title', {code})} description={message} />
 
-        <Content clouds>
-          <div>
-            <Box>
-              <section>
-                <h1>{t('errors.title', {code})}</h1>
-                <h2>{message}</h2>
-              </section>
-            </Box>
-          </div>
-        </Content>
+            <Content clouds>
+              <div>
+                <Box>
+                  <section>
+                    <h1>{t('errors.title', {code})}</h1>
+                    <h2>{message}</h2>
+                  </section>
+                </Box>
+              </div>
+            </Content>
 
-        <style jsx>{`
-          div {
-            margin: 7em 15px 2em;
-            text-align: center;
+            <style jsx>{`
+              div {
+                margin: 7em 15px 2em;
+                text-align: center;
 
-            @media (min-width: 552px) {
-              display: flex;
-              flex: 1;
-              align-items: center;
-              justify-content: center;
-            }
-          }
+                @media (min-width: 552px) {
+                  display: flex;
+                  flex: 1;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
 
-          section {
-            padding: 10px;
+              section {
+                padding: 10px;
 
-            @media (min-width: 552px) {
-              display: flex;
-              align-items: center;
-            }
-          }
+                @media (min-width: 552px) {
+                  display: flex;
+                  align-items: center;
+                }
+              }
 
-          h1 {
-            font-size: 24px;
-            fontWeight: 500;
+              h1 {
+                font-size: 24px;
+                fontWeight: 500;
 
-            @media (min-width: 552px) {
-              margin: 0 20px 0 0;
-              border-right: 1px solid rgba(0, 0, 0,.3);
-              padding: 10px 20px 10px 0;
-            }
-          }
+                @media (min-width: 552px) {
+                  margin: 0 20px 0 0;
+                  border-right: 1px solid rgba(0, 0, 0,.3);
+                  padding: 10px 20px 10px 0;
+                }
+              }
 
-          h2 {
-            margin: 0;
-            font-size: 14px;
-            font-weight: normal;
-          }
-        `}</style>
+              h2 {
+                margin: 0;
+                font-size: 14px;
+                font-weight: normal;
+              }
+            `}</style>
+          </React.Fragment>
+        )}
       </Page>
     )
   }

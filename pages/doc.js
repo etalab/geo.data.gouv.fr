@@ -8,38 +8,45 @@ import attachSession from '../components/hoc/attach-session'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
-import PageTitle from '../components/doc/page-title'
 import Content from '../components/content'
 import Container from '../components/container'
 import Link from '../components/link'
 
+import PageTitle from '../components/doc/page-title'
+
 class DocumentationPage extends React.Component {
   static propTypes = {
-    t: PropTypes.func.isRequired
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   render() {
-    const {t} = this.props
-    const title = 'Documentation'
+    const {t, tReady} = this.props
+
     return (
-      <Page>
-        <Meta title={title} />
-        <PageTitle title={title} icon={<FaBook />}>
-          Retrouver ici toute la documentation liée à l’utilisation de la plateforme
-        </PageTitle>
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title='Documentation' />
 
-        <Content>
-          <Container>
-            <ul>
-              <Link href='/doc/publish-your-data'>
-                <a>
-                  <h3>{t('footer.publishData')}</h3>
-                </a>
-              </Link>
-            </ul>
+            <PageTitle title='Documentation' icon={<FaBook />}>
+              Retrouvez ici toute la documentation liée à l’utilisation de la plateforme
+            </PageTitle>
 
-          </Container>
-        </Content>
+            <Content>
+              <Container>
+                <ul>
+                  <Link href='/doc/publish-your-data'>
+                    <a>
+                      <h3>{t('footer.publishData')}</h3>
+                    </a>
+                  </Link>
+                </ul>
+
+              </Container>
+            </Content>
+          </React.Fragment>
+        )}
       </Page>
     )
   }

@@ -33,7 +33,9 @@ class CatalogPage extends React.Component {
       name: PropTypes.string.isRequired,
       metrics: PropTypes.object.isRequired
     }),
-    t: PropTypes.func.isRequired
+
+    t: PropTypes.func.isRequired,
+    tReady: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
@@ -67,41 +69,45 @@ class CatalogPage extends React.Component {
   }
 
   render() {
-    const {catalog, t} = this.props
+    const {catalog, t, tReady} = this.props
     const {harvestsPromise} = this.state
 
     return (
-      <Page>
-        <Meta title={t('details.title', {name: catalog.name})} />
+      <Page ready={tReady}>
+        {() => (
+          <React.Fragment>
+            <Meta title={t('details.title', {name: catalog.name})} />
 
-        <Content clouds>
-          <Container>
-            <Box>
-              <Header catalog={catalog} />
-              {isObsolete(catalog) && (
-                <Warning>{t('common:catalog.obsolete')}</Warning>
-              )}
-              <Statistics metrics={catalog.metrics} />
+            <Content clouds>
+              <Container>
+                <Box>
+                  <Header catalog={catalog} />
+                  {isObsolete(catalog) && (
+                    <Warning>{t('common:catalog.obsolete')}</Warning>
+                  )}
+                  <Statistics metrics={catalog.metrics} />
 
-              <h3>{t('details.harvests.title')}</h3>
-              <Harvests promise={harvestsPromise} catalog={catalog} runHarvest={this.runHarvest} />
+                  <h3>{t('details.harvests.title')}</h3>
+                  <Harvests promise={harvestsPromise} catalog={catalog} runHarvest={this.runHarvest} />
 
-              <h3>{t('details.search')}</h3>
-              <SearchInput hasButton defaultQuery={{
-                catalog: catalog.name
-              }} />
+                  <h3>{t('details.search')}</h3>
+                  <SearchInput hasButton defaultQuery={{
+                    catalog: catalog.name
+                  }} />
 
-              <h3>{t('details.organizations')}</h3>
-              <Organizations catalog={catalog} />
-            </Box>
-          </Container>
-        </Content>
+                  <h3>{t('details.organizations')}</h3>
+                  <Organizations catalog={catalog} />
+                </Box>
+              </Container>
+            </Content>
 
-        <style jsx>{`
-          h3 {
-            margin: 2.6em 0 1.4em;
-          }
-        `}</style>
+            <style jsx>{`
+              h3 {
+                margin: 2.6em 0 1.4em;
+              }
+            `}</style>
+          </React.Fragment>
+        )}
       </Page>
     )
   }

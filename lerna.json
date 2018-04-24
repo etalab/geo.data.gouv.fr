@@ -1,17 +1,18 @@
 {
   "changelog": {
-    "repo": "etalab/geo.data.gouv.fr",
+    "cacheDir": ".changelog",
     "labels": {
+      "analytics": ":bar_chart: Analytics",
       "bug": ":bug: Bug Fix",
-      "security": ":policeman: Security",
-      "enhancement": ":rocket: Enhancement",
       "build-process": ":building_construction: Build Process",
+      "cleanup": ":shower: Cleanup",
+      "design": ":rainbow: Design",
+      "documentation": ":memo: Documentation",
+      "enhancement": ":rocket: Enhancement",
       "i18n": ":earth_africa: Internationalization",
       "performance": ":racehorse: Performance",
-      "design": ":rainbow: Design",
-      "cleanup": ":shower: Cleanup",
-      "documentation": ":memo: Documentation"
+      "security": ":policeman: Security"
     },
-    "cacheDir": ".changelog"
+    "repo": "etalab/geo.data.gouv.fr"
   }
 }
