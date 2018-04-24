@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
-import mapboxGl, {GeoJSONLayer, Popup} from 'react-mapbox-gl'
+import mapboxGl, {Source, Layer, Popup} from 'react-mapbox-gl'
 import bbox from '@turf/bbox'
 
 import ErrorWrapper from '../error-wrapper'
 
+import Events from './events'
 import Feature from './feature'
 
 const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json'
@@ -15,40 +16,11 @@ class CenteredMap extends React.Component {
     data: PropTypes.object.isRequired,
     frozen: PropTypes.bool,
 
-    lineLayout: PropTypes.object,
-    linePaint: PropTypes.object,
-    fillPaint: PropTypes.object,
-    polygonPaint: PropTypes.object,
-    circlePaint: PropTypes.object,
-
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
-    frozen: false,
-
-    lineLayout: {
-      'line-cap': 'round',
-      'line-join': 'round'
-    },
-    linePaint: {
-      'line-color': '#4790E5',
-      'line-width': 2
-    },
-    fillPaint: {
-      'fill-color': '#3099df',
-      'fill-opacity': 0.2
-    },
-    polygonPaint: {
-      'fill-color': '#21ba45',
-      'fill-outline-color': 'blue',
-      'fill-opacity': 0.3
-    },
-    circlePaint: {
-      'circle-radius': 5,
-      'circle-color': '#3099df',
-      'circle-opacity': 0.6
-    }
+    frozen: false
   }
 
   constructor(props) {
@@ -82,36 +54,39 @@ class CenteredMap extends React.Component {
     }
   }
 
-  onToggleHover = event => {
+  onMouseEnter = (layer, event) => {
     const canvas = event.target.getCanvas()
+    canvas.style.cursor = 'pointer'
 
-    if (event.type === 'mouseenter') {
-      canvas.style.cursor = 'pointer'
+    let coordinates = event.lngLat
+    const [feature] = event.features
 
-      const [feature] = event.features
-      const coordinates = feature.geometry.coordinates.slice()
-
-      this.setState({
-        marker: {
-          feature,
-          coordinates,
-          count: event.features.length
-        }
-      })
-    } else {
-      canvas.style.cursor = ''
-
-      this.setState({
-        marker: null
-      })
+    if (layer === 'point') {
+      coordinates = feature.geometry.coordinates.slice()
     }
+
+    this.setState({
+      marker: {
+        feature,
+        coordinates,
+        count: event.features.length
+      }
+    })
+  }
+
+  onMouseLeave = (layer, event) => {
+    const canvas = event.target.getCanvas()
+    canvas.style.cursor = ''
+
+    this.setState({
+      marker: null
+    })
   }
 
   render() {
     const Map = this.MapComponent
     const {
       data, frozen,
-      lineLayout, linePaint, fillPaint, polygonPaint, circlePaint,
       t
     } = this.props
     const {bbox, marker} = this.state
@@ -133,23 +108,73 @@ class CenteredMap extends React.Component {
             width: '100%'
           }}
         >
+          <Source id='centered-map' geoJsonSource={{
+            type: 'geojson',
+            data
+          }} />
+
+          {/* Point */}
+          <Layer
+            sourceId='centered-map'
+            id='point'
+            type='circle'
+            filter={['in', '$type', 'Point']}
+            paint={{
+              'circle-radius': 5,
+              'circle-color': '#3099df',
+              'circle-opacity': 0.6
+            }}
+          />
+
+          {/* Polygon */}
+          <Layer
+            sourceId='centered-map'
+            id='polygon'
+            type='fill'
+            filter={['==', '$type', 'Polygon']}
+            paint={{
+              'fill-color': '#3099df',
+              'fill-opacity': 0.3
+            }}
+          />
+
+          <Layer
+            sourceId='centered-map'
+            id='polygon-outline'
+            type='line'
+            filter={['==', '$type', 'Polygon']}
+            paint={{
+              'line-color': '#4790E5',
+              'line-width': 2
+            }}
+          />
+
+          {/* LineString */}
+          <Layer
+            id='line'
+            sourceId='centered-map'
+            type='line'
+            filter={['==', '$type', 'LineString']}
+            paint={{
+              'line-color': '#3099df',
+              'line-width': 5,
+              'line-opacity': 0.8
+            }}
+          />
+
+          {!frozen && (
+            <Events
+              layers={['point', 'polygon', 'line']}
+              onMouseEnter={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+            />
+          )}
 
           {marker && (
             <Popup coordinates={marker.coordinates}>
               <Feature feature={marker.feature} otherFeaturesCount={marker.count - 1} />
             </Popup>
           )}
-
-          <GeoJSONLayer
-            data={data}
-            lineLayout={lineLayout}
-            linePaint={linePaint}
-            fillPaint={fillPaint}
-            polygonPaint={polygonPaint}
-            circlePaint={circlePaint}
-            circleOnMouseEnter={!frozen && this.onToggleHover}
-            circleOnMouseLeave={!frozen && this.onToggleHover}
-          />
         </Map>
       </ErrorWrapper>
     )
