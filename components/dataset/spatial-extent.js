@@ -17,7 +17,7 @@ const SpatialExtent = ({extent}) => {
   return (
     <div>
       <div className='map'>
-        <CenteredMap data={data} frozen circlePaint={null} />
+        <CenteredMap data={data} frozen />
       </div>
 
       <style jsx>{`
