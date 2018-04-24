@@ -115,8 +115,8 @@ class CenteredMap extends React.Component {
 
           {/* Point */}
           <Layer
-            sourceId='centered-map'
             id='point'
+            sourceId='centered-map'
             type='circle'
             filter={['in', '$type', 'Point']}
             paint={{
@@ -128,8 +128,8 @@ class CenteredMap extends React.Component {
 
           {/* Polygon */}
           <Layer
-            sourceId='centered-map'
             id='polygon'
+            sourceId='centered-map'
             type='fill'
             filter={['==', '$type', 'Polygon']}
             paint={{
@@ -139,8 +139,8 @@ class CenteredMap extends React.Component {
           />
 
           <Layer
-            sourceId='centered-map'
             id='polygon-outline'
+            sourceId='centered-map'
             type='line'
             filter={['==', '$type', 'Polygon']}
             paint={{
