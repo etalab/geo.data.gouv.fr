@@ -45,7 +45,7 @@ class CenteredMap extends React.Component {
       'fill-opacity': 0.3
     },
     circlePaint: {
-      'circle-radius': 6,
+      'circle-radius': 5,
       'circle-color': '#3099df',
       'circle-opacity': 0.6
     }
