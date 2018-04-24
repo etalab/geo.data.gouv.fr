@@ -1,151 +1,157 @@
-/* eslint new-cap: off, react/no-array-index-key: off */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Head from 'next/head'
 import {translate} from 'react-i18next'
-import ReactMapboxGl from 'react-mapbox-gl'
-
-import Leaflet from 'leaflet'
-import leafletStyle from 'leaflet/dist/leaflet.css'
+import mapboxGl, {GeoJSONLayer, Popup} from 'react-mapbox-gl'
+import {bbox} from '@turf/turf'
 
 import ErrorWrapper from '../error-wrapper'
 
-import Layers from './layers'
-import PopUp from './pop-up'
+import Feature from './feature'
 
-const Mapbox = ReactMapboxGl({})
 const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json'
 
 class CenteredMap extends React.Component {
   static propTypes = {
-    vectors: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
     frozen: PropTypes.bool,
 
-    lat: PropTypes.number,
-    lon: PropTypes.number,
-    zoom: PropTypes.number,
+    lineLayout: PropTypes.object,
+    linePaint: PropTypes.object,
+    fillPaint: PropTypes.object,
+    polygonPaint: PropTypes.object,
+    circlePaint: PropTypes.object,
 
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     frozen: false,
-    lat: 47,
-    lon: 1,
-    zoom: 4
+
+    lineLayout: {
+      'line-cap': 'round',
+      'line-join': 'round'
+    },
+    linePaint: {
+      'line-color': '#4790E5',
+      'line-width': 2
+    },
+    fillPaint: {
+      'fill-color': '#3099df',
+      'fill-opacity': 0.2
+    },
+    polygonPaint: {
+      'fill-color': '#21ba45',
+      'fill-outline-color': 'blue',
+      'fill-opacity': 0.3
+    },
+    circlePaint: {
+      'circle-radius': 6,
+      'circle-color': '#3099df',
+      'circle-opacity': 0.6
+    }
   }
 
   constructor(props) {
     super(props)
-    this.map = Mapbox
-    this.state = {
-      layer: null,
-      layerCenter: null,
-      layerZoom: null
-    }
-  }
 
-  componentWillMount() {
-    const {vectors} = this.props
-
-    // Create a geoJson object with Leafet to get his bounds
-    // It would be better to use Mapbox as in this example
-    // https://github.com/alex3165/react-mapbox-gl/blob/9a4dd5ea1b560f36d22faa17b850738da11c8302/src/scale-control.tsx
-    const bounds = Leaflet.geoJson(vectors).getBounds()
-    this.bounds = [
-      [bounds._southWest.lng, bounds._southWest.lat],
-      [bounds._northEast.lng, bounds._northEast.lat]
-    ]
-  }
-
-  onDrag = () => {
-    const {layer} = this.state
-    if (layer) {
-      this.setState({layer: null})
-    }
-  }
-
-  markerClick = event => {
-    const coordinates = [event.lngLat.lng, event.lngLat.lat]
-    this.setState({
-      layerCenter: coordinates,
-      layerZoom: [14],
-      layer: event.features
+    this.MapComponent = mapboxGl({
+      interactive: !props.frozen
     })
+
+    this.initialRender = true
+
+    this.state = {
+      bbox: bbox(props.data),
+      marker: null
+    }
+  }
+
+  componentDidMount() {
+    this.initialRender = false
+  }
+
+  componentWillReceiveProps(newProps) {
+    const {data} = this.props
+
+    if (data !== newProps.data) {
+      this.initialRender = true
+
+      this.setState({
+        bbox: bbox(newProps.data)
+      })
+    }
   }
 
   onToggleHover = event => {
+    const canvas = event.target.getCanvas()
+
     if (event.type === 'mouseenter') {
-      event.map.getCanvas().style.cursor = 'pointer'
+      canvas.style.cursor = 'pointer'
+
+      const [feature] = event.features
+      const coordinates = feature.geometry.coordinates.slice()
+
+      this.setState({
+        marker: {
+          feature,
+          coordinates,
+          count: event.features.length
+        }
+      })
     } else {
-      event.map.getCanvas().style.cursor = ''
+      canvas.style.cursor = ''
+
+      this.setState({
+        marker: null
+      })
     }
   }
 
-  renderPopUp(features) {
-    return (
-      features.map((feature, key) => (
-        <ul key={`feature-${key}`}>
-          {Object.keys(feature.properties).map(key =>
-            <li key={key}><b>{key} :</b> {feature.properties[key]}</li>
-          )}
-        </ul>
-      ))
-    )
-  }
-
   render() {
-    const {layer, layerCenter, layerZoom} = this.state
-    const {vectors, frozen, lat, lon, zoom, t} = this.props
+    const Map = this.MapComponent
+    const {
+      data, frozen,
+      lineLayout, linePaint, fillPaint, polygonPaint, circlePaint,
+      t
+    } = this.props
+    const {bbox, marker} = this.state
+
+    const bounds = [
+      [bbox[0], bbox[1]],
+      [bbox[2], bbox[3]]
+    ]
 
     return (
-      <div>
-        <ErrorWrapper message={t('errors.map')}>
-          <Mapbox
-            center={layerCenter || [lon, lat]}
-            fitBounds={this.bounds}
-            fitBoundsOptions={{padding: 20, linear: frozen}}
-            zoom={layerZoom || [zoom]}
-            onDrag={this.onDrag}
-            style={mapStyle} /* eslint-disable-line react/style-prop-object */
-            flyToOptions={{speed: 0.8}}
-            containerStyle={{
-              height: '100%',
-              width: '100%'
-            }}
-          >
+      <ErrorWrapper message={t('errors.map')}>
+        <Map
+          fitBounds={this.initialRender && bounds}
+          fitBoundsOptions={{padding: 30, linear: true}}
+          style={mapStyle} /* eslint-disable-line react/style-prop-object */
+          flyToOptions={{speed: 0.8}}
+          containerStyle={{
+            height: '100%',
+            width: '100%'
+          }}
+        >
 
-            {layer &&
-              <PopUp
-                coordinates={layerCenter}
-                features={layer}
-                renderPopUp={this.renderPopUp}
-              />
-            }
+          {marker && (
+            <Popup coordinates={marker.coordinates}>
+              <Feature feature={marker.feature} otherFeaturesCount={marker.count - 1} />
+            </Popup>
+          )}
 
-            <Layers
-              data={vectors}
-              markerClick={this.markerClick}
-              onToggleHover={this.onToggleHover}
-            />
-          </Mapbox>
-        </ErrorWrapper>
-
-        <Head>
-          {/* eslint-disable react/no-danger */}
-          <style dangerouslySetInnerHTML={{__html: leafletStyle}} />
-          {/* eslint-enable react/no-danger */}
-        </Head>
-        <style jsx>{`
-          div {
-            height: 100%;
-
-            :global(.leaflet-container) {
-              height: 100%;
-            }
-          }
-        `}</style>
-      </div>
+          <GeoJSONLayer
+            data={data}
+            lineLayout={lineLayout}
+            linePaint={linePaint}
+            fillPaint={fillPaint}
+            polygonPaint={polygonPaint}
+            circlePaint={circlePaint}
+            circleOnMouseEnter={!frozen && this.onToggleHover}
+            circleOnMouseLeave={!frozen && this.onToggleHover}
+          />
+        </Map>
+      </ErrorWrapper>
     )
   }
 }

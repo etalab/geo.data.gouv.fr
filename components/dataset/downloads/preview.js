@@ -88,12 +88,7 @@ class Preview extends React.Component {
               <div className='map-wrapper'>
                 {view === 'map' ? (
                   <div className='map'>
-                    <CenteredMap
-                      vectors={data}
-                      lat={47}
-                      lon={1}
-                      zoom={5.5}
-                    />
+                    <CenteredMap data={data} />
                   </div>
                 ) : (
                   <PreviewTable data={data} />
