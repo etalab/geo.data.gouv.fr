@@ -23,35 +23,25 @@ class CenteredMap extends React.Component {
     frozen: false
   }
 
+  state = {
+    marker: null
+  }
+
   constructor(props) {
     super(props)
 
     this.MapComponent = mapboxGl({
       interactive: !props.frozen
     })
-
-    this.initialRender = true
-
-    this.state = {
-      bbox: bbox(props.data),
-      marker: null
-    }
   }
 
-  componentDidMount() {
-    this.initialRender = false
-  }
-
-  componentWillReceiveProps(newProps) {
+  onInitialLoad = map => {
     const {data} = this.props
 
-    if (data !== newProps.data) {
-      this.initialRender = true
-
-      this.setState({
-        bbox: bbox(newProps.data)
-      })
-    }
+    map.fitBounds(bbox(data), {
+      padding: 30,
+      linear: true
+    })
   }
 
   onMouseEnter = (layer, event) => {
@@ -89,18 +79,11 @@ class CenteredMap extends React.Component {
       data, frozen,
       t
     } = this.props
-    const {bbox, marker} = this.state
-
-    const bounds = [
-      [bbox[0], bbox[1]],
-      [bbox[2], bbox[3]]
-    ]
+    const {marker} = this.state
 
     return (
       <ErrorWrapper message={t('errors.map')}>
         <Map
-          fitBounds={this.initialRender && bounds}
-          fitBoundsOptions={{padding: 30, linear: true}}
           style={mapStyle} /* eslint-disable-line react/style-prop-object */
           flyToOptions={{speed: 0.8}}
           containerStyle={{
@@ -162,13 +145,13 @@ class CenteredMap extends React.Component {
             }}
           />
 
-          {!frozen && (
-            <Events
-              layers={['point', 'polygon', 'line']}
-              onMouseEnter={this.onMouseEnter}
-              onMouseLeave={this.onMouseLeave}
-            />
-          )}
+          <Events
+            frozen={frozen}
+            layers={['point', 'polygon', 'line']}
+            onInitialLoad={this.onInitialLoad}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+          />
 
           {marker && (
             <Popup coordinates={marker.coordinates}>

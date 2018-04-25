@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class Events extends React.Component {
+class Events extends React.PureComponent {
   static propTypes = {
+    frozen: PropTypes.bool.isRequired,
     layers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onInitialLoad: PropTypes.func.isRequired,
     onMouseEnter: PropTypes.func.isRequired,
     onMouseLeave: PropTypes.func.isRequired
   }
@@ -17,21 +19,26 @@ class Events extends React.Component {
 
     this.handlers = []
 
-    for (const layer of props.layers) {
-      this.handlers.push({
-        event: 'mouseenter',
-        layer,
-        handler: this.onMouseEnter.bind(this, layer)
-      }, {
-        event: 'mouseleave',
-        layer,
-        handler: this.onMouseLeave.bind(this, layer)
-      })
+    if (!props.frozen) {
+      for (const layer of props.layers) {
+        this.handlers.push({
+          event: 'mouseenter',
+          layer,
+          handler: this.onMouseEnter.bind(this, layer)
+        }, {
+          event: 'mouseleave',
+          layer,
+          handler: this.onMouseLeave.bind(this, layer)
+        })
+      }
     }
   }
 
   componentDidMount() {
     const {map} = this.context
+    const {onInitialLoad} = this.props
+
+    onInitialLoad(map)
 
     for (const {event, layer, handler} of this.handlers) {
       map.on(event, layer, handler)
@@ -44,10 +51,6 @@ class Events extends React.Component {
     for (const {event, layer, handler} of this.handlers) {
       map.off(event, layer, handler)
     }
-  }
-
-  componentWillUpdate() {
-    return false
   }
 
   onMouseEnter(layer, event) {
