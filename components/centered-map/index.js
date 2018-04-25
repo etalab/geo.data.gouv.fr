@@ -142,11 +142,8 @@ class CenteredMap extends React.Component {
               filter={EMPTY_FILTER}
               paint={{
                 'circle-radius': 5,
-                'circle-color': '#3099df',
-                'circle-opacity': 0.6,
-                'circle-stroke-width': 3,
-                'circle-stroke-color': '#2c3e50',
-                'circle-stroke-opacity': 0.8
+                'circle-color': '#2c3e50',
+                'circle-opacity': 0.8
               }}
             />
           )}
