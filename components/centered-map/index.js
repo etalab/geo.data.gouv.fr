@@ -33,15 +33,25 @@ class CenteredMap extends React.Component {
     this.MapComponent = mapboxGl({
       interactive: !props.frozen
     })
+
+    // This is not in the state because we do not want to trigger
+    // a re-render when we disable fitBounds.
+    this.bbox = bbox(props.data)
   }
 
-  onInitialLoad = map => {
-    const {data} = this.props
+  componentDidMount() {
+    this.bbox = null
+  }
 
-    map.fitBounds(bbox(data), {
-      padding: 30,
-      linear: true
-    })
+  getBounds = () => {
+    const {bbox} = this
+
+    if (bbox) {
+      return [
+        [bbox[0], bbox[1]],
+        [bbox[2], bbox[3]]
+      ]
+    }
   }
 
   onMouseEnter = (layer, event) => {
@@ -79,11 +89,17 @@ class CenteredMap extends React.Component {
       data, frozen,
       t
     } = this.props
+
     const {marker} = this.state
 
     return (
       <ErrorWrapper message={t('errors.map')}>
         <Map
+          fitBounds={this.getBounds()}
+          fitBoundsOptions={{
+            padding: 30,
+            linear: true
+          }}
           style={mapStyle} /* eslint-disable-line react/style-prop-object */
           containerStyle={{
             height: '100%',
@@ -144,13 +160,13 @@ class CenteredMap extends React.Component {
             }}
           />
 
-          <Events
-            frozen={frozen}
-            layers={['point', 'polygon', 'line']}
-            onInitialLoad={this.onInitialLoad}
-            onMouseEnter={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-          />
+          {!frozen && (
+            <Events
+              layers={['point', 'polygon', 'line']}
+              onMouseEnter={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+            />
+          )}
 
           {marker && (
             <Popup coordinates={marker.coordinates}>
