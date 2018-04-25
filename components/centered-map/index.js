@@ -85,7 +85,6 @@ class CenteredMap extends React.Component {
       <ErrorWrapper message={t('errors.map')}>
         <Map
           style={mapStyle} /* eslint-disable-line react/style-prop-object */
-          flyToOptions={{speed: 0.8}}
           containerStyle={{
             height: '100%',
             width: '100%'
