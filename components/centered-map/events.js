@@ -19,7 +19,7 @@ class Events extends React.PureComponent {
 
     for (const layer of props.layers) {
       this.handlers.push({
-        event: 'mouseenter',
+        event: 'mousemove',
         layer,
         handler: this.onMouseEnter.bind(this, layer)
       }, {
@@ -47,15 +47,17 @@ class Events extends React.PureComponent {
   }
 
   onMouseEnter(layer, event) {
+    const {map} = this.context
     const {onMouseEnter} = this.props
 
-    onMouseEnter(layer, event)
+    onMouseEnter(map, layer, event)
   }
 
   onMouseLeave(layer, event) {
+    const {map} = this.context
     const {onMouseLeave} = this.props
 
-    onMouseLeave(layer, event)
+    onMouseLeave(map, layer, event)
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
-import mapboxGl, {Source, Layer, Popup} from 'react-mapbox-gl'
+import mapboxGl, {Source, Layer} from 'react-mapbox-gl'
 import bbox from '@turf/bbox'
 
 import ErrorWrapper from '../error-wrapper'
@@ -10,6 +10,7 @@ import Events from './events'
 import Feature from './feature'
 
 const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json'
+const EMPTY_FILTER = ['==', 'non_existing_prop', 'non_existing_value']
 
 class CenteredMap extends React.Component {
   static propTypes = {
@@ -24,7 +25,7 @@ class CenteredMap extends React.Component {
   }
 
   state = {
-    marker: null
+    info: null
   }
 
   constructor(props) {
@@ -54,32 +55,41 @@ class CenteredMap extends React.Component {
     }
   }
 
-  onMouseEnter = (layer, event) => {
+  onMouseEnter = (map, layer, event) => {
     const canvas = event.originalEvent.target
     canvas.style.cursor = 'pointer'
 
-    let coordinates = event.lngLat
     const [feature] = event.features
 
-    if (layer === 'point') {
-      coordinates = feature.geometry.coordinates.slice()
+    const filter = ['all']
+    for (const [key, value] of Object.entries(feature.properties)) {
+      if (value && value !== 'null') {
+        filter.push([
+          '==',
+          key,
+          value
+        ])
+      }
     }
 
+    map.setFilter(`${layer}-hover`, filter)
+
     this.setState({
-      marker: {
+      info: {
         feature,
-        coordinates,
         count: event.features.length
       }
     })
   }
 
-  onMouseLeave = (layer, event) => {
+  onMouseLeave = (map, layer, event) => {
     const canvas = event.originalEvent.target
     canvas.style.cursor = ''
 
+    map.setFilter(`${layer}-hover`, EMPTY_FILTER)
+
     this.setState({
-      marker: null
+      info: null
     })
   }
 
@@ -90,7 +100,7 @@ class CenteredMap extends React.Component {
       t
     } = this.props
 
-    const {marker} = this.state
+    const {info} = this.state
 
     return (
       <ErrorWrapper message={t('errors.map')}>
@@ -124,6 +134,23 @@ class CenteredMap extends React.Component {
             }}
           />
 
+          {!frozen && (
+            <Layer
+              id='point-hover'
+              sourceId='centered-map'
+              type='circle'
+              filter={EMPTY_FILTER}
+              paint={{
+                'circle-radius': 5,
+                'circle-color': '#3099df',
+                'circle-opacity': 0.6,
+                'circle-stroke-width': 3,
+                'circle-stroke-color': '#2c3e50',
+                'circle-stroke-opacity': 0.8
+              }}
+            />
+          )}
+
           {/* Polygon */}
           <Layer
             id='polygon'
@@ -147,6 +174,19 @@ class CenteredMap extends React.Component {
             }}
           />
 
+          {!frozen && (
+            <Layer
+              id='polygon-hover'
+              sourceId='centered-map'
+              type='fill'
+              filter={EMPTY_FILTER}
+              paint={{
+                'fill-color': '#2c3e50',
+                'fill-opacity': 0.3
+              }}
+            />
+          )}
+
           {/* LineString */}
           <Layer
             id='line'
@@ -161,6 +201,20 @@ class CenteredMap extends React.Component {
           />
 
           {!frozen && (
+            <Layer
+              id='line-hover'
+              sourceId='centered-map'
+              type='line'
+              filter={EMPTY_FILTER}
+              paint={{
+                'line-color': '#2c3e50',
+                'line-width': 5,
+                'line-opacity': 0.8
+              }}
+            />
+          )}
+
+          {!frozen && (
             <Events
               layers={['point', 'polygon', 'line']}
               onMouseEnter={this.onMouseEnter}
@@ -168,12 +222,23 @@ class CenteredMap extends React.Component {
             />
           )}
 
-          {marker && (
-            <Popup coordinates={marker.coordinates}>
-              <Feature feature={marker.feature} otherFeaturesCount={marker.count - 1} />
-            </Popup>
+          {info && (
+            <div className='info'>
+              <Feature feature={info.feature} otherFeaturesCount={info.count - 1} />
+            </div>
           )}
         </Map>
+
+        <style jsx>{`
+          .info {
+            position: absolute;
+            pointer-events: none;
+            top: 10px;
+            left: 10px;
+            max-width: 40%;
+            overflow: hidden;
+          }
+        `}</style>
       </ErrorWrapper>
     )
   }
