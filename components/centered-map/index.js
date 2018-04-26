@@ -24,7 +24,7 @@ class CenteredMap extends React.Component {
   }
 
   state = {
-    info: null
+    highlight: null
   }
 
   constructor(props) {
