@@ -10,7 +10,6 @@ import Events from './events'
 import Feature from './feature'
 
 const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json'
-const EMPTY_FILTER = ['==', 'non_existing_prop', 'non_existing_value']
 
 class CenteredMap extends React.Component {
   static propTypes = {
@@ -61,21 +60,8 @@ class CenteredMap extends React.Component {
 
     const [feature] = event.features
 
-    const filter = ['all']
-    for (const [key, value] of Object.entries(feature.properties)) {
-      if (value && value !== 'null') {
-        filter.push([
-          '==',
-          key,
-          value
-        ])
-      }
-    }
-
-    map.setFilter(`${layer}-hover`, filter)
-
     this.setState({
-      info: {
+      highlight: {
         feature,
         count: event.features.length
       }
@@ -86,10 +72,8 @@ class CenteredMap extends React.Component {
     const canvas = event.originalEvent.target
     canvas.style.cursor = ''
 
-    map.setFilter(`${layer}-hover`, EMPTY_FILTER)
-
     this.setState({
-      info: null
+      highlight: null
     })
   }
 
@@ -100,7 +84,7 @@ class CenteredMap extends React.Component {
       t
     } = this.props
 
-    const {info} = this.state
+    const {highlight} = this.state
 
     return (
       <ErrorWrapper message={t('errors.map')}>
@@ -116,15 +100,22 @@ class CenteredMap extends React.Component {
             width: '100%'
           }}
         >
-          <Source id='centered-map' geoJsonSource={{
+          <Source id='data' geoJsonSource={{
             type: 'geojson',
             data
           }} />
 
+          {highlight && (
+            <Source id='highlight' geoJsonSource={{
+              type: 'geojson',
+              data: highlight.feature.geometry
+            }} />
+          )}
+
           {/* Point */}
           <Layer
             id='point'
-            sourceId='centered-map'
+            sourceId='data'
             type='circle'
             filter={['in', '$type', 'Point']}
             paint={{
@@ -134,12 +125,12 @@ class CenteredMap extends React.Component {
             }}
           />
 
-          {!frozen && (
+          {!frozen && highlight && (
             <Layer
               id='point-hover'
-              sourceId='centered-map'
+              sourceId='highlight'
               type='circle'
-              filter={EMPTY_FILTER}
+              filter={['in', '$type', 'Point']}
               paint={{
                 'circle-radius': 5,
                 'circle-color': '#2c3e50',
@@ -151,7 +142,7 @@ class CenteredMap extends React.Component {
           {/* Polygon */}
           <Layer
             id='polygon'
-            sourceId='centered-map'
+            sourceId='data'
             type='fill'
             filter={['==', '$type', 'Polygon']}
             paint={{
@@ -162,7 +153,7 @@ class CenteredMap extends React.Component {
 
           <Layer
             id='polygon-outline'
-            sourceId='centered-map'
+            sourceId='data'
             type='line'
             filter={['==', '$type', 'Polygon']}
             paint={{
@@ -171,12 +162,12 @@ class CenteredMap extends React.Component {
             }}
           />
 
-          {!frozen && (
+          {!frozen && highlight && (
             <Layer
               id='polygon-hover'
-              sourceId='centered-map'
+              sourceId='highlight'
               type='fill'
-              filter={EMPTY_FILTER}
+              filter={['==', '$type', 'Polygon']}
               paint={{
                 'fill-color': '#2c3e50',
                 'fill-opacity': 0.3
@@ -187,7 +178,7 @@ class CenteredMap extends React.Component {
           {/* LineString */}
           <Layer
             id='line'
-            sourceId='centered-map'
+            sourceId='data'
             type='line'
             filter={['==', '$type', 'LineString']}
             paint={{
@@ -197,12 +188,12 @@ class CenteredMap extends React.Component {
             }}
           />
 
-          {!frozen && (
+          {!frozen && highlight && (
             <Layer
               id='line-hover'
-              sourceId='centered-map'
+              sourceId='highlight'
               type='line'
-              filter={EMPTY_FILTER}
+              filter={['==', '$type', 'LineString']}
               paint={{
                 'line-color': '#2c3e50',
                 'line-width': 5,
@@ -219,9 +210,9 @@ class CenteredMap extends React.Component {
             />
           )}
 
-          {info && (
+          {highlight && (
             <div className='info'>
-              <Feature feature={info.feature} otherFeaturesCount={info.count - 1} />
+              <Feature feature={highlight.feature} otherFeaturesCount={highlight.count - 1} />
             </div>
           )}
         </Map>
