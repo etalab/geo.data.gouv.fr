@@ -55,7 +55,7 @@ class CenteredMap extends React.Component {
   }
 
   onMouseEnter = (map, layer, event) => {
-    const canvas = event.originalEvent.target
+    const canvas = map.getCanvas()
     canvas.style.cursor = 'pointer'
 
     const [feature] = event.features
@@ -68,8 +68,8 @@ class CenteredMap extends React.Component {
     })
   }
 
-  onMouseLeave = (map, layer, event) => {
-    const canvas = event.originalEvent.target
+  onMouseLeave = map => {
+    const canvas = map.getCanvas()
     canvas.style.cursor = ''
 
     this.setState({
