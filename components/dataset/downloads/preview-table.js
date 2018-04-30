@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Head from 'next/head'
 import Table from 'react-table'
 import {translate} from 'react-i18next'
 
@@ -40,11 +39,9 @@ const PreviewTable = ({data, t}) => {
         ofText={t('preview.paging.of')}
       />
 
-      <Head>
-        {/* eslint-disable react/no-danger */}
-        <style dangerouslySetInnerHTML={{__html: tableStyle}} />
-        {/* eslint-enable react/no-danger */}
-      </Head>
+      <style
+        dangerouslySetInnerHTML={{__html: tableStyle}} // eslint-disable-line react/no-danger
+      />
       <style jsx>{`
         div {
           display: flex;
