@@ -31,7 +31,6 @@ const PreviewTable = ({data, t}) => {
         showPageSizeOptions={false}
         defaultPageSize={50}
         minRows={25}
-        resizable={false}
 
         previousText={t('preview.paging.previous')}
         nextText={t('preview.paging.next')}
