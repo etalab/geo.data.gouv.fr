@@ -39,9 +39,9 @@ const PreviewTable = ({data, t}) => {
         ofText={t('preview.paging.of')}
       />
 
-      {/* eslint-disable react/no-danger */}
-      <style dangerouslySetInnerHTML={{__html: tableStyle}} />
-      {/* eslint-enable react/no-danger */}
+      <style
+        dangerouslySetInnerHTML={{__html: tableStyle}} // eslint-disable-line react/no-danger
+      />
       <style jsx>{`
         div {
           display: flex;
