@@ -6693,9 +6693,9 @@ react-reconciler@^0.7.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-table@^6.7.5:
-  version "6.7.5"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.7.5.tgz#974b26e3986932e6c724f53911eddfa3923b7942"
+react-table@^6.8.2:
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.8.2.tgz#3a5aefabc85953300d16786fa307c30610db9adc"
   dependencies:
     classnames "^2.2.5"
 
