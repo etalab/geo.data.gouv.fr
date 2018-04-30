@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
 import mapboxGl, {Source, Layer} from 'react-mapbox-gl'
 import bbox from '@turf/bbox'
+import flip from '@turf/flip'
+
+import {isBboxFlipped, flipBbox} from '../../lib/geo/bbox'
 
 import ErrorWrapper from '../error-wrapper'
 
@@ -14,12 +17,14 @@ const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.
 class CenteredMap extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    extent: PropTypes.object,
     frozen: PropTypes.bool,
 
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
+    extent: null,
     frozen: false
   }
 
@@ -37,6 +42,17 @@ class CenteredMap extends React.Component {
     // This is not in the state because we do not want to trigger
     // a re-render when we disable fitBounds.
     this.bbox = bbox(props.data)
+
+    if (props.extent) {
+      if (isBboxFlipped(this.bbox, bbox(props.extent))) {
+        // Even though we should never mutate a component’s props,
+        // flipped coordinates should also never appear.
+        // We’re mutating the `data` prop here (and it is faster).
+
+        flip(props.data, {mutate: true})
+        this.bbox = flipBbox(this.bbox)
+      }
+    }
   }
 
   componentDidMount() {
@@ -78,12 +94,8 @@ class CenteredMap extends React.Component {
   }
 
   render() {
-    const Map = this.MapComponent
-    const {
-      data, frozen,
-      t
-    } = this.props
-
+    const {MapComponent: Map} = this
+    const {data, frozen, t} = this.props
     const {highlight} = this.state
 
     return (

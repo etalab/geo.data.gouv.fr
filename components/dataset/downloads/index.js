@@ -14,7 +14,13 @@ class Downloads extends React.Component {
       location: PropTypes.string
     })).isRequired,
 
+    extent: PropTypes.object,
+
     t: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    extent: null
   }
 
   state = {}
@@ -36,7 +42,7 @@ class Downloads extends React.Component {
   }
 
   render() {
-    const {distributions, t} = this.props
+    const {distributions, extent, t} = this.props
     const {preview} = this.state
 
     if (distributions.length === 0) {
@@ -61,6 +67,7 @@ class Downloads extends React.Component {
               <Preview
                 title={preview.name}
                 link={preview.link}
+                extent={extent}
                 onClose={this.clearPreview}
               />
             )}
