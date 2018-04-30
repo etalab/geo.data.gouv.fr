@@ -9,19 +9,15 @@ const CenteredMap = dynamic(import('../centered-map'), {
 })
 
 const SpatialExtent = ({extent}) => {
-  const features = {
-    type: 'FeatureCollection',
-    features: [{
-      type: 'Feature',
-      geometry: extent,
-      properties: {}
-    }]
+  const data = {
+    type: 'Feature',
+    geometry: extent
   }
 
   return (
     <div>
       <div className='map'>
-        <CenteredMap vectors={features} frozen />
+        <CenteredMap data={data} frozen />
       </div>
 
       <style jsx>{`

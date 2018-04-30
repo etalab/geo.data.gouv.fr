@@ -69,6 +69,11 @@
     }
   },
 
+  "map": {
+    "additionalFeature": "One more feature…",
+    "additionalFeature_plural": "{{ count }} more features…"
+  },
+
   "enums": {
     "dataTypes": {
       "dataset": "dataset",

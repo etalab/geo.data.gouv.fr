@@ -69,6 +69,11 @@
     }
   },
 
+  "map": {
+    "additionalFeature": "Un objet de plus…",
+    "additionalFeature_plural": "{{ count }} objets de plus…"
+  },
+
   "enums": {
     "dataTypes": {
       "dataset": "jeu de données",
