@@ -25,8 +25,13 @@ class Preview extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
+    extent: PropTypes.object,
     onClose: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    extent: null
   }
 
   state = {
@@ -60,7 +65,7 @@ class Preview extends React.Component {
   }
 
   render() {
-    const {title, onClose, t} = this.props
+    const {title, extent, onClose, t} = this.props
     const {loading, data, view, error} = this.state
 
     return (
@@ -88,7 +93,7 @@ class Preview extends React.Component {
               <div className='map-wrapper'>
                 {view === 'map' ? (
                   <div className='map'>
-                    <CenteredMap data={data} />
+                    <CenteredMap data={data} extent={extent} />
                   </div>
                 ) : (
                   <PreviewTable data={data} />
