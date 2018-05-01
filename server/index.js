@@ -50,7 +50,8 @@ i18n
     },
 
     detection: {
-      order: ['path', 'cookie', 'header']
+      order: ['path', 'querystring', 'cookie', 'header'],
+      lookupQuerystring: 'lang'
     }
   }, async () => {
     await app.prepare()
