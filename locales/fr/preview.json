@@ -1,0 +1,16 @@
+{
+  "loading": {
+    "initializing": "Initialisation de l’aperçu",
+    "downloading": {
+      "init": "Initialisation du téléchargement",
+      "progress": "Téléchargement en cours : {{ bytes }}",
+      "progressWithTotal": "Téléchargement en cours : {{ bytes }} / {{ total }}"
+    },
+    "component": "Chargement de la carte"
+  },
+
+  "error": {
+    "downloading": "Erreur lors du téléchargement de la donnée",
+    "unknown": "Erreur lors du chargement de l’aperçu"
+  }
+}

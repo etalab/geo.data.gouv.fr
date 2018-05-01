@@ -1,0 +1,16 @@
+{
+  "loading": {
+    "initializing": "Loading the preview",
+    "downloading": {
+      "init": "Starting download",
+      "progress": "Downloading: {{ bytes }}",
+      "progressWithTotal": "Downloading: {{ bytes }} / {{ total }}"
+    },
+    "component": "Loading the map"
+  },
+
+  "error": {
+    "downloading": "Error while downloading the dataset",
+    "unknown": "Error while loading the preview"
+  }
+}

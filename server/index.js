@@ -33,6 +33,7 @@ i18n
       'events',
       'home',
       'search',
+      'preview',
       'common'
     ],
     defaultNS: 'common',
@@ -72,6 +73,14 @@ i18n
     if (dev) {
       server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
     }
+
+    server.get('/embed/datasets/:did/resources/:rid', (req, res) => {
+      app.render(req, res, '/embed/preview', {
+        ...req.query,
+        did: req.params.did,
+        rid: req.params.rid
+      })
+    })
 
     const lngs = languages.join('|')
     server.use(`/:lng(${lngs})`, createRoutes(app))
