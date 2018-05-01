@@ -89,10 +89,19 @@ class PreviewPage extends React.Component {
     })
 
     req.addEventListener('load', () => {
-      this.setState({
-        loading: null,
-        data: JSON.parse(req.responseText)
-      })
+      try {
+        this.setState({
+          loading: null,
+          data: JSON.parse(req.responseText)
+        })
+      } catch (err) {
+        this.setState({
+          error: {
+            state: 'downloading',
+            err
+          }
+        })
+      }
     })
 
     req.addEventListener('error', () => {
@@ -116,7 +125,10 @@ class PreviewPage extends React.Component {
 
   componentDidCatch(err) {
     this.setState({
-      error: err
+      error: {
+        state: 'unknown',
+        err
+      }
     })
   }
 
