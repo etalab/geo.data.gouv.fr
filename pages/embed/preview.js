@@ -52,10 +52,7 @@ class PreviewPage extends React.Component {
     data: null,
     error: null,
     loading: {
-      state: 'initializing',
-      download: {
-        bytes: 0
-      }
+      state: 'initializing'
     }
   }
 
