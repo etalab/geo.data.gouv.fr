@@ -8,6 +8,7 @@ const Backend = require('i18next-node-fs-backend')
 const compression = require('compression')
 
 const createRoutes = require('./routes')
+const createLocalizedRoutes = require('./routes/localized')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -74,16 +75,10 @@ i18n
       server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
     }
 
-    server.get('/embed/datasets/:did/resources/:rid(*)', (req, res) => {
-      app.render(req, res, '/embed/preview', {
-        ...req.query,
-        did: req.params.did,
-        rid: req.params.rid
-      })
-    })
+    server.use(createRoutes(app))
 
     const lngs = languages.join('|')
-    server.use(`/:lng(${lngs})`, createRoutes(app))
+    server.use(`/:lng(${lngs})`, createLocalizedRoutes(app))
 
     server.use('/static', express.static(path.join(__dirname, '../static'), {
       maxAge: '15d'
