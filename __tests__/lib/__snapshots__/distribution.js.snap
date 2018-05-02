@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateDistributionInfo should assign the typeName to layerName is defined 1`] = `
+Object {
+  "layerName": "foo",
+  "link": undefined,
+}
+`;
+
+exports[`generateDistributionInfo should generate distribution link and layerName for a file-package distribution 1`] = `
+Object {
+  "layerName": "peiPoint.shp",
+  "link": "undefined/file-packages/8a704988cc8000c54c9b36761d681674c7ac4b24/peiPoint.shp/download",
+}
+`;
+
+exports[`generateDistributionInfo should generate distribution link and layerName for a wfs distribution 1`] = `
+Object {
+  "layerName": "hdf_draaf:l_part_sau_2015_cantons_s_r32",
+  "link": "undefined/services/5a2e9c73f43c6a15cb04f897/feature-types/hdf_draaf:l_part_sau_2015_cantons_s_r32/download",
+}
+`;
+
+exports[`generateDistributionInfo should generate undefined properties if the distribution type is unknown 1`] = `
+Object {
+  "layerName": undefined,
+  "link": undefined,
+}
+`;
