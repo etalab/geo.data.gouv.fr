@@ -30,22 +30,36 @@ class PreviewPage extends React.Component {
   static propTypes = {
     extent: PropTypes.object,
     distribution: PropTypes.object,
+    error: PropTypes.string,
 
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     extent: null,
-    distribution: null
+    distribution: null,
+    error: null
   }
 
   static async getInitialProps({query}) {
-    const {dataset, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
-    const distribution = dataset.distributions.find(d => d._id === query.rid)
+    try {
+      const {dataset, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
+      const distribution = dataset.distributions.find(d => d._id === query.rid)
 
-    return {
-      extent: metadata.spatialExtent,
-      distribution
+      if (!distribution) {
+        return {
+          error: 'distributionNotFound'
+        }
+      }
+
+      return {
+        extent: metadata.spatialExtent,
+        distribution
+      }
+    } catch (err) {
+      return {
+        error: 'datasetNotFound'
+      }
     }
   }
 
@@ -58,12 +72,12 @@ class PreviewPage extends React.Component {
   }
 
   componentDidMount() {
-    const {distribution} = this.props
+    const {error, distribution} = this.props
 
-    if (!distribution) {
+    if (error) {
       return this.setState({
         error: {
-          state: 'not-found'
+          state: error
         }
       })
     }
@@ -188,10 +202,17 @@ class PreviewPage extends React.Component {
     const {error} = this.state
 
     switch (error.state) {
-      case 'not-found':
+      case 'datasetNotFound':
         return (
           <ErrorMessage>
-            {t('error.notFound')}
+            {t('error.datasetNotFound')}
+          </ErrorMessage>
+        )
+
+      case 'distributionNotFound':
+        return (
+          <ErrorMessage>
+            {t('error.distributionNotFound')}
           </ErrorMessage>
         )
 

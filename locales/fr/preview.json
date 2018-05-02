@@ -10,7 +10,8 @@
   },
 
   "error": {
-    "notFound": "Le jeu de données n’a pas été trouvé",
+    "datasetNotFound": "Le jeu de données n’a pas été trouvé",
+    "distributionNotFound": "La donnée n’a pas été trouvée",
     "downloading": "Erreur lors du téléchargement de la donnée",
     "unknown": "Erreur lors du chargement de l’aperçu"
   }
