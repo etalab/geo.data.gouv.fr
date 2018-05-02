@@ -74,7 +74,7 @@ i18n
       server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
     }
 
-    server.get('/embed/datasets/:did/resources/:rid', (req, res) => {
+    server.get('/embed/datasets/:did/resources/:rid(*)', (req, res) => {
       app.render(req, res, '/embed/preview', {
         ...req.query,
         did: req.params.did,

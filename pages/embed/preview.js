@@ -7,7 +7,7 @@ import bytes from 'bytes'
 
 import {_get} from '../../lib/fetch'
 
-import {generateDistributionInfo} from '../../lib/distribution'
+import {generateDistributionId, generateDistributionInfo} from '../../lib/distribution'
 
 import attachI18n from '../../components/hoc/attach-i18n'
 
@@ -44,7 +44,7 @@ class PreviewPage extends React.Component {
   static async getInitialProps({query}) {
     try {
       const {dataset, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
-      const distribution = dataset.distributions.find(d => d._id === query.rid)
+      const distribution = dataset.distributions.find(d => generateDistributionId(d) === query.rid)
 
       if (!distribution) {
         return {
