@@ -10,6 +10,7 @@
   },
 
   "error": {
+    "notFound": "The dataset was not found",
     "downloading": "Error while downloading the dataset",
     "unknown": "Error while loading the preview"
   }

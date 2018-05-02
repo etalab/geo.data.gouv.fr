@@ -10,6 +10,7 @@
   },
 
   "error": {
+    "notFound": "Le jeu de données n’a pas été trouvé",
     "downloading": "Erreur lors du téléchargement de la donnée",
     "unknown": "Erreur lors du chargement de l’aperçu"
   }

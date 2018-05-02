@@ -29,13 +29,14 @@ const CenteredMap = dynamic(import('../../components/centered-map'), {
 class PreviewPage extends React.Component {
   static propTypes = {
     extent: PropTypes.object,
-    distribution: PropTypes.object.isRequired,
+    distribution: PropTypes.object,
 
     t: PropTypes.func.isRequired
   }
 
   static defaultProps = {
-    extent: null
+    extent: null,
+    distribution: null
   }
 
   static async getInitialProps({query}) {
@@ -58,6 +59,14 @@ class PreviewPage extends React.Component {
 
   componentDidMount() {
     const {distribution} = this.props
+
+    if (!distribution) {
+      return this.setState({
+        error: {
+          state: 'not-found'
+        }
+      })
+    }
 
     const {link} = generateDistributionInfo(distribution)
 
@@ -178,19 +187,28 @@ class PreviewPage extends React.Component {
     const {t} = this.props
     const {error} = this.state
 
-    if (error.state === 'downloading') {
-      return (
-        <ErrorMessage>
-          {t('error.downloading')}
-        </ErrorMessage>
-      )
-    }
+    switch (error.state) {
+      case 'not-found':
+        return (
+          <ErrorMessage>
+            {t('error.notFound')}
+          </ErrorMessage>
+        )
 
-    return (
-      <ErrorMessage>
-        {t('error.unknown')}
-      </ErrorMessage>
-    )
+      case 'downloading':
+        return (
+          <ErrorMessage>
+            {t('error.downloading')}
+          </ErrorMessage>
+        )
+
+      default:
+        return (
+          <ErrorMessage>
+            {t('error.unknown')}
+          </ErrorMessage>
+        )
+    }
   }
 
   render() {
