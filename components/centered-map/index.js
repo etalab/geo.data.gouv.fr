@@ -67,12 +67,13 @@ class CenteredMap extends React.Component {
       interactive: !frozen
     })
 
+    this.map.once('load', this.onLoad)
+
     this.map.fitBounds(this.bbox, {
       padding: 30,
-      linear: true
+      linear: true,
+      duration: 0
     })
-
-    this.map.once('load', this.onLoad)
 
     for (const {event, layer, handler} of this.handlers) {
       this.map.on(event, layer, handler)
