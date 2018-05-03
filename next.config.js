@@ -5,6 +5,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 // The following dependencies will be pushed to the commons.js bundle
 const commonDependencies = [
+  '/next/',
   '/lodash-es/',
   '/marked/',
 
