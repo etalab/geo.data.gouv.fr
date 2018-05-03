@@ -1,19 +1,14 @@
 import React from 'react'
 import {translate} from 'react-i18next'
-import getConfig from 'next/config'
 import PropTypes from 'prop-types'
-import strRightBack from 'underscore.string/strRightBack'
 
 import DownloadIcon from 'react-icons/lib/fa/arrow-circle-o-down'
 import PreviewIcon from 'react-icons/lib/fa/eye'
 
 import formats from '../../../lib/formats'
+import {generateDistributionInfo} from '../../../lib/distribution'
 
 import Button from '../../button'
-
-const {publicRuntimeConfig: {
-  GEODATA_API_URL
-}} = getConfig()
 
 class DatasetDownload extends React.PureComponent {
   static propTypes = {
@@ -35,17 +30,7 @@ class DatasetDownload extends React.PureComponent {
   componentDidMount() {
     const {distribution} = this.props
 
-    let link
-    let layerName
-
-    if (distribution.type === 'file-package') {
-      layerName = strRightBack(distribution.layer, '/')
-      link = `${GEODATA_API_URL}/file-packages/${distribution.hashedLocation}/${layerName}/download`
-    }
-
-    if (distribution.type === 'wfs-featureType') {
-      link = `${GEODATA_API_URL}/services/${distribution.service}/feature-types/${distribution.typeName}/download`
-    }
+    const {link, layerName} = generateDistributionInfo(distribution)
 
     this.setState({
       link,

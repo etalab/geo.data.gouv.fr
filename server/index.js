@@ -8,6 +8,7 @@ const Backend = require('i18next-node-fs-backend')
 const compression = require('compression')
 
 const createRoutes = require('./routes')
+const createLocalizedRoutes = require('./routes/localized')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -33,6 +34,7 @@ i18n
       'events',
       'home',
       'search',
+      'preview',
       'common'
     ],
     defaultNS: 'common',
@@ -50,7 +52,8 @@ i18n
     },
 
     detection: {
-      order: ['path', 'cookie', 'header']
+      order: ['path', 'querystring', 'cookie', 'header'],
+      lookupQuerystring: 'lang'
     }
   }, async () => {
     await app.prepare()
@@ -72,8 +75,10 @@ i18n
       server.post('/locales/add/:lng/:ns', i18nextMiddleware.missingKeyHandler(i18n))
     }
 
+    server.use(createRoutes(app))
+
     const lngs = languages.join('|')
-    server.use(`/:lng(${lngs})`, createRoutes(app))
+    server.use(`/:lng(${lngs})`, createLocalizedRoutes(app))
 
     server.use('/static', express.static(path.join(__dirname, '../static'), {
       maxAge: '15d'

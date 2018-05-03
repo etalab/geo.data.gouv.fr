@@ -15,6 +15,7 @@
   "dependencies": {
     "@turf/bbox": "^6.0.1",
     "@turf/flip": "^5.1.5",
+    "bytes": "^3.0.0",
     "chart.js": "^2.7.2",
     "compression": "^1.7.2",
     "cross-env": "^5.1.4",
@@ -39,7 +40,6 @@
     "react-dom": "^16.2.0",
     "react-i18next": "^7.6.1",
     "react-icons": "^2.2.7",
-    "react-mapbox-gl": "^3.8.0",
     "react-table": "^6.8.2",
     "underscore.string": "^3.3.4"
   },

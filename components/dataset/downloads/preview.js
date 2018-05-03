@@ -10,6 +10,7 @@ import {_get} from '../../../lib/fetch'
 
 import Modal from '../../modal'
 import Button from '../../button'
+import ErrorWrapper from '../../error-wrapper'
 
 const CenteredMap = dynamic(import('../../centered-map'), {
   ssr: false,
@@ -93,7 +94,9 @@ class Preview extends React.Component {
               <div className='map-wrapper'>
                 {view === 'map' ? (
                   <div className='map'>
-                    <CenteredMap data={data} extent={extent} />
+                    <ErrorWrapper message={t('common:errors.map')}>
+                      <CenteredMap data={data} extent={extent} />
+                    </ErrorWrapper>
                   </div>
                 ) : (
                   <PreviewTable data={data} />
