@@ -5,6 +5,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 // The following dependencies will be pushed to the commons.js bundle
 const commonDependencies = [
+  '/next/',
   '/lodash-es/',
   '/marked/',
 
@@ -33,7 +34,7 @@ module.exports = withConfig({
 
     if (!dev && !isServer) {
       const commonPlugin = config.plugins.find(p =>
-        p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'main.js'
+        p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'static/commons/main-[chunkhash].js'
       )
 
       if (commonPlugin) {
