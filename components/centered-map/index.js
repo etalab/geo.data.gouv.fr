@@ -216,6 +216,10 @@ class CenteredMap extends React.Component {
       type: 'FeatureCollection',
       features: []
     })
+
+    this.setState({
+      highlight: null
+    })
   }
 
   render() {
