@@ -33,7 +33,7 @@ module.exports = withConfig({
 
     if (!dev && !isServer) {
       const commonPlugin = config.plugins.find(p =>
-        p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'main.js'
+        p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'static/commons/main-[chunkhash].js'
       )
 
       if (commonPlugin) {
