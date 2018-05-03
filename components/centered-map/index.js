@@ -29,10 +29,7 @@ class CenteredMap extends React.Component {
   constructor(props) {
     super(props)
 
-    // This is not in the state because we do not want to trigger
-    // a re-render when we disable fitBounds.
     this.bbox = bbox(props.data)
-
     if (props.extent) {
       if (isBboxFlipped(this.bbox, bbox(props.extent))) {
         // Even though we should never mutate a component’s props,
