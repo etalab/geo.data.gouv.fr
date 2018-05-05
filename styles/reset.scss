@@ -1,27 +1,30 @@
 @import 'colors';
+@import 'fonts';
 
 *,
-:after,
-:before {
-  box-sizing: inherit
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+
 html {
-  box-sizing: border-box;
-  font-size: 14px;
+  font-family: sans-serif;
   line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba($black, 0);
 }
 
 body {
   margin: 0;
-  padding: 0;
-  font-size: 14px;
-  line-height: 1.4285;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size;
+  font-weight: $font-weight-normal;
+  line-height: $line-height;
+  text-align: left;
   background-color: $white;
-  min-width: 320px;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 input[type=email],
@@ -60,13 +63,13 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: $font-family-monospace;
   font-size: 1em;
 }
 
 b,
-strong{
-  font-weight: 700;
+strong {
+  font-weight: $font-weight-bold;
 }
 
 dfn {
@@ -106,9 +109,10 @@ input,
 optgroup,
 select,
 textarea {
-  font-size: 100%;
-  line-height: 1.15;
   margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 button,
@@ -187,7 +191,7 @@ template {
 }
 
 html {
-  font-size: 14px;
+  font-size: $font-size;
 }
 
 h1,
@@ -198,7 +202,7 @@ h5 {
   font-family: inherit;
   line-height: 1.28571429em;
   margin: calc(2rem - .14285714em) 0 1rem;
-  font-weight: 700;
+  font-weight: 600;
   padding: 0;
 
   &:first-child {

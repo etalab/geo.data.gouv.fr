@@ -27,41 +27,9 @@ export default class MyDocument extends Document {
           <link rel='icon' type='image/png' sizes='32x32' href='/static/favicons/favicon-32x32.png' />
           <link rel='manifest' href='/static/favicons/manifest.json' />
           <link rel='mask-icon' href='/static/favicons/safari-pinned-tab.svg' color='#5bbad5' />
-
-          <link rel='preload' href='/static/fonts/lato-regular-webfont.woff2' as='font' type='font/woff2' crossOrigin='' />
         </Head>
         <body>
           <Main />
-          {/* eslint-disable react/no-danger */}
-          <script dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                if ('fonts' in document) {
-                  if (sessionStorage.fontsLoaded) {
-                    document.documentElement.classList.add('font-stage-2')
-                    return
-                  }
-
-                  document.fonts.load('1em LatoInitial').then(function () {
-                    document.documentElement.classList.add('font-stage-1')
-
-                    Promise.all([
-                      document.fonts.load('400 1em Lato'),
-                      document.fonts.load('700 1em Lato'),
-                      document.fonts.load('italic 1em Lato'),
-                      document.fonts.load('italic 700 1em Lato')
-                    ]).then(function () {
-                      document.documentElement.classList.add('font-stage-2')
-                      sessionStorage.fontsLoaded = true
-                    })
-                  })
-                } else {
-                  document.documentElement.classList.add('font-stage-2')
-                }
-              })()
-            `
-          }} />
-          {/* eslint-enable react/no-danger */}
           <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=default,modernizr:es6array,modernizr:es7array' />
           {PIWIK_URL && PIWIK_SITE_ID && <script src={`${PIWIK_URL}/piwik.js`} defer async />}
           <NextScript />

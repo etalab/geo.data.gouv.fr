@@ -66,9 +66,9 @@ class CatalogsPage extends React.Component {
             <style jsx>{`
               h1 {
                 color: #fff;
-                font-size: xx-large;
-                font-weight: 100;
-                margin-bottom: 1em;
+                font-size: 2.2em;
+                font-weight: 500;
+                margin: 0.5em 0 1em;
                 text-align: center;
               }
 
