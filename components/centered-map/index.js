@@ -10,6 +10,8 @@ import {isBboxFlipped, flipBbox} from '../../lib/geo/bbox'
 
 import Feature from './feature'
 
+const UNIQUE_FEATURE_ID = '$GDV_UNIQUE_FEATURE_ID$'
+
 class CenteredMap extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
@@ -40,6 +42,12 @@ class CenteredMap extends React.Component {
         this.bbox = flipBbox(this.bbox)
       }
     }
+
+    // We’re mutating the props again to add a unique feature id
+    // so we can filter them on a reliable property later.
+    props.data.features.forEach((feature, index) => {
+      feature.properties[UNIQUE_FEATURE_ID] = index
+    })
 
     this.handlers = []
 
@@ -145,8 +153,9 @@ class CenteredMap extends React.Component {
       type: 'fill',
       source: 'hover',
       paint: {
-        'fill-color': '#2c3e50',
-        'fill-opacity': 0.3
+        'fill-color': '#9ab0d1'
+        // We’re not setting an opacity here.
+        // There will be overlapping features due to how vector tiles work.
       },
       filter: ['==', '$type', 'Polygon']
     })
@@ -194,14 +203,26 @@ class CenteredMap extends React.Component {
 
     const [feature] = event.features
 
+    const sourceFeatures = map.querySourceFeatures('data', {
+      filter: [
+        '==', UNIQUE_FEATURE_ID, feature.properties[UNIQUE_FEATURE_ID]
+      ]
+    })
+
+    // Eventually, we’ll have to @turf/union the sourceFeatures
+    // when https://github.com/w8r/martinez/issues/51 is fixed.
+
     map.getSource('hover').setData({
       type: 'FeatureCollection',
-      features: [feature]
+      features: sourceFeatures
     })
+
+    const properties = {...feature.properties}
+    delete properties[UNIQUE_FEATURE_ID]
 
     this.setState({
       highlight: {
-        feature,
+        properties,
         count: event.features.length
       }
     })
@@ -233,7 +254,7 @@ class CenteredMap extends React.Component {
 
         {highlight && (
           <div className='info'>
-            <Feature feature={highlight.feature} otherFeaturesCount={highlight.count - 1} />
+            <Feature properties={highlight.properties} otherFeaturesCount={highlight.count - 1} />
           </div>
         )}
 

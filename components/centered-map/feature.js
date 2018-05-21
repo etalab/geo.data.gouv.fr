@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
 
-const Feature = ({feature, otherFeaturesCount, t}) => (
+const Feature = ({properties, otherFeaturesCount, t}) => (
   <div>
     <ul>
-      {Object.keys(feature.properties).map(key =>
-        <li key={key}><b>{key} :</b> {feature.properties[key]}</li>
+      {Object.keys(properties).map(key =>
+        <li key={key}><b>{key} :</b> {properties[key]}</li>
       )}
     </ul>
 
@@ -47,9 +47,7 @@ const Feature = ({feature, otherFeaturesCount, t}) => (
 )
 
 Feature.propTypes = {
-  feature: PropTypes.shape({
-    properties: PropTypes.object.isRequired
-  }).isRequired,
+  properties: PropTypes.object.isRequired,
   otherFeaturesCount: PropTypes.number.isRequired,
 
   t: PropTypes.func.isRequired
