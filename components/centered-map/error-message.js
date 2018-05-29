@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ErrorIcon from 'react-icons/lib/fa/times-circle'
 
-const ErrorMessage = ({children}) => (
+const ErrorMessage = ({small, children}) => (
   <div className='container'>
-    <div className='icon'>
+    <div className={`icon ${small ? 'small' : ''}`}>
       <ErrorIcon />
     </div>
 
@@ -32,6 +32,10 @@ const ErrorMessage = ({children}) => (
         color: $red;
       }
 
+      .small {
+        font-size: 54px;
+      }
+
       .text {
         color: $red;
         font-weight: bold;
@@ -42,7 +46,12 @@ const ErrorMessage = ({children}) => (
 )
 
 ErrorMessage.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  small: PropTypes.bool
+}
+
+ErrorMessage.defaultProps = {
+  small: false
 }
 
 export default ErrorMessage

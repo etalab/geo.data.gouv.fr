@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import getConfig from 'next/config'
-import dynamic from 'next/dynamic'
-import {translate} from 'react-i18next'
 import bytes from 'bytes'
 
 import {_get} from '../../lib/fetch'
@@ -11,20 +9,13 @@ import {generateDistributionId, generateDistributionInfo} from '../../lib/distri
 
 import attachI18n from '../../components/hoc/attach-i18n'
 
-import Loader from '../../components/preview/loader'
-import ErrorMessage from '../../components/preview/error'
+import CenteredMap from '../../components/centered-map'
+import Loader from '../../components/centered-map/loader'
+import ErrorMessage from '../../components/centered-map/error-message'
 
 const {publicRuntimeConfig: {
   GEODATA_API_URL
 }} = getConfig()
-
-const CenteredMap = dynamic(import('../../components/centered-map'), {
-  loading: translate('preview')(({t}) => (
-    <Loader>
-      {t('loading.component')}
-    </Loader>
-  ))
-})
 
 class PreviewPage extends React.Component {
   static propTypes = {
