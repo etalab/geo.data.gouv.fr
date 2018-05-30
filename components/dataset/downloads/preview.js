@@ -11,11 +11,7 @@ import {_get} from '../../../lib/fetch'
 import Modal from '../../modal'
 import Button from '../../button'
 import ErrorWrapper from '../../error-wrapper'
-
-const CenteredMap = dynamic(import('../../centered-map'), {
-  ssr: false,
-  loading: translate()(({t}) => t('loading'))
-})
+import CenteredMap from '../../centered-map'
 
 const PreviewTable = dynamic(import('./preview-table'), {
   ssr: false,

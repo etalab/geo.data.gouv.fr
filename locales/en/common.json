@@ -70,6 +70,10 @@
   },
 
   "map": {
+    "loading": "Loading the map",
+    "errors": {
+      "noWebgl": "We couldn’t display this map because your browser doesn’t support WebGL"
+    },
     "additionalFeature": "One more feature…",
     "additionalFeature_plural": "{{ count }} more features…"
   },

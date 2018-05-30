@@ -1,12 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import dynamic from 'next/dynamic'
-import {translate} from 'react-i18next'
 
-const CenteredMap = dynamic(import('../centered-map'), {
-  ssr: false,
-  loading: translate()(({t}) => t('loading'))
-})
+import CenteredMap from '../centered-map'
 
 const SpatialExtent = ({extent}) => {
   const data = {
@@ -17,7 +12,7 @@ const SpatialExtent = ({extent}) => {
   return (
     <div>
       <div className='map'>
-        <CenteredMap data={data} frozen />
+        <CenteredMap small data={data} frozen />
       </div>
 
       <style jsx>{`

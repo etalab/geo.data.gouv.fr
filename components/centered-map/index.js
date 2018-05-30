@@ -1,285 +1,66 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import mapboxgl from 'mapbox-gl'
-import bbox from '@turf/bbox'
-import flip from '@turf/flip'
+import dynamic from 'next/dynamic'
+import {translate} from 'react-i18next'
 
-import mapStyle from 'mapbox-gl/dist/mapbox-gl.css'
+import {isWebglSupported} from '../../lib/browser/webgl'
 
-import {isBboxFlipped, flipBbox} from '../../lib/geo/bbox'
+import Loader from './loader'
+import ErrorMessage from './error-message'
 
-import Feature from './feature'
+const MapLoader = translate()(({small, t}) => (
+  <Loader small={small}>
+    {t('map.loading')}
+  </Loader>
+))
 
-const UNIQUE_FEATURE_ID = '$GDV_UNIQUE_FEATURE_ID$'
+const NoWebglError = translate()(({small, t}) => (
+  <ErrorMessage small={small}>
+    {t('map.errors.noWebgl')}
+  </ErrorMessage>
+))
 
-class CenteredMap extends React.Component {
+class MapWrapper extends React.PureComponent {
   static propTypes = {
-    data: PropTypes.object.isRequired,
-    extent: PropTypes.object,
-    frozen: PropTypes.bool
+    small: PropTypes.bool
   }
 
   static defaultProps = {
-    extent: null,
-    frozen: false
+    small: false
   }
 
   state = {
-    highlight: null
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.bbox = bbox(props.data)
-    if (props.extent) {
-      if (isBboxFlipped(this.bbox, bbox(props.extent))) {
-        // Even though we should never mutate a component’s props,
-        // flipped coordinates should also never appear.
-        // We’re mutating the `data` prop here (and it is faster).
-
-        flip(props.data, {mutate: true})
-        this.bbox = flipBbox(this.bbox)
-      }
-    }
-
-    // We’re mutating the props again to add a unique feature id
-    // so we can filter them on a reliable property later.
-    props.data.features.forEach((feature, index) => {
-      feature.properties[UNIQUE_FEATURE_ID] = index
-    })
-
-    this.handlers = []
-
-    if (!props.frozen) {
-      for (const layer of ['point', 'polygon-fill', 'line']) {
-        this.handlers.push({
-          event: 'mousemove',
-          layer,
-          handler: this.onMouseMove.bind(this, layer)
-        }, {
-          event: 'mouseleave',
-          layer,
-          handler: this.onMouseLeave.bind(this, layer)
-        })
-      }
-    }
+    showMap: false
   }
 
   componentDidMount() {
-    const {frozen} = this.props
+    const {small} = this.props
 
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json',
-      interactive: !frozen
-    })
-
-    this.map.once('load', this.onLoad)
-
-    this.map.fitBounds(this.bbox, {
-      padding: 30,
-      linear: true,
-      duration: 0
-    })
-
-    for (const {event, layer, handler} of this.handlers) {
-      this.map.on(event, layer, handler)
-    }
-  }
-
-  componentWillUnmount() {
-    const {map} = this
-
-    for (const {event, layer, handler} of this.handlers) {
-      map.off(event, layer, handler)
-    }
-  }
-
-  onLoad = () => {
-    const {map} = this
-    const {data} = this.props
-
-    map.addSource('data', {
-      type: 'geojson',
-      data
-    })
-
-    map.addSource('hover', {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: []
-      }
-    })
-
-    map.addLayer({
-      id: 'point',
-      type: 'circle',
-      source: 'data',
-      paint: {
-        'circle-radius': 5,
-        'circle-color': '#3099df',
-        'circle-opacity': 0.6
-      },
-      filter: ['==', '$type', 'Point']
-    })
-
-    map.addLayer({
-      id: 'point-hover',
-      type: 'circle',
-      source: 'hover',
-      paint: {
-        'circle-radius': 5,
-        'circle-color': '#2c3e50',
-        'circle-opacity': 0.8
-      },
-      filter: ['==', '$type', 'Point']
-    })
-
-    map.addLayer({
-      id: 'polygon-fill',
-      type: 'fill',
-      source: 'data',
-      paint: {
-        'fill-color': '#3099df',
-        'fill-opacity': 0.3
-      },
-      filter: ['==', '$type', 'Polygon']
-    })
-
-    map.addLayer({
-      id: 'polygon-fill-hover',
-      type: 'fill',
-      source: 'hover',
-      paint: {
-        'fill-color': '#9ab0d1'
-        // We’re not setting an opacity here.
-        // There will be overlapping features due to how vector tiles work.
-      },
-      filter: ['==', '$type', 'Polygon']
-    })
-
-    map.addLayer({
-      id: 'polygon-outline',
-      type: 'line',
-      source: 'data',
-      paint: {
-        'line-color': '#4790E5',
-        'line-width': 2
-      },
-      filter: ['==', '$type', 'Polygon']
-    })
-
-    map.addLayer({
-      id: 'line',
-      type: 'line',
-      source: 'data',
-      paint: {
-        'line-color': '#3099df',
-        'line-width': 5,
-        'line-opacity': 0.8
-      },
-      filter: ['==', '$type', 'LineString']
-    })
-
-    map.addLayer({
-      id: 'line-hover',
-      type: 'line',
-      source: 'hover',
-      paint: {
-        'line-color': '#2c3e50',
-        'line-width': 5,
-        'line-opacity': 0.8
-      },
-      filter: ['==', '$type', 'LineString']
-    })
-  }
-
-  onMouseMove = (layer, event) => {
-    const {map} = this
-    const canvas = map.getCanvas()
-    canvas.style.cursor = 'pointer'
-
-    const [feature] = event.features
-
-    const sourceFeatures = map.querySourceFeatures('data', {
-      filter: [
-        '==', UNIQUE_FEATURE_ID, feature.properties[UNIQUE_FEATURE_ID]
-      ]
-    })
-
-    // Eventually, we’ll have to @turf/union the sourceFeatures
-    // when https://github.com/w8r/martinez/issues/51 is fixed.
-
-    map.getSource('hover').setData({
-      type: 'FeatureCollection',
-      features: sourceFeatures
-    })
-
-    const properties = {...feature.properties}
-    delete properties[UNIQUE_FEATURE_ID]
+    this.MapComponent = isWebglSupported() ? dynamic(import('./map'), {
+      ssr: false,
+      loading: () => (
+        <MapLoader small={small} />
+      )
+    }) : () => (
+      <NoWebglError small={small} />
+    )
 
     this.setState({
-      highlight: {
-        properties,
-        count: event.features.length
-      }
-    })
-  }
-
-  onMouseLeave = () => {
-    const {map} = this
-    const canvas = map.getCanvas()
-    canvas.style.cursor = ''
-
-    map.getSource('hover').setData({
-      type: 'FeatureCollection',
-      features: []
-    })
-
-    this.setState({
-      highlight: null
+      showMap: true
     })
   }
 
   render() {
-    const {highlight} = this.state
+    const {small, ...props} = this.props
+    const {showMap} = this.state
 
-    return (
-      <div className='container'>
-        <div ref={el => {
-          this.mapContainer = el
-        }} className='container' />
+    if (showMap) {
+      const {MapComponent} = this
+      return <MapComponent {...props} />
+    }
 
-        {highlight && (
-          <div className='info'>
-            <Feature properties={highlight.properties} otherFeaturesCount={highlight.count - 1} />
-          </div>
-        )}
-
-        <style
-          dangerouslySetInnerHTML={{__html: mapStyle}} // eslint-disable-line react/no-danger
-        />
-        <style jsx>{`
-          .container {
-            position: relative;
-            height: 100%;
-            width: 100%;
-          }
-
-          .info {
-            position: absolute;
-            pointer-events: none;
-            top: 10px;
-            left: 10px;
-            max-width: 40%;
-            overflow: hidden;
-          }
-        `}</style>
-      </div>
-    )
+    return <MapLoader small={small} />
   }
 }
 
-export default CenteredMap
+export default MapWrapper

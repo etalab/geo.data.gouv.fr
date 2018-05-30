@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Loader = ({children}) => (
+const Loader = ({small, children}) => (
   <div className='container'>
-    <div className='grid'>
+    <div className={`grid ${small ? 'small' : ''}`}>
       <div className='cube cube1' />
       <div className='cube cube2' />
       <div className='cube cube3' />
@@ -54,6 +54,17 @@ const Loader = ({children}) => (
         border-radius: 50%;
       }
 
+      .small {
+        width: 54px;
+        height: 54px;
+
+        .cube {
+          width: 14px;
+          height: 14px;
+          margin: 2px;
+        }
+      }
+
       .cube1 {
         animation-delay: 0.2s;
       }
@@ -95,7 +106,12 @@ const Loader = ({children}) => (
 )
 
 Loader.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  small: PropTypes.bool
+}
+
+Loader.defaultProps = {
+  small: false
 }
 
 export default Loader

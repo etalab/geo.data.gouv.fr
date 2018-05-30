@@ -5,8 +5,7 @@
       "init": "Starting download",
       "progress": "Downloading: {{ bytes }}",
       "progressWithTotal": "Downloading: {{ bytes }} / {{ total }}"
-    },
-    "component": "Loading the map"
+    }
   },
 
   "error": {
