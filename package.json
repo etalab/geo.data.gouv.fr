@@ -3,6 +3,7 @@
   "private": true,
   "version": "3.5.0",
   "license": "MIT",
+  "repository": "git@github.com:etalab/geo.data.gouv.fr.git",
   "scripts": {
     "dev": "node server",
     "build": "next build",
