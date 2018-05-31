@@ -39,6 +39,10 @@ const Counter = ({value, label, unit, size, color, title}) => (
       .small {
         font-size: 0.8rem;
         line-height: 1;
+
+        @media (max-width: 551px) {
+          font-size: 0.6rem;
+        }
       }
     `}</style>
   </div>

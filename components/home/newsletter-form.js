@@ -62,7 +62,7 @@ class NewsletterForm extends React.Component {
 
           span {
             text-transform: uppercase;
-            font-weight: bold;
+            font-weight: 600;
           }
         `}</style>
       </div>

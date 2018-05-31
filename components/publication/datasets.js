@@ -236,7 +236,7 @@ class Datasets extends React.Component {
             div:last-child {
               margin-left: auto;
               padding: 0 0.5em 0 1em;
-              font-weight: bold;
+              font-weight: 600;
             }
 
             small {

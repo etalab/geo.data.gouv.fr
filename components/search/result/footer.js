@@ -60,7 +60,7 @@ const Footer = ({metadata, t}) => {
 
         b {
           margin-left: 0.3em;
-          font-weight: bold;
+          font-weight: 600;
           color: $blue;
         }
       `}</style>

@@ -45,16 +45,10 @@ class Page extends React.PureComponent {
 
     return (
       <div>
-        <style jsx global>{`
-          @import 'reset';
-          @import 'fonts';
-        `}</style>
-
         <Header />
         {ready ? children() : (
           <Content>
             <Meta />
-
             <Container>
               {t('loading')}
             </Container>

@@ -41,7 +41,7 @@ const Loader = ({small, children}) => (
 
       .text {
         color: $blue;
-        font-weight: bold;
+        font-weight: 600;
         text-align: center;
       }
 
