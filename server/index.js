@@ -85,7 +85,7 @@ i18n
     }))
 
     server.get('*', (req, res) => {
-      if (!isInternalUrl(req)) {
+      if (!isInternalUrl(req.url)) {
         return res.redirect(`/${req.i18n.languages[0]}${req.url}`)
       }
 
