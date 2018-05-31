@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import getConfig from 'next/config'
 import NProgress from 'nprogress'
 import {translate} from 'react-i18next'
 
@@ -16,28 +15,11 @@ Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const {publicRuntimeConfig: {
-  PIWIK_URL,
-  PIWIK_SITE_ID
-}} = getConfig()
-
 class Page extends React.PureComponent {
   static propTypes = {
     children: PropTypes.func.isRequired,
     ready: PropTypes.bool.isRequired,
     t: PropTypes.func.isRequired
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      if (window.Piwik) {
-        const tracker = window.Piwik.getTracker(`${PIWIK_URL}/piwik.php`, PIWIK_SITE_ID)
-
-        if (tracker) {
-          tracker.trackPageView()
-        }
-      }
-    }, 300)
   }
 
   render() {
