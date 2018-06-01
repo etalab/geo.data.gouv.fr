@@ -12,6 +12,12 @@ const {publicRuntimeConfig: {
   PIWIK_SITE_ID
 }} = getConfig()
 
+const Reset = () => (
+  <style jsx global>{`
+    @import 'reset';
+  `}</style>
+)
+
 class MyApp extends App {
   static async getInitialProps({Component, ctx}) {
     let pageProps = {}
@@ -68,9 +74,7 @@ class MyApp extends App {
 
     return (
       <Container>
-        <style jsx global>{`
-          @import 'reset';
-        `}</style>
+        <Reset />
 
         <Component {...pageProps} />
 
