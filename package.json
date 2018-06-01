@@ -22,7 +22,7 @@
     "cross-env": "^5.1.6",
     "express": "^4.16.3",
     "hoist-non-react-statics": "^2.5.0",
-    "i18next": "^11.2.3",
+    "i18next": "^11.3.3",
     "i18next-express-middleware": "^1.1.1",
     "i18next-node-fs-backend": "^1.0.0",
     "i18next-xhr-backend": "^1.5.1",
@@ -39,7 +39,7 @@
     "react": "^16.4.0",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.4.0",
-    "react-i18next": "^7.6.1",
+    "react-i18next": "^7.7.0",
     "react-icons": "^2.2.7",
     "react-table": "^6.8.2",
     "underscore.string": "^3.3.4"
