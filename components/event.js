@@ -5,6 +5,8 @@ import {translate} from 'react-i18next'
 
 import CalendarIcon from 'react-icons/lib/fa/calendar-check-o'
 
+import Button from './button'
+
 const Event = ({event, t}) => (
   <div className='event'>
     <div className='icon'>
@@ -13,18 +15,23 @@ const Event = ({event, t}) => (
     <div>
       <h3>{event.name}</h3>
       <div>{moment(event.date).format('LL')}</div>
-      {event.link ? (
-        <div>
-          <a href={event.link} download>{t('event.download')}</a>
-        </div>
-      ) : (
-        <div>
-          {event.linkComingSoon ?
-            t('event.soonAvailable') :
-            t('event.noReport')
-          }
-        </div>
-      )}
+      {event.subscribe ?
+        <Button href={event.subscribe}>
+          Inscription
+        </Button> :
+        event.link ? (
+          <div>
+            <a href={event.link} download>{t('event.download')}</a>
+          </div>
+        ) : (
+          <div>
+            {event.linkComingSoon ?
+              t('event.soonAvailable') :
+              t('event.noReport')
+            }
+          </div>
+        )
+      }
     </div>
 
     <style jsx>{`
@@ -64,6 +71,7 @@ Event.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.instanceOf(Date),
     link: PropTypes.string,
+    subscribe: PropTypes.string,
     linkComingSoon: PropTypes.bool
   }).isRequired,
 
