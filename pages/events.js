@@ -12,8 +12,16 @@ import Container from '../components/container'
 import Box from '../components/box'
 import Event from '../components/event'
 
+const nextEvent = {
+  name: 'Atelier #9',
+  date: new Date(2018, 6, 12),
+  subscribe: 'https://www.eventbrite.fr/e/billets-atelier-geo-8-46883052472'
+}
+
 const pastEvents = [
-  {name: 'Atelier #6', date: new Date(2017, 4, 18), linkComingSoon: true},
+  {name: 'Atelier #8', date: new Date(2018, 4, 22)},
+  {name: 'Atelier #7', date: new Date(2017, 11, 12)},
+  {name: 'Atelier #6', date: new Date(2017, 4, 18)},
   {name: 'Atelier #5', date: new Date(2017, 3, 18), link: '/static/files/events/synthese_atelier_5.pdf'},
   {name: 'Atelier #4', date: new Date(2017, 2, 9), link: '/static/files/events/synthese_atelier_4.pdf'},
   {name: 'Atelier #3', date: new Date(2017, 1, 9), link: '/static/files/events/synthese_atelier_3.pdf'},
@@ -32,7 +40,7 @@ const EventsPage = ({t, tReady}) => (
             <Box>
               <h1>{t('nextEvents')}</h1>
               <div className='empty'>
-                {t('noEvents')}
+                {nextEvent ? <Event event={nextEvent} /> : t('noEvents')}
               </div>
 
               <h1>{t('previousEvents')}</h1>
