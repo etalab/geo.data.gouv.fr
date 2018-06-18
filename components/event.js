@@ -15,23 +15,19 @@ const Event = ({event, t}) => (
     <div>
       <h3>{event.name}</h3>
       <div>{moment(event.date).format('LL')}</div>
-      {event.subscribe ?
-        <Button href={event.subscribe}>
-          Inscription
-        </Button> :
-        event.link ? (
-          <div>
-            <a href={event.link} download>{t('event.download')}</a>
-          </div>
-        ) : (
-          <div>
-            {event.linkComingSoon ?
-              t('event.soonAvailable') :
-              t('event.noReport')
-            }
-          </div>
-        )
-      }
+      {event.register ? (
+        <Button href={event.register}>
+          {t('event.register')}
+        </Button>
+      ) : event.link ? (
+        <div>
+          <a href={event.link} download>{t('event.download')}</a>
+        </div>
+      ) : (
+        <div>
+          {event.linkComingSoon ? t('event.soonAvailable') : t('event.noReport')}
+        </div>
+      )}
     </div>
 
     <style jsx>{`

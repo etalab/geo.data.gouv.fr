@@ -15,7 +15,7 @@ import Event from '../components/event'
 const nextEvent = {
   name: 'Atelier #9',
   date: new Date(2018, 6, 12),
-  subscribe: 'https://www.eventbrite.fr/e/billets-atelier-geo-8-46883052472'
+  register: 'https://www.eventbrite.fr/e/billets-atelier-geo-8-46883052472'
 }
 
 const pastEvents = [
@@ -40,7 +40,9 @@ const EventsPage = ({t, tReady}) => (
             <Box>
               <h1>{t('nextEvents')}</h1>
               <div className='empty'>
-                {nextEvent ? <Event event={nextEvent} /> : t('noEvents')}
+                {nextEvent ? (
+                  <Event event={nextEvent} />
+                ) : t('noEvents')}
               </div>
 
               <h1>{t('previousEvents')}</h1>
