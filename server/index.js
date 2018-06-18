@@ -38,13 +38,8 @@ i18n
       'common'
     ],
     defaultNS: 'common',
-    whitelist: [
-      ...languages
-    ],
-
-    preload: [
-      ...languages
-    ],
+    whitelist: [...languages],
+    preload: [...languages],
 
     backend: {
       loadPath: path.join(__dirname, '../locales/{{lng}}/{{ns}}.json'),
