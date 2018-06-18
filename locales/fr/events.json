@@ -7,6 +7,7 @@
   "event": {
     "download": "Télécharger le compte-rendu",
     "soonAvailable": "Compte-rendu bientôt disponible…",
-    "noReport": "Pas de compte-rendu"
+    "noReport": "Pas de compte-rendu",
+    "register": "Inscription"
   }
 }
