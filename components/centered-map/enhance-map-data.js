@@ -6,7 +6,7 @@ import flip from '@turf/flip'
 
 import {isBboxFlipped, flipBbox} from '../../lib/geo/bbox'
 
-export default uniqueFeatureId => Map => hoist(class extends React.PureComponent {
+export default Map => hoist(class extends React.PureComponent {
   static propTypes = {
     frozen: PropTypes.bool,
     extent: PropTypes.object,
@@ -37,21 +37,17 @@ export default uniqueFeatureId => Map => hoist(class extends React.PureComponent
       }
     }
 
-    if (!frozen && uniqueFeatureId) {
-      // We’re adding a unique property to all features
-      // so that we can easily identify them later.
+    if (!frozen) {
+      // We’re adding a unique id to all features so that we can easily identify them later.
 
       if (transformedData.features) {
         if (!transformed) {
           transformedData = {...transformedData}
         }
 
-        transformedData.features = transformedData.features.map((feature, index) => ({
+        transformedData.features = transformedData.features.map((feature, id) => ({
           ...feature,
-          properties: {
-            ...feature.properties,
-            [uniqueFeatureId]: index
-          }
+          id
         }))
       }
     }
