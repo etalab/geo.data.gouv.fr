@@ -5808,9 +5808,9 @@ mock-local-storage@^1.0.5:
     core-js "^0.8.3"
     global "^4.3.2"
 
-moment@^2.10.2, moment@^2.22.1:
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
+moment@^2.10.2, moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 moment@^2.11.2:
   version "2.18.1"
