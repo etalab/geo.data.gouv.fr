@@ -1,12 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import mapboxgl from 'mapbox-gl'
-import bbox from '@turf/bbox'
-import flip from '@turf/flip'
-
 import mapStyle from 'mapbox-gl/dist/mapbox-gl.css'
 
-import {isBboxFlipped, flipBbox} from '../../lib/geo/bbox'
+import enhanceMapData from './enhance-map-data'
 
 import Feature from './feature'
 
@@ -15,13 +12,8 @@ const UNIQUE_FEATURE_ID = '$GDV_UNIQUE_FEATURE_ID$'
 class CenteredMap extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
-    extent: PropTypes.object,
-    frozen: PropTypes.bool
-  }
-
-  static defaultProps = {
-    extent: null,
-    frozen: false
+    bbox: PropTypes.array.isRequired,
+    frozen: PropTypes.bool.isRequired
   }
 
   state = {
@@ -31,27 +23,9 @@ class CenteredMap extends React.Component {
   constructor(props) {
     super(props)
 
-    this.bbox = bbox(props.data)
-    if (props.extent) {
-      if (isBboxFlipped(this.bbox, bbox(props.extent))) {
-        // Even though we should never mutate a component’s props,
-        // flipped coordinates should also never appear.
-        // We’re mutating the `data` prop here (and it is faster).
-
-        flip(props.data, {mutate: true})
-        this.bbox = flipBbox(this.bbox)
-      }
-    }
-
     this.handlers = []
 
     if (!props.frozen) {
-      if (props.data.features) {
-        props.data.features.forEach((feature, index) => {
-          feature.properties[UNIQUE_FEATURE_ID] = index
-        })
-      }
-
       for (const layer of ['point', 'polygon-fill', 'line']) {
         this.handlers.push({
           event: 'mousemove',
@@ -67,7 +41,7 @@ class CenteredMap extends React.Component {
   }
 
   componentDidMount() {
-    const {frozen} = this.props
+    const {frozen, bbox} = this.props
 
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -77,7 +51,7 @@ class CenteredMap extends React.Component {
 
     this.map.once('load', this.onLoad)
 
-    this.map.fitBounds(this.bbox, {
+    this.map.fitBounds(bbox, {
       padding: 30,
       linear: true,
       duration: 0
@@ -282,4 +256,6 @@ class CenteredMap extends React.Component {
   }
 }
 
-export default CenteredMap
+export default enhanceMapData(UNIQUE_FEATURE_ID)(
+  CenteredMap
+)
