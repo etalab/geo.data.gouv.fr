@@ -62,7 +62,7 @@
     "eslint-plugin-react": "^7.7.0",
     "jest": "^23.1.0",
     "jest-junit": "^5.0.0",
-    "lerna-changelog": "^0.7.0",
+    "lerna-changelog": "^0.8.0",
     "mock-local-storage": "^1.0.5",
     "node-sass": "^4.9.0",
     "raf": "^3.4.0",

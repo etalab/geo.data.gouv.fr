@@ -138,13 +138,13 @@ jobs:
 
               echo "[+] Running for range $PREV_TAG...$CIRCLE_TAG"
 
-              node_modules/.bin/lerna-changelog --tag-from $PREV_TAG --tag-to $CIRCLE_TAG > CHANGELOG.md
+              node_modules/.bin/lerna-changelog --from $PREV_TAG --to $CIRCLE_TAG > CHANGELOG.md
             else
               PREV_TAG=$(git describe --abbrev=0 --tags)
 
               echo "[+] Running from $PREV_TAG"
 
-              node_modules/.bin/lerna-changelog --tag-from $PREV_TAG > CHANGELOG.md
+              node_modules/.bin/lerna-changelog --from $PREV_TAG > CHANGELOG.md
             fi
 
       - save_cache:
