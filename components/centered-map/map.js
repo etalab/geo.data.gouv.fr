@@ -7,8 +7,6 @@ import enhanceMapData from './enhance-map-data'
 
 import Feature from './feature'
 
-const UNIQUE_FEATURE_ID = '$GDV_UNIQUE_FEATURE_ID$'
-
 class CenteredMap extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
@@ -79,34 +77,24 @@ class CenteredMap extends React.Component {
       data
     })
 
-    map.addSource('hover', {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: []
-      }
-    })
-
     map.addLayer({
       id: 'point',
       type: 'circle',
       source: 'data',
       paint: {
         'circle-radius': 5,
-        'circle-color': '#3099df',
-        'circle-opacity': 0.6
-      },
-      filter: ['==', '$type', 'Point']
-    })
-
-    map.addLayer({
-      id: 'point-hover',
-      type: 'circle',
-      source: 'hover',
-      paint: {
-        'circle-radius': 5,
-        'circle-color': '#2c3e50',
-        'circle-opacity': 0.8
+        'circle-color': [
+          'case',
+          ['boolean', ['feature-state', 'hover'], false],
+          '#2c3e50',
+          '#3099df'
+        ],
+        'circle-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'hover'], false],
+          0.8,
+          0.6
+        ]
       },
       filter: ['==', '$type', 'Point']
     })
@@ -116,20 +104,18 @@ class CenteredMap extends React.Component {
       type: 'fill',
       source: 'data',
       paint: {
-        'fill-color': '#3099df',
-        'fill-opacity': 0.3
-      },
-      filter: ['==', '$type', 'Polygon']
-    })
-
-    map.addLayer({
-      id: 'polygon-fill-hover',
-      type: 'fill',
-      source: 'hover',
-      paint: {
-        'fill-color': '#9ab0d1'
-        // We’re not setting an opacity here.
-        // There will be overlapping features due to how vector tiles work.
+        'fill-color': [
+          'case',
+          ['boolean', ['feature-state', 'hover'], false],
+          '#2c3e50',
+          '#3099df'
+        ],
+        'fill-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'hover'], false],
+          0.5,
+          0.3
+        ]
       },
       filter: ['==', '$type', 'Polygon']
     })
@@ -150,19 +136,12 @@ class CenteredMap extends React.Component {
       type: 'line',
       source: 'data',
       paint: {
-        'line-color': '#3099df',
-        'line-width': 5,
-        'line-opacity': 0.8
-      },
-      filter: ['==', '$type', 'LineString']
-    })
-
-    map.addLayer({
-      id: 'line-hover',
-      type: 'line',
-      source: 'hover',
-      paint: {
-        'line-color': '#2c3e50',
+        'line-color': [
+          'case',
+          ['boolean', ['feature-state', 'hover'], false],
+          '#2c3e50',
+          '#3099df'
+        ],
         'line-width': 5,
         'line-opacity': 0.8
       },
@@ -177,26 +156,16 @@ class CenteredMap extends React.Component {
 
     const [feature] = event.features
 
-    const sourceFeatures = map.querySourceFeatures('data', {
-      filter: [
-        '==', UNIQUE_FEATURE_ID, feature.properties[UNIQUE_FEATURE_ID]
-      ]
-    })
+    if (this.highlighted) {
+      map.setFeatureState({source: 'data', id: this.highlighted}, {hover: false})
+    }
 
-    // Eventually, we’ll have to @turf/union the sourceFeatures
-    // when https://github.com/w8r/martinez/issues/51 is fixed.
-
-    map.getSource('hover').setData({
-      type: 'FeatureCollection',
-      features: sourceFeatures
-    })
-
-    const properties = {...feature.properties}
-    delete properties[UNIQUE_FEATURE_ID]
+    this.highlighted = feature.id
+    map.setFeatureState({source: 'data', id: this.highlighted}, {hover: true})
 
     this.setState({
       highlight: {
-        properties,
+        properties: feature.properties,
         count: event.features.length
       }
     })
@@ -207,10 +176,9 @@ class CenteredMap extends React.Component {
     const canvas = map.getCanvas()
     canvas.style.cursor = ''
 
-    map.getSource('hover').setData({
-      type: 'FeatureCollection',
-      features: []
-    })
+    if (this.highlighted) {
+      map.setFeatureState({source: 'data', id: this.highlighted}, {hover: false})
+    }
 
     this.setState({
       highlight: null
@@ -256,6 +224,4 @@ class CenteredMap extends React.Component {
   }
 }
 
-export default enhanceMapData(UNIQUE_FEATURE_ID)(
-  CenteredMap
-)
+export default enhanceMapData(CenteredMap)
