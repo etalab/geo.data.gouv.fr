@@ -35,7 +35,7 @@
     "next": "^6.0.3",
     "next-runtime-dotenv": "^1.0.1",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.4.1",
