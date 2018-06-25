@@ -1,4 +1,4 @@
-import {diffBbox, flipBbox, isBboxFlipped} from '../../../lib/geo/bbox'
+import {diffBbox, flipBbox, isBboxFlipped, isBboxValid} from '../../../lib/geo/bbox'
 
 describe('diffBbox', () => {
   it('should return 0 for equal bboxes', () => {
@@ -48,5 +48,42 @@ describe('isBboxFlipped', () => {
     const flipped = flipBbox(bbox)
 
     expect(isBboxFlipped(bbox, flipped)).toBe(true)
+  })
+})
+
+describe('isBboxValid', () => {
+  it('should return false if the bbox is infinite', () => {
+    const bbox = [Infinity, Infinity, -Infinity, -Infinity]
+
+    expect(isBboxValid(bbox)).toBe(false)
+  })
+
+  it('should return false if the bbox doesn’t have the correct length', () => {
+    const bbox = [1, 2, 3]
+
+    expect(isBboxValid(bbox)).toBe(false)
+  })
+
+  it('should return false if the bbox is out of bounds', () => {
+    const bbox = [-181, -31, 180, 34]
+
+    expect(isBboxValid(bbox)).toBe(false)
+  })
+
+  it('should return false if the bbox is flipped (and oob)', () => {
+    const bbox = [-31, -120, 42, 97]
+
+    expect(isBboxValid(bbox)).toBe(false)
+  })
+
+  it('should return true if the bbox is valid', () => {
+    const bboxes = [
+      [-180, -90, 180, 90],
+      [-8.789063, 40.178873, 14.062500, 52.321911]
+    ]
+
+    bboxes.forEach(bbox => {
+      expect(isBboxValid(bbox)).toBe(true)
+    })
   })
 })

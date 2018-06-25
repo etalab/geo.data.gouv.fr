@@ -4,7 +4,9 @@ import hoist from 'hoist-non-react-statics'
 import computeBbox from '@turf/bbox'
 import flip from '@turf/flip'
 
-import {isBboxFlipped, flipBbox} from '../../lib/geo/bbox'
+import {isBboxFlipped, flipBbox, isBboxValid} from '../../lib/geo/bbox'
+
+const franceBbox = [-8.789063, 40.178873, 14.062500, 52.321911]
 
 export default Map => hoist(class extends React.PureComponent {
   static propTypes = {
@@ -35,6 +37,10 @@ export default Map => hoist(class extends React.PureComponent {
         transformedData = flip(data, {mutate: false})
         bbox = flipBbox(bbox)
       }
+    }
+
+    if (!isBboxValid(bbox)) {
+      bbox = franceBbox
     }
 
     if (!frozen) {
