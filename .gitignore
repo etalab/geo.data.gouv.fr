@@ -1,5 +1,6 @@
 # Environment config
-.env
+.env*
+!.env.example
 
 # Runtime
 pids
