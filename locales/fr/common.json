@@ -74,6 +74,7 @@
     "errors": {
       "noWebgl": "Nous ne pouvons pas afficher cette carte car votre navigateur ne supporte pas WebGL"
     },
+    "emptyDataset": "Ce jeu de données est vide",
     "additionalFeature": "Un objet de plus…",
     "additionalFeature_plural": "{{ count }} objets de plus…"
   },

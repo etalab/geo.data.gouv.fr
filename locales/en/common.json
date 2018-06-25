@@ -74,6 +74,7 @@
     "errors": {
       "noWebgl": "We couldn’t display this map because your browser doesn’t support WebGL"
     },
+    "emptyDataset": "This dataset is empty",
     "additionalFeature": "One more feature…",
     "additionalFeature_plural": "{{ count }} more features…"
   },

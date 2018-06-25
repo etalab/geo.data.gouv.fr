@@ -13,9 +13,7 @@ export default Map => hoist(class extends React.PureComponent {
     frozen: PropTypes.bool,
     extent: PropTypes.object,
     data: PropTypes.shape({
-      features: PropTypes.arrayOf(PropTypes.shape({
-        properties: PropTypes.object.isRequired
-      }))
+      features: PropTypes.array.isRequired
     }).isRequired
   }
 
