@@ -31,7 +31,7 @@ class CatalogPage extends React.Component {
   static propTypes = {
     catalog: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      metrics: PropTypes.object.isRequired
+      metrics: PropTypes.object
     }),
 
     t: PropTypes.func.isRequired,
@@ -85,7 +85,10 @@ class CatalogPage extends React.Component {
                   {isObsolete(catalog) && (
                     <Warning>{t('common:catalog.obsolete')}</Warning>
                   )}
-                  <Statistics metrics={catalog.metrics} />
+
+                  {catalog.metrics && (
+                    <Statistics metrics={catalog.metrics} />
+                  )}
 
                   <h3>{t('details.harvests.title')}</h3>
                   <Harvests promise={harvestsPromise} catalog={catalog} runHarvest={this.runHarvest} />
@@ -95,8 +98,12 @@ class CatalogPage extends React.Component {
                     catalog: catalog.name
                   }} />
 
-                  <h3>{t('details.organizations')}</h3>
-                  <Organizations catalog={catalog} />
+                  {catalog.metrics && (
+                    <React.Fragment>
+                      <h3>{t('details.organizations')}</h3>
+                      <Organizations catalog={catalog} />
+                    </React.Fragment>
+                  )}
                 </Box>
               </Container>
             </Content>
