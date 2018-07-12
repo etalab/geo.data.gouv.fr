@@ -47,7 +47,7 @@ export default Map => hoist(class extends React.PureComponent {
 
         transformedData.features = transformedData.features.map((feature, id) => ({
           ...feature,
-          id
+          id: id + 1
         }))
       }
     }
