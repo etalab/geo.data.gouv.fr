@@ -12,13 +12,10 @@ import Container from '../components/container'
 import Box from '../components/box'
 import Event from '../components/event'
 
-const nextEvent = {
-  name: 'Atelier #9',
-  date: new Date(2018, 6, 12),
-  register: 'https://www.eventbrite.fr/e/billets-atelier-geo-8-46883052472'
-}
+const nextEvent = null
 
 const pastEvents = [
+  {name: 'Atelier #9', date: new Date(2018, 6, 12)},
   {name: 'Atelier #8', date: new Date(2018, 4, 22)},
   {name: 'Atelier #7', date: new Date(2017, 11, 12)},
   {name: 'Atelier #6', date: new Date(2017, 4, 18)},
