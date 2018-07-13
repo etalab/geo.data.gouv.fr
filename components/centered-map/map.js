@@ -5,11 +5,14 @@ import mapStyle from 'mapbox-gl/dist/mapbox-gl.css'
 
 import enhanceMapData from './enhance-map-data'
 
+import Empty from './empty'
 import Feature from './feature'
 
 class CenteredMap extends React.Component {
   static propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.shape({
+      features: PropTypes.array.isRequired
+    }).isRequired,
     bbox: PropTypes.array.isRequired,
     frozen: PropTypes.bool.isRequired
   }
@@ -187,6 +190,7 @@ class CenteredMap extends React.Component {
 
   render() {
     const {highlight} = this.state
+    const {data} = this.props
 
     return (
       <div className='container'>
@@ -197,6 +201,12 @@ class CenteredMap extends React.Component {
         {highlight && (
           <div className='info'>
             <Feature properties={highlight.properties} otherFeaturesCount={highlight.count - 1} />
+          </div>
+        )}
+
+        {data.features.length === 0 && (
+          <div className='info'>
+            <Empty />
           </div>
         )}
 
