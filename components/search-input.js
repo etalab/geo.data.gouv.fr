@@ -39,7 +39,7 @@ class SearchInput extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps({router}) {
+  UNSAFE_componentWillReceiveProps({router}) {
     const {value} = this.state
 
     if (router.query.q && router.query.q !== value) {

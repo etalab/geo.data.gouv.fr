@@ -23,8 +23,13 @@ class Modal extends React.Component {
     fullHeight: false
   }
 
-  componentWillMount() {
+  constructor(props) {
+    super(props)
+
     this.node = document.createElement('div')
+  }
+
+  componentDidMount() {
     document.body.appendChild(this.node)
     document.addEventListener('keydown', this.onKeyDown, false)
   }

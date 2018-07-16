@@ -55,7 +55,7 @@ class DatasetsPublicationPage extends React.Component {
     ])
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const {session} = this.props
 
     if (props.session && props.session.user && !session) {

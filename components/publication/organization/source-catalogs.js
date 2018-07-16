@@ -32,7 +32,7 @@ class SourceCatalogs extends React.Component {
     adding: false
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const {organization} = this.props
 
     if (organization.sourceCatalogs !== props.organization.sourceCatalogs) {

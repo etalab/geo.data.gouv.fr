@@ -37,7 +37,7 @@ class Datasets extends React.Component {
     publishing: false
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const {notPublished} = this.props
 
     if (notPublished !== props.notPublished) {
