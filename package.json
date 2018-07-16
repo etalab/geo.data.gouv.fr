@@ -69,7 +69,7 @@
     "react-test-renderer": "^16.4.1",
     "styled-jsx": "^2.2.6",
     "styled-jsx-plugin-sass": "^0.2.4",
-    "webpack": "3.10.0",
+    "webpack": "4.16.1",
     "webpack-bundle-analyzer": "^2.13.1",
     "xo": "^0.21.1"
   },
