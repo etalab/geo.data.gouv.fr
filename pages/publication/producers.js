@@ -51,7 +51,7 @@ class ProducersPublicationPage extends React.Component {
     return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`)
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const {session} = this.props
 
     if (props.session && props.session.user && !session) {

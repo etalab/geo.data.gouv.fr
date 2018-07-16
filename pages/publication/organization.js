@@ -19,8 +19,8 @@ import Box from '../../components/box'
 import Header from '../../components/publication/header'
 import Breadcrumbs from '../../components/publication/breadcrumbs'
 import SourceCatalogs from '../../components/publication/organization/source-catalogs'
-import SourceProducers from '../../components/publication/organization//source-producers'
-import DatasetMetrics from '../../components/publication/organization//dataset-metrics'
+import SourceProducers from '../../components/publication/organization/source-producers'
+import DatasetMetrics from '../../components/publication/organization/dataset-metrics'
 
 const {publicRuntimeConfig: {
   PUBLICATION_BASE_URL,
@@ -55,7 +55,7 @@ class OrganizationPublicationPage extends React.Component {
     return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}`)
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const {session} = this.props
 
     if (props.session && props.session.user && !session) {

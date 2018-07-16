@@ -68,7 +68,7 @@ class SearchPage extends React.Component {
     showFacets: false
   }
 
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     this.setState({
       showFacets: false
     })
