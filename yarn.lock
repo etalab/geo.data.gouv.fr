@@ -7025,8 +7025,8 @@ rc@^1.1.7:
     strip-json-comments "~2.0.1"
 
 react-chartjs-2@^2.7.2:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.7.3.tgz#53083645a795ad8400f0e807f58041e9a4340e3d"
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.7.4.tgz#e41ea4e81491dc78347111126a48e96ee57db1a6"
   dependencies:
     lodash "^4.17.4"
     prop-types "^15.5.8"
