@@ -7042,8 +7042,8 @@ react-dom@^16.4.1:
     prop-types "^15.6.0"
 
 react-i18next@^7.7.0:
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-7.9.0.tgz#9e4bdfbfbc0d084eddf13d1cd337cbd4beea6232"
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-7.9.1.tgz#a9a6d3117b9d99667ce172f2868809d26f7f094b"
   dependencies:
     hoist-non-react-statics "^2.3.1"
     html-parse-stringify2 "2.0.1"
