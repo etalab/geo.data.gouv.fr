@@ -4328,8 +4328,8 @@ humanize-ms@^1.2.1:
     ms "^2.0.0"
 
 i18next-express-middleware@^1.1.1:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.2.0.tgz#1622e79110806ea6132de30476394d56b2812fc7"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.2.1.tgz#1c49e335406ad6654471dee7aaaa766a708a74e0"
   dependencies:
     cookies "0.7.1"
 
