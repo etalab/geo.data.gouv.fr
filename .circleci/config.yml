@@ -50,8 +50,8 @@ jobs:
       - restore_cache:
           name: Restore yarn cache
           keys:
-            - v1-geodatagouv-yarn-{{ checksum "yarn.lock" }}
-            - v1-geodatagouv-yarn-
+            - v2-geodatagouv-yarn-{{ checksum "yarn.lock" }}
+            - v2-geodatagouv-yarn-
 
       - run:
           name: Install dependencies
@@ -59,7 +59,7 @@ jobs:
 
       - save_cache:
           name: Save yarn cache
-          key: v1-geodatagouv-yarn-{{ checksum "yarn.lock" }}
+          key: v2-geodatagouv-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn/
 
