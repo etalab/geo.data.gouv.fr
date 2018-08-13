@@ -57,6 +57,10 @@ jobs:
           name: Install dependencies
           command: yarn
 
+      - run:
+          name: Rebuild native dependencies
+          command: npm rebuild
+
       - save_cache:
           name: Save yarn cache
           key: v2-geodatagouv-yarn-{{ checksum "yarn.lock" }}
