@@ -26,8 +26,9 @@ defaults:
     restore_cache:
       name: Restore node_modules cache
       keys:
-        - v1-geodatagouv-node-{{ checksum "yarn.lock" }}
-        - v1-geodatagouv-node-
+        - v1-geodatagouv-node-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v1-geodatagouv-node-master-{{ checksum "yarn.lock" }}
+        - v1-geodatagouv-node-master-
 
 jobs:
   checkout:
@@ -64,7 +65,7 @@ jobs:
 
       - save_cache:
           name: Save node_modules cache
-          key: v1-geodatagouv-node-{{ checksum "yarn.lock" }}
+          key: v1-geodatagouv-node-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
 
