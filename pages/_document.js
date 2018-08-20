@@ -43,7 +43,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=default,modernizr:es6array,modernizr:es7array' />
-          {PIWIK_URL && PIWIK_SITE_ID && <script src={`${PIWIK_URL}/piwik.js`} defer async />}
+          {PIWIK_URL && PIWIK_SITE_ID && <script defer async src={`${PIWIK_URL}/piwik.js`} />}
           <NextScript />
         </body>
       </html>

@@ -66,9 +66,9 @@ class DatasetDownload extends React.PureComponent {
                 {formats.map(format => (
                   <div key={format.label} className='download'>
                     <Button
+                      download
                       color='white'
                       href={`${link}?format=${format.format}&projection=${format.projection}`}
-                      download
                     >
                       {format.label}
                     </Button>
@@ -77,7 +77,7 @@ class DatasetDownload extends React.PureComponent {
               </div>
             </div>
             <div className='preview'>
-              <Button onClick={this.setPreview} block>
+              <Button block onClick={this.setPreview}>
                 <PreviewIcon style={{verticalAlign: -2}} /> {t('downloads.openPreview')}
               </Button>
             </div>

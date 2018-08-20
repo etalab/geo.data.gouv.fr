@@ -32,7 +32,7 @@ class AddCatalogModal extends React.Component {
     const addable = sortByScore(findCandidates(catalogs, blacklist))
 
     return (
-      <Modal fluid onClose={onClose} title='Ajouter un catalogue'>
+      <Modal fluid title='Ajouter un catalogue' onClose={onClose}>
         <div className='catalogs'>
           {addable.map(catalog => (
             <div key={catalog._id} className='catalog'>

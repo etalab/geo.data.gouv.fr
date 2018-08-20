@@ -6,13 +6,13 @@ import CenteredMap from '../centered-map'
 const SpatialExtent = ({extent}) => (
   <div>
     <div className='map'>
-      <CenteredMap small data={{
+      <CenteredMap small frozen data={{
         type: 'FeatureCollection',
         features: [{
           type: 'Feature',
           geometry: extent
         }]
-      }} frozen />
+      }} />
     </div>
 
     <style jsx>{`

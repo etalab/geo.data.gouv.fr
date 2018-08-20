@@ -21,7 +21,7 @@ const Event = ({event, t}) => (
         </Button>
       ) : event.link ? (
         <div>
-          <a href={event.link} download>{t('event.download')}</a>
+          <a download href={event.link}>{t('event.download')}</a>
         </div>
       ) : (
         <div>

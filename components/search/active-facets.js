@@ -7,7 +7,7 @@ const ActiveFacets = ({facets}) => (
   <div>
     {facets.map(facet => (
       <span key={`${facet.name}-${facet.value}`}>
-        <Facet facet={facet} detailed removable />
+        <Facet detailed removable facet={facet} />
       </span>
     ))}
 

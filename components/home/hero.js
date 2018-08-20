@@ -14,11 +14,11 @@ const Hero = ({t}) => (
       </h1>
 
       <SearchInput
+        hasButton
         placeholder={t('SearchInputPlaceholder')}
         defaultQuery={{
           availability: 'yes'
         }}
-        hasButton
       />
 
       <Link prefetch href='/search?availability=yes'>
