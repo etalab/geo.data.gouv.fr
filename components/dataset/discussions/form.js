@@ -83,16 +83,18 @@ class DiscussionForm extends React.Component {
           <input
             type='text'
             value={title}
+            placeholder={t('discussions.fields.title')}
             onChange={this.onTitleChange}
-            placeholder={t('discussions.fields.title')} />
+          />
         )}
         <div>
           <img src={user.avatar_thumbnail || '/static/images/avatar.png'} alt='avatar' />
           <textarea
             type='textarea'
             value={comment}
+            placeholder={t('discussions.fields.message')}
             onChange={this.onCommentChange}
-            placeholder={t('discussions.fields.message')} />
+          />
         </div>
 
         <Button type='submit'>

@@ -22,7 +22,7 @@ const Header = ({catalog, status, t}) => (
       )}
     </h1>
 
-    <Link href={`/catalog?cid=${catalog._id}`} as={`/catalogs/${catalog._id}`} prefetch>
+    <Link prefetch href={`/catalog?cid=${catalog._id}`} as={`/catalogs/${catalog._id}`}>
       <a>
         {t('harvest.header.backToCatalog')}
       </a>

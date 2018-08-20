@@ -16,11 +16,17 @@ class NewsletterForm extends React.Component {
     return (
       <div>
         <Container>
-          <form action='//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d' method='post'name='mc-embedded-subscribe-form' target='_blank' noValidate>
+          <form
+            noValidate
+            action='//gouv.us15.list-manage.com/subscribe/post?u=f4e80584578b65fde5aadffb6&amp;id=a9e2a3104d'
+            method='post'
+            name='mc-embedded-subscribe-form'
+            target='_blank'
+          >
             <h3>{t('newsletter.title')}</h3>
             <input type='email' name='EMAIL' placeholder={t('newsletter.placeholder')} />
 
-            <Button type='submit' name='subscribe' size='large' block>
+            <Button block type='submit' name='subscribe' size='large'>
               <span>{t('newsletter.button')}</span>
             </Button>
           </form>

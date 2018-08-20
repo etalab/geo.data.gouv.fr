@@ -91,8 +91,8 @@ class SearchInput extends React.PureComponent {
           type='text'
           name='query'
           value={value}
-          onChange={this.onChange}
           placeholder={placeholder || t('search')}
+          onChange={this.onChange}
         />
 
         {hasButton && (

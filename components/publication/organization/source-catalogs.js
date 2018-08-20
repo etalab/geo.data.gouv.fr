@@ -133,8 +133,8 @@ class SourceCatalogs extends React.Component {
           <AddCatalogModal
             catalogs={catalogs}
             blacklist={organization.sourceCatalogs}
-            onClose={this.onCloseModal}
             addCatalog={this.addCatalog}
+            onClose={this.onCloseModal}
           />
         )}
 

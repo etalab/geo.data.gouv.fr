@@ -54,7 +54,7 @@ class Discussion extends React.Component {
   }
 
   renderAuth = user => (
-    <Form onSubmit={this.onSubmit} user={user} replying />
+    <Form replying user={user} onSubmit={this.onSubmit} />
   )
 
   render() {

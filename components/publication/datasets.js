@@ -146,7 +146,7 @@ class Datasets extends React.Component {
                   </Button>
                 </div>
                 <div>
-                  <Button color='white' onClick={this.toggleSelectAll} disabled={publishing}>
+                  <Button color='white' disabled={publishing} onClick={this.toggleSelectAll}>
                     {allSelected ? 'Tout désélectionner' : 'Tout sélectionner'}
                   </Button>
                 </div>

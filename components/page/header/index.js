@@ -58,7 +58,7 @@ class Header extends React.Component {
       <nav>
         <Container fluid>
           <div>
-            <Link href='/' prefetch>
+            <Link prefetch href='/'>
               <a className='logo'>
                 <img src='/static/images/logo.svg' alt='Logo de la République française (1999)' />
               </a>
@@ -67,7 +67,7 @@ class Header extends React.Component {
             <ul>
               <li>
                 {session && session.user ? (
-                  <Link href='/publication' prefetch>
+                  <Link prefetch href='/publication'>
                     <a>
                       <img alt='' className='avatar' src={session.user.avatar_thumbnail || '/static/images/avatar.png'} />
                       {session.user.first_name} {session.user.last_name}

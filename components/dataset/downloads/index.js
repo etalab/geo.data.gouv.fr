@@ -80,7 +80,7 @@ class Downloads extends React.Component {
               {otherDistributions.map(distribution => (
                 <li key={distribution._id}>
                   {distribution.available ? (
-                    <a href={distribution.location} download>
+                    <a download href={distribution.location}>
                       {distribution.name}
                     </a>
                   ) : distribution.name}

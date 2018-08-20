@@ -74,7 +74,7 @@ class Discussions extends React.Component {
 
   renderAuth = user => (
     <div className='form'>
-      <Form onSubmit={this.onSubmit} user={user} />
+      <Form user={user} onSubmit={this.onSubmit} />
     </div>
   )
 
