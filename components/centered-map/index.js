@@ -36,7 +36,7 @@ class MapWrapper extends React.PureComponent {
   componentDidMount() {
     const {small} = this.props
 
-    this.MapComponent = isWebglSupported() ? dynamic(import('./map'), {
+    this.MapComponent = isWebglSupported() ? dynamic(import('./map' /* webpackChunkName: "centered-map" */), {
       ssr: false,
       loading: () => (
         <MapLoader small={small} />

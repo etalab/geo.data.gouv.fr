@@ -13,7 +13,7 @@ import Button from '../../button'
 import ErrorWrapper from '../../error-wrapper'
 import CenteredMap from '../../centered-map'
 
-const PreviewTable = dynamic(import('./preview-table'), {
+const PreviewTable = dynamic(import('./preview-table' /* webpackChunkName: "preview-table" */), {
   ssr: false,
   loading: translate()(({t}) => t('loading'))
 })
