@@ -2,8 +2,7 @@
   "plugins": [
     ["inline-import", {
       "extensions": [".css"]
-    }],
-    "lodash"
+    }]
   ],
 
   "env": {
