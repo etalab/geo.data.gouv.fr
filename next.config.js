@@ -3,16 +3,20 @@ const webpack = require('webpack')
 const nextRuntimeDotenv = require('next-runtime-dotenv')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
-// The following dependencies will be pushed to the commons.js bundle
-// const commonDependencies = [
-//   '/next/',
-//   '/lodash-es/',
-//   '/marked/',
+// The following modules will be pushed to the commons.js bundle
+const commonModules = [
+  '/node_modules/fbjs/',
+  '/node_modules/lodash-es/',
+  '/node_modules/marked/',
+  '/node_modules/next/',
+  '/node_modules/webpack/',
 
-//   '/components/hoc/',
+  '/components/hoc/',
 
-//   '/pages/_error.js'
-// ]
+  '/lib/session.js',
+
+  '/pages/_error.js'
+]
 
 const withConfig = nextRuntimeDotenv({
   public: [
@@ -33,21 +37,12 @@ module.exports = withConfig({
     )
 
     if (!dev && !isServer) {
-      // const commonPlugin = config.plugins.find(p =>
-      //   p.constructor.name === 'CommonsChunkPlugin' && p.filenameTemplate === 'static/commons/main-[chunkhash].js'
-      // )
-
-      // if (commonPlugin) {
-      //   const {minChunks} = commonPlugin
-
-      //   commonPlugin.minChunks = (module, count) => {
-      //     if (module.resource && commonDependencies.some(c => module.resource.includes(c))) {
-      //       return true
-      //     }
-
-      //     return minChunks(module, count)
-      //   }
-      // }
+      config.optimization.splitChunks.cacheGroups.shared = {
+        name: 'commons',
+        test: m => m.resource && commonModules.some(c =>
+          m.resource.startsWith(join(__dirname, c))
+        )
+      }
 
       config.plugins.push(new BundleAnalyzerPlugin({
         analyzerMode: 'static',
