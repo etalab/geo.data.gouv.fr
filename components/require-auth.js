@@ -58,7 +58,7 @@ class RequireAuth extends React.Component {
             <Button href={loginUrl}>
               {t('auth.login')}
             </Button>
-            <Button href='https://id.data.gouv.fr/register/'>
+            <Button href='https://www.data.gouv.fr/register'>
               {t('auth.register')}
             </Button>
           </div>
@@ -73,7 +73,7 @@ class RequireAuth extends React.Component {
             }
 
             .buttons {
-              :global(button) {
+              :global(a) {
                 margin-right: 5px;
               }
             }

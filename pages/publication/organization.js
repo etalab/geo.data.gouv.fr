@@ -6,7 +6,6 @@ import getConfig from 'next/config'
 import {_get, _put} from '../../lib/fetch'
 
 import attachI18n from '../../components/hoc/attach-i18n'
-import attachSession from '../../components/hoc/attach-session'
 import withSession from '../../components/hoc/with-session'
 
 import Page from '../../components/page'
@@ -49,22 +48,20 @@ class OrganizationPublicationPage extends React.Component {
 
   state = {}
 
+  componentDidMount() {
+    const {organizationId} = this.props
+
+    this.setState({
+      organizationPromise: this.fetchOrganization(),
+      catalogsPromise: _get(`${GEODATA_API_URL}/catalogs`),
+      metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/metrics`)
+    })
+  }
+
   fetchOrganization = () => {
     const {organizationId} = this.props
 
     return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}`)
-  }
-
-  UNSAFE_componentWillReceiveProps(props) {
-    const {session} = this.props
-
-    if (props.session && props.session.user && !session) {
-      this.setState({
-        organizationPromise: this.fetchOrganization(),
-        catalogsPromise: _get(`${GEODATA_API_URL}/catalogs`),
-        metricsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations/${props.organizationId}/datasets/metrics`)
-      })
-    }
   }
 
   _getUpdateCatalogsPromise = async (organization, catalogs) => {
@@ -109,7 +106,7 @@ class OrganizationPublicationPage extends React.Component {
         <div className='dashboard'>
           <Box title='Catalogues source' color='blue'>
             <SourceCatalogs
-              promise={Promise.all([organizationPromise, catalogsPromise])}
+              promise={[organizationPromise, catalogsPromise]}
               removeCatalog={this.removeCatalog}
               addCatalog={this.addCatalog}
             />
@@ -121,7 +118,7 @@ class OrganizationPublicationPage extends React.Component {
           </Box>
           <Box title='Jeux de données' color='blue'>
             <DatasetMetrics
-              promise={Promise.all([organizationPromise, metricsPromise])}
+              promise={[organizationPromise, metricsPromise]}
             />
           </Box>
         </div>
@@ -180,6 +177,5 @@ class OrganizationPublicationPage extends React.Component {
 
 export default flowRight(
   attachI18n(),
-  attachSession,
   withSession
 )(OrganizationPublicationPage)

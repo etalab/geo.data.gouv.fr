@@ -9,7 +9,10 @@ export default (mapStateWithProps, options) => Component => {
 
   const Extended = translate()(class extends React.Component {
     static propTypes = {
-      promise: PropTypes.instanceOf(Promise),
+      promise: PropTypes.oneOfType([
+        PropTypes.instanceOf(Promise),
+        PropTypes.arrayOf(PropTypes.instanceOf(Promise))
+      ]),
 
       i18n: PropTypes.shape({
         exists: PropTypes.func.isRequired
@@ -28,6 +31,18 @@ export default (mapStateWithProps, options) => Component => {
     }
 
     async resolvePromise(promise) {
+      if (!promise) {
+        return null
+      }
+
+      if (Array.isArray(promise)) {
+        if (promise.some(p => !p)) {
+          return null
+        }
+
+        promise = Promise.all(promise)
+      }
+
       try {
         const data = mapStateWithProps(await promise)
 
@@ -51,11 +66,11 @@ export default (mapStateWithProps, options) => Component => {
       }
     }
 
-    UNSAFE_componentWillReceiveProps(newProps) {
+    componentDidUpdate(prevProps) {
       const {promise} = this.props
 
-      if (newProps.promise && promise !== newProps.promise) {
-        this.resolvePromise(newProps.promise)
+      if (promise && promise !== prevProps.promise) {
+        this.resolvePromise(promise)
       }
     }
 

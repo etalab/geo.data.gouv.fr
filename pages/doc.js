@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {flowRight} from 'lodash'
 import FaBook from 'react-icons/lib/fa/book'
 
 import attachI18n from '../components/hoc/attach-i18n'
-import attachSession from '../components/hoc/attach-session'
 
 import Page from '../components/page'
 import Meta from '../components/meta'
@@ -52,7 +50,4 @@ class DocumentationPage extends React.Component {
   }
 }
 
-export default flowRight(
-  attachI18n(),
-  attachSession
-)(DocumentationPage)
+export default attachI18n()(DocumentationPage)

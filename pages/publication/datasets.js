@@ -6,7 +6,6 @@ import getConfig from 'next/config'
 import {_get, _put} from '../../lib/fetch'
 
 import attachI18n from '../../components/hoc/attach-i18n'
-import attachSession from '../../components/hoc/attach-session'
 import withSession from '../../components/hoc/with-session'
 
 import Page from '../../components/page'
@@ -37,12 +36,18 @@ class DatasetsPublicationPage extends React.Component {
     session: null
   }
 
-  state = {}
-
   static getInitialProps({query}) {
     return {
       organizationId: query.oid
     }
+  }
+
+  state = {}
+
+  componentDidMount() {
+    this.setState({
+      datasetsPromise: this.fetchDatasets()
+    })
   }
 
   fetchDatasets = () => {
@@ -53,16 +58,6 @@ class DatasetsPublicationPage extends React.Component {
       _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/not-published-yet`),
       _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/published-by-others`)
     ])
-  }
-
-  UNSAFE_componentWillReceiveProps(props) {
-    const {session} = this.props
-
-    if (props.session && props.session.user && !session) {
-      this.setState({
-        datasetsPromise: this.fetchDatasets()
-      })
-    }
   }
 
   _getPublishDatasetsPromise = async datasets => {
@@ -128,6 +123,5 @@ class DatasetsPublicationPage extends React.Component {
 
 export default flowRight(
   attachI18n(),
-  attachSession,
   withSession
 )(DatasetsPublicationPage)

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> should render as french 1`] = `
+<a
+  href="/fr/foo"
+  onClick={[Function]}
+>
+  Go somewhere
+</a>
+`;
+
+exports[`<Link /> should render the as property 1`] = `
+<a
+  href="/de/bar"
+  onClick={[Function]}
+>
+  Go somewhere
+</a>
+`;
+
+exports[`<Link /> should use the default language 1`] = `
+<a
+  href="/ru/foo"
+  onClick={[Function]}
+>
+  Go somewhere
+</a>
+`;

@@ -6,7 +6,6 @@ import getConfig from 'next/config'
 import {_get, _post, _delete} from '../../lib/fetch'
 
 import attachI18n from '../../components/hoc/attach-i18n'
-import attachSession from '../../components/hoc/attach-session'
 import withSession from '../../components/hoc/with-session'
 
 import Page from '../../components/page'
@@ -37,29 +36,25 @@ class ProducersPublicationPage extends React.Component {
     session: null
   }
 
-  state = {}
-
   static getInitialProps({query}) {
     return {
       organizationId: query.oid
     }
   }
 
+  state = {}
+
+  componentDidMount() {
+    this.setState({
+      producersPromise: this.fetchProducers(),
+      organizationsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations`)
+    })
+  }
+
   fetchProducers = () => {
     const {organizationId} = this.props
 
     return _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/producers`)
-  }
-
-  UNSAFE_componentWillReceiveProps(props) {
-    const {session} = this.props
-
-    if (props.session && props.session.user && !session) {
-      this.setState({
-        producersPromise: this.fetchProducers(),
-        organizationsPromise: _get(`${PUBLICATION_BASE_URL}/api/organizations`)
-      })
-    }
   }
 
   _getAssociateProducerPromise = async producer => {
@@ -106,7 +101,7 @@ class ProducersPublicationPage extends React.Component {
         <Breadcrumbs organization={organization} page='producers' />
         <Producers
           organization={organization}
-          promise={Promise.all([producersPromise, organizationsPromise])}
+          promise={[producersPromise, organizationsPromise]}
           associateProducer={this.associateProducer}
           dissociateProducer={this.dissociateProducer}
         />
@@ -139,6 +134,5 @@ class ProducersPublicationPage extends React.Component {
 
 export default flowRight(
   attachI18n(),
-  attachSession,
   withSession
 )(ProducersPublicationPage)
