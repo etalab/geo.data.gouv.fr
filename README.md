@@ -2,7 +2,8 @@
 
 Trouvez facilement les données géographiques dont vous avez besoin
 
-[![codecov](https://codecov.io/gh/etalab/geo.data.gouv.fr/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
+[![codecov](https://badgen.net/codecov/c/github/etalab/geo.data.gouv.fr)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
+[![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 
 ## Présentation
 
