@@ -73,7 +73,7 @@ class RequireAuth extends React.Component {
             }
 
             .buttons {
-              :global(button) {
+              :global(a) {
                 margin-right: 5px;
               }
             }
