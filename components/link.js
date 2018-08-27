@@ -2,8 +2,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
+import {translate} from 'react-i18next'
 
-const Link = ({href, as, ...props}, {i18n: {language}}) => {
+const Link = ({
+  href,
+  as,
+  i18n: {language},
+
+  tReady, // Destructured so that it’s not included in ...props
+  t, // Destructured so that it’s not included in ...props
+
+  ...props
+}) => {
   const newAs = as ? `/${language}${as}` : `/${language}${href}`
 
   return (
@@ -13,17 +23,14 @@ const Link = ({href, as, ...props}, {i18n: {language}}) => {
 
 Link.propTypes = {
   href: PropTypes.string.isRequired,
-  as: PropTypes.string
+  as: PropTypes.string,
+  i18n: PropTypes.shape({
+    language: PropTypes.string.isRequired
+  }).isRequired
 }
 
 Link.defaultProps = {
   as: null
 }
 
-Link.contextTypes = {
-  i18n: PropTypes.shape({
-    language: PropTypes.string.isRequired
-  }).isRequired
-}
-
-export default Link
+export default translate()(Link)
