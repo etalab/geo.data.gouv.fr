@@ -6,7 +6,6 @@ import {uniqWith, isEqual, flowRight} from 'lodash'
 import {_get} from '../lib/fetch'
 
 import attachI18n from '../components/hoc/attach-i18n'
-import attachSession from '../components/hoc/attach-session'
 import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
@@ -282,6 +281,5 @@ class DatasetPage extends React.Component {
 
 export default flowRight(
   attachI18n('dataset'),
-  attachSession,
   withErrors
 )(DatasetPage)

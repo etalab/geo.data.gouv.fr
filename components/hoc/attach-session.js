@@ -4,38 +4,15 @@ import hoist from 'hoist-non-react-statics'
 
 import {getSession, clearSession} from '../../lib/session'
 
+import SessionContext from '../../contexts/session-context'
+
 export default Page => {
   const Extended = hoist(class extends React.Component {
     static propTypes = {
       ssr: PropTypes.bool.isRequired
     }
 
-    static childContextTypes = {
-      session: PropTypes.shape({
-        auth: PropTypes.bool,
-        user: PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          first_name: PropTypes.string.isRequired,
-          last_name: PropTypes.string.isRequired,
-          avatar_thumbnail: PropTypes.string.isRequired
-        }),
-        clear: PropTypes.func.isRequired
-      })
-    }
-
     state = {}
-
-    getChildContext() {
-      const {session} = this.state
-
-      return {
-        session: session ? {
-          auth: session.auth,
-          user: session.user,
-          clear: clearSession
-        } : null
-      }
-    }
 
     async componentDidMount() {
       const {ssr} = this.props
@@ -45,13 +22,21 @@ export default Page => {
       })
 
       this.setState({
-        session
+        session: session ? {
+          auth: session.auth,
+          user: session.user,
+          clear: clearSession
+        } : null
       })
     }
 
     render() {
+      const {session} = this.state
+
       return (
-        <Page {...this.props} />
+        <SessionContext.Provider value={session}>
+          <Page {...this.props} />
+        </SessionContext.Provider>
       )
     }
   }, Page)

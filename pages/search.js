@@ -8,7 +8,6 @@ import {_get} from '../lib/fetch'
 import {getFilters} from '../lib/query'
 
 import attachI18n from '../components/hoc/attach-i18n'
-import attachSession from '../components/hoc/attach-session'
 import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
@@ -170,6 +169,5 @@ class SearchPage extends React.Component {
 
 export default flowRight(
   attachI18n(['search', 'dataset']),
-  attachSession,
   withErrors
 )(SearchPage)

@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {flowRight} from 'lodash'
 import getConfig from 'next/config'
 
 import attachI18n from '../components/hoc/attach-i18n'
-import attachSession from '../components/hoc/attach-session'
 
 import {_get} from '../lib/fetch'
 
@@ -58,7 +56,4 @@ class IndexPage extends React.Component {
   }
 }
 
-export default flowRight(
-  attachI18n('home'),
-  attachSession
-)(IndexPage)
+export default attachI18n('home')(IndexPage)

@@ -1,10 +1,13 @@
 import React from 'react'
 import App, {Container} from 'next/app'
+import {flowRight} from 'lodash'
 import Head from 'next/head'
 import getConfig from 'next/config'
 
 import {languages} from '../lib/i18n'
-import attachI18next from '../components/hoc/attach-i18n'
+
+import attachI18n from '../components/hoc/attach-i18n'
+import attachSession from '../components/hoc/attach-session'
 
 const {publicRuntimeConfig: {
   PUBLIC_URL,
@@ -88,4 +91,7 @@ class MyApp extends App {
   }
 }
 
-export default attachI18next()(MyApp)
+export default flowRight(
+  attachI18n(),
+  attachSession
+)(MyApp)

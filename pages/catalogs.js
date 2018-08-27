@@ -7,7 +7,6 @@ import {_get} from '../lib/fetch'
 import {sortByScore} from '../lib/catalog'
 
 import attachI18n from '../components/hoc/attach-i18n'
-import attachSession from '../components/hoc/attach-session'
 import withErrors from '../components/hoc/with-errors'
 
 import Page from '../components/page'
@@ -97,6 +96,5 @@ class CatalogsPage extends React.Component {
 
 export default flowRight(
   attachI18n('catalogs'),
-  attachSession,
   withErrors
 )(CatalogsPage)
