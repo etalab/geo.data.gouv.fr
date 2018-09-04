@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import prune from 'underscore.string/prune'
+
+import prune from '../lib/string/prune'
 
 import Markdown from './markdown'
 
@@ -19,7 +20,7 @@ class Renderer {
         body = body.trim()
 
         if (body.length > this.maxLength) {
-          return prune(body, this.maxLength, '…')
+          return prune(body, this.maxLength)
         }
 
         return body.replace(/\s*[…,:;«»]$/, '…')
