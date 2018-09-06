@@ -47,10 +47,10 @@ class Preview extends React.Component {
         loading: false,
         data
       })
-    } catch (err) {
+    } catch (error) {
       this.setState({
         loading: false,
-        error: err
+        error
       })
     }
   }

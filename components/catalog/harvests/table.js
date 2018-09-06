@@ -25,7 +25,7 @@ const Table = ({harvests, catalog, pending, t}) => (
             }}
           />
         )}
-        {harvests.length ? harvests.map((harvest, idx) => (
+        {harvests.length > 0 ? harvests.map((harvest, idx) => (
           <Row
             key={harvest._id}
             catalog={catalog}

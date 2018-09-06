@@ -26,7 +26,7 @@ class IndexPage extends React.Component {
 
   state = {}
 
-  async componentDidMount() {
+  componentDidMount() {
     this.setState({
       catalogsPromise: _get(`${GEODATA_API_URL}/catalogs`)
     })
