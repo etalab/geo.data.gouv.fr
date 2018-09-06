@@ -50,9 +50,9 @@ export default (mapStateWithProps, options) => Component => {
           data,
           loading: false
         }))
-      } catch (err) {
+      } catch (error) {
         this.setState(() => ({
-          error: err,
+          error,
           loading: false
         }))
       }

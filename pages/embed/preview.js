@@ -47,7 +47,7 @@ class PreviewPage extends React.Component {
         extent: metadata.spatialExtent,
         distribution
       }
-    } catch (err) {
+    } catch (error) {
       return {
         error: 'datasetNotFound'
       }
@@ -105,11 +105,11 @@ class PreviewPage extends React.Component {
           loading: null,
           data: JSON.parse(req.responseText)
         })
-      } catch (err) {
+      } catch (error) {
         this.setState({
           error: {
             state: 'downloading',
-            err
+            error
           }
         })
       }
@@ -134,11 +134,11 @@ class PreviewPage extends React.Component {
     req.send()
   }
 
-  componentDidCatch(err) {
+  componentDidCatch(error) {
     this.setState({
       error: {
         state: 'unknown',
-        err
+        error
       }
     })
   }
