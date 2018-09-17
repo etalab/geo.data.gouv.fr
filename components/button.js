@@ -27,6 +27,11 @@ const style = css`
     width: 100%;
   }
 
+  .small {
+    font-size: 0.8em;
+    padding: 2px 4px;
+  }
+
   .large {
     font-size: 1.2em;
     padding: 12px 16px;
@@ -106,6 +111,7 @@ Button.propTypes = {
   href: PropTypes.string,
   size: PropTypes.oneOf([
     '',
+    'small',
     'large'
   ]),
   color: PropTypes.oneOf([

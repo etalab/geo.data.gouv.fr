@@ -6,6 +6,7 @@ import PlusIcon from 'react-icons/lib/fa/plus-circle'
 import MinusIcon from 'react-icons/lib/fa/minus-circle'
 
 import licenses from '../../../lib/licenses'
+import {isDistributable} from '../../../lib/distribution'
 
 import Success from '../../success'
 import Info from '../../info'
@@ -13,13 +14,13 @@ import Warning from '../../warning'
 
 import LicenseCheck from './license-check'
 import ProducerCheck from './producer-check'
-import DistributionCheck from './distribution-check'
+import ResourcesCheck from './resources-check'
 
 class Datagouv extends React.Component {
   static propTypes = {
     license: PropTypes.string,
     organizations: PropTypes.array.isRequired,
-    distributions: PropTypes.array.isRequired,
+    resources: PropTypes.array.isRequired,
 
     publication: PropTypes.shape({
       remoteUrl: PropTypes.string.isRequired
@@ -44,17 +45,17 @@ class Datagouv extends React.Component {
   }
 
   getPublishableProperties = () => {
-    const {license, organizations, distributions} = this.props
+    const {license, organizations, resources} = this.props
 
     return {
       hasLicense: Object.prototype.hasOwnProperty.call(licenses, license),
       hasOrganizations: organizations && organizations.length > 0,
-      isDistributable: distributions && distributions.some(distribution => distribution.available)
+      isDistributable: isDistributable(resources)
     }
   }
 
   render() {
-    const {publication, license, organizations, distributions, t} = this.props
+    const {publication, license, organizations, resources, t} = this.props
     const {expanded} = this.state
 
     const {hasLicense, hasOrganizations, isDistributable} = this.getPublishableProperties()
@@ -85,7 +86,7 @@ class Datagouv extends React.Component {
             <div>
               <LicenseCheck isValid={hasLicense} license={license} />
               <ProducerCheck isValid={hasOrganizations} organizations={organizations} />
-              <DistributionCheck isValid={isDistributable} distributions={distributions} />
+              <ResourcesCheck isValid={isDistributable} resources={resources} />
             </div>
           )}
 
