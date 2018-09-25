@@ -15,8 +15,9 @@ class ServiceResource extends React.Component {
       serviceType: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired,
       features: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        available: PropTypes.bool.isRequired
+        typeName: PropTypes.string.isRequired,
+        available: PropTypes.bool.isRequired,
+        name: PropTypes.string
       })).isRequired
     }).isRequired,
 
@@ -24,27 +25,18 @@ class ServiceResource extends React.Component {
     t: PropTypes.func.isRequired
   }
 
-  setPreview = feature => {
-    const {resource, setPreview} = this.props
-
-    setPreview(
-      `/wfs/${resource.serviceId}/${feature.name}`,
-      feature.name
-    )
-  }
-
   renderFeature(feature) {
     const {resource, setPreview} = this.props
 
-    const url = `${GEODATA_API_URL}/wfs/${resource.serviceId}/${feature.name}`
+    const url = `${GEODATA_API_URL}/services/${resource.serviceId}/feature-types/${feature.name}/download`
 
     return (
       <VectorDownload
-        key={feature.name}
-        name={feature.name}
+        key={feature.typeName}
+        name={feature.typeName}
         url={url}
         available={feature.available}
-        setPreview={() => setPreview(url, feature.name)}
+        setPreview={() => setPreview(url, feature.typeName)}
       />
     )
   }
