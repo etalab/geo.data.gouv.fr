@@ -27,8 +27,6 @@ class Downloads extends React.Component {
   state = {}
 
   setPreview = (link, name) => {
-    console.log('foo', link, name)
-
     this.setState({
       preview: {
         link,
@@ -78,8 +76,6 @@ class Downloads extends React.Component {
     if (resources.length === 0) {
       return t('downloads.noDownloads')
     }
-
-    console.log(resources)
 
     return (
       <div>
