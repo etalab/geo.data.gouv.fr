@@ -6,11 +6,13 @@ import SimpleDownload from '../downloads/simple'
 import VectorDownload from '../downloads/vector'
 
 const {publicRuntimeConfig: {
+  PUBLIC_URL,
   GEODATA_API_URL
 }} = getConfig()
 
 class DownloadResource extends React.Component {
   static propTypes = {
+    recordId: PropTypes.string.isRequired,
     resource: PropTypes.shape({
       name: PropTypes.string,
       description: PropTypes.string,
@@ -29,9 +31,10 @@ class DownloadResource extends React.Component {
   renderDownload(download) {
     switch (download.resourceType) {
       case 'vector': {
-        const {resource, setPreview} = this.props
+        const {recordId, resource, setPreview} = this.props
 
         const url = `${GEODATA_API_URL}/links/${resource.proxyId}/downloads/${download.id}/download`
+        const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/downloads/${resource.proxyId}/${download.id}/preview`
 
         return (
           <VectorDownload
@@ -39,7 +42,7 @@ class DownloadResource extends React.Component {
             available
             name={download.name}
             url={url}
-            setPreview={() => setPreview(url, download.name)}
+            setPreview={() => setPreview(url, download.name, embed)}
           />
         )
       }

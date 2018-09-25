@@ -164,7 +164,7 @@ class DatasetPage extends React.Component {
                       <Header metadata={metadata} />
                     </Box>
                     <Box title={t('blocks.resources')}>
-                      <Resources resources={resources} extent={metadata.spatialExtent} />
+                      <Resources recordId={recordId} resources={resources} extent={metadata.spatialExtent} />
                     </Box>
                     {datagouvPublication && (
                       <Box title={t('blocks.discussions')}>

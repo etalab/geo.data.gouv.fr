@@ -3,11 +3,13 @@ const {Router} = require('express')
 module.exports = app => {
   const router = new Router()
 
-  router.get('/embed/datasets/:did/resources/:rid(*)', (req, res) => {
+  router.get('/embed/datasets/:did/:rtype/:rid/:fid/preview', (req, res) => {
     app.render(req, res, '/embed/preview', {
       ...req.query,
       did: req.params.did,
-      rid: req.params.rid
+      rtype: req.params.rtype,
+      rid: req.params.rid,
+      fid: req.params.fid
     })
   })
 

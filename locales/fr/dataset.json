@@ -80,6 +80,7 @@
       "of": "sur"
     },
     "empty": "Aucune donnée…",
+    "embed": "Affichez cette carte sur votre site web :",
     "errors": {
       "download": "Les données à prévisualiser n’ont pas pu être téléchargées, merci de réessayer plus tard."
     }

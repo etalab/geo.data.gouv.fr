@@ -6,11 +6,13 @@ import {translate} from 'react-i18next'
 import VectorDownload from '../downloads/vector'
 
 const {publicRuntimeConfig: {
+  PUBLIC_URL,
   GEODATA_API_URL
 }} = getConfig()
 
 class ServiceResource extends React.Component {
   static propTypes = {
+    recordId: PropTypes.string.isRequired,
     resource: PropTypes.shape({
       serviceType: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired,
@@ -26,9 +28,10 @@ class ServiceResource extends React.Component {
   }
 
   renderFeature(feature) {
-    const {resource, setPreview} = this.props
+    const {recordId, resource, setPreview} = this.props
 
     const url = `${GEODATA_API_URL}/services/${resource.serviceId}/feature-types/${feature.name}/download`
+    const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/services/${resource.serviceId}/${feature.name}/preview`
 
     return (
       <VectorDownload
@@ -36,7 +39,7 @@ class ServiceResource extends React.Component {
         name={feature.typeName}
         url={url}
         available={feature.available}
-        setPreview={() => setPreview(url, feature.typeName)}
+        setPreview={() => setPreview(url, feature.typeName, embed)}
       />
     )
   }

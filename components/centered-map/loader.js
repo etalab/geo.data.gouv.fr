@@ -25,6 +25,7 @@ const Loader = ({small, children}) => (
       .container {
         padding: 10px;
         display: flex;
+        flex: 1;
         align-items: center;
         justify-content: center;
         flex-direction: column;

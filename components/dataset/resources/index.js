@@ -9,6 +9,8 @@ import Preview from './preview'
 
 class Downloads extends React.Component {
   static propTypes = {
+    recordId: PropTypes.string.isRequired,
+
     extent: PropTypes.object,
 
     resources: PropTypes.arrayOf(PropTypes.shape({
@@ -26,11 +28,12 @@ class Downloads extends React.Component {
 
   state = {}
 
-  setPreview = (link, name) => {
+  setPreview = (link, name, embed) => {
     this.setState({
       preview: {
         link,
-        name
+        name,
+        embed
       }
     })
   }
@@ -42,10 +45,13 @@ class Downloads extends React.Component {
   }
 
   renderResource(resource) {
+    const {recordId} = this.props
+
     switch (resource.type) {
       case 'download':
         return (
           <DownloadResource
+            recordId={recordId}
             resource={resource}
             setPreview={this.setPreview}
           />
@@ -54,6 +60,7 @@ class Downloads extends React.Component {
       case 'service':
         return (
           <ServiceResource
+            recordId={recordId}
             resource={resource}
             setPreview={this.setPreview}
           />
@@ -89,6 +96,7 @@ class Downloads extends React.Component {
           <Preview
             title={preview.name}
             link={preview.link}
+            embedLink={preview.embed}
             extent={extent}
             onClose={this.clearPreview}
           />
