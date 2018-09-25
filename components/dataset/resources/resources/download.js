@@ -74,10 +74,6 @@ class DownloadResource extends React.Component {
         <style jsx>{`
           @import 'colors';
 
-          .container {
-            margin-bottom: 1em;
-          }
-
           .header {
             margin-bottom: 0.3em;
           }

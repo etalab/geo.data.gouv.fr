@@ -37,7 +37,6 @@ class PageResource extends React.Component {
           @import 'colors';
 
           .container {
-            margin-bottom: 1em;
             display: flex;
             flex-wrap: wrap;
           }
