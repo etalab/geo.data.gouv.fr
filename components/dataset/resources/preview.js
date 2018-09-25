@@ -110,7 +110,7 @@ class Preview extends React.Component {
                         <div>
                           <textarea
                             readOnly
-                            rows={3}
+                            rows={2}
                             defaultValue={`<iframe width="100%" height="600" frameborder="0" src="${embedLink}"></iframe>`}
                           />
                         </div>
