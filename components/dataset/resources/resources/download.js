@@ -31,7 +31,7 @@ class DownloadResource extends React.Component {
       case 'vector': {
         const {resource, setPreview} = this.props
 
-        const url = `${GEODATA_API_URL}/downloads/${resource.proxyId}/${download.id}`
+        const url = `${GEODATA_API_URL}/links/${resource.proxyId}/downloads/${download.id}/download`
 
         return (
           <VectorDownload
