@@ -32,8 +32,11 @@ const Contact = ({contact, t}) => (
         )}
 
         {contact.email && (
-          <div>
-            <EmailIcon /> <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <div className='email'>
+            <div>
+              <EmailIcon style={{verticalAlign: -1}} />
+            </div>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
           </div>
         )}
       </div>
@@ -62,6 +65,13 @@ const Contact = ({contact, t}) => (
         :global(svg) {
           margin-right: 5px;
         }
+      }
+
+      .email {
+        display: flex;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
       }
 
       .role {
