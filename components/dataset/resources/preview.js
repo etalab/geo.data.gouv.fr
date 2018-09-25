@@ -97,9 +97,24 @@ class Preview extends React.Component {
                 <div className='map-wrapper'>
                   {view === 'map' ? (
                     <div className='map'>
-                      <ErrorWrapper message={t('common:errors.map')}>
-                        <CenteredMap data={data} extent={extent} />
-                      </ErrorWrapper>
+                      <div className='map-container'>
+                        <div className='map-inner'>
+                          <ErrorWrapper message={t('common:errors.map')}>
+                            <CenteredMap data={data} extent={extent} />
+                          </ErrorWrapper>
+                        </div>
+                      </div>
+
+                      <div className='embed'>
+                        {t('preview.embed')}
+                        <div>
+                          <textarea
+                            readOnly
+                            rows={3}
+                            defaultValue={`<iframe width="100%" height="600" frameborder="0" src="${embedLink}"></iframe>`}
+                          />
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <PreviewTable data={data} />
@@ -108,15 +123,6 @@ class Preview extends React.Component {
               )}
             </div>
           )}
-
-          <div className='embed'>
-            {t('preview.embed')}
-            <div>
-              <textarea disabled>
-                {`<iframe width="100%" height="600" frameborder="0" src="${embedLink}"></iframe>`}
-              </textarea>
-            </div>
-          </div>
         </div>
 
         <style jsx>{`
@@ -127,20 +133,6 @@ class Preview extends React.Component {
             display: flex;
             flex-direction: column;
             flex: 1;
-          }
-
-          .embed {
-            margin-top: auto;
-            padding-top: 0.6em;
-            font-size: 0.9rem;
-
-            textarea {
-              font-size: 0.8rem;
-              font-family: $font-family-monospace;
-              display: block;
-              width: 100%;
-              resize: none;
-            }
           }
 
           .preview {
@@ -155,15 +147,41 @@ class Preview extends React.Component {
 
           .map-wrapper {
             flex: 1;
-            position: relative;
             display: flex;
             flex-direction: column;
           }
 
           .map {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .map-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .map-inner {
             position: absolute;
             height: 100%;
             width: 100%;
+          }
+
+          .embed {
+            margin-top: auto;
+            padding-top: 0.6em;
+            font-size: 0.9rem;
+
+            textarea {
+              font-size: 0.8rem;
+              font-family: $font-family-monospace;
+              display: block;
+              width: 100%;
+              resize: none;
+            }
           }
 
           .actions {
