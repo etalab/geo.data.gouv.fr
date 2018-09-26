@@ -38,14 +38,14 @@ class PageResource extends React.Component {
 
           .container {
             display: flex;
-            flex-wrap: wrap;
-          }
 
-          .header {
-            margin-bottom: 0.3em;
+            @media (max-width: 1180px) {
+              flex-direction: column;
+            }
           }
 
           h5 {
+            font-weight: normal;
             margin-bottom: 0;
             overflow-wrap: break-word;
             word-wrap: break-word;
@@ -64,9 +64,12 @@ class PageResource extends React.Component {
 
           .action {
             margin-left: auto;
+            flex-shrink: 0;
 
             @media (max-width: 1180px) {
               flex: 1 1 100%;
+              text-align: center;
+              margin-left: 0;
             }
           }
         `}</style>

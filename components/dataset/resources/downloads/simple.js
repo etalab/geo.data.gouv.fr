@@ -33,6 +33,7 @@ class SimpleDownload extends React.Component {
         </div>
 
         <style jsx>{`
+          @import 'fonts';
           @import 'colors';
 
           .container {
@@ -49,6 +50,7 @@ class SimpleDownload extends React.Component {
 
           span {
             display: block;
+            font-weight: $font-weight-bold;
             margin-bottom: 2px;
             overflow-wrap: break-word;
             word-wrap: break-word;

@@ -38,7 +38,6 @@ class DownloadResource extends React.Component {
 
         return (
           <VectorDownload
-            key={download.id}
             available
             name={download.name}
             url={url}
@@ -50,7 +49,6 @@ class DownloadResource extends React.Component {
       default:
         return (
           <SimpleDownload
-            key={download.id}
             type={download.type}
             name={download.name}
             url={download.url}
@@ -69,9 +67,11 @@ class DownloadResource extends React.Component {
           <p>{resource.description && resource.description}</p>
         </div>
         <div className='downloads'>
-          {resource.downloads.map(
-            download => this.renderDownload(download)
-          )}
+          {resource.downloads.map(download => (
+            <div key={download.id} className='download'>
+              {this.renderDownload(download)}
+            </div>
+          ))}
         </div>
 
         <style jsx>{`
@@ -82,6 +82,7 @@ class DownloadResource extends React.Component {
           }
 
           h5 {
+            font-weight: normal;
             margin-bottom: 0;
             overflow-wrap: break-word;
             word-wrap: break-word;
@@ -101,6 +102,10 @@ class DownloadResource extends React.Component {
           .downloads {
             border-left: 3px solid $lightgrey;
             padding-left: 8px;
+          }
+
+          .download {
+            margin: 5px 0;
           }
         `}</style>
       </div>

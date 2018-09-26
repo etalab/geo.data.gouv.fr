@@ -35,7 +35,6 @@ class ServiceResource extends React.Component {
 
     return (
       <VectorDownload
-        key={feature.typeName}
         name={feature.typeName}
         url={url}
         available={feature.available}
@@ -54,9 +53,11 @@ class ServiceResource extends React.Component {
           <p>{resource.href}</p>
         </div>
         <div className='features'>
-          {resource.features.map(
-            feature => this.renderFeature(feature)
-          )}
+          {resource.features.map(feature => (
+            <div key={feature.typeName} className='feature'>
+              {this.renderFeature(feature)}
+            </div>
+          ))}
         </div>
 
         <style jsx>{`
@@ -67,6 +68,7 @@ class ServiceResource extends React.Component {
           }
 
           h5 {
+            font-weight: normal;
             margin-bottom: 0;
           }
 
@@ -83,6 +85,10 @@ class ServiceResource extends React.Component {
           .features {
             border-left: 3px solid $lightgrey;
             padding-left: 8px;
+          }
+
+          .feature {
+            margin: 5px 0;
           }
         `}</style>
       </div>
