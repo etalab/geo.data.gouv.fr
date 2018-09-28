@@ -4,69 +4,75 @@ import {translate} from 'react-i18next'
 
 import Row from './row'
 
-const Table = ({harvests, catalog, pending, t}) => (
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th className='status' />
-          <th>{t('details.harvests.table.records')}</th>
-          <th>{t('details.harvests.table.delta')}</th>
-          <th>{t('details.harvests.table.date')}</th>
-          <th />
-        </tr>
-      </thead>
+const Table = ({harvests, catalog, pending, t}) => {
+  if (pending && harvests.length === 10) {
+    harvests = harvests.slice(0, 9)
+  }
 
-      <tbody>
-        {pending && (
-          <Row
-            harvest={{
-              status: 'pending'
-            }}
-          />
-        )}
-        {harvests.length > 0 ? harvests.map((harvest, idx) => (
-          <Row
-            key={harvest._id}
-            catalog={catalog}
-            harvest={harvest}
-            previousHarvest={harvests[idx + 1]}
-          />
-        )) : (
+  return (
+    <div>
+      <table>
+        <thead>
           <tr>
-            <td colSpan={5}>
-              {t('details.harvests.noHarvest')}
-            </td>
+            <th className='status' />
+            <th>{t('details.harvests.table.records')}</th>
+            <th>{t('details.harvests.table.delta')}</th>
+            <th>{t('details.harvests.table.date')}</th>
+            <th />
           </tr>
-        )}
-      </tbody>
-    </table>
+        </thead>
 
-    <style jsx>{`
-        @import 'colors';
+        <tbody>
+          {pending && (
+            <Row
+              harvest={{
+                status: 'pending'
+              }}
+            />
+          )}
+          {harvests.length > 0 ? harvests.map((harvest, idx) => (
+            <Row
+              key={harvest._id}
+              catalog={catalog}
+              harvest={harvest}
+              previousHarvest={harvests[idx + 1]}
+            />
+          )) : !pending && (
+            <tr>
+              <td colSpan={5}>
+                {t('details.harvests.noHarvest')}
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
 
-        div {
-          overflow-x: auto;
-          white-space: nowrap;
-        }
+      <style jsx>{`
+          @import 'colors';
 
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
+          div {
+            overflow-x: auto;
+            white-space: nowrap;
+          }
 
-        th {
-          text-align: center;
-          padding: 0.3em 0.6em;
-          border-bottom: 1px solid $lightgrey;
-        }
+          table {
+            border-collapse: collapse;
+            width: 100%;
+          }
 
-        .status {
-          width: 30px;
-        }
-    `}</style>
-  </div>
-)
+          th {
+            text-align: center;
+            padding: 0.3em 0.6em;
+            border-bottom: 1px solid $lightgrey;
+          }
+
+          .status {
+            width: 30px;
+          }
+      `}</style>
+    </div>
+  )
+}
 
 Table.propTypes = {
   harvests: PropTypes.arrayOf(PropTypes.shape({
