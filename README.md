@@ -2,7 +2,8 @@
 
 Trouvez facilement les données géographiques dont vous avez besoin
 
-[![codecov](https://codecov.io/gh/etalab/geo.data.gouv.fr/branch/master/graph/badge.svg)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
+[![codecov](https://badgen.net/codecov/c/github/etalab/geo.data.gouv.fr)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
+[![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 
 ## Présentation
 
@@ -27,7 +28,7 @@ yarn
 
 Afin de configurer le projet correctement, il est conseillé de créer un fichier `.env` avec les variables d’environnement nécessaires à l’application.
 
-`.env` permet de persister les variables d’environnement de développement dans un fichier plutôt que de les définir dans le shell, mais les deux fonctionnent. Cela fonctionne avec [dotenv](https://github.com/motdotla/dotenv) et [babel-plugin-dotenv-import](https://github.com/tusbar/babel-plugin-dotenv-import).
+`.env` permet de persister les variables d’environnement de développement dans un fichier plutôt que de les définir dans le shell, mais les deux fonctionnent. Cela fonctionne avec [dotenv](https://github.com/motdotla/dotenv) et [next-runtime-dotenv](https://github.com/tusbar/next-runtime-dotenv).
 
 Un fichier d’example existe : `.env.example`. Pour obtenir une configuration de base :
 

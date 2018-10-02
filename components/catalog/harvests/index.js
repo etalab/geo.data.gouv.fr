@@ -110,6 +110,7 @@ class Harvests extends React.Component {
           .graph {
             display: flex;
             flex-direction: column;
+            overflow: hidden;
             flex: 1 1;
 
             div {
