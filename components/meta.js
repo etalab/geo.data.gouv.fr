@@ -2,10 +2,11 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import getConfig from 'next/config'
 import Head from 'next/head'
-import prune from 'underscore.string/prune'
 import {flowRight} from 'lodash'
 import {translate} from 'react-i18next'
 import {withRouter} from 'next/router'
+
+import prune from '../lib/string/prune'
 
 const {publicRuntimeConfig: {
   PUBLIC_URL
@@ -16,7 +17,7 @@ const TWITTER_HANDLE = '@geodatagouv'
 
 const Meta = ({title, description, images, router, t}) => {
   if (description) {
-    description = prune(description, 160, '…')
+    description = prune(description, 160)
   } else {
     description = t('meta.description')
   }

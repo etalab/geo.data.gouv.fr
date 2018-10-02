@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import prune from 'underscore.string/prune'
 import {translate} from 'react-i18next'
 
 import PlusIcon from 'react-icons/lib/fa/plus-circle'
 import MinusIcon from 'react-icons/lib/fa/minus-circle'
+
+import prune from '../lib/string/prune'
 
 import Markdown from './markdown'
 
