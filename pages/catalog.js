@@ -33,6 +33,8 @@ class CatalogPage extends React.Component {
       metrics: PropTypes.object
     }),
 
+    harvests: PropTypes.array.isRequired,
+
     t: PropTypes.func.isRequired,
     tReady: PropTypes.bool.isRequired
   }
@@ -43,21 +45,8 @@ class CatalogPage extends React.Component {
 
   static async getInitialProps({query}) {
     return {
-      catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`)
-    }
-  }
-
-  state = {
-    harvestsPromise: null
-  }
-
-  componentDidMount() {
-    const {catalog} = this.props
-
-    if (catalog) {
-      this.setState(() => ({
-        harvestsPromise: _get(`${GEODATA_API_URL}/services/${catalog.id}/synchronizations`)
-      }))
+      catalog: await _get(`${GEODATA_API_URL}/catalogs/${query.cid}`),
+      harvests: await _get(`${GEODATA_API_URL}/services/${query.cid}/synchronizations`)
     }
   }
 
@@ -68,8 +57,7 @@ class CatalogPage extends React.Component {
   }
 
   render() {
-    const {catalog, t, tReady} = this.props
-    const {harvestsPromise} = this.state
+    const {catalog, harvests, t, tReady} = this.props
 
     return (
       <Page ready={tReady}>
@@ -90,7 +78,7 @@ class CatalogPage extends React.Component {
                   )}
 
                   <h3>{t('details.harvests.title')}</h3>
-                  <Harvests promise={harvestsPromise} catalog={catalog} runHarvest={this.runHarvest} />
+                  <Harvests harvests={harvests} catalog={catalog} runHarvest={this.runHarvest} />
 
                   <h3>{t('details.search')}</h3>
                   <SearchInput hasButton defaultQuery={{
