@@ -53,7 +53,7 @@ class CatalogPage extends React.Component {
   runHarvest = () => {
     const {catalog} = this.props
 
-    return _post(`${GEODATA_API_URL}/services/${catalog.id}/sync`)
+    return _post(`${GEODATA_API_URL}/services/${catalog._id}/sync`)
   }
 
   render() {
