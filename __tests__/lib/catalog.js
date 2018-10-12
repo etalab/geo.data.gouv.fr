@@ -94,7 +94,7 @@ describe('findCandidates', () => {
 
   test('exclude blacklisted catalogs', () => {
     const catalogs = [{
-      id: 1,
+      _id: 1,
       metrics: {
         datasets: {
           partitions: {
@@ -104,7 +104,7 @@ describe('findCandidates', () => {
         }
       }
     }, {
-      id: 2,
+      _id: 2,
       metrics: {
         datasets: {
           partitions: {
@@ -117,7 +117,7 @@ describe('findCandidates', () => {
 
     const candidates = findCandidates(catalogs, [1])
     expect(candidates.length).toBe(1)
-    expect(candidates[0].id).toBe(2)
+    expect(candidates[0]._id).toBe(2)
   })
 })
 
