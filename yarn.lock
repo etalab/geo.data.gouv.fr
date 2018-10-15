@@ -4968,9 +4968,9 @@ i18next-express-middleware@^1.1.1:
     cookies "0.7.1"
 
 i18next-node-fs-backend@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/i18next-node-fs-backend/-/i18next-node-fs-backend-2.0.0.tgz#ea0fc2c38523bdf8da24be00b73e3ad36ce907e3"
-  integrity sha512-02rQSL+FsLcQm8rCFZbnLufNNjFyECSSnZkVgajDSbtHqVXdQ3COqgSM9u1UH3/RH3i4tjVcsfLDtUFaMxxmug==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/i18next-node-fs-backend/-/i18next-node-fs-backend-2.1.0.tgz#b0ad55eb8671b4dedbd21fe434fb50e964a4ece2"
+  integrity sha512-ULb+uQYQj1njn/93cxkAtgrw9STCv1zEM8QySH24c0pFxw8ZJPCV9yq4zTqEWtKaNRd8apvzyr2euoV1k05SbA==
   dependencies:
     js-yaml "3.12.0"
     json5 "2.0.0"
