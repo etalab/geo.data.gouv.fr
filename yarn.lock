@@ -9565,10 +9565,10 @@ strip-json-comments@^2.0.1, strip-json-comments@~2.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
-styled-jsx-plugin-sass@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/styled-jsx-plugin-sass/-/styled-jsx-plugin-sass-0.2.4.tgz#97b9660fbcd188fcc9959bb350a8597d8271ee16"
-  integrity sha512-8PHVBIN9H0fKdmQstmV5HtbUFGWA9YRUAT8XdSxZFo1h0JyzPM/S7bFYUIfovRj7IXnrIm/iQ6uYd1Vtv5pxow==
+styled-jsx-plugin-sass@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/styled-jsx-plugin-sass/-/styled-jsx-plugin-sass-0.3.0.tgz#4871d6f4894d88aaf1d8120adb393471116702d5"
+  integrity sha512-sU3voNd5XsOISD2oGt9fB2IQCsJtF9VcP4wdZOFMN3/im9YZ/o4iXxyyIas4A9Hf03DR+6u/NfEzaLIhhjFT3Q==
 
 styled-jsx@3.1.0, styled-jsx@^3.0.2:
   version "3.1.0"
