@@ -27,7 +27,7 @@ class Header extends React.Component {
         id: PropTypes.string.isRequired,
         first_name: PropTypes.string.isRequired,
         last_name: PropTypes.string.isRequired,
-        avatar_thumbnail: PropTypes.string.isRequired
+        avatar_thumbnail: PropTypes.string
       }),
       clear: PropTypes.func.isRequired
     }),
