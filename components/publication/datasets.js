@@ -131,7 +131,12 @@ class Datasets extends React.Component {
                     </Link>
                   </div>
                   <div>
-                    <input type='checkbox' checked={toPublish.includes(dataset._id)} disabled={publishing} />
+                    <input
+                      type='checkbox'
+                      checked={toPublish.includes(dataset._id)}
+                      disabled={publishing}
+                      onChange={() => {/* handled by div onClick handler */}}
+                    />
                   </div>
                 </div>
               ))}
