@@ -31,7 +31,7 @@ class ServiceResource extends React.Component {
     const {recordId, resource, setPreview} = this.props
 
     const url = `${GEODATA_API_URL}/services/${resource.serviceId}/feature-types/${feature.name}/download`
-    const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/services/${resource.serviceId}/${feature.name}/preview`
+    const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/resources/service:${resource.serviceId}/${feature.name}`
 
     return (
       <VectorDownload

@@ -35,14 +35,14 @@ class PreviewPage extends React.Component {
       const {recordId, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
 
       switch (query.rtype) {
-        case 'services':
+        case 'service':
           return {
             recordId,
             extent: metadata.spatialExtent,
             link: `${GEODATA_API_URL}/services/${query.rid}/feature-types/${query.fid}/download`
           }
 
-        case 'downloads':
+        case 'download':
           return {
             recordId,
             extent: metadata.spatialExtent,

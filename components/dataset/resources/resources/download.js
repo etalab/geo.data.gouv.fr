@@ -34,7 +34,7 @@ class DownloadResource extends React.Component {
         const {recordId, resource, setPreview} = this.props
 
         const url = `${GEODATA_API_URL}/links/${resource.proxyId}/downloads/${download.id}/download`
-        const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/downloads/${resource.proxyId}/${download.id}/preview`
+        const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/resources/download:${resource.proxyId}/${download.id}`
 
         return (
           <VectorDownload
