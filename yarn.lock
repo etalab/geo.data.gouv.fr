@@ -9762,9 +9762,9 @@ styled-jsx@3.1.0:
     stylis-rule-sheet "0.0.10"
 
 styled-jsx@^3.0.2:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-3.1.1.tgz#433f70eeca8d3174bc75112a7cb054074a64ff60"
-  integrity sha512-F+5ZcrwWhvsrbYcLwCLaM/Px0orcCxE0zGBEJ8ZmmjqVlxixgXhmwvfFDcY6+Ev8ZPJiXEjPmsQHy4tiZzt/tg==
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-3.1.2.tgz#d420add6f43d41aea942fb289db43a25afc3d898"
+  integrity sha512-4yqYiU4VohqD6nm5WueT7aKuIQ+AnpTvD6owonWTfhZcl6FGaGEO4gzG0vaqKKNqLxs98e14wtp20A7lw1Z9aA==
   dependencies:
     babel-plugin-syntax-jsx "6.18.0"
     babel-types "6.26.0"
