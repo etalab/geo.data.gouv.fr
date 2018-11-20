@@ -56,6 +56,10 @@ const Box = ({children, title, padded, color}) => (
         color: $white;
       }
 
+      .yellow {
+        background-color: $yellow;
+      }
+
       .green {
         background-color: $green;
         color: $white;
@@ -74,6 +78,7 @@ Box.propTypes = {
   color: PropTypes.oneOf([
     'grey',
     'blue',
+    'yellow',
     'green'
   ])
 }

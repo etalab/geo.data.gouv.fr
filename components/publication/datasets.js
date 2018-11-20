@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {sortBy, deburr} from 'lodash'
 
@@ -32,7 +32,8 @@ class Datasets extends React.Component {
 
   state = {
     toPublish: [],
-    publishing: false
+    publishing: false,
+    almostPublished: []
   }
 
   toggleSelect = dataset => () => {
@@ -71,7 +72,7 @@ class Datasets extends React.Component {
   }
 
   publishDatasets = async () => {
-    const {publishDatasets} = this.props
+    const {publishDatasets, notPublished} = this.props
     const {toPublish} = this.state
 
     this.setState({
@@ -80,15 +81,21 @@ class Datasets extends React.Component {
 
     await publishDatasets(toPublish)
 
-    this.setState({
-      publishing: false
-    })
+    const almostPublished = toPublish.map(id => notPublished.find(d => d._id === id)).filter(d => d)
+
+    this.setState(state => ({
+      publishing: false,
+      toPublish: [],
+      almostPublished: [
+        ...state.almostPublished,
+        ...almostPublished
+      ]
+    }))
   }
 
   render() {
     const {published, notPublished, publishedByOthers} = this.props
-
-    const {publishing, toPublish} = this.state
+    const {publishing, toPublish, almostPublished} = this.state
 
     const allSelected = toPublish.length === notPublished.length
 
@@ -111,7 +118,7 @@ class Datasets extends React.Component {
           }
         >
           {sortedNotPublished.length > 0 ? (
-            <Fragment>
+            <>
               {sortedNotPublished.map(dataset => (
                 <div key={dataset._id} className='row' onClick={publishing ? null : this.toggleSelect(dataset)}>
                   <div>
@@ -135,9 +142,9 @@ class Datasets extends React.Component {
                 <div>
                   <Button disabled={!toPublish.length || publishing} onClick={this.publishDatasets}>
                     {publishing ? (
-                      <Fragment>
+                      <>
                         <LoadingIcon style={{verticalAlign: -2}} /> Publication…
-                      </Fragment>
+                      </>
                     ) : 'Publier les données sélectionnées'}
                   </Button>
                 </div>
@@ -147,13 +154,45 @@ class Datasets extends React.Component {
                   </Button>
                 </div>
               </div>
-            </Fragment>
+            </>
           ) : (
             <div className='row'>
               <i>Aucun jeu de données en attente de publication.</i>
             </div>
           )}
         </Box>
+
+        {almostPublished.length > 0 && (
+          <Box
+            color='yellow'
+            padded={false}
+            title={
+              <div className='title blue'>
+                <div>
+                  Données en cours de publication
+                </div>
+                <div>
+                  {almostPublished.length}
+                </div>
+              </div>
+            }
+          >
+            {almostPublished.map(dataset => (
+              <div key={dataset._id} className='row'>
+                <div>
+                  <Link href={`/dataset?did=${dataset._id}`} as={`/datasets/${dataset._id}`}>
+                    <a>
+                      {dataset.title}
+                    </a>
+                  </Link>
+                </div>
+                <div>
+                  <i>En cours de publication…</i>
+                </div>
+              </div>
+            ))}
+          </Box>
+        )}
 
         <Box
           color='green'
