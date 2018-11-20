@@ -38,7 +38,7 @@ class ServiceResource extends React.Component {
         name={feature.typeName}
         url={url}
         available={feature.available}
-        setPreview={() => setPreview(url, feature.typeName, embed)}
+        setPreview={() => setPreview(url, feature.name, embed)}
       />
     )
   }
