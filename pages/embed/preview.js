@@ -35,7 +35,7 @@ class PreviewPage extends React.Component {
       const {recordId, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
 
       switch (query.rtype) {
-        case 'service':
+        case 'wfs':
           return {
             recordId,
             extent: metadata.spatialExtent,
@@ -106,10 +106,18 @@ class PreviewPage extends React.Component {
 
     req.addEventListener('load', () => {
       try {
-        this.setState({
-          loading: null,
-          data: JSON.parse(req.responseText)
-        })
+        if (req.status === 200) {
+          this.setState({
+            loading: null,
+            data: JSON.parse(req.responseText)
+          })
+        } else {
+          this.setState({
+            error: {
+              state: 'downloading'
+            }
+          })
+        }
       } catch (error) {
         this.setState({
           error: {

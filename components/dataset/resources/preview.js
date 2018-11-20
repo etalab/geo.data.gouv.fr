@@ -45,10 +45,17 @@ class Preview extends React.Component {
     try {
       const data = await _get(`${link}?format=GeoJSON&projection=WGS84`)
 
-      this.setState({
-        loading: false,
-        data
-      })
+      if (data) {
+        this.setState({
+          loading: false,
+          data
+        })
+      } else {
+        this.setState({
+          loading: false,
+          error: new Error('Data could not be retrieved')
+        })
+      }
     } catch (error) {
       this.setState({
         loading: false,
