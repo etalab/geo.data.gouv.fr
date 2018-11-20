@@ -13,7 +13,7 @@ class DiscussionForm extends React.Component {
     onSubmit: PropTypes.func.isRequired,
 
     user: PropTypes.shape({
-      avatar_thumbnail: PropTypes.string.isRequired
+      avatar_thumbnail: PropTypes.string
     }).isRequired,
 
     t: PropTypes.func.isRequired
