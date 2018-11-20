@@ -35,7 +35,7 @@ class PreviewPage extends React.Component {
       const {recordId, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
 
       switch (query.rtype) {
-        case 'wfs':
+        case 'service.wfs':
           return {
             recordId,
             extent: metadata.spatialExtent,
