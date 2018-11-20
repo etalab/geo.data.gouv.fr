@@ -4,8 +4,6 @@ import {sortBy, deburr} from 'lodash'
 
 import LoadingIcon from 'react-icons/lib/fa/refresh'
 
-import withFetch from '../hoc/with-fetch'
-
 import Box from '../box'
 import Link from '../link'
 import Button from '../button'
@@ -35,17 +33,6 @@ class Datasets extends React.Component {
   state = {
     toPublish: [],
     publishing: false
-  }
-
-  UNSAFE_componentWillReceiveProps(props) {
-    const {notPublished} = this.props
-
-    if (notPublished !== props.notPublished) {
-      this.setState({
-        publishing: false,
-        toPublish: []
-      })
-    }
   }
 
   toggleSelect = dataset => () => {
@@ -83,7 +70,7 @@ class Datasets extends React.Component {
     })
   }
 
-  publishDatasets = () => {
+  publishDatasets = async () => {
     const {publishDatasets} = this.props
     const {toPublish} = this.state
 
@@ -91,7 +78,11 @@ class Datasets extends React.Component {
       publishing: true
     })
 
-    publishDatasets(toPublish)
+    await publishDatasets(toPublish)
+
+    this.setState({
+      publishing: false
+    })
   }
 
   render() {
@@ -281,10 +272,4 @@ class Datasets extends React.Component {
   }
 }
 
-export default withFetch(
-  ([published, notPublished, publishedByOthers]) => ({
-    published,
-    notPublished,
-    publishedByOthers
-  })
-)(Datasets)
+export default Datasets

@@ -42,47 +42,55 @@ class DatasetsPublicationPage extends React.Component {
     }
   }
 
-  state = {}
-
-  componentDidMount() {
-    this.setState({
-      datasetsPromise: this.fetchDatasets()
-    })
+  state = {
+    published: [],
+    notPublished: [],
+    publishedByOthers: []
   }
 
-  fetchDatasets = () => {
+  componentDidMount() {
+    this.fetchDatasets()
+  }
+
+  fetchDatasets = async () => {
     const {organizationId} = this.props
 
-    return Promise.all([
+    const [published, notPublished, publishedByOthers] = await Promise.all([
       _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/published`),
       _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/not-published-yet`),
       _get(`${PUBLICATION_BASE_URL}/api/organizations/${organizationId}/datasets/published-by-others`)
     ])
+
+    this.setState({
+      published,
+      notPublished,
+      publishedByOthers
+    })
   }
 
-  _getPublishDatasetsPromise = async datasets => {
+  publishDatasets = async datasets => {
     const {organizationId} = this.props
 
     await Promise.all(
-      datasets.map(datasetId => _put(`${PUBLICATION_BASE_URL}/api/datasets/${datasetId}/publication`, {
-        organization: organizationId
-      }))
+      datasets.map(datasetId => {
+        return _put(`${PUBLICATION_BASE_URL}/api/datasets/${datasetId}/publication`, {
+          organization: organizationId
+        })
+      })
     )
 
     return this.fetchDatasets()
-  }
-
-  publishDatasets = datasets => {
-    this.setState({
-      datasetsPromise: this._getPublishDatasetsPromise(datasets)
-    })
   }
 
   renderAuth = user => {
     const {organizationId} = this.props
     const organization = user.organizations.find(org => org.id === organizationId)
 
-    const {datasetsPromise} = this.state
+    const {
+      published,
+      notPublished,
+      publishedByOthers
+    } = this.state
 
     return (
       <div>
@@ -91,7 +99,9 @@ class DatasetsPublicationPage extends React.Component {
         <Header user={user} organization={organization} />
         <Breadcrumbs organization={organization} page='datasets' />
         <Datasets
-          promise={datasetsPromise}
+          published={published}
+          notPublished={notPublished}
+          publishedByOthers={publishedByOthers}
           publishDatasets={this.publishDatasets}
         />
       </div>
