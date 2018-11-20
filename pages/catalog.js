@@ -89,7 +89,7 @@ class CatalogPage extends React.Component {
                   {organizationCounts && (
                     <>
                       <h3>{t('details.organizations')}</h3>
-                      <Organizations catalogName={catalog} organizationCounts={organizationCounts} />
+                      <Organizations catalogName={catalog.name} organizationCounts={organizationCounts} />
                     </>
                   )}
                 </Box>
