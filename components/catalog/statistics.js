@@ -43,32 +43,38 @@ const Statistics = ({metrics, t}) => {
         />
       </div>
 
-      <div className='block'>
-        <h3>
-          {t('details.statistics.recordTypeChart')}
-        </h3>
-        <div>
-          <Pie data={metrics.records.partitions.recordType} />
+      {metrics.records.partitions.recordType && (
+        <div className='block'>
+          <h3>
+            {t('details.statistics.recordTypeChart')}
+          </h3>
+          <div>
+            <Pie data={metrics.records.partitions.recordType} />
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className='block'>
-        <h3>
-          {t('details.statistics.dataTypeChart')}
-        </h3>
-        <div>
-          <Pie data={metrics.datasets.partitions.dataType} />
+      {metrics.datasets.partitions.dataType && (
+        <div className='block'>
+          <h3>
+            {t('details.statistics.dataTypeChart')}
+          </h3>
+          <div>
+            <Pie data={metrics.datasets.partitions.dataType} />
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className='block'>
-        <h3>
-          {t('details.statistics.metadataTypeChart')}
-        </h3>
-        <div>
-          <Pie data={metrics.records.partitions.metadataType} />
+      {metrics.records.partitions.metadataType && (
+        <div className='block'>
+          <h3>
+            {t('details.statistics.metadataTypeChart')}
+          </h3>
+          <div>
+            <Pie data={metrics.records.partitions.metadataType} />
+          </div>
         </div>
-      </div>
+      )}
 
       <style jsx>{`
         @import 'colors';
