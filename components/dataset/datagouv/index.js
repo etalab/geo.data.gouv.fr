@@ -57,20 +57,19 @@ class Datagouv extends React.Component {
   render() {
     const {publication, license, organizations, resources, t} = this.props
     const {expanded} = this.state
-
     const {hasLicense, hasOrganizations, isDistributable} = this.getPublishableProperties()
 
-    if (hasLicense && hasOrganizations && isDistributable) {
-      if (publication) {
-        return (
-          <Success>
-            <Trans i18nKey='datagouv.published'>
-              This dataset <a href={publication.remoteUrl}>is published</a> on data.gouv.fr.
-            </Trans>
-          </Success>
-        )
-      }
+    if (publication) {
+      return (
+        <Success>
+          <Trans i18nKey='datagouv.published'>
+            This dataset <a href={publication.remoteUrl}>is published</a> on data.gouv.fr.
+          </Trans>
+        </Success>
+      )
+    }
 
+    if (hasLicense && hasOrganizations && isDistributable) {
       return (
         <Info>{t('datagouv.producerActionNeeded')}</Info>
       )
