@@ -82,18 +82,20 @@ class DatasetPage extends React.Component {
   }
 
   state = {
-    datagouvDatasetPromise: null
+    datagouvDataset: null
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const {datagouvPublication} = this.props
 
     // Let’s not depend too much on data.gouv.fr’s availability, so we’re
     // fetching this after the page has loaded.
     if (datagouvPublication && datagouvPublication.remoteId) {
-      this.setState(() => ({
-        datagouvDatasetPromise: _get(`${DATAGOUV_API_URL}/datasets/${datagouvPublication.remoteId}/`)
-      }))
+      const datagouvDataset = await _get(`${DATAGOUV_API_URL}/datasets/${datagouvPublication.remoteId}/`)
+
+      this.setState({
+        datagouvDataset
+      })
     }
   }
 
@@ -105,7 +107,7 @@ class DatasetPage extends React.Component {
       resources,
       organizations
     }, datagouvPublication, t, tReady} = this.props
-    const {datagouvDatasetPromise} = this.state
+    const {datagouvDataset} = this.state
 
     const contacts = uniqWith(metadata.contacts.map(contact => ({
       ...contact,
@@ -131,9 +133,9 @@ class DatasetPage extends React.Component {
               <Container fluid>
                 <div className='container'>
                   <div className='left'>
-                    {datagouvPublication && (
+                    {datagouvDataset && (
                       <Box title={t('blocks.producer')}>
-                        <Producer promise={datagouvDatasetPromise} />
+                        <Producer producer={datagouvDataset.organization} />
                       </Box>
                     )}
 
