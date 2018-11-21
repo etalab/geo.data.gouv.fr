@@ -55,11 +55,7 @@ jobs:
 
       - run:
           name: Install dependencies
-          command: yarn
-
-      - run:
-          name: Rebuild native dependencies
-          command: npm rebuild
+          command: yarn --frozen-lockfile --ignore-platform
 
       - save_cache:
           name: Save yarn cache
