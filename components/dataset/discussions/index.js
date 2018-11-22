@@ -24,6 +24,7 @@ class Discussions extends React.Component {
   }
 
   state = {
+    discussions: null,
     expanded: false
   }
 
@@ -31,12 +32,15 @@ class Discussions extends React.Component {
     this.refreshDiscussions()
   }
 
-  refreshDiscussions = () => {
+  refreshDiscussions = async () => {
     const {remoteId} = this.props
 
-    this.setState(() => ({
-      discussionsPromise: _get(`${DATAGOUV_API_URL}/discussions/?for=${remoteId}`)
-    }))
+    const {data} = await _get(`${DATAGOUV_API_URL}/discussions/?for=${remoteId}`)
+
+    this.setState({
+      discussions: data,
+      expanded: false
+    })
   }
 
   onExpand = () => {
@@ -80,12 +84,14 @@ class Discussions extends React.Component {
 
   render() {
     const {t} = this.props
-    const {expanded, discussionsPromise} = this.state
+    const {expanded, discussions} = this.state
 
     return (
       <div>
         <div className='discussions'>
-          <List promise={discussionsPromise} onReply={this.createReply} />
+          {discussions ? (
+            <List discussions={discussions} onReply={this.createReply} />
+          ) : t('common:loading')}
         </div>
 
         {expanded ? (
