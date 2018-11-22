@@ -34,7 +34,7 @@ class ServiceResource extends React.Component {
 
     return (
       <VectorDownload
-        name={feature.name}
+        name={feature.typeName}
         url={url}
         available={feature.available}
         setPreview={() => setPreview(url, feature.name, embed)}
