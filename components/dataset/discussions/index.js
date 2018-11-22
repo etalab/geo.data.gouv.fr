@@ -91,7 +91,9 @@ class Discussions extends React.Component {
         <div className='discussions'>
           {discussions ? (
             <List discussions={discussions} onReply={this.createReply} />
-          ) : t('common:loading')}
+          ) : (
+            <i>{t('common:loading')}</i>
+          )}
         </div>
 
         {expanded ? (
