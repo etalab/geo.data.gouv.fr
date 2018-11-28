@@ -103,6 +103,8 @@ Result.propTypes = {
     recordId: PropTypes.string.isRequired,
     metadata: PropTypes.shape({
       title: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      thumbnails: PropTypes.array.isRequired,
       inspireTheme: PropTypes.shape({
         id: PropTypes.string.isRequired,
         label: PropTypes.object.isRequired
