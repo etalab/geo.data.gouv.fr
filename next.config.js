@@ -9,6 +9,7 @@ const commonModules = [
   '/node_modules/lodash-es/',
   '/node_modules/marked/',
   '/node_modules/next/',
+  '/node_modules/scheduler/',
   '/node_modules/webpack/',
 
   '/components/hoc/',
