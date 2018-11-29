@@ -19,12 +19,11 @@ import Datagouv from '../components/dataset/datagouv'
 import Contacts from '../components/dataset/contacts'
 
 import Header from '../components/dataset/header'
-import Downloads from '../components/dataset/downloads'
+import Resources from '../components/dataset/resources'
 import Discussions from '../components/dataset/discussions'
 
 import Thumbnails from '../components/dataset/thumbnails'
 import SpatialExtent from '../components/dataset/spatial-extent'
-import Links from '../components/dataset/links'
 
 import Metadata from '../components/dataset/metadata'
 
@@ -52,9 +51,7 @@ class DatasetPage extends React.Component {
 
       organizations: PropTypes.array.isRequired,
 
-      dataset: PropTypes.shape({
-        distributions: PropTypes.array.isRequired
-      }).isRequired
+      resources: PropTypes.array.isRequired
     }),
 
     datagouvPublication: PropTypes.shape({
@@ -85,18 +82,20 @@ class DatasetPage extends React.Component {
   }
 
   state = {
-    datagouvDatasetPromise: null
+    datagouvDataset: null
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const {datagouvPublication} = this.props
 
     // Let’s not depend too much on data.gouv.fr’s availability, so we’re
     // fetching this after the page has loaded.
     if (datagouvPublication && datagouvPublication.remoteId) {
-      this.setState(() => ({
-        datagouvDatasetPromise: _get(`${DATAGOUV_API_URL}/datasets/${datagouvPublication.remoteId}/`)
-      }))
+      const datagouvDataset = await _get(`${DATAGOUV_API_URL}/datasets/${datagouvPublication.remoteId}/`)
+
+      this.setState({
+        datagouvDataset
+      })
     }
   }
 
@@ -105,10 +104,10 @@ class DatasetPage extends React.Component {
       recordId,
       revisionDate,
       metadata,
-      dataset,
+      resources,
       organizations
     }, datagouvPublication, t, tReady} = this.props
-    const {datagouvDatasetPromise} = this.state
+    const {datagouvDataset} = this.state
 
     const contacts = uniqWith(metadata.contacts.map(contact => ({
       ...contact,
@@ -117,7 +116,6 @@ class DatasetPage extends React.Component {
     })), isEqual)
 
     const hasThumbnails = metadata.thumbnails && metadata.thumbnails.length > 0
-    const hasLinks = metadata.links.length > 0
 
     return (
       <Page ready={tReady}>
@@ -135,9 +133,9 @@ class DatasetPage extends React.Component {
               <Container fluid>
                 <div className='container'>
                   <div className='left'>
-                    {datagouvPublication && (
+                    {datagouvDataset && (
                       <Box title={t('blocks.producer')}>
-                        <Producer promise={datagouvDatasetPromise} />
+                        <Producer producer={datagouvDataset.organization} />
                       </Box>
                     )}
 
@@ -145,7 +143,7 @@ class DatasetPage extends React.Component {
                       <Datagouv
                         license={metadata.license}
                         organizations={organizations}
-                        distributions={dataset.distributions}
+                        resources={resources}
                         publication={datagouvPublication}
                       />
                     </Box>
@@ -167,8 +165,8 @@ class DatasetPage extends React.Component {
                     <Box>
                       <Header metadata={metadata} />
                     </Box>
-                    <Box title={t('blocks.downloads')}>
-                      <Downloads distributions={dataset.distributions} extent={metadata.spatialExtent} />
+                    <Box title={t('blocks.resources')}>
+                      <Resources recordId={recordId} resources={resources} extent={metadata.spatialExtent} />
                     </Box>
                     {datagouvPublication && (
                       <Box title={t('blocks.discussions')}>
@@ -177,7 +175,7 @@ class DatasetPage extends React.Component {
                     )}
                   </div>
 
-                  {(hasThumbnails || metadata.spatialExtent || hasLinks) && (
+                  {(hasThumbnails || metadata.spatialExtent) && (
                     <div className='right'>
                       {hasThumbnails && (
                         <Box title={t('blocks.thumbnails')}>
@@ -187,11 +185,6 @@ class DatasetPage extends React.Component {
                       {metadata.spatialExtent && (
                         <Box title={t('blocks.spatialExtent')}>
                           <SpatialExtent extent={metadata.spatialExtent} />
-                        </Box>
-                      )}
-                      {hasLinks && (
-                        <Box title={t('blocks.links')}>
-                          <Links links={metadata.links} />
                         </Box>
                       )}
                     </div>

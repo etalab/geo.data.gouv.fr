@@ -26,11 +26,10 @@
     "datagouv": "Publication on data.gouv.fr",
     "contacts": "Contacts",
     "credit": "Credit",
-    "downloads": "Downloads",
+    "resources": "Resources",
     "discussions": "Discussions",
     "thumbnails": "Data preview",
-    "spatialExtent": "Spatial extent",
-    "links": "Links"
+    "spatialExtent": "Spatial extent"
   },
 
   "datagouv": {
@@ -52,9 +51,9 @@
         "foundProducer": "At least one producer was identified:",
         "noProducer": "A producer has not been identified."
       },
-      "distribution": {
+      "resources": {
         "title": "Data availability",
-        "available": "At least one distribution is available:",
+        "available": "At least one distribution is available.",
         "unavailable": "No distribution was found."
       }
     }
@@ -65,7 +64,12 @@
     "vectorData": "Vector data:",
     "otherData": "Other data:",
     "unavailable": "Unavailable",
-    "openPreview": "Preview"
+    "openPreview": "Preview",
+    "download": "Download",
+    "browse": "Browse",
+    "services": {
+      "wfs": "WFS Service"
+    }
   },
 
   "preview": {
@@ -76,6 +80,7 @@
       "of": "of"
     },
     "empty": "No data…",
+    "embed": "Display this map on your website:",
     "errors": {
       "download": "The preview data could not be downloaded at this time, please try again later."
     }

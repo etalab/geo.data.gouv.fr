@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {flowRight} from 'lodash'
+import {flowRight, get} from 'lodash'
 import getConfig from 'next/config'
 
 import {_get, _post} from '../lib/fetch'
@@ -53,16 +53,17 @@ class CatalogPage extends React.Component {
   runHarvest = () => {
     const {catalog} = this.props
 
-    return _post(`${GEODATA_API_URL}/services/${catalog.id}/sync`)
+    return _post(`${GEODATA_API_URL}/services/${catalog._id}/sync`)
   }
 
   render() {
     const {catalog, harvests, t, tReady} = this.props
+    const organizationCounts = get(catalog, 'metrics.records.counts.organizations')
 
     return (
       <Page ready={tReady}>
         {() => (
-          <React.Fragment>
+          <>
             <Meta title={t('details.title', {name: catalog.name})} />
 
             <Content clouds>
@@ -85,22 +86,22 @@ class CatalogPage extends React.Component {
                     catalog: catalog.name
                   }} />
 
-                  {catalog.metrics && (
-                    <React.Fragment>
+                  {organizationCounts && (
+                    <>
                       <h3>{t('details.organizations')}</h3>
-                      <Organizations catalog={catalog} />
-                    </React.Fragment>
+                      <Organizations catalogName={catalog.name} organizationCounts={organizationCounts} />
+                    </>
                   )}
                 </Box>
               </Container>
-            </Content>
 
-            <style jsx>{`
-              h3 {
-                margin: 2.6em 0 1.4em;
-              }
-            `}</style>
-          </React.Fragment>
+              <style jsx>{`
+                h3 {
+                  margin: 2.6em 0 1.4em;
+                }
+              `}</style>
+            </Content>
+          </>
         )}
       </Page>
     )

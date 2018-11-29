@@ -26,11 +26,10 @@
     "datagouv": "Publication sur data.gouv.fr",
     "contacts": "Contacts",
     "credit": "Contributions",
-    "downloads": "Téléchargements",
+    "resources": "Ressources",
     "discussions": "Discussions",
     "thumbnails": "Aperçu des données",
-    "spatialExtent": "Étendue spatiale",
-    "links": "Liens"
+    "spatialExtent": "Étendue spatiale"
   },
 
   "datagouv": {
@@ -52,9 +51,9 @@
         "foundProducer": "Au moins un producteur a été identifié :",
         "noProducer": "Un producteur n’a pas été identifié."
       },
-      "distribution": {
+      "resources": {
         "title": "Disponibilité de la donnée",
-        "available": "Au moins une distribution est disponible :",
+        "available": "Au moins une distribution est disponible.",
         "unavailable": "Aucune distribution n’a été trouvée."
       }
     }
@@ -65,7 +64,12 @@
     "vectorData": "Données vectorielles :",
     "otherData": "Autres données :",
     "unavailable": "Non disponible",
-    "openPreview": "Visualiser"
+    "openPreview": "Visualiser",
+    "download": "Télécharger",
+    "browse": "Ouvrir",
+    "services": {
+      "wfs": "Service WFS"
+    }
   },
 
   "preview": {
@@ -76,6 +80,7 @@
       "of": "sur"
     },
     "empty": "Aucune donnée…",
+    "embed": "Affichez cette carte sur votre site web :",
     "errors": {
       "download": "Les données à prévisualiser n’ont pas pu être téléchargées, merci de réessayer plus tard."
     }

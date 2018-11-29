@@ -5,8 +5,6 @@ import bytes from 'bytes'
 
 import {_get} from '../../lib/fetch'
 
-import {generateDistributionId, generateDistributionInfo} from '../../lib/distribution'
-
 import attachI18n from '../../components/hoc/attach-i18n'
 
 import CenteredMap from '../../components/centered-map'
@@ -20,7 +18,7 @@ const {publicRuntimeConfig: {
 class PreviewPage extends React.Component {
   static propTypes = {
     extent: PropTypes.object,
-    distribution: PropTypes.object,
+    link: PropTypes.string,
     error: PropTypes.string,
 
     t: PropTypes.func.isRequired
@@ -28,24 +26,33 @@ class PreviewPage extends React.Component {
 
   static defaultProps = {
     extent: null,
-    distribution: null,
+    link: null,
     error: null
   }
 
   static async getInitialProps({query}) {
     try {
-      const {dataset, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
-      const distribution = dataset.distributions.find(d => generateDistributionId(d) === query.rid)
+      const {recordId, metadata} = await _get(`${GEODATA_API_URL}/records/${query.did}`)
 
-      if (!distribution) {
-        return {
-          error: 'distributionNotFound'
-        }
-      }
+      switch (query.rtype) {
+        case 'service.wfs':
+          return {
+            recordId,
+            extent: metadata.spatialExtent,
+            link: `${GEODATA_API_URL}/services/${query.rid}/feature-types/${query.fid}/download`
+          }
 
-      return {
-        extent: metadata.spatialExtent,
-        distribution
+        case 'download':
+          return {
+            recordId,
+            extent: metadata.spatialExtent,
+            link: `${GEODATA_API_URL}/links/${query.rid}/downloads/${query.fid}/download`
+          }
+
+        default:
+          return {
+            error: 'distributionNotFound'
+          }
       }
     } catch (error) {
       return {
@@ -63,7 +70,7 @@ class PreviewPage extends React.Component {
   }
 
   componentDidMount() {
-    const {error, distribution} = this.props
+    const {error, link} = this.props
 
     if (error) {
       return this.setState({
@@ -72,8 +79,6 @@ class PreviewPage extends React.Component {
         }
       })
     }
-
-    const {link} = generateDistributionInfo(distribution)
 
     const req = new XMLHttpRequest()
     req.addEventListener('progress', event => {
@@ -101,10 +106,18 @@ class PreviewPage extends React.Component {
 
     req.addEventListener('load', () => {
       try {
-        this.setState({
-          loading: null,
-          data: JSON.parse(req.responseText)
-        })
+        if (req.status === 200) {
+          this.setState({
+            loading: null,
+            data: JSON.parse(req.responseText)
+          })
+        } else {
+          this.setState({
+            error: {
+              state: 'downloading'
+            }
+          })
+        }
       } catch (error) {
         this.setState({
           error: {

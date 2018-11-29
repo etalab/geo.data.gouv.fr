@@ -49,7 +49,8 @@ class Discussion extends React.Component {
 
   onExpand = () => {
     this.setState({
-      expanded: true
+      expanded: true,
+      showReplies: true
     })
   }
 
@@ -68,39 +69,42 @@ class Discussion extends React.Component {
         <h4>
           {discussion.closed && <CheckIcon style={{verticalAlign: -2}} />} {discussion.title}
         </h4>
-        {(showReplies || !replyCount) ? (
-          <div>
-            {discussion.discussion.map((message, idx) => (
+
+        <div>
+          {showReplies ? (
+            discussion.discussion.map((message, idx) => (
               // eslint-disable-next-line react/no-array-index-key
               <Message key={idx} message={message} />
-            ))}
-
-            <div className='footer'>
-              {expanded ? (
-                <div>
-                  <RequireAuth message={t('discussions.loggedOutReplyMessage')} render={this.renderAuth} />
-                  <span onClick={this.toggleReplies}>{t('discussions.closeReplies')}</span>
-                </div>
-              ) : (
-                <div>
-                  <Button onClick={this.onExpand}>
-                    <ReplyIcon style={{verticalAlign: -2}} /> {t('discussions.reply')}
-                  </Button>
-                  <span onClick={this.toggleReplies}>{t('discussions.closeReplies')}</span>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div>
+            ))
+          ) : (
             <Message message={discussion.discussion[0]} />
-            <div className='footer'>
-              <span onClick={this.toggleReplies}>{t('discussions.replyCount', {
-                count: replyCount
-              })}</span>
-            </div>
+          )}
+
+          <div className='footer'>
+            {(replyCount > 0 || expanded) && (
+              showReplies ? (
+                <span onClick={this.toggleReplies}>{t('discussions.closeReplies')}</span>
+              ) : (
+                <span onClick={this.toggleReplies}>{t('discussions.replyCount', {
+                  count: replyCount
+                })}</span>
+              )
+            )}
+
+            {expanded ? (
+              <>
+                <RequireAuth message={t('discussions.loggedOutReplyMessage')} render={this.renderAuth} />
+              </>
+            ) : (
+              <>
+                <Button onClick={this.onExpand}>
+                  <ReplyIcon style={{verticalAlign: -2}} /> {t('discussions.reply')}
+                </Button>
+              </>
+            )}
           </div>
-        )}
+        </div>
+
         <style jsx>{`
           @import 'colors';
 
@@ -125,7 +129,7 @@ class Discussion extends React.Component {
 
             span {
               color: $blue;
-              margin-left: 5px;
+              margin-right: 6px;
 
               &:hover {
                 cursor: pointer;

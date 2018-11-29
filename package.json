@@ -46,7 +46,8 @@
   "resolutions": {
     "chart.js/moment": "^2.22.2",
     "@turf/helpers": "^6.x",
-    "@turf/meta": "^6.x"
+    "@turf/meta": "^6.x",
+    "fsevents": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -77,8 +78,8 @@
     "> 1%"
   ],
   "engines": {
-    "node": "8.x",
-    "yarn": "1.x"
+    "node": ">= 8",
+    "yarn": ">= 1"
   },
   "jest": {
     "verbose": true,

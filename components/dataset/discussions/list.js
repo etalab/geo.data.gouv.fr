@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {flowRight} from 'lodash'
 import {translate} from 'react-i18next'
-
-import withFetch from '../../hoc/with-fetch'
 
 import Discussion from './discussion'
 
@@ -34,9 +31,4 @@ DiscussionsList.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-export default flowRight(
-  withFetch(data => ({
-    discussions: data.data
-  })),
-  translate('dataset')
-)(DiscussionsList)
+export default translate('dataset')(DiscussionsList)
