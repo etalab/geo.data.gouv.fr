@@ -36,9 +36,9 @@
     "next-runtime-dotenv": "^1.0.1",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.2",
-    "react": "^16.5.2",
+    "react": "^16.6.3",
     "react-chartjs-2": "^2.7.2",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.6.3",
     "react-i18next": "^7.7.0",
     "react-icons": "^2.2.7",
     "react-table": "^6.8.6"
