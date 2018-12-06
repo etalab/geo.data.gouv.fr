@@ -40,6 +40,7 @@ class DatasetPage extends React.Component {
       metadata: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
         thumbnails: PropTypes.arrayOf(PropTypes.shape({
           originalUrlHash: PropTypes.string.isRequired
         })),
@@ -139,14 +140,16 @@ class DatasetPage extends React.Component {
                       </Box>
                     )}
 
-                    <Box title={t('blocks.datagouv')}>
-                      <Datagouv
-                        license={metadata.license}
-                        organizations={organizations}
-                        resources={resources}
-                        publication={datagouvPublication}
-                      />
-                    </Box>
+                    {metadata.type !== 'service' && (
+                      <Box title={t('blocks.datagouv')}>
+                        <Datagouv
+                          license={metadata.license}
+                          organizations={organizations}
+                          resources={resources}
+                          publication={datagouvPublication}
+                        />
+                      </Box>
+                    )}
 
                     {contacts.length > 0 && (
                       <Box title={t('blocks.contacts')}>
