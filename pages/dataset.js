@@ -46,7 +46,6 @@ class DatasetPage extends React.Component {
         })),
         spatialExtent: PropTypes.object,
         contacts: PropTypes.array.isRequired,
-        links: PropTypes.array.isRequired,
         credits: PropTypes.string
       }).isRequired,
 
