@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import getConfig from 'next/config'
+import {uniqBy, sortBy} from 'lodash'
 
 import SimpleDownload from '../downloads/simple'
 import VectorDownload from '../downloads/vector'
@@ -9,6 +10,13 @@ const {publicRuntimeConfig: {
   PUBLIC_URL,
   GEODATA_API_URL
 }} = getConfig()
+
+const DOWNLOAD_RESOURCE_TYPE_ORDER = {
+  vector: 1,
+  raster: 2,
+  table: 3,
+  data: 4
+}
 
 class DownloadResource extends React.Component {
   static propTypes = {
@@ -60,6 +68,15 @@ class DownloadResource extends React.Component {
   render() {
     const {resource} = this.props
 
+    const downloads = sortBy(
+      uniqBy(resource.downloads, download => {
+        return download.type + download.name
+      }),
+      download => {
+        return DOWNLOAD_RESOURCE_TYPE_ORDER[download.resourceType]
+      }
+    )
+
     return (
       <div className='container'>
         <div className='header'>
@@ -67,7 +84,7 @@ class DownloadResource extends React.Component {
           <p>{resource.description && resource.description}</p>
         </div>
         <div className='downloads'>
-          {resource.downloads.map(download => (
+          {downloads.map(download => (
             <div key={download.id} className='download'>
               {this.renderDownload(download)}
             </div>
