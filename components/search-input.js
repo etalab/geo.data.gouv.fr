@@ -55,6 +55,10 @@ class SearchInput extends React.PureComponent {
     const {router, i18n, defaultQuery} = this.props
     const {value} = this.state
 
+    if (!value.trim()) {
+      return false;
+    }
+
     const query = {
       ...defaultQuery,
       ...router.query,
