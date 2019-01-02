@@ -56,7 +56,7 @@ class SearchInput extends React.PureComponent {
     const {value} = this.state
 
     if (!value.trim()) {
-      return false;
+      return false
     }
 
     const query = {
