@@ -39,7 +39,7 @@
     "react": "^16.6.3",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.6.3",
-    "react-i18next": "^7.7.0",
+    "react-i18next": "^9.0.1",
     "react-icons": "^2.2.7",
     "react-table": "^6.8.6"
   },
