@@ -1,7 +1,5 @@
 const {join} = require('path')
-const webpack = require('webpack')
 const nextRuntimeDotenv = require('next-runtime-dotenv')
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 // The following modules will be pushed to the commons.js bundle
 const commonModules = [
@@ -33,11 +31,15 @@ const withConfig = nextRuntimeDotenv({
 
 module.exports = withConfig({
   webpack(config, {dev, isServer}) {
+    const {ContextReplacementPlugin} = require('webpack')
+
     config.plugins.push(
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /fr/)
+      new ContextReplacementPlugin(/moment[/\\]locale$/, /fr/)
     )
 
     if (!dev && !isServer) {
+      const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
+
       config.optimization.splitChunks.cacheGroups.shared = {
         name: 'commons',
         test: m => m.resource && commonModules.some(c =>

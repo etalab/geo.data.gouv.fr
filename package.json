@@ -67,7 +67,6 @@
     "node-sass": "^4.9.0",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.4.1",
-    "styled-jsx": "^3.0.2",
     "styled-jsx-plugin-sass": "^1.0.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^3.0.2",
@@ -122,5 +121,21 @@
         ]
       }
     ]
+  },
+  "changelog": {
+    "cacheDir": ".changelog",
+    "labels": {
+      "analytics": ":bar_chart: Analytics",
+      "bug": ":bug: Bug Fix",
+      "build-process": ":building_construction: Build Process",
+      "cleanup": ":shower: Cleanup",
+      "design": ":rainbow: Design",
+      "documentation": ":memo: Documentation",
+      "enhancement": ":rocket: Enhancement",
+      "i18n": ":earth_africa: Internationalization",
+      "performance": ":racehorse: Performance",
+      "security": ":policeman: Security"
+    },
+    "repo": "etalab/geo.data.gouv.fr"
   }
 }
