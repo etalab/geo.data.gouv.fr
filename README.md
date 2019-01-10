@@ -33,7 +33,7 @@ Afin de configurer le projet correctement, il est conseillé de créer un fichie
 Un fichier d’example existe : `.env.example`. Pour obtenir une configuration de base :
 
 ```bash
-cp .env.example .env
+cp .env.sample .env
 ```
 
 Enfin, lancer le serveur de développement avec :
