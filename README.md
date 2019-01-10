@@ -1,7 +1,8 @@
 # geo.data.gouv.fr [![CircleCI](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master.svg?style=svg)](https://circleci.com/gh/etalab/geo.data.gouv.fr/tree/master)
 
-Trouvez facilement les données géographiques dont vous avez besoin
+> Trouvez facilement les données géographiques dont vous avez besoin
 
+[![Last Release](https://badgen.net/github/release/etalab/geo.data.gouv.fr/stable)](https://github.com/etalab/geo.data.gouv.fr/releases)
 [![codecov](https://badgen.net/codecov/c/github/etalab/geo.data.gouv.fr)](https://codecov.io/gh/etalab/geo.data.gouv.fr)
 [![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 
@@ -82,6 +83,15 @@ Le jeton d’authentification GitHub passé à l’aide de la variable d’envir
 
 La génération du changelog et la création de releases GitHub sont automatisées par CircleCI à chaque publication de tag.
 
+## Docker
+
+Une image est disponible sur le hub docker :
+
+[![Docker Pulls](https://badgen.net/docker/pulls/geodatagouv/geo.data.gouv.fr?icon=docker)](https://hub.docker.com/r/geodatagouv/geo.data.gouv.fr)
+
+```bash
+$ docker pull geodatagouv/geo.data.gouv.fr:latest
+```
 
 ## Mainteneurs principaux
 
