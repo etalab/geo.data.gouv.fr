@@ -1,7 +1,7 @@
 import React from 'react'
 import Document, {Head, Main, NextScript} from 'next/document'
 import getConfig from 'next/config'
-import flush from 'styled-jsx/server'
+import flush from 'styled-jsx/server' // eslint-disable-line import/no-extraneous-dependencies
 
 const {publicRuntimeConfig: {
   PIWIK_URL,

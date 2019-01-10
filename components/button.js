@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import css from 'styled-jsx/css'
+import css from 'styled-jsx/css' // eslint-disable-line import/no-extraneous-dependencies
 
 const style = css`
   @import 'colors';
