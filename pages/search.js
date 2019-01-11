@@ -139,13 +139,25 @@ class SearchPage extends React.Component {
   getQueryFacets = () => {
     const {router: {query}} = this.props
 
-    return Object
-      .entries(query)
-      .filter(([name]) => facetTypes.includes(name))
-      .map(([name, value]) => ({
-        name,
-        value
-      }))
+    const facets = []
+
+    for (const [name, value] of Object.entries(query)) {
+      if (facetTypes.includes(name)) {
+        if (Array.isArray(value)) {
+          facets.push(...value.map(v => ({
+            name,
+            value: v
+          })))
+        } else {
+          facets.push({
+            name,
+            value
+          })
+        }
+      }
+    }
+
+    return facets
   }
 
   toggleFacets = () => {
