@@ -8,16 +8,16 @@ import MarkdownSummary from '../../markdown-summary'
 import Thumbnail from './thumbnail'
 import Footer from './footer'
 
-const Result = ({result: {recordId, metadata}, i18n}) => (
-  <Link prefetch href={`/dataset?did=${recordId}`} as={`/datasets/${recordId}`}>
+const Result = ({id, result, i18n}) => (
+  <Link prefetch href={`/dataset?did=${id}`} as={`/datasets/${id}`}>
     <a>
-      <Thumbnail thumbnails={metadata.thumbnails} recordId={recordId} />
+      {/* <Thumbnail thumbnails={metadata.thumbnails} recordId={recordId} /> */}
 
       <div className='content'>
         <div className='description'>
-          <h3>{metadata.title}</h3>
+          <h3>{result.title}</h3>
 
-          {metadata.inspireTheme && (
+          {/* {metadata.inspireTheme && (
             <div className='inspire'>
               <img
                 src={`/static/images/datasets/inspire/${metadata.inspireTheme.id}.svg`}
@@ -25,15 +25,15 @@ const Result = ({result: {recordId, metadata}, i18n}) => (
                 alt={metadata.inspireTheme.label[i18n.language]}
               />
             </div>
-          )}
+          )} */}
         </div>
 
-        {metadata.description && (
-          <MarkdownSummary markdown={metadata.description} />
+        {result.description && (
+          <MarkdownSummary markdown={result.description} />
         )}
 
         <div className='footer'>
-          <Footer metadata={metadata} />
+          <Footer result={result} />
         </div>
       </div>
       <style jsx>{`

@@ -4,23 +4,14 @@ import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
 import {withRouter} from 'next/router'
 
+import {facetTypes} from '../lib/facets'
+
 import Link from './link'
 
 class Facet extends React.Component {
   static propTypes = {
     facet: PropTypes.shape({
-      name: PropTypes.oneOf([
-        'availability',
-        'dgvPublication',
-        'distributionFormat',
-        'keyword',
-        'metadataType',
-        'opendata',
-        'organization',
-        'representationType',
-        'type',
-        'catalog'
-      ]).isRequired,
+      name: PropTypes.oneOf(facetTypes).isRequired,
       value: PropTypes.string.isRequired
     }).isRequired,
 

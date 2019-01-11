@@ -5,18 +5,18 @@ import {translate} from 'react-i18next'
 
 import licenses from '../../../lib/licenses'
 
-const Footer = ({metadata, t}) => {
+const Footer = ({result, t}) => {
   let license
 
-  if (metadata.license) {
-    const found = licenses[metadata.license]
+  if (result.license) {
+    const found = licenses[result.license]
 
     if (found) {
       license = found.name
     } else {
       license = t('common:enums.unknownData.unknown', {
         context: 'female'
-      }) + ' (' + metadata.license + ')'
+      }) + ' (' + result.license + ')'
     }
   } else {
     license = t('common:enums.unknownData.notSpecified', {
@@ -24,9 +24,8 @@ const Footer = ({metadata, t}) => {
     })
   }
 
-  const updatedAt = metadata.revisionDate || metadata.creationDate
-  const updatedAtLabel = updatedAt ?
-    moment(updatedAt).fromNow() :
+  const updatedAtLabel = result.revisionDate ?
+    moment(result.revisionDate).fromNow() :
     t('common:enums.unknownData.unknown', {
       context: 'female'
     })
