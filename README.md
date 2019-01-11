@@ -102,3 +102,15 @@ Ce projet est largement ouvert aux contributions.
 ## License
 
 MIT
+
+## Divers
+
+```
+    ╚⊙ ⊙╝
+  ╚═(███)═╝
+ ╚═(███)═╝
+╚═(███)═╝
+ ╚═(███)═╝
+  ╚═(███)═╝
+   ╚═(███)═╝
+```
