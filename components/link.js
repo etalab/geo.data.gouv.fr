@@ -26,7 +26,10 @@ Link.propTypes = {
   as: PropTypes.string,
   i18n: PropTypes.shape({
     language: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+
+  tReady: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired
 }
 
 Link.defaultProps = {
