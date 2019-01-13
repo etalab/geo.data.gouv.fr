@@ -39,6 +39,7 @@
     },
     "values": {
       "type": {
+        "map": "Carte",
         "dataset": "Jeu de données",
         "nonGeographicDataset": "Jeu de données non-géographique"
       },

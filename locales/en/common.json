@@ -39,6 +39,7 @@
     },
     "values": {
       "type": {
+        "map": "Map",
         "dataset": "Dataset",
         "nonGeographicDataset": "Non-geographic dataset"
       },
