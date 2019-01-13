@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
 import {withRouter} from 'next/router'
+import {flowRight} from 'lodash'
 
 import {facetTypes} from '../lib/facets'
 
@@ -142,7 +143,7 @@ class Facet extends React.Component {
             overflow: hidden;
 
             &:before {
-              background: $white;
+              background-color: $white;
               border-radius: 10px;
               box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
               position: absolute;
@@ -234,4 +235,7 @@ class Facet extends React.Component {
   }
 }
 
-export default translate()(withRouter(Facet))
+export default flowRight(
+  translate(),
+  withRouter
+)(Facet)
