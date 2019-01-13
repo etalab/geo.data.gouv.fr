@@ -17,15 +17,15 @@ const Result = ({id, result, i18n}) => (
         <div className='description'>
           <h3>{result.title}</h3>
 
-          {/* {metadata.inspireTheme && (
+          {result.inspireTheme && (
             <div className='inspire'>
               <img
-                src={`/static/images/datasets/inspire/${metadata.inspireTheme.id}.svg`}
-                title={metadata.inspireTheme.label[i18n.language]}
-                alt={metadata.inspireTheme.label[i18n.language]}
+                src={`/static/images/datasets/inspire/${result.inspireTheme}.svg`}
+                // title={metadata.inspireTheme.label[i18n.language]}
+                // alt={metadata.inspireTheme.label[i18n.language]}
               />
             </div>
-          )} */}
+          )}
         </div>
 
         {result.description && (
