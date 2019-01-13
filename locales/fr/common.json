@@ -34,15 +34,31 @@
       "organization": "organisation",
       "representationType": "type géographique",
       "type": "type",
-      "catalog": "catalogue"
+      "catalog": "catalogue",
+      "license": "licence"
     },
     "values": {
-      "yes": "oui",
-      "no": "non",
-      "not-determined": "non déterminé",
-      "other": "autre",
-      "unknown": "inconnu",
-      "none": "aucun"
+      "type": {
+        "dataset": "Jeu de données",
+        "nonGeographicDataset": "Jeu de données non-géographique"
+      },
+      "license": {
+        "lov2": "Licence Ouverte 2.0",
+        "fr-lo": "Licence Ouverte",
+        "odc-odbl": "Open Database License (ODbL 1.0)"
+      },
+      "distributionFormat": {
+        "file": "Fichier",
+        "wfs": "Service WFS"
+      },
+      "common": {
+        "yes": "oui",
+        "no": "non",
+        "not-determined": "non déterminé",
+        "other": "autre",
+        "unknown": "inconnu",
+        "none": "aucun"
+      }
     }
   },
 

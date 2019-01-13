@@ -25,10 +25,6 @@ class Facet extends React.Component {
       query: PropTypes.object.isRequired
     }).isRequired,
 
-    i18n: PropTypes.shape({
-      exists: PropTypes.func.isRequired
-    }).isRequired,
-
     t: PropTypes.func.isRequired
   }
 
@@ -103,10 +99,14 @@ class Facet extends React.Component {
   }
 
   render() {
-    const {facet, count, detailed, removable, t, i18n} = this.props
+    const {facet, count, detailed, removable, t} = this.props
 
     const title = t(`facets.types.${facet.name}`)
-    const value = i18n.exists(`facets.values.${facet.value}`) ? t(`facets.values.${facet.value}`) : facet.value
+    const value = t([
+      `facets.values.${facet.name}.${facet.value}`,
+      `facets.values.common.${facet.value}`,
+      facet.value
+    ])
 
     return (
       <div className='container'>

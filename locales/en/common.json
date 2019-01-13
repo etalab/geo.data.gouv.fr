@@ -34,15 +34,31 @@
       "organization": "organization",
       "representationType": "representation type",
       "type": "type",
-      "catalog": "catalog"
+      "catalog": "catalog",
+      "license": "license"
     },
     "values": {
-      "yes": "yes",
-      "no": "no",
-      "not-determined": "not determined",
-      "other": "other",
-      "unknown": "unknown",
-      "none": "none"
+      "type": {
+        "dataset": "Dataset",
+        "nonGeographicDataset": "Non-geographic dataset"
+      },
+      "license": {
+        "lov2": "Licence Ouverte 2.0",
+        "fr-lo": "Licence Ouverte",
+        "odc-odbl": "Open Database License (ODbL 1.0)"
+      },
+      "distributionFormat": {
+        "file": "File",
+        "wfs": "WFS Service"
+      },
+      "common": {
+        "yes": "yes",
+        "no": "no",
+        "not-determined": "not determined",
+        "other": "other",
+        "unknown": "unknown",
+        "none": "none"
+      }
     }
   },
 

@@ -138,7 +138,6 @@ class SearchPage extends React.Component {
 
   getQueryFacets = () => {
     const {router: {query}} = this.props
-
     const facets = []
 
     for (const [name, value] of Object.entries(query)) {
