@@ -6,15 +6,14 @@ const {publicRuntimeConfig: {
   GEODATA_API_URL
 }} = getConfig()
 
-const Thumbnail = ({recordId, thumbnails}) => {
-  const hasThumbnail = thumbnails && thumbnails.length > 0
-  const thumbnail = hasThumbnail ?
-    `${GEODATA_API_URL}/records/${recordId}/thumbnails/${thumbnails[0].originalUrlHash}` :
+const Thumbnail = ({id, thumbnail}) => {
+  const url = thumbnail ?
+    `${GEODATA_API_URL}/records/${id}/thumbnails/${thumbnail}` :
     '/static/images/datasets/default-thumbnail.svg'
 
   return (
     <div>
-      <img src={thumbnail} alt='' />
+      <img src={url} alt='' />
 
       <style jsx>{`
         div {
@@ -30,7 +29,7 @@ const Thumbnail = ({recordId, thumbnails}) => {
           @media (max-width: 767px) {
             width: 100%;
 
-            ${!hasThumbnail && (`
+            ${!thumbnail && (`
               display: none;
             `)}
           }
@@ -53,14 +52,12 @@ const Thumbnail = ({recordId, thumbnails}) => {
 }
 
 Thumbnail.propTypes = {
-  thumbnails: PropTypes.arrayOf(PropTypes.shape({
-    originalUrlHash: PropTypes.isRequired
-  })),
-  recordId: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string
 }
 
 Thumbnail.defaultProps = {
-  thumbnails: null
+  thumbnail: null
 }
 
 export default Thumbnail
