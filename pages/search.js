@@ -159,6 +159,28 @@ class SearchPage extends React.Component {
     return facets
   }
 
+  getPaging = (limit = 20) => {
+    const {router: {query}} = this.props
+
+    let page = 1
+    if (query.p) {
+      try {
+        page = parseInt(query.p, 10)
+        if (page < 1) {
+          page = 1
+        }
+      } catch (error) {
+        page = 1
+      }
+    }
+
+    return {
+      page,
+      offset: (page - 1) * limit,
+      limit
+    }
+  }
+
   toggleFacets = () => {
     this.setState(state => ({
       showFacets: !state.showFacets
@@ -178,6 +200,7 @@ class SearchPage extends React.Component {
 
     const groups = this.getFilterGroups()
     const queryFacets = this.getQueryFacets()
+    const paging = this.getPaging()
 
     return (
       <Page ready={tReady}>
@@ -197,11 +220,9 @@ class SearchPage extends React.Component {
                     </div>
                     <ActiveFacets facets={queryFacets} />
                     <Count count={hits.total} />
-
                     <Results results={hits.hits} />
-                    {hits.total > 0 && <Paging count={hits.total} query={query} />}
+                    {hits.total > 0 && <Paging count={hits.total} paging={paging} />}
                   </div>
-
                   <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
                 </div>
               </Container>

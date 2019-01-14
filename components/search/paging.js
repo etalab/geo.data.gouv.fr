@@ -10,8 +10,8 @@ import Link from '../link'
 class Paging extends React.Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
-    query: PropTypes.shape({
-      offset: PropTypes.number,
+    paging: PropTypes.shape({
+      offset: PropTypes.number.isRequired,
       limit: PropTypes.number.isRequired
     }).isRequired,
 
@@ -41,7 +41,7 @@ class Paging extends React.Component {
   }
 
   render() {
-    const {count, query: {offset = 0, limit}, t} = this.props
+    const {count, paging: {offset, limit}, t} = this.props
 
     const page = 1 + Math.ceil(offset / limit)
     const pageCount = Math.ceil(count / limit)
