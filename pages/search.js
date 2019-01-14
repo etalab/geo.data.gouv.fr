@@ -32,13 +32,11 @@ const {publicRuntimeConfig: {
 class SearchPage extends React.Component {
   static propTypes = {
     result: PropTypes.shape({
-      query: PropTypes.shape({
-        q: PropTypes.string,
-        facets: PropTypes.array.isRequired
-      }).isRequired,
-      results: PropTypes.array.isRequired,
-      count: PropTypes.number.isRequired,
-      facets: PropTypes.object.isRequired
+      aggregations: PropTypes.object.isRequired,
+      hits: PropTypes.shape({
+        total: PropTypes.number.isRequired,
+        hits: PropTypes.array.isRequired
+      }).isRequired
     }),
 
     router: PropTypes.shape({

@@ -101,15 +101,10 @@ const Result = ({id, result, i18n}) => (
 Result.propTypes = {
   id: PropTypes.string.isRequired,
   result: PropTypes.shape({
-    metadata: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string,
-      thumbnails: PropTypes.array.isRequired,
-      inspireTheme: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.object.isRequired
-      })
-    }).isRequired
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    thumbnail: PropTypes.string,
+    inspireTheme: PropTypes.string
   }).isRequired,
 
   i18n: PropTypes.shape({

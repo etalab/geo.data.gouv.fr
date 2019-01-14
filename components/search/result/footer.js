@@ -68,9 +68,8 @@ const Footer = ({result, t}) => {
 }
 
 Footer.propTypes = {
-  metadata: PropTypes.shape({
+  result: PropTypes.shape({
     license: PropTypes.string,
-    creationDate: PropTypes.string,
     revisionDate: PropTypes.string
   }).isRequired,
 
