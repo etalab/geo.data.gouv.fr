@@ -8,7 +8,7 @@ import MarkdownSummary from '../../markdown-summary'
 import Thumbnail from './thumbnail'
 import Footer from './footer'
 
-const Result = ({id, result, i18n}) => (
+const Result = ({id, result, t}) => (
   <Link prefetch href={`/dataset?did=${id}`} as={`/datasets/${id}`}>
     <a>
       <Thumbnail id={id} thumbnail={result.thumbnail} />
@@ -21,8 +21,8 @@ const Result = ({id, result, i18n}) => (
             <div className='inspire'>
               <img
                 src={`/static/images/datasets/inspire/${result.inspireTheme}.svg`}
-                // title={metadata.inspireTheme.label[i18n.language]}
-                // alt={metadata.inspireTheme.label[i18n.language]}
+                title={t(`common:enums.inspireThemes.${result.inspireTheme}`)}
+                alt={t(`common:enums.inspireThemes.${result.inspireTheme}`)}
               />
             </div>
           )}
@@ -107,9 +107,7 @@ Result.propTypes = {
     inspireTheme: PropTypes.string
   }).isRequired,
 
-  i18n: PropTypes.shape({
-    language: PropTypes.string.isRequired
-  }).isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default translate('search')(Result)
