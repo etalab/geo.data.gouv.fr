@@ -3,9 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {flowRight} from 'lodash'
 import getConfig from 'next/config'
+import {withRouter} from 'next/router'
 
 import {_get} from '../lib/fetch'
 import {getFilters} from '../lib/query'
+import {facetTypes} from '../lib/facets'
 
 import attachI18n from '../components/hoc/attach-i18n'
 import withErrors from '../components/hoc/with-errors'
@@ -30,14 +32,16 @@ const {publicRuntimeConfig: {
 class SearchPage extends React.Component {
   static propTypes = {
     result: PropTypes.shape({
-      query: PropTypes.shape({
-        q: PropTypes.string,
-        facets: PropTypes.array.isRequired
-      }).isRequired,
-      results: PropTypes.array.isRequired,
-      count: PropTypes.number.isRequired,
-      facets: PropTypes.object.isRequired
+      aggregations: PropTypes.object.isRequired,
+      hits: PropTypes.shape({
+        total: PropTypes.number.isRequired,
+        hits: PropTypes.array.isRequired
+      }).isRequired
     }),
+
+    router: PropTypes.shape({
+      query: PropTypes.object.isRequired
+    }).isRequired,
 
     t: PropTypes.func.isRequired,
     tReady: PropTypes.bool.isRequired
@@ -55,6 +59,7 @@ class SearchPage extends React.Component {
 
     return {
       result: await _get(`${GEODATA_API_URL}/records?${stringify({
+        __elastic: 1,
         q: query.q,
         limit: 20,
         offset: (page - 1) * 20,
@@ -73,23 +78,105 @@ class SearchPage extends React.Component {
     })
   }
 
-  getFilterGroups = () => {
-    const {result: {query, facets, count}} = this.props
+  mapGroupName = key => {
+    switch (key) {
+      case 'catalogs':
+        return 'catalog'
 
-    if (count === 1) {
+      case 'organizations':
+        return 'organization'
+
+      case 'distributionFormats':
+        return 'distributionFormat'
+
+      case 'published':
+        return 'dgvPublication'
+
+      case 'downloadable':
+        return 'availability'
+
+      default:
+        return key
+    }
+  }
+
+  mapGroupValue = value => {
+    switch (value.key_as_string) {
+      case 'true':
+        return 'yes'
+
+      case 'false':
+        return 'no'
+
+      default:
+        return value.key
+    }
+  }
+
+  getFilterGroups = () => {
+    const {result: {hits, aggregations}} = this.props
+
+    if (hits.total === 1) {
       return []
     }
 
     return Object
-      .entries(facets)
-      .filter(([name]) => name !== 'keyword')
+      .entries(aggregations)
       .map(([name, values]) => ({
-        name,
-        values: values.filter(v => (
-          v.count !== count && !query.facets.some(a => a.name === name && a.value === v.value)
-        ))
+        name: this.mapGroupName(name),
+        values: values.buckets
+          .filter(v => v.doc_count !== hits.total)
+          .map(v => ({
+            value: this.mapGroupValue(v),
+            count: v.doc_count
+          }))
       }))
       .filter(group => group.values.length > 1)
+  }
+
+  getQueryFacets = () => {
+    const {router: {query}} = this.props
+    const facets = []
+
+    for (const [name, value] of Object.entries(query)) {
+      if (facetTypes.includes(name)) {
+        if (Array.isArray(value)) {
+          facets.push(...value.map(v => ({
+            name,
+            value: v
+          })))
+        } else {
+          facets.push({
+            name,
+            value
+          })
+        }
+      }
+    }
+
+    return facets
+  }
+
+  getPaging = (limit = 20) => {
+    const {router: {query}} = this.props
+
+    let page = 1
+    if (query.p) {
+      try {
+        page = parseInt(query.p, 10)
+        if (page < 1) {
+          page = 1
+        }
+      } catch (error) {
+        page = 1
+      }
+    }
+
+    return {
+      page,
+      offset: (page - 1) * limit,
+      limit
+    }
   }
 
   toggleFacets = () => {
@@ -105,10 +192,13 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const {result: {query, results, count}, t, tReady} = this.props
+    const {result: {hits}, router: {query}, t, tReady} = this.props
+
     const {showFacets} = this.state
 
     const groups = this.getFilterGroups()
+    const queryFacets = this.getQueryFacets()
+    const paging = this.getPaging()
 
     return (
       <Page ready={tReady}>
@@ -126,13 +216,11 @@ class SearchPage extends React.Component {
                       <SearchInput hasButton />
                       {groups.length > 0 && <FacetButton onClick={this.toggleFacets} />}
                     </div>
-                    <ActiveFacets facets={query.facets} />
-                    <Count count={count} />
-
-                    <Results results={results} />
-                    {count > 0 && <Paging count={count} query={query} />}
+                    <ActiveFacets facets={queryFacets} />
+                    <Count count={hits.total} />
+                    <Results results={hits.hits} />
+                    {hits.total > 0 && <Paging count={hits.total} paging={paging} />}
                   </div>
-
                   <Facets groups={groups} open={showFacets} onClose={this.closeFacets} />
                 </div>
               </Container>
@@ -169,5 +257,6 @@ class SearchPage extends React.Component {
 
 export default flowRight(
   attachI18n(['search', 'dataset']),
+  withRouter,
   withErrors
 )(SearchPage)

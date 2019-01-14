@@ -34,15 +34,31 @@
       "organization": "organization",
       "representationType": "representation type",
       "type": "type",
-      "catalog": "catalog"
+      "catalog": "catalog",
+      "license": "license"
     },
     "values": {
-      "yes": "yes",
-      "no": "no",
-      "not-determined": "not determined",
-      "other": "other",
-      "unknown": "unknown",
-      "none": "none"
+      "type": {
+        "map": "Map",
+        "dataset": "Dataset",
+        "nonGeographicDataset": "Non-geographic dataset"
+      },
+      "license": {
+        "lov2": "Licence Ouverte 2.0",
+        "odc-odbl": "Open Database License (ODbL 1.0)"
+      },
+      "distributionFormat": {
+        "file": "File",
+        "wfs": "WFS Service"
+      },
+      "common": {
+        "yes": "yes",
+        "no": "no",
+        "not-determined": "not determined",
+        "other": "other",
+        "unknown": "unknown",
+        "none": "none"
+      }
     }
   },
 
@@ -97,6 +113,43 @@
       "asNeeded": "as needed",
       "irregular": "irregular",
       "notPlanned": "not planned"
+    },
+
+    "inspireThemes": {
+      "ad": "Addresses",
+      "au": "Administrative units",
+      "rs": "Coordinate reference systems",
+      "gg": "Geographical grid systems",
+      "cp": "Cadastral parcels",
+      "gn": "Geographical names",
+      "hy": "Hydrography",
+      "ps": "Protected sites",
+      "tn": "Transport networks",
+      "el": "Elevation",
+      "ge": "Geology",
+      "lc": "Land cover",
+      "oi": "Orthoimagery",
+      "af": "Agricultural and aquaculture facilities",
+      "am": "Area management/restriction/regulation zones and reporting units",
+      "ac": "Atmospheric conditions",
+      "br": "Bio-geographical regions",
+      "bu": "Buildings",
+      "er": "Energy resources",
+      "ef": "Environmental monitoring facilities",
+      "hb": "Habitats and biotopes",
+      "hh": "Human health and safety",
+      "lu": "Land use",
+      "mr": "Mineral resources",
+      "nz": "Natural risk zones",
+      "of": "Oceanographic geographical features",
+      "pd": "Population distribution — demography",
+      "pf": "Production and industrial facilities",
+      "sr": "Sea regions",
+      "so": "Soil",
+      "sd": "Species distribution",
+      "su": "Statistical units",
+      "us": "Utility and governmental services",
+      "mf": "Meteorological geographical features"
     },
 
     "topicCategories": {

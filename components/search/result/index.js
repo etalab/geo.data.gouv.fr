@@ -8,32 +8,32 @@ import MarkdownSummary from '../../markdown-summary'
 import Thumbnail from './thumbnail'
 import Footer from './footer'
 
-const Result = ({result: {recordId, metadata}, i18n}) => (
-  <Link prefetch href={`/dataset?did=${recordId}`} as={`/datasets/${recordId}`}>
+const Result = ({id, result, t}) => (
+  <Link prefetch href={`/dataset?did=${id}`} as={`/datasets/${id}`}>
     <a>
-      <Thumbnail thumbnails={metadata.thumbnails} recordId={recordId} />
+      <Thumbnail id={id} thumbnail={result.thumbnail} />
 
       <div className='content'>
         <div className='description'>
-          <h3>{metadata.title}</h3>
+          <h3>{result.title}</h3>
 
-          {metadata.inspireTheme && (
+          {result.inspireTheme && (
             <div className='inspire'>
               <img
-                src={`/static/images/datasets/inspire/${metadata.inspireTheme.id}.svg`}
-                title={metadata.inspireTheme.label[i18n.language]}
-                alt={metadata.inspireTheme.label[i18n.language]}
+                src={`/static/images/datasets/inspire/${result.inspireTheme}.svg`}
+                title={t(`common:enums.inspireThemes.${result.inspireTheme}`)}
+                alt={t(`common:enums.inspireThemes.${result.inspireTheme}`)}
               />
             </div>
           )}
         </div>
 
-        {metadata.description && (
-          <MarkdownSummary markdown={metadata.description} />
+        {result.description && (
+          <MarkdownSummary markdown={result.description} />
         )}
 
         <div className='footer'>
-          <Footer metadata={metadata} />
+          <Footer result={result} />
         </div>
       </div>
       <style jsx>{`
@@ -99,22 +99,15 @@ const Result = ({result: {recordId, metadata}, i18n}) => (
 )
 
 Result.propTypes = {
+  id: PropTypes.string.isRequired,
   result: PropTypes.shape({
-    recordId: PropTypes.string.isRequired,
-    metadata: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string,
-      thumbnails: PropTypes.array.isRequired,
-      inspireTheme: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.object.isRequired
-      })
-    }).isRequired
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    thumbnail: PropTypes.string,
+    inspireTheme: PropTypes.string
   }).isRequired,
 
-  i18n: PropTypes.shape({
-    language: PropTypes.string.isRequired
-  }).isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default translate('search')(Result)

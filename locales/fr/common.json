@@ -34,15 +34,31 @@
       "organization": "organisation",
       "representationType": "type géographique",
       "type": "type",
-      "catalog": "catalogue"
+      "catalog": "catalogue",
+      "license": "licence"
     },
     "values": {
-      "yes": "oui",
-      "no": "non",
-      "not-determined": "non déterminé",
-      "other": "autre",
-      "unknown": "inconnu",
-      "none": "aucun"
+      "type": {
+        "map": "Carte",
+        "dataset": "Jeu de données",
+        "nonGeographicDataset": "Jeu de données non-géographique"
+      },
+      "license": {
+        "lov2": "Licence Ouverte 2.0",
+        "odc-odbl": "Open Database License (ODbL 1.0)"
+      },
+      "distributionFormat": {
+        "file": "Fichier",
+        "wfs": "Service WFS"
+      },
+      "common": {
+        "yes": "oui",
+        "no": "non",
+        "not-determined": "non déterminé",
+        "other": "autre",
+        "unknown": "inconnu",
+        "none": "aucun"
+      }
     }
   },
 
@@ -97,6 +113,43 @@
       "asNeeded": "ponctuelle",
       "irregular": "irrégulière",
       "notPlanned": "non planifiée"
+    },
+
+    "inspireThemes": {
+      "ad": "Adresses",
+      "au": "Unités administratives",
+      "rs": "Référentiels de coordonnées",
+      "gg": "Systèmes de maillage géographique",
+      "cp": "Parcelles cadastrales",
+      "gn": "Dénominations géographiques",
+      "hy": "Hydrographie",
+      "ps": "Sites protégés",
+      "tn": "Réseaux de transport",
+      "el": "Altitude",
+      "ge": "Géologie",
+      "lc": "Occupation des terres",
+      "oi": "Ortho-imagerie",
+      "af": "Installations agricoles et aquacoles",
+      "am": "Zones de gestion, de restriction ou de réglementation et unités de déclaration",
+      "ac": "Conditions atmosphériques",
+      "br": "Régions biogéographiques",
+      "bu": "Bâtiments",
+      "er": "Sources d'énergie",
+      "ef": "Installations de suivi environnemental",
+      "hb": "Habitats et biotopes",
+      "hh": "Santé et sécurité des personnes",
+      "lu": "Usage des sols",
+      "mr": "Ressources minérales",
+      "nz": "Zones à risque naturel",
+      "of": "Caractéristiques géographiques océanographiques",
+      "pd": "Répartition de la population — démographie",
+      "pf": "Lieux de production et sites industriels",
+      "sr": "Régions maritimes",
+      "so": "Sols",
+      "sd": "Répartition des espèces",
+      "su": "Unités statistiques",
+      "us": "Services d'utilité publique et services publics",
+      "mf": "Caractéristiques géographiques météorologiques"
     },
 
     "topicCategories": {

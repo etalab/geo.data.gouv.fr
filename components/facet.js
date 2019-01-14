@@ -3,24 +3,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {translate} from 'react-i18next'
 import {withRouter} from 'next/router'
+import {flowRight} from 'lodash'
+
+import {facetTypes} from '../lib/facets'
 
 import Link from './link'
 
 class Facet extends React.Component {
   static propTypes = {
     facet: PropTypes.shape({
-      name: PropTypes.oneOf([
-        'availability',
-        'dgvPublication',
-        'distributionFormat',
-        'keyword',
-        'metadataType',
-        'opendata',
-        'organization',
-        'representationType',
-        'type',
-        'catalog'
-      ]).isRequired,
+      name: PropTypes.oneOf(facetTypes).isRequired,
       value: PropTypes.string.isRequired
     }).isRequired,
 
@@ -32,10 +24,6 @@ class Facet extends React.Component {
 
     router: PropTypes.shape({
       query: PropTypes.object.isRequired
-    }).isRequired,
-
-    i18n: PropTypes.shape({
-      exists: PropTypes.func.isRequired
     }).isRequired,
 
     t: PropTypes.func.isRequired
@@ -112,10 +100,14 @@ class Facet extends React.Component {
   }
 
   render() {
-    const {facet, count, detailed, removable, t, i18n} = this.props
+    const {facet, count, detailed, removable, t} = this.props
 
     const title = t(`facets.types.${facet.name}`)
-    const value = i18n.exists(`facets.values.${facet.value}`) ? t(`facets.values.${facet.value}`) : facet.value
+    const value = t([
+      `facets.values.${facet.name}.${facet.value}`,
+      `facets.values.common.${facet.value}`,
+      facet.value
+    ])
 
     return (
       <div className='container'>
@@ -151,7 +143,7 @@ class Facet extends React.Component {
             overflow: hidden;
 
             &:before {
-              background: $white;
+              background-color: $white;
               border-radius: 10px;
               box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
               position: absolute;
@@ -243,4 +235,7 @@ class Facet extends React.Component {
   }
 }
 
-export default translate()(withRouter(Facet))
+export default flowRight(
+  translate(),
+  withRouter
+)(Facet)
