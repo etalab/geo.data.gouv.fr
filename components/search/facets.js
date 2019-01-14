@@ -46,10 +46,7 @@ class Facets extends React.Component {
       return null
     }
 
-    const sortedGroups = sortBy(groups, group => {
-        return FACETS_ORDER[group.name]
-      }
-    )
+    const sortedGroups = sortBy(groups, group => FACETS_ORDER[group.name])
 
     return (
       <div ref={this.setWrapperRef} className={open ? 'wrapper open' : 'wrapper'} onClick={this.onWrapperClick}>
