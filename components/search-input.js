@@ -55,9 +55,11 @@ class SearchInput extends React.PureComponent {
     const {router, i18n, defaultQuery} = this.props
     const {value} = this.state
 
+    const currentQuery = router.pathname === '/search' ? router.query : {}
+
     const query = {
       ...defaultQuery,
-      ...router.query,
+      ...currentQuery,
       q: value
     }
 
