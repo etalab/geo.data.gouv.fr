@@ -134,7 +134,8 @@
       "enhancement": ":rocket: Enhancement",
       "i18n": ":earth_africa: Internationalization",
       "performance": ":racehorse: Performance",
-      "security": ":policeman: Security"
+      "security": ":policeman: Security",
+      "dependencies": ":arrow_up: Dependencies"
     },
     "repo": "etalab/geo.data.gouv.fr"
   }
