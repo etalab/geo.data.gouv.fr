@@ -1,7 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {sortBy} from 'lodash'
 
 import FacetGroup from './facet-group'
+
+const FACETS_ORDER = {
+  availability: 1,
+  dgvPublication: 2,
+  opendata: 3,
+  distributionFormat: 4,
+  license: 5,
+  type: 6,
+  representationType: 7,
+  catalog: 8,
+  organization: 9
+}
 
 class Facets extends React.Component {
   static propTypes = {
@@ -33,10 +46,15 @@ class Facets extends React.Component {
       return null
     }
 
+    const sortedGroups = sortBy(groups, group => {
+        return FACETS_ORDER[group.name]
+      }
+    )
+
     return (
       <div ref={this.setWrapperRef} className={open ? 'wrapper open' : 'wrapper'} onClick={this.onWrapperClick}>
         <div className='facets'>
-          {groups.map(({name, values}) => (
+          {sortedGroups.map(({name, values}) => (
             <FacetGroup
               key={name}
               name={name}
