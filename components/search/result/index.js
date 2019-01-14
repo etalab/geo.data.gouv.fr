@@ -11,7 +11,7 @@ import Footer from './footer'
 const Result = ({id, result, i18n}) => (
   <Link prefetch href={`/dataset?did=${id}`} as={`/datasets/${id}`}>
     <a>
-      <Thumbnail id={id} thumbnails={result.thumbnail} />
+      <Thumbnail id={id} thumbnail={result.thumbnail} />
 
       <div className='content'>
         <div className='description'>
