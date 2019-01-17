@@ -63,7 +63,6 @@ class SearchPage extends React.Component {
 
     return {
       result: await _get(`${GEODATA_API_URL}/records?${stringify({
-        __elastic: 1,
         q: query.q,
         limit: 20,
         offset: (page - 1) * 20,
