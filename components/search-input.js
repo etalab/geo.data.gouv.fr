@@ -39,16 +39,6 @@ class SearchInput extends React.PureComponent {
     }
   }
 
-  UNSAFE_componentWillReceiveProps({router}) {
-    const {value} = this.state
-
-    if (router.query.q && router.query.q !== value) {
-      this.setState({
-        value: router.query.q
-      })
-    }
-  }
-
   onSubmit = event => {
     event.preventDefault()
 
@@ -76,8 +66,6 @@ class SearchInput extends React.PureComponent {
   }
 
   onChange = event => {
-    event.preventDefault()
-
     this.setState({
       value: event.target.value
     })

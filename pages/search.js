@@ -40,7 +40,11 @@ class SearchPage extends React.Component {
     }),
 
     router: PropTypes.shape({
-      query: PropTypes.object.isRequired
+      query: PropTypes.object.isRequired,
+      events: PropTypes.shape({
+        on: PropTypes.func.isRequired,
+        off: PropTypes.func.isRequired
+      }).isRequired
     }).isRequired,
 
     t: PropTypes.func.isRequired,
@@ -72,7 +76,17 @@ class SearchPage extends React.Component {
     showFacets: false
   }
 
-  UNSAFE_componentWillReceiveProps() {
+  componentDidMount() {
+    const {router} = this.props
+    router.events.on('routeChangeStart', this.onRouteChangeStart)
+  }
+
+  componentWillUnmount() {
+    const {router} = this.props
+    router.events.off('routeChangeStart', this.onRouteChangeStart)
+  }
+
+  onRouteChangeStart = () => {
     this.setState({
       showFacets: false
     })
