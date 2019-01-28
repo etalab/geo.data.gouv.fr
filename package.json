@@ -44,7 +44,7 @@
     "react-table": "^6.8.6"
   },
   "resolutions": {
-    "chart.js/moment": "^2.22.2",
+    "chart.js/moment": "^2.24.0",
     "@turf/helpers": "^6.x",
     "@turf/meta": "^6.x"
   },
