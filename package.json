@@ -70,7 +70,7 @@
     "styled-jsx-plugin-sass": "^1.0.0",
     "webpack": "^4.29.0",
     "webpack-bundle-analyzer": "^3.0.2",
-    "xo": "^0.23.0"
+    "xo": "^0.24.0"
   },
   "browserslist": [
     "> 1%"

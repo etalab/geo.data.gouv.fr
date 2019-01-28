@@ -30,7 +30,7 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    document.body.appendChild(this.node)
+    document.body.appendChild(this.node) // eslint-disable-line unicorn/prefer-node-append
     document.addEventListener('keydown', this.onKeyDown, false)
   }
 
