@@ -52,7 +52,7 @@
     "@babel/core": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.0.1",
+    "babel-jest": "^24.0.0",
     "babel-plugin-inline-import": "^3.0.0",
     "codecov": "^3.0.2",
     "enzyme": "^3.3.0",
