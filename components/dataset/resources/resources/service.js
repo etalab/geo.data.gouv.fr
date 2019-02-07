@@ -7,7 +7,7 @@ import VectorDownload from '../downloads/vector'
 
 const {publicRuntimeConfig: {
   PUBLIC_URL,
-  GEODATA_API_URL
+  TRANSCODER_URL
 }} = getConfig()
 
 class ServiceResource extends React.Component {
@@ -29,7 +29,7 @@ class ServiceResource extends React.Component {
   renderFeature(feature) {
     const {recordId, resource, setPreview} = this.props
 
-    const url = `${GEODATA_API_URL}/services/${resource.serviceId}/feature-types/${feature.name}/download`
+    const url = `${TRANSCODER_URL}/services/${resource.serviceId}/feature-types/${feature.name}`
     const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/resources/service.${resource.serviceType}:${resource.serviceId}/${feature.name}`
 
     return (
