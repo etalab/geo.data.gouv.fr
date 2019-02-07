@@ -1,7 +1,7 @@
 {
   "name": "geo.data.gouv.fr",
   "private": true,
-  "version": "3.9.1",
+  "version": "3.9.2",
   "license": "MIT",
   "repository": "git@github.com:etalab/geo.data.gouv.fr.git",
   "scripts": {
