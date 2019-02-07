@@ -24,6 +24,7 @@ const withConfig = nextRuntimeDotenv({
     'DATAGOUV_API_KEY',
     'PUBLICATION_BASE_URL',
     'GEODATA_API_URL',
+    'TRANSCODER_URL',
     'PIWIK_URL',
     'PIWIK_SITE_ID'
   ]

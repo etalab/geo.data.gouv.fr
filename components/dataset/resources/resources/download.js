@@ -8,7 +8,7 @@ import VectorDownload from '../downloads/vector'
 
 const {publicRuntimeConfig: {
   PUBLIC_URL,
-  GEODATA_API_URL
+  TRANSCODER_URL
 }} = getConfig()
 
 const DOWNLOAD_RESOURCE_TYPE_ORDER = {
@@ -41,7 +41,7 @@ class DownloadResource extends React.Component {
       case 'vector': {
         const {recordId, resource, setPreview} = this.props
 
-        const url = `${GEODATA_API_URL}/links/${resource.proxyId}/downloads/${download.id}/download`
+        const url = `${TRANSCODER_URL}/links/${resource.proxyId}/downloads/${download.id}`
         const embed = `${PUBLIC_URL}/embed/datasets/${recordId}/resources/download:${resource.proxyId}/${download.id}`
 
         return (

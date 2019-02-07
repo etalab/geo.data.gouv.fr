@@ -12,7 +12,8 @@ import Loader from '../../components/centered-map/loader'
 import ErrorMessage from '../../components/centered-map/error-message'
 
 const {publicRuntimeConfig: {
-  GEODATA_API_URL
+  GEODATA_API_URL,
+  TRANSCODER_URL
 }} = getConfig()
 
 class PreviewPage extends React.Component {
@@ -39,14 +40,14 @@ class PreviewPage extends React.Component {
           return {
             recordId,
             extent: metadata.spatialExtent,
-            link: `${GEODATA_API_URL}/services/${query.rid}/feature-types/${query.fid}/download`
+            link: `${TRANSCODER_URL}/services/${query.rid}/feature-types/${query.fid}`
           }
 
         case 'download':
           return {
             recordId,
             extent: metadata.spatialExtent,
-            link: `${GEODATA_API_URL}/links/${query.rid}/downloads/${query.fid}/download`
+            link: `${TRANSCODER_URL}/links/${query.rid}/downloads/${query.fid}`
           }
 
         default:
