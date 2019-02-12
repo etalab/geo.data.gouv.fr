@@ -58,7 +58,7 @@ class CatalogPage extends React.Component {
 
   render() {
     const {catalog, harvests, t, tReady} = this.props
-    const organizationCounts = get(catalog, 'metrics.records.counts.organizations')
+    const organizationCounts = get(catalog, 'metrics.datasets.counts.organizations')
 
     return (
       <Page ready={tReady}>
