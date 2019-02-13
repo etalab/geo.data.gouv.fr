@@ -71,7 +71,7 @@ const Statistics = ({metrics, t}) => {
             {t('details.statistics.metadataTypeChart')}
           </h3>
           <div>
-            <Pie data={metrics.records.partitions.metadataType} />
+            <Pie data={metrics.datasets.partitions.metadataType} />
           </div>
         </div>
       )}
