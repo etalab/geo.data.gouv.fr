@@ -65,7 +65,7 @@ const Statistics = ({metrics, t}) => {
         </div>
       )}
 
-      {metrics.records.partitions.metadataType && (
+      {metrics.datasets.partitions.metadataType && (
         <div className='block'>
           <h3>
             {t('details.statistics.metadataTypeChart')}
