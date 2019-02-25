@@ -66,7 +66,7 @@
     "mock-local-storage": "^1.0.5",
     "node-sass": "^4.9.0",
     "raf": "^3.4.0",
-    "react-test-renderer": "^16.4.1",
+    "react-test-renderer": "^16.8.3",
     "styled-jsx-plugin-sass": "^1.0.0",
     "webpack": "^4.29.5",
     "webpack-bundle-analyzer": "^3.0.2",
