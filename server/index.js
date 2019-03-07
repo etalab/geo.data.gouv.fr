@@ -1,12 +1,12 @@
 const path = require('path')
 const express = require('express')
 const next = require('next')
-const {isInternalUrl} = require('next/dist/server/utils')
 const i18n = require('i18next')
 const i18nextMiddleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
 const compression = require('compression')
 
+const {isInternalUrl} = require('./utils')
 const createRoutes = require('./routes')
 const createLocalizedRoutes = require('./routes/localized')
 

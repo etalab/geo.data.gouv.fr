@@ -56,6 +56,7 @@ module.exports = withConfig({
       }))
 
       config.resolve.alias = {
+        ...config.resolve.alias,
         // Replace lodash with lodash-es on client side.
         // This reduces the bundles sizes greatly and allows for webpack
         // scope hoisting in other dependencies.
