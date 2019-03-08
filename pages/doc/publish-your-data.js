@@ -72,7 +72,7 @@ const PublishYourDataPage = ({tReady}) => (
             <ul className='numbers'>
               <li>
                 <p>Créer un compte sur data.gouv.fr</p>
-                <p>Pour créer un compte ou se connecter : <a href='https://www.data.gouv.fr/login'>https://www.data.gouv.fr/login</a>. Il est recommandé de créer un compte directement sans l’interface d’un réseau social.</p>
+                <p>Pour créer un compte ou se connecter : <a href='https://www.data.gouv.fr/login'>https://www.data.gouv.fr/login</a>.</p>
                 <img src='/static/documentation/datagouv_authentification.png' alt='Se connecter ou créer un compte sur data.gouv.fr' />
               </li>
               <li>
