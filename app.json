@@ -9,9 +9,6 @@
     "YARN_PRODUCTION": {
       "required": true
     },
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
     "DATAGOUV_API_URL": {
       "required": true
     },
@@ -19,6 +16,12 @@
       "required": true
     },
     "GEODATA_API_URL": {
+      "required": true
+    },
+    "TRANSCODER_URL": {
+      "required": true
+    },
+    "PUBLIC_URL": {
       "required": true
     }
   }
