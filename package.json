@@ -41,7 +41,7 @@
     "react-dom": "^16.8.4",
     "react-i18next": "^7.7.0",
     "react-icons": "^2.2.7",
-    "react-table": "^6.9.0"
+    "react-table": "^6.9.2"
   },
   "resolutions": {
     "chart.js/moment": "^2.24.0",
