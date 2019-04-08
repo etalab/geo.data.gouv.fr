@@ -4868,10 +4868,10 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-i18next-express-middleware@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.7.1.tgz#00436776113ff2e87d3befa81a9aa8a359af1193"
-  integrity sha512-e8JhShjL2sVkWFrO0ySVsmM9Ge7sQ8iDsNXSmpAD/2Fvg/P4uo7Kqm0R+yWWsRYCr+uu8tWsSDiEbmbjrnsyVg==
+i18next-express-middleware@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.7.3.tgz#c716fea6b26fb5f1b15cdd7a4fb7ee5703400466"
+  integrity sha512-HN9xmC9MVBCAYloI7iOZdAWBB/LnO+3RX80/YFh0myOkfloiiK5K29zBa8u6InLKz+hNpNm4nLiZHV3nW67YEw==
   dependencies:
     cookies "0.7.1"
 
