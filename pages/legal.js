@@ -21,14 +21,14 @@ const LegalPage = ({tReady}) => (
             <p>
               Direction interministérielle du numérique et du système d’information et de communication de l’État (DINSIC)<br />
               {''}
-              39, quai André Citroën<br />
+              7, Avenue de Ségur<br />
               {''}
-              75015 Paris 15<br />
+              75007 Paris 7<br />
               {''}
-              dinsic-sec.sgmap [à] modernisation.gouv.fr
+              dinsic-sec-directeur [à] modernisation.gouv.fr
             </p>
 
-            <p>Directeur de la publication : M. Henri Verdier, DINSIC</p>
+            <p>Directeur de la publication : M. Nadi Bou Hanna, DINSIC</p>
 
             <h3>Hébergeur</h3>
             <p>
