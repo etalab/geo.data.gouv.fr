@@ -13,7 +13,6 @@ import Content from '../components/content'
 import Hero from '../components/home/hero'
 import Catalogs from '../components/home/catalogs'
 import Events from '../components/home/events'
-import NewsletterForm from '../components/home/newsletter-form'
 
 const {publicRuntimeConfig: {
   GEODATA_API_URL
@@ -47,8 +46,6 @@ class IndexPage extends React.Component {
               <Catalogs catalogsPromise={catalogsPromise} />
               <Events />
             </Content>
-
-            <NewsletterForm />
           </React.Fragment>
         )}
       </Page>
