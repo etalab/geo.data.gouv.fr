@@ -73,11 +73,7 @@ class Header extends React.Component {
                       {session.user.first_name} {session.user.last_name}
                     </a>
                   </Link>
-                ) : (
-                  <a href={logInUrl}>
-                    {t('header.publish')}
-                  </a>
-                )}
+                ) : null}
               </li>
               <li>
                 <LanguageSelection />
