@@ -8,7 +8,7 @@ COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile --production
 
 # 2/3 Create build image
-FROM node:10-alpine AS build-front
+FROM node:10 AS build-front
 
 RUN mkdir -p /opt/geo.data.gouv.fr
 WORKDIR /opt/geo.data.gouv.fr
