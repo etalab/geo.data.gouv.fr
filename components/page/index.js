@@ -26,8 +26,11 @@ class Page extends React.PureComponent {
     const {children, t, ready} = this.props
 
     return (
-      <div>
+      <div id='page'>
         <Header />
+        <div id='end-of-life'>
+          Ce site n’est plus mis à jour. Les jeux de données peuvent de fait être obsolètes. Pour plus d’information <a href='https://www.data.gouv.fr/fr/posts/extinction-de-geo-data-gouv-fr/'>cliquez ici</a>.
+        </div>
         {ready ? children() : (
           <Content>
             <Meta />
@@ -39,11 +42,18 @@ class Page extends React.PureComponent {
         <Footer />
 
         <style jsx>{`
-          div {
+          div#page {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
             position: relative;
+          }
+
+          div#end-of-life {
+            text-align: center;
+            padding: 20px;
+            background: orange;
+            font-weight: bold;
           }
         `}</style>
 
